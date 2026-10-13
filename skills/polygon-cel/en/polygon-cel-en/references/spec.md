@@ -49,7 +49,7 @@
 | body.pose | relaxed, close, behind, pocket, wave, hand_on_hip, hands_on_hips, arms_crossed, chin_rest, hair_tuck, hands_behind_head, walk, lean, sit, lie | relaxed | Arm pose or full-body posture |
 | body.stance | straight, contrapposto, wide, walk, lean, sit, lie | straight, full-body postures use the same name | Leg stance (visible in full framing) |
 | body.seat | chair, stool, bed | chair | Seat (pose sit only, bed is the bed edge) |
-| body.figure | slim, balanced, curvy, athletic | balanced | Figure (curvy is female only, athletic is male only) |
+| body.figure | slim, balanced, fuller, athletic | balanced | Figure (fuller is female only, athletic is male only) |
 | body.bust | small, medium, large, xlarge | medium | Bust size (female only, from large the side volume shows in front of the arms) |
 | body.muscle | 0-1 | slim 0.10, balanced 0.30, athletic 0.50 | Male muscle definition (0 smooth, 1 sharpest abs and arm muscles) |
 | body.hands.right, body.hands.left | open, relaxed, flat, fist, point, peace | pose default | Hand gesture (right is the hand on screen right) |
@@ -71,9 +71,9 @@
 - (stance choice) contrapposto puts the weight on the screen-left leg with a hip tilt and the other leg apart
 - Hands are projections of a 3D palm and a 3-segment finger skeleton; changing only the gesture changes the finger shapes
 - wave with peace: `"body": {"pose": "wave", "hands": {"right": "peace"}}`
-- (figure fallback) athletic on a woman becomes balanced, curvy on a man becomes athletic
+- (figure fallback) athletic on a woman becomes balanced, fuller on a man becomes athletic
 - (3/4 view) body.yaw and head.yaw in the same direction look natural (for example body.yaw 24, head.yaw 20)
-- (female figures) curvy has the narrowest waist and the widest hips and thighs
+- (female figures) fuller has the narrowest waist and the widest hips and thighs
 - (hold) the holding arm takes a fixed pose per object and the other arm follows pose
     + phone is a hand cradling the phone's back in the palm in front of the chest (the viewer sees the back of the hand and the back of the phone), the screen's cold light brightens the area around the hand
     + can is a hand at belly height gripping the can with the back of the hand toward the viewer
@@ -195,7 +195,7 @@
 - The crop top ends above the navel and jeans are low-rise, so the belly shows (skirts have a high waistline and cover it)
 - (bottom_style) classic is a basic brief cut, high_leg raises the side line above the hip bones, string has a small front panel with strings and side bows
 - In view back the bikini bottom draws as its back panel (classic and high_leg cover most of the glutes, string is a small triangle)
-- Revealing outfits add torso cylinder shading, the navel, the abdominal midline, the groin lines, and the crease under the bust automatically
+- Revealing outfits add torso cylinder shading, the navel, the abdominal midline, the lower pelvis lines, and the crease under the bust automatically
 - Revealing male outfits also add the line under the pectorals, ab divisions, flank lines, and the Adam's apple
 - Necklines, collars, and armholes widen automatically for the thicker male neck and broader shoulders
 

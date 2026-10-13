@@ -1,5 +1,5 @@
 {"style": "painterly", "framing": "full", "canvas": {"seed": 11},
- "character": {"head": {"yaw": -14, "roll": 2}, "body": {"pose": "behind", "figure": "curvy"},
+ "character": {"head": {"yaw": -14, "roll": 2}, "body": {"pose": "behind", "figure": "fuller"},
    "hair": {"style": "long", "bangs": "parted", "wave": 0.5, "color": "#6B3F2E"},
    "eyes": {"color": "#4F7F5E"},
    "outfit": {"type": "beach_shirt", "variant": "plain", "bikini_color": "#2F4F7A"}},

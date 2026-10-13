@@ -23,7 +23,7 @@ license: GPL-3.0-or-later (전문은 LICENSE, 출력 이미지 추가 허가와 
     + 팔 포즈 11종: 기본 7종, 팔짱, 턱 괴기, 머리 넘기기, 머리 뒤 깍지
     + 손 제스처 6종
     + 손 소품(body.hold): 휴대폰, 캔음료, 담배를 한 손에 쥠 (정면 시점)
-    + 체형: 여성 slim, balanced(기본), curvy, 남성 slim, balanced(기본), athletic
+    + 체형: 여성 slim, balanced(기본), fuller, 남성 slim, balanced(기본), athletic
     + 남성 근육 강도: body.muscle 0-1 (기본 slim 0.10, balanced 0.30, athletic 0.50)
     + 가슴 크기: small, medium(기본), large, xlarge (여성)
     + 얼굴: 얼굴형 4종, 얼굴 길이, 코 3종, 입술 3종, 속눈썹 4단계, 홍채 크기, 눈썹 두께
@@ -34,7 +34,7 @@ license: GPL-3.0-or-later (전문은 LICENSE, 출력 이미지 추가 허가와 
     + 신발: 스니커즈, 부츠, 샌들, 하이힐, 구두, 맨발
     + `"gender": "male"` 1줄로 남성 얼굴, 헤어, 골격, 의상 기본값 일괄 적용
     + 노출 의상은 성인 체형과 해부학적으로 그럴듯한 피부 형태로 표현 (여성 가슴 볼륨, 남성 대흉근과 복근)
-    + 가슴은 볼륨과 음영으로 표현하며 유두와 성기 형태를 그리는 레이어는 엔진에 없음
+    + 가슴은 볼륨과 음영으로 표현하며 가슴 표시와 골반 세부 형태를 그리는 레이어는 엔진에 없음
     + 수영복과 속옷 하의의 앞판은 매끈한 면으로 렌더
     + 배경: 단색, 그라데이션, 하늘, 보케, 창가, 해변, 침대, 실내 5종, 풍경화 장면, 도시 거리 장면
     + 머리 소품: 헤어핀, 귀걸이, 비니, 몸 소품: 목걸이
@@ -52,7 +52,7 @@ license: GPL-3.0-or-later (전문은 LICENSE, 출력 이미지 추가 허가와 
 - 무드(mood): doomer 1종 (밤의 고독)
     + 차가운 탈색 색보정, 필름 입자, 비네트, 전선이 늘어진 밤거리 배경, 무표정과 지친 눈을 기본값으로 묶음
     + 풍경화와 도시화에도 적용 (밤 시간대, 달과 별, 전선)
-- 미성년자의 누드와 성행위를 포함한 성적 묘사는 수행하지 않음
+- 미성년자의 노출과 성행위를 포함한 성적 묘사는 수행하지 않음
     + (명시된 미성년 설정) 18세 미만 연령이나 미성년 신분이 스펙 또는 요청에 명시된 인물
     + (아동 신체 묘사) 이차성징 이전의 아동 신체로 그리도록 요청된 인물
 - 포토리얼은 범위 밖임을 먼저 안내
@@ -209,14 +209,14 @@ python scripts/render.py spec.json -o final.png --quality final
 ```json
 {"style": "soft_illust", "framing": "full",
  "character": {"view": "back", "head": {"yaw": 32, "roll": -3},
-   "body": {"figure": "curvy", "stance": "contrapposto"},
+   "body": {"figure": "fuller", "stance": "contrapposto"},
    "outfit": {"type": "bikini", "bottom_style": "high_leg"}},
  "background": {"type": "beach"}}
 ```
 - 요청: "슬립 드레스 입은 여성 옆모습"
 ```json
 {"style": "soft_illust", "framing": "full",
- "character": {"view": "side", "body": {"figure": "curvy", "bust": "large"}, "outfit": {"type": "slip_dress"}},
+ "character": {"view": "side", "body": {"figure": "fuller", "bust": "large"}, "outfit": {"type": "slip_dress"}},
  "background": {"type": "gradient"}}
 ```
 - 요청: "노을 진 거리에서 손잡은 커플, 전신"

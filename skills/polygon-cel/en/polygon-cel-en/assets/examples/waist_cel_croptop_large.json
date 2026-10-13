@@ -1,5 +1,5 @@
 {"style": "anime_cel", "framing": "waist", "canvas": {"seed": 16},
- "character": {"head": {"yaw": 10, "roll": -2}, "body": {"figure": "curvy", "bust": "large"},
+ "character": {"head": {"yaw": 10, "roll": -2}, "body": {"figure": "fuller", "bust": "large"},
    "hair": {"style": "ponytail", "bangs": "parted", "color": "#7E4536"},
    "face": {"nose": "defined", "lips": "full"}, "eyes": {"color": "#5E8F6A"},
    "outfit": {"type": "crop_top", "variant": "tee", "color": "#F4F1EC"}},

@@ -26,7 +26,7 @@ FIGURES = {
     "balanced": {"torso": [(0.585, 0.56), (0.560, 0.74), (0.525, 0.92), (0.455, 1.14), (0.405, 1.33), (0.392, 1.45),
                            (0.450, 1.70), (0.570, 1.98), (0.632, 2.13), (0.600, 2.33), (0.42, 2.47), (0.0, 2.50)],
                  "hip_x": 0.295, "thigh": 1.04},
-    "curvy":    {"torso": [(0.590, 0.56), (0.565, 0.74), (0.520, 0.92), (0.440, 1.14), (0.380, 1.32), (0.365, 1.43),
+    "fuller":    {"torso": [(0.590, 0.56), (0.565, 0.74), (0.520, 0.92), (0.440, 1.14), (0.380, 1.32), (0.365, 1.43),
                            (0.440, 1.68), (0.590, 1.96), (0.675, 2.13), (0.635, 2.34), (0.43, 2.48), (0.0, 2.50)],
                  "hip_x": 0.315, "thigh": 1.10},
 }
@@ -77,7 +77,7 @@ GENDER = {
 ELBOW_SHIFT, WRIST_SHIFT = 1.30, 1.10
 BACK_CLASP = (0.17, 1.80)    # wrist of a hand held behind the back, seen from behind
 BUST_CONTOUR_W = 0.0050   # lower-border line weight (H units)
-FIGURE_FALLBACK = {"female": {"athletic": "balanced"}, "male": {"curvy": "athletic"}}
+FIGURE_FALLBACK = {"female": {"athletic": "balanced"}, "male": {"fuller": "athletic"}}
 TORSO_R = SHOULDER_LINE + FIGURES["balanced"]["torso"]
 SHOULDER = (0.605, 0.37)
 
@@ -444,7 +444,7 @@ class BodyBuilder:
         return layers
 
     def anatomy_layers(self):
-        """Surface landmarks of bare skin: navel, midline, groin lines, under-bust crease.
+        """Surface landmarks of bare skin: navel, midline, lower pelvis lines, under-bust crease.
 
         They sit under every garment, so clothing hides whatever it covers.
         """

@@ -92,7 +92,7 @@
     + The round lower outline and the shadow cast on the ribcage below it confirm the round mass
 - Over clothing the same normals reshade the fabric, so the crescent shadow appears on the cloth
     + The lower outline is inked over the fabric
-    + A cleavage shadow separates the two masses
+    + A chest gap shadow separates the two masses
     + Shading strength scales with the vertical bust radius
 - The lower band of a triangle bikini cup follows the outer arc of the bust (the cup reads as rounded)
 - The 4 bust sizes change the bust center and radius together (larger busts sit a little lower and further out)
@@ -221,7 +221,7 @@
 - Legs and torso merge into one silhouette, so no outline crosses the thighs
 - Revealing outfits enlarge the skin bevel radius, so the torso and limbs shade like cylinders
 - The forearm outline is left out where it overlaps the upper arm (no elbow seam)
-- 4 skin form cues are drawn on a layer under the outfit: navel, abdominal midline, groin lines, crease and shadow under the bust
+- 4 skin form cues are drawn on a layer under the outfit: navel, abdominal midline, lower pelvis lines, crease and shadow under the bust
     + Whatever the outfit covers is hidden automatically, so they always apply regardless of outfit
 - Bikini cups shade with sphere normals around the bust center, with a small shadow on the skin under the cup
 - Straps and tube tops are clipped by the torso mask and cut by the upper arm mask, so they pass behind the arms
@@ -297,7 +297,7 @@
 | City street is flat and symmetric | camera_x 0 | Set camera_x near -2 or 2 |
 | Belly does not show under a crop top | Bottom is a_line_skirt (high waistline) | Change bottom to jeans |
 | Bikini bottom looks small | bust framing does not draw bottoms | Change framing to waist or full |
-| Torso looks flat | figure slim | Change figure to balanced or curvy |
+| Torso looks flat | figure slim | Change figure to balanced or fuller |
 | Figure floats over a scene background | bust and waist framing have no ground shadow | Use full framing or match the background time to the character lighting |
 | Smudged face in oil | Color mixing at the large brush stage | Change the seed, use quality final |
 | Watercolor looks like cel | Solid background, small painted area | Use background gradient or sky |

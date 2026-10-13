@@ -5,12 +5,27 @@ __pycache__/
 venv/
 .ipynb_checkpoints/
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
 
 # Local render output: renders belong in demo/ only after deliberate curation
 out/
 output/
 outputs/
 renders/
+# Example scripts save PNGs next to where they run; inside skill sources only assets/ holds images
+skills/*/en/**/*.png
+skills/*/en/**/*.jpg
+skills/*/en/**/*.jpeg
+skills/*/en/**/*.webp
+skills/*/ko/**/*.png
+skills/*/ko/**/*.jpg
+skills/*/ko/**/*.jpeg
+skills/*/ko/**/*.webp
+!skills/*/*/*/assets/**
 
 # Diffusion model weights (image-gen, codeformer addon) are downloaded, never committed
 *.safetensors

@@ -19,7 +19,7 @@ from garment3d import (CHEST_PIECES, front_point, grow, knit_normals, patch_of, 
 from palette import line_color
 from scene import Drawable
 
-NORMAL_BLUR = 0.16               # head widths: cloth smooths the small forms under it (no stains at the cleavage)
+NORMAL_BLUR = 0.16               # head widths: cloth smooths the small forms under it (no stains at the chest gap)
 LOOSE_BLUR = 0.24                # loose garments (tee, hoodie, jacket) span even more of the body's forms
 LIMB_ATTACH_K = 0.07             # sleeves and trouser legs blend into the garment body (the body's wide blend puffs up)
 CUT_REACH = 3.0                  # head widths: a cut polygon reaches this far past its edge

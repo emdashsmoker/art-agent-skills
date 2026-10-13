@@ -31,7 +31,7 @@ license: GPL-3.0-or-later. Rendered images are not covered by the GPL (additiona
 | `subject` | 내용 | 권장 캔버스 |
 |---|---|---|
 | `portrait` | 의상을 입은 인물. `character.sex`로 여성, 남성, `character.build`로 체형 선택. `framing`으로 바스트업, 상반신, 전신, 설정샷(`wide`) 선택. `characters` 목록이면 2-3인 투샷. `background.type: scene`이면 도시나 풍경 위에 인물 합성 | 1024 x 1280, 전신 1024 x 1600, 투샷 1280 x 1600 |
-| `nude` | 성인 인체 습작. 여성, 남성 각 포즈 4종 | 입상 1024 x 1600, 와상 1600 x 1024 |
+| `figure_study` | 성인 인체 습작. 여성, 남성 각 포즈 4종 | 입상 1024 x 1600, 와상 1600 x 1024 |
 | `still_life` | 정물. `scene.set`: `classic`(병, 주전자, 과일, 천), `desk`(노트북, 머그, 램프, 화분), `cafe`(라테, 케이크, 아이스 음료), `gaming`(모니터, RGB 키보드, 헤드셋), `kitchen`(받침에 끼운 찻잔, 카세트 라디오, 창밖 눈 내리는 단지) | 1400 x 1050 |
 | `cityscape` | 1점 투시 거리. `scene.site`: `street`(상가 대로, 기본), `panel`(패널 아파트 단지와 맨가지 가로수). `scene.time`으로 시간대 선택 | 1600 x 1000 |
 | `landscape` | `scene.site`: `lake`(산과 호수, 기본), `outskirts`(교외 들판, 송전탑 행렬, 자작나무, 지평선의 단지와 굴뚝). `scene.time`으로 시간대 선택 | 1600 x 1000 |
@@ -42,20 +42,20 @@ license: GPL-3.0-or-later. Rendered images are not covered by the GPL (additiona
 
 ## 인체 습작
 
-`nude` 주제는 고전 회화의 아카데믹 누드 포즈 4종을 남녀 각각 그린다.
+`figure_study` 주제는 고전 회화의 아카데믹 인체 습작 포즈 4종을 남녀 각각 그린다.
 
 - 몸 비례는 미 육군 인체 측정 자료(ANSUR II 여성, 남성)를 애니메 일러스트 체형으로 보정한 성인 값으로 고정된다(`references/anatomy.md`).
-- 현재 몸 모델에는 유두와 생식기 형태가 구현되어 있지 않다. 골반 주변은 내부 선을 그리지 않는다. 남녀 동일하다.
+- 현재 몸 모델에는 가슴 표시와 골반 세부 형태가 구현되어 있지 않다. 골반 주변은 내부 선을 그리지 않는다. 남녀 동일하다.
 - 포즈 4종은 자세, 손, 머리카락, 천이 가슴과 골반을 가리는 고전 구도다.
 
-### (내용 제한) 미성년자 누드와 성행위
+### (내용 제한) 미성년자 노출과 성행위
 
-- 미성년자의 누드와 성행위 묘사는 그리지 않는다. 이 스킬의 유일한 내용 제한이다.
+- 미성년자의 노출과 성행위 묘사는 그리지 않는다. 이 스킬의 유일한 내용 제한이다.
 - 판단 기준은 몸의 묘사다.
     + 이차성징 이전의 몸(아동의 머리 대 몸 비율, 발달 전 가슴과 골반, 아동 체형)을 그리는 요청
     + 미성년 나이나 아동 신분을 명시한 인물
 - 화풍, 큰 눈, 동안 인상만으로는 판단하지 않는다.
-- 코드 구현: 몸 비례는 성인 값으로 고정된다. `nude` 주제의 얼굴 파라미터는 `rig_nude.ADULT_FACE` 범위로 보정된다. 이 보정은 렌더 결과에만 적용된다.
+- 코드 구현: 몸 비례는 성인 값으로 고정된다. `figure_study` 주제의 얼굴 파라미터는 `rig_figure_study.ADULT_FACE` 범위로 보정된다. 이 보정은 렌더 결과에만 적용된다.
 
 ## 의존성
 
@@ -108,7 +108,7 @@ python render.py --spec my.json --out out.png --stages stages/              # �
 | 밝은, 상냥한 | `mouth.smile` 0.5-0.7, `brows.angle` 0.1, `eyes.gaze` 정면 [0, 0] |
 
 - 성별: `character.sex`를 `male`로 두면 남성 체형, 얼굴, 짧은 머리, 남성 의상 기본값이 함께 적용된다. 인상 조정은 아래 표의 필드를 그대로 쓴다
-- 체형(`character.build`): 여성 `standard`, `slender`(슬렌더), `glamour`(글래머), `athletic`(탄탄한), 남성 `standard`, `slim`, `athletic`(근육형). 모두 실제 성인 체형 범위 안의 변형이며 의상은 체형을 따라 입혀진다
+- 체형(`character.build`): 여성 `standard`, `slender`(슬렌더), `fuller`(볼륨형), `athletic`(탄탄한), 남성 `standard`, `slim`, `athletic`(근육형). 모두 실제 성인 체형 범위 안의 변형이며 의상은 체형을 따라 입혀진다
 - 얼굴 프리셋(`character.face_preset`): `soft`, `sharp`, `mature`, `gentle`(처진 눈매), `cool`(가는 눈매), `bold`(진한 이목구비). 성인 얼굴 범위 안에서만 바뀐다
 - 표정(`character.expression`): `smile`, `laugh`(감은 눈, 벌린 입), `neutral`, `surprised`, `serious`, `sad`
 - 머리 모양(`character.hair.style`): `long`, `updo`, `short`, `bob`, `ponytail`, `medium`, `side_part`, `slicked`(넘긴 머리), `two_block`, `hime`(히메컷), `center_part`(가운데 가르마), `shoulder`(어깨 길이), `crop`(짧은 일자 앞머리)
@@ -117,7 +117,7 @@ python render.py --spec my.json --out out.png --stages stages/              # �
     + `pose.turn`: 몸 회전. `front`, `three_quarter`, `side`, `three_quarter_back`, `back`, 앞에 `-`를 붙이면 반대쪽, 숫자는 라디안
     + `pose.look`: `auto`(얼굴이 몸을 따라 돌고 크게 돌면 뒤통수), `face`(어깨 너머로 얼굴), `away`(뒤통수)
     + `pose.custom`: 팔다리 손목, 발목 목표와 흉곽, 골반 회전을 직접 지정
-- 의상(`character.outfit.type`): `turtleneck_sleeveless`(터틀넥과 스커트, 여성 기본), `bikini`, `lingerie`, `crop_hotpants`(크롭탑과 핫팬츠), `tee_jeans`(티셔츠와 청바지, 남성 기본), `suit`(정장), `hoodie_joggers`(후드티와 조거), `swim_trunks`(수영 반바지, 남성 전용), `shirt_slacks`(셔츠와 슬랙스), `knit_coat`(니트와 벨트 롱코트), `polo_shorts`(폴로와 치노 반바지), `tank_shorts`(싱글렛과 러닝 반바지), `denim_jacket`(청재킷과 티셔츠), `track_suit`(트레이닝복). 남성은 비키니, 속옷, 터틀넥 스커트, 크롭탑을 제외한 10종을 지원한다. 의상마다 기본 색과 신발이 있고 `palette`로 색만 바꾼다
+- 의상(`character.outfit.type`): `turtleneck_sleeveless`(터틀넥과 스커트, 여성 기본), `bikini`, `innerwear`, `crop_hotpants`(크롭탑과 핫팬츠), `tee_jeans`(티셔츠와 청바지, 남성 기본), `suit`(정장), `hoodie_joggers`(후드티와 조거), `swim_trunks`(수영 반바지, 남성 전용), `shirt_slacks`(셔츠와 슬랙스), `knit_coat`(니트와 벨트 롱코트), `polo_shorts`(폴로와 치노 반바지), `tank_shorts`(싱글렛과 러닝 반바지), `denim_jacket`(청재킷과 티셔츠), `track_suit`(트레이닝복). 남성은 비키니, 속옷, 터틀넥 스커트, 크롭탑을 제외한 10종을 지원한다. 의상마다 기본 색과 신발이 있고 `palette`로 색만 바꾼다
     + `outfit.hat`: `none`(기본), `beanie`(접힌 단 니트 비니, 색 `palette.hat`). 모자는 머리카락 위에 그려 앞머리와 옆머리는 단 아래로만 보인다
     + `outfit.shoes`: 의상 기본 신발 대신 `pumps`, `sneakers`, `oxfords`, `none` 지정(눈길의 여성 코트 차림에 플랫 구두 등)
 - 투샷: `characters`에 인물 2-3명을 적고 `layout.type`(`side_by_side`, `facing`, `front_back`)과 `layout.interaction`(`none`, `hold_hands`)을 고른다. 인물마다 성별, 체형, 의상, 포즈, 표정, `palette`를 따로 둔다
@@ -181,7 +181,7 @@ python render.py --spec my.json --out out.png --stages stages/              # �
 | 몸이 통나무처럼 보임 | 몸통 단면 비례 | `rig_anatomy.TORSO_LOFT`의 허리 폭과 z 중심 조정 후 `check_proportions.py --sheet`로 회전 시트 확인 |
 | 팔다리 윤곽이 울퉁불퉁함 | 반지름 프로파일의 급한 변화 | `rig_anatomy`의 `*_PROFILE` 값을 완만하게 조정, `check_proportions.py`의 변곡점 수 확인 |
 | 팔다리 그림자 경계가 톱니 모양 | 스윕 분할 부족 | `rig_anatomy.LIMB_SEGMENTS` 상향 |
-| 해부 표식이 빠지거나 엉뚱한 곳에 그려짐 | 표식 점이 표면에서 벗어남 | `rig_anatomy`의 표식 좌표를 표면 쪽으로 이동, `rig_nude.MARK_SURFACE_TOL` 확인 |
+| 해부 표식이 빠지거나 엉뚱한 곳에 그려짐 | 표식 점이 표면에서 벗어남 | `rig_anatomy`의 표식 좌표를 표면 쪽으로 이동, `rig_figure_study.MARK_SURFACE_TOL` 확인 |
 | 가리는 손의 외곽선이 없음 | 가림 구역 처리 | 손 조각 이름이 `hand_`로 시작하는지 확인(`mannequin.QUIET_KEEP`) |
 | 유화 붓터치가 거칠게 번짐 | 붓 크기 과다 | `painterly.py`의 `OIL_FIG_BRUSHES` 축소 |
 | 수채 얼룩이 과함 | 안료 변조 과다 | `painterly.py`의 `WC_TURBULENCE`, `WC_EDGE_DARKEN` 하향 |

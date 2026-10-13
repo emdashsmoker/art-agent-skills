@@ -22,8 +22,8 @@ Where the numbers in `rig_anatomy.py` come from, and what to check first when ch
 - The goal is a believable body. Ahead of anatomical precision, measured data sets the points where a viewer feels something is off (shoulder height, waist position, arm length, the S curve of the side line).
 - Proportions are 2 base bodies, adult female and adult male, plus 5 named body type variants (`character.sex`, `character.build`). The spec does not expose individual proportion numbers. Variants are added only as factor tables that pass the checks.
 - The current 7 body type presets are all variations within real adult body ranges.
-- The current body model has no nipple or genital geometry. The area around the pelvis is a zone where no interior lines are drawn.
-- The content limit is 1 item, nudity and sexual acts involving minors (figure study section of `SKILL.md`). Fixing body proportions to adult values is its implementation.
+- The current body model has no chest mark or pelvic geometry. The area around the pelvis is a zone where no interior lines are drawn.
+- The content limit is 1 item, unclothed figures and sexual acts involving minors (figure study section of `SKILL.md`). Fixing body proportions to adult values is its implementation.
 
 ## Proportion Data and Conversion
 
@@ -185,7 +185,7 @@ This is `rig_anatomy.BUILDS['male']`. During one render, `use_build('male')` swa
 
 ## Body Type Variants
 
-`rig_anatomy.VARIANTS` is a table of factors on top of the base bodies (`BUILDS['female']`, `BUILDS['male']`). `_variant` turns a table into a body and registers it, as in `BUILDS['female_glamour']`, and `character.build` picks it through `build_key(sex, build)`.
+`rig_anatomy.VARIANTS` is a table of factors on top of the base bodies (`BUILDS['female']`, `BUILDS['male']`). `_variant` turns a table into a body and registers it, as in `BUILDS['female_fuller']`, and `character.build` picks it through `build_key(sex, build)`.
 
 | Factor | Applies to |
 |---|---|
@@ -200,7 +200,7 @@ This is `rig_anatomy.BUILDS['male']`. During one render, `use_build('male')` swa
 | Body type | Design intent |
 |---|---|
 | `female_slender` | A long-lined body with reduced overall width and girth |
-| `female_glamour` | An hourglass body with full chest and hips and a cinched waist. Factors within 1.3 |
+| `female_fuller` | An hourglass body with full chest and hips and a cinched waist. Factors within 1.3 |
 | `female_athletic` | A body with muscle on the shoulders, arms and calves. The thigh root is left unchanged so no bump forms on the pelvis line |
 | `male_slim` | Thin limbs and a narrow torso |
 | `male_athletic` | Broad shoulders and chest, thick pectorals and upper arms, a tapering waist (inverted triangle). The trapezius is not raised, so clothed shoulders do not peak |

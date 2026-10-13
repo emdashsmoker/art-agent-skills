@@ -23,7 +23,7 @@ The unit "head breadth" is a relative length with the head breadth as 1; the ori
 | `canvas.width` | 1024 | 256 or more | Output width (px) |
 | `canvas.height` | 1280 | 256 or more | Output height (px). 1600 or more recommended for full body |
 | `canvas.seed` | 7 | Integer | Random seed for illustration grain, oil strokes and watercolor bleeding |
-| `subject` | `portrait` | `portrait`, `nude`, `still_life`, `cityscape`, `landscape` | What to draw |
+| `subject` | `portrait` | `portrait`, `figure_study`, `still_life`, `cityscape`, `landscape` | What to draw |
 | `style` | `anime` | `anime`, `illustration`, `oil`, `watercolor` | Style |
 | `framing` | `bust` | `bust`, `upper_body`, `full_body`, `wide` | `portrait` only. Head size and position are computed automatically. `wide` is an establishing shot (full figure height 34% of the canvas, feet at 90% of the canvas height) |
 | `look` | `none` | `none`, `doomer` | Whole-image color grade after the style render. `doomer`: lower saturation, bluer dark tones, saturation kept only in bright orange lights, black lifted to blue-gray, film grain, vignette (`looks.DOOMER`) |
@@ -77,7 +77,7 @@ Group `body` also gets cel shadow cleanup (filling small light gaps). Small desi
 | `male` | Adult male body (broad shoulders, narrow pelvis, pectorals, thick neck, smaller drawn head), male face preset, hair `short`, outfit `tee_jeans`, no earrings |
 
 - The sex preset changes only defaults. Face, eye, hair and outfit fields written in the spec take precedence over the preset
-- Male outfits are the 10 in the outfit table below other than `bikini`, `lingerie`, `turtleneck_sleeveless`, `crop_hotpants`. Shoes of the suit, shirt and coat become lace-up shoes
+- Male outfits are the 10 in the outfit table below other than `bikini`, `innerwear`, `turtleneck_sleeveless`, `crop_hotpants`. Shoes of the suit, shirt and coat become lace-up shoes
 
 ### Body type (`character.build`)
 
@@ -85,7 +85,7 @@ Group `body` also gets cel shadow cleanup (filling small light gaps). Small desi
 |---|---|---|
 | Female | `standard` | Default. ANSUR II lean subsample adjusted for anime illustration |
 | Female | `slender` | Torso width and depth about 9% smaller, limbs about 12% thinner, chest form 0.8x |
-| Female | `glamour` | Chest form 1.3x, hip width about 9% larger, waist 4% smaller, thighs and buttocks larger. Within adult body ranges, no exaggeration |
+| Female | `fuller` | Chest form 1.3x, hip width about 9% larger, waist 4% smaller, thighs and buttocks larger. Within adult body ranges, no exaggeration |
 | Female | `athletic` | Shoulders 7% wider, waist 6% wider, upper arms 14% and calves 10% thicker |
 | Male | `standard` | Default. Estimated from ANSUR II male summary statistics |
 | Male | `slim` | Torso about 8% smaller, limbs about 13% thinner |
@@ -93,7 +93,7 @@ Group `body` also gets cel shadow cleanup (filling small light gaps). Small desi
 
 - Vertical reference heights (neck, waist, knee, ankle) are the same for all body types. Poses and garment cut lines still match
 - Clothes are put on by inflating the body of the body type, so they follow it. Bikini and bra cups grow with the chest form
-- Factor table: `VARIANTS` in `scripts/rig_anatomy.py`. Check: `python scripts/check_proportions.py --build female_glamour`
+- Factor table: `VARIANTS` in `scripts/rig_anatomy.py`. Check: `python scripts/check_proportions.py --build female_fuller`
 - `character.scale`: size relative to the other figures in a group. If null, a man beside a woman is 1.06
 
 ### Head placement (`character.head`)
@@ -223,7 +223,7 @@ Named hair styles (`rig_hair.HAIR_PRESETS`) override fields over the three base 
 |---|---|---|---|
 | `turtleneck_sleeveless` | Sleeveless turtleneck, midi skirt, belt | Pumps | Charcoal / camel |
 | `bikini` | Triangle bikini, tie-side bottom | Barefoot | Navy |
-| `lingerie` | Lace-trimmed bra, briefs | Barefoot | Black, lace `accent` |
+| `innerwear` | Lace-trimmed bra, briefs | Barefoot | Black, lace `accent` |
 | `crop_hotpants` | Crop tank top, denim hot pants | Sneakers | White / light blue |
 | `tee_jeans` | Short-sleeve T-shirt, jeans | Sneakers | White / dark blue |
 | `suit` | Jacket, shirt, tie, slacks, belt | Pumps | Charcoal, `shirt`, `tie` |
@@ -238,7 +238,7 @@ Named hair styles (`rig_hair.HAIR_PRESETS`) override fields over the three base 
 
 - Every outfit has default colors. Colors written in the spec's `palette` take precedence over them
 - In the bust, `turtleneck_sleeveless` uses the bust-only outfit; other outfits use 3D clothes put on the mannequin body
-- The current body model has no nipple or genital geometry
+- The current body model has no chest mark or pelvic geometry
 
 ### Pose (`character.pose`)
 
@@ -288,16 +288,16 @@ With `subject` `portrait`, listing 2-3 figures in `characters` makes a group pic
 - Framing follows `framing`, and the largest figure fits the canvas. If the width is not enough, everything shrinks
 - When seated and standing figures mix, they share the same floor
 - The front-to-back order is the list order (the first figure is frontmost)
-- The figure study (`nude`) does not support groups
+- The figure study (`figure_study`) does not support groups
 
-## Figure Study (`nude`)
+## Figure Study (`figure_study`)
 
-Used only when `subject` is `nude`. The figure is fixed to adult proportions and placed automatically to fit the canvas.
+Used only when `subject` is `figure_study`. The figure is fixed to adult proportions and placed automatically to fit the canvas.
 
 | Field | Default | Values | Effect |
 |---|---|---|---|
-| `nude.pose` | `venus` | `back_three_quarter`, `venus`, `reclining`, `seated` | Pose. See the table below |
-| `nude.hair` | null | null, `long`, `updo`, `short` | Hair style. If null, the pose default (`short` for men) |
+| `figure_study.pose` | `venus` | `back_three_quarter`, `venus`, `reclining`, `seated` | Pose. See the table below |
+| `figure_study.hair` | null | null, `long`, `updo`, `short` | Hair style. If null, the pose default (`short` for men) |
 
 | Pose | Composition | How it covers |
 |---|---|---|
@@ -306,7 +306,7 @@ Used only when `subject` is `nude`. The figure is fixed to adult proportions and
 | `reclining` | Reclining on a sofa seen from behind (odalisque) | View from the back, drape |
 | `seated` | Seated on the floor hugging the knees, side view | Thighs and arms |
 
-With `character.sex` `male`, the same 4 poses are drawn with the male body. There is no hair lock covering the chest. In `venus` the arm that covered the chest lowers to the side and the hand covering the pelvis stays. The body without genital geometry and the line-free zone around the pelvis are the same for women and men.
+With `character.sex` `male`, the same 4 poses are drawn with the male body. There is no hair lock covering the chest. In `venus` the arm that covered the chest lowers to the side and the hand covering the pelvis stays. The body without pelvic geometry and the line-free zone around the pelvis are the same for women and men.
 
 Face, eye and hair color fields of `character` apply as given and are clamped to these ranges: `eyes.size` 0.85-1.10, `eyes.openness` 0.70-0.95, `face.chin_length` 0.68-0.76, `face.jaw_width` 0.36-0.42, `blush` 0-0.35.
 
@@ -416,7 +416,7 @@ When the face turns left (negative `yaw`), switch the light x to positive to lig
 {"style": "illustration", "framing": "full_body", "canvas": {"width": 1280, "height": 1600},
  "background": {"type": "scene", "scene": "cityscape"}, "scene": {"time": "dusk"},
  "characters": [
-   {"sex": "female", "build": "glamour", "outfit": {"type": "knit_coat"}, "hair": {"style": "bob"}, "expression": "laugh"},
+   {"sex": "female", "build": "fuller", "outfit": {"type": "knit_coat"}, "hair": {"style": "bob"}, "expression": "laugh"},
    {"sex": "male", "outfit": {"type": "shirt_slacks"}, "hair": {"style": "slicked"}, "palette": {"shirt": "#E8E4DA"}}],
  "layout": {"type": "side_by_side", "interaction": "hold_hands"}}
 ```
@@ -424,8 +424,8 @@ When the face turns left (negative `yaw`), switch the light x to positive to lig
 ### Figure study and scenes
 
 ```json
-{"subject": "nude", "style": "oil", "canvas": {"width": 1600, "height": 1024},
- "nude": {"pose": "reclining"}, "palette": {"drape": "#3E4A6E"}}
+{"subject": "figure_study", "style": "oil", "canvas": {"width": 1600, "height": 1024},
+ "figure_study": {"pose": "reclining"}, "palette": {"drape": "#3E4A6E"}}
 ```
 
 ```json

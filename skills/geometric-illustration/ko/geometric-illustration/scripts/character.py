@@ -17,7 +17,7 @@ import rig_face
 import rig_figure
 import rig_hair
 import rig_hat
-import rig_nude
+import rig_figure_study
 import scene_city
 import scene_landscape
 import scene_still
@@ -111,7 +111,7 @@ def build_character(spec, pal, hf, bf, rng):
 
 SCENES = {'landscape': scene_landscape.build_landscape, 'cityscape': scene_city.build_cityscape,
           'still_life': scene_still.build_still_life}
-SUBJECTS = ('portrait', 'nude') + tuple(SCENES)
+SUBJECTS = ('portrait', 'figure_study') + tuple(SCENES)
 
 
 BACKDROP_SCENES = ('cityscape', 'landscape')
@@ -163,7 +163,7 @@ def build_scene(spec):
         pal = tinted(pal, tint)
     else:
         drawables = build_background(spec, pal, width, height)
-    if subject not in ('portrait', 'nude'):
+    if subject not in ('portrait', 'figure_study'):
         raise ValueError(f"unknown subject '{subject}' (use {', '.join(SUBJECTS)})")
     if spec.get('characters'):
         if subject != 'portrait':
@@ -177,7 +177,7 @@ def build_scene(spec):
             hf, bf = build_frames(spec, width, height)
             chars, guides = build_character(spec, pal, hf, bf, rng)
         else:
-            chars, guides, hf = rig_nude.build_nude(spec, pal, width, height, rng)
+            chars, guides, hf = rig_figure_study.build_figure_study(spec, pal, width, height, rng)
     return drawables + chars, guides, pal, hf
 
 

@@ -1,10 +1,10 @@
-"""Figure-study subject: an adult nude in four classical poses.
+"""Figure-study subject: an adult figure study in four classical poses.
 
-Why these poses: they are the standard compositions of the academic nude
+Why these poses: they are the standard compositions of the academic figure study
 (back view, Venus pudica, reclining odalisque seen from behind, seated with
 knees drawn up). Each one hides the chest and pelvis through the pose itself,
 the hands, the hair or a drape, which keeps the figure non-explicit by
-construction: the body model contains no nipple or genital geometry, and
+construction: the body model contains no chest mark or pelvic geometry, and
 interior lines are suppressed around the pelvis.
 
 The figure always uses the fixed adult proportions of rig_anatomy, and the
@@ -297,10 +297,10 @@ def build_head(hf, ch, pal, lw, light_x, hair_style, rng):
     return out, guides
 
 
-def build_nude(spec, pal, width, height, rng):
-    pose_name = spec['nude']['pose']
+def build_figure_study(spec, pal, width, height, rng):
+    pose_name = spec['figure_study']['pose']
     if pose_name not in POSES:
-        raise ValueError(f"unknown nude pose '{pose_name}' (use {', '.join(POSES)})")
+        raise ValueError(f"unknown figure study pose '{pose_name}' (use {', '.join(POSES)})")
     pose = POSES[pose_name]()
     if spec['character']['sex'] == 'male':
         pose = male_variant(pose_name, pose)
@@ -320,7 +320,7 @@ def build_nude(spec, pal, width, height, rng):
     out = list(res.drawables) + surface_marks(pose, tf, bf, res, pal, lw, joints)
     for s in (-1, 1):
         out += marks.nails(joints[f'nails_{s}'], tf, bf, res, 'body', 1.0, pal['skin'], lw)
-    head, guides = build_head(hf, ch, pal, lw, light[0], spec['nude'].get('hair') or pose.hair, rng)
+    head, guides = build_head(hf, ch, pal, lw, light[0], spec['figure_study'].get('hair') or pose.hair, rng)
     out += head
     if getattr(pose, 'chest_lock', None):
         out += chest_lock(hf, bf, tf, pose.chest_lock, pal['hair'], lw)

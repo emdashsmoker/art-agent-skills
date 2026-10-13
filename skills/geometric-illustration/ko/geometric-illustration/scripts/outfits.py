@@ -6,7 +6,7 @@ illustrator draws on it (hems, seams, pockets, lapels). All cut lines are given 
 coordinates (rig_anatomy: x across, y down from the head centre, head widths) or as points
 along a limb, so every outfit follows any pose.
 
-Layers (z): swimwear, lingerie and sleeveless tops sit under the re-drawn arms; anything with
+Layers (z): swimwear, innerwear and sleeveless tops sit under the re-drawn arms; anything with
 sleeves sits above them and is hidden only where a bare hand or forearm passes in front.
 """
 from dataclasses import dataclass, replace
@@ -19,7 +19,7 @@ import rig_anatomy as A
 import garment_kit as K
 from palette import darken
 
-Z_UNDER_BOTTOM, Z_UNDER_TOP = 1.95, 2.0          # swimwear, lingerie, crop top: under the arms
+Z_UNDER_BOTTOM, Z_UNDER_TOP = 1.95, 2.0          # swimwear, innerwear, crop top: under the arms
 Z_BOTTOM, Z_BELT = 2.1, 2.3                       # trousers, jeans, joggers
 Z_SHIRT, Z_TOP = 2.55, 2.6                        # sleeved layers: over the arms (bare hands block them)
 HALTER_NECK_Y, HALTER_EASE, HALTER_W = 0.86, 0.01, 0.022   # halter tie: height on the neck, offset, width
@@ -31,7 +31,7 @@ HOOD_Y, HOOD_REACH, HOOD_R = 0.92, 0.40, 0.19     # the hood lies in a horseshoe
 HOOD_ARC = (0.40, 1.60)                            # fractions of pi: from beside the neck round the back
 HOOD_RIM_Y, HOOD_RIM_W, HOOD_RIM_DROP = 0.90, 0.07, 0.14   # the rim band round the neck: height, width, front scoop
 NECK_BASE_Y = 0.93                # where the shoulders meet the neck at the sides: an open neckline starts here
-SHOES = {'turtleneck_sleeveless': 'pumps', 'bikini': 'none', 'lingerie': 'none', 'crop_hotpants': 'sneakers',
+SHOES = {'turtleneck_sleeveless': 'pumps', 'bikini': 'none', 'innerwear': 'none', 'crop_hotpants': 'sneakers',
          'tee_jeans': 'sneakers', 'suit': 'pumps', 'hoodie_joggers': 'sneakers', 'swim_trunks': 'none',
          'shirt_slacks': 'pumps', 'knit_coat': 'pumps', 'polo_shorts': 'sneakers', 'tank_shorts': 'sneakers',
          'denim_jacket': 'sneakers', 'track_suit': 'sneakers'}
@@ -755,7 +755,7 @@ BACK_HW = 0.95                    # back outlines reach past the side (the front
 SHOULDER_TOP_Y, SHOULDER_TOP_Z = 0.90, -0.10   # rest point on top of the trapezius a strap passes over
 
 
-def lingerie(ctx, outfit, z):
+def innerwear(ctx, outfit, z):
     color, lace, lw = ctx.pal['cloth'], ctx.pal['accent'], ctx.lw
     cup = bust_fit(CUP_DEMI)
     cups = [cup, [(-x, y) for x, y in cup]]
@@ -782,7 +782,7 @@ def lingerie(ctx, outfit, z):
                            ctx.surf([(s * 0.40, 1.07)])])
         out.append(K.ribbon(f'bra_strap_{s}', 'cloth', Z_UNDER_TOP + 0.02, K.smooth_path(strap, 16),
                             ctx.body.px(0.024), color, lw, clip=['body']))
-    out += briefs(ctx, 'lingerie_brief', color, BRIEF_LACE, 0.012, back_outline=BRIEF_LACE_BACK)
+    out += briefs(ctx, 'innerwear_brief', color, BRIEF_LACE, 0.012, back_outline=BRIEF_LACE_BACK)
     for waist in ctx.paths([[(0.78, 3.18), (0.40, 3.24), (0.0, 3.26), (-0.40, 3.24), (-0.78, 3.18)]], 40):
         out.append(K.lines('brief_lace', Z_UNDER_BOTTOM + 0.02, [scallops(waist, ctx.body.px(0.04),
                                                                            (0, ctx.body.px(0.014)))],
@@ -1155,7 +1155,7 @@ def track_suit(ctx, outfit, z):
     return out
 
 
-RECIPES = {'turtleneck_sleeveless': turtleneck_skirt, 'swim_trunks': swim_trunks, 'bikini': bikini, 'lingerie': lingerie,
+RECIPES = {'turtleneck_sleeveless': turtleneck_skirt, 'swim_trunks': swim_trunks, 'bikini': bikini, 'innerwear': innerwear,
            'crop_hotpants': crop_hotpants, 'tee_jeans': tee_jeans, 'suit': suit, 'hoodie_joggers': hoodie_joggers,
            'shirt_slacks': shirt_slacks, 'knit_coat': knit_coat, 'polo_shorts': polo_shorts, 'tank_shorts': tank_shorts,
            'denim_jacket': denim_jacket, 'track_suit': track_suit}

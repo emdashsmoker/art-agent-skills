@@ -142,9 +142,9 @@ skills/vinyl-cel/
 
 ## References
 
-Thanks to the authors of the projects below.
+Thanks to the developers and contributors of these projects.
 
-아래 프로젝트를 만든 분들께 감사드립니다.
+이 프로젝트들의 개발자와 기여자분들께 감사드립니다.
 
 - [DreamShaper 8 LCM](https://huggingface.co/Lykon/dreamshaper-8-lcm)
 - [SDXS-512-DreamShaper](https://huggingface.co/IDKiro/sdxs-512-dreamshaper)

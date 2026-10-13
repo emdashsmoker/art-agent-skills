@@ -197,7 +197,7 @@ def classroom_teacher(style="poster"):
 
 # ==== people and poses =================================================================================
 SHEET_W, SHEET_H, SHEET_UNIT = 2400, 1500, 80
-ROW1 = ("standing", "contrapposto", "akimbo", "arms_up", "heroic", "pinup", "phone", "coffee", "point")
+ROW1 = ("standing", "contrapposto", "akimbo", "arms_up", "heroic", "showcase", "phone", "coffee", "point")
 ROW2 = ("walk", "side_stand", "side_phone", "seated", "desk", "side_seated")
 SHEET_CAST = ("mina", "jun", "ada", "tae", "rae", "leo", "sora", "kai", "noa", "boss", "yuna", "grandpa", "grandma",
               "jun", "rae", "kai")

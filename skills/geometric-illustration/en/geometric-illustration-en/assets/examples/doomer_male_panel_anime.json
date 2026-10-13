@@ -1,0 +1,39 @@
+{
+  "style": "anime",
+  "look": "doomer",
+  "framing": "upper_body",
+  "canvas": {
+    "width": 1200,
+    "height": 1500,
+    "seed": 11
+  },
+  "background": {
+    "type": "scene",
+    "scene": "cityscape"
+  },
+  "scene": {
+    "time": "snow_night",
+    "site": "panel"
+  },
+  "character": {
+    "sex": "male",
+    "hair": {
+      "style": "two_block"
+    },
+    "outfit": {
+      "type": "hoodie_joggers",
+      "hat": "beanie"
+    },
+    "pose": {
+      "preset": "hands_in_pockets"
+    },
+    "expression": "neutral"
+  },
+  "palette": {
+    "cloth": "#33363E",
+    "skirt": "#1F2127",
+    "accent": "#9A9EA6",
+    "hat": "#6A7078",
+    "hair": "#1C1D22"
+  }
+}

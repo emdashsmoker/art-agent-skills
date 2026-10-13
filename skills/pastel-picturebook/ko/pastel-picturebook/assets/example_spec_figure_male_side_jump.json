@@ -1,0 +1,52 @@
+{
+  "sex": "male",
+  "seed": 22,
+  "light": [
+    0.6,
+    -0.5,
+    0.62
+  ],
+  "pose": {
+    "head_center": [
+      0.45,
+      0.27
+    ],
+    "head_unit": 0.046
+  },
+  "expression": "laugh",
+  "figure": {
+    "view": "side",
+    "floor": {
+      "at_feet": true
+    },
+    "clothes": {
+      "hoodie": true,
+      "shirt": null
+    },
+    "profile_pose": {
+      "lean": -6.0,
+      "arch": 0.3,
+      "lift": 2.4,
+      "arm": {
+        "upper": 160.0,
+        "fore": 172.0
+      },
+      "hand": "open",
+      "arm_far": {
+        "upper": 145.0,
+        "fore": 165.0
+      },
+      "hand_far": "open",
+      "leg_near": {
+        "thigh": 24.0,
+        "shin": -86.0,
+        "foot": 34.0
+      },
+      "leg_far": {
+        "thigh": 4.0,
+        "shin": -100.0,
+        "foot": 40.0
+      }
+    }
+  }
+}

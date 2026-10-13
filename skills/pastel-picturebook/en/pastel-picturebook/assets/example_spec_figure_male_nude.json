@@ -1,0 +1,52 @@
+{
+  "sex": "male",
+  "pose": {
+    "head_center": [
+      0.5,
+      0.125
+    ],
+    "head_unit": 0.072,
+    "yaw_deg": 8,
+    "roll_deg": -2
+  },
+  "figure": {
+    "view": "front",
+    "body_scale": 1.0,
+    "floor": null,
+    "clothes": {
+      "drape": {
+        "top_level": 4.95,
+        "bottom_level": 7.5,
+        "knot": 1,
+        "slant": 0.55
+      },
+      "shirt": null,
+      "pants": null,
+      "shoes": false
+    },
+    "pose": {
+      "shoulder_tilt": 3.0,
+      "pelvis_tilt": -6.0,
+      "arm_left": {
+        "upper": 9.0,
+        "fore": 4.0,
+        "hand": 2.0
+      },
+      "arm_right": {
+        "upper": 11.0,
+        "fore": 6.0,
+        "hand": 4.0
+      },
+      "leg_left": {
+        "thigh": 2.0,
+        "shin": -1.0,
+        "foot": 12.0
+      },
+      "leg_right": {
+        "thigh": 7.0,
+        "shin": -7.0,
+        "foot": 22.0
+      }
+    }
+  }
+}

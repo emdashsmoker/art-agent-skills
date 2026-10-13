@@ -1,0 +1,14 @@
+{
+  "subject": "cityscape",
+  "style": "oil",
+  "look": "doomer",
+  "canvas": {
+    "width": 1600,
+    "height": 1000,
+    "seed": 21
+  },
+  "scene": {
+    "time": "snow_night",
+    "site": "street"
+  }
+}

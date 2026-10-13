@@ -1,0 +1,48 @@
+{
+ "canvas": {
+  "aspect": "2:3",
+  "detail": "standard",
+  "seed": 29
+ },
+ "environment": {
+  "type": "plain_color",
+  "color": [
+   1,
+   1,
+   1
+  ]
+ },
+ "figures": [
+  {
+   "name": "a",
+   "preset": "woman",
+   "pose": "look_over_shoulder",
+   "hair": {
+    "style": "bun",
+    "color": "auburn"
+   },
+   "outfit": "nude",
+   "expression": "soft_smile",
+   "skin": "fair"
+  }
+ ],
+ "camera": {
+  "subject": "a",
+  "shot": "knee",
+  "yaw": 158,
+  "pitch": 2,
+  "fill": 0.88
+ },
+ "light": {
+  "preset": "three_quarter",
+  "mood": "warm"
+ },
+ "style": {
+  "name": "watercolor",
+  "background_wash": [
+   0.72,
+   0.8,
+   0.84
+  ]
+ }
+}

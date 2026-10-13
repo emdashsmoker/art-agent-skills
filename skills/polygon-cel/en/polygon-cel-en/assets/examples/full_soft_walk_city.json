@@ -1,0 +1,30 @@
+{
+ "style": "soft_illust",
+ "framing": "full",
+ "canvas": {
+  "seed": 3
+ },
+ "character": {
+  "head": {
+   "yaw": 10,
+   "roll": -2
+  },
+  "body": {
+   "pose": "walk"
+  },
+  "hair": {
+   "style": "ponytail",
+   "bangs": "full"
+  },
+  "outfit": {
+   "type": "tee",
+   "bottom": "jeans"
+  }
+ },
+ "background": {
+  "type": "city",
+  "city": {
+   "time": "day"
+  }
+ }
+}

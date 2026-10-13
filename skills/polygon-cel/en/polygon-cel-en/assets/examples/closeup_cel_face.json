@@ -1,0 +1,26 @@
+{
+ "style": "anime_cel",
+ "framing": "closeup",
+ "canvas": {
+  "seed": 3
+ },
+ "character": {
+  "head": {
+   "yaw": 14,
+   "roll": -3
+  },
+  "expression": {
+   "mouth": "soft",
+   "blush": 0.4
+  },
+  "eyes": {
+   "lashes": "heavy"
+  },
+  "outfit": {
+   "type": "shirt"
+  }
+ },
+ "background": {
+  "type": "bokeh"
+ }
+}

@@ -1,0 +1,69 @@
+{
+  "style": "illustration",
+  "look": "doomer",
+  "framing": "full_body",
+  "canvas": {
+    "width": 1600,
+    "height": 1250,
+    "seed": 9
+  },
+  "background": {
+    "type": "scene",
+    "scene": "landscape"
+  },
+  "scene": {
+    "time": "snow_night",
+    "site": "outskirts"
+  },
+  "characters": [
+    {
+      "sex": "female",
+      "hair": {
+        "style": "bob"
+      },
+      "outfit": {
+        "type": "knit_coat",
+        "hat": "beanie",
+        "earrings": "none",
+        "shoes": "oxfords"
+      },
+      "pose": {
+        "preset": "relaxed"
+      },
+      "expression": "sad",
+      "palette": {
+        "cloth": "#4A4542",
+        "shirt": "#8A8580",
+        "skirt": "#24262B",
+        "hat": "#6A7078",
+        "hair": "#2A2420"
+      }
+    },
+    {
+      "sex": "male",
+      "hair": {
+        "style": "crop"
+      },
+      "outfit": {
+        "type": "hoodie_joggers",
+        "hat": "beanie"
+      },
+      "pose": {
+        "preset": "hands_in_pockets"
+      },
+      "expression": "neutral",
+      "palette": {
+        "cloth": "#33363E",
+        "skirt": "#1F2127",
+        "accent": "#9A9EA6",
+        "hat": "#6A7078",
+        "hair": "#1C1D22"
+      }
+    }
+  ],
+  "layout": {
+    "type": "side_by_side",
+    "interaction": "none",
+    "gap": 1.4
+  }
+}

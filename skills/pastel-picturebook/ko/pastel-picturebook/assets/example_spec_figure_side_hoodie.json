@@ -1,0 +1,40 @@
+{
+  "light": [
+    0.6,
+    -0.5,
+    0.62
+  ],
+  "pose": {
+    "head_center": [
+      0.5,
+      0.12
+    ],
+    "head_unit": 0.062
+  },
+  "accessories": {
+    "glasses": true,
+    "hat": {
+      "kind": "beanie"
+    }
+  },
+  "figure": {
+    "view": "side",
+    "floor": {
+      "at_feet": true
+    },
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "hoodie": true,
+      "pants": {
+        "waist_level": 4.6,
+        "hem_drop": 0.15,
+        "leg_widths": [
+          0.95,
+          0.85,
+          0.75
+        ]
+      }
+    }
+  }
+}

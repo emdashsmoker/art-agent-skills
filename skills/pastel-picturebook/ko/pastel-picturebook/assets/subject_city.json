@@ -1,0 +1,159 @@
+{
+  "spec": {
+    "canvas": {
+      "width": 1200,
+      "height": 1600
+    },
+    "seed": 31,
+    "light": [
+      -0.55,
+      -0.6,
+      0.58
+    ],
+    "camera": {
+      "vanish_x": 0.46,
+      "horizon_y": 0.62,
+      "focal": 0.95,
+      "eye_height": 1.6
+    },
+    "sky": {
+      "clouds": 0.52
+    },
+    "street": {
+      "road_half_width": 3.6,
+      "building_line": 6.0,
+      "length": 150,
+      "haze": 0.75,
+      "first_building_z": 5.0,
+      "building_depth": [
+        6,
+        14
+      ],
+      "building_height": [
+        7,
+        24
+      ],
+      "crosswalk_z": 5.5,
+      "first_pole_z": 9.0,
+      "pole_spacing": 22.0,
+      "first_tree_z": 13.0,
+      "tree_spacing": 17.0
+    },
+    "night": {
+      "on": false,
+      "lit": 0.45,
+      "shops": 0.85,
+      "stars": 260,
+      "cars": 3,
+      "wet": 0.75
+    }
+  },
+  "style": {
+    "palette": {
+      "city": {
+        "sky_top": "#3E7FD0",
+        "sky_low": "#BFE0F5",
+        "cloud": "#FFFFFF",
+        "cloud_shadow": "#B7C9E6",
+        "haze": "#CFE3F2",
+        "shade_tint": "#7B8DBE",
+        "line": "#2F3550",
+        "walls": [
+          "#EADFCB",
+          "#D9C3A5",
+          "#E3B9A0",
+          "#F1E9DC",
+          "#C5CDB4",
+          "#D8A98E",
+          "#BFC8D4"
+        ],
+        "glass": "#3F5E82",
+        "glass_lit": "#DDF1FA",
+        "road": "#6A7080",
+        "sidewalk": "#C2C0B8",
+        "mark": "#F6F3E8",
+        "pole": "#3E424D",
+        "awnings": [
+          "#C8553D",
+          "#2F6F6A",
+          "#E0A53B",
+          "#3D5A99",
+          "#8A8F5A"
+        ],
+        "signs": [
+          "#D9413B",
+          "#F2C230",
+          "#2E63B8",
+          "#F4F1E6",
+          "#2F8A5B"
+        ],
+        "glyph": "#FBF7EC",
+        "shop_deep": "#5A4636",
+        "shop_light": "#FFE3AE"
+      },
+      "foliage": {
+        "base": "#5E9B4B",
+        "shadow": "#2C5A33",
+        "light": "#C9E88F",
+        "line": "#17331C"
+      },
+      "trunk": {
+        "base": "#5A4636"
+      },
+      "city_night": {
+        "sky_top": "#060A1C",
+        "sky_low": "#3B2C55",
+        "cloud": "#2A2746",
+        "cloud_shadow": "#1A1A33",
+        "haze": "#2E2A4E",
+        "shade_tint": "#6E6A9A",
+        "line": "#0E0F1E",
+        "walls": [
+          "#3A3448",
+          "#2F3346",
+          "#43394A",
+          "#353C4C",
+          "#2C2F3E",
+          "#463C46",
+          "#323A44"
+        ],
+        "glass": "#141A2C",
+        "glass_lit": "#FFD48A",
+        "road": "#22232E",
+        "sidewalk": "#34343E",
+        "mark": "#5E5C5E",
+        "pole": "#14151E",
+        "awnings": [
+          "#5A2A2A",
+          "#1E3B3A",
+          "#5E4A22",
+          "#22304E",
+          "#3E4128"
+        ],
+        "signs": [
+          "#FF4F6E",
+          "#FFC24A",
+          "#4FC3FF",
+          "#B8FF6A",
+          "#FF7AF0"
+        ],
+        "glyph": "#FFFFFF",
+        "shop_light": "#FFD39A",
+        "lamp": "#FFD9A0",
+        "car": "#101118",
+        "tail_light": "#FF3348",
+        "head_light": "#FFF6DD",
+        "shop_deep": "#7A4A2E"
+      },
+      "foliage_night": {
+        "base": "#2A4A38",
+        "shadow": "#0F1D17",
+        "light": "#7FA36A",
+        "line": "#060D09"
+      },
+      "trunk_night": {
+        "base": "#1E1A18"
+      }
+    }
+  }
+}

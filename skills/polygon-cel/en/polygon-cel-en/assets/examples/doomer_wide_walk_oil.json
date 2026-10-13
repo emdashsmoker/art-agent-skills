@@ -1,0 +1,36 @@
+{
+ "style": "painterly",
+ "framing": "wide",
+ "mood": "doomer",
+ "character": {
+  "view": "side",
+  "facing": "right",
+  "place": {
+   "x": 0.36
+  },
+  "head": {
+   "yaw": 0,
+   "roll": 0
+  },
+  "body": {
+   "pose": "walk"
+  },
+  "accessories": [
+   "beanie"
+  ],
+  "hair": {
+   "style": "short"
+  },
+  "gender": "male",
+  "outfit": {
+   "type": "hoodie",
+   "color": "#2A2C34",
+   "bottom": "jeans",
+   "bottom_color": "#3A4458",
+   "shoes": "sneakers"
+  }
+ },
+ "canvas": {
+  "seed": 13
+ }
+}

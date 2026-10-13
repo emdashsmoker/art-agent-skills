@@ -1,0 +1,66 @@
+{
+ "canvas": {
+  "aspect": "4:5",
+  "detail": "standard",
+  "seed": 41
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "city",
+  "time": "dusk"
+ },
+ "figures": [
+  {
+   "name": "a",
+   "preset": "man",
+   "pose": "hands_in_pockets",
+   "hair": {
+    "style": "side_part",
+    "color": "black"
+   },
+   "outfit": "suit",
+   "beard": "stubble",
+   "expression": "neutral",
+   "skin": "light",
+   "position": [
+    -5.6,
+    3.0,
+    0
+   ],
+   "facing": -25,
+   "colors": {
+    "jacket": [
+     0.25,
+     0.27,
+     0.32
+    ],
+    "lapels": [
+     0.14,
+     0.15,
+     0.18
+    ],
+    "trousers": [
+     0.22,
+     0.24,
+     0.29
+    ]
+   }
+  }
+ ],
+ "camera": {
+  "subject": "a",
+  "shot": "knee",
+  "yaw": 30,
+  "pitch": 0,
+  "fov": 34
+ },
+ "light": {
+  "preset": "rim",
+  "mood": "warm",
+  "ambient": 0.45
+ },
+ "style": "webtoon",
+ "post": {
+  "grade": "cinematic"
+ }
+}

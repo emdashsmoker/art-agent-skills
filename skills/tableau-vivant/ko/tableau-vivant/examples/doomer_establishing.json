@@ -1,0 +1,54 @@
+{
+ "canvas": {
+  "aspect": "16:9",
+  "detail": "standard",
+  "seed": 34
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "estate",
+  "time": "dusk"
+ },
+ "props": [
+  {
+   "kind": "power_line",
+   "at": [
+    0,
+    22,
+    0
+   ],
+   "rotate_deg": 8,
+   "length": 140
+  }
+ ],
+ "figures": [
+  {
+   "name": "a",
+   "preset": "man",
+   "hair": "textured_crop",
+   "outfit": "hoodie_jeans",
+   "hat": "beanie",
+   "pose": "walk",
+   "position": [
+    -4,
+    9,
+    0
+   ],
+   "facing": -80
+  }
+ ],
+ "camera": {
+  "eye": [
+   2,
+   -14,
+   2.2
+  ],
+  "target": [
+   -2,
+   30,
+   8.0
+  ],
+  "fov": 50
+ },
+ "style": "doomer_mono"
+}

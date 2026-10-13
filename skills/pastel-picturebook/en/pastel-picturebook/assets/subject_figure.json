@@ -1,0 +1,364 @@
+{
+  "spec": {
+    "canvas": {
+      "width": 1200,
+      "height": 1600
+    },
+    "pose": {
+      "head_center": [
+        0.5,
+        0.105
+      ],
+      "head_unit": 0.06,
+      "yaw_deg": 10,
+      "roll_deg": -3,
+      "shoulder_roll_deg": 0
+    },
+    "hair": {
+      "length": 3.0,
+      "wave": 0.03
+    },
+    "figure": {
+      "neck_shift": 0.05,
+      "floor": {
+        "y": 0.84
+      },
+      "pose": {
+        "shoulder_tilt": 3.0,
+        "pelvis_tilt": -6.0,
+        "arm_left": {
+          "upper": 9.0,
+          "fore": 5.0,
+          "hand": 3.0
+        },
+        "arm_right": {
+          "upper": 28.0,
+          "fore": -45.0,
+          "hand": -32.0,
+          "foreshorten": [
+            1.0,
+            0.75
+          ]
+        },
+        "leg_left": {
+          "thigh": 1.0,
+          "shin": -1.0,
+          "foot": 12.0
+        },
+        "leg_right": {
+          "thigh": 7.0,
+          "shin": -9.0,
+          "foot": 22.0
+        },
+        "hand_left": "relaxed",
+        "hand_right": "relaxed"
+      },
+      "clothes": {
+        "dress": {
+          "strap_outer": 1.02,
+          "strap_inner": 0.62,
+          "neck_level": 1.05,
+          "hem_level": 9.3,
+          "hem_half": 2.25,
+          "folds": 5,
+          "fold_depth": 0.16
+        },
+        "shoes": true
+      },
+      "body_scale": 1.0,
+      "shape": {
+        "shoulders": 1.0,
+        "bust": 1.0,
+        "waist": 1.0,
+        "hips": 1.0,
+        "thighs": 1.0
+      },
+      "view": "front"
+    }
+  },
+  "style": {
+    "palette": {
+      "shoe": {
+        "base": "#2B2D36",
+        "shadow": "#121318",
+        "light": "#FFFFFF",
+        "line": "#0B0C10"
+      },
+      "floor": {
+        "far": "#D9D4C8",
+        "near": "#BEB7A8",
+        "cast": "#5A5548"
+      },
+      "seat": {
+        "base": "#8A5A36",
+        "shadow": "#5B3A22",
+        "light": "#B58257",
+        "line": "#3A2414"
+      },
+      "skirt": {
+        "base": "#34425E",
+        "shadow": "#1E2840",
+        "deep": "#121A2C",
+        "line": "#0C1220"
+      },
+      "jacket": {
+        "base": "#B38B5D",
+        "shadow": "#7C5B37",
+        "light": "#EBD5B2",
+        "line": "#3B2814",
+        "button": "#3A2A1C"
+      },
+      "jeogori": {
+        "base": "#F3DC92",
+        "shadow": "#C9A85E",
+        "deep": "#94773A",
+        "line": "#6E5526"
+      },
+      "chima": {
+        "base": "#C9384C",
+        "shadow": "#8E2034",
+        "line": "#4A0E1A"
+      },
+      "baji": {
+        "base": "#E9E3D3",
+        "shadow": "#BDB39B",
+        "deep": "#8F8670",
+        "line": "#5E5848"
+      },
+      "goreum": {
+        "base": "#9E1F35",
+        "shadow": "#6A1022",
+        "line": "#430A15"
+      },
+      "dongjeong": {
+        "base": "#FBF8F0"
+      },
+      "cup": {
+        "base": "#F2EFE8",
+        "shadow": "#C5C0B5",
+        "light": "#FFFFFF",
+        "line": "#5A564E",
+        "drink": "#4A2E1E"
+      },
+      "book": {
+        "base": "#3F6A5A",
+        "shadow": "#27453A",
+        "light": "#E8D9A8",
+        "line": "#1C2E27",
+        "pages": "#F1EBDA"
+      },
+      "hoodie": {
+        "base": "#A9AFB8",
+        "shadow": "#7B828E",
+        "light": "#D9DDE3",
+        "line": "#3E434C",
+        "string": "#F4F3EE"
+      },
+      "swim": {
+        "base": "#2F8F9D",
+        "shadow": "#1E5F6E",
+        "light": "#86D3DA",
+        "line": "#0C2C34",
+        "string": "#F4F1EA"
+      },
+      "underwear": {
+        "base": "#F1DDE2",
+        "shadow": "#C9A7B1",
+        "light": "#FFF6F8",
+        "line": "#6E4752",
+        "trim": "#FFFFFF",
+        "band": "#E2C3CB"
+      },
+      "pants": {
+        "base": "#4A5F86",
+        "shadow": "#2F3F5E",
+        "deep": "#1F2B42",
+        "light": "#8FA3C6",
+        "line": "#141C2C",
+        "belt": "#3A2A1C"
+      },
+      "umbrella": {
+        "base": "#355C8C",
+        "shadow": "#223E62",
+        "light": "#8FB3DA",
+        "line": "#13233A",
+        "inner": "#2B4A72",
+        "shaft": "#3B3A3E"
+      },
+      "table": {
+        "base": "#C8925E",
+        "shadow": "#8A5A36",
+        "light": "#F0C998",
+        "line": "#3E2614",
+        "metal": "#2E2E33"
+      },
+      "wall": {
+        "base": "#D8D2C8",
+        "shadow": "#A79F94",
+        "light": "#F4F0E8",
+        "line": "#5E584F"
+      },
+      "glass": {
+        "base": "#E6F0F6",
+        "shadow": "#AFC0CC",
+        "light": "#FFFFFF",
+        "line": "#6F7F8C",
+        "drink": "#A3263A"
+      },
+      "phone": {
+        "base": "#3C4250",
+        "shadow": "#20242C",
+        "light": "#9AA4B8",
+        "line": "#0C0E12",
+        "lens": "#0A0B0E"
+      }
+    },
+    "body_render": {
+      "figure_level": 0.34,
+      "figure_spread": 0.6,
+      "accent": 1.0,
+      "cloth_level": 0.4,
+      "skin_sheen": 0.16,
+      "skin_flush": 0.35,
+      "rim": 0.3,
+      "bounce": 0.25
+    }
+  },
+  "style_anime": {
+    "palette": {
+      "cloth": {
+        "base": "#D94F5C",
+        "shadow": "#9C2E44",
+        "line": "#5E1A2B"
+      },
+      "floor": {
+        "far": "#E4ECF3",
+        "near": "#C9D6E2",
+        "cast": "#7F8FA8"
+      },
+      "seat": {
+        "base": "#C08A5C",
+        "shadow": "#8C5E3B",
+        "light": "#DDB083",
+        "line": "#5A3A22"
+      }
+    },
+    "body_render": {
+      "figure_level": 0.3,
+      "figure_spread": 0.3,
+      "accent": 0.0,
+      "cloth_level": 0.16,
+      "skin_sheen": 0.0,
+      "skin_flush": 0.0,
+      "rim": 0.0,
+      "bounce": 0.0
+    },
+    "figure": {}
+  },
+  "style_illust": {
+    "palette": {
+      "floor": {
+        "far": "#EAD9BC",
+        "near": "#DFC9A6",
+        "cast": "#B98A5E"
+      }
+    },
+    "body_render": {
+      "accent": 0.6,
+      "skin_sheen": 0.0,
+      "skin_flush": 0.0,
+      "rim": 0.0,
+      "bounce": 0.0
+    }
+  },
+  "style_paint": {
+    "palette": {
+      "cloth": {
+        "base": "#7A2E35",
+        "shadow": "#3A1218",
+        "line": "#22090D"
+      },
+      "floor": {
+        "far": "#4A4336",
+        "near": "#2E2921",
+        "cast": "#14110D"
+      },
+      "seat": {
+        "base": "#5E3E26",
+        "shadow": "#2E1E12",
+        "light": "#8A6240",
+        "line": "#1E130B"
+      }
+    },
+    "body_render": {
+      "figure_level": 0.4,
+      "figure_spread": 0.7,
+      "skin_sheen": 0.22,
+      "skin_flush": 0.45,
+      "rim": 0.4,
+      "bounce": 0.35,
+      "top_light": 0.8
+    },
+    "finish": {
+      "layers": [
+        {
+          "radius": 34,
+          "threshold": 0.05,
+          "min_focus": 0.0,
+          "min_length": 2,
+          "max_length": 9,
+          "curvature": 0.6
+        },
+        {
+          "radius": 17,
+          "threshold": 0.1,
+          "min_focus": 0.0,
+          "min_length": 2,
+          "max_length": 10,
+          "curvature": 0.6
+        },
+        {
+          "radius": 9,
+          "threshold": 0.09,
+          "min_focus": 0.0,
+          "min_length": 2,
+          "max_length": 10,
+          "curvature": 0.7
+        },
+        {
+          "radius": 5,
+          "threshold": 0.05,
+          "min_focus": 0.3,
+          "min_length": 2,
+          "max_length": 10,
+          "curvature": 0.8
+        },
+        {
+          "radius": 3,
+          "threshold": 0.035,
+          "min_focus": 0.5,
+          "min_length": 1,
+          "max_length": 8,
+          "curvature": 0.9
+        },
+        {
+          "radius": 1.6,
+          "threshold": 0.03,
+          "min_focus": 0.9,
+          "min_length": 1,
+          "max_length": 4,
+          "curvature": 1.0
+        },
+        {
+          "radius": 1.0,
+          "threshold": 0.022,
+          "min_focus": 0.85,
+          "min_length": 1,
+          "max_length": 3,
+          "curvature": 1.0
+        }
+      ],
+      "glaze": 0.55
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+ "canvas": {
+  "aspect": "4:5",
+  "detail": "standard",
+  "seed": 13
+ },
+ "environment": {
+  "type": "studio",
+  "top": [
+   0.1,
+   0.12,
+   0.18
+  ],
+  "bottom": [
+   0.18,
+   0.15,
+   0.22
+  ],
+  "glow": [
+   0.34,
+   0.28,
+   0.44
+  ]
+ },
+ "figures": [
+  {
+   "name": "a",
+   "preset": "woman",
+   "pose": {
+    "preset": "hand_on_hip",
+    "head": {
+     "turn": -20,
+     "tilt": 4
+    }
+   },
+   "hair": {
+    "style": "long_wavy",
+    "bangs": "none",
+    "part": "left",
+    "color": "silver"
+   },
+   "outfit": "evening_gown",
+   "expression": "smirk",
+   "skin": "fair",
+   "look": {
+    "iris_color": "amber",
+    "lip_color": [
+     0.7,
+     0.18,
+     0.22
+    ]
+   }
+  }
+ ],
+ "camera": {
+  "subject": "a",
+  "shot": "cowboy",
+  "yaw": 10,
+  "pitch": 2
+ },
+ "light": {
+  "preset": "rim",
+  "mood": "warm",
+  "ambient": 0.42
+ },
+ "style": "webtoon",
+ "post": {
+  "grade": "cinematic"
+ }
+}

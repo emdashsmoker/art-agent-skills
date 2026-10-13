@@ -1,0 +1,52 @@
+{
+  "sex": "male",
+  "light": [
+    0.6,
+    -0.5,
+    0.62
+  ],
+  "pose": {
+    "head_center": [
+      0.5,
+      0.12
+    ],
+    "head_unit": 0.06
+  },
+  "figure": {
+    "view": "side",
+    "floor": {
+      "at_feet": true
+    },
+    "clothes": {
+      "shirt": {
+        "sleeve": 1.9
+      },
+      "jacket": {
+        "ease": 0.16,
+        "hem_level": 6.7,
+        "button_level": 3.6,
+        "sleeve": 1.93
+      }
+    },
+    "profile_pose": {
+      "lean": 2.0,
+      "arm": {
+        "upper": -22.0,
+        "fore": -8.0
+      },
+      "arm_far": {
+        "upper": 24.0,
+        "fore": 38.0
+      },
+      "leg_near": {
+        "thigh": 22.0,
+        "shin": 4.0
+      },
+      "leg_far": {
+        "thigh": -16.0,
+        "shin": -30.0
+      },
+      "hand": "relaxed"
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "canvas": [
+    1100,
+    1500
+  ],
+  "style": "anime",
+  "seed": 32,
+  "character": {
+    "gender": "female",
+    "hair_style": "long_straight",
+    "bangs": "side_swept",
+    "head_turn": -0.4,
+    "gaze": [
+      0.35,
+      0.0
+    ],
+    "smile": 0.55,
+    "hair_seed": 5
+  },
+  "figure": {
+    "pose": "stretch",
+    "outfit": "crop_hotpants",
+    "ground_shadow": 0.45,
+    "build": {
+      "waist": 0.95,
+      "hips": 1.05
+    }
+  },
+  "palette": {
+    "hair": "#2b2230",
+    "hair_shadow": "#140f18",
+    "hair_light": "#c8a0b8",
+    "iris": "#4a6a8a",
+    "cloth": "#f6f2ea",
+    "cloth_shadow": "#c0b4a4",
+    "cloth2": "#5a7aa8",
+    "shoe": "#f0ece4"
+  },
+  "placement": {
+    "shot": "thigh"
+  },
+  "light": {
+    "azimuth": 120,
+    "elevation": 35
+  },
+  "background": [
+    {
+      "type": "sky",
+      "top": "#3b3f7a",
+      "bottom": "#f4a57a",
+      "horizon": 0.47
+    },
+    {
+      "type": "sun",
+      "center": [
+        0.5,
+        0.46
+      ],
+      "radius": 0.03,
+      "color": "#fff0d0",
+      "glow_color": "#ffc890",
+      "glow_radius": 0.4,
+      "glow_opacity": 0.8
+    },
+    {
+      "type": "clouds",
+      "color": "#f7b8a0",
+      "shadow": "#8a6aa0",
+      "coverage": 0.4,
+      "top": 0.02,
+      "bottom": 0.4,
+      "seed": 5
+    },
+    {
+      "type": "street",
+      "horizon": 0.47,
+      "time": "dusk",
+      "seed": 7,
+      "eye": 0.9,
+      "cars": 4,
+      "people": 5
+    }
+  ],
+  "style_overrides": {
+    "rim_light": 0.7
+  },
+  "ambient": {
+    "color": "#4a4470",
+    "opacity": 0.22,
+    "from": 0.6
+  },
+  "finish": {
+    "shadow_tint": "#2a2458",
+    "highlight_tint": "#ffd9b0",
+    "tint_strength": 0.14,
+    "bloom": 0.35
+  }
+}

@@ -1,0 +1,314 @@
+{
+  "canvas": {
+    "width": 1600,
+    "height": 1200
+  },
+  "seed": 54,
+  "pose": {
+    "head_center": [
+      0.59,
+      0.42
+    ],
+    "head_unit": 0.03,
+    "yaw_deg": -8,
+    "roll_deg": -5
+  },
+  "expression": "smile",
+  "look": {
+    "hair_style": "bob",
+    "identity": 6,
+    "hair_color": "black"
+  },
+  "figure": {
+    "pose": {
+      "arm_left": {
+        "reach": {
+          "at": [
+            0.512,
+            0.305
+          ]
+        },
+        "bend": "down",
+        "front": true,
+        "wrist": -10
+      },
+      "hand_left": "grip",
+      "arm_right": {
+        "upper": 8.0,
+        "fore": 4.0,
+        "hand": 0.0
+      }
+    },
+    "holds": {
+      "left": {
+        "kind": "glass",
+        "size": 1.15
+      }
+    },
+    "clothes": {
+      "dress": {
+        "strap_outer": 1.02,
+        "strap_inner": 0.62,
+        "neck_level": 1.05,
+        "hem_level": 9.3,
+        "hem_half": 2.25,
+        "folds": 5,
+        "fold_depth": 0.16
+      },
+      "shoes": true
+    }
+  },
+  "style": {
+    "palette": {
+      "cloth": {
+        "base": "#9DB8E8",
+        "shadow": "#6F8DC4",
+        "line": "#2E4470"
+      }
+    }
+  },
+  "backdrop": {
+    "subject": "room",
+    "spec": {
+      "time": "night",
+      "camera": {
+        "horizon_y": 0.42
+      }
+    },
+    "place": "horizon",
+    "blur": 0.0015
+  },
+  "grade": {
+    "color": "#FFD9A8",
+    "amount": 0.18
+  },
+  "companions": [
+    {
+      "sex": "male",
+      "seed": 51,
+      "pose": {
+        "head_center": [
+          0.255,
+          0.42
+        ],
+        "head_unit": 0.0312,
+        "yaw_deg": 14,
+        "roll_deg": 4
+      },
+      "expression": "laugh",
+      "look": {
+        "hair_style": "short",
+        "identity": 3,
+        "hair_color": "dark_brown"
+      },
+      "figure": {
+        "pose": {
+          "arm_right": {
+            "reach": {
+              "at": [
+                0.333,
+                0.31
+              ]
+            },
+            "bend": "down",
+            "front": true,
+            "wrist": -10
+          },
+          "hand_right": "grip",
+          "arm_left": {
+            "upper": 6.0,
+            "fore": 4.0,
+            "hand": 0.0
+          }
+        },
+        "holds": {
+          "right": {
+            "kind": "glass",
+            "drink": "#E8C35A",
+            "size": 1.15
+          }
+        },
+        "clothes": {
+          "shirt": {
+            "sleeve": 1.9
+          },
+          "jacket": {
+            "ease": 0.16,
+            "hem_level": 6.7,
+            "button_level": 3.6,
+            "sleeve": 1.93,
+            "buttons": 2
+          },
+          "pants": {
+            "waist_level": 4.6,
+            "hem_drop": 0.2,
+            "leg_widths": [
+              1.0,
+              0.7,
+              0.6
+            ]
+          },
+          "shoes": true
+        }
+      },
+      "style": {
+        "palette": {
+          "jacket": {
+            "base": "#3A3F4E",
+            "shadow": "#22252F",
+            "light": "#7A8196",
+            "line": "#0E1016",
+            "button": "#1A1A1E"
+          }
+        }
+      }
+    },
+    {
+      "sex": "male",
+      "seed": 52,
+      "pose": {
+        "head_center": [
+          0.745,
+          0.42
+        ],
+        "head_unit": 0.0312,
+        "yaw_deg": -14,
+        "roll_deg": -4
+      },
+      "expression": "smile",
+      "look": {
+        "hair_style": "short",
+        "identity": 7,
+        "hair_color": "black"
+      },
+      "figure": {
+        "pose": {
+          "arm_left": {
+            "reach": {
+              "at": [
+                0.667,
+                0.31
+              ]
+            },
+            "bend": "down",
+            "front": true,
+            "wrist": -10
+          },
+          "hand_left": "grip",
+          "arm_right": {
+            "upper": 6.0,
+            "fore": 4.0,
+            "hand": 0.0
+          }
+        },
+        "holds": {
+          "left": {
+            "kind": "glass",
+            "drink": "#E8C35A",
+            "size": 1.15
+          }
+        },
+        "clothes": {
+          "shirt": {
+            "sleeve": 1.9
+          },
+          "jacket": {
+            "ease": 0.16,
+            "hem_level": 6.7,
+            "button_level": 3.6,
+            "sleeve": 1.93,
+            "buttons": 2
+          },
+          "pants": {
+            "waist_level": 4.6,
+            "hem_drop": 0.2,
+            "leg_widths": [
+              1.0,
+              0.7,
+              0.6
+            ]
+          },
+          "shoes": true
+        }
+      },
+      "style": {
+        "palette": {
+          "jacket": {
+            "base": "#6B4E3D",
+            "shadow": "#45312A",
+            "light": "#A08070",
+            "line": "#21160F",
+            "button": "#1A1A1E"
+          }
+        }
+      }
+    },
+    {
+      "seed": 53,
+      "pose": {
+        "head_center": [
+          0.41,
+          0.42
+        ],
+        "head_unit": 0.03,
+        "yaw_deg": 8,
+        "roll_deg": 5
+      },
+      "expression": "laugh",
+      "look": {
+        "hair_style": "ponytail",
+        "identity": 4,
+        "hair_color": "brown",
+        "eye_shape": "big"
+      },
+      "figure": {
+        "pose": {
+          "arm_right": {
+            "reach": {
+              "at": [
+                0.488,
+                0.305
+              ]
+            },
+            "bend": "down",
+            "front": true,
+            "wrist": -10
+          },
+          "hand_right": "grip",
+          "arm_left": {
+            "upper": 8.0,
+            "fore": 4.0,
+            "hand": 0.0
+          }
+        },
+        "holds": {
+          "right": {
+            "kind": "glass",
+            "size": 1.15
+          }
+        },
+        "clothes": {
+          "dress": {
+            "strap_outer": 1.02,
+            "strap_inner": 0.62,
+            "neck_level": 1.05,
+            "hem_level": 9.3,
+            "hem_half": 2.25,
+            "folds": 5,
+            "fold_depth": 0.16
+          },
+          "shoes": true
+        }
+      },
+      "style": {
+        "palette": {
+          "cloth": {
+            "base": "#E9B7C4",
+            "shadow": "#C98C9E",
+            "line": "#6E3A4A"
+          }
+        }
+      }
+    }
+  ]
+}

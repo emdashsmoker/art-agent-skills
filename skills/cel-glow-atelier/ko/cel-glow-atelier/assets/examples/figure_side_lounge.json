@@ -1,0 +1,71 @@
+{
+  "canvas": [
+    1600,
+    1400
+  ],
+  "style": "illust",
+  "seed": 23,
+  "character": {
+    "gender": "female",
+    "hair_style": "long_straight",
+    "bangs": "see_through",
+    "smile": 0.5,
+    "hair_seed": 4
+  },
+  "figure": {
+    "pose": "side_lounge",
+    "outfit": "sweater_pants",
+    "facing": "left",
+    "furniture_color": "#8a7a6a",
+    "ground_shadow": 0.4
+  },
+  "palette": {
+    "hair": "#2a2026",
+    "hair_shadow": "#130e12",
+    "hair_light": "#c8a0a8",
+    "iris": "#5a3a2a",
+    "cloth": "#e8dcc8",
+    "cloth_shadow": "#b0a08a",
+    "cloth2": "#3a4a6a",
+    "shoe": "#e0d8cc"
+  },
+  "placement": {
+    "head_height": 0.125,
+    "pelvis": [
+      0.48,
+      0.57
+    ]
+  },
+  "light": {
+    "azimuth": 50,
+    "elevation": 38
+  },
+  "background": [
+    {
+      "type": "gradient",
+      "top": "#e9dccb",
+      "bottom": "#bfae98"
+    },
+    {
+      "type": "light_shafts",
+      "color": "#fff3dc",
+      "count": 3,
+      "opacity": 0.35,
+      "seed": 2
+    },
+    {
+      "type": "glow",
+      "center": [
+        0.25,
+        0.2
+      ],
+      "radius": 0.5,
+      "color": "#fff8ec",
+      "opacity": 0.5
+    }
+  ],
+  "finish": {
+    "bloom": 0.2,
+    "vignette": 0.15
+  }
+}

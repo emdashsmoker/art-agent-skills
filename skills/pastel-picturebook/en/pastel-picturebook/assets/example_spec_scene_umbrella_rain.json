@@ -1,0 +1,152 @@
+{
+  "seed": 32,
+  "sex": "male",
+  "pose": {
+    "head_center": [
+      0.42,
+      0.4
+    ],
+    "head_unit": 0.036,
+    "yaw_deg": 8
+  },
+  "backdrop": {
+    "subject": "city",
+    "spec": {
+      "camera": {
+        "horizon_y": 0.4
+      }
+    },
+    "place": "horizon",
+    "blur": 0.0015
+  },
+  "weather": {
+    "kind": "rain"
+  },
+  "grade": {
+    "color": "#B8C2D6",
+    "amount": 0.2
+  },
+  "expression": "smile",
+  "figure": {
+    "pose": {
+      "turn": 8,
+      "stride": {
+        "lead": "left"
+      },
+      "arm_right": {
+        "reach": {
+          "at": [
+            0.535,
+            0.51
+          ]
+        },
+        "bend": "down",
+        "foreshorten": [
+          1.0,
+          0.65
+        ],
+        "toward": [
+          0,
+          1
+        ],
+        "front": true,
+        "wrist": 0
+      },
+      "hand_right": "grip"
+    },
+    "holds": {
+      "right": {
+        "kind": "umbrella"
+      }
+    },
+    "clothes": {
+      "shirt": {
+        "sleeve": 1.9
+      },
+      "jacket": {
+        "ease": 0.16,
+        "hem_level": 6.7,
+        "button_level": 3.6,
+        "sleeve": 1.93,
+        "buttons": 2
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "umbrella": {
+        "base": "#C9384C",
+        "shadow": "#8E2034",
+        "light": "#F08C98",
+        "line": "#4A0E1A",
+        "inner": "#A52A3E",
+        "shaft": "#2E2E33"
+      }
+    }
+  },
+  "companions": [
+    {
+      "seed": 31,
+      "look": {
+        "hair_style": "bob",
+        "identity": 4
+      },
+      "expression": "smile",
+      "pose": {
+        "head_center": [
+          0.59,
+          0.4
+        ],
+        "head_unit": 0.034,
+        "yaw_deg": -8,
+        "horizon_drop": 0.01
+      },
+      "lift": [
+        {
+          "part": "forearm_left",
+          "from": 0.5
+        }
+      ],
+      "figure": {
+        "pose": {
+          "turn": -8,
+          "stride": {
+            "lead": "left"
+          },
+          "arm_left": {
+            "reach": {
+              "mark": "elbow_right",
+              "of": "main",
+              "offset": [
+                0.3,
+                -0.3
+              ]
+            },
+            "bend": "down",
+            "foreshorten": [
+              1.0,
+              0.6
+            ],
+            "toward": [
+              0,
+              1
+            ],
+            "hand": 80
+          },
+          "hand_left": "relaxed"
+        },
+        "clothes": {
+          "dress": null,
+          "shoes": true,
+          "hoodie": true,
+          "skirt": {
+            "hem_level": 8.6,
+            "hem_half": 2.0,
+            "folds": 5,
+            "fold_depth": 0.14
+          }
+        }
+      }
+    }
+  ]
+}

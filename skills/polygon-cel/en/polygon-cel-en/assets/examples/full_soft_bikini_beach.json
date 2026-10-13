@@ -1,0 +1,6 @@
+{"style": "soft_illust", "framing": "full", "canvas": {"seed": 14},
+ "character": {"head": {"yaw": -10, "roll": 3}, "body": {"pose": "wave", "stance": "contrapposto"},
+   "expression": {"mouth": "open_smile", "blush": 0.35},
+   "hair": {"color": "#3A2A2E", "style": "ponytail", "bangs": "full"},
+   "outfit": {"type": "bikini", "variant": "triangle", "color": "#E57A6E", "bottom_style": "high_leg", "shoes": "sandals"}},
+ "background": {"type": "beach"}}

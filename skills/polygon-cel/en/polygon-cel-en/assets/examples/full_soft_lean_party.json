@@ -1,0 +1,32 @@
+{
+ "style": "soft_illust",
+ "framing": "full",
+ "canvas": {
+  "seed": 3
+ },
+ "character": {
+  "head": {
+   "yaw": 12,
+   "roll": -3
+  },
+  "body": {
+   "pose": "lean",
+   "figure": "curvy",
+   "bust": "large"
+  },
+  "hair": {
+   "style": "long",
+   "wave": 0.4
+  },
+  "outfit": {
+   "type": "halter_dress",
+   "color": "#1F1F26"
+  }
+ },
+ "background": {
+  "type": "city",
+  "city": {
+   "time": "night"
+  }
+ }
+}

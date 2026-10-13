@@ -1,0 +1,11 @@
+{
+  "subject": "still_life",
+  "style": "watercolor",
+  "canvas": {
+    "width": 1400,
+    "height": 1050
+  },
+  "scene": {
+    "set": "cafe"
+  }
+}

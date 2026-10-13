@@ -1,0 +1,13 @@
+{
+  "sex": "male",
+  "expression": "wink",
+  "look": {
+    "skin_tone": "tan",
+    "identity": 5
+  },
+  "accessories": {
+    "hat": {
+      "kind": "cap"
+    }
+  }
+}

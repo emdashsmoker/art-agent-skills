@@ -1,0 +1,88 @@
+{
+  "canvas": [
+    1400,
+    1400
+  ],
+  "style": "painterly",
+  "seed": 19,
+  "character": {
+    "gender": "female",
+    "hair_style": "long_straight",
+    "bangs": "side_swept",
+    "head_turn": -0.5,
+    "head_tilt": 5,
+    "gaze": [
+      0.35,
+      0.0
+    ],
+    "smile": 0.3,
+    "eyelid_open": 0.88,
+    "hair_seed": 2,
+    "eye_height": 0.078,
+    "lip_fullness": 1.3
+  },
+  "figure": {
+    "pose": "sitting",
+    "outfit": "lingerie",
+    "furniture": "bed",
+    "furniture_color": "#c8b0b8",
+    "ground_shadow": 0.3,
+    "build": {
+      "bust": 1.05,
+      "waist": 0.95,
+      "hips": 1.04
+    }
+  },
+  "palette": {
+    "hair": "#2a2026",
+    "hair_shadow": "#120c10",
+    "hair_light": "#c89070",
+    "iris": "#5a3a3a",
+    "cloth": "#6a1a2c",
+    "cloth_shadow": "#34101a",
+    "skin": "#f8dccb",
+    "skin_shadow": "#d09080"
+  },
+  "placement": {
+    "shot": "knee",
+    "x": 0.4
+  },
+  "light": {
+    "azimuth": 140,
+    "elevation": 30
+  },
+  "background": [
+    {
+      "type": "room",
+      "window": "night",
+      "window_x": 0.78,
+      "wall": "#5a4a52",
+      "curtain": "#3a2a32",
+      "floor_color": "#4a3428",
+      "lamp": [
+        0.12,
+        0.42
+      ],
+      "lamp_color": "#ffa850",
+      "seed": 3
+    }
+  ],
+  "ambient": {
+    "color": "#2a2048",
+    "opacity": 0.2,
+    "from": 0.5
+  },
+  "finish": {
+    "radii": [
+      20,
+      10,
+      5,
+      2.5
+    ],
+    "bloom": 0.3,
+    "highlight_tint": "#ffc890",
+    "shadow_tint": "#2a1a3a",
+    "tint_strength": 0.16,
+    "vignette": 0.25
+  }
+}

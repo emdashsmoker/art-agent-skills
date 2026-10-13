@@ -1,0 +1,38 @@
+{
+  "style": "oil",
+  "framing": "upper_body",
+  "canvas": {
+    "width": 1280,
+    "height": 1280
+  },
+  "background": {
+    "type": "scene",
+    "scene": "cityscape"
+  },
+  "scene": {
+    "time": "rain_night"
+  },
+  "characters": [
+    {
+      "sex": "female",
+      "outfit": {
+        "type": "knit_coat"
+      },
+      "hair": {
+        "style": "long"
+      }
+    },
+    {
+      "sex": "male",
+      "outfit": {
+        "type": "suit"
+      },
+      "hair": {
+        "style": "medium"
+      }
+    }
+  ],
+  "layout": {
+    "type": "front_back"
+  }
+}

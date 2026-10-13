@@ -1,0 +1,26 @@
+{
+  "style": "watercolor",
+  "framing": "full_body",
+  "canvas": {
+    "width": 1024,
+    "height": 1600
+  },
+  "background": {
+    "type": "scene",
+    "scene": "landscape"
+  },
+  "scene": {
+    "time": "golden"
+  },
+  "character": {
+    "outfit": {
+      "type": "polo_shorts"
+    },
+    "hair": {
+      "style": "ponytail"
+    },
+    "pose": {
+      "preset": "walking"
+    }
+  }
+}

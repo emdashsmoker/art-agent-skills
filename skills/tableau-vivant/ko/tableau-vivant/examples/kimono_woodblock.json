@@ -1,0 +1,92 @@
+{
+ "canvas": {
+  "aspect": "2:3",
+  "detail": "standard",
+  "seed": 14
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "garden",
+  "time": "dawn",
+  "clouds": 0.2,
+  "forest": {
+   "count": 7,
+   "kinds": [
+    "sakura"
+   ],
+   "area": [
+    -14,
+    14,
+    5,
+    30
+   ],
+   "min_distance": 5.0,
+   "height": [
+    5.0,
+    8.0
+   ],
+   "clearing": 3.5
+  }
+ },
+ "figures": [
+  {
+   "name": "a",
+   "preset": "woman",
+   "pose": {
+    "preset": "stand",
+    "head": {
+     "turn": 28,
+     "nod": 8,
+     "tilt": 6
+    },
+    "torso": {
+     "twist": 14
+    },
+    "reach.L": {
+     "to": "belly",
+     "elbow": "down",
+     "offset": 0.05,
+     "lay": true
+    },
+    "hand.L": "flat"
+   },
+   "hair": {
+    "style": "chignon",
+    "color": "black"
+   },
+   "outfit": "kimono",
+   "colors": {
+    "kimono_top": [
+     0.72,
+     0.22,
+     0.2
+    ],
+    "kimono_skirt": [
+     0.72,
+     0.22,
+     0.2
+    ],
+    "obi": [
+     0.86,
+     0.74,
+     0.4
+    ]
+   },
+   "expression": "serene",
+   "skin": "porcelain",
+   "facing": -25
+  }
+ ],
+ "camera": {
+  "subject": "a",
+  "shot": "full",
+  "yaw": 58,
+  "pitch": 2,
+  "fill": 0.7,
+  "offset": [
+   0.1,
+   0.03
+  ]
+ },
+ "style": "woodblock"
+}

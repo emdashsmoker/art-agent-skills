@@ -1,0 +1,88 @@
+{
+ "style": "soft_illust",
+ "framing": "full",
+ "background": {
+  "type": "city",
+  "city": {
+   "time": "night"
+  }
+ },
+ "characters": [
+  {
+   "gender": "male",
+   "place": {
+    "scale": 1.06
+   },
+   "outfit": {
+    "type": "shirt",
+    "color": "#2C3440",
+    "bottom": "slacks",
+    "shoes": "dress_shoes"
+   }
+  },
+  {
+   "hair": {
+    "style": "long",
+    "color": "#5A3C38",
+    "wave": 0.3
+   },
+   "eyes": {
+    "color": "#4F7DB8"
+   },
+   "body": {
+    "pose": "wave",
+    "hands": {
+     "right": "peace"
+    }
+   },
+   "expression": {
+    "mouth": "open_smile"
+   },
+   "outfit": {
+    "type": "halter_dress",
+    "color": "#1F1F26",
+    "shoes": "heels"
+   }
+  },
+  {
+   "hair": {
+    "style": "ponytail",
+    "bangs": "full",
+    "color": "#8A5A3C"
+   },
+   "eyes": {
+    "color": "#5A7A5A"
+   },
+   "body": {
+    "pose": "pocket"
+   },
+   "outfit": {
+    "type": "hoodie",
+    "color": "#B7A8D6",
+    "bottom": "jeans"
+   }
+  },
+  {
+   "gender": "male",
+   "place": {
+    "scale": 1.06
+   },
+   "hair": {
+    "color": "#6A4A34"
+   },
+   "body": {
+    "figure": "athletic",
+    "pose": "walk"
+   },
+   "outfit": {
+    "type": "tee",
+    "color": "#E8E2D6",
+    "bottom": "jeans",
+    "shoes": "sneakers"
+   }
+  }
+ ],
+ "canvas": {
+  "seed": 11
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "style": "watercolor",
+ "framing": "waist",
+ "mood": "doomer",
+ "lighting": {
+  "key": "front"
+ },
+ "background": {
+  "type": "window",
+  "colors": [
+   "#1A2030",
+   "#262E44",
+   "#38425C"
+  ]
+ },
+ "character": {
+  "head": {
+   "yaw": 8,
+   "pitch": 18,
+   "roll": -3
+  },
+  "eyes": {
+   "gaze": [
+    0.1,
+    1.2
+   ],
+   "openness": 0.45
+  },
+  "hair": {
+   "style": "long",
+   "color": "#3A2E30"
+  },
+  "expression": {
+   "mouth": "neutral"
+  },
+  "body": {
+   "hold": {
+    "item": "phone",
+    "side": "right"
+   }
+  },
+  "outfit": {
+   "type": "oversized_tee",
+   "color": "#8A94A8"
+  }
+ },
+ "canvas": {
+  "seed": 13
+ }
+}

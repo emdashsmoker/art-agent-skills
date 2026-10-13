@@ -1,0 +1,109 @@
+{
+ "canvas": [
+  1100,
+  1800
+ ],
+ "style": "illust",
+ "seed": 25,
+ "character": {
+  "gender": "female",
+  "hair_style": "layered_bob",
+  "bangs": "see_through",
+  "hair_seed": 9,
+  "skin_tone": "fair",
+  "eye_shape": "monolid",
+  "brow_shape": "straight",
+  "nose_shape": "dot",
+  "smile": 0.35
+ },
+ "figure": {
+  "pose": "back_lookback",
+  "look": "right_3q",
+  "outfit": "knit_dress",
+  "ground_shadow": 0.45
+ },
+ "palette": {
+  "hair": "#1e1a1e",
+  "hair_shadow": "#0c0a0c",
+  "hair_light": "#e0a888",
+  "iris": "#3a2a24",
+  "cloth": "#d8cbb8",
+  "cloth_shadow": "#9a8a8a"
+ },
+ "placement": {
+  "head_height": 0.112,
+  "pelvis": [
+   0.5,
+   0.52
+  ]
+ },
+ "light": {
+  "azimuth": 150,
+  "elevation": 22
+ },
+ "background": [
+  {
+   "type": "sky",
+   "top": "#3a4a8a",
+   "bottom": "#ffb47a",
+   "horizon": 0.6
+  },
+  {
+   "type": "sun",
+   "center": [
+    0.22,
+    0.52
+   ],
+   "radius": 0.03,
+   "color": "#fff0d0",
+   "glow_color": "#ffa060",
+   "glow_radius": 0.45,
+   "glow_opacity": 0.85
+  },
+  {
+   "type": "clouds",
+   "color": "#ffc0a0",
+   "shadow": "#7a5a8a",
+   "coverage": 0.35,
+   "top": 0.04,
+   "bottom": 0.42,
+   "seed": 12
+  },
+  {
+   "type": "ridge",
+   "base": 0.6,
+   "height": 0.2,
+   "color": "#7a6a9a",
+   "shadow": "#5a4a7a",
+   "haze": "#ffb47a",
+   "haze_strength": 0.5,
+   "seed": 5
+  },
+  {
+   "type": "water",
+   "top": 0.6,
+   "bottom": 0.76,
+   "tint": "#3a3a6a",
+   "tint_strength": 0.3,
+   "ripples": 150,
+   "seed": 3
+  },
+  {
+   "type": "ground",
+   "top": 0.75,
+   "color": "#6a7a4a",
+   "far_color": "#8a8a5a",
+   "roll": 0.02,
+   "seed": 8
+  },
+  {
+   "type": "grass",
+   "top": 0.78,
+   "count": 900,
+   "seed": 2
+  }
+ ],
+ "style_overrides": {
+  "rim_light": 0.6
+ }
+}

@@ -1,0 +1,56 @@
+{
+  "accessories": {
+    "scarf": {
+      "side": "left"
+    }
+  },
+  "figure": {
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "shirt": {
+        "ease": 0.08,
+        "neck_half": 0.55,
+        "neck_level": 0.1,
+        "hem_level": 3.7,
+        "sleeve": 1.92
+      },
+      "skirt": {
+        "hem_level": 9.0,
+        "hem_half": 2.1,
+        "folds": 5,
+        "fold_depth": 0.14
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "cloth": {
+        "base": "#F4F1EA",
+        "shadow": "#C8C6CF",
+        "line": "#6B6A80",
+        "pattern": {
+          "kind": "stripes",
+          "color": "#5B6C9A",
+          "scale": 0.3,
+          "width": 0.3
+        }
+      },
+      "skirt": {
+        "pattern": {
+          "kind": "check",
+          "color": "#7A2430",
+          "scale": 0.55,
+          "width": 0.3,
+          "opacity": 0.75
+        }
+      },
+      "scarf": {
+        "base": "#E9DFC8",
+        "shadow": "#B9AC8E",
+        "light": "#FFF8E6",
+        "line": "#5A4E36"
+      }
+    }
+  }
+}

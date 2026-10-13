@@ -1,0 +1,13 @@
+{
+ "canvas": {
+  "aspect": "16:9",
+  "detail": "standard",
+  "seed": 21
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "city",
+  "time": "night"
+ },
+ "style": "anime_film"
+}

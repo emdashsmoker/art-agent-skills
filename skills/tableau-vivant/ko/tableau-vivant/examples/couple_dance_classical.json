@@ -1,0 +1,113 @@
+{
+ "canvas": {
+  "aspect": "4:5",
+  "detail": "standard",
+  "seed": 44
+ },
+ "environment": {
+  "type": "room",
+  "wall": [
+   0.42,
+   0.3,
+   0.24
+  ],
+  "floor": [
+   0.3,
+   0.2,
+   0.14
+  ],
+  "depth": 2.4,
+  "width": 6.0
+ },
+ "pairs": [
+  {
+   "kind": "dance",
+   "facing": 15,
+   "a": {
+    "name": "lead",
+    "preset": "man",
+    "outfit": "suit",
+    "colors": {
+     "jacket": [
+      0.08,
+      0.08,
+      0.1
+     ],
+     "lapels": [
+      0.05,
+      0.05,
+      0.06
+     ],
+     "trousers": [
+      0.08,
+      0.08,
+      0.1
+     ]
+    },
+    "hair": {
+     "style": "slick_back",
+     "color": "black"
+    },
+    "expression": "soft_smile",
+    "skin": "light"
+   },
+   "b": {
+    "name": "follow",
+    "preset": "woman",
+    "outfit": "evening_gown",
+    "hair": {
+     "style": "chignon",
+     "color": "auburn"
+    },
+    "expression": "serene",
+    "skin": "fair",
+    "look": {
+     "lip_color": [
+      0.66,
+      0.12,
+      0.16
+     ]
+    }
+   }
+  }
+ ],
+ "props": [
+  {
+   "kind": "lamp",
+   "at": [
+    1.6,
+    1.9,
+    0
+   ],
+   "scale": 2.6
+  },
+  {
+   "kind": "potted_plant",
+   "at": [
+    -1.7,
+    2.0,
+    0
+   ],
+   "scale": 1.6
+  }
+ ],
+ "camera": {
+  "eye": [
+   1.4,
+   -3.6,
+   1.55
+  ],
+  "target": [
+   0.0,
+   0.0,
+   1.0
+  ],
+  "fov": 38
+ },
+ "light": {
+  "preset": "rembrandt",
+  "mood": "candle",
+  "ambient": 0.3
+ },
+ "style": "classical"
+}

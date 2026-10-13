@@ -1,0 +1,146 @@
+{
+  "spec": {
+    "canvas": {
+      "width": 1600,
+      "height": 1200
+    },
+    "seed": 21,
+    "light": [
+      0.45,
+      -0.6,
+      0.66
+    ],
+    "time": "day",
+    "camera": {
+      "horizon_y": 0.47,
+      "focal": 0.7,
+      "eye_height": 155,
+      "center_x": 0.5
+    },
+    "sky": {
+      "sun_x": 0.7,
+      "sun_y": 0.1,
+      "sun_r": 0.02,
+      "clouds": 0.3
+    },
+    "haze": {
+      "distance": 7000,
+      "amount": 0.7
+    },
+    "treeline": {
+      "lift": 0.02,
+      "amplitude": 0.012,
+      "crown": 0.016,
+      "group": "blossom_far",
+      "haze": 0.5
+    },
+    "lawn": {
+      "blades": 900,
+      "flowers": 0
+    },
+    "path": {
+      "half_width": 180
+    },
+    "avenue": {
+      "kind": "sakura",
+      "offset": 190,
+      "first_z": 650,
+      "last_z": 6500,
+      "spacing": 560
+    },
+    "petals": {
+      "ground": 2600,
+      "far": 3000
+    },
+    "weather": {
+      "kind": "petals",
+      "amount": 0.8
+    }
+  },
+  "style": {
+    "palette": {
+      "sky": {
+        "top": "#7FB2E5",
+        "middle": "#AFD3F0",
+        "horizon": "#E8F1F6",
+        "glow": "#FFF6E4",
+        "sun": "#FFFDF4",
+        "cloud": "#FFFFFF",
+        "cloud_lit": "#FFF6F2",
+        "cloud_shadow": "#C9D6E8",
+        "haze": "#EEF1F5"
+      },
+      "treeline": {
+        "base": "#86AB7E",
+        "shadow": "#64906A",
+        "light": "#AECB9E",
+        "line": "#4A6A50"
+      },
+      "blossom_far": {
+        "base": "#F0CAD7",
+        "shadow": "#DDB0C3",
+        "light": "#FBE4EB",
+        "line": "#BC93A6"
+      },
+      "lawn": {
+        "far": "#AFCB93",
+        "near": "#5F9C48",
+        "stripe": "#C4DAB0",
+        "shadow": "#86A580",
+        "blade": "#3F7A35",
+        "blade_light": "#8EC26C",
+        "line": "#2F5530"
+      },
+      "path": {
+        "base": "#E3D8C6",
+        "far": "#ECE7DE",
+        "seam": "#B9AC98",
+        "kerb": "#CFC5B6",
+        "line": "#7D7263"
+      },
+      "blossom": {
+        "base": "#F8CCDA",
+        "shadow": "#E09CB6",
+        "light": "#FFF1F5",
+        "line": "#B87A92"
+      },
+      "foliage": {
+        "base": "#6FA65A",
+        "shadow": "#3F7442",
+        "light": "#9DCB7A",
+        "line": "#2C4F2E"
+      },
+      "trunk": {
+        "base": "#5C4943",
+        "shadow": "#3A2D29",
+        "line": "#2A1F1C"
+      },
+      "blanket": {
+        "white": "#FAF6EE",
+        "check": "#D9534F",
+        "deep": "#A8322F",
+        "shadow": "#BBAEA6",
+        "line": "#7A2A28"
+      },
+      "basket": {
+        "base": "#CB9C5D",
+        "shadow": "#8E6534",
+        "line": "#5A3E1F"
+      },
+      "basket_lid": {
+        "base": "#B9884A",
+        "shadow": "#7F5629",
+        "line": "#5A3E1F"
+      },
+      "petal": {
+        "base": "#F6B9CC",
+        "light": "#FFE8EF"
+      },
+      "flower": {
+        "white": "#FFFFFF",
+        "yellow": "#F7D64A",
+        "pink": "#F4A6C0"
+      }
+    }
+  }
+}

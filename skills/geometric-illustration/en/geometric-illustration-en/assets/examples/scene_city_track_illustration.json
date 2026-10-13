@@ -1,0 +1,24 @@
+{
+  "style": "illustration",
+  "framing": "full_body",
+  "canvas": {
+    "width": 1024,
+    "height": 1600
+  },
+  "background": {
+    "type": "scene",
+    "scene": "cityscape"
+  },
+  "scene": {
+    "time": "blue_night"
+  },
+  "character": {
+    "sex": "male",
+    "outfit": {
+      "type": "track_suit"
+    },
+    "pose": {
+      "preset": "hands_in_pockets"
+    }
+  }
+}

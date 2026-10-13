@@ -1,0 +1,123 @@
+{
+  "canvas": [
+    1600,
+    1200
+  ],
+  "style": "illust",
+  "seed": 5,
+  "character": {
+    "gender": "female",
+    "hair_style": "long_straight",
+    "bangs": "side_swept",
+    "smile": 0.35,
+    "hair_seed": 4
+  },
+  "figure": {
+    "pose": "side_walk",
+    "outfit": "coat_turtleneck",
+    "facing": "left",
+    "ground_shadow": 0.35
+  },
+  "palette": {
+    "hair": "#2c2a3e",
+    "hair_shadow": "#14121e",
+    "hair_light": "#f0a888",
+    "iris": "#4a5a8a",
+    "cloth": "#f0e8dc",
+    "cloth_shadow": "#b0a0b0",
+    "cloth2": "#2c2c3c",
+    "outer": "#8a5a4a",
+    "shoe": "#2a1e22"
+  },
+  "placement": {
+    "head_height": 0.085,
+    "pelvis": [
+      0.66,
+      0.6
+    ]
+  },
+  "light": {
+    "azimuth": 150,
+    "elevation": 20
+  },
+  "background": [
+    {
+      "type": "sky",
+      "top": "#3a4a8a",
+      "bottom": "#ffb47a",
+      "horizon": 0.6
+    },
+    {
+      "type": "sun",
+      "center": [
+        0.22,
+        0.52
+      ],
+      "radius": 0.03,
+      "color": "#fff0d0",
+      "glow_color": "#ffa060",
+      "glow_radius": 0.45,
+      "glow_opacity": 0.85
+    },
+    {
+      "type": "clouds",
+      "color": "#ffc0a0",
+      "shadow": "#7a5a8a",
+      "coverage": 0.35,
+      "top": 0.04,
+      "bottom": 0.42,
+      "seed": 12
+    },
+    {
+      "type": "ridge",
+      "base": 0.6,
+      "height": 0.2,
+      "color": "#7a6a9a",
+      "shadow": "#5a4a7a",
+      "haze": "#ffb47a",
+      "haze_strength": 0.5,
+      "seed": 5
+    },
+    {
+      "type": "tree_line",
+      "base": 0.605,
+      "height": 0.035,
+      "color": "#3a3a5a",
+      "haze": "#9a7a9a",
+      "seed": 7
+    },
+    {
+      "type": "water",
+      "top": 0.605,
+      "bottom": 0.74,
+      "tint": "#3a3a6a",
+      "tint_strength": 0.3,
+      "ripples": 150,
+      "seed": 3
+    },
+    {
+      "type": "ground",
+      "top": 0.73,
+      "color": "#6a7a4a",
+      "far_color": "#8a8a5a",
+      "roll": 0.02,
+      "seed": 8
+    },
+    {
+      "type": "grass",
+      "top": 0.76,
+      "count": 900,
+      "seed": 2
+    }
+  ],
+  "style_overrides": {
+    "rim_light": 0.85
+  },
+  "finish": {
+    "bloom": 0.35,
+    "highlight_tint": "#ffd0a0",
+    "shadow_tint": "#3a2a6a",
+    "tint_strength": 0.15,
+    "vignette": 0.15
+  }
+}

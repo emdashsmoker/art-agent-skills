@@ -1,0 +1,39 @@
+{
+ "canvas": {
+  "aspect": "3:4",
+  "detail": "standard",
+  "seed": 2
+ },
+ "environment": {
+  "type": "plain_color",
+  "color": [
+   0.96,
+   0.95,
+   0.92
+  ]
+ },
+ "figures": [
+  {
+   "name": "a",
+   "preset": "man_athletic",
+   "pose": "contrapposto",
+   "hair": {
+    "style": "short_crop",
+    "color": "dark_brown"
+   },
+   "outfit": "briefs",
+   "skin": "light"
+  }
+ ],
+ "camera": {
+  "subject": "a",
+  "shot": "full",
+  "yaw": 20,
+  "pitch": 3
+ },
+ "light": {
+  "preset": "side",
+  "mood": "neutral"
+ },
+ "style": "pencil"
+}

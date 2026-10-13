@@ -1,0 +1,20 @@
+{
+  "sex": "male",
+  "figure": {
+    "clothes": {
+      "shirt": null,
+      "pants": null,
+      "shoes": true,
+      "baji": {
+        "waist_level": 4.7
+      },
+      "jeogori": {
+        "ease": 0.1,
+        "hem_level": 5.4,
+        "sleeve": 1.96,
+        "sleeve_hang": 0.18,
+        "goreum_length": 2.0
+      }
+    }
+  }
+}

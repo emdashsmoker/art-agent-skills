@@ -1,0 +1,70 @@
+{
+  "canvas": [
+    1200,
+    1500
+  ],
+  "style": "illust",
+  "seed": 21,
+  "character": {
+    "jaw_sharpness": 0.9,
+    "eye_height": 0.086,
+    "eye_tilt": 0.016,
+    "iris_scale": 0.95,
+    "eyelid_open": 0.92,
+    "lip_fullness": 1.15,
+    "smile": 0.35,
+    "hair_style": "long_straight",
+    "bangs": "side_swept",
+    "parting": -0.08,
+    "head_tilt": -3,
+    "outfit": "offshoulder",
+    "hair_seed": 5,
+    "head_turn": 2.4,
+    "gaze": [
+      -0.55,
+      0.0
+    ]
+  },
+  "palette": {
+    "skin": "#fbe2d0",
+    "skin_shadow": "#e0a38f",
+    "hair": "#3a2a3a",
+    "hair_shadow": "#1c1220",
+    "hair_light": "#d8a0c0",
+    "iris": "#6a4a8a",
+    "cloth": "#2e3440",
+    "cloth_shadow": "#1b1f2a"
+  },
+  "background": [
+    {
+      "type": "gradient",
+      "top": "#f6c9a0",
+      "bottom": "#7c6fa6"
+    },
+    {
+      "type": "glow",
+      "center": [
+        0.35,
+        0.29
+      ],
+      "radius": 0.42,
+      "color": "#ffe9c4",
+      "opacity": 0.75
+    },
+    {
+      "type": "bokeh",
+      "colors": [
+        "#ffd9a8",
+        "#ffc0b0",
+        "#fff1d0"
+      ],
+      "count": 26,
+      "seed": 4
+    }
+  ],
+  "ambient": {
+    "color": "#7c6fa6",
+    "opacity": 0.22,
+    "from": 0.6
+  }
+}

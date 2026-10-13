@@ -1,0 +1,6 @@
+{"style": "anime_cel", "framing": "waist", "canvas": {"seed": 5},
+ "character": {"head": {"yaw": 12, "roll": -3}, "body": {"pose": "hand_on_hip"},
+   "hair": {"color": "#4A3434", "style": "long", "bangs": "side_swept"},
+   "eyes": {"color": "#5E7FA8"},
+   "outfit": {"type": "crop_top", "variant": "tank", "color": "#F4F1EC", "bottom": "jeans"}},
+ "background": {"type": "gradient", "colors": ["#F6ECE6", "#C7D5EA"]}}

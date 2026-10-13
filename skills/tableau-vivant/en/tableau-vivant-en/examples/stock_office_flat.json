@@ -1,0 +1,157 @@
+{
+ "canvas": {
+  "aspect": "1:1",
+  "detail": "standard",
+  "seed": 4
+ },
+ "environment": {
+  "type": "plain_color",
+  "color": [
+   0.96,
+   0.95,
+   0.92
+  ]
+ },
+ "figures": [
+  {
+   "name": "a",
+   "preset": "woman",
+   "pose": {
+    "preset": "sit_chair",
+    "arm.L": {
+     "lift": 30,
+     "forward": 70,
+     "elbow": 80,
+     "twist": 30
+    },
+    "arm.R": {
+     "lift": 30,
+     "forward": 70,
+     "elbow": 80,
+     "twist": 30
+    },
+    "head": {
+     "nod": 12
+    }
+   },
+   "hair": {
+    "style": "bun",
+    "color": "auburn"
+   },
+   "outfit": "office",
+   "expression": "soft_smile",
+   "skin": "medium",
+   "colors": {
+    "blouse": [
+     0.36,
+     0.56,
+     0.78
+    ],
+    "pencil_skirt": [
+     0.2,
+     0.24,
+     0.38
+    ]
+   }
+  }
+ ],
+ "props": [
+  {
+   "kind": "chair",
+   "name": "chair",
+   "at": [
+    0,
+    0.02,
+    0
+   ],
+   "colors": {
+    "chair": [
+     0.95,
+     0.66,
+     0.3
+    ]
+   }
+  },
+  {
+   "kind": "desk",
+   "name": "desk",
+   "at": [
+    0,
+    -0.62,
+    0
+   ],
+   "colors": {
+    "desk": [
+     0.86,
+     0.8,
+     0.7
+    ]
+   }
+  },
+  {
+   "kind": "laptop",
+   "on": "desk",
+   "at": [
+    0,
+    -0.58,
+    0
+   ],
+   "rotate_deg": 180
+  },
+  {
+   "kind": "mug",
+   "on": "desk",
+   "at": [
+    0.42,
+    -0.5,
+    0
+   ],
+   "colors": {
+    "mug": [
+     0.92,
+     0.36,
+     0.3
+    ]
+   }
+  },
+  {
+   "kind": "potted_plant",
+   "at": [
+    0.95,
+    -0.2,
+    0
+   ],
+   "scale": 1.3
+  }
+ ],
+ "camera": {
+  "eye": [
+   2.6,
+   -3.4,
+   1.5
+  ],
+  "target": [
+   0.1,
+   -0.3,
+   0.75
+  ],
+  "fov": 30
+ },
+ "light": {
+  "preset": "soft",
+  "mood": "neutral"
+ },
+ "style": {
+  "name": "flat",
+  "blob": [
+   0.5,
+   0.48,
+   0.42
+  ],
+  "blob_color": [
+   0.84,
+   0.9,
+   0.96
+  ]
+ }
+}

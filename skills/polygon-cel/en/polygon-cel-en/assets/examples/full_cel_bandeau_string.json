@@ -1,0 +1,34 @@
+{
+ "style": "anime_cel",
+ "framing": "full",
+ "canvas": {
+  "seed": 6
+ },
+ "character": {
+  "head": {
+   "yaw": 14,
+   "roll": -2
+  },
+  "body": {
+   "pose": "behind"
+  },
+  "hair": {
+   "color": "#6B3F2E",
+   "style": "long",
+   "bangs": "parted",
+   "wave": 0.4
+  },
+  "eyes": {
+   "color": "#4F7F5E"
+  },
+  "outfit": {
+   "type": "bikini",
+   "variant": "bandeau",
+   "color": "#2F5E8E",
+   "bottom_style": "string"
+  }
+ },
+ "background": {
+  "type": "beach"
+ }
+}

@@ -1,0 +1,14 @@
+{
+  "style": "anime",
+  "framing": "full_body",
+  "canvas": {
+    "width": 1024,
+    "height": 1400
+  },
+  "character": {
+    "pose": {
+      "preset": "seated"
+    },
+    "expression": "smile"
+  }
+}

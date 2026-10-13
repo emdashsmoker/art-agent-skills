@@ -1,0 +1,21 @@
+{
+  "style": "anime",
+  "framing": "upper_body",
+  "canvas": {
+    "width": 1024,
+    "height": 1280
+  },
+  "character": {
+    "sex": "male",
+    "outfit": {
+      "type": "shirt_slacks"
+    },
+    "hair": {
+      "style": "side_part"
+    },
+    "pose": {
+      "preset": "arms_crossed"
+    },
+    "expression": "serious"
+  }
+}

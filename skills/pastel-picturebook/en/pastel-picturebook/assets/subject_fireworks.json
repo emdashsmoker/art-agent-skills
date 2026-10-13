@@ -1,0 +1,192 @@
+{
+  "spec": {
+    "canvas": {
+      "width": 1600,
+      "height": 1200
+    },
+    "seed": 43,
+    "light": [
+      0.3,
+      -0.6,
+      0.74
+    ],
+    "time": "night",
+    "camera": {
+      "horizon_y": 0.58,
+      "focal": 0.75,
+      "eye_height": 155,
+      "center_x": 0.5
+    },
+    "sky": {
+      "stars": 140
+    },
+    "lit": 0.45,
+    "fireworks": [
+      {
+        "x": 0.3,
+        "y": 0.22,
+        "r": 0.13,
+        "color": "#FF6FA8",
+        "kind": "trail",
+        "tail": false
+      },
+      {
+        "x": 0.62,
+        "y": 0.15,
+        "r": 0.1,
+        "color": "#7FD8FF",
+        "kind": "dots",
+        "rays": 80
+      },
+      {
+        "x": 0.8,
+        "y": 0.3,
+        "r": 0.11,
+        "color": "#FFD36A",
+        "kind": "willow"
+      },
+      {
+        "x": 0.47,
+        "y": 0.36,
+        "r": 0.05,
+        "color": "#B98CFF",
+        "kind": "trail",
+        "tail": true
+      }
+    ],
+    "skyline": [
+      {
+        "z": 70000,
+        "height": [
+          2000,
+          16000
+        ],
+        "width": [
+          1500,
+          4000
+        ],
+        "gap": [
+          0,
+          800
+        ],
+        "haze": 0.55,
+        "base": -250
+      },
+      {
+        "z": 42000,
+        "height": [
+          800,
+          7000
+        ],
+        "width": [
+          1500,
+          3500
+        ],
+        "gap": [
+          300,
+          1500
+        ],
+        "haze": 0.25,
+        "base": -250
+      }
+    ],
+    "river": {
+      "z0": 700,
+      "z1": 36000,
+      "level": -250,
+      "ripple": 0.004,
+      "waves": 160
+    },
+    "floor": {
+      "kind": "promenade",
+      "tile": 80
+    },
+    "railing": {
+      "z": 700,
+      "wall": 40,
+      "height": 105,
+      "posts": 160
+    }
+  },
+  "style": {
+    "palette": {
+      "sky": {
+        "top": "#2E3A78",
+        "middle": "#7A5C9E",
+        "low": "#F08A6A",
+        "horizon": "#FFC77A",
+        "glow": "#FFD58A",
+        "sun": "#FFF4D6",
+        "cloud": "#6A4E86",
+        "cloud_warm": "#C9637A",
+        "cloud_lit": "#FFB27A",
+        "night_top": "#070B22",
+        "night_middle": "#141A44",
+        "night_low": "#2B2E5E"
+      },
+      "city": {
+        "face": "#3B3459",
+        "shade": "#2A2546",
+        "haze": "#C98A8E",
+        "base": "#5A4466",
+        "glass": "#6D6290",
+        "window_lit": "#FFD38A",
+        "rim": "#FFB070",
+        "beacon": "#FF4A3A",
+        "line": "#1E1A30"
+      },
+      "city_night": {
+        "face": "#1C1F3B",
+        "shade": "#13152B",
+        "haze": "#30335F",
+        "base": "#1A1C38",
+        "glass": "#262B4C",
+        "window_lit": "#FFD68E",
+        "rim": "#000000",
+        "beacon": "#FF4A3A",
+        "line": "#0B0C1A"
+      },
+      "water": {
+        "deep": "#0B1030",
+        "light": "#8A93C8",
+        "bank": "#090B1A"
+      },
+      "floor": {
+        "base": "#3C3C55",
+        "far": "#4C4C68",
+        "joint": "#A9A7BE"
+      },
+      "railing": {
+        "wall": "#23263F",
+        "cap": "#363A5C",
+        "shadow": "#A9A8C2",
+        "metal": "#15172A",
+        "shine": "#8C8FC8",
+        "line": "#0A0B16",
+        "glass": "#8C93C8"
+      },
+      "lights": {
+        "wire": "#1A1A26",
+        "bulb": "#FFF1C8",
+        "glow": "#FFC46A"
+      },
+      "leaf": {
+        "base": "#4F8A4A",
+        "shadow": "#22482A",
+        "deep": "#14301B",
+        "light": "#D8F2B8",
+        "line": "#10261A"
+      },
+      "pot": {
+        "base": "#C9744E",
+        "shadow": "#7E3E26",
+        "deep": "#52281A",
+        "light": "#FFD9C2",
+        "line": "#3E1E12"
+      },
+      "desk": {
+        "cast": "#4A3624"
+      }
+    }
+  }
+}

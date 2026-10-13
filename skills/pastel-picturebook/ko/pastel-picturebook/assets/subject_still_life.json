@@ -1,0 +1,199 @@
+{
+  "spec": {
+    "canvas": {
+      "width": 1600,
+      "height": 1200
+    },
+    "seed": 5,
+    "light": [
+      -0.6,
+      -0.5,
+      0.62
+    ],
+    "table": {
+      "back_y": 0.43,
+      "front_y": 0.665
+    },
+    "cloth": {
+      "left": 0.44,
+      "right": 0.97,
+      "drop": 0.055,
+      "folds": 5
+    },
+    "objects": [
+      {
+        "kind": "bottle",
+        "x": 0.33,
+        "base_y": 0.575,
+        "height": 0.395,
+        "radius": 0.05,
+        "group": "glass",
+        "gloss": 0.85,
+        "shininess": 90,
+        "label": {
+          "top": 0.5,
+          "bottom": 0.2
+        }
+      },
+      {
+        "kind": "bowl",
+        "x": 0.63,
+        "rim_y": 0.455,
+        "radius": 0.14,
+        "depth": 0.09,
+        "group": "ceramic",
+        "fruit": [
+          {
+            "kind": "ball",
+            "dx": 0.045,
+            "dy": -0.004,
+            "rx": 0.052,
+            "ry": 0.05,
+            "group": "orange",
+            "stem": true
+          },
+          {
+            "kind": "ball",
+            "dx": -0.058,
+            "dy": 0.022,
+            "rx": 0.054,
+            "ry": 0.052,
+            "group": "orange"
+          },
+          {
+            "kind": "ball",
+            "dx": 0.03,
+            "dy": 0.048,
+            "rx": 0.05,
+            "ry": 0.048,
+            "group": "apple",
+            "stem": true,
+            "gloss": 0.45,
+            "shininess": 30
+          }
+        ]
+      },
+      {
+        "kind": "pear",
+        "x": 0.185,
+        "base_y": 0.6,
+        "height": 0.155,
+        "radius": 0.05,
+        "tilt_deg": -9,
+        "group": "pear"
+      },
+      {
+        "kind": "ball",
+        "x": 0.455,
+        "base_y": 0.63,
+        "rx": 0.05,
+        "ry": 0.037,
+        "angle": 10,
+        "group": "lemon",
+        "tips": true
+      },
+      {
+        "kind": "ball",
+        "x": 0.835,
+        "base_y": 0.618,
+        "rx": 0.027,
+        "ry": 0.027,
+        "group": "plum",
+        "stem": true,
+        "gloss": 0.5,
+        "shininess": 40
+      },
+      {
+        "kind": "ball",
+        "x": 0.885,
+        "base_y": 0.64,
+        "rx": 0.028,
+        "ry": 0.027,
+        "group": "plum",
+        "stem": true,
+        "gloss": 0.5,
+        "shininess": 40
+      }
+    ]
+  },
+  "style": {
+    "palette": {
+      "wall": {
+        "top": "#3F3A30",
+        "bottom": "#28241F",
+        "glow": "#8C7B5A"
+      },
+      "table": {
+        "base": "#8A5A36",
+        "shadow": "#5E3B24",
+        "deep": "#3A2417",
+        "light": "#C99A6A",
+        "cast": "#2A1A12"
+      },
+      "cloth": {
+        "base": "#E9E2D2",
+        "shadow": "#9C9484",
+        "deep": "#6E675B",
+        "light": "#FFFFFF",
+        "line": "#5B564C"
+      },
+      "glass": {
+        "base": "#24402F",
+        "shadow": "#0F1D16",
+        "deep": "#08100C",
+        "light": "#E8FFE9",
+        "line": "#060C09"
+      },
+      "label": {
+        "base": "#E8DDBF",
+        "shadow": "#9A8E6E",
+        "accent": "#8E2B2B"
+      },
+      "ceramic": {
+        "base": "#D9E3E6",
+        "shadow": "#7C929B",
+        "deep": "#4E626B",
+        "light": "#FFFFFF",
+        "line": "#34444B"
+      },
+      "orange": {
+        "base": "#F08A1E",
+        "shadow": "#A8480F",
+        "deep": "#6E2A0A",
+        "light": "#FFE7B8",
+        "line": "#5A2208"
+      },
+      "apple": {
+        "base": "#C2282B",
+        "shadow": "#6F1217",
+        "deep": "#3F0A0E",
+        "light": "#FFD9D2",
+        "line": "#33080B"
+      },
+      "pear": {
+        "base": "#C9C24A",
+        "shadow": "#7F7A22",
+        "deep": "#4F4A14",
+        "light": "#FBFAD0",
+        "line": "#3E3A10"
+      },
+      "lemon": {
+        "base": "#F2D43B",
+        "shadow": "#B08E1A",
+        "deep": "#73590E",
+        "light": "#FFFBD6",
+        "line": "#5C470B"
+      },
+      "plum": {
+        "base": "#5A2A5E",
+        "shadow": "#2B1230",
+        "deep": "#170919",
+        "light": "#E9C9F2",
+        "line": "#12060F"
+      },
+      "stem": {
+        "base": "#4A3320"
+      }
+    }
+  }
+}

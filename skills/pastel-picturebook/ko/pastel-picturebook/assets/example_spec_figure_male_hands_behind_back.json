@@ -1,0 +1,33 @@
+{
+  "sex": "male",
+  "figure": {
+    "pose": {
+      "arm_left": {
+        "upper": 8.0,
+        "fore": -38.0,
+        "hand": -30.0,
+        "foreshorten": [
+          1.0,
+          0.55
+        ],
+        "toward": [
+          0,
+          -1
+        ]
+      },
+      "arm_right": {
+        "upper": 8.0,
+        "fore": -38.0,
+        "hand": -30.0,
+        "foreshorten": [
+          1.0,
+          0.55
+        ],
+        "toward": [
+          0,
+          -1
+        ]
+      }
+    }
+  }
+}

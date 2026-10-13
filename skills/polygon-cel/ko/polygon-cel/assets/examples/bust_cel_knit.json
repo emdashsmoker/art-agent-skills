@@ -1,0 +1,4 @@
+{"style": "anime_cel", "canvas": {"seed": 7},
+ "character": {"head": {"yaw": 15, "roll": -3}, "hair": {"color": "#5A3C38", "style": "long", "bangs": "side_swept"},
+   "eyes": {"color": "#4F7DB8"}, "outfit": {"type": "knit_sweater"}, "accessories": ["hairpin"]},
+ "background": {"type": "gradient", "colors": ["#F6ECE6", "#C7D5EA"]}}

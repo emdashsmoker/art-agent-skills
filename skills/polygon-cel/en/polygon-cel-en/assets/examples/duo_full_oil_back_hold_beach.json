@@ -1,0 +1,50 @@
+{
+ "style": "painterly",
+ "framing": "full",
+ "canvas": {
+  "seed": 3
+ },
+ "pair": {
+  "contact": "hand_hold"
+ },
+ "characters": [
+  {
+   "hair": {
+    "style": "long",
+    "color": "#5A3C38"
+   },
+   "view": "back",
+   "head": {
+    "yaw": 28,
+    "roll": -2
+   },
+   "body": {
+    "stance": "contrapposto"
+   },
+   "outfit": {
+    "type": "one_piece",
+    "color": "#2F6E8E"
+   }
+  },
+  {
+   "gender": "male",
+   "view": "back",
+   "head": {
+    "yaw": -20
+   },
+   "place": {
+    "scale": 1.06
+   },
+   "body": {
+    "figure": "athletic"
+   },
+   "outfit": {
+    "type": "shirtless",
+    "bottom": "board_shorts"
+   }
+  }
+ ],
+ "background": {
+  "type": "beach"
+ }
+}

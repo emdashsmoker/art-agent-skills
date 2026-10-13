@@ -1,0 +1,5 @@
+{"style": "anime_cel", "framing": "waist", "canvas": {"seed": 3},
+ "character": {"head": {"yaw": -10, "roll": 3}, "body": {"pose": "pocket"},
+   "hair": {"color": "#3B2F35", "style": "ponytail", "bangs": "full"},
+   "eyes": {"color": "#6A8F5A"}, "outfit": {"type": "hoodie", "color": "#A9B1C1", "bottom": "jeans"}},
+ "background": {"type": "bokeh"}}

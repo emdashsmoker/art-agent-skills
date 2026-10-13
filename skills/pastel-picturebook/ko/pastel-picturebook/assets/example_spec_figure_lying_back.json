@@ -1,0 +1,71 @@
+{
+  "seed": 24,
+  "canvas": {
+    "width": 1600,
+    "height": 1200
+  },
+  "light": [
+    -0.4,
+    -0.7,
+    0.6
+  ],
+  "pose": {
+    "head_center": [
+      0.2,
+      0.6
+    ],
+    "head_unit": 0.036
+  },
+  "expression": {
+    "name": "smile",
+    "amount": 0.6
+  },
+  "hair": {
+    "length": 3.2
+  },
+  "figure": {
+    "view": "side",
+    "lying": {
+      "face": "up",
+      "ground": 0.78
+    },
+    "clothes": {
+      "dress": null,
+      "shoes": false,
+      "shirt": {
+        "ease": 0.08,
+        "neck_half": 0.6,
+        "neck_level": 0.2,
+        "hem_level": 4.4,
+        "sleeve": 0.35
+      },
+      "pants": {
+        "waist_level": 4.6,
+        "hem_drop": 0.2,
+        "leg_widths": [
+          1.0,
+          0.62,
+          0.5
+        ],
+        "length": 0.42
+      }
+    },
+    "profile_pose": {
+      "arm": {
+        "upper": 20.0,
+        "fore": 45.0
+      },
+      "hand": "relaxed",
+      "leg_near": {
+        "thigh": 55.0,
+        "shin": -40.0,
+        "foot": -20.0
+      },
+      "leg_far": {
+        "thigh": 2.0,
+        "shin": -2.0,
+        "foot": 30.0
+      }
+    }
+  }
+}

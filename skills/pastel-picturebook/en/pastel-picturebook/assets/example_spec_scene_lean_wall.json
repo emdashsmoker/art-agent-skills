@@ -1,0 +1,110 @@
+{
+  "seed": 92,
+  "light": [
+    -0.5,
+    -0.55,
+    0.65
+  ],
+  "pose": {
+    "head_center": [
+      0.56,
+      0.4
+    ],
+    "head_unit": 0.034,
+    "roll_deg": -6,
+    "mirror": true
+  },
+  "expression": "smile",
+  "look": {
+    "hair_style": "long",
+    "identity": 12,
+    "hair_color": "black"
+  },
+  "backdrop": {
+    "subject": "city",
+    "spec": {
+      "night": {
+        "on": true
+      },
+      "camera": {
+        "horizon_y": 0.4
+      }
+    },
+    "place": "horizon",
+    "blur": 0.002
+  },
+  "grade": {
+    "color": "#8C93C8",
+    "amount": 0.25
+  },
+  "figure": {
+    "view": "side",
+    "floor": null,
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "shirt": {
+        "ease": 0.08,
+        "neck_half": 0.6,
+        "neck_level": 0.2,
+        "hem_level": 4.4,
+        "sleeve": 1.9
+      },
+      "pants": {
+        "waist_level": 4.6,
+        "hem_drop": 0.2,
+        "leg_widths": [
+          1.0,
+          0.62,
+          0.5
+        ],
+        "length": 1.0
+      },
+      "jacket": {
+        "ease": 0.16,
+        "hem_level": 6.4,
+        "button_level": 3.6,
+        "sleeve": 1.93,
+        "buttons": 2
+      }
+    },
+    "profile_pose": {
+      "lean": -6.0,
+      "arch": 0.6,
+      "arm": {
+        "upper": -8.0,
+        "fore": -10.0
+      },
+      "hand": "relaxed",
+      "leg_near": {
+        "thigh": 36.0,
+        "shin": -88.0,
+        "foot": 88.0
+      },
+      "leg_far": {
+        "thigh": 6.0,
+        "shin": -4.0
+      },
+      "wall": {
+        "width": 5.0
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "jacket": {
+        "base": "#B98A5A",
+        "shadow": "#8A6038",
+        "light": "#E0B88A",
+        "line": "#3A2614",
+        "button": "#2A1E14"
+      },
+      "wall": {
+        "base": "#9C9AA6",
+        "shadow": "#6E6C7A",
+        "light": "#C9C8D4",
+        "line": "#2E2C38"
+      }
+    }
+  }
+}

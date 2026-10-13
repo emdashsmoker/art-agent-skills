@@ -1,0 +1,231 @@
+{
+  "spec": {
+    "canvas": {
+      "width": 1600,
+      "height": 1200
+    },
+    "seed": 21,
+    "light": [
+      -0.55,
+      -0.6,
+      0.58
+    ],
+    "time": "day",
+    "camera": {
+      "eye_height": 150,
+      "horizon_y": 0.46,
+      "focal": 0.62,
+      "center_x": 0.5
+    },
+    "room": {
+      "width": 620,
+      "height": 270,
+      "depth": 600,
+      "near": 40,
+      "floor": "planks",
+      "plank": 18
+    },
+    "items": [
+      {
+        "kind": "window",
+        "wall": "back",
+        "a0": -230,
+        "a1": -40,
+        "y0": 80,
+        "y1": 225,
+        "panes": [
+          2,
+          2
+        ],
+        "view": "trees",
+        "curtains": true
+      },
+      {
+        "kind": "frame",
+        "wall": "back",
+        "a0": 90,
+        "a1": 200,
+        "y0": 125,
+        "y1": 190
+      },
+      {
+        "kind": "rug",
+        "x": 60,
+        "z": 300,
+        "width": 260,
+        "depth": 190
+      },
+      {
+        "kind": "sofa",
+        "x": 140,
+        "z": 505,
+        "width": 180,
+        "depth": 90
+      },
+      {
+        "kind": "bookshelf",
+        "x": 278,
+        "z": 565,
+        "width": 70,
+        "height": 185,
+        "depth": 32
+      },
+      {
+        "kind": "table",
+        "x": 120,
+        "z": 390,
+        "radius": 38,
+        "height": 45,
+        "cups": 1
+      },
+      {
+        "kind": "floor_lamp",
+        "x": 20,
+        "z": 545,
+        "height": 160
+      },
+      {
+        "kind": "plant",
+        "x": -285,
+        "z": 470,
+        "radius": 18,
+        "height": 38,
+        "leaves": 11
+      }
+    ]
+  },
+  "style": {
+    "palette": {
+      "lamp": {
+        "base": "#2F3238",
+        "shadow": "#121318",
+        "deep": "#08090B",
+        "light": "#FFFFFF",
+        "line": "#050607",
+        "bulb": "#FFD58A"
+      },
+      "shade": {
+        "base": "#F1E6D0",
+        "shadow": "#C9B48E",
+        "light": "#FFFFFF",
+        "line": "#6B5A3E"
+      },
+      "device": {
+        "base": "#B9BEC6",
+        "shadow": "#5E636D",
+        "deep": "#33363C",
+        "light": "#FFFFFF",
+        "line": "#24262B"
+      },
+      "mug": {
+        "base": "#F2EFE8",
+        "shadow": "#A9A396",
+        "deep": "#6E685E",
+        "light": "#FFFFFF",
+        "line": "#4E4A42"
+      },
+      "coffee": {
+        "base": "#4A2C1A"
+      },
+      "pot": {
+        "base": "#C9744E",
+        "shadow": "#7E3E26",
+        "deep": "#52281A",
+        "light": "#FFD9C2",
+        "line": "#3E1E12"
+      },
+      "leaf": {
+        "base": "#4F8A4A",
+        "shadow": "#22482A",
+        "deep": "#14301B",
+        "light": "#D8F2B8",
+        "line": "#10261A"
+      },
+      "art": {
+        "frame": "#3A2E24",
+        "paper": "#F3EEE2",
+        "a": "#D98C5F",
+        "b": "#4E7A8C"
+      },
+      "outside": {
+        "sky_top": "#8FC0EA",
+        "sky_bottom": "#DCEBF5",
+        "far": "#B7C0CB",
+        "window": "#EAF1F7",
+        "ground": "#8E949B",
+        "trees": "#6E9E63",
+        "lawn": "#9CBC74",
+        "night_top": "#121935",
+        "night_bottom": "#2B3563",
+        "far_night": "#1C2134",
+        "lit": "#FFD98A",
+        "ground_night": "#20253A",
+        "trees_night": "#18261F",
+        "sun": "#FFF1C9"
+      },
+      "room_wall": {
+        "base": "#E4E7E9",
+        "shadow": "#A9AFB6",
+        "ceiling": "#EEF0F1",
+        "line": "#5A616B"
+      },
+      "room_floor": {
+        "base": "#C99E72",
+        "shadow": "#8E6B48",
+        "alt": "#B48A60",
+        "line": "#6A4C32",
+        "cast": "#4A3624"
+      },
+      "room_trim": {
+        "base": "#F4F2EE",
+        "shadow": "#C9C5BE",
+        "line": "#77736C"
+      },
+      "desk": {
+        "base": "#B88B5E",
+        "shadow": "#7E5C3B",
+        "deep": "#4A3422",
+        "line": "#3A2818",
+        "cast": "#4A3624"
+      },
+      "curtain": {
+        "base": "#C9D6C8",
+        "shadow": "#8FA294",
+        "light": "#EEF4EC",
+        "line": "#4E5E52"
+      },
+      "sofa": {
+        "base": "#5E7FA6",
+        "shadow": "#3D5878",
+        "line": "#1E2C3E"
+      },
+      "shelf_wood": {
+        "base": "#B88B5E",
+        "shadow": "#7E5C3B",
+        "deep": "#4A3422",
+        "line": "#3A2818"
+      },
+      "books": {
+        "a": "#B04A3A",
+        "b": "#3E5A86",
+        "c": "#D9B45E",
+        "d": "#5E8A6E",
+        "e": "#E8E0D0",
+        "f": "#6B4A7A",
+        "line": "#2A1E14"
+      },
+      "rug": {
+        "base": "#E8DCC6",
+        "border": "#B8573F",
+        "motif": "#D9A35E",
+        "shadow": "#B8A88E",
+        "line": "#6E4A30"
+      },
+      "chair": {
+        "base": "#B88B5E",
+        "shadow": "#7E5C3B",
+        "line": "#3A2818"
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+ "canvas": {
+  "aspect": "3:2",
+  "detail": "standard",
+  "seed": 36
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "mountain_lake",
+  "time": "day",
+  "mountains": 0.3
+ },
+ "pairs": [
+  {
+   "kind": "hold_hands",
+   "facing": 180,
+   "at": [
+    -0.6,
+    1.5
+   ],
+   "a": {
+    "name": "a",
+    "preset": "man",
+    "pose": "walk",
+    "outfit": "shirt_trousers",
+    "hair": {
+     "style": "side_part",
+     "color": "brown"
+    },
+    "skin": "light"
+   },
+   "b": {
+    "name": "b",
+    "preset": "woman",
+    "pose": "walk",
+    "outfit": "sundress",
+    "hair": {
+     "style": "chignon",
+     "color": "dark_brown"
+    },
+    "skin": "fair"
+   }
+  }
+ ],
+ "props": [
+  {
+   "kind": "book",
+   "held_by": "c:hands",
+   "open": true
+  }
+ ],
+ "figures": [
+  {
+   "name": "c",
+   "preset": "woman_soft",
+   "pose": "sit_floor",
+   "outfit": "sweater_skirt",
+   "hair": {
+    "style": "bun",
+    "color": "blonde"
+   },
+   "expression": "serene",
+   "position": [
+    1.6,
+    -0.6,
+    0
+   ],
+   "facing": -40
+  }
+ ],
+ "camera": {
+  "fit": "people",
+  "yaw": 0,
+  "pitch": 6,
+  "fill": 0.7
+ },
+ "light": {
+  "preset": "three_quarter",
+  "mood": "pastel"
+ },
+ "style": "pointillist"
+}

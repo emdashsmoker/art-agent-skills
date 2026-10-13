@@ -1,0 +1,82 @@
+{
+  "seed": 4,
+  "pose": {
+    "head_center": [
+      0.5,
+      0.15
+    ],
+    "head_unit": 0.068,
+    "yaw_deg": 8,
+    "roll_deg": -4
+  },
+  "hair": {
+    "length": 3.4,
+    "wave": 0.05,
+    "waves": 1.6
+  },
+  "figure": {
+    "floor": {
+      "y": 0.9
+    },
+    "clothes": null,
+    "seat": {
+      "half_width": 2.5
+    },
+    "pose": {
+      "shoulder_tilt": 3.0,
+      "pelvis_tilt": -3.0,
+      "arm_left": {
+        "upper": 10.0,
+        "fore": -12.0,
+        "hand": -8.0,
+        "foreshorten": [
+          1.0,
+          0.7
+        ],
+        "toward": [
+          0,
+          1
+        ]
+      },
+      "arm_right": {
+        "upper": 8.0,
+        "fore": -8.0,
+        "hand": -6.0,
+        "foreshorten": [
+          1.0,
+          0.7
+        ],
+        "toward": [
+          0,
+          1
+        ]
+      },
+      "leg_left": {
+        "thigh": -10.0,
+        "shin": 4.0,
+        "foot": 10.0,
+        "foreshorten": [
+          0.34,
+          1.0
+        ],
+        "toward": [
+          1,
+          0
+        ]
+      },
+      "leg_right": {
+        "thigh": -8.0,
+        "shin": -2.0,
+        "foot": 16.0,
+        "foreshorten": [
+          0.34,
+          1.0
+        ],
+        "toward": [
+          1,
+          0
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,255 @@
+{
+  "spec": {
+    "canvas": {
+      "width": 1600,
+      "height": 1200
+    },
+    "seed": 25,
+    "light": [
+      -0.55,
+      -0.6,
+      0.58
+    ],
+    "time": "day",
+    "camera": {
+      "eye_height": 150,
+      "horizon_y": 0.46,
+      "focal": 0.62,
+      "center_x": 0.5
+    },
+    "room": {
+      "width": 480,
+      "height": 250,
+      "depth": 460,
+      "near": 40,
+      "floor": "tiles",
+      "tile": 30,
+      "wall_tiles": {
+        "height": 130,
+        "size": 30
+      }
+    },
+    "items": [
+      {
+        "kind": "bathtub",
+        "x": -150,
+        "z": 380,
+        "width": 170,
+        "depth": 75,
+        "height": 55
+      },
+      {
+        "kind": "vanity",
+        "x": 60,
+        "z": 412,
+        "width": 90,
+        "depth": 48,
+        "height": 82
+      },
+      {
+        "kind": "mirror",
+        "wall": "back",
+        "a0": 22,
+        "a1": 98,
+        "y0": 112,
+        "y1": 192
+      },
+      {
+        "kind": "sconce",
+        "wall": "back",
+        "a": 60,
+        "y": 205
+      },
+      {
+        "kind": "shower",
+        "a0": 135,
+        "a1": 240,
+        "z": 330,
+        "height": 200
+      },
+      {
+        "kind": "towel",
+        "wall": "back",
+        "a0": -52,
+        "a1": -12,
+        "y0": 62,
+        "y1": 118
+      }
+    ]
+  },
+  "style": {
+    "palette": {
+      "lamp": {
+        "base": "#2F3238",
+        "shadow": "#121318",
+        "deep": "#08090B",
+        "light": "#FFFFFF",
+        "line": "#050607",
+        "bulb": "#FFD58A"
+      },
+      "shade": {
+        "base": "#F1E6D0",
+        "shadow": "#C9B48E",
+        "light": "#FFFFFF",
+        "line": "#6B5A3E"
+      },
+      "device": {
+        "base": "#B9BEC6",
+        "shadow": "#5E636D",
+        "deep": "#33363C",
+        "light": "#FFFFFF",
+        "line": "#24262B"
+      },
+      "mug": {
+        "base": "#F2EFE8",
+        "shadow": "#A9A396",
+        "deep": "#6E685E",
+        "light": "#FFFFFF",
+        "line": "#4E4A42"
+      },
+      "coffee": {
+        "base": "#4A2C1A"
+      },
+      "pot": {
+        "base": "#C9744E",
+        "shadow": "#7E3E26",
+        "deep": "#52281A",
+        "light": "#FFD9C2",
+        "line": "#3E1E12"
+      },
+      "leaf": {
+        "base": "#4F8A4A",
+        "shadow": "#22482A",
+        "deep": "#14301B",
+        "light": "#D8F2B8",
+        "line": "#10261A"
+      },
+      "art": {
+        "frame": "#3A2E24",
+        "paper": "#F3EEE2",
+        "a": "#D98C5F",
+        "b": "#4E7A8C"
+      },
+      "outside": {
+        "sky_top": "#8FC0EA",
+        "sky_bottom": "#DCEBF5",
+        "far": "#B7C0CB",
+        "window": "#EAF1F7",
+        "ground": "#8E949B",
+        "trees": "#6E9E63",
+        "lawn": "#9CBC74",
+        "night_top": "#121935",
+        "night_bottom": "#2B3563",
+        "far_night": "#1C2134",
+        "lit": "#FFD98A",
+        "ground_night": "#20253A",
+        "trees_night": "#18261F",
+        "sun": "#FFF1C9"
+      },
+      "room_wall": {
+        "base": "#E6E9EA",
+        "shadow": "#AEB4B8",
+        "ceiling": "#F0F2F2",
+        "line": "#5E666C"
+      },
+      "room_floor": {
+        "base": "#C9CDD0",
+        "shadow": "#959BA0",
+        "alt": "#B4BABF",
+        "line": "#6E757B",
+        "cast": "#4E555B"
+      },
+      "room_trim": {
+        "base": "#F4F2EE",
+        "shadow": "#C9C5BE",
+        "line": "#77736C"
+      },
+      "desk": {
+        "base": "#B88B5E",
+        "shadow": "#7E5C3B",
+        "deep": "#4A3422",
+        "line": "#3A2818",
+        "cast": "#4A3624"
+      },
+      "curtain": {
+        "base": "#C9D6C8",
+        "shadow": "#8FA294",
+        "light": "#EEF4EC",
+        "line": "#4E5E52"
+      },
+      "sofa": {
+        "base": "#5E7FA6",
+        "shadow": "#3D5878",
+        "line": "#1E2C3E"
+      },
+      "shelf_wood": {
+        "base": "#B88B5E",
+        "shadow": "#7E5C3B",
+        "deep": "#4A3422",
+        "line": "#3A2818"
+      },
+      "books": {
+        "a": "#B04A3A",
+        "b": "#3E5A86",
+        "c": "#D9B45E",
+        "d": "#5E8A6E",
+        "e": "#E8E0D0",
+        "f": "#6B4A7A",
+        "line": "#2A1E14"
+      },
+      "rug": {
+        "base": "#E8DCC6",
+        "border": "#B8573F",
+        "motif": "#D9A35E",
+        "shadow": "#B8A88E",
+        "line": "#6E4A30"
+      },
+      "chair": {
+        "base": "#B88B5E",
+        "shadow": "#7E5C3B",
+        "line": "#3A2818"
+      },
+      "room_tile": {
+        "base": "#F2F4F4",
+        "shadow": "#B9C2C6",
+        "light": "#FFFFFF",
+        "line": "#9AA6AC"
+      },
+      "porcelain": {
+        "base": "#FAFBFB",
+        "shadow": "#C7CED2",
+        "deep": "#DCE3E7",
+        "light": "#FFFFFF",
+        "line": "#7C878E"
+      },
+      "vanity": {
+        "base": "#9A7457",
+        "shadow": "#64492F",
+        "deep": "#3E2C1C",
+        "line": "#2E2014"
+      },
+      "metal": {
+        "base": "#B9C0C6",
+        "shadow": "#6F777E",
+        "light": "#FFFFFF",
+        "line": "#3E454B"
+      },
+      "mirror": {
+        "top": "#D9E6EE",
+        "bottom": "#AFC3CF",
+        "gleam": "#FFFFFF"
+      },
+      "glass": {
+        "base": "#CFE6EE",
+        "gleam": "#FFFFFF",
+        "opacity": 0.22
+      },
+      "towel": {
+        "base": "#E9D6C6",
+        "shadow": "#B99E88",
+        "stripe": "#9AB0C0",
+        "line": "#6A584A"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "expression": "smile",
+  "look": {
+    "face_shape": "round",
+    "eye_shape": "big",
+    "skin_tone": "fair"
+  },
+  "accessories": {
+    "glasses": true,
+    "hat": {
+      "kind": "beanie",
+      "pompom": true
+    },
+    "scarf": true
+  },
+  "style": {
+    "palette": {
+      "scarf": {
+        "pattern": {
+          "kind": "check",
+          "color": "#2F3A5A",
+          "scale": 0.3,
+          "width": 0.3,
+          "opacity": 0.8
+        }
+      }
+    }
+  }
+}

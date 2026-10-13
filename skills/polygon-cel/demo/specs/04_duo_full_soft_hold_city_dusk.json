@@ -1,0 +1,51 @@
+{
+ "style": "soft_illust",
+ "framing": "full",
+ "canvas": {
+  "seed": 3
+ },
+ "pair": {
+  "contact": "hand_hold"
+ },
+ "characters": [
+  {
+   "hair": {
+    "style": "long",
+    "color": "#5A3C38",
+    "wave": 0.3
+   },
+   "expression": {
+    "mouth": "smile"
+   },
+   "outfit": {
+    "type": "offshoulder_dress",
+    "color": "#7C8DB5",
+    "shoes": "heels"
+   }
+  },
+  {
+   "gender": "male",
+   "place": {
+    "scale": 1.06
+   },
+   "expression": {
+    "mouth": "smile"
+   },
+   "outfit": {
+    "type": "shirt",
+    "color": "#F2F2F0",
+    "bottom": "slacks",
+    "shoes": "dress_shoes"
+   },
+   "body": {
+    "muscle": 0.1
+   }
+  }
+ ],
+ "background": {
+  "type": "city",
+  "city": {
+   "time": "dusk"
+  }
+ }
+}

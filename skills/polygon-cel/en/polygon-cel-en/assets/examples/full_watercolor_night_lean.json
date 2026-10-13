@@ -1,0 +1,30 @@
+{
+ "style": "watercolor",
+ "framing": "full",
+ "canvas": {
+  "seed": 3
+ },
+ "character": {
+  "head": {
+   "yaw": 12,
+   "roll": -3
+  },
+  "body": {
+   "pose": "lean"
+  },
+  "hair": {
+   "style": "long"
+  },
+  "outfit": {
+   "type": "slip_dress",
+   "color": "#7A2E3A",
+   "shoes": "heels"
+  }
+ },
+ "background": {
+  "type": "city",
+  "city": {
+   "time": "night"
+  }
+ }
+}

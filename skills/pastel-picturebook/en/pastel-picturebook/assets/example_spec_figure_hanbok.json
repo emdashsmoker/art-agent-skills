@@ -1,0 +1,33 @@
+{
+  "figure": {
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "chima": {
+        "top_level": 0.95,
+        "hem_half": 3.0,
+        "hem_drop": 0.35,
+        "folds": 9
+      },
+      "jeogori": {
+        "ease": 0.08,
+        "hem_level": 1.95,
+        "sleeve": 1.96,
+        "sleeve_hang": 0.22,
+        "goreum_length": 3.0
+      }
+    },
+    "pose": {
+      "arm_left": {
+        "upper": 10.0,
+        "fore": 6.0,
+        "hand": 2.0
+      },
+      "arm_right": {
+        "upper": 12.0,
+        "fore": 8.0,
+        "hand": 4.0
+      }
+    }
+  }
+}

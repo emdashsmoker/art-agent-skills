@@ -1,0 +1,208 @@
+{
+  "canvas": {
+    "width": 1600,
+    "height": 1200
+  },
+  "sex": "male",
+  "seed": 151,
+  "light": [
+    -0.4,
+    -0.55,
+    0.7
+  ],
+  "pose": {
+    "head_center": [
+      0.43,
+      0.6
+    ],
+    "head_unit": 0.0065,
+    "yaw_deg": -10
+  },
+  "look": {
+    "hair_style": "short",
+    "identity": 51
+  },
+  "accessories": {
+    "hat": {
+      "kind": "beanie"
+    }
+  },
+  "backdrop": {
+    "subject": "panelka",
+    "spec": {
+      "camera": {
+        "horizon_y": 0.6,
+        "focal": 0.45,
+        "x": 0
+      },
+      "blocks": [
+        {
+          "face": "front",
+          "z": 6200,
+          "x0": -6500,
+          "x1": 3600,
+          "floors": 9,
+          "balconies": 0.5,
+          "doors": 3,
+          "salt": 1
+        },
+        {
+          "face": "front",
+          "z": 9000,
+          "x0": 2000,
+          "x1": 7000,
+          "floors": 16,
+          "balconies": 0.2,
+          "salt": 8
+        },
+        {
+          "face": "side",
+          "x": -3000,
+          "z0": 1400,
+          "z1": 6100,
+          "floors": 9,
+          "balconies": 0.4,
+          "doors": 2,
+          "salt": 2
+        },
+        {
+          "face": "side",
+          "x": 3600,
+          "z0": 2400,
+          "z1": 6100,
+          "floors": 12,
+          "balconies": 0.3,
+          "salt": 3
+        }
+      ],
+      "lamps": [
+        {
+          "x": -520,
+          "z": 1180,
+          "arm": 1,
+          "height": 650
+        },
+        {
+          "x": -1600,
+          "z": 3600,
+          "arm": 1,
+          "height": 650
+        },
+        {
+          "x": 1500,
+          "z": 4600,
+          "arm": -1,
+          "height": 650
+        }
+      ],
+      "poles": [
+        {
+          "x": 1100,
+          "z": 1700,
+          "height": 900
+        },
+        {
+          "x": 1300,
+          "z": 3300,
+          "height": 900
+        },
+        {
+          "x": 1500,
+          "z": 5000,
+          "height": 900
+        }
+      ],
+      "birches": [
+        {
+          "x": -2000,
+          "z": 1400,
+          "height": 1500
+        },
+        {
+          "x": 2300,
+          "z": 2300,
+          "height": 1700
+        },
+        {
+          "x": -2200,
+          "z": 4300,
+          "height": 1300
+        },
+        {
+          "x": 700,
+          "z": 5200,
+          "height": 1200
+        }
+      ],
+      "swing": {
+        "x": 150,
+        "z": 1500
+      },
+      "ground": {
+        "snow": true,
+        "path": [
+          [
+            -100,
+            200
+          ],
+          [
+            -300,
+            1300
+          ],
+          [
+            200,
+            2800
+          ],
+          [
+            900,
+            6100
+          ]
+        ],
+        "width": 150
+      }
+    },
+    "place": "horizon"
+  },
+  "weather": {
+    "kind": "snow",
+    "amount": 0.4
+  },
+  "figure": {
+    "floor": {
+      "at_feet": true
+    },
+    "clothes": {
+      "shirt": null,
+      "hoodie": {
+        "hem_level": 5.7
+      },
+      "shoes": true,
+      "pants": {
+        "waist_level": 4.6,
+        "hem_drop": 0.2,
+        "leg_widths": [
+          1.0,
+          0.75,
+          0.65
+        ]
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "hoodie": {
+        "base": "#2E3036",
+        "shadow": "#191A1E",
+        "light": "#55585F",
+        "line": "#08080A",
+        "string": "#B8B8B8"
+      },
+      "hat": {
+        "base": "#2B2D33",
+        "shadow": "#16171B",
+        "light": "#4A4D55",
+        "line": "#0A0A0C"
+      }
+    }
+  }
+}

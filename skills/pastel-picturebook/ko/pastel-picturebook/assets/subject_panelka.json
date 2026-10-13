@@ -1,0 +1,206 @@
+{
+  "spec": {
+    "canvas": {
+      "width": 1600,
+      "height": 1200
+    },
+    "seed": 51,
+    "light": [
+      -0.4,
+      -0.6,
+      0.7
+    ],
+    "time": "night",
+    "camera": {
+      "horizon_y": 0.58,
+      "focal": 0.7,
+      "eye_height": 160,
+      "center_x": 0.5
+    },
+    "sky": {
+      "clouds": 0.55,
+      "stars": 0
+    },
+    "haze": {
+      "distance": 20000,
+      "amount": 0.5
+    },
+    "ground": {
+      "snow": true,
+      "path": [
+        [
+          -200,
+          200
+        ],
+        [
+          0,
+          1500
+        ],
+        [
+          400,
+          3000
+        ],
+        [
+          300,
+          5100
+        ]
+      ],
+      "width": 150
+    },
+    "blocks": [
+      {
+        "face": "front",
+        "z": 5400,
+        "x0": -5200,
+        "x1": 4200,
+        "floors": 9,
+        "balconies": 0.5,
+        "doors": 3,
+        "salt": 1
+      },
+      {
+        "face": "side",
+        "x": -2300,
+        "z0": 1600,
+        "z1": 5300,
+        "floors": 9,
+        "balconies": 0.4,
+        "doors": 2,
+        "salt": 2
+      },
+      {
+        "face": "side",
+        "x": 2600,
+        "z0": 2600,
+        "z1": 5300,
+        "floors": 12,
+        "balconies": 0.3,
+        "salt": 3
+      }
+    ],
+    "poles": [
+      {
+        "x": 700,
+        "z": 1500,
+        "height": 900
+      },
+      {
+        "x": 800,
+        "z": 3000,
+        "height": 900
+      },
+      {
+        "x": 900,
+        "z": 4600,
+        "height": 900
+      }
+    ],
+    "wires": {
+      "sag": 60,
+      "count": 3
+    },
+    "lamps": [
+      {
+        "x": -1000,
+        "z": 1300,
+        "arm": 1,
+        "height": 650
+      },
+      {
+        "x": -1100,
+        "z": 3100,
+        "arm": 1,
+        "height": 650
+      }
+    ],
+    "birches": [
+      {
+        "x": -1500,
+        "z": 1000,
+        "height": 1400
+      },
+      {
+        "x": 1700,
+        "z": 2100,
+        "height": 1600
+      },
+      {
+        "x": -1750,
+        "z": 3700,
+        "height": 1300
+      }
+    ],
+    "swing": {
+      "x": 250,
+      "z": 2700
+    },
+    "weather": {
+      "kind": "snow",
+      "amount": 0.6
+    }
+  },
+  "style": {
+    "palette": {
+      "sky": {
+        "night_top": "#0E1220",
+        "night_middle": "#1F2534",
+        "night_low": "#4A4446",
+        "night_cloud": "#2A2F3C",
+        "night_lit": "#6E5A50",
+        "dusk_top": "#394150",
+        "dusk_middle": "#646873",
+        "dusk_low": "#B4A497",
+        "dusk_cloud": "#50555F",
+        "dusk_lit": "#C29C86",
+        "haze_night": "#2C3040",
+        "haze_dusk": "#80838C"
+      },
+      "ground": {
+        "snow_far": "#8C93A0",
+        "snow_near": "#C9CED6",
+        "snow_shadow": "#8E97A8",
+        "grass_far": "#8A8270",
+        "grass_near": "#6E6450",
+        "grass_shadow": "#8A8070",
+        "path": "#5E6068",
+        "stalk": "#4E4636",
+        "path_dirt": "#6A6258",
+        "stalk_light": "#A89A7C",
+        "rut": "#3A3E48"
+      },
+      "block": {
+        "wall": "#7A7C80",
+        "shade": "#4E5158",
+        "day": "#A8AAAC",
+        "glass": "#22262E",
+        "glass_day": "#5A6470",
+        "lit": "#FFC46E",
+        "lit_amber": "#F29A4A",
+        "tv": "#8FB4E8",
+        "balcony": "#9A9890",
+        "door": "#2A2620",
+        "line": "#1C1E24"
+      },
+      "lamp": {
+        "head": "#FFD08A",
+        "off": "#C8C4B8",
+        "pool": "#FFAA55",
+        "glow": "#FFB060"
+      },
+      "pole": {
+        "base": "#3A3C42",
+        "line": "#16171B",
+        "wire": "#1A1B20",
+        "metal": "#4A4E58",
+        "crow": "#101114"
+      },
+      "birch": {
+        "bark": "#D8D6CE",
+        "mark": "#2A2A2C",
+        "shade": "#8E9098",
+        "twig": "#2E2C2E",
+        "line": "#3A3A3E"
+      }
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "canvas": {
+    "width": 1200,
+    "height": 1600
+  },
+  "sex": "male",
+  "seed": 121,
+  "light": [
+    -0.5,
+    -0.55,
+    0.65
+  ],
+  "pose": {
+    "head_center": [
+      0.5,
+      0.38
+    ],
+    "head_unit": 0.036,
+    "yaw_deg": -8,
+    "roll_deg": -4
+  },
+  "look": {
+    "hair_style": "short",
+    "identity": 21,
+    "hair_color": "dark_brown"
+  },
+  "expression": {
+    "name": "sad",
+    "amount": 0.3
+  },
+  "accessories": {
+    "hat": {
+      "kind": "beanie"
+    },
+    "cigarette": {
+      "smoke": 1.5
+    }
+  },
+  "backdrop": {
+    "subject": "panelka",
+    "spec": {
+      "camera": {
+        "horizon_y": 0.38,
+        "x": 200
+      },
+      "lamps": [
+        {
+          "x": -260,
+          "z": 420,
+          "arm": 1,
+          "height": 650
+        },
+        {
+          "x": -1100,
+          "z": 3100,
+          "arm": 1,
+          "height": 650
+        }
+      ],
+      "swing": null
+    },
+    "place": "horizon",
+    "blur": 0.0015
+  },
+  "weather": {
+    "kind": "snow",
+    "amount": 0.5
+  },
+  "grade": {
+    "color": "#FFB878",
+    "amount": 0.12
+  },
+  "figure": {
+    "pose": {
+      "turn": -6
+    },
+    "floor": {
+      "at_feet": true
+    },
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "hoodie": {
+        "hem_level": 5.7
+      },
+      "pants": {
+        "waist_level": 4.6,
+        "hem_drop": 0.2,
+        "leg_widths": [
+          1.0,
+          0.75,
+          0.65
+        ]
+      },
+      "shirt": null
+    }
+  },
+  "style": {
+    "palette": {
+      "hoodie": {
+        "base": "#2E3036",
+        "shadow": "#191A1E",
+        "light": "#55585F",
+        "line": "#08080A",
+        "string": "#B8B8B8"
+      },
+      "hat": {
+        "base": "#2B2D33",
+        "shadow": "#16171B",
+        "light": "#4A4D55",
+        "line": "#0A0A0C"
+      },
+      "pants": {
+        "base": "#3A4250",
+        "shadow": "#22262E",
+        "light": "#5C6474",
+        "line": "#0E1014"
+      }
+    }
+  }
+}

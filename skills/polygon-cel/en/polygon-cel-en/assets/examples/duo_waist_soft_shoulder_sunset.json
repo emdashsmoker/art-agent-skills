@@ -1,0 +1,46 @@
+{
+ "style": "soft_illust",
+ "framing": "waist",
+ "canvas": {
+  "seed": 3
+ },
+ "pair": {
+  "contact": "shoulder_arm",
+  "lead": 0
+ },
+ "characters": [
+  {
+   "gender": "male",
+   "place": {
+    "scale": 1.06
+   },
+   "expression": {
+    "mouth": "smile"
+   },
+   "outfit": {
+    "type": "beach_shirt",
+    "color": "#E9DCC4"
+   }
+  },
+  {
+   "hair": {
+    "style": "long",
+    "color": "#5A3C38"
+   },
+   "expression": {
+    "mouth": "open_smile",
+    "eye_smile": 0.2
+   },
+   "outfit": {
+    "type": "tank_top",
+    "color": "#F4F1EA"
+   }
+  }
+ ],
+ "background": {
+  "type": "landscape",
+  "landscape": {
+   "time": "sunset"
+  }
+ }
+}

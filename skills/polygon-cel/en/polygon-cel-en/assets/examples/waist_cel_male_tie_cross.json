@@ -1,0 +1,25 @@
+{
+ "style": "anime_cel",
+ "framing": "waist",
+ "canvas": {
+  "seed": 3
+ },
+ "character": {
+  "gender": "male",
+  "head": {
+   "yaw": -10
+  },
+  "body": {
+   "pose": "arms_crossed"
+  },
+  "outfit": {
+   "type": "shirt",
+   "variant": "tie",
+   "color": "#EEF2F6",
+   "bottom": "slacks"
+  }
+ },
+ "background": {
+  "type": "office"
+ }
+}

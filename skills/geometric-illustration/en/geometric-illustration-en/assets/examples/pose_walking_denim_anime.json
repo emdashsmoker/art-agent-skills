@@ -1,0 +1,21 @@
+{
+  "style": "anime",
+  "framing": "full_body",
+  "canvas": {
+    "width": 1024,
+    "height": 1600
+  },
+  "character": {
+    "sex": "male",
+    "outfit": {
+      "type": "denim_jacket"
+    },
+    "hair": {
+      "style": "two_block"
+    },
+    "pose": {
+      "preset": "walking"
+    },
+    "expression": "smile"
+  }
+}

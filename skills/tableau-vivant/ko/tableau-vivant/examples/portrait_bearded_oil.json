@@ -1,0 +1,61 @@
+{
+ "canvas": {
+  "aspect": "4:5",
+  "detail": "standard",
+  "seed": 17
+ },
+ "environment": {
+  "type": "studio",
+  "top": [
+   0.14,
+   0.13,
+   0.12
+  ],
+  "bottom": [
+   0.22,
+   0.19,
+   0.16
+  ],
+  "glow": [
+   0.38,
+   0.3,
+   0.22
+  ]
+ },
+ "figures": [
+  {
+   "name": "a",
+   "preset": "man_mature",
+   "pose": {
+    "preset": "stand",
+    "head": {
+     "turn": -14,
+     "tilt": 2
+    }
+   },
+   "hair": {
+    "style": "slick_back",
+    "color": "dark_brown"
+   },
+   "beard": "full_beard",
+   "outfit": "suit",
+   "expression": "serious",
+   "skin": "light",
+   "look": {
+    "iris_color": "hazel"
+   }
+  }
+ ],
+ "camera": {
+  "subject": "a",
+  "shot": "bust",
+  "yaw": -18,
+  "pitch": 2
+ },
+ "light": {
+  "preset": "rembrandt",
+  "mood": "old_master",
+  "ambient": 0.32
+ },
+ "style": "oil"
+}

@@ -1,0 +1,100 @@
+{
+ "canvas": {
+  "aspect": "4:5",
+  "detail": "standard",
+  "seed": 46
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "garden",
+  "time": "day",
+  "forest": {
+   "count": 8,
+   "kinds": [
+    "sakura"
+   ],
+   "area": [
+    -12,
+    12,
+    4,
+    12
+   ],
+   "min_distance": 3.0,
+   "height": [
+    4.0,
+    6.0
+   ],
+   "clearing": 3.0
+  }
+ },
+ "groups": [
+  {
+   "kind": "arm_around",
+   "members": [
+    {
+     "name": "p1",
+     "preset": "woman_anime",
+     "outfit": "sweater_skirt",
+     "hair": {
+      "style": "bob",
+      "color": "brown"
+     },
+     "expression": "smile",
+     "colors": {
+      "sweater": [
+       0.95,
+       0.85,
+       0.7
+      ]
+     }
+    },
+    {
+     "name": "p2",
+     "preset": "man_anime",
+     "outfit": "hoodie_jeans",
+     "hair": {
+      "style": "textured_crop",
+      "color": "black"
+     },
+     "expression": "smile",
+     "colors": {
+      "hoodie": [
+       0.35,
+       0.5,
+       0.72
+      ]
+     }
+    },
+    {
+     "name": "p3",
+     "preset": "woman_anime",
+     "outfit": "tshirt_jeans",
+     "hair": {
+      "style": "ponytail",
+      "color": "black"
+     },
+     "expression": "soft_smile",
+     "colors": {
+      "tshirt": [
+       0.95,
+       0.6,
+       0.62
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "camera": {
+  "fit": "people",
+  "shot": "cowboy",
+  "yaw": 0,
+  "pitch": 3,
+  "fill": 0.95
+ },
+ "light": {
+  "preset": "three_quarter",
+  "mood": "pastel"
+ },
+ "style": "anime"
+}

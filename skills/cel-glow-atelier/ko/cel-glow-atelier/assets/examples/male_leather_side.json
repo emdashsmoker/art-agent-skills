@@ -1,0 +1,78 @@
+{
+  "canvas": [
+    1300,
+    1800
+  ],
+  "style": "anime",
+  "seed": 27,
+  "character": {
+    "gender": "male",
+    "hair_style": "layered",
+    "bangs": "layered",
+    "smile": 0.1,
+    "hair_seed": 2
+  },
+  "figure": {
+    "pose": "side_lean",
+    "outfit": "leather_jacket_jeans",
+    "facing": "left",
+    "furniture_color": "#5a5868",
+    "ground_shadow": 0.45,
+    "build": {
+      "muscle": 1.2
+    }
+  },
+  "palette": {
+    "hair": "#1c1a22",
+    "hair_shadow": "#0b0a0e",
+    "hair_light": "#8fa0d8",
+    "skin_shadow": "#cf9a8c",
+    "cloth": "#ece6dc",
+    "cloth_shadow": "#a8a0a8",
+    "cloth2": "#3c4a66",
+    "shoe": "#1a1820"
+  },
+  "placement": {
+    "head_height": 0.11,
+    "pelvis": [
+      0.48,
+      0.48
+    ]
+  },
+  "light": {
+    "azimuth": 50,
+    "elevation": 30
+  },
+  "background": [
+    {
+      "type": "sky",
+      "top": "#141a34",
+      "bottom": "#3a3460",
+      "horizon": 0.48
+    },
+    {
+      "type": "street",
+      "horizon": 0.48,
+      "time": "night",
+      "wet": 0.4,
+      "seed": 23,
+      "eye": 0.95,
+      "cars": 4,
+      "people": 5
+    }
+  ],
+  "style_overrides": {
+    "rim_light": 0.8
+  },
+  "ambient": {
+    "color": "#2a2c60",
+    "opacity": 0.25,
+    "from": 0.55
+  },
+  "finish": {
+    "shadow_tint": "#1e1a48",
+    "highlight_tint": "#ffc8a0",
+    "tint_strength": 0.16,
+    "bloom": 0.4
+  }
+}

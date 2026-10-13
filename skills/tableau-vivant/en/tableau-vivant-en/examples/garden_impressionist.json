@@ -1,0 +1,67 @@
+{
+ "canvas": {
+  "aspect": "4:3",
+  "detail": "standard",
+  "seed": 7
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "garden",
+  "time": "day"
+ },
+ "figures": [
+  {
+   "name": "a",
+   "preset": "woman_soft",
+   "pose": {
+    "preset": "stand",
+    "head": {
+     "turn": 20
+    }
+   },
+   "hair": {
+    "style": "chignon",
+    "color": "auburn"
+   },
+   "outfit": "summer_dress",
+   "colors": {
+    "dress": [
+     0.96,
+     0.95,
+     0.9
+    ]
+   },
+   "position": [
+    1.2,
+    3.0,
+    0
+   ],
+   "facing": -30
+  }
+ ],
+ "props": [
+  {
+   "kind": "bench",
+   "at": [
+    -1.6,
+    4.0,
+    0
+   ],
+   "rotate_deg": 15
+  }
+ ],
+ "camera": {
+  "eye": [
+   0,
+   -6,
+   1.6
+  ],
+  "target": [
+   0.3,
+   6,
+   1.3
+  ],
+  "fov": 40
+ },
+ "style": "impressionist"
+}

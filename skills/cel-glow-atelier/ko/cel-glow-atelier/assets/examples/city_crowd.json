@@ -1,0 +1,123 @@
+{
+  "canvas": [
+    1500,
+    1000
+  ],
+  "style": "illust",
+  "subject": "none",
+  "seed": 2,
+  "light": {
+    "azimuth": 60,
+    "elevation": 30
+  },
+  "background": [
+    {
+      "type": "sky",
+      "top": "#5f9ad6",
+      "bottom": "#dbeaf7",
+      "horizon": 0.56
+    },
+    {
+      "type": "clouds",
+      "color": "#ffffff",
+      "shadow": "#b9c6dc",
+      "coverage": 0.38,
+      "top": 0.02,
+      "bottom": 0.42,
+      "seed": 4
+    },
+    {
+      "type": "street",
+      "horizon": 0.56,
+      "vanish_x": 0.5,
+      "time": "day",
+      "seed": 7,
+      "cars": 5,
+      "people": 8
+    }
+  ],
+  "finish": {
+    "bloom": 0.25,
+    "vignette": 0.2
+  },
+  "extras": [
+    {
+      "character": {
+        "gender": "male"
+      },
+      "palette": {
+        "cloth": "#d9c9a8",
+        "cloth2": "#3a4258",
+        "hair": "#2a2222"
+      },
+      "figure": {
+        "pose": "side_walk",
+        "outfit": "tshirt_jeans",
+        "facing": "left"
+      },
+      "at": [
+        -4.3,
+        7.0
+      ]
+    },
+    {
+      "character": {
+        "gender": "female",
+        "hair_style": "bob",
+        "bangs": "see_through"
+      },
+      "palette": {
+        "cloth": "#7a9ac8",
+        "hair": "#6a4a32"
+      },
+      "figure": {
+        "pose": "side_walk",
+        "outfit": "dress",
+        "facing": "left"
+      },
+      "at": [
+        -5.2,
+        8.5
+      ]
+    },
+    {
+      "character": {
+        "gender": "male",
+        "hair_style": "slicked",
+        "bangs": "swept_back",
+        "head_turn": -0.5
+      },
+      "palette": {
+        "cloth": "#f0f0f0",
+        "cloth2": "#2a2d38"
+      },
+      "figure": {
+        "pose": "standing",
+        "outfit": "suit"
+      },
+      "at": [
+        4.4,
+        5.5
+      ]
+    },
+    {
+      "character": {
+        "gender": "female",
+        "hair_style": "long_wavy",
+        "head_turn": 0.4
+      },
+      "palette": {
+        "cloth": "#e8b04a",
+        "cloth2": "#2c3350"
+      },
+      "figure": {
+        "pose": "side_walk",
+        "outfit": "blouse_skirt"
+      },
+      "at": [
+        5.0,
+        11.0
+      ]
+    }
+  ]
+}

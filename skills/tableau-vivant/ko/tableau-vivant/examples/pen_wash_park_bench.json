@@ -1,0 +1,99 @@
+{
+ "canvas": {
+  "aspect": "4:5",
+  "detail": "standard",
+  "seed": 41
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "garden",
+  "time": "overcast",
+  "tufts": 0,
+  "forest": {
+   "count": 10,
+   "kinds": [
+    "bare"
+   ],
+   "area": [
+    -14,
+    14,
+    5,
+    16
+   ],
+   "min_distance": 3.0,
+   "height": [
+    6.0,
+    9.0
+   ],
+   "clearing": 4.0
+  }
+ },
+ "props": [
+  {
+   "kind": "bench",
+   "at": [
+    0,
+    0.08,
+    0
+   ],
+   "width": 1.6
+  }
+ ],
+ "pairs": [
+  {
+   "kind": "arm_around",
+   "at": [
+    0,
+    0.0
+   ],
+   "a": {
+    "name": "a",
+    "preset": "man_elder",
+    "pose": "sit_chair",
+    "outfit": "long_coat",
+    "hair": {
+     "style": "short_crop",
+     "color": "white"
+    },
+    "beard": "stubble",
+    "expression": "soft_smile",
+    "colors": {
+     "coat": [
+      0.3,
+      0.26,
+      0.22
+     ]
+    }
+   },
+   "b": {
+    "name": "b",
+    "preset": "woman_elder",
+    "pose": "sit_chair",
+    "outfit": "long_coat",
+    "hair": {
+     "style": "bun",
+     "color": "gray"
+    },
+    "expression": "smile",
+    "colors": {
+     "coat": [
+      0.5,
+      0.36,
+      0.3
+     ]
+    }
+   }
+  }
+ ],
+ "camera": {
+  "fit": "people",
+  "yaw": 18,
+  "pitch": 6,
+  "fill": 0.75
+ },
+ "light": {
+  "preset": "three_quarter",
+  "mood": "neutral"
+ },
+ "style": "pen_wash"
+}

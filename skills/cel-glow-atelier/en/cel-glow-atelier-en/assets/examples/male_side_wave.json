@@ -1,0 +1,112 @@
+{
+  "canvas": [
+    1300,
+    1600
+  ],
+  "style": "illust",
+  "seed": 12,
+  "character": {
+    "gender": "male",
+    "hair_style": "layered",
+    "bangs": "layered",
+    "smile": 0.45,
+    "hair_seed": 2
+  },
+  "figure": {
+    "pose": "side_wave",
+    "outfit": "tshirt_jeans",
+    "facing": "left",
+    "ground_shadow": 0.4,
+    "build": {
+      "muscle": 1.15
+    }
+  },
+  "palette": {
+    "hair": "#2a1f1a",
+    "hair_shadow": "#120c0a",
+    "hair_light": "#c89070",
+    "iris": "#4a3626",
+    "cloth": "#f0ece2",
+    "cloth_shadow": "#b0a898",
+    "cloth2": "#33405e",
+    "shoe": "#e8e4dc"
+  },
+  "placement": {
+    "head_height": 0.112,
+    "pelvis": [
+      0.5,
+      0.52
+    ]
+  },
+  "light": {
+    "azimuth": 60,
+    "elevation": 35
+  },
+  "background": [
+    {
+      "type": "sky",
+      "top": "#7fb2e0",
+      "bottom": "#eef4e6",
+      "horizon": 0.6
+    },
+    {
+      "type": "clouds",
+      "color": "#ffffff",
+      "shadow": "#c4cfe0",
+      "coverage": 0.35,
+      "top": 0.02,
+      "bottom": 0.4,
+      "seed": 5
+    },
+    {
+      "type": "tree_line",
+      "base": 0.62,
+      "height": 0.07,
+      "color": "#4f7a52",
+      "haze": "#c9d9c6",
+      "seed": 3
+    },
+    {
+      "type": "ground",
+      "top": 0.6,
+      "color": "#7fa35a",
+      "far_color": "#a5c46f",
+      "roll": 0.02,
+      "seed": 4
+    },
+    {
+      "type": "grass",
+      "top": 0.8,
+      "count": 900,
+      "seed": 6
+    },
+    {
+      "type": "tree",
+      "base": [
+        0.12,
+        0.92
+      ],
+      "height": 0.62,
+      "foliage": "#5f8a45",
+      "foliage_shadow": "#30442f",
+      "trunk": "#4a3528",
+      "seed": 2
+    },
+    {
+      "type": "tree",
+      "base": [
+        0.92,
+        0.84
+      ],
+      "height": 0.48,
+      "foliage": "#6b8a45",
+      "foliage_shadow": "#30442f",
+      "trunk": "#4a3528",
+      "seed": 8
+    }
+  ],
+  "finish": {
+    "bloom": 0.25,
+    "vignette": 0.18
+  }
+}

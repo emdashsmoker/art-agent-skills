@@ -1,0 +1,88 @@
+{
+ "canvas": [
+  1100,
+  1800
+ ],
+ "style": "anime",
+ "seed": 23,
+ "character": {
+  "gender": "female",
+  "hair_style": "pixie",
+  "bangs": "side_swept",
+  "hair_seed": 8,
+  "skin_tone": "tan",
+  "eye_shape": "round",
+  "nose_shape": "dot",
+  "mouth_shape": "small",
+  "head_turn": 0.6,
+  "head_tilt": -3,
+  "gaze": [
+   -0.4,
+   0.0
+  ],
+  "smile": 0.55
+ },
+ "figure": {
+  "pose": "contrapposto",
+  "outfit": "tank_jeans",
+  "ground_shadow": 0.5,
+  "build": {
+   "waist": 0.96,
+   "hips": 1.04
+  }
+ },
+ "palette": {
+  "hair": "#3a2418",
+  "hair_shadow": "#1a0e08",
+  "hair_light": "#e0a070",
+  "iris": "#4a7a5a",
+  "cloth": "#f2c94c",
+  "cloth_shadow": "#c08a3a",
+  "cloth2": "#33456a",
+  "shoe": "#f0ece4"
+ },
+ "placement": {
+  "head_height": 0.115,
+  "pelvis": [
+   0.5,
+   0.47
+  ]
+ },
+ "light": {
+  "azimuth": 60,
+  "elevation": 45
+ },
+ "background": [
+  {
+   "type": "sky",
+   "top": "#6fa8dc",
+   "bottom": "#dbeaf7",
+   "horizon": 0.47
+  },
+  {
+   "type": "clouds",
+   "color": "#ffffff",
+   "shadow": "#c4cfe0",
+   "coverage": 0.35,
+   "top": 0.02,
+   "bottom": 0.38,
+   "seed": 4
+  },
+  {
+   "type": "street",
+   "horizon": 0.47,
+   "time": "day",
+   "seed": 9,
+   "eye": 0.9,
+   "cars": 4,
+   "people": 6
+  }
+ ],
+ "style_overrides": {
+  "rim_light": 0.4
+ },
+ "finish": {
+  "bloom": 0.2,
+  "vignette": 0.12
+ }
+}

@@ -1,0 +1,65 @@
+{
+  "seed": 25,
+  "canvas": {
+    "width": 1600,
+    "height": 1200
+  },
+  "light": [
+    0.4,
+    -0.7,
+    0.6
+  ],
+  "pose": {
+    "head_center": [
+      0.72,
+      0.5
+    ],
+    "head_unit": 0.036,
+    "roll_deg": -55
+  },
+  "expression": "smile",
+  "hair": {
+    "style": "ponytail",
+    "length": 2.6
+  },
+  "figure": {
+    "view": "side",
+    "lying": {
+      "face": "down",
+      "ground": 0.78
+    },
+    "clothes": {
+      "dress": null,
+      "shoes": false,
+      "hoodie": true,
+      "pants": {
+        "waist_level": 4.6,
+        "hem_drop": 0.2,
+        "leg_widths": [
+          1.0,
+          0.62,
+          0.5
+        ],
+        "length": 1.0
+      }
+    },
+    "profile_pose": {
+      "lean": -25.0,
+      "arm": {
+        "upper": 65.0,
+        "fore": 155.0
+      },
+      "hand": "relaxed",
+      "leg_near": {
+        "thigh": -25.0,
+        "shin": -100.0,
+        "foot": -30.0
+      },
+      "leg_far": {
+        "thigh": -25.0,
+        "shin": -70.0,
+        "foot": -30.0
+      }
+    }
+  }
+}

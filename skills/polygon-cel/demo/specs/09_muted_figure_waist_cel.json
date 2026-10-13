@@ -1,0 +1,34 @@
+{
+ "style": "anime_cel",
+ "framing": "waist",
+ "mood": "doomer",
+ "character": {
+  "gender": "male",
+  "head": {
+   "yaw": -12,
+   "pitch": 4
+  },
+  "eyes": {
+   "openness": 0.72
+  },
+  "accessories": [
+   "beanie"
+  ],
+  "body": {
+   "hold": {
+    "item": "cigarette",
+    "side": "left"
+   }
+  },
+  "outfit": {
+   "type": "hoodie",
+   "color": "#2A2C34",
+   "bottom": "jeans",
+   "bottom_color": "#3A4458",
+   "shoes": "sneakers"
+  }
+ },
+ "canvas": {
+  "seed": 13
+ }
+}

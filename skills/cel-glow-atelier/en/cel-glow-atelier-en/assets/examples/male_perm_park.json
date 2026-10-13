@@ -1,0 +1,115 @@
+{
+ "canvas": [
+  1300,
+  1600
+ ],
+ "style": "illust",
+ "seed": 24,
+ "character": {
+  "gender": "male",
+  "hair_style": "perm",
+  "bangs": "short_fringe",
+  "hair_seed": 6,
+  "skin_tone": "medium",
+  "eye_shape": "droopy",
+  "brow_shape": "straight",
+  "smile": 0.4
+ },
+ "figure": {
+  "pose": "side_walk",
+  "outfit": "denim_jacket_chinos",
+  "facing": "left",
+  "ground_shadow": 0.4,
+  "build": {
+   "muscle": 1.1
+  }
+ },
+ "palette": {
+  "hair": "#3a2a22",
+  "hair_shadow": "#1a120e",
+  "hair_light": "#c89a78",
+  "iris": "#4a3626",
+  "cloth": "#f0ece2",
+  "cloth_shadow": "#b0a898",
+  "cloth2": "#c8b48c",
+  "shoe": "#5a3a2a"
+ },
+ "placement": {
+  "head_height": 0.112,
+  "pelvis": [
+   0.5,
+   0.52
+  ]
+ },
+ "light": {
+  "azimuth": 60,
+  "elevation": 35
+ },
+ "background": [
+  {
+   "type": "sky",
+   "top": "#7fb2e0",
+   "bottom": "#eef4e6",
+   "horizon": 0.6
+  },
+  {
+   "type": "clouds",
+   "color": "#ffffff",
+   "shadow": "#c4cfe0",
+   "coverage": 0.3,
+   "top": 0.02,
+   "bottom": 0.4,
+   "seed": 7
+  },
+  {
+   "type": "tree_line",
+   "base": 0.62,
+   "height": 0.07,
+   "color": "#4f7a52",
+   "haze": "#c9d9c6",
+   "seed": 5
+  },
+  {
+   "type": "ground",
+   "top": 0.6,
+   "color": "#7fa35a",
+   "far_color": "#a5c46f",
+   "roll": 0.02,
+   "seed": 4
+  },
+  {
+   "type": "grass",
+   "top": 0.8,
+   "count": 900,
+   "seed": 3
+  },
+  {
+   "type": "tree",
+   "base": [
+    0.14,
+    0.9
+   ],
+   "height": 0.6,
+   "foliage": "#5f8a45",
+   "foliage_shadow": "#30442f",
+   "trunk": "#4a3528",
+   "seed": 4
+  },
+  {
+   "type": "tree",
+   "base": [
+    0.9,
+    0.84
+   ],
+   "height": 0.46,
+   "foliage": "#6b8a45",
+   "foliage_shadow": "#30442f",
+   "trunk": "#4a3528",
+   "seed": 9
+  }
+ ],
+ "finish": {
+  "bloom": 0.25,
+  "vignette": 0.16
+ }
+}

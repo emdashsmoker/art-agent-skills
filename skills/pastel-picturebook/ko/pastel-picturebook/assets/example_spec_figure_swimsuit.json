@@ -1,0 +1,27 @@
+{
+  "accessories": {
+    "hat": {
+      "kind": "wide"
+    }
+  },
+  "figure": {
+    "clothes": {
+      "dress": null,
+      "shoes": false,
+      "swimsuit": true
+    }
+  },
+  "style": {
+    "palette": {
+      "swim": {
+        "pattern": {
+          "kind": "stripes",
+          "color": "#F4F1EA",
+          "scale": 0.28,
+          "width": 0.35,
+          "angle": 0
+        }
+      }
+    }
+  }
+}

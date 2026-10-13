@@ -1,0 +1,13 @@
+{
+  "style": "anime",
+  "framing": "bust",
+  "character": {
+    "outfit": {
+      "type": "tee_jeans"
+    },
+    "hair": {
+      "style": "bob"
+    },
+    "expression": "laugh"
+  }
+}

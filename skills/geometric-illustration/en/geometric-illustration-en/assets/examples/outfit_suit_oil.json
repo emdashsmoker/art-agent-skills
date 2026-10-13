@@ -1,0 +1,16 @@
+{
+  "style": "oil",
+  "framing": "upper_body",
+  "canvas": {
+    "width": 1024,
+    "height": 1280
+  },
+  "character": {
+    "outfit": {
+      "type": "suit"
+    },
+    "pose": {
+      "preset": "chin_rest"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{"style": "watercolor", "canvas": {"seed": 12},
+ "character": {"head": {"yaw": 8, "roll": -5}, "face_shape": "oval",
+   "hair": {"color": "#8F6A52", "style": "ponytail", "bangs": "full"},
+   "eyes": {"color": "#7A6A9E", "shape": "droopy"}, "expression": {"mouth": "smile", "blush": 0.4, "eye_smile": 0.2},
+   "outfit": {"type": "hoodie", "color": "#C9BCD9"}},
+ "background": {"type": "plain", "colors": ["#F4EEE6"]}}

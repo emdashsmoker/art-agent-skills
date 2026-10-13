@@ -1,0 +1,35 @@
+{
+ "style": "watercolor",
+ "framing": "closeup",
+ "background": {
+  "type": "landscape",
+  "landscape": {
+   "time": "misty"
+  }
+ },
+ "character": {
+  "hair": {
+   "style": "ponytail",
+   "bangs": "full",
+   "color": "#8A5A3C"
+  },
+  "eyes": {
+   "color": "#5A7A5A",
+   "shape": "droopy"
+  },
+  "head": {
+   "yaw": -14,
+   "roll": 3
+  },
+  "expression": {
+   "mouth": "soft"
+  },
+  "outfit": {
+   "type": "hoodie",
+   "color": "#A8B4C4"
+  }
+ },
+ "canvas": {
+  "seed": 11
+ }
+}

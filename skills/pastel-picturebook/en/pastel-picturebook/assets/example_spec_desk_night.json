@@ -1,0 +1,78 @@
+{
+  "light": [
+    0.45,
+    -0.7,
+    0.55
+  ],
+  "room": {
+    "window_glow": 0.0,
+    "screen_spill": 0.85
+  },
+  "desk": {
+    "grain": 0.12
+  },
+  "style": {
+    "palette": {
+      "wall": {
+        "top": "#15182A",
+        "bottom": "#1D2034",
+        "glow": "#000000"
+      },
+      "desk": {
+        "base": "#4A3426",
+        "shadow": "#22170F",
+        "deep": "#120C08",
+        "cast": "#060403"
+      },
+      "device": {
+        "base": "#5A5F6C",
+        "shadow": "#22242C",
+        "deep": "#121318",
+        "light": "#C9D6FF",
+        "line": "#07080B"
+      },
+      "keys": {
+        "base": "#6E7484",
+        "shadow": "#2A2D36"
+      },
+      "mug": {
+        "base": "#8C877E",
+        "shadow": "#3A3732",
+        "deep": "#22201D",
+        "light": "#FFE6B0",
+        "line": "#141311"
+      },
+      "pot": {
+        "base": "#6E3C28",
+        "shadow": "#2E180F",
+        "deep": "#1A0D08",
+        "light": "#FFC9A0",
+        "line": "#0E0705"
+      },
+      "leaf": {
+        "base": "#2E5530",
+        "shadow": "#0F1E12",
+        "deep": "#08120A",
+        "light": "#9FD08A",
+        "line": "#050A06"
+      },
+      "paper": {
+        "base": "#B8B4AA",
+        "shadow": "#5A574F",
+        "line": "#2A2824",
+        "rule": "#5A6E8E"
+      },
+      "screen": {
+        "background": "#1E2433",
+        "bar": "#0E1119",
+        "side": "#252C3D",
+        "side_text": "#5E6C8A",
+        "accent": "#5A8CFF",
+        "accent2": "#FF9F5A",
+        "text": "#7C8AA6",
+        "off": "#0A0B0F",
+        "glow": "#7FA6FF"
+      }
+    }
+  }
+}

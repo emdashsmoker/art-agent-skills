@@ -1,0 +1,35 @@
+{
+ "subject": "still_life",
+ "style": "soft_illust",
+ "canvas": {
+  "seed": 6
+ },
+ "still_life": {
+  "table": "#7A5640",
+  "wall": "#E8DCCB",
+  "cloth": null,
+  "objects": [
+   {
+    "type": "books",
+    "x": 0.18,
+    "depth": 0.15
+   },
+   {
+    "type": "laptop",
+    "x": 0.5,
+    "depth": 0.3
+   },
+   {
+    "type": "headphones",
+    "x": 0.82,
+    "depth": 0.45
+   },
+   {
+    "type": "cup",
+    "x": 0.2,
+    "depth": 0.7,
+    "liquid": "#6A3B26"
+   }
+  ]
+ }
+}

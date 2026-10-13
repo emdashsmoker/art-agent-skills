@@ -1,0 +1,63 @@
+{
+ "canvas": {
+  "aspect": "4:5",
+  "detail": "fine",
+  "seed": 31
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "estate",
+  "time": "night"
+ },
+ "props": [
+  {
+   "kind": "cigarette",
+   "held_by": "a:hand.R"
+  }
+ ],
+ "figures": [
+  {
+   "name": "a",
+   "preset": "man",
+   "hair": "textured_crop",
+   "outfit": "hoodie_jeans",
+   "hat": "beanie",
+   "expression": "melancholy",
+   "pose": "smoke",
+   "position": [
+    1.0,
+    4.4,
+    0
+   ],
+   "facing": -12,
+   "colors": {
+    "hoodie": [
+     0.24,
+     0.24,
+     0.25
+    ],
+    "jeans": [
+     0.18,
+     0.2,
+     0.27
+    ]
+   }
+  }
+ ],
+ "camera": {
+  "subject": "a",
+  "shot": "full",
+  "yaw": 2,
+  "pitch": -3,
+  "fill": 0.48,
+  "offset": [
+   -0.1,
+   0.1
+  ]
+ },
+ "light": {
+  "key": 0.3,
+  "ambient": 0.2
+ },
+ "style": "doomer"
+}

@@ -1,0 +1,19 @@
+{
+  "backdrop": {
+    "subject": "city",
+    "spec": {
+      "night": {
+        "on": true
+      }
+    },
+    "blur": 0.006,
+    "fade": {
+      "color": "#1A1830",
+      "amount": 0.15
+    }
+  },
+  "grade": {
+    "color": "#C9B8E8",
+    "amount": 0.25
+  }
+}

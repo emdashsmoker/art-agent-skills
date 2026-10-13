@@ -152,13 +152,13 @@
 
 | 목표 | 구성 |
 | --- | --- |
-| 르네상스 누드, 비너스 | `woman_classical`, 자세 `venus` 또는 `contrapposto`, 긴 웨이브 금발, `nude` 또는 `chiton`, 어두운 `studio`에 `glow`, 조명 `rembrandt` + `old_master`, 화풍 `classical`, `look.flesh_variation` 0.6 |
-| 오달리스크, 기대 누운 누드 | 자세 `recline`, 사물 `daybed`와 `cloth`, 인물 `position` z 0.47, 화풍 `classical` 또는 `oil` |
-| 애니메풍 누드 | `woman_anime` 또는 `woman_curvy`, 자세 `arms_behind_head`나 `s_curve`, `look.skin_gloss` 0.4, 조명 `loop` + `pastel`, 화풍 `anime` 또는 `webtoon` |
-| 고전 남성 누드, 다비드 | `man_classical`, 자세 `david`, 짧은 곱슬(`curly`, `length_scale` 0.45), `perizoma`, 어두운 `studio`, 조명 `rembrandt` + `old_master`, 화풍 `classical` |
-| 애니메풍 남성 누드 | `man_anime` 또는 `man_athletic`, 자세 `arms_behind_head`나 `heroic`, `briefs`, `look.muscle_definition` 0.45, 조명 `loop`, 화풍 `anime` |
+| 르네상스 인체 습작, 비너스 | `woman_classical`, 자세 `venus` 또는 `contrapposto`, 긴 웨이브 금발, `figure_study` 또는 `chiton`, 어두운 `studio`에 `glow`, 조명 `rembrandt` + `old_master`, 화풍 `classical`, `look.flesh_variation` 0.6 |
+| 오달리스크, 기대 누운 인체 습작 | 자세 `recline`, 사물 `daybed`와 `cloth`, 인물 `position` z 0.47, 화풍 `classical` 또는 `oil` |
+| 애니메풍 인체 습작 | `woman_anime` 또는 `woman_fuller`, 자세 `arms_behind_head`나 `s_curve`, `look.skin_gloss` 0.4, 조명 `loop` + `pastel`, 화풍 `anime` 또는 `webtoon` |
+| 고전 남성 인체 습작, 다비드 | `man_classical`, 자세 `david`, 짧은 곱슬(`curly`, `length_scale` 0.45), `perizoma`, 어두운 `studio`, 조명 `rembrandt` + `old_master`, 화풍 `classical` |
+| 애니메풍 남성 인체 습작 | `man_anime` 또는 `man_athletic`, 자세 `arms_behind_head`나 `heroic`, `briefs`, `look.muscle_definition` 0.45, 조명 `loop`, 화풍 `anime` |
 | 수염 난 남성 초상 | `man_mature`, `beard: full_beard`, `slick_back`, `suit`, 조명 `rembrandt`, 화풍 `oil` 또는 `classical` |
-| 뒷모습 누드 | 자세 `look_over_shoulder`, 카메라 `yaw` 160, 화풍 `watercolor` 또는 `pastel` |
+| 뒷모습 인체 습작 | 자세 `look_over_shoulder`, 카메라 `yaw` 160, 화풍 `watercolor` 또는 `pastel` |
 | 바로크 초상 | 조명 `side` + `candle`, 화풍 `baroque`, `ambient` 0.12 |
 | 네덜란드 정물 | `room`(어두운 벽), `table`, `cloth`, 그릇과 과일, 조명 `rembrandt` + `old_master`, 화풍 `oil` 또는 `classical` |
 | 인상주의 야외 | `meadow` 또는 `garden`, 시간 `day`, 화풍 `impressionist`, 인물은 작게 |

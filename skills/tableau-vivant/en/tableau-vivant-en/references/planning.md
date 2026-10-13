@@ -31,7 +31,7 @@ The options to offer the user, the recommended defaults, and where each lands in
 | Full figure | `figures`, a pose preset | `classical_venus.json`, `webtoon_evening.json` |
 | Figure and background | `figures`, `landscape` | `hanbok_ink_wash.json`, `kimono_woodblock.json` |
 | Several people | Two or more in `figures`. Two people touching use `pairs`; a row of three or more touching uses `groups`. People in a landscape use the camera's `fit: "people"` | `seaside_walk_watercolor.json`, `couple_dance_classical.json`, `anime_friends_trio.json`, `gouache_picnic.json` |
-| Male figure | Male presets, beards, men's hairstyles | `classical_david.json`, `nude_male_anime.json`, `portrait_bearded_oil.json`, `webtoon_suit_city.json` |
+| Male figure | Male presets, beards, men's hairstyles | `classical_david.json`, `figure_study_male_anime.json`, `portrait_bearded_oil.json`, `webtoon_suit_city.json` |
 | Landscape | A `landscape` preset | `lake_watercolor.json`, `city_night_street.json` |
 | Still life | `room`, `props` | `still_life_oil.json`, modern still life `modern_desk_digital.json` |
 | Interior scene | `room`, furniture and devices | `living_room_night.json` |
@@ -49,7 +49,7 @@ The options to offer the user, the recommended defaults, and where each lands in
 | Digital | `digital` | Semi-realistic figures |
 
 - The default depends on the subject
-    + Character figures `anime`, realistic figures `webtoon` or `digital`, classical nudes `classical`
+    + Character figures `anime`, realistic figures `webtoon` or `digital`, classical figure studies `classical`
     + Landscapes `watercolor` or `gouache`, still life `oil`, stock art `flat`
 - If the user cannot settle on a style, first show a three-style comparison sheet with `--styles`
 
@@ -57,7 +57,7 @@ The options to offer the user, the recommended defaults, and where each lands in
 
 | Item | Options | Default |
 | --- | --- | --- |
-| Build and face | Women: `woman` (sharp jawline), `woman_curvy`, `woman_slender`, `woman_soft`, `woman_athletic`, `woman_classical`, `woman_mature`, `woman_elder`, `woman_anime` / Men: `man`, `man_athletic`, `man_slim`, `man_classical`, `man_mature`, `man_elder`, `man_anime` / `androgynous` | `woman` |
+| Build and face | Women: `woman` (sharp jawline), `woman_fuller`, `woman_slender`, `woman_soft`, `woman_athletic`, `woman_classical`, `woman_mature`, `woman_elder`, `woman_anime` / Men: `man`, `man_athletic`, `man_slim`, `man_classical`, `man_mature`, `man_elder`, `man_anime` / `androgynous` | `woman` |
 | Skin | `porcelain`, `fair`, `light`, `medium`, `olive`, `tan`, `brown`, `dark`, `marble` | `light` |
 | Hairstyle | `long_straight`, `long_wavy`, `very_long`, `shoulder`, `long_male`, `bob`, `pixie`, `curly`, `afro`, `buzz`, `short_crop`, `textured_crop`, `side_part`, `undercut`, `slick_back`, `ponytail`, `low_ponytail`, `bun`, `chignon`, `man_bun`, `bald` | Women `long_straight`, men `side_part` |
 | Beard | `none`, `stubble`, `short_beard`, `full_beard`, `goatee`, `mustache` | `none` |
@@ -70,7 +70,7 @@ The options to offer the user, the recommended defaults, and where each lands in
 | Pose | The pose table in `references/figures.md` | `contrapposto` |
 
 - If the user has stated a taste, replace the defaults with it
-- Figures under 18 are drawn clothed only. No nudity, underwear or sexual staging (the engine checks the outfit)
+- Figures under 18 are drawn clothed only. No unclothed figures, underwear or sexual staging (the engine checks the outfit)
 
 ## Axis 5. Composition
 

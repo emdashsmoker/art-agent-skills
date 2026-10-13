@@ -25,7 +25,7 @@
 | 이름 | 특징 |
 | --- | --- |
 | `woman` | 젊은 성인 여성, 날카로운 턱선, 큰 눈, 모래시계 체형 (기본) |
-| `woman_curvy` | 굴곡이 큰 글래머 체형 |
+| `woman_fuller` | 굴곡이 큰 볼륨형 체형 |
 | `woman_slender` | 키가 크고 다리가 긴 모델 체형 |
 | `woman_soft` | 부드러운 얼굴형, 평균 체형 |
 | `woman_athletic` | 근육질, 날카로운 턱선 |
@@ -35,7 +35,7 @@
 | `man` | 젊은 성인 남성, 각진 턱과 짙은 눈썹, 넓은 어깨와 좁은 허리 |
 | `man_athletic` | 근육질. 복근과 가슴 윤곽 음영(`muscle_definition`) 포함 |
 | `man_slim` | 마른 체형, 날카로운 턱선 |
-| `man_classical` | 고전 조각 비례, 그리스식 콧대, 단련된 몸. 다비드 같은 고전 남성 누드용 |
+| `man_classical` | 고전 조각 비례, 그리스식 콧대, 단련된 몸. 다비드 같은 고전 남성 인체 습작용 |
 | `man_mature`, `man_elder` | 중년, 노년 |
 | `man_anime` | 긴 다리, 날렵한 턱, 약간 큰 눈. 셀화용 (`stylize: semi` 기본) |
 | `androgynous` | 중성적 |
@@ -45,7 +45,7 @@
 | 축 | 0 | 1 |
 | --- | --- | --- |
 | `gender` | 남성 | 여성 |
-| `age` | 0.77이 18세. 18세 미만 몸은 옷을 입은 모습만 (누드, 속옷, 비키니 거부) | 0.776 청년(약 23세), 0.80(41세), 0.82(56세), 0.97 노년 |
+| `age` | 0.77이 18세. 18세 미만 몸은 옷을 입은 모습만 (노출, 속옷, 비키니 거부) | 0.776 청년(약 23세), 0.80(41세), 0.82(56세), 0.97 노년 |
 | `muscle` | 적음 | 많음 |
 | `weight` | 마름 | 풍만 |
 | `height` | 작음 | 큼 |
@@ -313,9 +313,9 @@
 
 | 분류 | 이름 (괄호는 색을 바꿀 때 쓰는 id) |
 | --- | --- |
-| 없음 | `nude` |
+| 없음 | `figure_study` |
 | 속옷, 수영복 | `underwear`(bra, briefs), `briefs`, `trunks`, `swimsuit`, `bikini`(bikini_top, bikini_bottom) |
-| 고전 남성 누드 | `perizoma`(perizoma). 골반에 낮게 두른 비스듬한 허리천 |
+| 고전 남성 인체 습작 | `perizoma`(perizoma). 골반에 낮게 두른 비스듬한 허리천 |
 | 거리 | `hoodie_jeans`(hoodie, hood, pocket, cords, jeans, shoes. 후드를 내린 헐렁한 후드티), `long_coat`(coat, lapels, sweater, trousers, boots. 무릎 길이 울 코트와 터틀넥) |
 | 일상 | `tshirt_jeans`(tshirt, jeans, shoes), `tank_shorts`(tank, shorts), `sportswear`(sports_top, leggings, shoes), `sweater_skirt`(sweater, skirt, boots), `blouse_trousers`(blouse, trousers, shoes), `office`(blouse, pencil_skirt, shoes), `shirt_trousers`(shirt, collar, trousers, belt, shoes. 깃이 열린 셔츠를 벨트 바지에 넣어 입음), `suit`(jacket, lapels, shirt, tie, trousers, shoes) |
 | 드레스 | `sundress`, `summer_dress`, `little_black_dress`(dress), `evening_gown`(gown) |
@@ -384,7 +384,7 @@
 | `skin_gloss` | 0.16 | 피부 윤기. 0.4 이상이면 셀화에서 광택 면이 그려짐 |
 | `flesh_variation` | 0.3 | 관절, 귀, 코끝, 손끝의 붉은 기. 고전 유화는 0.6 권장, 셀화는 0.1 |
 | `nail_color`, `nail_strength` | 연분홍, 0.6 | 손발톱 |
-| `areola_color`, `areola_strength` | 장밋빛, 0.40 | 누드에서의 유륜 색조 |
+| `chest_tone_color`, `chest_tone_strength` | 장밋빛, 0.40 | 인체 습작에서의 가슴 톤 색조 |
 | `muscle_definition` | 0 | 가슴, 복근, 골반 V선, 견갑골의 요철. 조명에 따라 음영이 생김. 남성 기본 0.5, 근육질 1.0 |
 | `body_relief` | 0.6 | 쇄골, 척추, 등 아래 보조개의 은은한 요철. 모든 인물 공통 |
 | `stubble`, `beard_color` | 0, 수염색 | 면도 자국 농도와 색. 보통 `beard`가 자동 설정 |
@@ -406,6 +406,6 @@
 | 긴 머리가 어깨에서 뻗침 | `length_scale`을 줄이거나 `style`을 `shoulder`로 |
 | 얼굴이 올려다보는 듯함 | `head.nod`를 5-10 추가, 카메라 `pitch`를 5로 |
 | 전신 구도에서 눈이 검게 뭉침 | 선을 긋는 화풍은 작은 눈에 위 속눈썹 선만 남김. 그래도 어두우면 `look.lash_strength`를 0.5로, 또는 `canvas.detail`을 `fine`으로 |
-| 누드가 밋밋함 | 자세 `s_curve`나 `arms_behind_head`, 체형 `woman_curvy`, `look.skin_gloss` 0.3-0.45, 조명 `three_quarter` + `warm` |
+| 인체 습작이 밋밋함 | 자세 `s_curve`나 `arms_behind_head`, 체형 `woman_fuller`, `look.skin_gloss` 0.3-0.45, 조명 `three_quarter` + `warm` |
 | 남성 상체가 밋밋함 | 체형 `man_athletic`, `look.muscle_definition` 0.8-1.0, 조명 `side` 또는 `rembrandt`(요철은 측면광에서 가장 잘 보임) |
-| 남성 누드의 하체 처리 | 고전풍은 `perizoma`, 현대풍은 `briefs`나 `trunks`. `nude`는 인체 모델에 생식기 세부가 없어 매끈하게 표현됨 |
+| 남성 인체 습작의 하체 처리 | 고전풍은 `perizoma`, 현대풍은 `briefs`나 `trunks`. `figure_study`는 인체 모델에 골반 세부가 없어 매끈하게 표현됨 |

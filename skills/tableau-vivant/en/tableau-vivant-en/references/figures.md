@@ -25,7 +25,7 @@ How to set build, face, expression, pose, hands, hair, outfit and make-up
 | Name | Character |
 | --- | --- |
 | `woman` | Young adult woman, sharp jawline, large eyes, hourglass build (default) |
-| `woman_curvy` | Glamorous build with strong curves |
+| `woman_fuller` | Glamorous build with strong curves |
 | `woman_slender` | Tall, long-legged model build |
 | `woman_soft` | Soft face shape, average build |
 | `woman_athletic` | Muscular, sharp jawline |
@@ -35,7 +35,7 @@ How to set build, face, expression, pose, hands, hair, outfit and make-up
 | `man` | Young adult man, square jaw and dark brows, broad shoulders and narrow waist |
 | `man_athletic` | Muscular. Includes abdominal and chest contour shading (`muscle_definition`) |
 | `man_slim` | Thin build, sharp jawline |
-| `man_classical` | Classical-sculpture proportions, Greek nose, trained body. For classical male nudes like David |
+| `man_classical` | Classical-sculpture proportions, Greek nose, trained body. For classical male figure studies like David |
 | `man_mature`, `man_elder` | Middle-aged, elderly |
 | `man_anime` | Long legs, lean jaw, slightly large eyes. For cel styles (`stylize: semi` by default) |
 | `androgynous` | Androgynous |
@@ -45,7 +45,7 @@ How to set build, face, expression, pose, hands, hair, outfit and make-up
 | Axis | 0 | 1 |
 | --- | --- | --- |
 | `gender` | Male | Female |
-| `age` | 0.77 is 18 years. Bodies under 18 are drawn clothed only (nude, underwear, bikini refused) | 0.776 young adult (about 23), 0.80 (41), 0.82 (56), 0.97 elderly |
+| `age` | 0.77 is 18 years. Bodies under 18 are drawn clothed only (unclothed, underwear, bikini refused) | 0.776 young adult (about 23), 0.80 (41), 0.82 (56), 0.97 elderly |
 | `muscle` | Little | Much |
 | `weight` | Thin | Full |
 | `height` | Short | Tall |
@@ -313,9 +313,9 @@ A group of three or more standing in a row, each touching the next, goes in the 
 
 | Group | Names (ids in brackets are used for colour changes) |
 | --- | --- |
-| None | `nude` |
+| None | `figure_study` |
 | Underwear, swimwear | `underwear` (bra, briefs), `briefs`, `trunks`, `swimsuit`, `bikini` (bikini_top, bikini_bottom) |
-| Classical male nude | `perizoma` (perizoma). A slanted loincloth worn low on the hips |
+| Classical male figure study | `perizoma` (perizoma). A slanted loincloth worn low on the hips |
 | Street | `hoodie_jeans` (hoodie, hood, pocket, cords, jeans, shoes; a loose hoodie with the hood down), `long_coat` (coat, lapels, sweater, trousers, boots; a knee-length wool coat with a turtleneck) |
 | Everyday | `tshirt_jeans` (tshirt, jeans, shoes), `tank_shorts` (tank, shorts), `sportswear` (sports_top, leggings, shoes), `sweater_skirt` (sweater, skirt, boots), `blouse_trousers` (blouse, trousers, shoes), `office` (blouse, pencil_skirt, shoes), `shirt_trousers` (shirt, collar, trousers, belt, shoes; an open-collar shirt tucked into belted trousers), `suit` (jacket, lapels, shirt, tie, trousers, shoes) |
 | Dresses | `sundress`, `summer_dress`, `little_black_dress` (dress), `evening_gown` (gown) |
@@ -384,7 +384,7 @@ Give `outfit` an array of garment objects, from the innermost to the outermost
 | `skin_gloss` | 0.16 | Skin sheen. At 0.4 or more cel styles draw glossy highlights |
 | `flesh_variation` | 0.3 | Redness at joints, ears, nose tip and fingertips. 0.6 recommended for classical oil, 0.1 for cel |
 | `nail_color`, `nail_strength` | Pale pink, 0.6 | Finger and toenails |
-| `areola_color`, `areola_strength` | Rose, 0.40 | Areola tint in nudes |
+| `chest_tone_color`, `chest_tone_strength` | Rose, 0.40 | Chest tone tint in figure studies |
 | `muscle_definition` | 0 | Relief of chest, abs, the pelvic V and shoulder blades. Shading depends on the light. Men 0.5 by default, muscular 1.0 |
 | `body_relief` | 0.6 | Subtle relief of collarbones, spine and lower-back dimples. All figures |
 | `stubble`, `beard_color` | 0, beard colour | Stubble strength and colour. Usually set by `beard` |
@@ -406,6 +406,6 @@ Give `outfit` an array of garment objects, from the innermost to the outermost
 | Long hair sticks out from the shoulders | Lower `length_scale`, or set `style` to `shoulder` |
 | Face seems to look upward | Add 5-10 to `head.nod`, camera `pitch` to 5 |
 | Eyes clump black in full-figure shots | Line-drawing styles keep only the upper lash line on small eyes. If still too dark, `look.lash_strength` to 0.5, or `canvas.detail` to `fine` |
-| A nude looks flat | Pose `s_curve` or `arms_behind_head`, build `woman_curvy`, `look.skin_gloss` 0.3-0.45, lighting `three_quarter` + `warm` |
+| A figure study looks flat | Pose `s_curve` or `arms_behind_head`, build `woman_fuller`, `look.skin_gloss` 0.3-0.45, lighting `three_quarter` + `warm` |
 | A male upper body looks flat | Build `man_athletic`, `look.muscle_definition` 0.8-1.0, lighting `side` or `rembrandt` (relief shows best in side light) |
-| Lower body of a male nude | Classical: `perizoma`; modern: `briefs` or `trunks`. With `nude` the area is smooth, since the body model has no genital detail |
+| Lower body of a male figure study | Classical: `perizoma`; modern: `briefs` or `trunks`. With `figure_study` the area is smooth, since the body model has no pelvic detail |

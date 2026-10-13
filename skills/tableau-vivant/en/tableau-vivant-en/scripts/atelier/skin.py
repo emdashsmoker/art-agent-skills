@@ -76,7 +76,7 @@ DEFAULT_LOOK = dict(
     eyeshadow_color=(0.45, 0.30, 0.30), eyeshadow_strength=0.30,
     lash_strength=0.9, lash_width=1.0, lash_color=LASH_COLOR_DEFAULT, crease=0.45,
     nail_color=(0.93, 0.70, 0.68), nail_strength=0.6,
-    areola_color=(0.80, 0.52, 0.48), areola_strength=0.40,
+    chest_tone_color=(0.80, 0.52, 0.48), chest_tone_strength=0.40,
     iris_color=(0.36, 0.24, 0.16), iris_size=1.08, pupil_size=1.0,
     sclera_color=(0.95, 0.94, 0.93), iris_shade=0.45, catchlight=0.95, catchlight_size=1.15,
     skin_gloss=0.16,
@@ -267,7 +267,7 @@ def make_painter(figure_name, look=None):
             _mix(albedo, look["nail_color"], nails * look["nail_strength"])
             g["gloss"][nails > 0.5] = 0.5
             g["shine"][nails > 0.5] = 50.0
-            _mix(albedo, look["areola_color"], _sample_uv("aureolae", uv, skin) * look["areola_strength"])
+            _mix(albedo, look["chest_tone_color"], _sample_uv("aureolae", uv, skin) * look["chest_tone_strength"])
             lids = _sample_uv("eyelids", uv, skin)
             _mix(albedo, look["eyeshadow_color"], lids * look["eyeshadow_strength"])
             cheek = _blob(x, z, CHEEK_CENTER, (0.022, 0.016))

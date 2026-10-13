@@ -108,7 +108,7 @@ Array. One object per person. Details in `figures.md`
 | `expression` | `"neutral"` | A preset name or an object of expression units |
 | `pose` | `"stand"` | A preset name or a pose object |
 | `hair` | `"long_straight"` | A name or `{style, bangs, part, color, density, length_scale, wind}` |
-| `outfit` | `"nude"` | A preset name or an array of garment objects |
+| `outfit` | `"figure_study"` | A preset name or an array of garment objects |
 | `colors` | None | `{garment id: colour}` |
 | `skin` | `"light"` | A name or a colour |
 | `look` | Preset value | Make-up and eye settings |

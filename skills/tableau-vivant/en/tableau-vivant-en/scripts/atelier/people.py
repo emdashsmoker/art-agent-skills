@@ -56,7 +56,7 @@ _HOURGLASS = {
     "upperlegs-height-incr": 0.35, "lowerlegs-height-incr": 0.35, "measure-shoulder-dist-incr": -0.2,
     "stomach-tone-incr": 0.5, "breast-trans-up": 0.4, "breast-volume-vert-up": 0.4,
 }
-_VOLUPTUOUS = {**_HOURGLASS, "measure-waist-circ-incr": -0.7, "measure-hips-circ-incr": 0.55, "buttocks-volume-incr": 0.6,
+_FULLER = {**_HOURGLASS, "measure-waist-circ-incr": -0.7, "measure-hips-circ-incr": 0.55, "buttocks-volume-incr": 0.6,
                "breast-trans-up": 0.5, "breast-volume-vert-up": 0.5, "measure-thigh-circ-incr": 0.25,
                "l-upperleg-fat-incr": 0.2, "r-upperleg-fat-incr": 0.2, "measure-shoulder-dist-incr": -0.15}
 _WILLOWY = {"measure-waist-circ-incr": -0.4, "measure-hips-circ-incr": 0.15, "buttocks-volume-incr": 0.3,
@@ -84,15 +84,15 @@ _ATHLETE = _both({
 # Men's skin paint: natural lips, no eye make-up, fuller brows, a matte finish.
 _MALE_LOOK = dict(lip_strength=0.32, lip_gloss=0.04, lip_color=(0.70, 0.43, 0.40), eyeshadow_strength=0.0, blush_strength=0.04,
                   brow_thickness=1.6, brow_strength=0.95, brow_arch=0.6, lash_strength=0.40, lash_width=0.8, crease=0.35,
-                  contour=0.6, skin_gloss=0.07, areola_strength=0.22, flesh_variation=0.40, nail_strength=0.15,
+                  contour=0.6, skin_gloss=0.07, chest_tone_strength=0.22, flesh_variation=0.40, nail_strength=0.15,
                   muscle_definition=0.5)
 
 # name -> dict(phenotype=..., face=..., look=..., stylize=...)
 FIGURE_PRESETS = {
     "woman": dict(phenotype=dict(gender=1.0, age=0.776, muscle=0.5, weight=0.44, height=0.55, proportions=0.1, cupsize=0.68, firmness=0.85),
                   face={**_SHARP_JAW, **_FEMININE_FEATURES, **_HOURGLASS}),
-    "woman_curvy": dict(phenotype=dict(gender=1.0, age=0.776, muscle=0.5, weight=0.47, height=0.55, proportions=0.1, cupsize=0.82, firmness=0.9),
-                        face={**_SHARP_JAW, **_FEMININE_FEATURES, **_VOLUPTUOUS}),
+    "woman_fuller": dict(phenotype=dict(gender=1.0, age=0.776, muscle=0.5, weight=0.47, height=0.55, proportions=0.1, cupsize=0.82, firmness=0.9),
+                        face={**_SHARP_JAW, **_FEMININE_FEATURES, **_FULLER}),
     "woman_slender": dict(phenotype=dict(gender=1.0, age=0.776, muscle=0.62, weight=0.36, height=0.7, proportions=0.05, cupsize=0.6, firmness=0.9),
                           face={**_SHARP_JAW, **_FEMININE_FEATURES, **_WILLOWY}),
     "woman_soft": dict(phenotype=dict(gender=1.0, age=0.776, muscle=0.35, weight=0.52, height=0.5, proportions=0.2, cupsize=0.66, firmness=0.7),

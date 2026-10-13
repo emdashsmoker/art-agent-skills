@@ -1,0 +1,148 @@
+{
+  "spec": {
+    "canvas": {
+      "width": 1600,
+      "height": 1200
+    },
+    "seed": 12,
+    "light": [
+      -0.6,
+      -0.45,
+      0.66
+    ],
+    "horizon_y": 0.6,
+    "sky": {
+      "sun_x": 0.265,
+      "sun_y": 0.455,
+      "sun_r": 0.026,
+      "clouds": 0.5,
+      "birds": 5
+    },
+    "ranges": [
+      {
+        "group": "range_far",
+        "lift": 0.0,
+        "amplitude": 0.34,
+        "roughness": 0.6,
+        "snow": 0.22,
+        "haze": 0.8
+      },
+      {
+        "group": "range_mid",
+        "lift": 0.0,
+        "amplitude": 0.21,
+        "roughness": 0.56,
+        "haze": 0.6
+      },
+      {
+        "group": "shore",
+        "lift": 0.0,
+        "amplitude": 0.075,
+        "roughness": 0.45,
+        "forest": 9,
+        "haze": 0.25
+      }
+    ],
+    "water": {
+      "ripple": 0.012,
+      "glitter": 260,
+      "streaks": 70
+    },
+    "bank": {
+      "top_y": 0.86,
+      "amplitude": 0.05,
+      "dip": 0.07,
+      "grass": 420,
+      "rocks": [
+        [
+          0.47,
+          0.022
+        ],
+        [
+          0.55,
+          0.014
+        ],
+        [
+          0.36,
+          0.011
+        ]
+      ]
+    },
+    "pines": [
+      [
+        0.06,
+        0.74
+      ],
+      [
+        0.155,
+        0.52
+      ],
+      [
+        0.9,
+        0.8
+      ],
+      [
+        0.975,
+        0.56
+      ],
+      [
+        0.8,
+        0.36
+      ]
+    ]
+  },
+  "style": {
+    "palette": {
+      "sky": {
+        "top": "#2F4372",
+        "middle": "#8C7BA6",
+        "horizon": "#F6B98A",
+        "glow": "#FFE3B0",
+        "sun": "#FFF6DC",
+        "cloud": "#B9A3BE",
+        "cloud_lit": "#FFC08A",
+        "cloud_shadow": "#6C6491",
+        "haze": "#F2C3A2"
+      },
+      "range_far": {
+        "base": "#8F86B0",
+        "shadow": "#5E5A8C",
+        "line": "#3C3964"
+      },
+      "range_mid": {
+        "base": "#6A6A9A",
+        "shadow": "#3F4270",
+        "line": "#272A4E"
+      },
+      "shore": {
+        "base": "#3A5560",
+        "shadow": "#22363F",
+        "line": "#14232A"
+      },
+      "snow": {
+        "base": "#FFEFE2",
+        "shadow": "#A9A5CF"
+      },
+      "water": {
+        "deep": "#2B3A5E",
+        "light": "#FFE9D2",
+        "glitter": "#FFF2CC"
+      },
+      "bank": {
+        "base": "#2A3A2E",
+        "shadow": "#141E18",
+        "line": "#0B120E"
+      },
+      "rock": {
+        "base": "#6D6A72",
+        "shadow": "#2F2E38",
+        "line": "#17161D"
+      },
+      "pine": {
+        "base": "#2E4A3A",
+        "shadow": "#12211B",
+        "line": "#0A130F"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "sex": "male",
+  "figure": {
+    "clothes": {
+      "pants": {
+        "length": 0.42,
+        "leg_widths": [
+          1.02,
+          0.95,
+          0.9
+        ]
+      }
+    }
+  }
+}

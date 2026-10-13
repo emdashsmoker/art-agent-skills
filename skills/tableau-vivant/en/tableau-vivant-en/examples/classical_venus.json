@@ -1,0 +1,64 @@
+{
+ "canvas": {
+  "aspect": "2:3",
+  "detail": "standard",
+  "seed": 5
+ },
+ "environment": {
+  "type": "studio",
+  "top": [
+   0.12,
+   0.1,
+   0.08
+  ],
+  "bottom": [
+   0.2,
+   0.15,
+   0.11
+  ],
+  "glow": [
+   0.42,
+   0.33,
+   0.22
+  ],
+  "floor_color": [
+   0.24,
+   0.18,
+   0.13
+  ]
+ },
+ "figures": [
+  {
+   "name": "venus",
+   "preset": "woman_classical",
+   "pose": "venus",
+   "hair": {
+    "style": "long_wavy",
+    "bangs": "none",
+    "part": "center",
+    "color": "golden"
+   },
+   "outfit": "figure_study",
+   "expression": "serene",
+   "skin": "fair",
+   "look": {
+    "iris_color": "gray",
+    "flesh_variation": 0.6,
+    "skin_gloss": 0.2
+   }
+  }
+ ],
+ "camera": {
+  "subject": "venus",
+  "shot": "knee",
+  "yaw": -12,
+  "pitch": 2,
+  "fill": 0.92
+ },
+ "light": {
+  "preset": "rembrandt",
+  "mood": "old_master",
+  "ambient": 0.3
+ },
+ "style": "classical"
+}

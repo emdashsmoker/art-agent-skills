@@ -1,0 +1,14 @@
+{
+  "style": "anime",
+  "framing": "bust",
+  "canvas": {
+    "width": 1024,
+    "height": 1280
+  },
+  "character": {
+    "hair": {
+      "style": "hime"
+    },
+    "face_preset": "gentle"
+  }
+}

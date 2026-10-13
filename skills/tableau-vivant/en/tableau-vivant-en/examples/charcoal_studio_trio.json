@@ -1,0 +1,84 @@
+{
+ "canvas": {
+  "aspect": "3:2",
+  "detail": "standard",
+  "seed": 39
+ },
+ "environment": {
+  "type": "studio",
+  "top": [
+   0.8,
+   0.78,
+   0.74
+  ],
+  "bottom": [
+   0.7,
+   0.68,
+   0.64
+  ]
+ },
+ "figures": [
+  {
+   "name": "a",
+   "preset": "woman_classical",
+   "pose": "contrapposto",
+   "outfit": "chiton",
+   "hair": {
+    "style": "chignon",
+    "color": "dark_brown"
+   },
+   "expression": "serene",
+   "position": [
+    -1.1,
+    0.2,
+    0
+   ],
+   "facing": 15
+  },
+  {
+   "name": "b",
+   "preset": "man_classical",
+   "pose": "kneel",
+   "outfit": "perizoma",
+   "hair": {
+    "style": "curly",
+    "color": "black"
+   },
+   "expression": "serious",
+   "position": [
+    0.0,
+    0.0,
+    0
+   ],
+   "facing": -10
+  },
+  {
+   "name": "c",
+   "preset": "woman",
+   "pose": "seated_side",
+   "outfit": "figure_study",
+   "hair": {
+    "style": "long_wavy",
+    "color": "brown"
+   },
+   "expression": "serene",
+   "position": [
+    1.15,
+    0.25,
+    0
+   ],
+   "facing": -25
+  }
+ ],
+ "camera": {
+  "fit": "people",
+  "yaw": 0,
+  "pitch": 5,
+  "fill": 0.9
+ },
+ "light": {
+  "preset": "side",
+  "mood": "neutral"
+ },
+ "style": "charcoal"
+}

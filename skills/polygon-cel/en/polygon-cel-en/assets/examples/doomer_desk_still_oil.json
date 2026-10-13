@@ -1,0 +1,49 @@
+{
+ "subject": "still_life",
+ "style": "painterly",
+ "mood": "doomer",
+ "still_life": {
+  "wall": "#2C3242",
+  "table": "#4A4038",
+  "cloth": null,
+  "objects": [
+   {
+    "type": "monitor",
+    "x": 0.42,
+    "depth": 0.08,
+    "screen": "code"
+   },
+   {
+    "type": "lamp",
+    "x": 0.8,
+    "depth": 0.2
+   },
+   {
+    "type": "keyboard",
+    "x": 0.44,
+    "depth": 0.58,
+    "color": "#3A3E48"
+   },
+   {
+    "type": "mug",
+    "x": 0.72,
+    "depth": 0.62,
+    "color": "#5A6070"
+   },
+   {
+    "type": "phone",
+    "x": 0.2,
+    "depth": 0.7,
+    "screen": "off"
+   },
+   {
+    "type": "headphones",
+    "x": 0.16,
+    "depth": 0.35
+   }
+  ]
+ },
+ "canvas": {
+  "seed": 13
+ }
+}

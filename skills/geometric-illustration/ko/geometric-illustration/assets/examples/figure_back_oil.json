@@ -1,0 +1,11 @@
+{
+  "subject": "figure_study",
+  "style": "oil",
+  "canvas": {
+    "width": 1024,
+    "height": 1600
+  },
+  "figure_study": {
+    "pose": "back_three_quarter"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "subject": "figure_study",
+  "style": "watercolor",
+  "canvas": {
+    "width": 1600,
+    "height": 1024
+  },
+  "character": {
+    "sex": "male"
+  },
+  "figure_study": {
+    "pose": "reclining"
+  }
+}

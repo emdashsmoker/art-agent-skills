@@ -1,0 +1,76 @@
+{
+ "style": "painterly",
+ "framing": "full",
+ "background": {
+  "type": "window",
+  "colors": [
+   "#E8DFD2",
+   "#CDBFAE",
+   "#FFF4E0"
+  ]
+ },
+ "characters": [
+  {
+   "hair": {
+    "style": "ponytail",
+    "bangs": "full",
+    "color": "#8A5A3C"
+   },
+   "eyes": {
+    "color": "#5A7A5A"
+   },
+   "view": "side",
+   "place": {
+    "x": 0.22
+   },
+   "head": {
+    "yaw": 0,
+    "roll": 0
+   },
+   "body": {
+    "pose": "sit"
+   },
+   "expression": {
+    "mouth": "open_smile"
+   },
+   "outfit": {
+    "type": "tee",
+    "color": "#E9D8E4",
+    "bottom": "jeans"
+   }
+  },
+  {
+   "hair": {
+    "style": "bob",
+    "bangs": "full",
+    "color": "#2E2A2E"
+   },
+   "eyes": {
+    "color": "#7A5A3A",
+    "shape": "round"
+   },
+   "view": "side",
+   "place": {
+    "x": 0.78
+   },
+   "head": {
+    "yaw": 0,
+    "roll": 0
+   },
+   "body": {
+    "pose": "sit"
+   },
+   "expression": {
+    "mouth": "smile"
+   },
+   "outfit": {
+    "type": "knit_sweater",
+    "color": "#C8B49A",
+    "bottom": "a_line_skirt"
+   }
+  }
+ ],
+ "canvas": {
+  "seed": 3
+ }
+}

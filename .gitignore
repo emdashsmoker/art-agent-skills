@@ -1,0 +1,57 @@
+# Python: the skills ship .py render scripts, so keep bytecode and envs out
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Local render output: renders belong in demo/ only after deliberate curation
+out/
+output/
+outputs/
+renders/
+# Example scripts save PNGs next to where they run; inside skill sources only assets/ holds images
+skills/*/en/**/*.png
+skills/*/en/**/*.jpg
+skills/*/en/**/*.jpeg
+skills/*/en/**/*.webp
+skills/*/ko/**/*.png
+skills/*/ko/**/*.jpg
+skills/*/ko/**/*.jpeg
+skills/*/ko/**/*.webp
+!skills/*/*/*/assets/**
+
+# Diffusion model weights (image-gen, codeformer addon) are downloaded, never committed
+*.safetensors
+*.ckpt
+*.pth
+*.onnx
+models/
+weights/
+checkpoints/
+
+# Credentials: API tokens for model hubs must stay local
+.env
+.env.*
+*.pem
+*.key
+*_secret*
+.credentials.json
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+# Logs and archives (packaged skills use .skill, so raw zips are scratch)
+*.log
+*.zip

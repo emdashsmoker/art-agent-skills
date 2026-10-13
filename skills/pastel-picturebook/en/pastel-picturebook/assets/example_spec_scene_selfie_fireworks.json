@@ -1,0 +1,198 @@
+{
+  "canvas": {
+    "width": 1600,
+    "height": 1200
+  },
+  "seed": 82,
+  "pose": {
+    "head_center": [
+      0.58,
+      0.46
+    ],
+    "head_unit": 0.05,
+    "yaw_deg": -12,
+    "roll_deg": -12,
+    "horizon_drop": 0.012
+  },
+  "expression": "wink",
+  "look": {
+    "hair_style": "ponytail",
+    "identity": 9,
+    "hair_color": "brown",
+    "eye_shape": "big"
+  },
+  "accessories": {
+    "scarf": false
+  },
+  "figure": {
+    "pose": {
+      "arm_right": {
+        "reach": {
+          "mark": "cheek_right",
+          "offset": [
+            1.15,
+            0.0
+          ]
+        },
+        "bend": "down",
+        "front": true,
+        "wrist": -25
+      },
+      "hand_right": "peace",
+      "hand_right_view": "palm",
+      "arm_left": {
+        "upper": 4.0,
+        "fore": 2.0,
+        "hand": 0.0
+      }
+    },
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "shirt": {
+        "ease": 0.1,
+        "neck_half": 0.6,
+        "neck_level": 0.25,
+        "hem_level": 4.4,
+        "sleeve": 1.9
+      },
+      "skirt": {
+        "hem_level": 8.6,
+        "hem_half": 2.0,
+        "folds": 5,
+        "fold_depth": 0.14
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "cloth": {
+        "base": "#F1E6D8",
+        "shadow": "#CDBDA8",
+        "line": "#5E5242"
+      }
+    }
+  },
+  "backdrop": {
+    "subject": "fireworks",
+    "spec": {
+      "camera": {
+        "horizon_y": 0.46
+      },
+      "fireworks": [
+        {
+          "x": 0.14,
+          "y": 0.13,
+          "r": 0.11,
+          "color": "#FF6FA8",
+          "kind": "trail"
+        },
+        {
+          "x": 0.86,
+          "y": 0.11,
+          "r": 0.1,
+          "color": "#7FD8FF",
+          "kind": "dots",
+          "rays": 80
+        },
+        {
+          "x": 0.62,
+          "y": 0.06,
+          "r": 0.06,
+          "color": "#FFD36A",
+          "kind": "willow"
+        },
+        {
+          "x": 0.3,
+          "y": 0.27,
+          "r": 0.05,
+          "color": "#B98CFF",
+          "kind": "trail"
+        }
+      ]
+    },
+    "place": "horizon",
+    "blur": 0.003
+  },
+  "grade": {
+    "color": "#B9A8E8",
+    "amount": 0.2
+  },
+  "companions": [
+    {
+      "sex": "male",
+      "seed": 81,
+      "pose": {
+        "head_center": [
+          0.4,
+          0.46
+        ],
+        "head_unit": 0.052000000000000005,
+        "yaw_deg": 12,
+        "roll_deg": 14,
+        "horizon_drop": -0.01
+      },
+      "expression": "smile",
+      "look": {
+        "hair_style": "short",
+        "identity": 6,
+        "hair_color": "black"
+      },
+      "figure": {
+        "pose": {
+          "arm_left": {
+            "reach": {
+              "at": [
+                0.06,
+                0.93
+              ]
+            },
+            "bend": "down",
+            "foreshorten": [
+              1.0,
+              0.7
+            ]
+          },
+          "hand_left": "grip",
+          "arm_right": {
+            "upper": 6.0,
+            "fore": 2.0,
+            "hand": 0.0
+          }
+        },
+        "clothes": {
+          "shirt": {
+            "sleeve": 1.9
+          },
+          "hoodie": true,
+          "pants": {
+            "waist_level": 4.6,
+            "hem_drop": 0.2,
+            "leg_widths": [
+              1.0,
+              0.7,
+              0.6
+            ]
+          },
+          "shoes": true
+        },
+        "holds": {
+          "left": {
+            "kind": "phone",
+            "turn": -20
+          }
+        }
+      },
+      "style": {
+        "palette": {
+          "hoodie": {
+            "base": "#4B5D7A",
+            "shadow": "#2F3D55",
+            "light": "#8094B4",
+            "line": "#121A28"
+          }
+        }
+      }
+    }
+  ]
+}

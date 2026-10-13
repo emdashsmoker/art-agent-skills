@@ -1,0 +1,72 @@
+{
+  "canvas": [
+    1100,
+    1700
+  ],
+  "style": "anime",
+  "seed": 5,
+  "character": {
+    "head_turn": -0.3,
+    "head_tilt": 3,
+    "gaze": [
+      0.2,
+      0.0
+    ],
+    "jaw_sharpness": 0.85,
+    "smile": 0.35,
+    "hair_style": "bob",
+    "bangs": "side_swept",
+    "hair_seed": 3
+  },
+  "figure": {
+    "pose": "sitting",
+    "outfit": "blouse_skirt",
+    "heels": true,
+    "ground_shadow": 0.4
+  },
+  "palette": {
+    "hair": "#2f2a3a",
+    "hair_shadow": "#17141f",
+    "hair_light": "#b9a0c8",
+    "iris": "#7a5aa8",
+    "cloth": "#f4efe6",
+    "cloth_shadow": "#b9aec4",
+    "cloth2": "#30364f",
+    "shoe": "#1c1a26"
+  },
+  "placement": {
+    "head_height": 0.15,
+    "pelvis": [
+      0.5,
+      0.53
+    ]
+  },
+  "light": {
+    "azimuth": 130,
+    "elevation": 38
+  },
+  "background": [
+    {
+      "type": "gradient",
+      "top": "#e9e2d6",
+      "bottom": "#cdbfae"
+    },
+    {
+      "type": "light_shafts",
+      "color": "#fff6e0",
+      "count": 3,
+      "opacity": 0.4,
+      "seed": 2
+    },
+    {
+      "type": "glow",
+      "center": [
+        0.3,
+        0.25
+      ],
+      "radius": 0.55,
+      "color": "#fffaf0",
+      "opacity": 0.5
+    }
+  ]
+}

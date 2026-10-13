@@ -1,0 +1,3 @@
+numpy>=1.24
+opencv-python-headless>=4.8
+skia-python>=87.5

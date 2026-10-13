@@ -1,0 +1,34 @@
+{
+  "figure": {
+    "pose": {
+      "arm_right": {
+        "upper": 10.0,
+        "fore": -128.0,
+        "hand": -95.0,
+        "foreshorten": [
+          1.0,
+          0.55
+        ],
+        "toward": [
+          0,
+          1
+        ]
+      },
+      "arm_left": {
+        "upper": 6.0,
+        "fore": 2.0,
+        "hand": 0.0
+      },
+      "hand_right": "grip",
+      "hand_left": "grip"
+    },
+    "holds": {
+      "right": {
+        "kind": "cup"
+      },
+      "left": {
+        "kind": "book"
+      }
+    }
+  }
+}

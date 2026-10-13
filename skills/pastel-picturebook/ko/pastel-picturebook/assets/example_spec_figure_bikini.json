@@ -1,0 +1,29 @@
+{
+  "look": {
+    "skin_tone": "light",
+    "hair_style": "bun"
+  },
+  "figure": {
+    "clothes": {
+      "dress": null,
+      "shoes": false,
+      "bikini": true
+    }
+  },
+  "style": {
+    "palette": {
+      "swim": {
+        "base": "#E2574C",
+        "shadow": "#A8342E",
+        "light": "#F59A8E",
+        "line": "#4A1210",
+        "pattern": {
+          "kind": "dots",
+          "color": "#FFFFFF",
+          "scale": 0.22,
+          "width": 0.36
+        }
+      }
+    }
+  }
+}

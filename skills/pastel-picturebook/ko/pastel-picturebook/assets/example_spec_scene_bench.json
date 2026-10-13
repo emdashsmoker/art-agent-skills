@@ -1,0 +1,224 @@
+{
+  "seed": 39,
+  "canvas": {
+    "width": 1600,
+    "height": 1200
+  },
+  "pose": {
+    "head_center": [
+      0.555,
+      0.232
+    ],
+    "head_unit": 0.036,
+    "yaw_deg": -10,
+    "roll_deg": -22
+  },
+  "backdrop": {
+    "subject": "landscape"
+  },
+  "grade": {
+    "color": "#F2B48A",
+    "amount": 0.18
+  },
+  "props": [
+    {
+      "kind": "bench"
+    }
+  ],
+  "expression": {
+    "name": "smile",
+    "amount": 0.8
+  },
+  "eyes": {
+    "closed": 0.0
+  },
+  "figure": {
+    "floor": {
+      "y": 0.9
+    },
+    "seat": null,
+    "neck_shift": 1.0,
+    "pose": {
+      "shoulder_tilt": 3.0,
+      "pelvis_tilt": -3.0,
+      "arm_left": {
+        "reach": {
+          "at": [
+            0.515,
+            0.66
+          ]
+        },
+        "bend": "straight",
+        "foreshorten": [
+          1.0,
+          0.85
+        ],
+        "hand": 30
+      },
+      "arm_right": {
+        "upper": 8.0,
+        "fore": -8.0,
+        "hand": -6.0,
+        "foreshorten": [
+          1.0,
+          0.7
+        ],
+        "toward": [
+          0,
+          1
+        ]
+      },
+      "leg_left": {
+        "thigh": -10.0,
+        "shin": 4.0,
+        "foot": 10.0,
+        "foreshorten": [
+          0.34,
+          1.0
+        ],
+        "toward": [
+          1,
+          0
+        ]
+      },
+      "leg_right": {
+        "thigh": -8.0,
+        "shin": -2.0,
+        "foot": 16.0,
+        "foreshorten": [
+          0.34,
+          1.0
+        ],
+        "toward": [
+          1,
+          0
+        ]
+      },
+      "hand_left": "relaxed",
+      "neck_lean": -0.8
+    },
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "shirt": {
+        "ease": 0.08,
+        "neck_half": 0.6,
+        "neck_level": 0.2,
+        "hem_level": 4.6,
+        "sleeve": 1.9
+      },
+      "pants": {
+        "waist_level": 4.6,
+        "hem_drop": 0.2,
+        "leg_widths": [
+          1.0,
+          0.62,
+          0.5
+        ],
+        "length": 1.0
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "cloth": {
+        "base": "#E9C46A",
+        "shadow": "#B8913C",
+        "line": "#4E3A12"
+      }
+    }
+  },
+  "companions": [
+    {
+      "sex": "male",
+      "seed": 40,
+      "pose": {
+        "head_center": [
+          0.43,
+          0.185
+        ],
+        "head_unit": 0.037,
+        "yaw_deg": 8
+      },
+      "expression": {
+        "name": "smile",
+        "amount": 0.5
+      },
+      "figure": {
+        "floor": {
+          "y": 0.9
+        },
+        "seat": null,
+        "pose": {
+          "shoulder_tilt": 2.0,
+          "pelvis_tilt": -2.0,
+          "arm_left": {
+            "upper": 14.0,
+            "fore": -6.0,
+            "hand": -4.0,
+            "foreshorten": [
+              1.0,
+              0.7
+            ],
+            "toward": [
+              0,
+              1
+            ]
+          },
+          "arm_right": {
+            "reach": {
+              "at": [
+                0.515,
+                0.665
+              ]
+            },
+            "bend": "straight",
+            "foreshorten": [
+              1.0,
+              0.85
+            ],
+            "hand": -20
+          },
+          "leg_left": {
+            "thigh": 12.0,
+            "shin": -8.0,
+            "foot": 14.0,
+            "foreshorten": [
+              0.34,
+              1.0
+            ],
+            "toward": [
+              1,
+              0
+            ]
+          },
+          "leg_right": {
+            "thigh": 10.0,
+            "shin": -9.0,
+            "foot": 18.0,
+            "foreshorten": [
+              0.34,
+              1.0
+            ],
+            "toward": [
+              1,
+              0
+            ]
+          }
+        },
+        "clothes": {
+          "shirt": {
+            "sleeve": 1.9
+          },
+          "jacket": {
+            "ease": 0.16,
+            "hem_level": 6.7,
+            "button_level": 3.6,
+            "sleeve": 1.93,
+            "buttons": 2
+          }
+        }
+      }
+    }
+  ]
+}

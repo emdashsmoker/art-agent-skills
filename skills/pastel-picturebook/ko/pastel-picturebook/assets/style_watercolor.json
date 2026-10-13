@@ -1,0 +1,19 @@
+{
+  "name": "watercolor",
+  "base": "illust",
+  "shading": "soft",
+  "line_scale": 0.45,
+  "soft_blur": 0.05,
+  "finish": {
+    "kind": "watercolor",
+    "flatten": 2,
+    "wobble": 2.2,
+    "edge_gain": 6.0,
+    "wet_edge": 0.9,
+    "density": 0.82,
+    "bloom": 0.35,
+    "granulation": 0.25,
+    "paper": 0.05,
+    "paper_color": "#FBF8F1"
+  }
+}

@@ -1,0 +1,51 @@
+{
+ "style": "soft_illust",
+ "framing": "full",
+ "canvas": {
+  "seed": 3
+ },
+ "characters": [
+  {
+   "hair": {
+    "style": "long",
+    "color": "#5A3C38"
+   },
+   "view": "side",
+   "head": {
+    "yaw": 0,
+    "roll": 0
+   },
+   "body": {
+    "bust": "large"
+   },
+   "outfit": {
+    "type": "slip_dress",
+    "color": "#7A2E3A",
+    "shoes": "heels"
+   }
+  },
+  {
+   "gender": "male",
+   "view": "side",
+   "head": {
+    "yaw": 0,
+    "roll": 0
+   },
+   "place": {
+    "scale": 1.06
+   },
+   "outfit": {
+    "type": "shirt",
+    "color": "#2C3440",
+    "bottom": "slacks",
+    "shoes": "dress_shoes"
+   }
+  }
+ ],
+ "background": {
+  "type": "city",
+  "city": {
+   "time": "night"
+  }
+ }
+}

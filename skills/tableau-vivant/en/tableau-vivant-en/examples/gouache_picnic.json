@@ -1,0 +1,166 @@
+{
+ "canvas": {
+  "aspect": "3:2",
+  "detail": "standard",
+  "seed": 33
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "meadow",
+  "time": "day"
+ },
+ "props": [
+  {
+   "kind": "cloth",
+   "name": "blanket",
+   "at": [
+    0,
+    0.3,
+    0
+   ],
+   "width": 2.4,
+   "depth": 1.9,
+   "colors": {
+    "cloth": [
+     0.85,
+     0.32,
+     0.3
+    ]
+   }
+  },
+  {
+   "kind": "plate",
+   "on": "blanket",
+   "at": [
+    0.05,
+    0.25,
+    0
+   ]
+  },
+  {
+   "kind": "apple",
+   "on": "blanket",
+   "at": [
+    0.0,
+    0.22,
+    0.02
+   ]
+  },
+  {
+   "kind": "grapes",
+   "on": "blanket",
+   "at": [
+    0.25,
+    0.4,
+    0
+   ]
+  },
+  {
+   "kind": "bottle",
+   "on": "blanket",
+   "at": [
+    -0.2,
+    0.5,
+    0
+   ]
+  }
+ ],
+ "figures": [
+  {
+   "name": "a",
+   "preset": "woman",
+   "pose": "sit_floor",
+   "outfit": "summer_dress",
+   "hair": {
+    "style": "long_wavy",
+    "color": "auburn"
+   },
+   "expression": "smile",
+   "position": [
+    -0.6,
+    1.0,
+    0
+   ],
+   "facing": [
+    0.05,
+    0.3
+   ]
+  },
+  {
+   "name": "b",
+   "preset": "man",
+   "pose": "sit_crossed_legs",
+   "outfit": "tshirt_jeans",
+   "hair": {
+    "style": "short_crop",
+    "color": "dark_brown"
+   },
+   "expression": "smile",
+   "skin": "tan",
+   "position": [
+    1.05,
+    0.0,
+    0
+   ],
+   "facing": [
+    0.05,
+    0.3
+   ]
+  },
+  {
+   "name": "c",
+   "preset": "woman_soft",
+   "pose": "kneel_sit",
+   "outfit": "tank_shorts",
+   "hair": {
+    "style": "bob",
+    "color": "blonde"
+   },
+   "expression": "soft_smile",
+   "position": [
+    0.45,
+    1.15,
+    0
+   ],
+   "facing": [
+    0.05,
+    0.3
+   ]
+  },
+  {
+   "name": "d",
+   "preset": "woman_slender",
+   "pose": "recline",
+   "outfit": "blouse_trousers",
+   "hair": {
+    "style": "curly",
+    "color": "black"
+   },
+   "expression": "serene",
+   "skin": "brown",
+   "position": [
+    0.0,
+    -0.4,
+    0
+   ],
+   "facing": 0
+  }
+ ],
+ "camera": {
+  "fit": [
+   "a",
+   "b",
+   "c",
+   "d",
+   "blanket"
+  ],
+  "yaw": 10,
+  "pitch": 30,
+  "fill": 0.95
+ },
+ "light": {
+  "preset": "three_quarter",
+  "mood": "warm"
+ },
+ "style": "gouache"
+}

@@ -1,0 +1,164 @@
+{
+ "canvas": [
+  1100,
+  1500
+ ],
+ "style": "anime",
+ "seed": 51,
+ "character": {
+  "gender": "male",
+  "hat": "beanie",
+  "hair_style": "layered",
+  "bangs": "layered",
+  "head_turn": -0.45,
+  "head_tilt": 3,
+  "gaze": [
+   0.25,
+   0.05
+  ],
+  "eyelid_open": 0.78,
+  "smile": -0.05,
+  "hair_seed": 3
+ },
+ "figure": {
+  "pose": "pockets",
+  "outfit": "hoodie_jeans",
+  "cigarette": "mouth",
+  "build": {
+   "muscle": 1.05
+  },
+  "ground_shadow": 0.4
+ },
+ "palette": {
+  "hair": "#1c1c24",
+  "hair_shadow": "#0c0c10",
+  "hair_light": "#8a93b8",
+  "skin": "#efd9cc",
+  "skin_shadow": "#c4a09a",
+  "cloth": "#24242a",
+  "cloth_shadow": "#121216",
+  "cloth2": "#2e323c",
+  "shoe": "#1a1a1e",
+  "hat": "#1e1e24"
+ },
+ "placement": {
+  "shot": "knee",
+  "x": 0.4
+ },
+ "light": {
+  "azimuth": 70,
+  "elevation": 55
+ },
+ "background": [
+  {
+   "type": "sky",
+   "top": "#0d1120",
+   "bottom": "#2c2c42",
+   "horizon": 0.62
+  },
+  {
+   "type": "ground",
+   "top": 0.62,
+   "color": "#4a4e5c",
+   "far_color": "#3a3e4c",
+   "roll": 0.006
+  },
+  {
+   "type": "panel_blocks",
+   "time": "night",
+   "vanish": [
+    0.5,
+    0.6
+   ],
+   "seed": 7,
+   "blocks": [
+    {
+     "x": [
+      -0.1,
+      0.3
+     ],
+     "base": 0.62,
+     "top": 0.3,
+     "floors": 9,
+     "haze": 0.45,
+     "side": 0.05
+    },
+    {
+     "x": [
+      0.45,
+      1.15
+     ],
+     "base": 0.66,
+     "top": 0.06,
+     "floors": 12,
+     "haze": 0.15
+    }
+   ]
+  },
+  {
+   "type": "power_lines",
+   "kind": "wood",
+   "color": "#14151b",
+   "poles": [
+    [
+     0.97,
+     0.98,
+     0.95
+    ],
+    [
+     0.3,
+     0.64,
+     0.32
+    ]
+   ]
+  },
+  {
+   "type": "streetlamp",
+   "base": [
+    0.7,
+    0.99
+   ],
+   "height": 0.82,
+   "arm": -1,
+   "glow": 0.9
+  },
+  {
+   "type": "fog",
+   "top": 0.45,
+   "bottom": 0.75,
+   "color": "#3c3c56",
+   "opacity": 0.35
+  },
+  {
+   "type": "snow",
+   "count": 420,
+   "size": [
+    0.0015,
+    0.006
+   ],
+   "seed": 3
+  }
+ ],
+ "foreground": [
+  {
+   "type": "snow",
+   "count": 70,
+   "size": [
+    0.003,
+    0.012
+   ],
+   "seed": 9
+  }
+ ],
+ "style_overrides": {
+  "rim_light": 0.9
+ },
+ "ambient": {
+  "color": "#26284a",
+  "opacity": 0.3,
+  "from": 0.45
+ },
+ "finish": {
+  "preset": "doomer"
+ }
+}

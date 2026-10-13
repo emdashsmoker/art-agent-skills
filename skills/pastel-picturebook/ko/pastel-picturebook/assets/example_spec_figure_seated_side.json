@@ -1,0 +1,53 @@
+{
+  "seed": 5,
+  "light": [
+    0.6,
+    -0.5,
+    0.62
+  ],
+  "pose": {
+    "head_center": [
+      0.4,
+      0.17
+    ],
+    "head_unit": 0.064,
+    "roll_deg": -6
+  },
+  "hair": {
+    "length": 4.6,
+    "wave": 0.06,
+    "waves": 1.8,
+    "tip_split": 0.9
+  },
+  "figure": {
+    "view": "side",
+    "body_scale": 1.0,
+    "floor": {
+      "at_feet": true
+    },
+    "clothes": null,
+    "shape": {
+      "bust": 1.08,
+      "waist": 0.95,
+      "hips": 1.06
+    },
+    "profile_pose": {
+      "seat": true,
+      "lean": -4.0,
+      "arm": {
+        "upper": 10.0,
+        "fore": 76.0
+      },
+      "leg_near": {
+        "thigh": 86.0,
+        "shin": 4.0
+      },
+      "leg_far": {
+        "thigh": 80.0,
+        "shin": -6.0
+      },
+      "hand": "relaxed",
+      "arch": 0.6
+    }
+  }
+}

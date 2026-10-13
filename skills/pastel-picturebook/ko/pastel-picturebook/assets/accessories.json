@@ -1,0 +1,7 @@
+{
+  "palette": {
+    "hat": {"base": "#E8DCC4", "shadow": "#B8A687", "light": "#FFF8EA", "line": "#5E5240", "band": "#3B3A4A"},
+    "scarf": {"base": "#B8463F", "shadow": "#7E2A2A", "light": "#E3897C", "line": "#4A1717"},
+    "bag": {"base": "#7A4E2D", "shadow": "#4E3019", "light": "#C08A5C", "line": "#2E1C0E"}
+  }
+}

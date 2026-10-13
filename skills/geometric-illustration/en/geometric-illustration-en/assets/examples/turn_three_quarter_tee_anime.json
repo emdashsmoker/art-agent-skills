@@ -1,0 +1,17 @@
+{
+  "style": "anime",
+  "framing": "full_body",
+  "canvas": {
+    "width": 1024,
+    "height": 1600
+  },
+  "character": {
+    "outfit": {
+      "type": "tee_jeans"
+    },
+    "pose": {
+      "preset": "relaxed",
+      "turn": "three_quarter"
+    }
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "canvas": {
+    "width": 1600,
+    "height": 1200
+  },
+  "sex": "male",
+  "seed": 63,
+  "pose": {
+    "head_center": [
+      0.67,
+      0.4
+    ],
+    "head_unit": 0.03536,
+    "yaw_deg": -10,
+    "roll_deg": -6
+  },
+  "expression": "smile",
+  "look": {
+    "hair_style": "short",
+    "identity": 8,
+    "hair_color": "dark_brown"
+  },
+  "figure": {
+    "pose": {
+      "arm_right": {
+        "reach": {
+          "mark": "cheek_right",
+          "offset": [
+            1.25,
+            -0.2
+          ]
+        },
+        "bend": "down",
+        "front": true,
+        "wrist": -25,
+        "foreshorten": [
+          0.45,
+          1.0
+        ],
+        "toward": [
+          -1,
+          0
+        ]
+      },
+      "hand_right": "peace",
+      "hand_right_view": "palm",
+      "arm_left": {
+        "upper": 4.0,
+        "fore": 2.0,
+        "hand": 0.0
+      }
+    },
+    "clothes": {
+      "shirt": {
+        "sleeve": 1.9
+      },
+      "jacket": {
+        "ease": 0.16,
+        "hem_level": 6.7,
+        "button_level": 3.6,
+        "sleeve": 1.93,
+        "buttons": 2
+      },
+      "pants": {
+        "waist_level": 4.6,
+        "hem_drop": 0.2,
+        "leg_widths": [
+          1.0,
+          0.7,
+          0.6
+        ]
+      },
+      "shoes": true
+    }
+  },
+  "style": {
+    "palette": {
+      "jacket": {
+        "base": "#5E7A9A",
+        "shadow": "#3E5470",
+        "light": "#9DB4CC",
+        "line": "#16202C",
+        "button": "#1A1A1E"
+      }
+    }
+  },
+  "backdrop": {
+    "subject": "sakura",
+    "spec": {
+      "camera": {
+        "horizon_y": 0.4
+      }
+    },
+    "place": "horizon",
+    "blur": 0.002
+  },
+  "weather": {
+    "kind": "petals",
+    "amount": 0.7
+  },
+  "companions": [
+    {
+      "seed": 62,
+      "pose": {
+        "head_center": [
+          0.5,
+          0.4
+        ],
+        "head_unit": 0.034,
+        "yaw_deg": 0,
+        "roll_deg": -3
+      },
+      "expression": "laugh",
+      "look": {
+        "hair_style": "long",
+        "identity": 5,
+        "hair_color": "black"
+      },
+      "lift": [
+        "hand_left",
+        "hand_right"
+      ],
+      "lift_under_head": true,
+      "figure": {
+        "pose": {
+          "arm_left": {
+            "reach": {
+              "mark": "shoulder_left",
+              "of": 1,
+              "offset": [
+                0.15,
+                0.0
+              ]
+            },
+            "bend": "straight",
+            "hand": 10
+          },
+          "arm_right": {
+            "reach": {
+              "mark": "shoulder_right",
+              "of": "main",
+              "offset": [
+                -0.15,
+                0.0
+              ]
+            },
+            "bend": "straight",
+            "hand": -10
+          },
+          "hand_left": "relaxed",
+          "hand_right": "relaxed"
+        },
+        "clothes": {
+          "dress": null,
+          "shoes": true,
+          "shirt": {
+            "ease": 0.1,
+            "neck_half": 0.6,
+            "neck_level": 0.25,
+            "hem_level": 4.4,
+            "sleeve": 1.6
+          },
+          "pants": {
+            "waist_level": 4.6,
+            "hem_drop": 0.15,
+            "leg_widths": [
+              0.95,
+              0.85,
+              0.75
+            ]
+          }
+        }
+      },
+      "style": {
+        "palette": {
+          "cloth": {
+            "base": "#F7F4EE",
+            "shadow": "#CFCAC0",
+            "line": "#5E5A52"
+          }
+        }
+      }
+    },
+    {
+      "seed": 61,
+      "pose": {
+        "head_center": [
+          0.33,
+          0.4
+        ],
+        "head_unit": 0.034,
+        "yaw_deg": 10,
+        "roll_deg": 7,
+        "horizon_drop": 0.01
+      },
+      "expression": "wink",
+      "look": {
+        "hair_style": "bob",
+        "identity": 2,
+        "hair_color": "brown",
+        "eye_shape": "big"
+      },
+      "figure": {
+        "pose": {
+          "arm_left": {
+            "reach": {
+              "mark": "cheek_left",
+              "offset": [
+                -1.15,
+                0.0
+              ]
+            },
+            "bend": "down",
+            "foreshorten": [
+              0.45,
+              1.0
+            ],
+            "toward": [
+              -1,
+              0
+            ],
+            "front": true,
+            "wrist": 25
+          },
+          "hand_left": "peace",
+          "hand_left_view": "palm",
+          "arm_right": {
+            "upper": 4.0,
+            "fore": 2.0,
+            "hand": 0.0
+          }
+        },
+        "clothes": {
+          "dress": null,
+          "shoes": true,
+          "hoodie": true,
+          "skirt": {
+            "hem_level": 8.6,
+            "hem_half": 2.0,
+            "folds": 5,
+            "fold_depth": 0.14
+          }
+        }
+      },
+      "style": {
+        "palette": {
+          "hoodie": {
+            "base": "#F3D27A",
+            "shadow": "#D2AA4E",
+            "light": "#FFF0C0",
+            "line": "#6E5418"
+          }
+        }
+      }
+    }
+  ]
+}

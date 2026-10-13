@@ -1,0 +1,80 @@
+{
+  "seed": 41,
+  "canvas": {
+    "width": 1600,
+    "height": 1200
+  },
+  "light": [
+    0.5,
+    -0.6,
+    0.62
+  ],
+  "pose": {
+    "head_center": [
+      0.22,
+      0.7
+    ],
+    "head_unit": 0.034
+  },
+  "backdrop": {
+    "subject": "beach",
+    "spec": {
+      "horizon_y": 0.38,
+      "sea": {
+        "shore_y": 0.55
+      }
+    }
+  },
+  "expression": {
+    "name": "smile",
+    "amount": 0.6
+  },
+  "eyes": {
+    "closed": 1.0
+  },
+  "look": {
+    "skin_tone": "light"
+  },
+  "hair": {
+    "length": 3.4
+  },
+  "figure": {
+    "view": "side",
+    "lying": {
+      "face": "up",
+      "ground": 0.86
+    },
+    "clothes": {
+      "dress": null,
+      "shoes": false,
+      "bikini": true
+    },
+    "profile_pose": {
+      "arm": {
+        "upper": 20.0,
+        "fore": 45.0
+      },
+      "hand": "relaxed",
+      "leg_near": {
+        "thigh": 55.0,
+        "shin": -40.0,
+        "foot": -20.0
+      },
+      "leg_far": {
+        "thigh": 2.0,
+        "shin": -2.0,
+        "foot": 30.0
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "swim": {
+        "base": "#2F8F9D",
+        "shadow": "#1E5F6E",
+        "light": "#86D3DA",
+        "line": "#0C2C34"
+      }
+    }
+  }
+}

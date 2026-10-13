@@ -1,0 +1,26 @@
+{
+ "style": "soft_illust",
+ "framing": "full",
+ "canvas": {
+  "seed": 3
+ },
+ "character": {
+  "view": "back",
+  "head": {
+   "yaw": 32,
+   "roll": -3
+  },
+  "body": {
+   "figure": "fuller",
+   "bust": "large",
+   "stance": "contrapposto"
+  },
+  "outfit": {
+   "type": "bikini",
+   "bottom_style": "high_leg"
+  }
+ },
+ "background": {
+  "type": "beach"
+ }
+}

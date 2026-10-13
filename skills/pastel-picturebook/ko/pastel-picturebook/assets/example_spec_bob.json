@@ -1,0 +1,16 @@
+{
+  "seed": 21,
+  "pose": {"yaw_deg": 14, "roll_deg": -3, "mirror": true},
+  "face": {"jaw_sharpness": 1.0, "jaw_width": 0.72, "chin_width": 0.10},
+  "eyes": {"tilt": 0.13, "open_up": 0.14, "brow_slant": 0.9},
+  "mouth": {"smile": 0.03},
+  "hair": {"length": 1.55, "wave": 0.0, "volume": 0.16, "bangs": {"near": 5, "far": 2, "length": 0.78, "width": 0.15, "seed": 5}},
+  "style": {
+    "palette": {
+      "hair": {"base": "#8C3B2E", "shadow": "#5C211B", "light": "#E08A5B", "line": "#3A1410", "deep": "#3A1410"},
+      "eye": {"iris": "#5B9A4A", "iris_dark": "#1F4A25", "iris_light": "#BFE58A"},
+      "cloth": {"base": "#2B2D36", "shadow": "#15161C", "line": "#0B0C10"},
+      "background": {"top": "#F6C9A0", "bottom": "#F9E7D2", "disc": "#FFF4DC"}
+    }
+  }
+}

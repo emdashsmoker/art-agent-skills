@@ -1,0 +1,28 @@
+{
+  "style": "illustration",
+  "framing": "bust",
+  "character": {
+    "hair": {
+      "bangs": "blunt",
+      "bang_length": 0.02,
+      "tuck": "far",
+      "length": 1.6
+    },
+    "eyes": {
+      "size": 1.2,
+      "tilt": 0.04
+    },
+    "face": {
+      "jaw_sharpness": 0.7
+    }
+  },
+  "palette": {
+    "hair": "#B9BCC8",
+    "hair_highlight": "#FFFFFF",
+    "eye": "#B03A48",
+    "lips": "#B35A66"
+  },
+  "light": {
+    "rim_color": "#FFD7C2"
+  }
+}

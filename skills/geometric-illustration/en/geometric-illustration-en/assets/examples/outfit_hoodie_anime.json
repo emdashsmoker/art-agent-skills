@@ -1,0 +1,20 @@
+{
+  "style": "anime",
+  "framing": "full_body",
+  "canvas": {
+    "width": 1024,
+    "height": 1600
+  },
+  "character": {
+    "outfit": {
+      "type": "hoodie_joggers"
+    },
+    "pose": {
+      "preset": "relaxed"
+    }
+  },
+  "palette": {
+    "cloth": "#B9A7C9",
+    "skirt": "#3A3D48"
+  }
+}

@@ -1,0 +1,10 @@
+{
+ "subject": "interior",
+ "style": "soft_illust",
+ "canvas": {
+  "seed": 4
+ },
+ "interior": {
+  "room": "office"
+ }
+}

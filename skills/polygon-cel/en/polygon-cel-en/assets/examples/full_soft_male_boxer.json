@@ -1,0 +1,6 @@
+{"style": "soft_illust", "framing": "full", "canvas": {"seed": 12},
+ "character": {"gender": "male", "head": {"yaw": 12, "roll": -2},
+   "body": {"figure": "slim", "stance": "contrapposto"},
+   "hair": {"color": "#5A4A3A", "bangs": "full"},
+   "outfit": {"type": "tank_top", "color": "#5D6B7A", "bottom": "boxer_briefs"}},
+ "background": {"type": "window"}}

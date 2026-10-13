@@ -1,0 +1,12 @@
+{
+  "name": "pixel",
+  "base": "anime",
+  "finish": {
+    "kind": "pixel",
+    "cells": 200,
+    "colors": 28,
+    "edge": 0.16,
+    "outline": 0.62,
+    "dither": 0.035
+  }
+}

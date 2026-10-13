@@ -1,0 +1,78 @@
+{
+ "canvas": {
+  "aspect": "4:5",
+  "detail": "fine",
+  "seed": 32
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "estate_street",
+  "time": "night"
+ },
+ "props": [
+  {
+   "kind": "bus_stop",
+   "name": "stop",
+   "at": [
+    5.6,
+    8,
+    0
+   ],
+   "rotate_deg": -90
+  }
+ ],
+ "figures": [
+  {
+   "name": "b",
+   "preset": "woman_slender",
+   "hair": {
+    "style": "long_straight",
+    "color": "black"
+   },
+   "outfit": "long_coat",
+   "expression": "melancholy",
+   "pose": {
+    "preset": "sit_chair",
+    "reach.L": {
+     "to": "thigh.L",
+     "offset": 0.03
+    },
+    "reach.R": {
+     "to": "thigh.R",
+     "offset": 0.03
+    },
+    "head": {
+     "turn": 30,
+     "nod": 4
+    }
+   },
+   "position": [
+    6.0,
+    8.0,
+    0
+   ],
+   "facing": [
+    0,
+    8
+   ]
+  }
+ ],
+ "camera": {
+  "eye": [
+   -1.2,
+   1.4,
+   1.55
+  ],
+  "target": [
+   5.7,
+   8.4,
+   1.25
+  ],
+  "fov": 25
+ },
+ "light": {
+  "key": 0.3,
+  "ambient": 0.2
+ },
+ "style": "doomer"
+}

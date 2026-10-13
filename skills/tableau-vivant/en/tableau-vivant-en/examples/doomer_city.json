@@ -1,0 +1,43 @@
+{
+ "canvas": {
+  "aspect": "16:9",
+  "detail": "standard",
+  "seed": 35
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "estate_street",
+  "time": "night"
+ },
+ "props": [
+  {
+   "kind": "car",
+   "at": [
+    -5.2,
+    30,
+    0
+   ],
+   "colors": {
+    "car": [
+     0.3,
+     0.3,
+     0.28
+    ]
+   }
+  },
+  {
+   "kind": "bus_stop",
+   "at": [
+    9.4,
+    44,
+    0
+   ],
+   "rotate_deg": -90
+  }
+ ],
+ "light": {
+  "key": 0.3,
+  "ambient": 0.2
+ },
+ "style": "doomer"
+}

@@ -1,0 +1,146 @@
+{
+  "seed": 35,
+  "pose": {
+    "head_center": [
+      0.58,
+      0.4
+    ],
+    "head_unit": 0.038,
+    "yaw_deg": -8
+  },
+  "backdrop": {
+    "subject": "beach",
+    "spec": {
+      "horizon_y": 0.4,
+      "sea": {
+        "shore_y": 0.56
+      },
+      "palms": [
+        [
+          0.98,
+          0.99,
+          0.55,
+          -0.14
+        ]
+      ],
+      "sky": {
+        "sun_x": 0.2,
+        "sun_y": 0.12,
+        "sun_r": 0.03,
+        "clouds": 0.4
+      }
+    },
+    "place": "horizon"
+  },
+  "expression": "laugh",
+  "look": {
+    "skin_tone": "light",
+    "hair_style": "ponytail",
+    "identity": 6
+  },
+  "figure": {
+    "pose": {
+      "turn": -10,
+      "arm_right": {
+        "reach": {
+          "mark": "temple_right",
+          "offset": [
+            1.6,
+            -0.3
+          ]
+        },
+        "bend": "down",
+        "wrist": -8
+      },
+      "hand_right": "open",
+      "hand_right_view": "palm",
+      "arm_left": {
+        "reach": {
+          "at": [
+            0.505,
+            0.62
+          ]
+        },
+        "bend": "straight",
+        "hand": 20
+      },
+      "hand_left": "grip"
+    },
+    "clothes": {
+      "dress": null,
+      "shoes": false,
+      "bikini": true
+    }
+  },
+  "style": {
+    "palette": {
+      "swim": {
+        "base": "#E2574C",
+        "shadow": "#A8342E",
+        "light": "#F59A8E",
+        "line": "#4A1210",
+        "pattern": {
+          "kind": "dots",
+          "color": "#FFFFFF",
+          "scale": 0.22,
+          "width": 0.36
+        }
+      }
+    }
+  },
+  "companions": [
+    {
+      "sex": "male",
+      "seed": 36,
+      "pose": {
+        "head_center": [
+          0.42,
+          0.4
+        ],
+        "head_unit": 0.04,
+        "yaw_deg": 10
+      },
+      "look": {
+        "skin_tone": "tan"
+      },
+      "expression": {
+        "name": "smile",
+        "amount": 0.7
+      },
+      "figure": {
+        "pose": {
+          "turn": 10,
+          "arm_right": {
+            "reach": {
+              "at": [
+                0.505,
+                0.625
+              ]
+            },
+            "bend": "straight",
+            "hand": -15
+          }
+        },
+        "clothes": {
+          "shirt": null,
+          "pants": null,
+          "shoes": false,
+          "trunks": true
+        }
+      },
+      "style": {
+        "palette": {
+          "swim": {
+            "pattern": {
+              "kind": "stripes",
+              "color": "#F2D27A",
+              "scale": 0.35,
+              "width": 0.25,
+              "angle": 90
+            }
+          }
+        }
+      }
+    }
+  ]
+}

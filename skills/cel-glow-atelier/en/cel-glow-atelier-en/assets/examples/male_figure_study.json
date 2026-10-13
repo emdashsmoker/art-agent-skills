@@ -1,0 +1,90 @@
+{
+  "canvas": [
+    1200,
+    1600
+  ],
+  "style": "painterly",
+  "seed": 6,
+  "character": {
+    "gender": "male",
+    "head_turn": -0.55,
+    "head_tilt": 3,
+    "gaze": [
+      0.3,
+      0.1
+    ],
+    "eye_height": 0.062,
+    "hair_style": "layered",
+    "bangs": "layered",
+    "parting": 0.06,
+    "hair_seed": 5,
+    "smile": 0.0
+  },
+  "figure": {
+    "pose": "contrapposto",
+    "outfit": "none",
+    "build": {
+      "muscle": 1.25
+    },
+    "ground_shadow": 0,
+    "pose_overrides": {
+      "hand_right": "relaxed"
+    }
+  },
+  "palette": {
+    "skin": "#e8c2a4",
+    "skin_shadow": "#a87058",
+    "blush": "#c98a78",
+    "lip": "#a8665c",
+    "hair": "#3a2418",
+    "hair_shadow": "#1a0e08",
+    "hair_light": "#b07a4a",
+    "iris": "#4a3a2a"
+  },
+  "placement": {
+    "head_height": 0.19,
+    "pelvis": [
+      0.48,
+      0.8
+    ]
+  },
+  "light": {
+    "azimuth": 140,
+    "elevation": 35
+  },
+  "background": [
+    {
+      "type": "wash",
+      "colors": [
+        "#3b3a33",
+        "#57503f",
+        "#2b2c2a",
+        "#6a5a44"
+      ],
+      "scale": 0.35,
+      "seed": 12
+    },
+    {
+      "type": "glow",
+      "center": [
+        0.38,
+        0.3
+      ],
+      "radius": 0.5,
+      "color": "#8a7658",
+      "opacity": 0.5
+    }
+  ],
+  "style_overrides": {
+    "rim_light": 0.4
+  },
+  "finish": {
+    "radii": [
+      30,
+      15,
+      7,
+      3.5,
+      2
+    ]
+  }
+}

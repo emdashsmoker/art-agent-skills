@@ -1,0 +1,11 @@
+{
+ "subject": "landscape",
+ "style": "watercolor",
+ "mood": "doomer",
+ "landscape": {
+  "clouds": 2
+ },
+ "canvas": {
+  "seed": 13
+ }
+}

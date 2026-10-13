@@ -1,0 +1,38 @@
+{
+  "look": {
+    "hair_style": "ponytail"
+  },
+  "accessories": {
+    "bag": true,
+    "hat": {
+      "kind": "cap"
+    }
+  },
+  "figure": {
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "hoodie": true,
+      "pants": {
+        "waist_level": 4.6,
+        "hem_drop": 0.15,
+        "leg_widths": [
+          0.95,
+          0.85,
+          0.75
+        ]
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "hoodie": {
+        "base": "#E7A9B5",
+        "shadow": "#B87584",
+        "light": "#F7D9DF",
+        "line": "#5E2C38",
+        "string": "#FFFFFF"
+      }
+    }
+  }
+}

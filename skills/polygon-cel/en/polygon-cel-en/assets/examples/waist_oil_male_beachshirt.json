@@ -1,0 +1,6 @@
+{"style": "painterly", "framing": "waist", "canvas": {"seed": 13},
+ "character": {"gender": "male", "head": {"yaw": 14, "roll": -2},
+   "body": {"pose": "hand_on_hip"},
+   "outfit": {"type": "beach_shirt", "variant": "print", "color": "#F3EFE6", "print_color": "#3E7FA0"}},
+ "lighting": {"key": "upper_right"},
+ "background": {"type": "beach"}, "post": {"grade": "warm"}}

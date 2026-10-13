@@ -1,0 +1,23 @@
+{
+  "expression": "cry",
+  "backdrop": {
+    "subject": "city",
+    "spec": {
+      "night": {
+        "on": true
+      }
+    },
+    "blur": 0.006,
+    "fade": {
+      "color": "#1A1830",
+      "amount": 0.15
+    }
+  },
+  "grade": {
+    "color": "#AEB8D8",
+    "amount": 0.25
+  },
+  "weather": {
+    "kind": "rain"
+  }
+}

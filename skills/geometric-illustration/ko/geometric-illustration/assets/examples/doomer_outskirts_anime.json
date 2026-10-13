@@ -1,0 +1,14 @@
+{
+  "subject": "landscape",
+  "style": "anime",
+  "look": "doomer",
+  "canvas": {
+    "width": 1600,
+    "height": 1000,
+    "seed": 4
+  },
+  "scene": {
+    "time": "snow_night",
+    "site": "outskirts"
+  }
+}

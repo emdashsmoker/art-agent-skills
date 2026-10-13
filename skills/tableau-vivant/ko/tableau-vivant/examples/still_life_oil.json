@@ -1,0 +1,181 @@
+{
+ "canvas": {
+  "aspect": "4:3",
+  "detail": "standard",
+  "seed": 3
+ },
+ "environment": {
+  "type": "room",
+  "wall": [
+   0.34,
+   0.29,
+   0.24
+  ],
+  "floor": [
+   0.26,
+   0.19,
+   0.14
+  ],
+  "depth": 1.2
+ },
+ "props": [
+  {
+   "kind": "table",
+   "name": "table",
+   "at": [
+    0,
+    0,
+    0
+   ],
+   "width": 1.6,
+   "depth": 0.8
+  },
+  {
+   "kind": "cloth",
+   "on": "table",
+   "at": [
+    0.22,
+    -0.08,
+    0
+   ],
+   "rotate_deg": 0,
+   "colors": {
+    "cloth": [
+     0.9,
+     0.88,
+     0.82
+    ]
+   },
+   "width": 1.0,
+   "depth": 0.64,
+   "drop": 0.2
+  },
+  {
+   "kind": "amphora",
+   "on": "table",
+   "at": [
+    -0.32,
+    0.12,
+    0
+   ],
+   "scale": 0.62
+  },
+  {
+   "kind": "bottle",
+   "on": "table",
+   "at": [
+    -0.02,
+    0.2,
+    0
+   ]
+  },
+  {
+   "kind": "bowl",
+   "on": "table",
+   "at": [
+    0.25,
+    0.02,
+    0
+   ]
+  },
+  {
+   "kind": "apple",
+   "on": "table",
+   "at": [
+    0.23,
+    0.0,
+    0.035
+   ]
+  },
+  {
+   "kind": "orange",
+   "on": "table",
+   "at": [
+    0.3,
+    0.06,
+    0.03
+   ]
+  },
+  {
+   "kind": "pear",
+   "on": "table",
+   "at": [
+    0.02,
+    -0.12,
+    0
+   ],
+   "rotate_deg": 40
+  },
+  {
+   "kind": "lemon",
+   "on": "table",
+   "at": [
+    -0.12,
+    -0.16,
+    0
+   ]
+  },
+  {
+   "kind": "grapes",
+   "on": "table",
+   "at": [
+    0.46,
+    -0.14,
+    0
+   ]
+  },
+  {
+   "kind": "wine_glass",
+   "on": "table",
+   "at": [
+    0.52,
+    0.16,
+    0
+   ]
+  },
+  {
+   "kind": "apple",
+   "name": "apple2",
+   "on": "table",
+   "at": [
+    -0.3,
+    -0.2,
+    0
+   ],
+   "colors": {
+    "apple": [
+     0.72,
+     0.2,
+     0.14
+    ]
+   }
+  },
+  {
+   "kind": "candle",
+   "on": "table",
+   "at": [
+    0.62,
+    0.26,
+    0
+   ]
+  }
+ ],
+ "camera": {
+  "eye": [
+   0.15,
+   -1.75,
+   1.22
+  ],
+  "target": [
+   0.1,
+   0.0,
+   0.86
+  ],
+  "fov": 34
+ },
+ "light": {
+  "preset": "rembrandt",
+  "mood": "old_master"
+ },
+ "style": "oil"
+}

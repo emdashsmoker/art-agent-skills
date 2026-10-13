@@ -1,0 +1,76 @@
+{
+  "seed": 12,
+  "expression": "wink",
+  "pose": {
+    "head_center": [
+      0.5,
+      0.13
+    ],
+    "head_unit": 0.06,
+    "yaw_deg": -6
+  },
+  "look": {
+    "face_shape": "heart",
+    "eye_shape": "big",
+    "hair_style": "bob",
+    "identity": 5
+  },
+  "figure": {
+    "floor": {
+      "y": 0.92
+    },
+    "pose": {
+      "arm_right": {
+        "reach": {
+          "mark": "cheek_right",
+          "offset": [
+            1.15,
+            0.0
+          ]
+        },
+        "bend": "down",
+        "foreshorten": [
+          0.45,
+          1.0
+        ],
+        "toward": [
+          1,
+          0
+        ],
+        "front": true,
+        "wrist": -25
+      },
+      "hand_right": "peace",
+      "hand_right_view": "palm"
+    },
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "shirt": {
+        "ease": 0.1,
+        "neck_half": 0.6,
+        "neck_level": 0.25,
+        "hem_level": 4.4,
+        "sleeve": 1.9
+      },
+      "pants": {
+        "waist_level": 4.6,
+        "hem_drop": 0.15,
+        "leg_widths": [
+          0.95,
+          0.85,
+          0.75
+        ]
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "cloth": {
+        "base": "#9FC3E6",
+        "shadow": "#6E94BC",
+        "line": "#2E4462"
+      }
+    }
+  }
+}

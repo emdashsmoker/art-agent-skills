@@ -1,0 +1,295 @@
+{
+  "spec": {
+    "sex": "male",
+    "face": {
+      "chin_y": 1.34,
+      "cheek_width": 1.0,
+      "jaw_width": 0.9,
+      "jaw_height": 0.7,
+      "chin_width": 0.24,
+      "jaw_sharpness": 1.0,
+      "ears": true
+    },
+    "eyes": {
+      "center_x": 0.46,
+      "half_width": 0.225,
+      "open_up": 0.092,
+      "open_down": 0.062,
+      "tilt": 0.02,
+      "lash_thickness": 0.024,
+      "wing_length": 0.03,
+      "wing_lift": 0.1,
+      "crease_gap": 0.045,
+      "brow_gap": 0.22,
+      "brow_slant": 0.25,
+      "gaze_x": -0.02,
+      "gaze_y": -0.02,
+      "iris_rx": 0.092,
+      "iris_ry": 0.095,
+      "pupil_ratio": 0.45
+    },
+    "nose": {
+      "tip_y": 0.63,
+      "width": 0.15,
+      "protrusion": 0.33
+    },
+    "mouth": {
+      "y": 0.95,
+      "half_width": 0.245,
+      "lip_height": 0.034,
+      "smile": 0.004
+    },
+    "body": {
+      "neck_half_width": 0.56,
+      "shoulder_half_width": 2.05,
+      "shoulder_y": 2.32,
+      "neck_pit_y": 2.12,
+      "adams_apple": true
+    },
+    "outfit": {
+      "neckline_half_width": 0.7,
+      "neckline_dip_y": 2.3,
+      "ease": 0.1,
+      "band_width": 0.1,
+      "rib_spacing": 0,
+      "cut": "crew",
+      "necklace": false
+    },
+    "hair": {
+      "style": "short",
+      "part_x": 0.38,
+      "volume": 0.22,
+      "wave": 0.0,
+      "tip_locks": 5,
+      "tip_split": 0.88,
+      "bangs": {
+        "near": 3,
+        "far": 1,
+        "length": 0.32,
+        "width": 0.14,
+        "seed": 4
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "lip": {
+        "upper": "#B9837A",
+        "lower": "#C48E84",
+        "shine": "#F2D2C6",
+        "line": "#6E4440"
+      }
+    },
+    "face_render": {
+      "blush_opacity": 0.06,
+      "lip_opacity": 0.35,
+      "lip_shine_opacity": 0.15,
+      "stubble": 0.1
+    },
+    "eye_render": {
+      "brow": 0.072,
+      "brow_opacity": 0.95,
+      "lash_spikes": 0.0,
+      "lower_lash": 0.003,
+      "crease": 0.006
+    },
+    "hair_render": {
+      "flyaways": 0
+    },
+    "body_render": {
+      "knit_opacity": 0.0
+    }
+  },
+  "style_anime": {
+    "palette": {
+      "cloth": {
+        "base": "#3C4B6E",
+        "shadow": "#232D46",
+        "line": "#141A2A"
+      },
+      "hair": {
+        "base": "#2E2B33",
+        "shadow": "#18161C",
+        "light": "#6E6878",
+        "line": "#0E0D11",
+        "deep": "#0E0D11"
+      },
+      "skin": {
+        "base": "#F6DCC8",
+        "shadow": "#DDA98F",
+        "deep": "#C48A72",
+        "light": "#FFF2E6",
+        "blush": "#E8A08C"
+      }
+    },
+    "face_render": {
+      "stubble": 0.0
+    }
+  },
+  "style_illust": {
+    "palette": {
+      "cloth": {
+        "base": "#4F6B5A",
+        "shadow": "#2C3F33",
+        "line": "#18241D"
+      },
+      "hair": {
+        "base": "#2A2420",
+        "shadow": "#120F0D",
+        "light": "#6A5A4C",
+        "line": "#0A0807",
+        "deep": "#0A0807"
+      },
+      "skin": {
+        "base": "#EBC1A2",
+        "shadow": "#C98563",
+        "deep": "#A8644A",
+        "light": "#FFE6D2",
+        "blush": "#D98468"
+      }
+    }
+  },
+  "style_paint": {
+    "palette": {
+      "cloth": {
+        "base": "#2F3A44",
+        "shadow": "#141A20",
+        "line": "#0A0D10"
+      },
+      "hair": {
+        "base": "#2B2420",
+        "shadow": "#120E0C",
+        "light": "#7A6450",
+        "line": "#0A0807",
+        "deep": "#0A0807"
+      },
+      "skin": {
+        "base": "#DDAE8C",
+        "shadow": "#956048",
+        "deep": "#62382A",
+        "light": "#FFE0C4",
+        "blush": "#C77A5E"
+      }
+    }
+  },
+  "subject_figure": {
+    "spec": {
+      "pose": {
+        "head_center": [
+          0.5,
+          0.1
+        ],
+        "head_unit": 0.057
+      },
+      "body": {
+        "neck_pit_y": 2.12
+      },
+      "figure": {
+        "clothes": {
+          "dress": null,
+          "shoes": true,
+          "shirt": {
+            "ease": 0.1,
+            "neck_half": 0.7,
+            "neck_level": -0.12,
+            "hem_level": 5.55,
+            "sleeve": 0.45
+          },
+          "pants": {
+            "waist_level": 4.85,
+            "hem_drop": 0.15,
+            "leg_widths": [
+              0.86,
+              0.76,
+              0.68
+            ]
+          }
+        },
+        "pose": {
+          "shoulder_tilt": 2.0,
+          "pelvis_tilt": -4.0,
+          "arm_left": {
+            "upper": 9.0,
+            "fore": 4.0,
+            "hand": 2.0
+          },
+          "arm_right": {
+            "upper": 11.0,
+            "fore": 6.0,
+            "hand": 4.0
+          },
+          "leg_left": {
+            "thigh": 3.0,
+            "shin": -2.0,
+            "foot": 12.0
+          },
+          "leg_right": {
+            "thigh": 7.0,
+            "shin": -6.0,
+            "foot": 22.0
+          },
+          "hand_left": "relaxed",
+          "hand_right": "relaxed"
+        }
+      }
+    },
+    "style": {
+      "palette": {
+        "pants": {
+          "base": "#3E4A5C",
+          "shadow": "#1F2632",
+          "deep": "#121720",
+          "light": "#FFFFFF",
+          "line": "#0B0E14",
+          "belt": "#2A1E16"
+        },
+        "underwear": {
+          "base": "#3C414C",
+          "shadow": "#262A32",
+          "light": "#6F7684",
+          "line": "#111318",
+          "band": "#C9CDD4"
+        },
+        "drape": {
+          "base": "#ECE6DA",
+          "shadow": "#BDB4A2",
+          "deep": "#948B7A",
+          "light": "#FFFFFF",
+          "line": "#5B564C"
+        },
+        "jeogori": {
+          "base": "#D7DCE3",
+          "shadow": "#A2AAB6",
+          "deep": "#717A88",
+          "line": "#4A515C"
+        },
+        "goreum": {
+          "base": "#2F4366",
+          "shadow": "#1D2C47",
+          "line": "#121C30"
+        }
+      }
+    },
+    "style_anime": {
+      "palette": {
+        "cloth": {
+          "base": "#F4F2EC",
+          "shadow": "#C7CBD8",
+          "line": "#5D6074"
+        }
+      }
+    },
+    "style_illust": {
+      "palette": {
+        "pants": {
+          "base": "#2F3B4A",
+          "shadow": "#18202B",
+          "deep": "#0E131A",
+          "light": "#FFFFFF",
+          "line": "#0A0D12",
+          "belt": "#3A2618"
+        }
+      }
+    }
+  }
+}

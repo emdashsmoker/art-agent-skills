@@ -1,0 +1,11 @@
+{
+  "subject": "figure_study",
+  "style": "anime",
+  "canvas": {
+    "width": 1024,
+    "height": 1400
+  },
+  "figure_study": {
+    "pose": "seated"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "style": "watercolor",
+  "framing": "full_body",
+  "canvas": {
+    "width": 1024,
+    "height": 1600
+  },
+  "character": {
+    "pose": {
+      "preset": "relaxed",
+      "turn": "back"
+    }
+  }
+}

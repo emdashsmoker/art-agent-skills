@@ -1,0 +1,174 @@
+{
+  "canvas": {
+    "width": 1600,
+    "height": 1200
+  },
+  "light": [
+    -0.4,
+    -0.55,
+    0.7
+  ],
+  "seed": 142,
+  "pose": {
+    "head_center": [
+      0.538,
+      0.4
+    ],
+    "head_unit": 0.019,
+    "roll_deg": 10,
+    "horizon_drop": 0.012
+  },
+  "look": {
+    "hair_style": "long",
+    "identity": 41,
+    "hair_color": "black"
+  },
+  "hair": {
+    "length": 4.2
+  },
+  "figure": {
+    "view": "back",
+    "floor": {
+      "at_feet": true
+    },
+    "neck_shift": -0.4,
+    "pose": {
+      "neck_lean": 0.35,
+      "arm_left": {
+        "upper": 8.0,
+        "fore": 4.0,
+        "hand": 0.0
+      },
+      "arm_right": {
+        "upper": 10.0,
+        "fore": 6.0,
+        "hand": 2.0
+      }
+    },
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "coat": {
+        "ease": 0.16,
+        "hem_level": 9.6,
+        "hem_half": 2.3,
+        "button_level": 3.0,
+        "sleeve": 1.93,
+        "buttons": 3
+      },
+      "shirt": {
+        "ease": 0.08,
+        "neck_half": 0.55,
+        "neck_level": 0.1,
+        "hem_level": 3.7,
+        "sleeve": 1.92
+      },
+      "pants": {
+        "waist_level": 4.6,
+        "hem_drop": 0.2,
+        "leg_widths": [
+          0.95,
+          0.85,
+          0.75
+        ]
+      }
+    }
+  },
+  "accessories": {
+    "scarf": true
+  },
+  "style": {
+    "palette": {
+      "jacket": {
+        "base": "#4A4E58",
+        "shadow": "#2A2C33",
+        "light": "#7A7E88",
+        "line": "#101114",
+        "button": "#1A1A1E"
+      },
+      "scarf": {
+        "base": "#7A2E2E",
+        "shadow": "#4A1A1A",
+        "light": "#A04848",
+        "line": "#200A0A"
+      }
+    }
+  },
+  "backdrop": {
+    "subject": "panelka",
+    "spec": {
+      "camera": {
+        "horizon_y": 0.4
+      },
+      "swing": null
+    },
+    "place": "horizon",
+    "blur": 0.001
+  },
+  "weather": {
+    "kind": "snow",
+    "amount": 0.45
+  },
+  "companions": [
+    {
+      "sex": "male",
+      "seed": 141,
+      "pose": {
+        "head_center": [
+          0.462,
+          0.4
+        ],
+        "head_unit": 0.0198
+      },
+      "look": {
+        "hair_style": "short",
+        "identity": 42,
+        "hair_color": "dark_brown"
+      },
+      "accessories": {
+        "hat": {
+          "kind": "beanie"
+        }
+      },
+      "figure": {
+        "view": "back",
+        "floor": {
+          "at_feet": true
+        },
+        "clothes": {
+          "shirt": null,
+          "hoodie": {
+            "hem_level": 5.7
+          },
+          "shoes": true,
+          "pants": {
+            "waist_level": 4.6,
+            "hem_drop": 0.2,
+            "leg_widths": [
+              1.0,
+              0.75,
+              0.65
+            ]
+          }
+        }
+      },
+      "style": {
+        "palette": {
+          "hoodie": {
+            "base": "#2E3036",
+            "shadow": "#191A1E",
+            "light": "#55585F",
+            "line": "#08080A",
+            "string": "#B8B8B8"
+          },
+          "hat": {
+            "base": "#2B2D33",
+            "shadow": "#16171B",
+            "light": "#4A4D55",
+            "line": "#0A0A0C"
+          }
+        }
+      }
+    }
+  ]
+}

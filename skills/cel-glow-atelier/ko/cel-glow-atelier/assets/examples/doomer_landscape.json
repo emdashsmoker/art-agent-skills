@@ -1,0 +1,173 @@
+{
+ "canvas": [
+  1600,
+  1000
+ ],
+ "style": "painterly",
+ "subject": "none",
+ "seed": 56,
+ "light": {
+  "azimuth": 120,
+  "elevation": 25
+ },
+ "background": [
+  {
+   "type": "sky",
+   "top": "#454c5c",
+   "bottom": "#c4b4a6",
+   "horizon": 0.6
+  },
+  {
+   "type": "clouds",
+   "color": "#7c8292",
+   "shadow": "#4e5464",
+   "coverage": 0.62,
+   "top": 0.02,
+   "bottom": 0.45,
+   "seed": 3
+  },
+  {
+   "type": "tree_line",
+   "base": 0.6,
+   "height": 0.05,
+   "color": "#262a33",
+   "haze": "#7e828e",
+   "seed": 2
+  },
+  {
+   "type": "panel_blocks",
+   "time": "dusk",
+   "vanish": [
+    0.5,
+    0.58
+   ],
+   "seed": 51,
+   "blocks": [
+    {
+     "x": [
+      0.62,
+      0.7
+     ],
+     "base": 0.6,
+     "top": 0.47,
+     "floors": 12,
+     "haze": 0.45,
+     "entrances": false,
+     "balconies": false,
+     "lit": 0.18
+    },
+    {
+     "x": [
+      0.72,
+      0.77
+     ],
+     "base": 0.6,
+     "top": 0.5,
+     "floors": 10,
+     "haze": 0.55,
+     "entrances": false,
+     "balconies": false,
+     "lit": 0.12
+    }
+   ]
+  },
+  {
+   "type": "ground",
+   "top": 0.6,
+   "color": "#c2c6ce",
+   "far_color": "#9aa0ac",
+   "roll": 0.02,
+   "seed": 4
+  },
+  {
+   "type": "grass",
+   "top": 0.7,
+   "count": 800,
+   "length": 0.04,
+   "colors": [
+    "#3e3a30",
+    "#5a5242",
+    "#2a2722"
+   ],
+   "seed": 5
+  },
+  {
+   "type": "power_lines",
+   "kind": "pylon",
+   "color": "#2c2e36",
+   "haze_color": "#b4b8c2",
+   "sag": 0.05,
+   "poles": [
+    [
+     0.12,
+     0.92,
+     0.62
+    ],
+    [
+     0.4,
+     0.68,
+     0.24
+    ],
+    [
+     0.53,
+     0.63,
+     0.12
+    ],
+    [
+     0.585,
+     0.61,
+     0.065
+    ]
+   ]
+  },
+  {
+   "type": "bare_tree",
+   "base": [
+    0.86,
+    0.97
+   ],
+   "height": 0.66,
+   "birch": false,
+   "seed": 6,
+   "color": "#24222a"
+  },
+  {
+   "type": "bare_tree",
+   "base": [
+    0.95,
+    0.93
+   ],
+   "height": 0.5,
+   "birch": false,
+   "lean": 4,
+   "seed": 10,
+   "color": "#2c2a32"
+  },
+  {
+   "type": "bare_tree",
+   "base": [
+    0.3,
+    0.66
+   ],
+   "height": 0.12,
+   "color": "#3a3842",
+   "seed": 13
+  },
+  {
+   "type": "fog",
+   "top": 0.5,
+   "bottom": 0.64,
+   "color": "#b8b2b0",
+   "opacity": 0.3
+  }
+ ],
+ "finish": {
+  "preset": "doomer",
+  "radii": [
+   24,
+   12,
+   6,
+   3
+  ]
+ }
+}

@@ -1,0 +1,34 @@
+{
+  "style": "watercolor",
+  "framing": "upper_body",
+  "character": {
+    "head": {
+      "yaw": -0.22,
+      "roll": 0.04
+    },
+    "eyes": {
+      "gaze": [
+        0.15,
+        0.0
+      ],
+      "size": 1.15
+    },
+    "hair": {
+      "bangs": "parted",
+      "part": 0.0,
+      "tuck": "none",
+      "side_length": 1.5,
+      "length": 2.0
+    },
+    "mouth": {
+      "smile": 0.45
+    }
+  },
+  "palette": {
+    "hair": "#6B4A3A",
+    "hair_highlight": "#C9A48A",
+    "eye": "#4F7FB8",
+    "cloth": "#ECE6DA",
+    "skirt": "#5D6B7C"
+  }
+}

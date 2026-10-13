@@ -1,0 +1,64 @@
+{
+ "canvas": {
+  "aspect": "2:3",
+  "detail": "standard",
+  "seed": 17
+ },
+ "environment": {
+  "type": "studio",
+  "top": [
+   0.74,
+   0.84,
+   0.94
+  ],
+  "bottom": [
+   0.96,
+   0.88,
+   0.86
+  ],
+  "glow": [
+   1.0,
+   0.96,
+   0.9
+  ],
+  "floor_color": [
+   0.92,
+   0.86,
+   0.86
+  ]
+ },
+ "figures": [
+  {
+   "name": "a",
+   "preset": "woman_anime",
+   "pose": "arms_behind_head",
+   "hair": {
+    "style": "long_straight",
+    "bangs": "wispy",
+    "part": "center",
+    "color": "silver"
+   },
+   "outfit": "figure_study",
+   "expression": "soft_smile",
+   "skin": "fair",
+   "look": {
+    "iris_color": "violet",
+    "skin_gloss": 0.42,
+    "flesh_variation": 0.15
+   }
+  }
+ ],
+ "camera": {
+  "subject": "a",
+  "shot": "knee",
+  "yaw": -16,
+  "pitch": 1,
+  "fill": 0.9
+ },
+ "light": {
+  "preset": "loop",
+  "mood": "pastel",
+  "rim": 0.3
+ },
+ "style": "anime"
+}

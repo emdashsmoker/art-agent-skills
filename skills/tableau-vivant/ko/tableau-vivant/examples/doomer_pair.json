@@ -1,0 +1,112 @@
+{
+ "canvas": {
+  "aspect": "16:9",
+  "detail": "fine",
+  "seed": 33
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "estate",
+  "time": "night"
+ },
+ "props": [
+  {
+   "kind": "bench",
+   "name": "bench",
+   "at": [
+    -1.0,
+    6.0,
+    0
+   ],
+   "width": 1.8
+  },
+  {
+   "kind": "cigarette",
+   "held_by": "m:hand.R"
+  }
+ ],
+ "figures": [
+  {
+   "name": "m",
+   "preset": "man",
+   "hair": "textured_crop",
+   "outfit": "hoodie_jeans",
+   "hat": "beanie",
+   "pose": "sit_smoke",
+   "position": [
+    -1.45,
+    5.92,
+    0
+   ],
+   "colors": {
+    "hoodie": [
+     0.24,
+     0.24,
+     0.25
+    ]
+   }
+  },
+  {
+   "name": "w",
+   "preset": "woman_slender",
+   "hair": {
+    "style": "long_straight",
+    "color": "black"
+   },
+   "outfit": "long_coat",
+   "pose": {
+    "preset": "sit_chair",
+    "head": {
+     "turn": 35,
+     "nod": 2
+    },
+    "reach.L": {
+     "to": "thigh.L",
+     "offset": 0.03
+    },
+    "reach.R": {
+     "to": "thigh.L",
+     "offset": 0.04
+    }
+   },
+   "position": [
+    -0.45,
+    5.92,
+    0
+   ]
+  }
+ ],
+ "camera": {
+  "eye": [
+   0.4,
+   1.6,
+   1.2
+  ],
+  "target": [
+   -1.0,
+   6.2,
+   1.5
+  ],
+  "fov": 40
+ },
+ "light": {
+  "key": 0.3,
+  "ambient": 0.2
+ },
+ "style": "doomer",
+ "lights": [
+  {
+   "at": [
+    -0.8,
+    4.9,
+    2.2
+   ],
+   "color": [
+    1.0,
+    0.72,
+    0.45
+   ],
+   "power": 0.45
+  }
+ ]
+}

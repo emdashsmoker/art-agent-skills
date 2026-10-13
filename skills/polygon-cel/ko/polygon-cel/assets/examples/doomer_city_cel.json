@@ -1,0 +1,11 @@
+{
+ "subject": "city",
+ "style": "anime_cel",
+ "mood": "doomer",
+ "city": {
+  "camera_x": 1.2
+ },
+ "canvas": {
+  "seed": 13
+ }
+}

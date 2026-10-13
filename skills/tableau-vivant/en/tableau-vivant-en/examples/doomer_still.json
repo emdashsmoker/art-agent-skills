@@ -1,0 +1,120 @@
+{
+ "canvas": {
+  "aspect": "4:3",
+  "detail": "standard",
+  "seed": 37
+ },
+ "environment": {
+  "type": "room",
+  "depth": 0.7,
+  "wall": [
+   0.52,
+   0.55,
+   0.5
+  ],
+  "floor": [
+   0.3,
+   0.26,
+   0.22
+  ]
+ },
+ "props": [
+  {
+   "kind": "table",
+   "name": "table",
+   "at": [
+    0,
+    0.15,
+    0
+   ],
+   "width": 1.0,
+   "depth": 0.65
+  },
+  {
+   "kind": "ashtray",
+   "at": [
+    -0.12,
+    0.05,
+    0
+   ],
+   "on": "table"
+  },
+  {
+   "kind": "radio",
+   "at": [
+    0.24,
+    0.3,
+    0
+   ],
+   "on": "table",
+   "rotate_deg": -18
+  },
+  {
+   "kind": "mug",
+   "at": [
+    -0.34,
+    0.24,
+    0
+   ],
+   "on": "table",
+   "rotate_deg": 140,
+   "colors": {
+    "mug": [
+     0.8,
+     0.78,
+     0.72
+    ]
+   }
+  },
+  {
+   "kind": "phone",
+   "at": [
+    0.16,
+    -0.03,
+    0
+   ],
+   "on": "table",
+   "rotate_deg": 24,
+   "screen": "off"
+  },
+  {
+   "kind": "cigarette",
+   "at": [
+    -0.3,
+    -0.06,
+    0
+   ],
+   "on": "table",
+   "rotate_deg": 70,
+   "lit": false
+  },
+  {
+   "kind": "lightbulb",
+   "at": [
+    0.0,
+    0.15,
+    1.95
+   ],
+   "cord": 0.7
+  }
+ ],
+ "light": {
+  "preset": "top",
+  "key": 0.15,
+  "ambient": 0.12
+ },
+ "camera": {
+  "eye": [
+   0.05,
+   -1.1,
+   1.2
+  ],
+  "target": [
+   0.0,
+   0.18,
+   0.86
+  ],
+  "fov": 44
+ },
+ "style": "doomer"
+}

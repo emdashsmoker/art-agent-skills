@@ -1,0 +1,54 @@
+{
+ "style": "watercolor",
+ "framing": "full",
+ "canvas": {
+  "seed": 3
+ },
+ "characters": [
+  {
+   "hair": {
+    "style": "long",
+    "color": "#5A3C38"
+   },
+   "body": {
+    "pose": "sit",
+    "seat": "stool"
+   },
+   "expression": {
+    "mouth": "soft"
+   },
+   "outfit": {
+    "type": "knit_sweater",
+    "variant": "turtleneck",
+    "color": "#B8866B",
+    "bottom": "a_line_skirt"
+   }
+  },
+  {
+   "hair": {
+    "style": "bob",
+    "bangs": "full",
+    "color": "#2E2A2E"
+   },
+   "eyes": {
+    "color": "#7A5A3A",
+    "shape": "round"
+   },
+   "body": {
+    "pose": "sit",
+    "seat": "stool"
+   },
+   "expression": {
+    "mouth": "smile"
+   },
+   "outfit": {
+    "type": "hoodie",
+    "color": "#A8B4C4",
+    "bottom": "jeans"
+   }
+  }
+ ],
+ "background": {
+  "type": "cafe"
+ }
+}

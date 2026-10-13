@@ -1,0 +1,151 @@
+{
+  "seed": 37,
+  "pose": {
+    "head_center": [
+      0.55,
+      0.4
+    ],
+    "head_unit": 0.034,
+    "yaw_deg": -8,
+    "roll_deg": -12,
+    "horizon_drop": 0.012
+  },
+  "backdrop": {
+    "subject": "city",
+    "spec": {
+      "night": {
+        "on": true
+      },
+      "camera": {
+        "horizon_y": 0.4
+      }
+    },
+    "place": "horizon",
+    "blur": 0.0015
+  },
+  "weather": {
+    "kind": "snow"
+  },
+  "grade": {
+    "color": "#8C93C8",
+    "amount": 0.3
+  },
+  "expression": {
+    "name": "smile",
+    "amount": 0.7
+  },
+  "accessories": {
+    "scarf": true
+  },
+  "figure": {
+    "neck_shift": 0.45,
+    "pose": {
+      "turn": -8,
+      "neck_lean": -0.35,
+      "stride": {
+        "lead": "left"
+      }
+    },
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "shirt": {
+        "ease": 0.08,
+        "neck_half": 0.55,
+        "neck_level": 0.1,
+        "hem_level": 3.7,
+        "sleeve": 1.92
+      },
+      "skirt": {
+        "hem_level": 9.0,
+        "hem_half": 2.1
+      },
+      "coat": {
+        "ease": 0.16,
+        "hem_level": 10.4,
+        "hem_half": 2.3,
+        "button_level": 3.0,
+        "sleeve": 1.93,
+        "buttons": 3
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "cloth": {
+        "base": "#F4F1EA",
+        "shadow": "#C8C6CF",
+        "line": "#6B6A80"
+      }
+    }
+  },
+  "companions": [
+    {
+      "sex": "male",
+      "seed": 38,
+      "pose": {
+        "head_center": [
+          0.45,
+          0.4
+        ],
+        "head_unit": 0.036,
+        "yaw_deg": 8
+      },
+      "accessories": {
+        "scarf": true
+      },
+      "lift": [
+        {
+          "part": "forearm_right",
+          "from": 0.7
+        }
+      ],
+      "figure": {
+        "pose": {
+          "turn": 8,
+          "arm_right": {
+            "reach": {
+              "mark": "shoulder_right",
+              "of": "main",
+              "offset": [
+                -0.1,
+                0.0
+              ]
+            },
+            "bend": "straight",
+            "hand": 10
+          },
+          "hand_right": "relaxed",
+          "stride": {
+            "lead": "left"
+          }
+        },
+        "clothes": {
+          "shirt": {
+            "sleeve": 1.9
+          },
+          "coat": {
+            "ease": 0.16,
+            "hem_level": 9.6,
+            "hem_half": 2.4,
+            "button_level": 3.4,
+            "sleeve": 1.93,
+            "buttons": 3
+          }
+        }
+      },
+      "style": {
+        "palette": {
+          "jacket": {
+            "base": "#3A3F4E",
+            "shadow": "#22252F",
+            "light": "#7A8196",
+            "line": "#0E1016",
+            "button": "#1A1A1E"
+          }
+        }
+      },
+      "lift_under_head": true
+    }
+  ]
+}

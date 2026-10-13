@@ -1,0 +1,28 @@
+{
+  "sex": "male",
+  "seed": 16,
+  "pose": {
+    "head_center": [
+      0.5,
+      0.11
+    ],
+    "yaw_deg": -20
+  },
+  "figure": {
+    "pose": {
+      "turn": -30
+    },
+    "clothes": {
+      "shirt": {
+        "sleeve": 1.9
+      },
+      "jacket": {
+        "ease": 0.16,
+        "hem_level": 6.7,
+        "button_level": 3.6,
+        "sleeve": 1.93,
+        "buttons": 2
+      }
+    }
+  }
+}

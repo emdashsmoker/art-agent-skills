@@ -1,0 +1,80 @@
+{
+  "seed": 21,
+  "light": [
+    0.6,
+    -0.5,
+    0.62
+  ],
+  "pose": {
+    "head_center": [
+      0.56,
+      0.17
+    ],
+    "head_unit": 0.058
+  },
+  "expression": "smile",
+  "hair": {
+    "style": "ponytail",
+    "length": 3.0
+  },
+  "figure": {
+    "view": "side",
+    "floor": {
+      "at_feet": true
+    },
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "shirt": {
+        "ease": 0.08,
+        "neck_half": 0.6,
+        "neck_level": 0.2,
+        "hem_level": 4.4,
+        "sleeve": 0.35
+      },
+      "pants": {
+        "waist_level": 4.6,
+        "hem_drop": 0.2,
+        "leg_widths": [
+          1.0,
+          0.62,
+          0.5
+        ],
+        "length": 0.42
+      }
+    },
+    "profile_pose": {
+      "lean": 12.0,
+      "lift": 0.6,
+      "arm": {
+        "upper": -40.0,
+        "fore": 40.0
+      },
+      "hand": "fist",
+      "arm_far": {
+        "upper": 55.0,
+        "fore": 130.0
+      },
+      "hand_far": "fist",
+      "leg_near": {
+        "thigh": 67.0,
+        "shin": -13.0,
+        "foot": 20.0
+      },
+      "leg_far": {
+        "thigh": -20.0,
+        "shin": -125.0,
+        "foot": 60.0
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "cloth": {
+        "base": "#E25C5C",
+        "shadow": "#A83A44",
+        "line": "#4E1620"
+      }
+    }
+  }
+}

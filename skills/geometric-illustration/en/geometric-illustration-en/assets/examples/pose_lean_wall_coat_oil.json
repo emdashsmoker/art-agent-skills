@@ -1,0 +1,19 @@
+{
+  "style": "oil",
+  "framing": "full_body",
+  "canvas": {
+    "width": 1024,
+    "height": 1600
+  },
+  "character": {
+    "outfit": {
+      "type": "knit_coat"
+    },
+    "hair": {
+      "style": "bob"
+    },
+    "pose": {
+      "preset": "lean_wall"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+ "canvas": {
+  "aspect": "3:2",
+  "detail": "standard",
+  "seed": 11
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "mountain_lake",
+  "time": "golden_hour"
+ },
+ "style": "watercolor",
+ "trees": [
+  {
+   "kind": "pine",
+   "at": [
+    -9.0,
+    1.5
+   ],
+   "height": 10.0
+  }
+ ]
+}

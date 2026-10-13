@@ -1,0 +1,49 @@
+{
+ "canvas": {
+  "aspect": "2:3",
+  "detail": "standard",
+  "seed": 33
+ },
+ "environment": {
+  "type": "plain_color",
+  "color": [
+   1,
+   1,
+   1
+  ]
+ },
+ "figures": [
+  {
+   "name": "a",
+   "preset": "man_athletic",
+   "pose": "look_over_shoulder",
+   "hair": {
+    "style": "undercut",
+    "color": "dark_brown"
+   },
+   "outfit": "perizoma",
+   "beard": "stubble",
+   "expression": "neutral",
+   "skin": "tan"
+  }
+ ],
+ "camera": {
+  "subject": "a",
+  "shot": "knee",
+  "yaw": 160,
+  "pitch": 2,
+  "fill": 0.88
+ },
+ "light": {
+  "preset": "three_quarter",
+  "mood": "warm"
+ },
+ "style": {
+  "name": "watercolor",
+  "background_wash": [
+   0.8,
+   0.74,
+   0.66
+  ]
+ }
+}

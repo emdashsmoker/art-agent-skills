@@ -1,0 +1,85 @@
+{
+ "canvas": {
+  "aspect": "4:5",
+  "detail": "standard",
+  "seed": 35
+ },
+ "environment": {
+  "type": "room",
+  "wall": [
+   0.16,
+   0.12,
+   0.1
+  ],
+  "floor": [
+   0.14,
+   0.1,
+   0.08
+  ],
+  "depth": 2.0
+ },
+ "props": [
+  {
+   "kind": "table",
+   "name": "table",
+   "at": [
+    0.55,
+    -0.3,
+    0
+   ],
+   "rotate_deg": 90
+  },
+  {
+   "kind": "candle",
+   "on": "table",
+   "at": [
+    0.55,
+    -0.45,
+    0
+   ]
+  },
+  {
+   "kind": "chair",
+   "at": [
+    0,
+    0.08,
+    0
+   ]
+  },
+  {
+   "kind": "book",
+   "held_by": "a:hands",
+   "open": true
+  }
+ ],
+ "figures": [
+  {
+   "name": "a",
+   "preset": "woman_classical",
+   "pose": "read_seated",
+   "outfit": "robe",
+   "hair": {
+    "style": "chignon",
+    "color": "auburn"
+   },
+   "expression": "serene",
+   "skin": "fair"
+  }
+ ],
+ "camera": {
+  "fit": [
+   "a",
+   "candle"
+  ],
+  "shot": "medium",
+  "yaw": -20,
+  "pitch": 6,
+  "fill": 0.92
+ },
+ "light": {
+  "preset": "rembrandt",
+  "mood": "candle",
+  "ambient": 0.12
+ },
+ "style": "baroque"
+}

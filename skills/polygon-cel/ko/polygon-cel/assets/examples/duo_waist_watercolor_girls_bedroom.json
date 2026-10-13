@@ -1,0 +1,49 @@
+{
+ "style": "watercolor",
+ "framing": "waist",
+ "canvas": {
+  "seed": 3
+ },
+ "pair": {
+  "contact": "shoulder_arm",
+  "lead": 1
+ },
+ "characters": [
+  {
+   "hair": {
+    "style": "bob",
+    "bangs": "full",
+    "color": "#2E2A2E"
+   },
+   "eyes": {
+    "color": "#7A5A3A",
+    "shape": "round"
+   },
+   "expression": {
+    "mouth": "soft",
+    "blush": 0.4
+   },
+   "outfit": {
+    "type": "camisole",
+    "color": "#E9D8E4"
+   }
+  },
+  {
+   "hair": {
+    "style": "long",
+    "color": "#5A3C38"
+   },
+   "expression": {
+    "mouth": "open_smile",
+    "eye_smile": 0.3
+   },
+   "outfit": {
+    "type": "oversized_tee",
+    "color": "#C9D3E6"
+   }
+  }
+ ],
+ "background": {
+  "type": "bedroom"
+ }
+}

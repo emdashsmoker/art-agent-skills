@@ -1,0 +1,52 @@
+{
+  "canvas": [
+    1200,
+    1500
+  ],
+  "style": "painterly",
+  "seed": 2,
+  "character": {
+    "jaw_sharpness": 0.8,
+    "eye_width": 0.172,
+    "eye_height": 0.078,
+    "iris_scale": 0.92,
+    "eyelid_open": 0.9,
+    "lip_fullness": 1.3,
+    "smile": 0.15,
+    "hair_style": "bob",
+    "bangs": "side_swept",
+    "head_tilt": -5,
+    "outfit": "turtleneck",
+    "hair_seed": 11,
+    "head_turn": 0.55,
+    "gaze": [
+      -0.35,
+      0.0
+    ]
+  },
+  "palette": {
+    "skin": "#f3d3ba",
+    "skin_shadow": "#c98d74",
+    "blush": "#e08a78",
+    "lip": "#b9544f",
+    "hair": "#7a3b24",
+    "hair_shadow": "#3b1a14",
+    "hair_light": "#e8a05c",
+    "iris": "#4d6b4a",
+    "cloth": "#3f5247",
+    "cloth_shadow": "#23302a"
+  },
+  "background": [
+    {
+      "type": "wash",
+      "colors": [
+        "#5c6146",
+        "#7d7a52",
+        "#3f4a3c",
+        "#8a6e4a"
+      ],
+      "scale": 0.32,
+      "seed": 5
+    }
+  ]
+}

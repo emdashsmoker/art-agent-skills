@@ -1,0 +1,91 @@
+{
+  "seed": 14,
+  "expression": {
+    "name": "smile",
+    "amount": 0.3
+  },
+  "pose": {
+    "head_center": [
+      0.5,
+      0.13
+    ],
+    "head_unit": 0.06,
+    "yaw_deg": 12,
+    "roll_deg": 4
+  },
+  "look": {
+    "identity": 8
+  },
+  "figure": {
+    "floor": {
+      "y": 0.92
+    },
+    "pose": {
+      "arm_right": {
+        "reach": {
+          "mark": "chin",
+          "offset": [
+            0.0,
+            0.45
+          ]
+        },
+        "bend": "down",
+        "foreshorten": [
+          0.55,
+          1.0
+        ],
+        "toward": [
+          1,
+          0
+        ],
+        "wrist": -10,
+        "front": true,
+        "over": true
+      },
+      "arm_left": {
+        "reach": {
+          "mark": "elbow_right",
+          "offset": [
+            -0.2,
+            0.35
+          ]
+        },
+        "bend": "down"
+      },
+      "hand_right": "fist",
+      "hand_left": "relaxed"
+    },
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "shirt": {
+        "ease": 0.08,
+        "neck_half": 0.55,
+        "neck_level": 0.1,
+        "hem_level": 3.7,
+        "sleeve": 1.92
+      },
+      "skirt": {
+        "hem_level": 9.0,
+        "hem_half": 2.1
+      },
+      "coat": {
+        "ease": 0.16,
+        "hem_level": 10.4,
+        "hem_half": 2.3,
+        "button_level": 3.0,
+        "sleeve": 1.93,
+        "buttons": 3
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "cloth": {
+        "base": "#F4F1EA",
+        "shadow": "#C8C6CF",
+        "line": "#6B6A80"
+      }
+    }
+  }
+}

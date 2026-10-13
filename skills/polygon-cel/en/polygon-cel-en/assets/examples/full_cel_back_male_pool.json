@@ -1,0 +1,25 @@
+{
+ "style": "anime_cel",
+ "framing": "full",
+ "canvas": {
+  "seed": 3
+ },
+ "character": {
+  "gender": "male",
+  "view": "back",
+  "head": {
+   "yaw": 30,
+   "roll": -2
+  },
+  "body": {
+   "figure": "athletic"
+  },
+  "outfit": {
+   "type": "shirtless",
+   "bottom": "board_shorts"
+  }
+ },
+ "background": {
+  "type": "pool"
+ }
+}

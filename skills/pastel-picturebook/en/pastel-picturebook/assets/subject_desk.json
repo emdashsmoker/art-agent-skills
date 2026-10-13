@@ -1,0 +1,198 @@
+{
+  "spec": {
+    "canvas": {
+      "width": 1600,
+      "height": 1200
+    },
+    "seed": 6,
+    "light": [
+      -0.55,
+      -0.6,
+      0.58
+    ],
+    "camera": {
+      "position": [
+        0,
+        82,
+        -112
+      ],
+      "pitch_deg": 31,
+      "focal": 0.98,
+      "center_x": 0.5,
+      "center_y": 0.47
+    },
+    "room": {
+      "window_glow": 0.45,
+      "screen_spill": 0.25
+    },
+    "desk": {
+      "width": 220,
+      "front_z": -75,
+      "back_z": 70,
+      "thickness": 4,
+      "grain": 0.2
+    },
+    "objects": [
+      {
+        "kind": "monitor",
+        "x": 8,
+        "z": 42,
+        "width": 62,
+        "height": 36,
+        "lift": 12,
+        "foot": 24,
+        "angle": 0
+      },
+      {
+        "kind": "plant",
+        "x": -58,
+        "z": 44,
+        "radius": 7,
+        "height": 13,
+        "leaves": 11
+      },
+      {
+        "kind": "lamp",
+        "x": 62,
+        "z": 40,
+        "reach": -14,
+        "height": 40,
+        "on": true
+      },
+      {
+        "kind": "laptop",
+        "x": -30,
+        "z": 4,
+        "width": 31,
+        "depth": 21,
+        "open_deg": 112,
+        "angle": 14
+      },
+      {
+        "kind": "keyboard",
+        "x": 14,
+        "z": 2,
+        "width": 36,
+        "depth": 12,
+        "angle": -3
+      },
+      {
+        "kind": "mouse",
+        "x": 42,
+        "z": 0
+      },
+      {
+        "kind": "notebook",
+        "x": 46,
+        "z": -20,
+        "width": 15,
+        "depth": 21,
+        "angle": -18
+      },
+      {
+        "kind": "mug",
+        "x": -58,
+        "z": -12,
+        "radius": 4.2,
+        "height": 9.5
+      },
+      {
+        "kind": "phone",
+        "x": 6,
+        "z": -20,
+        "width": 7.4,
+        "depth": 15.2,
+        "angle": 22,
+        "on": false
+      }
+    ]
+  },
+  "style": {
+    "palette": {
+      "wall": {
+        "top": "#D9DCD6",
+        "bottom": "#C3C6BF",
+        "glow": "#FFF2D8"
+      },
+      "desk": {
+        "base": "#B98A5E",
+        "shadow": "#7B5536",
+        "deep": "#4F3422",
+        "cast": "#3A2618"
+      },
+      "device": {
+        "base": "#B9BEC6",
+        "shadow": "#5E636D",
+        "deep": "#33363C",
+        "light": "#FFFFFF",
+        "line": "#24262B"
+      },
+      "keys": {
+        "base": "#E8EAEE",
+        "shadow": "#8F949C"
+      },
+      "phone": {
+        "base": "#2D3036",
+        "shadow": "#121317",
+        "deep": "#08090B",
+        "light": "#FFFFFF",
+        "line": "#050607"
+      },
+      "screen": {
+        "background": "#F4F6FA",
+        "bar": "#2A2F3A",
+        "side": "#E3E7EF",
+        "side_text": "#9AA2B2",
+        "accent": "#4C7BD9",
+        "accent2": "#F2A65A",
+        "text": "#AEB5C2",
+        "off": "#15171C",
+        "glow": "#DCE8FF"
+      },
+      "mug": {
+        "base": "#E9E4DA",
+        "shadow": "#9C9588",
+        "deep": "#6E685E",
+        "light": "#FFFFFF",
+        "line": "#4E4A42"
+      },
+      "coffee": {
+        "base": "#4A2C1A"
+      },
+      "pot": {
+        "base": "#C9744E",
+        "shadow": "#7E3E26",
+        "deep": "#52281A",
+        "light": "#FFD9C2",
+        "line": "#3E1E12"
+      },
+      "leaf": {
+        "base": "#4F8A4A",
+        "shadow": "#22482A",
+        "deep": "#14301B",
+        "light": "#D8F2B8",
+        "line": "#10261A"
+      },
+      "lamp": {
+        "base": "#2F3238",
+        "shadow": "#121318",
+        "deep": "#08090B",
+        "light": "#FFFFFF",
+        "line": "#050607",
+        "bulb": "#FFE6B0"
+      },
+      "paper": {
+        "base": "#F7F3EA",
+        "shadow": "#B8B2A4",
+        "line": "#6C675E",
+        "rule": "#9DB4D6"
+      },
+      "pen": {
+        "base": "#2B4E9A",
+        "shadow": "#15284F",
+        "light": "#FFFFFF",
+        "line": "#0A1430"
+      }
+    }
+  }
+}

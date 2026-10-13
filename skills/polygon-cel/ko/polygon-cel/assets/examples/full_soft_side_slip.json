@@ -1,0 +1,24 @@
+{
+ "style": "soft_illust",
+ "framing": "full",
+ "canvas": {
+  "seed": 3
+ },
+ "character": {
+  "view": "side",
+  "head": {
+   "yaw": 0,
+   "roll": 0
+  },
+  "body": {
+   "figure": "fuller",
+   "bust": "large"
+  },
+  "outfit": {
+   "type": "slip_dress"
+  }
+ },
+ "background": {
+  "type": "gradient"
+ }
+}

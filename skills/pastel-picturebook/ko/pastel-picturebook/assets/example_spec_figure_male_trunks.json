@@ -1,0 +1,32 @@
+{
+  "sex": "male",
+  "look": {
+    "skin_tone": "tan"
+  },
+  "accessories": {
+    "hat": {
+      "kind": "cap"
+    }
+  },
+  "figure": {
+    "clothes": {
+      "shirt": null,
+      "pants": null,
+      "shoes": false,
+      "trunks": true
+    }
+  },
+  "style": {
+    "palette": {
+      "swim": {
+        "pattern": {
+          "kind": "stripes",
+          "color": "#F2D27A",
+          "scale": 0.35,
+          "width": 0.25,
+          "angle": 90
+        }
+      }
+    }
+  }
+}

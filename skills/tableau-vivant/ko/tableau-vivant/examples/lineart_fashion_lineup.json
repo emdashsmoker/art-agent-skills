@@ -1,0 +1,117 @@
+{
+ "canvas": {
+  "aspect": "16:9",
+  "detail": "standard",
+  "seed": 43
+ },
+ "environment": {
+  "type": "studio",
+  "top": [
+   1,
+   1,
+   1
+  ],
+  "bottom": [
+   0.97,
+   0.97,
+   0.97
+  ]
+ },
+ "figures": [
+  {
+   "name": "a",
+   "preset": "woman_slender",
+   "pose": "hand_on_hip",
+   "outfit": "evening_gown",
+   "hair": {
+    "style": "chignon",
+    "color": "black"
+   },
+   "expression": "serene",
+   "position": [
+    -1.6,
+    0.1,
+    0
+   ],
+   "facing": 12
+  },
+  {
+   "name": "b",
+   "preset": "man",
+   "pose": "hands_in_pockets",
+   "outfit": "suit",
+   "hair": {
+    "style": "slick_back",
+    "color": "black"
+   },
+   "expression": "neutral",
+   "position": [
+    -0.8,
+    0,
+    0
+   ],
+   "facing": 6
+  },
+  {
+   "name": "c",
+   "preset": "androgynous",
+   "pose": "contrapposto",
+   "outfit": "hoodie_jeans",
+   "hair": {
+    "style": "short_crop",
+    "color": "platinum"
+   },
+   "expression": "smirk",
+   "position": [
+    0.0,
+    0.05,
+    0
+   ]
+  },
+  {
+   "name": "d",
+   "preset": "woman",
+   "pose": "stand",
+   "outfit": "kimono",
+   "hair": {
+    "style": "bun",
+    "color": "black"
+   },
+   "expression": "soft_smile",
+   "position": [
+    0.8,
+    0,
+    0
+   ],
+   "facing": -6
+  },
+  {
+   "name": "e",
+   "preset": "woman_athletic",
+   "pose": "arms_crossed",
+   "outfit": "tactical",
+   "hair": {
+    "style": "pixie",
+    "color": "red"
+   },
+   "expression": "serious",
+   "position": [
+    1.6,
+    0.1,
+    0
+   ],
+   "facing": -12
+  }
+ ],
+ "camera": {
+  "fit": "people",
+  "yaw": 0,
+  "pitch": 3,
+  "fill": 0.92
+ },
+ "light": {
+  "preset": "front",
+  "mood": "neutral"
+ },
+ "style": "lineart"
+}

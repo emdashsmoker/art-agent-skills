@@ -1,0 +1,52 @@
+{
+ "canvas": {
+  "aspect": "3:4",
+  "detail": "standard",
+  "seed": 8
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "hills",
+  "time": "overcast",
+  "clouds": 0.2
+ },
+ "figures": [
+  {
+   "name": "a",
+   "preset": "woman",
+   "pose": {
+    "preset": "stand",
+    "head": {
+     "turn": -24,
+     "nod": 6
+    },
+    "reach.R": {
+     "to": "heart",
+     "elbow": "down",
+     "offset": 0.04
+    },
+    "hand.R": "graceful"
+   },
+   "hair": {
+    "style": "chignon",
+    "color": "black"
+   },
+   "outfit": "hanbok",
+   "expression": "serene",
+   "skin": "fair",
+   "facing": 18
+  }
+ ],
+ "camera": {
+  "subject": "a",
+  "shot": "full",
+  "yaw": -46,
+  "pitch": 3,
+  "fill": 0.6,
+  "offset": [
+   -0.16,
+   0.04
+  ]
+ },
+ "style": "ink_wash"
+}

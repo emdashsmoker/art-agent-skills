@@ -1,0 +1,56 @@
+{
+  "canvas": [
+    1500,
+    1000
+  ],
+  "style": "illust",
+  "subject": "none",
+  "seed": 2,
+  "light": {
+    "azimuth": 60,
+    "elevation": 30
+  },
+  "background": [
+    {
+      "type": "sky",
+      "top": "#0b0f2a",
+      "bottom": "#2a2f66",
+      "horizon": 0.56
+    },
+    {
+      "type": "stars",
+      "count": 260,
+      "bottom": 0.5,
+      "seed": 2
+    },
+    {
+      "type": "sun",
+      "center": [
+        0.78,
+        0.13
+      ],
+      "radius": 0.035,
+      "color": "#f4f1e0",
+      "glow_color": "#8f97d8",
+      "glow_radius": 0.22,
+      "glow_opacity": 0.5
+    },
+    {
+      "type": "street",
+      "horizon": 0.56,
+      "vanish_x": 0.5,
+      "time": "night",
+      "seed": 7,
+      "wet": 0.45,
+      "cars": 5,
+      "people": 8
+    }
+  ],
+  "finish": {
+    "bloom": 0.5,
+    "diffusion": 0.3,
+    "shadow_tint": "#0a0a30",
+    "highlight_tint": "#ffe2b0",
+    "vignette": 0.3
+  }
+}

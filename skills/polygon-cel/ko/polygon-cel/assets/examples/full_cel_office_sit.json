@@ -1,0 +1,29 @@
+{
+ "style": "anime_cel",
+ "framing": "full",
+ "canvas": {
+  "seed": 3
+ },
+ "character": {
+  "head": {
+   "yaw": 10,
+   "roll": -2
+  },
+  "body": {
+   "pose": "sit",
+   "bust": "large"
+  },
+  "hair": {
+   "style": "long",
+   "bangs": "side_swept"
+  },
+  "outfit": {
+   "type": "shirt",
+   "variant": "bow",
+   "bottom": "pencil_skirt"
+  }
+ },
+ "background": {
+  "type": "office"
+ }
+}

@@ -1,0 +1,51 @@
+{
+ "style": "anime_cel",
+ "framing": "waist",
+ "canvas": {
+  "seed": 3
+ },
+ "characters": [
+  {
+   "hair": {
+    "style": "long",
+    "color": "#5A3C38"
+   },
+   "expression": {
+    "mouth": "open_smile",
+    "eye_smile": 0.2
+   },
+   "body": {
+    "pose": "wave"
+   },
+   "outfit": {
+    "type": "knit_sweater",
+    "variant": "crew",
+    "color": "#E8DCCB"
+   }
+  },
+  {
+   "hair": {
+    "style": "bob",
+    "bangs": "full",
+    "color": "#2E2A2E"
+   },
+   "eyes": {
+    "color": "#7A5A3A",
+    "shape": "round"
+   },
+   "expression": {
+    "mouth": "smile"
+   },
+   "body": {
+    "pose": "chin_rest"
+   },
+   "outfit": {
+    "type": "shirt",
+    "color": "#B9C9E0"
+   }
+  }
+ ],
+ "background": {
+  "type": "cafe"
+ }
+}

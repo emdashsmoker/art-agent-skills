@@ -1,0 +1,6 @@
+{"style": "anime_cel", "framing": "full", "canvas": {"seed": 11},
+ "character": {"gender": "male", "head": {"yaw": -10, "roll": 2},
+   "body": {"figure": "athletic", "stance": "contrapposto", "pose": "hand_on_hip"},
+   "expression": {"mouth": "smile"},
+   "outfit": {"type": "shirtless", "bottom": "board_shorts", "bottom_color": "#2F6F8F"}},
+ "background": {"type": "beach"}}

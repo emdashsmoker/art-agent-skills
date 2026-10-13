@@ -1,0 +1,40 @@
+{
+  "pose": {
+    "head_center": [
+      0.5,
+      0.2
+    ],
+    "head_unit": 0.075
+  },
+  "figure": {
+    "floor": null,
+    "pose": {
+      "arm_left": {
+        "upper": 150.0,
+        "fore": -78.0,
+        "hand": -85.0,
+        "foreshorten": [
+          1.0,
+          0.55
+        ],
+        "toward": [
+          0,
+          -1
+        ]
+      },
+      "arm_right": {
+        "upper": 150.0,
+        "fore": -78.0,
+        "hand": -85.0,
+        "foreshorten": [
+          1.0,
+          0.55
+        ],
+        "toward": [
+          0,
+          -1
+        ]
+      }
+    }
+  }
+}

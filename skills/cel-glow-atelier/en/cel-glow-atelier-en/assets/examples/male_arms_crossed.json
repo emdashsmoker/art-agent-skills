@@ -1,0 +1,68 @@
+{
+  "canvas": [
+    1100,
+    1500
+  ],
+  "style": "anime",
+  "seed": 36,
+  "character": {
+    "gender": "male",
+    "hair_style": "layered",
+    "bangs": "layered",
+    "head_turn": -2.0,
+    "gaze": [
+      0.45,
+      0.0
+    ],
+    "smile": 0.2,
+    "hair_seed": 3
+  },
+  "figure": {
+    "pose": "arms_crossed",
+    "outfit": "suit",
+    "ground_shadow": 0.4,
+    "build": {
+      "muscle": 1.1
+    }
+  },
+  "palette": {
+    "hair": "#1f1d26",
+    "hair_shadow": "#0e0d12",
+    "hair_light": "#9a8ab0",
+    "iris": "#4a4a6a",
+    "cloth": "#f4f2ee",
+    "cloth_shadow": "#b8b4ae",
+    "cloth2": "#2a3040",
+    "accent": "#5a2a3a"
+  },
+  "placement": {
+    "shot": "thigh"
+  },
+  "light": {
+    "azimuth": 125,
+    "elevation": 38
+  },
+  "style_overrides": {
+    "rim_light": 0.5
+  },
+  "background": [
+    {
+      "type": "room",
+      "window": "day",
+      "wall": "#cfd4da",
+      "curtain": "#6a7a90",
+      "window_x": 0.78,
+      "art": [
+        0.08,
+        0.14,
+        0.2,
+        0.24
+      ],
+      "art_color": "#5a6a8a"
+    }
+  ],
+  "finish": {
+    "tilt": -5,
+    "bloom": 0.2
+  }
+}

@@ -1,0 +1,67 @@
+{
+ "style": "soft_illust",
+ "framing": "full",
+ "mood": "doomer",
+ "characters": [
+  {
+   "head": {
+    "yaw": -6,
+    "pitch": 14
+   },
+   "eyes": {
+    "gaze": [
+     -0.1,
+     1.2
+    ],
+    "openness": 0.5
+   },
+   "hair": {
+    "style": "bob",
+    "color": "#2E2A2E"
+   },
+   "body": {
+    "hold": {
+     "item": "phone",
+     "side": "left"
+    }
+   },
+   "outfit": {
+    "type": "hoodie",
+    "color": "#6A7488",
+    "bottom": "a_line_skirt",
+    "shoes": "sneakers"
+   }
+  },
+  {
+   "gender": "male",
+   "place": {
+    "scale": 1.06
+   },
+   "head": {
+    "yaw": 10
+   },
+   "eyes": {
+    "gaze": "right"
+   },
+   "accessories": [
+    "beanie"
+   ],
+   "body": {
+    "hold": {
+     "item": "can",
+     "side": "right"
+    }
+   },
+   "outfit": {
+    "type": "hoodie",
+    "color": "#2A2C34",
+    "bottom": "jeans",
+    "bottom_color": "#3A4458",
+    "shoes": "sneakers"
+   }
+  }
+ ],
+ "canvas": {
+  "seed": 13
+ }
+}

@@ -1,0 +1,63 @@
+{
+  "pose": {
+    "head_center": [
+      0.5,
+      0.125
+    ],
+    "head_unit": 0.084,
+    "yaw_deg": 10,
+    "roll_deg": -4
+  },
+  "hair": {
+    "length": 3.3,
+    "wave": 0.05,
+    "waves": 1.6,
+    "bangs": {
+      "near": 2,
+      "far": 1,
+      "length": 0.62,
+      "width": 0.1,
+      "seed": 3
+    }
+  },
+  "figure": {
+    "floor": null,
+    "clothes": null,
+    "pose": {
+      "shoulder_tilt": 5.0,
+      "pelvis_tilt": -10.0,
+      "arm_left": {
+        "upper": 12.0,
+        "fore": -7.0,
+        "hand": -10.0
+      },
+      "arm_right": {
+        "upper": 30.0,
+        "fore": -46.0,
+        "hand": -34.0,
+        "foreshorten": [
+          1.0,
+          0.74
+        ]
+      },
+      "leg_left": {
+        "thigh": -1.0,
+        "shin": 0.0,
+        "foot": 12.0
+      },
+      "leg_right": {
+        "thigh": 2.0,
+        "shin": -3.0,
+        "foot": 20.0
+      }
+    },
+    "body_scale": 1.05,
+    "shape": {
+      "shoulders": 0.98,
+      "bust": 1.1,
+      "waist": 0.95,
+      "hips": 1.06,
+      "thighs": 1.06
+    }
+  }
+}

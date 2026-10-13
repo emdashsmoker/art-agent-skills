@@ -1,0 +1,72 @@
+{
+  "canvas": [
+    1500,
+    1300
+  ],
+  "style": "anime",
+  "seed": 22,
+  "character": {
+    "gender": "male",
+    "hair_style": "layered",
+    "bangs": "layered",
+    "head_turn": -0.55,
+    "head_tilt": 4,
+    "gaze": [
+      0.3,
+      0.0
+    ],
+    "eyelid_open": 0.82,
+    "smile": 0.25,
+    "hair_seed": 3
+  },
+  "figure": {
+    "pose": "sitting",
+    "outfit": "tank_shorts",
+    "furniture": "bed",
+    "furniture_color": "#e8ecf2",
+    "ground_shadow": 0.3,
+    "build": {
+      "muscle": 1.15
+    }
+  },
+  "palette": {
+    "hair": "#2a2a36",
+    "hair_shadow": "#121218",
+    "hair_light": "#b8c8e8",
+    "cloth": "#f2f2f0",
+    "cloth_shadow": "#aab4c8",
+    "cloth2": "#5a6478",
+    "accent": "#e8eef8",
+    "shoe": "#5a6478"
+  },
+  "placement": {
+    "shot": "full",
+    "x": 0.6
+  },
+  "light": {
+    "azimuth": 140,
+    "elevation": 30
+  },
+  "background": [
+    {
+      "type": "room",
+      "window": "day",
+      "window_x": 0.2,
+      "window_width": 0.3,
+      "wall": "#e6ddd0",
+      "curtain": "#f4f0e8",
+      "floor_color": "#b08a68",
+      "seed": 6
+    }
+  ],
+  "style_overrides": {
+    "rim_light": 0.5
+  },
+  "finish": {
+    "bloom": 0.35,
+    "diffusion": 0.25,
+    "highlight_tint": "#fff8ec",
+    "shadow_tint": "#4a5a8a",
+    "tint_strength": 0.1
+  }
+}

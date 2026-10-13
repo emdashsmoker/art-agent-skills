@@ -1,0 +1,47 @@
+{
+ "canvas": {
+  "aspect": "4:5",
+  "detail": "standard",
+  "seed": 37
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "plain",
+  "time": "sunset"
+ },
+ "figures": [
+  {
+   "name": "a",
+   "preset": "woman_athletic",
+   "pose": "jump",
+   "outfit": "bodysuit",
+   "hair": {
+    "style": "ponytail",
+    "color": "black"
+   },
+   "expression": "determined",
+   "skin": "brown",
+   "colors": {
+    "bodysuit": [
+     0.12,
+     0.2,
+     0.45
+    ]
+   }
+  }
+ ],
+ "camera": {
+  "subject": "a",
+  "shot": "full",
+  "yaw": -20,
+  "pitch": -16,
+  "roll": 12,
+  "fill": 0.74
+ },
+ "light": {
+  "preset": "back",
+  "mood": "warm",
+  "rim": 0.7
+ },
+ "style": "expressionist"
+}

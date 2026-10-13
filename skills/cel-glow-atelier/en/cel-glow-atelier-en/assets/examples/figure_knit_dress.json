@@ -1,0 +1,65 @@
+{
+  "canvas": [
+    1600,
+    1500
+  ],
+  "style": "illust",
+  "seed": 8,
+  "character": {
+    "gender": "female",
+    "head_turn": -0.45,
+    "head_tilt": 4,
+    "gaze": [
+      0.3,
+      0.0
+    ],
+    "hair_style": "long_wavy",
+    "bangs": "side_swept",
+    "smile": 0.4,
+    "hair_seed": 5
+  },
+  "figure": {
+    "pose": "sitting_crossed",
+    "outfit": "knit_dress",
+    "furniture": "sofa",
+    "furniture_color": "#8a6f62",
+    "build": {
+      "bust": 1.04,
+      "waist": 0.96,
+      "hips": 1.03
+    },
+    "heels": true
+  },
+  "palette": {
+    "hair": "#5a3e30",
+    "hair_shadow": "#2e1e18",
+    "hair_light": "#d8a888",
+    "iris": "#6a4a32",
+    "cloth": "#e8dccb",
+    "cloth_shadow": "#b8a690",
+    "shoe": "#5a3e30"
+  },
+  "placement": {
+    "shot": "full",
+    "x": 0.5
+  },
+  "light": {
+    "azimuth": 45,
+    "elevation": 40
+  },
+  "background": [
+    {
+      "type": "room",
+      "window": "day",
+      "window_x": 0.8,
+      "wall": "#e2d6c8",
+      "floor_color": "#9a7a5e",
+      "seed": 4
+    }
+  ],
+  "finish": {
+    "highlight_tint": "#fff0dc",
+    "tint_strength": 0.1,
+    "bloom": 0.2
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "manga",
+  "base": "anime",
+  "line_scale": 1.25,
+  "finish": {
+    "kind": "manga",
+    "black": 0.2,
+    "white": 0.74,
+    "cell": 7.0,
+    "angle": 45.0,
+    "line_gain": 4.0,
+    "paper_color": "#FBFBF8",
+    "ink_color": "#121214"
+  }
+}

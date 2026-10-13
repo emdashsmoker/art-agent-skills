@@ -1,0 +1,104 @@
+{
+ "canvas": [
+  1400,
+  1700
+ ],
+ "style": "anime",
+ "seed": 26,
+ "character": {
+  "gender": "female",
+  "hair_style": "long_curly",
+  "bangs": "side_swept",
+  "hair_seed": 4,
+  "skin_tone": "deep",
+  "brow_shape": "thick",
+  "mouth_shape": "heart",
+  "smile": 0.5
+ },
+ "figure": {
+  "pose": "standing",
+  "outfit": "coat_turtleneck",
+  "ground_shadow": 0.45
+ },
+ "palette": {
+  "hair": "#141216",
+  "hair_shadow": "#060508",
+  "hair_light": "#b08aa0",
+  "iris": "#5a3a24",
+  "cloth": "#e8ded0",
+  "cloth_shadow": "#a89a90",
+  "cloth2": "#22242c",
+  "outer": "#8a3a3a",
+  "shoe": "#1a1416"
+ },
+ "placement": {
+  "shot": "full"
+ },
+ "light": {
+  "azimuth": 50,
+  "elevation": 32
+ },
+ "background": [
+  {
+   "type": "sky",
+   "top": "#0d1230",
+   "bottom": "#33305e",
+   "horizon": 0.5
+  },
+  {
+   "type": "street",
+   "horizon": 0.5,
+   "time": "night",
+   "wet": 0.55,
+   "seed": 23,
+   "eye": 0.95,
+   "cars": 4,
+   "people": 6
+  }
+ ],
+ "style_overrides": {
+  "rim_light": 0.85
+ },
+ "ambient": {
+  "color": "#26285e",
+  "opacity": 0.22,
+  "from": 0.55
+ },
+ "finish": {
+  "bloom": 0.45,
+  "diffusion": 0.2,
+  "shadow_tint": "#1a1848",
+  "highlight_tint": "#ffc898",
+  "tint_strength": 0.16,
+  "vignette": 0.2
+ },
+ "duo": {
+  "pose": "hold_hands",
+  "partner": {
+   "character": {
+    "gender": "male",
+    "hair_style": "layered",
+    "bangs": "layered",
+    "hair_seed": 7,
+    "skin_tone": "tan",
+    "eye_shape": "monolid"
+   },
+   "palette": {
+    "hair": "#1c1a20",
+    "hair_shadow": "#0a090c",
+    "hair_light": "#8a96b8",
+    "cloth": "#2a2e3a",
+    "cloth_shadow": "#161a22",
+    "cloth2": "#3a3e48",
+    "outer": "#1e2028",
+    "shoe": "#16161a",
+    "iris": "#3a2a20"
+   },
+   "figure": {
+    "pose": "standing",
+    "outfit": "leather_jacket_jeans",
+    "ground_shadow": 0.45
+   }
+  }
+ }
+}

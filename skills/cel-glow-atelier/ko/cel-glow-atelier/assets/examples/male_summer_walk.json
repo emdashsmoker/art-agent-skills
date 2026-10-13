@@ -1,0 +1,88 @@
+{
+  "canvas": [
+    1100,
+    1800
+  ],
+  "style": "anime",
+  "seed": 12,
+  "character": {
+    "gender": "male",
+    "head_turn": -0.6,
+    "head_tilt": 2,
+    "gaze": [
+      0.3,
+      0.0
+    ],
+    "hair_style": "layered",
+    "bangs": "layered",
+    "smile": 0.35,
+    "hair_seed": 9
+  },
+  "figure": {
+    "pose": "walk",
+    "outfit": "open_shirt_shorts",
+    "build": {
+      "muscle": 1.15
+    },
+    "ground_shadow": 0.5
+  },
+  "palette": {
+    "hair": "#2b2a36",
+    "hair_shadow": "#13121a",
+    "hair_light": "#a8b8e0",
+    "skin_shadow": "#d39a8a",
+    "cloth": "#dfe9f2",
+    "cloth_shadow": "#98aac0",
+    "cloth2": "#c8b48e",
+    "shoe": "#f0ece4"
+  },
+  "placement": {
+    "head_height": 0.11,
+    "pelvis": [
+      0.5,
+      0.47
+    ]
+  },
+  "light": {
+    "azimuth": 135,
+    "elevation": 55
+  },
+  "background": [
+    {
+      "type": "sky",
+      "top": "#4f8fd8",
+      "bottom": "#cfe6f5",
+      "horizon": 0.58
+    },
+    {
+      "type": "clouds",
+      "coverage": 0.35,
+      "top": 0.04,
+      "bottom": 0.4,
+      "seed": 3
+    },
+    {
+      "type": "tree_line",
+      "base": 0.6,
+      "height": 0.07,
+      "color": "#4f7a5a",
+      "seed": 4
+    },
+    {
+      "type": "ground",
+      "top": 0.6,
+      "color": "#8fb46a",
+      "far_color": "#a8c88a"
+    },
+    {
+      "type": "grass",
+      "top": 0.66,
+      "seed": 5
+    }
+  ],
+  "finish": {
+    "highlight_tint": "#fff6dc",
+    "tint_strength": 0.08,
+    "bloom": 0.25
+  }
+}

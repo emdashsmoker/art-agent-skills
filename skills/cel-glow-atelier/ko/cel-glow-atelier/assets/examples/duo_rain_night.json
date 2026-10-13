@@ -1,0 +1,105 @@
+{
+  "canvas": [
+    1400,
+    1700
+  ],
+  "style": "anime",
+  "seed": 41,
+  "character": {
+    "gender": "female",
+    "hair_style": "long_wavy",
+    "bangs": "parted",
+    "smile": 0.45,
+    "hair_seed": 3
+  },
+  "figure": {
+    "pose": "standing",
+    "outfit": "coat_turtleneck",
+    "heels": true,
+    "ground_shadow": 0.45,
+    "build": {
+      "waist": 0.96,
+      "hips": 1.03
+    }
+  },
+  "palette": {
+    "hair": "#3a2622",
+    "hair_shadow": "#1a100e",
+    "hair_light": "#e8a878",
+    "iris": "#5a6a9a",
+    "cloth": "#ece6dc",
+    "cloth_shadow": "#a8a0b8",
+    "cloth2": "#2a2c3a",
+    "outer": "#c9b49a",
+    "shoe": "#2a1a20"
+  },
+  "placement": {
+    "shot": "full"
+  },
+  "light": {
+    "azimuth": 50,
+    "elevation": 32
+  },
+  "background": [
+    {
+      "type": "sky",
+      "top": "#0d1230",
+      "bottom": "#33305e",
+      "horizon": 0.5
+    },
+    {
+      "type": "street",
+      "horizon": 0.5,
+      "time": "night",
+      "wet": 0.55,
+      "seed": 17,
+      "eye": 0.95,
+      "cars": 4,
+      "people": 6
+    }
+  ],
+  "style_overrides": {
+    "rim_light": 0.85
+  },
+  "ambient": {
+    "color": "#26285e",
+    "opacity": 0.25,
+    "from": 0.55
+  },
+  "finish": {
+    "bloom": 0.45,
+    "diffusion": 0.2,
+    "shadow_tint": "#1a1848",
+    "highlight_tint": "#ffc898",
+    "tint_strength": 0.16,
+    "vignette": 0.2
+  },
+  "duo": {
+    "pose": "hold_hands",
+    "partner": {
+      "character": {
+        "gender": "male",
+        "hair_style": "layered",
+        "bangs": "layered",
+        "hair_seed": 6,
+        "smile": 0.3
+      },
+      "palette": {
+        "cloth": "#e8e2d8",
+        "cloth_shadow": "#a09aa8",
+        "cloth2": "#36425e",
+        "hair": "#1c1a22",
+        "hair_shadow": "#0b0a0e",
+        "shoe": "#1a1820"
+      },
+      "figure": {
+        "pose": "pockets",
+        "outfit": "leather_jacket_jeans",
+        "build": {
+          "muscle": 1.15
+        }
+      }
+    },
+    "gap": 1.85
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "canvas": [
+    1100,
+    1800
+  ],
+  "style": "anime",
+  "seed": 3,
+  "character": {
+    "gender": "male",
+    "head_turn": -0.45,
+    "head_tilt": 2,
+    "gaze": [
+      0.35,
+      0.0
+    ],
+    "hair_style": "layered",
+    "bangs": "layered",
+    "jaw_sharpness": 0.8
+  },
+  "figure": {
+    "pose": "akimbo",
+    "outfit": "shirt_pants",
+    "build": {
+      "muscle": 1.1
+    },
+    "ground_shadow": 0.5,
+    "pose_overrides": {
+      "reach_left": [
+        -0.62,
+        0.05
+      ],
+      "hand_left": "relaxed",
+      "hand_left_angle": 10
+    }
+  },
+  "palette": {
+    "hair": "#1f1d26",
+    "hair_shadow": "#0e0d12",
+    "hair_light": "#f0b890",
+    "skin_shadow": "#d39a8a",
+    "cloth": "#e9dfcc",
+    "cloth_shadow": "#a8919c",
+    "cloth2": "#2c3350",
+    "shoe": "#1c1a26"
+  },
+  "placement": {
+    "head_height": 0.11,
+    "pelvis": [
+      0.5,
+      0.48
+    ]
+  },
+  "light": {
+    "azimuth": 120,
+    "elevation": 35
+  },
+  "background": [
+    {
+      "type": "sky",
+      "top": "#3b3f7a",
+      "bottom": "#f4a57a",
+      "horizon": 0.48
+    },
+    {
+      "type": "sun",
+      "center": [
+        0.5,
+        0.47
+      ],
+      "radius": 0.03,
+      "color": "#fff0d0",
+      "glow_color": "#ffc890",
+      "glow_radius": 0.4,
+      "glow_opacity": 0.8
+    },
+    {
+      "type": "street",
+      "horizon": 0.48,
+      "time": "dusk",
+      "seed": 11,
+      "eye": 0.95,
+      "cars": 4,
+      "people": 4
+    }
+  ],
+  "style_overrides": {
+    "rim_light": 0.7
+  },
+  "ambient": {
+    "color": "#4a4470",
+    "opacity": 0.22,
+    "from": 0.6
+  },
+  "finish": {
+    "shadow_tint": "#2a2458",
+    "highlight_tint": "#ffd9b0",
+    "tint_strength": 0.14,
+    "bloom": 0.35
+  }
+}

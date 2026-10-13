@@ -1,0 +1,6 @@
+{"style": "anime_cel", "framing": "full", "canvas": {"seed": 9},
+ "character": {"head": {"yaw": 10, "roll": -3}, "body": {"pose": "hand_on_hip", "stance": "contrapposto", "figure": "fuller"},
+   "hair": {"color": "#2E2629", "style": "long", "bangs": "side_swept", "wave": 0.3},
+   "eyes": {"color": "#B07A3A"},
+   "outfit": {"type": "one_piece", "variant": "cutout", "color": "#B8443E"}},
+ "background": {"type": "beach"}}

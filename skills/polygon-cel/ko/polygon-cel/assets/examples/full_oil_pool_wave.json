@@ -1,0 +1,35 @@
+{
+ "style": "painterly",
+ "framing": "full",
+ "canvas": {
+  "seed": 3
+ },
+ "character": {
+  "head": {
+   "yaw": -10,
+   "roll": 2
+  },
+  "body": {
+   "pose": "wave",
+   "stance": "contrapposto",
+   "figure": "fuller"
+  },
+  "hair": {
+   "style": "ponytail",
+   "bangs": "full"
+  },
+  "expression": {
+   "mouth": "open_smile"
+  },
+  "outfit": {
+   "type": "bikini",
+   "variant": "triangle",
+   "color": "#E8735A",
+   "bottom_style": "high_leg",
+   "shoes": "sandals"
+  }
+ },
+ "background": {
+  "type": "pool"
+ }
+}

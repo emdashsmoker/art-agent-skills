@@ -1,0 +1,16 @@
+{
+  "style": "illustration",
+  "framing": "full_body",
+  "canvas": {
+    "width": 1024,
+    "height": 1600
+  },
+  "character": {
+    "outfit": {
+      "type": "bikini"
+    },
+    "pose": {
+      "preset": "relaxed"
+    }
+  }
+}

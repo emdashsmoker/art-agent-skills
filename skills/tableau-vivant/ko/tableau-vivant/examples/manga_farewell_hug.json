@@ -1,0 +1,69 @@
+{
+ "canvas": {
+  "aspect": "4:5",
+  "detail": "standard",
+  "seed": 32
+ },
+ "environment": {
+  "type": "plain_color",
+  "color": [
+   1,
+   1,
+   1
+  ]
+ },
+ "pairs": [
+  {
+   "kind": "hug",
+   "facing": 0,
+   "a": {
+    "name": "a",
+    "preset": "woman",
+    "outfit": "long_coat",
+    "hair": {
+     "style": "shoulder",
+     "color": "black"
+    },
+    "expression": "sad",
+    "skin": "fair",
+    "colors": {
+     "coat": [
+      0.13,
+      0.13,
+      0.15
+     ]
+    }
+   },
+   "b": {
+    "name": "b",
+    "preset": "man",
+    "outfit": "long_coat",
+    "hair": {
+     "style": "side_part",
+     "color": "black"
+    },
+    "expression": "eyes_closed",
+    "skin": "light",
+    "colors": {
+     "coat": [
+      0.74,
+      0.74,
+      0.78
+     ]
+    }
+   }
+  }
+ ],
+ "camera": {
+  "fit": "people",
+  "shot": "medium",
+  "yaw": -160,
+  "pitch": 6,
+  "fill": 0.92
+ },
+ "light": {
+  "preset": "front",
+  "mood": "neutral"
+ },
+ "style": "manga"
+}

@@ -146,7 +146,7 @@ painting.save("figure.png", finish(painting, style, importance=masks["head"]))
     + `PortraitSpec(**{**FACES["cool"], **look("tan", "black", "gray"), "hair_style": "ponytail"})`
     + Expressions (`expression`), glasses, earrings and stubble are set in the same spec (`references/figure-rig.md`)
 - Turn the body with `make_pose(..., yaw=45)` (three-quarter) or `yaw=90` (profile); a side-on walk is `make_pose("walk_side")`
-- Outfits are `wardrobe.WARDROBE["lingerie" | "crop_top_shorts" | "hoodie" | "suit" ...]`
+- Outfits are `wardrobe.WARDROBE["innerwear" | "crop_top_shorts" | "hoodie" | "suit" ...]`
 - Sitting is `sit`, `sit_side`, `sit_front`; kneeling is `kneel`, `seiza`; lying is `lie_back`, `lie_side` (furniture is `props.chair`, `props.bed`)
 
 ### Two-shots and scenes
@@ -223,13 +223,13 @@ painting.fill(painting.mask(screen(geo.rounded_rect(0.1, 0.1, 0.9, 0.9, 0.05))),
 - Figures are supported from the front, three-quarter, profile (90 degrees) and behind, sitting, kneeling and lying
     + A three-quarter back view, lying face down, crossed legs, hands holding objects and embracing contact must be built by hand, with more rounds of checking
 - Several figures overlap through drawing order, shadows and hands laid back over others on an orthographic view
-- The rig draws no genital forms
-    + A man seen naked from the front reads as a smooth-groined mannequin, so short trunks (`wardrobe.trunks`) look more natural
+- The rig draws no pelvic forms
+    + A man seen unclothed from the front reads as a smooth mannequin, so short trunks (`wardrobe.trunks`) look more natural
 - The target quality is a tidy illustration
     + Photographic realism is out of scope
 
 ## Not allowed
 
-- Nudity and sexual depiction (sexual acts included) of minors are never drawn
+- Unclothed figures and sexual depiction (sexual acts included) of minors are never drawn
     + Covers figures depicted with a body before secondary sex characteristics, and figures stated to be under 18
     + The judgement rests on the stated age and the depicted body; a youthful face, short stature or anime facial proportions alone do not make a figure a minor

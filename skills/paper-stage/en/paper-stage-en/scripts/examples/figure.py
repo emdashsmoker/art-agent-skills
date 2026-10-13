@@ -2,7 +2,7 @@
 
 Usage: python examples/figure.py --build female|male
                                  --outfit bikini|bodycon|slip_dress|top_and_jeans|swimsuit|trunks|shirtless_jeans|
-                                          lingerie|lingerie_stockings|crop_top_shorts|hoodie|hoodie_shorts|suit|nude
+                                          innerwear|innerwear_stockings|crop_top_shorts|hoodie|hoodie_shorts|suit|figure_study
                                  --pose hand_on_hip|contrapposto|arm_behind_head|arms_up|walk|walk_side|stance|back|stand|
                                         sit|sit_side|sit_front|kneel|kneel_side|seiza|lie_back|lie_side
                                  --yaw 0..90 (or negative) --style anime|illust|painterly --out figure.png
@@ -10,7 +10,7 @@ Usage: python examples/figure.py --build female|male
 --yaw turns the body (45 three-quarter, 90 profile); the head turns with it.
 Sitting poses get a chair, lying poses a bed; both are framed to fit the canvas.
 
-The rig has no genital forms, so a man seen from the front with nothing on reads as a mannequin;
+The rig has no pelvic forms, so a man seen from the front with nothing on reads as a mannequin;
 --outfit trunks dresses him in short trunks.
 """
 import argparse
@@ -59,8 +59,8 @@ def paint_room(painting, style, with_floor):
         painting.fill(floor * sh.linear_ramp(painting.shape, (0, FLOOR_Y), (0, HEIGHT)), "#2a201c", 0.6)
 
 
-CLOTH = {"slip_dress": "#a8323e", "bikini": "#d8455a", "bodycon": "#1f2430", "trunks": "#2c3a52", "lingerie": "#1c1a22",
-         "lingerie_stockings": "#7a1f2b", "crop_top_shorts": "#f1ede4", "hoodie": "#4a4f57", "hoodie_shorts": "#b8a0c8",
+CLOTH = {"slip_dress": "#a8323e", "bikini": "#d8455a", "bodycon": "#1f2430", "trunks": "#2c3a52", "innerwear": "#1c1a22",
+         "innerwear_stockings": "#7a1f2b", "crop_top_shorts": "#f1ede4", "hoodie": "#4a4f57", "hoodie_shorts": "#b8a0c8",
          "suit": "#2b3140"}
 SECOND = {"trunks": "#d8d2c6", "crop_top_shorts": "#5a7aa8", "hoodie_shorts": "#5a7aa8", "hoodie": "#4f6f9c"}
 
@@ -69,7 +69,7 @@ def render(outfit, pose_name, style_name, build="female", seed=3, yaw=None):
     style = get_style(style_name)
     male = build == "male"
     from_behind = POSES[pose_name].get("view") == "back"
-    study = outfit == "nude"
+    study = outfit == "figure_study"
     painting = Painting(WIDTH, HEIGHT)
     paint_room(painting, style, with_floor=not study)
     face = dict(MASCULINE, hair="#2a2022", skin="#e6bf9f", eye="#5a4430") if male else \
@@ -81,7 +81,7 @@ def render(outfit, pose_name, style_name, build="female", seed=3, yaw=None):
     extra = {} if yaw is None else dict(yaw=yaw, turn=0.0)  # a real turn replaces the slight one
     pose = make_pose(pose_name, **{"turn": turn, **framing, **extra})
     body = MALE_BODY if male else BodySpec()
-    dress = None if outfit == "nude" else WARDROBE[outfit]
+    dress = None if outfit == "figure_study" else WARDROBE[outfit]
     furniture = None
     if pose_name.startswith(("sit", "kneel", "seiza", "lie")):     # not standing: frame the whole pose, add its furniture
         (pose,) = frame([(pose, body)], painting.shape, "full", margin=0.10, floor=None if pose_name.startswith("lie") else HEIGHT * 0.93)
@@ -116,7 +116,7 @@ def render(outfit, pose_name, style_name, build="female", seed=3, yaw=None):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--build", default="female", choices=["female", "male"])
-    parser.add_argument("--outfit", default="slip_dress", choices=list(WARDROBE) + ["nude"])
+    parser.add_argument("--outfit", default="slip_dress", choices=list(WARDROBE) + ["figure_study"])
     parser.add_argument("--pose", default="hand_on_hip", choices=list(POSES))
     parser.add_argument("--style", default="illust", choices=["anime", "illust", "painterly"])
     parser.add_argument("--yaw", type=float, default=None, help="body turn in degrees; 90 is a profile")

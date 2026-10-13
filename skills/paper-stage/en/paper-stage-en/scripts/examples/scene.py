@@ -3,7 +3,7 @@
 Usage: python examples/scene.py --scene beach|bedroom|office|night_street|cafe|park --style anime|illust|painterly --out scene.png
 
 - beach: a couple holding hands on the shore, full shot.
-- bedroom: a woman in lingerie lying on her side on a bed.
+- bedroom: a woman in innerwear lying on her side on a bed.
 - office: a woman in a suit seated, a man standing behind her with a hand on her shoulder, knee shot.
 - night_street: a couple in street clothes, her hand on his arm, waist shot.
 - cafe: two friends seated across a small table, both in profile, full shot.
@@ -52,7 +52,7 @@ def _midpoint(painting, a, side_a, b, side_b, drop=0.25):
 
 
 def bedroom(painting):
-    her = Actor(PortraitSpec(**HER, cloth="#1c1a22"), BodySpec(), make_pose("lie_side"), WARDROBE["lingerie_stockings"])
+    her = Actor(PortraitSpec(**HER, cloth="#1c1a22"), BodySpec(), make_pose("lie_side"), WARDROBE["innerwear_stockings"])
     (her.pose,) = frame([(her.pose, her.body)], painting.shape, "full", centers=(0.47,), margin=0.12)
     her.pose = _lift(her.pose, 0.06)
     from codepainter.figure.body import Skeleton

@@ -158,7 +158,7 @@ Image.open("out.png").crop((300, 340, 740, 780)).resize((880, 880)).save("crop.p
 | Seated shorts cover down to the knees | leg openings set at hip height | cut across the thigh at a set length along it |
 | A seated skirt drapes behind the chair | the standing skirt shape is used | cover hips and thighs, drape it in front of the knees |
 | Seated buttocks sag below the chair | the bottom of the trunk drops between the legs | cut trunk and buttocks flat at the seat |
-| Lingerie lace on a lying body points the wrong way | lace direction set by the screen | turn it with the body's lean |
+| Innerwear lace on a lying body points the wrong way | lace direction set by the screen | turn it with the body's lean |
 | In a two-shot the back figure's hand is hidden by the front figure | the far figure is drawn first and its hand gets covered | lay just the hand back over with `Actor.over` |
 | An outstretched hand is as small as a baby's | a hand pointing at the viewer shrunk in length and width | shorten only along the hand axis and keep the width |
 | Fingers raised behind the head show beside the neck or jaw | the arm behind the body drawn in front of head and neck | hide the hand behind head, neck, back hair and the gaps between them |
@@ -167,7 +167,7 @@ Image.open("out.png").crop((300, 340, 740, 780)).resize((880, 880)).save("crop.p
 | In a two-shot a hand floats with no arm | a hand whose arm is hidden behind the front figure laid over with `over` | hold with the hand whose arm shows, bring the elbow forward with the `pole` of `reach` |
 | Flag-shaped scrap on the shoulder of a strapped top in profile | the neckline cuts only the front strap, no strap down the back | on a turned body carry the strap over the shoulder and down the back (`wardrobe._back_straps`) |
 | A front-facing seated figure reads as standing | thighs foreshortened toward the viewer, hands covering the knees | hands outside the knees, shadow on the shins below the knees, turn 15-20 degrees |
-| Hands land over the groin in a three-quarter kneel | the forward forearm sends the near hand to the middle of the body | lower the hands beside the outer thighs |
+| Hands land over the lower pelvis in a three-quarter kneel | the forward forearm sends the near hand to the middle of the body | lower the hands beside the outer thighs |
 | Feet seem to float above their shadow in a downward view | the floor shadow sits under the toe tips | centre it between heels and toes, widen it with the downward angle |
 | A figure lying on a lawn floats above the horizon | the lying body is placed at the vertical middle of the canvas | lay it on the near ground with `frame(..., floor=row)` |
 | Two people sit facing each other across empty air | chairs with no table | give `props.table` to one of them with `reach` at half their distance |

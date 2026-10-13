@@ -10,8 +10,8 @@ Use them as `wardrobe.WARDROBE[name]` or `clothing.<CONSTANT>`.
 
 | Name | Contents | Colours used |
 |---|---|---|
-| `lingerie` | half-cup bra (lace over the cups, centre gore, underband, shoulder straps), lace briefs with a bow | `cloth` |
-| `lingerie_stockings` | the same set plus sheer thigh stockings with lace bands | `cloth` |
+| `innerwear` | half-cup bra (lace over the cups, centre gore, underband, shoulder straps), lace briefs with a bow | `cloth` |
+| `innerwear_stockings` | the same set plus sheer thigh stockings with lace bands | `cloth` |
 | `crop_top_shorts` | short-sleeved crop tee, low-rise denim hot pants (frayed hems), trainers | `cloth`, `cloth_second` |
 | `hoodie` | oversized hoodie (hood folded back, front pocket, drawstrings, ribbed cuffs and hem), jeans, trainers | `cloth`, `cloth_second` |
 | `hoodie_shorts` | hoodie with hot pants, trainers | `cloth`, `cloth_second` |
@@ -35,7 +35,7 @@ draw_figure(painting, spec, body, pose, style, dress=outfit)
     + `sleeve` is drawn over each arm right after that arm, with the form `f(painting, skeleton, side, masks, spec, style, light)`
     + `behind` is drawn right after the back hair, before the trunk (the folded hood)
 - Plain function outfits work as they are; `combine` wraps them in an Outfit
-- The part functions are `crop_tee`, `hot_pants`, `hoodie_body`, `hood`, `shirt`, `tie`, `jacket`, `suit_trousers`, `bra`, `panties`, `stockings`, `sneakers`, `dress_shoes`
+- The part functions are `crop_tee`, `hot_pants`, `hoodie_body`, `hood`, `shirt`, `tie`, `jacket`, `suit_trousers`, `bra`, `briefs`, `stockings`, `sneakers`, `dress_shoes`
 
 ### Sleeves
 
@@ -185,7 +185,7 @@ his_pose = reach(his_pose, MALE_BODY, "l", target_pixel, painting.shape, depth=0
     + The elbow direction is `pole` (by default outward, down and back)
 - `rest_hands(pose, body, shape, on="knees")` rests both hands on the knees (`"thighs"` for mid thigh)
     + The seated hands reach the knees even on builds with a different shoulder width
-    + For near-front seating (22 degrees or less) the hands move outside the knees by `stage.REST_OUTWARD`, so they do not overlap over the groin
+    + For near-front seating (22 degrees or less) the hands move outside the knees by `stage.REST_OUTWARD`, so they do not overlap over the lower pelvis
 - A front-facing seated figure easily reads as standing, because the thighs look short
     + A shadow of the thighs and seat is painted on the shins below the knees on its own (`body.shade_under_knees`)
     + To read clearly as seated, turn it `yaw=15` to `20`; for men spread the knees (`leg_l=(-14, -6), leg_r=(14, 6)`)

@@ -161,8 +161,8 @@ draw_figure(painting, spec, MALE_BODY, make_pose("stance", root=(0.50, 0.475), u
     + 짧은 머리는 `hair_style="short"`, 앞머리는 `bangs="textured"`
 - 해부 표지는 쇄골, 대흉근 판과 아래 경계선, 복직근 3단 마디, 복직근 바깥 홈, 전거근, 골반 위 V선
 - 뒷모습 둔부는 `hip`에 비례해 작아지고 높게 붙으며 옆 오목면이 추가됨
-- 리그는 생식기 형태를 그리지 않음
-    + 정면 남성 맨몸은 가랑이가 매끈한 마네킹처럼 보이므로 `wardrobe.trunks`가 자연스러움
+- 리그는 골반 세부 형태를 그리지 않음
+    + 정면 남성 인체 습작은 하체가 매끈한 마네킹처럼 보이므로 `wardrobe.trunks`가 자연스러움
     + 짧은 하의 착용 예제는 `examples/figure.py --build male --outfit trunks`
 
 ## 매력 있는 인체의 조건
@@ -207,7 +207,7 @@ draw_figure(painting, spec, MALE_BODY, make_pose("stance", root=(0.50, 0.475), u
 | `wardrobe.trunks` | 짧은 사각 하의와 허리 밴드, 남성 습작용 | `cloth`, `cloth_second` |
 | `wardrobe.shirtless_jeans` | 상의 없이 골반에 걸친 일자 청바지 | `cloth_second` |
 | `wardrobe.jeans` | 바지만, `rise`(허리선 위치)와 `ease`(여유) 지정 | `cloth_second` |
-| `lingerie`, `lingerie_stockings` | 레이스 브라와 팬티, 스타킹 | `cloth` |
+| `innerwear`, `innerwear_stockings` | 레이스 브라와 팬티, 스타킹 | `cloth` |
 | `crop_top_shorts` | 크롭티, 핫팬츠, 운동화 | `cloth`, `cloth_second` |
 | `hoodie`, `hoodie_shorts` | 후드티와 청바지 또는 핫팬츠, 운동화 | `cloth`, `cloth_second` |
 | `suit` | 셔츠, 넥타이, 재킷, 정장 바지, 구두 | `cloth` |
@@ -246,7 +246,7 @@ def tunic(painting, skeleton, masks, spec, style, light):
     + 골반과 어깨의 반대 기울기
     + 관절에서 가늘고 근육에서 굵은 윤곽
     + 빛 반대쪽 전체가 한 덩어리로 어두워지는 명암
-- 미성년자의 누드와 성적 묘사는 그리지 않음 (`SKILL.md`의 금지 기준)
+- 미성년자의 노출과 성적 묘사는 그리지 않음 (`SKILL.md`의 금지 기준)
 - 반신 구도가 발과 손의 약점을 가림
 - 회화풍은 `finish(..., importance=masks["head"], detail=0.85)` 권장
     + 피부에 잔붓질이 과하면 `detail`을 낮춤

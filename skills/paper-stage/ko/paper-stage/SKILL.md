@@ -144,7 +144,7 @@ painting.save("figure.png", finish(painting, style, importance=masks["head"]))
     + `PortraitSpec(**{**FACES["cool"], **look("tan", "black", "gray"), "hair_style": "ponytail"})`
     + 표정(`expression`), 안경, 귀걸이, 수염 자국도 같은 사양에서 지정 (`references/figure-rig.md`)
 - 몸 돌림은 `make_pose(..., yaw=45)` (3/4), `yaw=90` (측면), 측면 걸음은 `make_pose("walk_side")`
-- 의상은 `wardrobe.WARDROBE["lingerie" | "crop_top_shorts" | "hoodie" | "suit" ...]`
+- 의상은 `wardrobe.WARDROBE["innerwear" | "crop_top_shorts" | "hoodie" | "suit" ...]`
 - 앉기는 `sit`, `sit_side`, `sit_front`, 무릎은 `kneel`, `seiza`, 눕기는 `lie_back`, `lie_side` (가구는 `props.chair`, `props.bed`)
 
 ### 투샷과 장면
@@ -221,13 +221,13 @@ painting.fill(painting.mask(screen(geo.rounded_rect(0.1, 0.1, 0.9, 0.9, 0.05))),
 - 인물은 정면, 3/4, 측면(90도), 뒷모습, 앉기, 무릎 꿇기, 눕기까지 지원
     + 등 쪽 3/4, 엎드리기, 다리 꼬기, 물건을 쥔 손, 서로 감싸 안는 접촉은 직접 구성해야 하며 검증 반복 증가
 - 여러 인물은 정사영 위에서 그리는 순서, 그림자, 손 덮어쓰기로 겹침 표현
-- 리그는 생식기 형태를 그리지 않음
-    + 남성 정면 맨몸은 가랑이가 매끈한 마네킹처럼 보이므로 짧은 하의(`wardrobe.trunks`)가 자연스러움
+- 리그는 골반 세부 형태를 그리지 않음
+    + 남성 정면 인체 습작은 하체가 매끈한 마네킹처럼 보이므로 짧은 하의(`wardrobe.trunks`)가 자연스러움
 - 목표 품질은 정돈된 일러스트 수준
     + 사진 수준의 사실 묘사는 대상 외
 
 ## 금지
 
-- 미성년자의 누드와 성적 묘사(성행위 포함)는 그리지 않음
+- 미성년자의 노출과 성적 묘사(성행위 포함)는 그리지 않음
     + 대상 : 이차성징 이전의 신체로 묘사된 인물, 18세 미만으로 명시된 인물
     + 판정 근거는 명시된 나이와 신체 묘사이며 동안 얼굴, 작은 키, 애니메 화풍의 얼굴 비율만으로는 미성년으로 판정하지 않음

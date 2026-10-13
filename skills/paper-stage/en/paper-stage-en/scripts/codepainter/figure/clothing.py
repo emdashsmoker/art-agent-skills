@@ -543,7 +543,7 @@ def jacket_sleeve(painting, skeleton, side, masks, spec, style, light):
                        under=(0.07, SHIRT))
 
 
-# ---- lingerie ----------------------------------------------------------------------------
+# ---- innerwear ----------------------------------------------------------------------------
 STRAP_SEEN = 0.5             # coverage below which a strap counts as hidden at that point
 
 
@@ -613,7 +613,7 @@ def bra(painting, skeleton, masks, spec, style, light):
     return total
 
 
-def panties(painting, skeleton, masks, spec, style, light):
+def briefs(painting, skeleton, masks, spec, style, light):
     """Brief (spec.cloth) with lace along the waist and the leg openings."""
     color = rgb(spec.cloth)
     skin = masks["skin"]
@@ -667,13 +667,13 @@ def _layers(*garments):
     return body
 
 
-LINGERIE = Outfit(body=_layers(panties, bra))
-LINGERIE_STOCKINGS = Outfit(body=_layers(stockings, panties, bra))
+INNERWEAR = Outfit(body=_layers(briefs, bra))
+INNERWEAR_STOCKINGS = Outfit(body=_layers(stockings, briefs, bra))
 CROP_TOP_SHORTS = Outfit(body=_layers(hot_pants, sneakers, crop_tee), sleeve=tee_sleeve)
 HOODIE = Outfit(body=hoodie_body, sleeve=hoodie_sleeve, behind=hood)
 HOODIE_JEANS = combine(_layers(jeans, sneakers), HOODIE)
 HOODIE_SHORTS = combine(_layers(hot_pants, sneakers), HOODIE)
 SUIT = Outfit(body=_layers(suit_trousers, dress_shoes, shirt, tie, jacket), sleeve=jacket_sleeve)
 
-OUTFITS = {"lingerie": LINGERIE, "lingerie_stockings": LINGERIE_STOCKINGS, "crop_top_shorts": CROP_TOP_SHORTS,
+OUTFITS = {"innerwear": INNERWEAR, "innerwear_stockings": INNERWEAR_STOCKINGS, "crop_top_shorts": CROP_TOP_SHORTS,
            "hoodie": HOODIE_JEANS, "hoodie_shorts": HOODIE_SHORTS, "suit": SUIT}

@@ -138,7 +138,7 @@ pose = make_pose("stand", yaw=-90, head_yaw=-60)                           # pro
 | `arms` | 1.0 | extra arm thickness factor |
 | `neck` | 1.0 | neck width factor |
 
-- The default is a curvy build with a narrow waist and wide hips
+- The default is a fuller build with a narrow waist and wide hips
 - A fuller build is `BodySpec(bust=1.75, hip=0.74, limb=1.08)`
 - A slim fashion build is `BodySpec(bust=1.0, hip=0.62, chest=0.46, limb=0.92, legs=1.0, head=1.0)`
 - The hip joints are placed in proportion to `hip`, so changing the pelvis width moves the thighs too
@@ -161,8 +161,8 @@ draw_figure(painting, spec, MALE_BODY, make_pose("stance", root=(0.50, 0.475), u
     + The short hair is `hair_style="short"`, the fringe `bangs="textured"`
 - Anatomy marks are the collarbones, the chest plates and their lower edge, three rows of abdominal segments, the outer groove of the abdominals, the serratus and the V line above the pelvis
 - In back views the buttocks get smaller and sit higher in proportion to `hip`, with a hollow added at the side
-- The rig draws no genital forms
-    + A man seen naked from the front reads as a smooth-groined mannequin, so `wardrobe.trunks` looks more natural
+- The rig draws no pelvic forms
+    + A man seen unclothed from the front reads as a smooth mannequin, so `wardrobe.trunks` looks more natural
     + An example with short trunks is `examples/figure.py --build male --outfit trunks`
 
 ## What makes a body appealing
@@ -207,7 +207,7 @@ draw_figure(painting, spec, MALE_BODY, make_pose("stance", root=(0.50, 0.475), u
 | `wardrobe.trunks` | short square-cut trunks with a waistband, for male studies | `cloth`, `cloth_second` |
 | `wardrobe.shirtless_jeans` | no top, straight jeans sitting on the hips | `cloth_second` |
 | `wardrobe.jeans` | trousers alone, with `rise` (waist line position) and `ease` (looseness) | `cloth_second` |
-| `lingerie`, `lingerie_stockings` | lace bra and briefs, stockings | `cloth` |
+| `innerwear`, `innerwear_stockings` | lace bra and briefs, stockings | `cloth` |
 | `crop_top_shorts` | crop top, hot pants, trainers | `cloth`, `cloth_second` |
 | `hoodie`, `hoodie_shorts` | hoodie with jeans or hot pants, trainers | `cloth`, `cloth_second` |
 | `suit` | shirt, tie, jacket, suit trousers, shoes | `cloth` |
@@ -238,7 +238,7 @@ def tunic(painting, skeleton, masks, spec, style, light):
 ## Figure studies
 
 - With `dress=None` the anatomy marks are drawn
-    + Female front : collarbones, breasts, the centre and side lines of the abdomen, navel, hip bones, groin folds, knees, toes
+    + Female front : collarbones, breasts, the centre and side lines of the abdomen, navel, hip bones, lower pelvis folds, knees, toes
     + Male front : see "Male figures" above
     + Back view : spine line, shoulder blades, dimples of the lower back, buttocks and the fold under them, backs of the knees
     + The marks are split into one function per body part in `figure/anatomy.py`
@@ -246,7 +246,7 @@ def tunic(painting, skeleton, masks, spec, style, light):
     + Opposite tilts of hips and shoulders
     + Contours thin at the joints and full over the muscles
     + Shading in which the whole side away from the light darkens as one mass
-- Nudity and sexual depiction of minors are never drawn (the rule in `SKILL.md`)
+- Unclothed figures and sexual depiction of minors are never drawn (the rule in `SKILL.md`)
 - A half-length framing hides the weak spots of feet and hands
 - For painterly, `finish(..., importance=masks["head"], detail=0.85)` is recommended
     + If the skin gets too many small strokes, lower `detail`

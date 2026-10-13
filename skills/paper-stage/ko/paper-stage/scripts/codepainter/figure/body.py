@@ -173,7 +173,7 @@ POSES = {
                        swing={"thigh_l": 10, "thigh_r": 4, "shin_l": -86, "shin_r": -90, "foot_l": -84, "foot_r": -86,
                               "upper_arm_l": 10, "upper_arm_r": 6, "forearm_l": 42, "forearm_r": 36}),
     # Turned toward the viewer the hands hang by the outer thighs: carried forward onto the thighs, the
-    # near hand would land over the groin.
+    # near hand would land over the lower pelvis.
     "kneel": dict(yaw=35, leg_l=(-3, 0), leg_r=(4, 0), arm_l=(-8, 0), arm_r=(8, 0), foot_l=0, foot_r=0,
                   swing={"thigh_l": 10, "thigh_r": 4, "shin_l": -86, "shin_r": -90, "foot_l": -84, "foot_r": -86,
                          "upper_arm_l": 2, "upper_arm_r": 0, "forearm_l": 22, "forearm_r": 18}),
@@ -851,7 +851,7 @@ def draw_figure(painting, spec=None, body=None, pose=None, style=ANIME, light=sh
     """Draw a full figure. Returns masks (figure, skin, head, trunk, limbs, clothes, hair, eyes) and the skeleton.
 
     dress: optional function(painting, skeleton, masks, spec, style, light) -> mask, drawing clothes over
-           the trunk and legs before the front arms go on. None leaves the figure nude. A clothing.Outfit
+           the trunk and legs before the front arms go on. None leaves the figure study. A clothing.Outfit
            may add a `behind` layer (under the hair) and a `sleeve` layer (over each arm).
     hands: optional {"l": HandPose, "r": HandPose}; relaxed hands are used otherwise.
     """

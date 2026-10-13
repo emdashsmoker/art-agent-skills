@@ -157,3 +157,5 @@ Thanks to the authors of the projects below. 아래 프로젝트를 만든 분�
 - [GFPGAN](https://github.com/TencentARC/GFPGAN)
 - [facexlib](https://github.com/xinntao/facexlib)
 - [CodeFormer](https://github.com/sczhou/CodeFormer)
+- [Anny](https://github.com/naver/anny)
+- [skia-python](https://github.com/kyamagu/skia-python)

@@ -419,7 +419,7 @@
 |---|---|---|
 | `glass` | `drink`(술 색 "#A3263A" 기본 적포도주), `size` | 대를 쥔 와인잔. 주먹 위로 투명한 잔과 술, 아래로 받침 |
 | `phone` | `turn`(기울기 도), `size` | 뒷면이 보이는 휴대폰(카메라 렌즈 2개). 셀카를 찍는 손 |
-| `cigarette` | `point`(1 또는 -1, 불붙은 끝 방향), `lit`, `smoke`, `size` | 검지와 중지 사이에 낀 담배와 연기. 손 자세는 `relaxed`. 손가락 위에 놓여 손을 다시 올리지 않음 |
+| `cigarette` | `point`(1 또는 -1, 불붙은 끝 방향), `lit`, `smoke`, `size` | 검지와 중지 사이에 낀 담배와 연기. 손 자세는 `relaxed`. 네 손가락을 담배 위에 다시 올려 손가락 사이로 빠져나온 모양이 됨 |
 
 - 색: `style.palette.glass`(`base` 유리 색조, `light` 반사, `line`, `drink`), `style.palette.phone`(`base`, `shadow`, `line`, `lens`)
 

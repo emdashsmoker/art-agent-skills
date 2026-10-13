@@ -31,7 +31,7 @@
 | 전신 인물 | `figures`, 자세 프리셋 | `classical_venus.json`, `webtoon_evening.json` |
 | 인물과 배경 | `figures`, `landscape` | `hanbok_ink_wash.json`, `kimono_woodblock.json` |
 | 다인 장면 | `figures` 2명 이상. 몸이 닿는 투샷은 `pairs`, 3명 이상이 닿는 줄은 `groups`. 풍경 속 인물은 카메라 `fit: "people"` | `seaside_walk_watercolor.json`, `couple_dance_classical.json`, `anime_friends_trio.json`, `gouache_picnic.json` |
-| 남성 인물 | 남성 프리셋, 수염, 남성 머리 모양 | `classical_david.json`, `nude_male_anime.json`, `portrait_bearded_oil.json`, `webtoon_suit_city.json` |
+| 남성 인물 | 남성 프리셋, 수염, 남성 머리 모양 | `classical_david.json`, `figure_study_male_anime.json`, `portrait_bearded_oil.json`, `webtoon_suit_city.json` |
 | 풍경 | `landscape` 프리셋 | `lake_watercolor.json`, `city_night_street.json` |
 | 정물 | `room`, `props` | `still_life_oil.json`, 현대 정물 `modern_desk_digital.json` |
 | 실내 장면 | `room`, 가구와 기기 | `living_room_night.json` |
@@ -49,7 +49,7 @@
 | 디지털 | `digital` | 세미실사 인물 |
 
 - 기본값은 주제에 따라 결정
-    + 캐릭터 인물은 `anime`, 사실적 인물은 `webtoon` 또는 `digital`, 고전 누드는 `classical`
+    + 캐릭터 인물은 `anime`, 사실적 인물은 `webtoon` 또는 `digital`, 고전 인체 습작은 `classical`
     + 풍경은 `watercolor` 또는 `gouache`, 정물은 `oil`, 스톡 아트는 `flat`
 - 사용자가 화풍을 정하지 못하면 `--styles`로 3종 비교 시트를 먼저 제시
 
@@ -57,7 +57,7 @@
 
 | 항목 | 선택지 | 기본값 |
 | --- | --- | --- |
-| 체형과 얼굴 | 여성: `woman`(날카로운 턱선), `woman_curvy`, `woman_slender`, `woman_soft`, `woman_athletic`, `woman_classical`, `woman_mature`, `woman_elder`, `woman_anime` / 남성: `man`, `man_athletic`, `man_slim`, `man_classical`, `man_mature`, `man_elder`, `man_anime` / `androgynous` | `woman` |
+| 체형과 얼굴 | 여성: `woman`(날카로운 턱선), `woman_fuller`, `woman_slender`, `woman_soft`, `woman_athletic`, `woman_classical`, `woman_mature`, `woman_elder`, `woman_anime` / 남성: `man`, `man_athletic`, `man_slim`, `man_classical`, `man_mature`, `man_elder`, `man_anime` / `androgynous` | `woman` |
 | 피부 | `porcelain`, `fair`, `light`, `medium`, `olive`, `tan`, `brown`, `dark`, `marble` | `light` |
 | 머리 모양 | `long_straight`, `long_wavy`, `very_long`, `shoulder`, `long_male`, `bob`, `pixie`, `curly`, `afro`, `buzz`, `short_crop`, `textured_crop`, `side_part`, `undercut`, `slick_back`, `ponytail`, `low_ponytail`, `bun`, `chignon`, `man_bun`, `bald` | 여성 `long_straight`, 남성 `side_part` |
 | 수염 | `none`, `stubble`, `short_beard`, `full_beard`, `goatee`, `mustache` | `none` |
@@ -70,7 +70,7 @@
 | 자세 | `references/figures.md`의 자세 표 | `contrapposto` |
 
 - 사용자가 취향을 밝혔다면 기본값을 그 취향으로 교체
-- 18세 미만 인물은 옷을 입은 모습만. 누드, 속옷 차림, 성적 연출은 하지 않음 (엔진이 의상을 검사)
+- 18세 미만 인물은 옷을 입은 모습만. 노출, 속옷 차림, 성적 연출은 하지 않음 (엔진이 의상을 검사)
 
 ## 축 5. 구도
 

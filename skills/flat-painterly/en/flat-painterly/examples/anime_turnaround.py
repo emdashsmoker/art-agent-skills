@@ -5,7 +5,7 @@ The pose sheet holds poses where body and head turn separately, such as sitting,
 looking back over the shoulder.
 Process: head-unit guides → 3D rig (figure3d) → masses in the order far limbs, body, near limbs → surface markers →
 hands and feet → head (head3d): back hair locks, face, ears, hair cap, front locks.
-Adult markers and the groin treatment match anime_figure_base.py and anime_figure_base_male.py.
+Adult markers and the lower pelvis treatment match anime_figure_base.py and anime_figure_base_male.py.
 Torso markers are drawn only where the surface normal faces the viewer and fade toward the edges.
 Run: python anime_turnaround.py [output_dir] [scale]
 """

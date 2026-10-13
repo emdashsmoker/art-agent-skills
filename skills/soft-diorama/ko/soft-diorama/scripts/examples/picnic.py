@@ -51,11 +51,11 @@ def main():
     cv = Canvas(WIDTH, HEIGHT)
     paint_meadow(cv)
     woman_pose, man_pose = poses.sit_floor(turn=40, knees_up=True), poses.sit_floor(turn=-55)
-    woman = Figure(**fit((330, 380, 680, 960), woman_pose), pose=woman_pose, look=LOOK, nude_details=False,
+    woman = Figure(**fit((330, 380, 680, 960), woman_pose), pose=woman_pose, look=LOOK, body_details=False,
                    hair=hairstyle('half_up', color='#5a3a2a', seed=SEED),
                    face=expression(face_style('female', 'soft'), 'smile'))
     man = Figure(**fit((880, 420, 1380, 980), man_pose, 'male'), pose=man_pose, sex='male', look=LOOK,
-                 nude_details=False, hair=hairstyle('comma', seed=SEED),
+                 body_details=False, hair=hairstyle('comma', seed=SEED),
                  face=expression(face_style('male', 'gentle'), 'grin', 0.8))
     draw_figure(cv, woman, [wardrobe.dress('#8ab0d0', length=4.6, flare=0.3), wardrobe.top('#f6f2ea', sleeve=1.0,
                                                                                            hem=-1.7, scoop=0.4)])

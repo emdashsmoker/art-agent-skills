@@ -17,7 +17,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import nude  # noqa: E402
+import figure_study  # noqa: E402
 import doomer_city  # noqa: E402
 import doomer_landscape  # noqa: E402
 import doomer_still_life  # noqa: E402
@@ -56,7 +56,7 @@ def draw_figure(style_name, width_px, name):
     setting, cast = outfits.cast_for(FIGURES[name])
     if name in FRAME_SHIFT:
         setting = replace(setting, camera=shifted(setting.camera, *FRAME_SHIFT[name]))
-    return nude.draw_cast(style_name, width_px, setting, cast)
+    return figure_study.draw_cast(style_name, width_px, setting, cast)
 
 
 PICTURES = {**{name: (lambda style, width, name=name: draw_figure(style, width, name)) for name in FIGURES},

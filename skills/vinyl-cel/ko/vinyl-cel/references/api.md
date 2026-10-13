@@ -220,7 +220,7 @@
 
 | 대상 | 내용 |
 |---|---|
-| `Build(sex, shoulders, bust, waist, hips, thighs, limbs, muscle)` | 체형, 프리셋 `FEMALE_AVERAGE`, `FEMALE_GLAMOUR`, `MALE_SLIM`, `MALE_ATHLETIC` |
+| `Build(sex, shoulders, bust, waist, hips, thighs, limbs, muscle)` | 체형, 프리셋 `FEMALE_AVERAGE`, `FEMALE_FULLER`, `MALE_SLIM`, `MALE_ATHLETIC` |
 | `Pose3D(rotations, hands, reach)`, `pose(hands=None, reach=None, **관절=(rx, ry, rz))` | 자세 |
 | `Reach(target, pole, wrist, fingers, palm)` | 손을 `target=(관절, 국소점)`에 놓는 역운동학 지정 |
 | `HandPose3D(curl, spread, thumb_out, thumb_curl)` | 손 자세, 프리셋 `RELAXED`, `OPEN`, `FIST`, `POINTING`, `HOLDING`, `PEACE`, `FLAT_HAND`, `TYPING`, `PHONE_GRIP`, `CUP_GRIP`, `PAD_GRIP`, `RUN_HAND`, `POCKET_GRIP`, `CUPPED`, `SMOKE_GRIP` |

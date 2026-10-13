@@ -53,7 +53,7 @@ ENUMS = {
                             "walk", "lean", "sit", "lie"),
     "character.body.seat": ("chair", "stool", "bed"),
     "character.body.stance": ("straight", "contrapposto", "wide", "walk", "lean", "sit", "lie"),
-    "character.body.figure": ("slim", "balanced", "curvy", "athletic"),
+    "character.body.figure": ("slim", "balanced", "fuller", "athletic"),
     "character.body.hands.right": ("open", "relaxed", "flat", "fist", "point", "peace"),
     "character.body.hands.left": ("open", "relaxed", "flat", "fist", "point", "peace"),
     "background.type": ("plain", "gradient", "sky", "bokeh", "window", "beach", "landscape", "city",

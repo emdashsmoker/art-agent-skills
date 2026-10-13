@@ -83,15 +83,15 @@ Write constants at the top of the script.
 - Follow the assembly methods in `references/scenery.md` for landscapes, `references/city.md` for cities and `references/still-life.md` for still life
 - Objects made of boxes and cylinders (laptops, furniture, buildings) get 3-D coordinates and are projected with `Camera`
     + Eyeballed coordinates do not make parallel edges meet at one vanishing point
-- Full-body figures, especially seated or reclining poses and nudes, are built on the 3-D mannequin (`atelier.mannequin`, `atelier.sculpt`)
+- Full-body figures, especially seated or reclining poses and figure studies, are built on the 3-D mannequin (`atelier.mannequin`, `atelier.sculpt`)
     + Limbs placed in 2-D drift in length and overlap as the pose gets complex, and the body twists
     + The mannequin takes only the directions of pelvis, chest and head plus target positions for hands and feet; it solves elbows and knees itself
     + The face is the bust example's head, placed at the mannequin's chin
-    + There are 2 builds, `FEMALE` and `MALE`. The male has his own bust, nude and clothed examples
+    + There are 2 builds, `FEMALE` and `MALE`. The male has his own bust, figure study and clothed examples
 - Start a clothed figure from a combination in `examples/outfits.py` (`references/wardrobe.md`)
     + Choose a pose preset (`atelier.staging`), clothes (`atelier.wardrobe`), a place (`examples/scenes.py`) and a shot
     + `frame()` sets the camera for the shot; the head follows the body's head direction and turns up to three-quarter view
-    + Skirts, dresses, scarves and wind come from `atelier.drape`; two people come from `DUOS` and `nude.draw_cast()`
+    + Skirts, dresses, scarves and wind come from `atelier.drape`; two people come from `DUOS` and `figure_study.draw_cast()`
 - Build the masks needed for shadow work ahead of time with `art.shape(curve)`
 
 ### Stage 3: flat colour
@@ -205,7 +205,7 @@ Crop and zoom into small areas. Defects in eyes and mouths do not show at full-p
 | Clothed body looks muscular | Shoulders wide and square for the head, sleeves grown along muscles, camera looking up | Bring outer shoulder width to about 1.6 (female) or 1.8 (male) head heights and slope the shoulders. Straight cylinder sleeves, camera at eye level (`references/figure.md`) |
 | Toes look cut off | Forefoot narrower than the toe row, so outer toes stick out of the foot | A flat ellipsoid that widens the forefoot (`FOREFOOT`) |
 | Skin shows through shoes | Shoe box smaller than the foot | Add a thinly grown film of the foot to the shoe group |
-| In a nude, fingers drop near the groin and read as an unintended gesture | With the back of the hand up, the thumb drops below the palm | Lay the hand flat, raise `curl` to fold the thumb, lift the wrist a little |
+| In a figure study, fingers drop near the lower pelvis and read as an unintended gesture | With the back of the hand up, the thumb drops below the palm | Lay the hand flat, raise `curl` to fold the thumb, lift the wrist a little |
 | Trouser legs or stockings balloon at the hips | Legs grown as separate groups do not melt into the hips | Grow pelvis and legs as one group and cut each leg with `cut_leg()` |
 | Round hole under the neckline | Carving only the front leaves a ring of cloth round the neck | Carve away everything above the neck root |
 | Ties, straps, lapels or pockets do not show | Buried inside the melted, puffed clothes | Lay a cloth grown the same way as the garment beneath with `patch()` |
@@ -225,7 +225,7 @@ Crop and zoom into small areas. Defects in eyes and mouths do not show at full-p
 | Top pokes out below the skirt waist | Tucked top is thicker than the skirt's waist room | Give `ease` the top's thickness (1.4 cm over a tee) |
 | Scarf floats like a choker; tails are lumpy | One thin loop round the neck; tails of chained ellipsoids | Two thick loops and a knot, two `Ribbon` tails |
 | Skirt balloons at the knees when legs cross or knees rise | Legs joined by a round bar and cut in one plane | Cover only to the knees and cut per leg; a flat web between the legs (`_web`) |
-| Face drawn on the back of the head in a back view | The drawn head is a front view | Past 110 degrees of turn, lay only the hair (`nude.BACK_VIEW`) |
+| Face drawn on the back of the head in a back view | The drawn head is a front view | Past 110 degrees of turn, lay only the hair (`figure_study.BACK_VIEW`) |
 | A chair or bed shows as a white box or grey slab | The place has no colour for that support role | Set `seat`, `bed`, `wall` colours per place |
 | Floor-slab outline shows across same-coloured grass | Backdrop ground and 3-D floor meet off line | Put the hill's foot on `ground_edge()` |
 | Thick dark band at the far edge of the floor | Ground within 5 degrees of the horizon jumps in depth per row and outlines pile up | Shorten the floor so its far edge stays 5 degrees below the horizon |
@@ -256,7 +256,7 @@ Read a document only when drawing its subject.
 | Document | Contents | When to read |
 |---|---|---|
 | `references/api.md` | Full list of engine functions | Always, before writing a script |
-| `references/figure.md` | Faces, hair style, hair colour and feature templates, head props, head turning, full-body proportion, poses, hands, feet, the 3-D mannequin, nude anatomy, clothes | When drawing people |
+| `references/figure.md` | Faces, hair style, hair colour and feature templates, head props, head turning, full-body proportion, poses, hands, feet, the 3-D mannequin, figure study anatomy, clothes | When drawing people |
 | `references/wardrobe.md` | Clothes, skirts and dresses, wind, 10 pose presets, two-shots, camera framing, 9 places, combination examples, 4 doomer figures | When drawing clothed people or two people |
 | `references/scenery.md` | Sky, clouds, mountains, water, trees, grass | When drawing nature |
 | `references/city.md` | Perspective projection, buildings, windows, reflections on a wet road | When drawing streets and buildings |
@@ -272,9 +272,9 @@ The examples are finished scene scripts. Copying the closest one and editing it 
 | `examples/hands.py` | 5 hand studies | Hands (`draw_hand`, `draw_hand_side`, `hand_parts`, `finish_hand`, `Pose`) |
 | `examples/feet.py` | 3 foot studies | Feet with toes (`draw_foot`, `foot_parts`, `finish_foot`) |
 | `examples/figure.py` | Clothed standing full body | Clothed body (`body_masks`, `add_limb`), pose coordinates |
-| `examples/nude.py` | Female nude standing, seated, reclining | 3 mannequin poses, shared figure machinery for both sexes (`draw_figure`, `draw_cast`, `Actor`, `Sitter`, `Setting`, `head_placement`) |
+| `examples/figure_study.py` | Female figure study standing, seated, reclining | 3 mannequin poses, shared figure machinery for both sexes (`draw_figure`, `draw_cast`, `Actor`, `Sitter`, `Setting`, `head_placement`) |
 | `examples/portrait_male.py` | Adult man, bust | The whole male head (`head_masks`, `draw_back_hair`, `draw_ear`, `draw_head_front`), 4 hair styles and brows (`styled`, `HAIR_STYLES`) |
-| `examples/nude_male.py` | Male nude standing, seated, reclining | 3 male poses, a held cloth (`held_cloth`) |
+| `examples/figure_study_male.py` | Male figure study standing, seated, reclining | 3 male poses, a held cloth (`held_cloth`) |
 | `examples/outfits.py` | 15 single and 3 two-person combinations | Combination machinery (`Look`, `Duo`, `LOOKS`, `DUOS`, `dress_outfit`, `cast_for`) |
 | `examples/scenes.py` | 9 places | Places (`Place`, `PLACES`, `horizon`, `ground_edge`, `looking_back`), prefab apartment blocks (`panel_block`), a leafless tree (`bare_tree`), falling snow (`snowfall`) |
 | `examples/head_props.py` | Head props | Beanie, cigarette and smoke, wired earphones (`PropPlaces`, `draw_beanie`, `draw_cigarette`, `draw_smoke`, `draw_earphones`) |
@@ -291,7 +291,7 @@ The examples are finished scene scripts. Copying the closest one and editing it 
 
 ## Prohibited
 
-- Do not draw nudity or sexual depictions of minors
+- Do not draw unclothed figures or sexual depictions of minors
     + Minor: a character set as under 18, or a character drawn with a child's body (a body before secondary sexual characteristics)
     + Art-style traits such as large eyes alone do not make a character a minor
     + If part of a request falls here, decline only that part and continue with the rest
@@ -315,7 +315,7 @@ The examples are finished scene scripts. Copying the closest one and editing it 
 - A mannequin render takes 10-40 seconds per scene at 1280 px
 - The body aims at plausibility
     + Proportion, centre of gravity and large curves are right; individual muscles are not modelled in detail
-- The mannequin has no genital forms
-    + The 3 nude examples use classical figure-study compositions
+- The mannequin has no pelvic forms
+    + The 3 figure study examples use classical figure-study compositions
 - Finishing one picture takes 5-15 rounds of rendering and inspection
     + Cutting the rounds lowers quality first

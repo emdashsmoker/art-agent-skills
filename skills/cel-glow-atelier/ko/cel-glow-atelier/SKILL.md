@@ -146,7 +146,7 @@ python3 scripts/render.py my_spec.json out.png --stages stages.png
 }
 ```
 
-- `pose` : `standing`, `contrapposto`, `akimbo`, `wave`, `clasped`, `peace`, `pinup`, `walk`, `sitting`, `sitting_crossed`, `three_quarter`, `lean`, `arms_crossed`(팔짱), `pockets`(주머니에 손), `stretch`(기지개)
+- `pose` : `standing`, `contrapposto`, `akimbo`, `wave`, `clasped`, `peace`, `showcase`, `walk`, `sitting`, `sitting_crossed`, `three_quarter`, `lean`, `arms_crossed`(팔짱), `pockets`(주머니에 손), `stretch`(기지개)
 - 옆모습 `pose` : `side_stand`, `side_walk`, `side_sit`, `side_wave`, `side_lounge`(소파), `side_lean`(기둥). `facing`으로 `right` 또는 `left` 지정
 - 뒷모습 `pose` : `back_stand`, `back_walk`, `back_lookback`, `back_sit`. `look`으로 `away`(뒤통수), `left`, `right`(옆얼굴로 돌아봄), `left_3q`, `right_3q`(반측면으로 돌아봄) 지정
 - 손 각도 : `pose_overrides`의 `hand_left_roll`(-90-90), `hand_left_pitch`(0-75)와 `right` 짝
@@ -155,7 +155,7 @@ python3 scripts/render.py my_spec.json out.png --stages stages.png
 - 전신 `outfit` 20종 (생략하면 여성 `dress`, 남성 `shirt_pants`)
     + (여성) `dress`, `blouse_skirt`, `bodycon`, `swimsuit`(별칭 `bikini`), `crop_hotpants`, `knit_dress`(니트 원피스), `tank_jeans`(민소매와 청바지)
     + (남성) `trunks`(수영 반바지), `open_shirt_shorts`(반소매 오픈 셔츠와 반바지)
-    + (공용) `suit`(양복), `shirt_pants`, `tshirt_jeans`, `sweater_pants`, `hoodie_jeans`, `tank_shorts`(민소매와 트레이닝 반바지), `denim_jacket_chinos`, `leather_jacket_jeans`, `coat_turtleneck`(롱코트), `lingerie`(남성은 드로즈), `none`
+    + (공용) `suit`(양복), `shirt_pants`, `tshirt_jeans`, `sweater_pants`, `hoodie_jeans`, `tank_shorts`(민소매와 트레이닝 반바지), `denim_jacket_chinos`, `leather_jacket_jeans`, `coat_turtleneck`(롱코트), `innerwear`(남성은 드로즈), `none`
     + 엔진은 spec에 적힌 의상을 성별과 무관하게 그대로 그림. 성별 맞춤은 spec을 쓰는 단계의 책임
     + 재킷과 코트 색은 `palette.outer`, 비우면 소재 색(데님 청색, 가죽 흑색, 코트 카멜)
 - `build` : 체형 배율 (`bust`, `waist`, `hips`, `shoulders`, `legs`, `muscle`), 1.0이 기본
@@ -168,7 +168,7 @@ python3 scripts/render.py my_spec.json out.png --stages stages.png
 - 인물이 서 있는 거리 장면은 `street.horizon`을 골반 높이에 맞추고 `eye` 0.9 사용 (원근 일치)
 - `street`의 `cars`, `people`로 먼 차량과 행인을 추가
 - 가까운 사람은 최상위 `extras`에 인물을 넣고 `"at": [x, z]` 미터로 거리 위에 배치
-- `outfit` `none`은 의상 없는 인체. 엔진에 성기와 여성 유두 형태가 없어 그려지지 않음 (`lingerie`, `swimsuit`, 상의 없는 `trunks`도 같음)
+- `outfit` `none`은 의상 없는 인체. 엔진에 골반 세부와 여성 가슴 표시 형태가 없어 그려지지 않음 (`innerwear`, `swimsuit`, 상의 없는 `trunks`도 같음)
 - 실내 배경은 `{"type": "room", "window": "night", "lamp": [0.88, 0.48]}`처럼 `room` 연산 1개로 그림
 - 모자는 `character.hat` `"beanie"`(비니), 색은 `palette.hat`. 정면, 반측면, 옆모습, 뒷모습 모두 지원
 - 담배는 `figure.cigarette` : `left`, `right`(검지와 중지 사이), `mouth`(입꼬리). 연기는 자동으로 올라감
@@ -283,7 +283,7 @@ python3 scripts/render.py my_spec.json out.png --stages stages.png
 | 얼굴 근처 손의 팔꿈치가 옆으로 튀어나옴 | `arm_*_scale`을 [0.45, 0.65]로 줄여 팔이 앞으로 나온 것으로 표현 |
 | 전신에서 얼굴이 뭉개짐 | `head_height` 상향(무릎 위 구도), 캔버스 세로 1800 이상 |
 | 인물이 거리에 떠 있음 | `ground_shadow` 0.4 이상, `street.horizon`을 `pelvis` y와 일치 |
-| 몸매가 밋밋함 | `build`의 `waist` 0.95, `hips` 1.05, `bust` 1.08, 포즈를 `contrapposto`나 `pinup`으로 |
+| 몸매가 밋밋함 | `build`의 `waist` 0.95, `hips` 1.05, `bust` 1.08, 포즈를 `contrapposto`나 `showcase`로 |
 | 팔이 일자로 뻣뻣함 | `reach_*` 목표점을 몸 쪽으로 당겨 팔꿈치가 굽게 함 |
 | 거리가 비어 보임 | `street`에 `cars` 3-6, `people` 5-10 |
 | 사물이 공중에 떠 보임 | `stage.ground_shadow`로 바닥 그림자 추가 |
@@ -301,7 +301,7 @@ python3 scripts/render.py my_spec.json out.png --stages stages.png
 | 역광에서 얼굴 절반이 어두움 | `style_overrides.face_shadow_level` -0.3 |
 | 회화풍 얼굴의 눈이 둥둥 뜸 | `eye_height` 0.078, `lip_fullness` 1.3 |
 | 투샷의 한 사람이 화면 밖으로 나감 | `placement.shot` 사용, 캔버스 가로를 1400 이상으로 |
-| 주머니에 넣은 손이 보임 | 주머니 있는 의상으로 변경 (`bodycon`, `knit_dress`, `swimsuit`, `trunks`, `lingerie`는 주머니 없음) |
+| 주머니에 넣은 손이 보임 | 주머니 있는 의상으로 변경 (`bodycon`, `knit_dress`, `swimsuit`, `trunks`, `innerwear`는 주머니 없음) |
 | 남성에게 원피스나 비키니가 입혀짐 | `figure.outfit`을 남성 또는 공용 의상으로 지정 (생략 시 남성은 `shirt_pants`) |
 | 열린 재킷 안이 어두워 묻힘 | 안에 입은 옷 `cloth`를 재킷 `outer`보다 밝게 |
 | 머리 위로 든 손이 잘림 | `head_height` 대신 `placement.shot` 사용 (손끝까지 자동 포함) |
@@ -317,8 +317,8 @@ python3 scripts/render.py my_spec.json out.png --stages stages.png
 ## 미성년자 보호
 
 - 미성년자에게는 아래 3가지를 그리지 않음
-    + 누드 (`outfit` `none`, 여성의 상의 없는 `trunks`)
-    + 속옷 차림 (`lingerie`)과 `pinup` 포즈
+    + 인체 습작 (`outfit` `none`, 여성의 상의 없는 `trunks`)
+    + 속옷 차림 (`innerwear`)과 `showcase` 포즈
     + 성행위
 - 손잡기, 포옹, 입맞춤 같은 애정 표현과 일상적인 수영복 차림은 해당하지 않음
 - 미성년자 판단은 명시적 신호로만 함

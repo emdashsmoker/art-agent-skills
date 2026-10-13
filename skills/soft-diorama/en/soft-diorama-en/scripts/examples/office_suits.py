@@ -49,10 +49,10 @@ def main():
     man, woman = poses.arms_crossed(turn=30), poses.hands_on_hips(turn=-35)
     places = group((260, 80, 1300, FLOOR_Y), [man, woman], sexes=['male', 'female'], scales=[1.0, 0.94], gap=0.10)
     figures = [
-        (Figure(**places[0], pose=man, sex='male', look=look, nude_details=False,
+        (Figure(**places[0], pose=man, sex='male', look=look, body_details=False,
                 hair=replace(MALE_HAIR, color='#2a2420', seed=SEED)),
          [wardrobe.suit('#2b2f3a', tie='#7a2a3a'), wardrobe.shoes('#1e1a18')]),
-        (Figure(**places[1], pose=woman, look=look, nude_details=False,
+        (Figure(**places[1], pose=woman, look=look, body_details=False,
                 face=FaceSpec(skin='#f4d0bc', eye_color='#5a3a2a', smile=0.4, lip_color='#c8505a'),
                 hair=HairSpec(color='#3a2420', bangs='side', part=-18, length=1.3, wave=0.2, seed=SEED)),
          [wardrobe.suit('#4a4458', shirt='#f4ece8', tie='#4a4458', buttoned=True), wardrobe.shoes('#2a2026')]),

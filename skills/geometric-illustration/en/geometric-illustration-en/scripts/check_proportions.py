@@ -257,7 +257,7 @@ def turnaround(path, build='female', style='anime'):
     import config
     import raster
     import render
-    import rig_nude
+    import rig_figure_study
 
     def pose_at(yaw):
         def pose():
@@ -268,8 +268,8 @@ def turnaround(path, build='female', style='anime'):
         return pose
     images = []
     for i, yaw in enumerate((0.0, 0.6, np.pi / 2, np.pi)):
-        rig_nude.POSES[f'_turn_{i}'] = pose_at(yaw)
-        user = {'subject': 'nude', 'style': style, 'character': {'sex': build}, 'nude': {'pose': f'_turn_{i}'}}
+        rig_figure_study.POSES[f'_turn_{i}'] = pose_at(yaw)
+        user = {'subject': 'figure_study', 'style': style, 'character': {'sex': build}, 'figure_study': {'pose': f'_turn_{i}'}}
         spec = config.deep_merge(config.deep_merge(config.DEFAULT_SPEC, config.preset_defaults(user)), user)
         spec['canvas']['width'], spec['canvas']['height'] = 600, 1300
         layers, pal = render.resolve_layers(spec)

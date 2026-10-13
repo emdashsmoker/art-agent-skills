@@ -23,7 +23,7 @@
   },
   "figure": {
     "pose": "sitting",
-    "outfit": "lingerie",
+    "outfit": "innerwear",
     "furniture": "bed",
     "furniture_color": "#c8b0b8",
     "ground_shadow": 0.3,

@@ -33,7 +33,7 @@
 | `garment_kit.py` | Garment blocks: copies of body pieces inflated by the cloth thickness, limb tube cutting, torso and limb rings, cut and keep polygons, rest coordinate masks (`rest_mask`), 3D straps (`strap`), lines, ribbons, printed bands, buttons |
 | `outfits.py` | 14 outfit recipes (`RECIPES`), shoes per outfit, allowed lists per sex. Every cut line is written in rest pose coordinates or as a ratio position along a limb, so it follows pose and turn. The recipe context (`Ctx`) makes the visible lines, points, straps and small shapes of a turned body |
 | `garment3d.py` | 3D clothes fitted to the body: knit top made by inflating the torso, with ribs that follow the body surface, turtleneck collar around the neck, belt around the waist section, skirt hanging from the hips (also used for coat skirts). View arc (`view_arc`), inverse transform to rest coordinates (`rest_coords`), body surface points and normals (`surface_rest`) |
-| `rig_nude.py` | 4 figure study poses (male variant `male_variant`), adult face clamp, covering elements, anatomy mark rendering (clavicles, spine, scapulae, knees and others), automatic placement |
+| `rig_figure_study.py` | 4 figure study poses (male variant `male_variant`), adult face clamp, covering elements, anatomy mark rendering (clavicles, spine, scapulae, knees and others), automatic placement |
 | `marks.py` | Small surface marks shared by the figure rigs: visible surface test, fingernails |
 | `scene_common.py` | Time of day tables (sky colors, effect switches), sun, moon, stars, clouds, rain, snow, wet ground reflections, ridges, aerial perspective, conifers, broadleaf trees, bare trees and birches (`bare_tree`, `BIRCH`), grass |
 | `scene_landscape.py`, `scene_city.py`, `scene_still.py` | The 3 scenes. Landscape and city have color tables per time of day and sites (`SITES`: lake and outskirts field, shopping avenue and panel estate); still life has the `classic` set |
@@ -196,7 +196,7 @@ The body turn of a clothed figure turns the pose itself (`rig_figure.turned`). I
 - The back of the head is drawn by `back_view_hair`, which reads the same preset
 - Side locks use only the fixed shape points above the tail (`lock_points`, `LOCK_GAP`). With a short `side_length` the lock does not bend up and fold
 
-### Add a figure study pose (`rig_nude.POSES`)
+### Add a figure study pose (`rig_figure_study.POSES`)
 
 - Copy `A.standing_pose()` and set the rib cage and pelvis rotation, positions, limb targets, view (`view_yaw`, `root_roll`) and face direction
 - Write rib cage and pelvis positions relative to reference origins, as in `_at(A.CHEST_ORIGIN, dx, dy, dz)`. The pose holds when the proportions change

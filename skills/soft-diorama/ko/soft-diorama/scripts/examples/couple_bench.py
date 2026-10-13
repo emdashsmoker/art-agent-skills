@@ -73,11 +73,11 @@ def main():
     look = replace(base, light=LIGHT, light_height=0.6)
     pelvis_y = SEAT_Y - 0.80 * UNIT
     woman = Figure(pelvis=(560, pelvis_y), height=FIGURE_HEIGHT, pose=seated_pose(26, 4), look=look,
-                   physique=Physique(bust=1.05, waist=0.95, hips=1.05), nude_details=False,
+                   physique=Physique(bust=1.05, waist=0.95, hips=1.05), body_details=False,
                    face=FaceSpec(eye_half_height=0.095, eye_color='#5a4030', lip_fullness=0.7, smile=0.6),
                    hair=HairSpec(color='#5a3a2a', bangs='side', part=22, length=2.6, wave=0.5, seed=SEED))
     man = Figure(pelvis=(1060, pelvis_y), height=FIGURE_HEIGHT * 1.05, pose=seated_pose(-24, -3), look=look,
-                 sex='male', nude_details=False)
+                 sex='male', body_details=False)
     outfits = [
         (woman, [wardrobe.skirt('#7a3a4a', length=5.4, flare=0.3) if SKIRT else wardrobe.bottoms('#2f4a6a', length=0.85),
                  wardrobe.top('#f2e6d6', sleeve=2.8, scoop=0.4), wardrobe.shoes('#7a3a3a')]),

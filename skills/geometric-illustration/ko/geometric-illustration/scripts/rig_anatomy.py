@@ -363,7 +363,7 @@ VARIANTS = {
                            depth=[0.93, 0.92, 0.90, 0.89, 0.89, 0.89, 0.89, 0.90, 0.91, 0.92],
                            shoulder=0.94, hip=0.93, thigh=0.87, thigh_root=0.88, shin=0.89, upper_arm=0.87, forearm=0.90,
                            neck=0.93, chest=0.80, glute=0.88),
-    'female_glamour': dict(width=[1.0, 1.02, 1.04, 1.0, 0.97, 0.96, 0.99, 1.05, 1.09, 1.08],
+    'female_fuller': dict(width=[1.0, 1.02, 1.04, 1.0, 0.97, 0.96, 0.99, 1.05, 1.09, 1.08],
                            depth=[1.0, 1.04, 1.06, 1.0, 0.97, 0.96, 0.99, 1.04, 1.08, 1.06],
                            shoulder=1.0, hip=1.07, thigh=1.10, shin=1.05, upper_arm=1.05, forearm=1.03, neck=1.0,
                            chest=1.30, chest_drop=0.04, glute=1.15),
@@ -380,7 +380,7 @@ VARIANTS = {
                           shoulder=1.09, hip=1.0, thigh=1.10, thigh_root=1.04, shin=1.08, upper_arm=1.18, forearm=1.12,
                           neck=1.10, chest=1.35, glute=1.05),
 }
-BUILD_TYPES = {'female': ('standard', 'slender', 'glamour', 'athletic'), 'male': ('standard', 'slim', 'athletic')}
+BUILD_TYPES = {'female': ('standard', 'slender', 'fuller', 'athletic'), 'male': ('standard', 'slim', 'athletic')}
 
 
 def _variant(base, f):

@@ -42,11 +42,11 @@ def render(look, finisher, outfit, bangs):
     return finisher(cv, seed=3)
 
 
-def render_figure(look, garments, nude_details):
+def render_figure(look, garments, body_details):
     cv = Canvas(WIDTH, HEIGHT, '#d9d2c8')
     pose = Pose(lean=-3, hip_tilt=7, shoulder_tilt=-5, right_arm=(150, -78), left_arm=(-30, 48),
                 right_hand=HandSpec('relaxed', 'palm'))
-    figure = Figure(pelvis=(160, 205), height=350, pose=pose, look=look, nude_details=nude_details)
+    figure = Figure(pelvis=(160, 205), height=350, pose=pose, look=look, body_details=body_details)
     masks = draw_figure(cv, figure, garments)
     assert masks['skin'].max() > 0.99 and {'pit', 'neck_top', 'left_ankle', 'right_wrist'} <= set(masks['skeleton'].joints), 'figure is incomplete'
     return finish.finish_illustration(cv, seed=3)
@@ -93,7 +93,7 @@ def render_figure_male_turned():
     cv = Canvas(WIDTH, HEIGHT, '#d9d2c8')
     pose = Pose(turn=-35, head_yaw=-25, hip_tilt=-5, shoulder_tilt=4)
     garments = [wardrobe.bottoms('#3a3d48'), wardrobe.top('#c9d6e3', sleeve=1.25, neckline=0.35, scoop=0.25)]
-    masks = draw_figure(cv, Figure(pelvis=(160, 205), height=350, pose=pose, sex='male', nude_details=False),
+    masks = draw_figure(cv, Figure(pelvis=(160, 205), height=350, pose=pose, sex='male', body_details=False),
                         garments)
     assert masks['garment_1'].max() > 0.99 and masks['left_arm'].max() > 0.99, 'turned male is incomplete'
     return finish.finish_illustration(cv, seed=3)
@@ -116,7 +116,7 @@ def render_zoom():
     cv = Canvas(WIDTH, HEIGHT, '#e9e2f3')
     spec = framing(cv.size, 'bust')
     assert spec['height'] > 2.5 * HEIGHT, 'a bust shot should make the full figure much taller than the canvas'
-    masks = draw_figure(cv, Figure(**spec, pose=Pose(turn=20, head_yaw=15), nude_details=False),
+    masks = draw_figure(cv, Figure(**spec, pose=Pose(turn=20, head_yaw=15), body_details=False),
                         [wardrobe.top('#e8b04a', sleeve=4.4)])
     assert masks['face'].max() > 0.99, 'face missing from the close-up'
     return finish.finish_illustration(cv, seed=3)
@@ -148,7 +148,7 @@ def render_figure_back():
     pose = Pose(turn=180, head_yaw=180, **hanging_arms(180))
     assert seen_from_behind(pose), 'turn 180 should be seen from behind'
     garments = [wardrobe.bottoms('#3a3d48'), wardrobe.top('#c9d6e3', sleeve=1.25, neckline=0.35, scoop=0.25)]
-    masks = draw_figure(cv, Figure(pelvis=(160, 205), height=350, pose=pose, sex='male', nude_details=False),
+    masks = draw_figure(cv, Figure(pelvis=(160, 205), height=350, pose=pose, sex='male', body_details=False),
                         garments)
     assert eye_width(masks) == 0 and masks['eyes'].max() == 0, 'eyes should be hidden from behind'
     assert masks['garment_1'].max() > 0.99 and masks['left_hand'].max() > 0.99, 'back view is incomplete'
@@ -170,7 +170,7 @@ def render_seated_skirt():
     pose = Pose(turn=turn, head_yaw=turn, left_leg=aim(turn, (0.04, 0.12, 1.0), (0.0, 1.0, 0.12)),
                 right_leg=aim(turn, (0.2, 0.12, 1.0), (0.04, 1.0, 0.08)), left_hand=HandSpec('relaxed', 'rest'),
                 right_hand=HandSpec('relaxed', 'rest'))
-    masks = draw_figure(cv, Figure(pelvis=(110, 200), height=330, pose=pose, nude_details=False),
+    masks = draw_figure(cv, Figure(pelvis=(110, 200), height=330, pose=pose, body_details=False),
                         [wardrobe.skirt('#7a3a4a', length=5.4)])
     knee = masks['skeleton'].joints['left_knee']
     assert masks['garment_0'][int(knee[1]), int(knee[0])] > 0.5, 'a seated skirt should cover the knee'
@@ -180,14 +180,14 @@ def render_seated_skirt():
 def render_outfits():
     """Every new garment draws something from the front and from the side, and each pose fits its box."""
     cv = Canvas(WIDTH, HEIGHT, '#e6e0d6')
-    outfits = [[wardrobe.bikini('#e8505a')], [wardrobe.lingerie('#7a2a4a')],
+    outfits = [[wardrobe.bikini('#e8505a')], [wardrobe.innerwear('#7a2a4a')],
                [wardrobe.bottoms('#2f3a52'), wardrobe.hoodie('#c8b48a')],
                [wardrobe.hot_pants(), wardrobe.crop_top('#f6f2ea')], [wardrobe.suit()]]
     box = (10, 10, WIDTH - 10, HEIGHT - 10)
     for index, garments in enumerate(outfits):
         for turn in (0, 90):
             pose = poses.contrapposto(turn=turn)
-            masks = draw_figure(Canvas(160, 200), Figure(**fit((5, 5, 155, 195), pose), pose=pose, nude_details=False),
+            masks = draw_figure(Canvas(160, 200), Figure(**fit((5, 5, 155, 195), pose), pose=pose, body_details=False),
                                 garments)
             assert all(masks[f'garment_{k}'].max() > 0.99 for k in range(len(garments))), \
                 f'outfit {index} is empty at turn {turn}'
@@ -197,7 +197,7 @@ def render_outfits():
     places = group(box, [poses.arms_crossed(30), poses.hands_on_hips(-35)], sexes=['male', 'female'], scales=[1.0, 0.94])
     assert places[0]['pelvis'][0] < places[1]['pelvis'][0], 'group should lay figures out left to right'
     pose = poses.walk(turn=75)
-    masks = draw_figure(cv, Figure(**fit(box, pose), pose=pose, nude_details=False),
+    masks = draw_figure(cv, Figure(**fit(box, pose), pose=pose, body_details=False),
                         [wardrobe.suit(), wardrobe.shoes('#1e1a18')])
     return finish.finish_illustration(cv, seed=3)
 
@@ -213,14 +213,14 @@ def render_pockets():
         for turn in _POCKET_TURNS:
             pose = poses.hands_in_pockets(turn=turn)
             masks = draw_figure(Canvas(240, 400), Figure(**fit((5, 5, 235, 395), pose, sex), pose=pose, sex=sex,
-                                                         nude_details=False), [wardrobe.bottoms('#333333')])
+                                                         body_details=False), [wardrobe.bottoms('#333333')])
             for name in ('left', 'right'):
                 x, y = (int(v) for v in masks['skeleton'].joints[f'{name}_wrist'])
                 assert masks['garment_0'][y, x] > 0.5, f'{sex} turn {turn}: the {name} wrist misses the trousers'
     cv = Canvas(WIDTH, HEIGHT, '#e6e0d6')
     pose = poses.hands_in_pockets(turn=-25, pouch=True)
     draw_figure(cv, Figure(**fit((10, 10, WIDTH - 10, HEIGHT - 10), pose, 'male'), pose=pose, sex='male',
-                           nude_details=False), [wardrobe.bottoms('#2f3a52'), wardrobe.hoodie('#c8b48a')])
+                           body_details=False), [wardrobe.bottoms('#2f3a52'), wardrobe.hoodie('#c8b48a')])
     return finish.finish_illustration(cv, seed=3)
 
 
@@ -235,12 +235,12 @@ def _band_reach(mask, frame):
 
 
 def render_briefs():
-    """Bikini and lingerie briefs reach the hip outline on both sides, front, three-quarter and back
+    """Bikini and innerwear briefs reach the hip outline on both sides, front, three-quarter and back
     (an arm hanging over the hip counts as covering it)."""
-    for garment in (wardrobe.bikini('#e8505a'), wardrobe.lingerie('#7a2a4a', lace=None)):
+    for garment in (wardrobe.bikini('#e8505a'), wardrobe.innerwear('#7a2a4a', lace=None)):
         for turn in (0, 45, 180):
             pose = poses.contrapposto(turn=turn)
-            masks = draw_figure(Canvas(250, 500), Figure(**fit((5, 5, 245, 495), pose), pose=pose, nude_details=False),
+            masks = draw_figure(Canvas(250, 500), Figure(**fit((5, 5, 245, 495), pose), pose=pose, body_details=False),
                                 [garment])
             pelvis = masks['skeleton'].pelvis
             body = np.maximum.reduce([masks['torso'], masks['left_leg'], masks['right_leg']])
@@ -252,7 +252,7 @@ def render_briefs():
             assert short <= _BRIEFS_TOLERANCE, f'turn {turn}: briefs stop {short:.2f} head units short of the hip'
     cv = Canvas(WIDTH, HEIGHT, '#e6e0d6')
     pose = poses.contrapposto(turn=22)
-    draw_figure(cv, Figure(**fit((10, 10, WIDTH - 10, HEIGHT - 10), pose), pose=pose, nude_details=False),
+    draw_figure(cv, Figure(**fit((10, 10, WIDTH - 10, HEIGHT - 10), pose), pose=pose, body_details=False),
                 [wardrobe.bikini('#e8505a', tie='#fbf4ea')])
     return finish.finish_illustration(cv, seed=3)
 
@@ -293,7 +293,7 @@ def render_hairstyles():
         for turn in (0, 160):
             sex = 'male' if spec.color == HAIRSTYLES['buzz'].color else 'female'
             figure = Figure(**framing(cell, 'bust', headroom=0.9), pose=Pose(turn=turn, head_yaw=turn), sex=sex,
-                            hair=hairstyle(name), nude_details=False)
+                            hair=hairstyle(name), body_details=False)
             masks = draw_figure(Canvas(*cell), figure, [wardrobe.top('#7d8a99', sleeve=1.0)])
             assert masks['front_hair'].max() > 0.3, f'{name} has no hair at turn {turn}'
             if spec.tie != 'none' and turn == 160:
@@ -312,7 +312,7 @@ def render_hairstyles():
         size = (int(box[2] - box[0]), int(box[3] - box[1]))
         place = framing(size, 'bust', headroom=0.9)
         place['pelvis'] = (place['pelvis'][0] + box[0], place['pelvis'][1] + box[1])
-        draw_figure(cv, Figure(**place, pose=pose, sex=sex, hair=hairstyle(name), nude_details=False),
+        draw_figure(cv, Figure(**place, pose=pose, sex=sex, hair=hairstyle(name), body_details=False),
                     [wardrobe.top('#7d8a99', sleeve=1.0)])
     return finish.finish_illustration(cv, seed=3)
 
@@ -329,13 +329,13 @@ def render_winter():
     for index, garments in enumerate(sets):
         for turn in (0, 90, 180):
             pose = poses.contrapposto(turn=turn)
-            masks = draw_figure(Canvas(160, 200), Figure(**fit((5, 5, 155, 195), pose), pose=pose, nude_details=False),
+            masks = draw_figure(Canvas(160, 200), Figure(**fit((5, 5, 155, 195), pose), pose=pose, body_details=False),
                                 garments)
             assert all(masks[f'garment_{k}'].max() > 0.99 for k in range(len(garments))), \
                 f'winter set {index} is empty at turn {turn}'
     cv = Canvas(WIDTH, HEIGHT, '#dfe3e8')
     pose = poses.contrapposto(turn=20)
-    masks = draw_figure(cv, Figure(**fit((10, 10, WIDTH - 10, HEIGHT - 10), pose), pose=pose, nude_details=False),
+    masks = draw_figure(cv, Figure(**fit((10, 10, WIDTH - 10, HEIGHT - 10), pose), pose=pose, body_details=False),
                         sets[0])
     over = (masks['garment_4'] > 0.99) & (masks['front_hair'] > 0.99)
     assert over.any(), 'the beanie should cover the top of the hair'
@@ -385,14 +385,14 @@ def render_staging():
     crown = tallest['pelvis'][1] - 7.6 * tallest['height'] / 16.1
     assert 0.0 < crown < 0.25 * HEIGHT, f'waist-shot group: crown at {crown:.0f}px'
     pose = poses.sit_floor(turn=40, knees_up=True)
-    masks = draw_figure(Canvas(300, 360), Figure(pelvis=(150, 150), height=300, pose=pose, nude_details=False))
+    masks = draw_figure(Canvas(300, 360), Figure(pelvis=(150, 150), height=300, pose=pose, body_details=False))
     gap = (_lowest_row(np.maximum(masks['left_foot'], masks['right_foot'])) - _lowest_row(masks['torso'])) / (300 / 16.1)
     assert abs(gap) < _SEAT_TOLERANCE, f'knees-up seat floats {gap:.2f} head units above the feet'
     pose = poses.arms_crossed(turn=30)
-    masks = draw_figure(Canvas(300, 500), Figure(**fit((10, 10, 290, 490), pose), pose=pose, nude_details=False))
+    masks = draw_figure(Canvas(300, 500), Figure(**fit((10, 10, 290, 490), pose), pose=pose, body_details=False))
     assert masks[f'{far_side(pose)}_hand'].max() > 0.99, 'the far hand of folded arms is hidden behind the body'
     pose = poses.contrapposto(turn=90)
-    masks = draw_figure(Canvas(200, 400), Figure(**fit((10, 10, 190, 390), pose), pose=pose, nude_details=False),
+    masks = draw_figure(Canvas(200, 400), Figure(**fit((10, 10, 190, 390), pose), pose=pose, body_details=False),
                         [wardrobe.top('#f1e4d0', sleeve=1.1, scoop=0.45)])
     near = 'left' if masks['left_arm'].sum() > masks['right_arm'].sum() else 'right'
     bare = masks[f'{near}_arm'] * (masks['garment_0'] > 0.5)
@@ -400,12 +400,12 @@ def render_staging():
     assert (bare * lower).sum() < 0.05 * (masks[f'{near}_arm'] * lower).sum(), 'the top covers the bare forearm'
     pose = poses.hands_in_pockets(turn=-35)
     masks = draw_figure(Canvas(200, 360), Figure(**fit((5, 5, 195, 355), pose, 'male'), pose=pose, sex='male',
-                                                 nude_details=False), [wardrobe.suit()])
+                                                 body_details=False), [wardrobe.suit()])
     pieces = cv2.connectedComponents((masks['garment_0'] > 0.5).astype(np.uint8), connectivity=4)[0] - 1
     assert pieces == 1, f'the suit came out in {pieces} pieces (a sliver beside the neck)'
     cv = Canvas(WIDTH, HEIGHT, '#cfe2ef')
     pose = poses.run(turn=80, phase=0.1)
-    masks = draw_figure(cv, Figure(**fit((20, 20, WIDTH - 20, HEIGHT - 20), pose), pose=pose, nude_details=False,
+    masks = draw_figure(cv, Figure(**fit((20, 20, WIDTH - 20, HEIGHT - 20), pose), pose=pose, body_details=False,
                                    hair=hairstyle('ponytail', flow=0.8)), [wardrobe.top('#ff7a62', sleeve=1.2)])
     tail_rows = np.flatnonzero(masks['tie'].max(axis=1) > 0.5)
     head_center = masks['skeleton'].head.center
@@ -432,7 +432,7 @@ def render_two_point():
 def figure_cases():
     casual = [wardrobe.bottoms('#3f5f8a'), wardrobe.top('#f2efe8', sleeve=1.2), wardrobe.shoes('#2a2a30')]
     return {
-        'figure_nude': lambda: render_figure(ILLUSTRATION, (), True),
+        'figure_study': lambda: render_figure(ILLUSTRATION, (), True),
         'figure_casual': lambda: render_figure(ANIME, casual, False),
         'figure_dress': lambda: render_figure(ILLUSTRATION, [wardrobe.swimsuit('#1f2a44'), wardrobe.dress('#b0344a')],
                                               False),

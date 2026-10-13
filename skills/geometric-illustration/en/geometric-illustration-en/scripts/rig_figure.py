@@ -148,7 +148,7 @@ WALK_DROP = 0.08                          # the pelvis drops a little in a strid
 LEAN_ROLL = -0.09                         # radians the figure tilts toward the pillar (about the head)
 # default view of a preset when the spec leaves pose.turn at 0 and pose.look at 'auto': (turn, look, head yaw)
 POSE_VIEWS = {'look_back': (2.55, 'face', 0.30), 'walking': (0.9, 'auto', None), 'seated': (0.6, 'auto', None)}
-NO_POCKETS = ('bikini', 'lingerie')       # outfits with nothing to hide a hand in
+NO_POCKETS = ('bikini', 'innerwear')       # outfits with nothing to hide a hand in
 KANGAROO_WRIST = (0.30, 3.04, 0.40)       # hoodie: the hands meet inside the front pocket
 PILLAR_WIDTH, PILLAR_GAP = 1.6, 0.02      # head widths: the pillar's face and its gap to the shoulder
 PILLAR_Z = -45.0                          # above a painted backdrop, below the figure's ground shadow layer and figure

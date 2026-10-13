@@ -1,7 +1,7 @@
-"""Morning bedroom: a woman in lace lingerie lying on her side on the bed, head resting on her arm,
+"""Morning bedroom: a woman in lace innerwear lying on her side on the bed, head resting on her arm,
 soft window light from the left. Shows poses.lie_side() and fit() for a lying figure.
 
-Run:  python bedroom_lingerie.py [output.png] [illustration|anime]
+Run:  python bedroom_innerwear.py [output.png] [illustration|anime]
 """
 import sys
 from dataclasses import replace
@@ -15,7 +15,7 @@ from paintkit import Canvas, blur, finish, save_image
 from paintkit.figure import (ANIME, ILLUSTRATION, FaceSpec, Figure, HairSpec, Physique, add_rim_light, draw_figure,
                              fit, poses, wardrobe)
 
-OUTPUT = sys.argv[1] if len(sys.argv) > 1 else 'bedroom_lingerie.png'
+OUTPUT = sys.argv[1] if len(sys.argv) > 1 else 'bedroom_innerwear.png'
 STYLE = sys.argv[2] if len(sys.argv) > 2 else 'illustration'
 WIDTH, HEIGHT = 1400, 900
 SEED = 31
@@ -59,10 +59,10 @@ def main():
     figure = Figure(**fit((200, 200, 1230, BED_TOP + 50), pose), pose=pose, physique=Physique(bust=1.05, hips=1.06),
                     face=FaceSpec(skin='#f6d6c4', eye_color='#6a4a3a', smile=0.35, lip_color='#c84a5a'),
                     hair=HairSpec(color='#2e2026', bangs='side', part=24, length=1.6, wave=0.35, seed=SEED),
-                    look=look, nude_details=False)
+                    look=look, body_details=False)
     # Where she presses into the mattress, a soft shadow.
     cv.tint(blur(cv.rect(240, BED_TOP - 6, 1180, BED_TOP + 26, radius=14), 14), '#8a7a70', 'multiply', 0.35)
-    masks = draw_figure(cv, figure, [wardrobe.lingerie('#7a2a4a', lace='#f4e6ea')])
+    masks = draw_figure(cv, figure, [wardrobe.innerwear('#7a2a4a', lace='#f4e6ea')])
     add_rim_light(cv, masks['all'], look, color='#fff4e2', width=6, opacity=0.6)
     if STYLE == 'anime':
         image = finish.finish_anime(cv, glow=0.15, seed=SEED)

@@ -66,14 +66,14 @@ OPTIONS = {
         "tired": "지친 눈 (반쯤 감긴 눈꺼풀)"}),
     "pose": ("포즈", "relaxed", {
         "stand": "차렷", "relaxed": "편안히 선 자세", "contrapposto": "콘트라포스토", "hand_on_hip": "허리에 손",
-        "walk": "걷기", "sit": "앉기", "arms_up": "팔 올리기", "venus": "고전 누드 포즈",
+        "walk": "걷기", "sit": "앉기", "arms_up": "팔 올리기", "venus": "고전 인체 습작 포즈",
                          "allure": "한 손 머리 뒤 콘트라포스토", "arms_behind_head": "양손 머리 뒤",
                          "heroic": "양손 허리 (영웅 자세)", "david": "한 손 어깨 위 (다비드)", "arms_crossed": "팔짱"}),
     "outfit": ("의상", "casual", {
         "casual": "티셔츠와 바지", "dress": "원피스", "coat": "코트", "blouse_skirt": "블라우스와 스커트",
         "drape": "고전 드레이프", "kimono": "기모노와 오비", "hanbok": "한복 (여성 저고리와 치마, 남성 저고리와 바지)",
         "festival": "사라시와 훈도시 (일본 축제 차림)", "hoodie": "후드티와 바지", "turtleneck": "터틀넥과 긴 코트",
-        "none": "의상 없음 (고전 누드화)"}),
+        "none": "의상 없음 (고전 인체 습작화)"}),
     "finish": ("마감", "style_default", {
         "style_default": "화풍 기본값", "clean": "효과 없음", "film": "필름 그레인과 비네트", "glow": "빛 번짐",
         "aged": "오래된 그림 (균열, 바니시)"}),

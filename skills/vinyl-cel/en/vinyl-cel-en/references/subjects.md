@@ -29,7 +29,7 @@
     + Women use `adult_face()`, men `male_face()` (narrow eyes, low brows, a longer lower face, dark irises, darker skin)
     + `male_face()` thins the lashes and removes the outer flick (`lash_weight` 0.55, `lash_flicks` False), thickens the brows (`brow_weight` 1.65), shrinks the irises (`iris_scale` 0.88), and weakens lip colour and blush (`lip_tint` 0.30, `blush_strength` 0.35)
 - (Build) `Build(sex, shoulders, bust, waist, hips, thighs, limbs, muscle)`
-    + `FEMALE_AVERAGE`, `FEMALE_GLAMOUR` (bust 1.32, waist 0.84, hips 1.12, thighs 1.06)
+    + `FEMALE_AVERAGE`, `FEMALE_FULLER` (bust 1.32, waist 0.84, hips 1.12, thighs 1.06)
     + `MALE_SLIM` (shoulders 1.12, muscle 0.25), `MALE_ATHLETIC` (shoulders 1.26, limb thickness 1.20, muscle 1.0, abs)
     + The torso is the `rig3d.TRUNK` section table (10 sections from crotch to neck), and the limbs are the `ARM` and `LEG` control points and radii
     + Breasts, pectorals, buttocks, deltoids and trapezius are separate ellipsoids, and the trapezius makes the slope from the neck down to the shoulder
@@ -210,7 +210,7 @@
 - (Body shape) `BodyShape(bust, waist, hips, thighs)` are width factors relative to an average adult woman
     + Presets are `AVERAGE`, `SLENDER` and `HOURGLASS` (bust 1.32, waist 0.84, hips 1.12, thighs 1.06)
     + Use each value in the 0.8-1.4 range; beyond it the forms break down
-    + Left and right breasts are cut at the centre line and inflated separately, so a cleavage remains as they grow
+    + Left and right breasts are cut at the centre line and inflated separately, so a chest gap remains as they grow
 - (Pose) Limb angles are measured from straight down, positive toward image right
     + Tilt values are positive clockwise, so a positive value lowers image right
     + The provided poses are `STANDING`, `CONTRAPPOSTO`, `HAND_ON_HIP`, `ARM_RAISED` and `A_POSE`

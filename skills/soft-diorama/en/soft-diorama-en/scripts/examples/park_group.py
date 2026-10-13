@@ -82,7 +82,7 @@ def main():
             cv.tint(blur(cv.ellipse(spot['pelvis'][0], FLOOR_Y, 110, 12), 8), '#3a5a2a', 'multiply', 0.4)
         else:                                         # seated: pelvis just above the bench seat
             spot = dict(pelvis=(place, SEAT_Y - SEAT_PELVIS * height / HEIGHT_UNITS), height=height)
-        draw_figure(cv, Figure(**spot, pose=pose, sex=sex, look=LOOK, hair=hair, face=face, nude_details=False),
+        draw_figure(cv, Figure(**spot, pose=pose, sex=sex, look=LOOK, hair=hair, face=face, body_details=False),
                     garments)
     save_image(OUTPUT, finish.finish_illustration(cv, glow=0.15, seed=SEED))
 

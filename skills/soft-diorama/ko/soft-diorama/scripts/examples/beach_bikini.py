@@ -69,7 +69,7 @@ def main():
     figure = Figure(**fit((x0, 120, x1, GROUND_Y), pose), pose=pose, physique=Physique(bust=1.05, hips=1.05),
                     face=FaceSpec(skin='#f1c7a8', eye_color='#4a6a9a', smile=0.55, lip_color='#d65a62'),
                     hair=HairSpec(color='#5a3a2a', bangs='side', part=-20, length=2.8, wave=0.45, seed=SEED),
-                    look=look, nude_details=False)
+                    look=look, body_details=False)
     cv.tint(blur(cv.ellipse(figure.pelvis[0] + 60, GROUND_Y + 6, 150, 18), 8), '#7a6040', 'multiply', 0.35)
     masks = draw_figure(cv, figure, [wardrobe.bikini('#e8505a', tie='#fbf4ea')])
     add_rim_light(cv, masks['all'], look, color='#fff1c8', width=7, opacity=0.8)

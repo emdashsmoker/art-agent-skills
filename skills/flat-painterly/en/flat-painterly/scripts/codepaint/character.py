@@ -6,7 +6,7 @@ Then it paints the head in the order back hair locks, face, ears, hair cap, fron
 pieces on each mass.
 Ink sets line width and strength and the amount and softness of shadows, so the same workflow serves oil, watercolor
 and illustration scenes.
-Adult markers and the groin treatment follow the nude figure rules in references/figure.md.
+Adult markers and the lower pelvis treatment follow the figure study rules in references/figure.md.
 """
 from dataclasses import dataclass, field, replace
 from enum import Enum
@@ -45,7 +45,7 @@ PALM_RIM = 1.5                   # the thumb line stays dark up to this width (l
 STUBBLE_AREA = [(-0.62, 0.98), (-0.3, 1.02), (0.0, 1.03), (0.3, 1.02), (0.62, 0.98), (0.5, 1.25), (0.28, 1.45),
                 (0.0, 1.52), (-0.28, 1.45), (-0.5, 1.25)]
 NECK_SHADOW_DROP = 0.32          # shadow the head casts on the neck: the head outline lowered by this multiple of the skull radius
-GROIN_RADII = (0.1, 0.14, 0.09)  # round mass of the groin (ellipsoid radii in pelvis coordinates)
+LOWER_PELVIS_RADII = (0.1, 0.14, 0.09)  # round mass of the lower pelvis (ellipsoid radii in pelvis coordinates)
 BREAST_CENTER = (0.31, 0.72)     # thorax coordinates
 BREAST_RADII = (0.26, 0.27, 0.2)
 BREAST_INSET = 0.17              # depth by which the breast ellipsoid center is set back from the front surface
@@ -94,7 +94,7 @@ class Palette:
     skin_shade: str
     skin_deep: str
     skin_light: str
-    nipple: str
+    chest_mark: str
     nail: str
     blush: str
     hair: str
@@ -298,7 +298,7 @@ def part_bulge(cv, model, part, center, radii, clip, normal_hint, shadow=0.3, li
 
 
 def surface_dot(cv, model, part, point, normal, radius, color, clip):
-    """A small circle on the surface (nipple, navel). Distorts with the angle."""
+    """A small circle on the surface (chest mark, navel). Distorts with the angle."""
     b = model.body
     normal = b.rotations[part] @ (np.asarray(normal, np.float64) / np.linalg.norm(normal))
     if b.facing(normal) <= VISIBLE:
@@ -313,7 +313,7 @@ def surface_dot(cv, model, part, point, normal, radius, color, clip):
 
 
 def paint_female_torso(cv, model, clip):
-    """Female torso: collarbones, armpits, rib arch, breasts, navel, hip bones, groin creases, round form of the
+    """Female torso: collarbones, armpits, rib arch, breasts, navel, hip bones, lower pelvis creases, round form of the
     mons pubis, back and buttocks."""
     unit = model.body.frame.unit
     pal = model.look.palette
@@ -340,8 +340,8 @@ def paint_female_torso(cv, model, clip):
         breast = part_bulge(cv, model, "thorax", center, BREAST_RADII, clip, np.array([sign * 0.3, 0.1, -1.0]),
                             shadow=0.38, light=0.9)
         _lower_arc(cv, model, "thorax", center, BREAST_RADII, clip)
-        nipple = (center[0] + sign * 0.04, center[1] + 0.06, center[2] - BREAST_RADII[2] * 0.97)
-        surface_dot(cv, model, "thorax", nipple, (sign * 0.3, 0.15, -1.0), 0.036, pal.nipple, breast)
+        chest_mark = (center[0] + sign * 0.04, center[1] + 0.06, center[2] - BREAST_RADII[2] * 0.97)
+        surface_dot(cv, model, "thorax", chest_mark, (sign * 0.3, 0.15, -1.0), 0.036, pal.chest_mark, breast)
     # back view.
     torso_line(cv, model, "thorax", "back", [(0.0, -0.3), (-0.01, 0.5), (0.0, 1.2)], clip, width=2.0, opacity=0.55)
     torso_line(cv, model, "pelvis", "back", [(0.01, -0.95), (0.0, -0.3)], clip, width=2.0, opacity=0.55)
@@ -356,7 +356,7 @@ def paint_female_torso(cv, model, clip):
 
 def paint_male_torso(cv, model, clip):
     """Male torso: collarbones, armpits, serratus, pectorals, abdominals, obliques, pelvic V line, round mass of the
-    groin, back and buttocks."""
+    lower pelvis, back and buttocks."""
     unit = model.body.frame.unit
     pal = model.look.palette
     for sign in (-1.0, 1.0):
@@ -374,7 +374,7 @@ def paint_male_torso(cv, model, clip):
         torso_line(cv, model, "thorax", "front", lower, clip, width=2.0, taper=(0.3, 1, 1, 0.2))
         torso_light(cv, model, "thorax", "front", (sign * 0.33, 0.3), (0.2, 0.12), clip, opacity=0.55)
         surface_dot(cv, model, "thorax", _thorax_front(model, sign * 0.42, 0.52), (sign * 0.35, 0.0, -1.0), 0.026,
-                    pal.nipple, clip)
+                    pal.chest_mark, clip)
         torso_line(cv, model, "thorax", "front", [(sign * 0.3, 0.84), (sign * 0.33, 1.2)], clip, width=1.4, opacity=0.45)
         torso_line(cv, model, "pelvis", "front", [(sign * 0.3, -0.8), (sign * 0.18, -0.35)], clip, width=1.4,
                    opacity=0.45)
@@ -394,9 +394,9 @@ def paint_male_torso(cv, model, clip):
     torso_line(cv, model, "thorax", "front", [(0.0, 0.78), (0.0, 1.3)], clip, width=1.6, opacity=0.65)
     torso_line(cv, model, "pelvis", "front", [(0.0, -0.95), (0.0, -0.5)], clip, width=1.6, opacity=0.65)
     surface_dot(cv, model, "pelvis", _pelvis_front(model, 0.0, -0.72), (0.0, 0.0, -1.0), 0.028, pal.skin_deep, clip)
-    # Groin: a round mass without detail. Only a light top and a shaded bottom, with no inner lines.
-    if shows_groin(model):
-        part_bulge(cv, model, "pelvis", groin_center(model), GROIN_RADII, clip, np.array([0.0, 0.2, -1.0]),
+    # Lower pelvis: a round mass without detail. Only a light top and a shaded bottom, with no inner lines.
+    if shows_lower_pelvis(model):
+        part_bulge(cv, model, "pelvis", lower_pelvis_center(model), LOWER_PELVIS_RADII, clip, np.array([0.0, 0.2, -1.0]),
                    shadow=0.4, light=0.4)
     torso_shade(cv, model, "pelvis", "front", [(-0.2, 0.25), (0.2, 0.25), (0.14, 0.34), (-0.14, 0.34)], clip,
                 opacity=0.35, soft=unit * 0.04)
@@ -416,15 +416,15 @@ def paint_male_torso(cv, model, clip):
     _buttocks(cv, model, clip, offset=0.34, radii=(0.36, 0.38, 0.2))
 
 
-def shows_groin(model):
-    """Whether to draw the groin mass. Drawn only when the front of the pelvis is visible and the pose is not seated
+def shows_lower_pelvis(model):
+    """Whether to draw the lower pelvis mass. Drawn only when the front of the pelvis is visible and the pose is not seated
     (seated, it hides between the thighs)."""
     b = model.body
     seated = max(b.swing.get("leg_" + side, (0.0, 0.0))[0] for side in "lr") >= SEATED_THIGH
     return not seated and b.facing(b.rotations["pelvis"] @ np.array([0.0, 0.0, -1.0])) > -0.2
 
 
-def groin_center(model):
+def lower_pelvis_center(model):
     return (0.0, 0.47, _local_z(model, "pelvis", 0.0, 0.47, "front") + 0.03)
 
 
@@ -677,8 +677,8 @@ def paint_body(cv, model, before_body=(), skip=(), only=None):
                 paths += palms[side]
         if name in skip:
             continue
-        if name == "body" and model.look.sex is Sex.MALE and shows_groin(model):
-            paths.append(b.bulge("pelvis", *groin_center(model), GROIN_RADII))
+        if name == "body" and model.look.sex is Sex.MALE and shows_lower_pelvis(model):
+            paths.append(b.bulge("pelvis", *lower_pelvis_center(model), LOWER_PELVIS_RADII))
         if only is not None and name not in only:
             whole = figure.shape_of(cv, paths) if whole is None else whole | figure.shape_of(cv, paths)
             continue

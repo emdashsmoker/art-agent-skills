@@ -43,7 +43,7 @@ def main():
     paint_room(cv)
     pose = Pose(turn=-30, head_yaw=-38, head_tilt=-4, neck=-3)
     place = framing((WIDTH, HEIGHT), 'bust', center=0.66, headroom=0.5)
-    figure = Figure(**place, pose=pose, sex='male', look=LOOK, nude_details=False,
+    figure = Figure(**place, pose=pose, sex='male', look=LOOK, body_details=False,
                     hair=hairstyle('center_part', color='#241c1a', seed=SEED),
                     face=expression(face_style('male', 'sharp', eye_color='#4a3a30'), 'pensive'))
     masks = draw_figure(cv, figure, [wardrobe.top('#d6d2ca', sleeve=4.9, scoop=0.15), wardrobe.long_coat('#2a3038'),

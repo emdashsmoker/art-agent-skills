@@ -86,7 +86,7 @@ LOW_ANGLE_MIN_DEPTH = 0.05      # metres: a subject point closer than this to th
 
 
 def _refuse_unclothed_minor(name, phenotype, outfit):
-    """A body under 18 is only drawn clothed: no nude, underwear, bikini or loincloth outfit.
+    """A body under 18 is only drawn clothed: no unclothed, underwear, bikini or loincloth outfit.
 
     Ages are not limited otherwise (children and teenagers in ordinary clothes are fine). A boy may be bare-chested
     in swim trunks or shorts; the chest of anyone else and everyone's pelvis must be covered."""
@@ -97,7 +97,7 @@ def _refuse_unclothed_minor(name, phenotype, outfit):
     chest, pelvis = garment.covers(garment.resolve_outfit(outfit, masculine))
     if not pelvis or not (chest or masculine):
         raise ValueError(f"figure '{name}' has a body under 18 (age {age:.3f}, about {years_for_age(age):.0f} years): "
-                         "it is only drawn clothed. Nude, underwear, bikini and loincloth outfits are refused.")
+                         "it is only drawn clothed. Figure study, underwear, bikini and loincloth outfits are refused.")
 
 
 @dataclass
@@ -196,7 +196,7 @@ class Scene:
 
     # -- content ----------------------------------------------------------------------------
     def add_figure(self, name="figure", preset="woman", phenotype=None, face=None, expression="neutral", pose="stand",
-                   hair=DEFAULT_HAIR, outfit="nude", skin="light", look=None, position=(0, 0, 0), facing=0.0,
+                   hair=DEFAULT_HAIR, outfit="figure_study", skin="light", look=None, position=(0, 0, 0), facing=0.0,
                    colors=None, subdivisions=1, stylize=None, beard="none", hat=None):
         """Add a person. hair: style name or dict(style, bangs, part, color, ...). pose: preset name or pose spec.
         stylize: face proportions beyond realism: none | semi | anime | chibi (default from the preset).

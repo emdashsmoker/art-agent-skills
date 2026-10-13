@@ -72,7 +72,7 @@ Full figures are drawn from a sex, a pose preset and body proportion factors.
 ```python
 from codepaint.subjects.figure import Figure, FigureSpec
 figure = Figure(FigureSpec(cx=448, top=70, unit=180, outfit="slip", cloth="#2a2a40", bust=1.10, waist=0.95, legs=1.05),
-                pose="pinup")    # 16 pose presets, listed under poses in references/subjects.md
+                pose="showcase")    # 16 pose presets, listed under poses in references/subjects.md
 man = Figure(FigureSpec(cx=448, top=70, unit=180, sex="male", outfit="trunks", cloth="#1f5f8f"), pose="akimbo")
 scene.add(figure.parts())
 ```
@@ -128,7 +128,7 @@ save(finish(build_landscape(LandscapeSpec(seed=3)), "painterly"), "lake.png")
 | Faces, head-and-shoulders portraits (female, male) | `subjects/head.py`, `subjects/bust.py` | `examples/portrait.py` | anime, illust |
 | 21 test pictures of situations, poses, framing and group shots (two in the rain, a bedroom at night, resting on the beach, a bench, a lesson, 16 poses, an old couple walking, four from behind, a lineup, a close shot, a long shot, a low angle, rule of thirds, a group photo, four on a sofa, eight on a crosswalk, two pairs in a park, a meeting, an office at night) | `subjects/scenes.py`, `subjects/stage.py`, `subjects/pair.py`, `subjects/figure.py` | `examples/variety.py` (`BUILDERS`) | 2-4 pictures in each of the 7 styles |
 | Varied people (7 expressions, 4 eye shapes, face width, brow weight, age and gray hair, 4 kinds of facial hair, 3 kinds of glasses, freckles, a mole, 12 hair styles) and a crowd | `subjects/head.py`, `subjects/face_extras.py`, `subjects/profile.py` | `examples/faces.py` (`BUILDERS`: 4 sample sheets, a crowd in a park) | anime, illust |
-| Full figures (female, male, nude, swimwear, slip, standing, sitting, lying) | `subjects/figure.py` | `examples/figure.py` | anime, illust, painterly (scale 0.5) |
+| Full figures (female, male, figure study, swimwear, slip, standing, sitting, lying) | `subjects/figure.py` | `examples/figure.py` | anime, illust, painterly (scale 0.5) |
 | Everyday clothes (4 tops, 4 bottoms, 3 kinds of shoes) | `subjects/garments.py`, `subjects/extremities.py` | `examples/figure.py` (`street`, `turnaround()`) | anime, illust |
 | Back views and profiles (profile face, walking, sitting on a chair) | `subjects/figure.py`, `subjects/side.py`, `subjects/profile.py` | `examples/figure.py` (`back`, `side_seated`), `examples/portrait.py` (`build_back()`) | anime, illust |
 | Two-shots (side by side, holding hands, arm over the shoulder, talking) | `subjects/pair.py` | `examples/scenes.py` (`pairs()`) | illust, anime |
@@ -189,7 +189,7 @@ After rendering, check the items below in the image itself. Causes and fixes for
 
 ## Scope
 
-- Nudity and sexual depictions of minors are not drawn
+- Unclothed figures and sexual depictions of minors are not drawn
     + The criterion is the depiction of a pre-pubescent body (child proportions, undeveloped chest and pelvis)
     + The same rule applies to a person whose age or setting is stated as under 18
     + Style traits alone (large eyes and a small nose in the anime style) are not taken as a sign of a minor

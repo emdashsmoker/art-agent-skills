@@ -61,7 +61,7 @@ A skill that draws pictures with code alone, without neural networks. It provide
     + For an unsupported request, tell the user the limit first and propose what is possible
 - The built-in body tables use adult proportions (adult body and face proportions)
 - Rule on minors
-    + No nude or sexual depiction of anyone under 18
+    + No unclothed or sexual depiction of anyone under 18
     + Judge only by explicit signals: an age under 18 set in the request, a minor student status set in the request, a depiction of a pre-pubescent child's body
     + A youthful face, small stature or an anime drawing style are common in adults as well, so they alone are not treated as signs of a minor
 
@@ -129,15 +129,15 @@ A skill that draws pictures with code alone, without neural networks. It provide
 | File | Content |
 |---|---|
 | `example_spec_bob.json` | Bob-haired portrait (with the glasses hook `example_props_glasses.py`) |
-| `example_spec_figure_nude.json` | Female front figure study, contrapposto with a hand on the hip |
+| `example_spec_figure_study.json` | Female front figure study, contrapposto with a hand on the hip |
 | `example_spec_figure_back.json` | Female figure study from behind |
 | `example_spec_figure_side.json` | Female figure study in profile, arched back |
 | `example_spec_figure_seated_side.json`, `example_spec_figure_seated_front.json` | Female seated poses (side, front) |
 | `example_spec_portrait_male.json` | Male portrait |
 | `example_spec_figure_male.json` | Male full figure (T-shirt, long trousers) |
-| `example_spec_figure_male_nude.json` | Male front figure study with a hip cloth |
+| `example_spec_figure_male_figure_study.json` | Male front figure study with a hip cloth |
 | `example_spec_figure_male_back.json`, `example_spec_figure_male_side.json` | Male figure studies from behind and in profile |
-| `example_spec_figure_male_seated_side.json`, `example_spec_figure_male_seated_front.json`, `example_spec_figure_male_seated_front_nude.json` | Male seated poses (side study, front clothed, front study) |
+| `example_spec_figure_male_seated_side.json`, `example_spec_figure_male_seated_front.json`, `example_spec_figure_male_seated_front_figure_study.json` | Male seated poses (side study, front clothed, front study) |
 | `example_spec_hand_male.json` | Male hands (back, palm, pointing) |
 | `example_spec_figure_shirt_skirt.json`, `example_spec_figure_coat.json` | Long-sleeved shirt and skirt, a coat over them |
 | `example_spec_figure_male_jacket.json`, `example_spec_figure_male_shorts.json` | Male jacket, shorts |

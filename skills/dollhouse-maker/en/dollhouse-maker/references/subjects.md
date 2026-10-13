@@ -185,11 +185,11 @@ man = Bust(head_m, BustSpec(sex="male", outfit="tshirt", cloth="#33404c", turn=-
 The drawing order of an illustrator, implemented in 2D. Women and men go through the same procedure; only the proportion table (`BODY`) differs. A joint skeleton sets the pose, the trunk is drawn as one outline joining anatomical landmarks (neck, shoulders, armpits, side of the chest, waist, pelvis, crotch), and the limbs are drawn along the bones with different curves on each side. All skin shapes are inked as one surface, so no lines appear at the joints. The unit is the head height (hu) and the base proportion is 8 heads.
 
 ```python
-figure = Figure(FigureSpec(cx=448, top=70, unit=180, skin="#eec6ab", outfit="nude",
+figure = Figure(FigureSpec(cx=448, top=70, unit=180, skin="#eec6ab", outfit="figure_study",
                            bust=1.08, waist=0.95, hip=1.02,
                            head=dict(hair_style="long", bangs="swept")), pose="contrapposto")
 scene.add(figure.parts())        # all shapes, sorted back to front
-man = Figure(FigureSpec(cx=448, top=70, unit=180, sex="male", skin="#dcae8c", outfit="nude"), pose="heroic")
+man = Figure(FigureSpec(cx=448, top=70, unit=180, sex="male", skin="#dcae8c", outfit="figure_study"), pose="heroic")
 ```
 
 | Guide line | hu from the crown |
@@ -217,7 +217,7 @@ man = Figure(FigureSpec(cx=448, top=70, unit=180, sex="male", skin="#dcae8c", ou
 | `blush` | redness at the knees, elbows and shoulders 0..1 |
 | `modeling` | form shading on the sides of the trunk, beside the abdomen, under the chest and on the inner thighs 0..1 |
 | `light_side` | light direction of the scene, -1 left, +1 right (match the sign of x in `Scene.light`) |
-| `outfit`, `cloth` | one outfit and its color; women `nude`, `bikini`, `onepiece`, `highleg`, `slip`, `dressed`; men `nude`, `briefs`, `trunks`, `open_shirt`, `dressed` |
+| `outfit`, `cloth` | one outfit and its color; women `figure_study`, `bikini`, `onepiece`, `highleg`, `slip`, `dressed`; men `figure_study`, `briefs`, `trunks`, `open_shirt`, `dressed` |
 | `cloth2` | color of the shorts under an open shirt, or of the bottoms with `dressed`; None is a darker `cloth` |
 | `upper`, `lower` | for `dressed`, the top `tee`, `longsleeve`, `shirt`, `blouse` and the bottoms `jeans`, `slacks`, `skirt`, `long_skirt` |
 | `shoes`, `cloth3` | shoes for every outfit, `sneakers`, `boots`, `heels` (None is barefoot), and their color |
@@ -251,7 +251,7 @@ man = Figure(FigureSpec(cx=448, top=70, unit=180, sex="male", skin="#dcae8c", ou
 | hand width, foot size | 1.0, 1.0 | 1.12, 1.08 |
 
 - Adjust the numbers in the `BODY["male"]` dict of `figure.py`
-- The groin is drawn as the same smooth form as for women (the module has no genital forms)
+- The lower pelvis is drawn as the same smooth form as for women (the module has no pelvic forms)
 
 ### Outfits
 
@@ -309,7 +309,7 @@ Clothes are cut from the actual body form. The trunk outline is grown by the eas
 
 ### Poses
 
-`pose` is a preset name or a `FigurePose` object. Front and three-quarter presets are `pinup`, `contrapposto`, `arms_up`, `seated`, `reclining`, `akimbo`, `heroic`, `standing`, `phone`, `coffee`, `point`, `desk`; profile presets are `side_stand`, `walk`, `side_seated`, `side_phone`. For a back view, change only the view of any preset, as in `dataclasses.replace(POSES["akimbo"], view="back")`. All presets apply to women and men alike. Angles are in degrees: 0 is straight down, positive is toward screen-right. Left and right are always from the viewer's side.
+`pose` is a preset name or a `FigurePose` object. Front and three-quarter presets are `showcase`, `contrapposto`, `arms_up`, `seated`, `reclining`, `akimbo`, `heroic`, `standing`, `phone`, `coffee`, `point`, `desk`; profile presets are `side_stand`, `walk`, `side_seated`, `side_phone`. For a back view, change only the view of any preset, as in `dataclasses.replace(POSES["akimbo"], view="back")`. All presets apply to women and men alike. Angles are in degrees: 0 is straight down, positive is toward screen-right. Left and right are always from the viewer's side.
 
 | FigurePose field | Meaning |
 |---|---|
@@ -332,7 +332,7 @@ Clothes are cut from the actual body form. The trunk outline is grown by the eas
 | `left_foot_turn`, `right_foot_turn` | toe-out angle; 40 or more draws the foot seen from the side |
 | `left_foot_pitch`, `right_foot_pitch` | foot tilt in profile, positive lifts the toes (heel strike), negative points them down |
 
-- `pinup` pushes the pelvis out over the supporting leg, one hand in the hair and one on the hip
+- `showcase` pushes the pelvis out over the supporting leg, one hand in the hair and one on the hip
 - `akimbo` has both hands on the hips with the elbows out; the wrists bend so the hands come down onto the pelvis
 - `heroic` is a classical standing pose on the right leg with the left leg set out
 - `seated` sits on a box with the knees drawn together to the right; the prop height is `figure.seat_y()`

@@ -152,13 +152,13 @@ The mood of post-Soviet post-punk records and internet doomer drawings. Panel ap
 
 | Goal | Setup |
 | --- | --- |
-| Renaissance nude, Venus | `woman_classical`, pose `venus` or `contrapposto`, long wavy blonde hair, `nude` or `chiton`, a dark `studio` with `glow`, lighting `rembrandt` + `old_master`, style `classical`, `look.flesh_variation` 0.6 |
-| Odalisque, reclining nude | Pose `recline`, props `daybed` and `cloth`, figure `position` z 0.47, style `classical` or `oil` |
-| Anime-style nude | `woman_anime` or `woman_curvy`, pose `arms_behind_head` or `s_curve`, `look.skin_gloss` 0.4, lighting `loop` + `pastel`, style `anime` or `webtoon` |
-| Classical male nude, David | `man_classical`, pose `david`, short curls (`curly`, `length_scale` 0.45), `perizoma`, a dark `studio`, lighting `rembrandt` + `old_master`, style `classical` |
-| Anime-style male nude | `man_anime` or `man_athletic`, pose `arms_behind_head` or `heroic`, `briefs`, `look.muscle_definition` 0.45, lighting `loop`, style `anime` |
+| Renaissance figure study, Venus | `woman_classical`, pose `venus` or `contrapposto`, long wavy blonde hair, `figure_study` or `chiton`, a dark `studio` with `glow`, lighting `rembrandt` + `old_master`, style `classical`, `look.flesh_variation` 0.6 |
+| Odalisque, reclining figure study | Pose `recline`, props `daybed` and `cloth`, figure `position` z 0.47, style `classical` or `oil` |
+| Anime-style figure study | `woman_anime` or `woman_fuller`, pose `arms_behind_head` or `s_curve`, `look.skin_gloss` 0.4, lighting `loop` + `pastel`, style `anime` or `webtoon` |
+| Classical male figure study, David | `man_classical`, pose `david`, short curls (`curly`, `length_scale` 0.45), `perizoma`, a dark `studio`, lighting `rembrandt` + `old_master`, style `classical` |
+| Anime-style male figure study | `man_anime` or `man_athletic`, pose `arms_behind_head` or `heroic`, `briefs`, `look.muscle_definition` 0.45, lighting `loop`, style `anime` |
 | Bearded male portrait | `man_mature`, `beard: full_beard`, `slick_back`, `suit`, lighting `rembrandt`, style `oil` or `classical` |
-| Nude from behind | Pose `look_over_shoulder`, camera `yaw` 160, style `watercolor` or `pastel` |
+| Figure study from behind | Pose `look_over_shoulder`, camera `yaw` 160, style `watercolor` or `pastel` |
 | Baroque portrait | Lighting `side` + `candle`, style `baroque`, `ambient` 0.12 |
 | Dutch still life | `room` (dark walls), `table`, `cloth`, vessels and fruit, lighting `rembrandt` + `old_master`, style `oil` or `classical` |
 | Impressionist outdoors | `meadow` or `garden`, time `day`, style `impressionist`, small figures |

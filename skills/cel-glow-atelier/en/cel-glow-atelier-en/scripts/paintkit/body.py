@@ -242,7 +242,7 @@ POSES = {
                   hand_right_angle=176.0, front=("right",),
                   arm_left=(-12.0, -6.0), leg_left=(-7.0, 1.0), leg_right=(2.0, 0.0)),
     # One hand behind the head, the other on the raised hip: the classic S-curve.
-    "pinup": Pose(spine=-6.0, chest=7.0, neck=-5.0, hip_tilt=-9.0, shoulder_tilt=6.0,
+    "showcase": Pose(spine=-6.0, chest=7.0, neck=-5.0, hip_tilt=-9.0, shoulder_tilt=6.0,
                   reach_right="hip", hand_right="together", hand_right_angle=-30.0,
                   reach_left="crown", arm_left_scale=(0.92, 0.78), hand_left="relaxed",
                   hand_left_angle=120.0, leg_right=(1.0, 0.0), leg_left=(-13.0, 6.0), foot_left=-26.0),

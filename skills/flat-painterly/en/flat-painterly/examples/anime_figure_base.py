@@ -6,8 +6,8 @@ Process: head-unit guides → pose (rig) → whole-body mass → upper body mark
 → face or back hair.
 Adult markers: eight-head rig, a face with small eyes and a long jaw, collarbones, ribs and hip bones, a mature
 build.
-The groin of the lower body is rendered only as a round mass at the level of classical sculpture and anatomy plates,
-without genital detail.
+The lower pelvis of the lower body is rendered only as a round mass at the level of classical sculpture and anatomy plates,
+without pelvic detail.
 Run: python anime_figure_base.py [output_dir] [scale]
 """
 import sys
@@ -30,7 +30,7 @@ HEAD_TOP_Y = PELVIS_Y - 3.71 * UNIT   # crown height with the neck length factor
 # Palette: one skin tone on light gray-blue paper. The navy of the hair tightens the frame.
 PAPER_TOP, PAPER_LOW, GUIDE = "#eef1f7", "#dde3ee", "#b9c3d8"
 SKIN, SKIN_SHADE, SKIN_DEEP, SKIN_LIGHT = "#f7d3bf", "#dc9b8f", "#b0656a", "#fff1e8"
-NIPPLE, BLUSH = "#d98585", "#ff9aa0"
+CHEST_MARK, BLUSH = "#d98585", "#ff9aa0"
 NAIL = "#f9dcd2"
 HAIR, HAIR_SHADE, HAIR_LIGHT = "#22263e", "#12142a", "#5a6aa0"
 IRIS_TOP, IRIS_MID, IRIS_LOW = "#2a1a1a", "#7a3a2a", "#e0a060"
@@ -180,8 +180,8 @@ def paint_front_upper(cv, model, body_shape):
         inner_line(cv, [(cx - UNIT * 0.27, cy + UNIT * 0.1), (cx - UNIT * 0.1, cy + UNIT * 0.29),
                         (cx + UNIT * 0.12, cy + UNIT * 0.29), (cx + UNIT * 0.28, cy + UNIT * 0.1)], body_shape,
                    width=2.0, taper=(0.1, 1, 1, 0.2))
-        nipple = (cx + UNIT * 0.04, cy + UNIT * 0.06)
-        cv.fill(cv.shape(g.ellipse(nipple[0], nipple[1], UNIT * 0.038, UNIT * 0.034)), NIPPLE, clip=breast)
+        chest_mark = (cx + UNIT * 0.04, cy + UNIT * 0.06)
+        cv.fill(cv.shape(g.ellipse(chest_mark[0], chest_mark[1], UNIT * 0.038, UNIT * 0.034)), CHEST_MARK, clip=breast)
     inner_line(cv, [b.on_thorax(-0.03, -0.02), b.on_thorax(0.0, 0.06)], body_shape, width=1.8)
     inner_line(cv, [b.on_pelvis(0.0, -1.2), b.on_pelvis(0.01, -0.9)], body_shape, width=1.2, opacity=0.4)
     navel = b.on_pelvis(0.0, -0.7)
@@ -189,11 +189,11 @@ def paint_front_upper(cv, model, body_shape):
 
 
 def paint_front_lower(cv, model, body_shape):
-    """Lower body front: hip bones, groin creases, round form of the mons pubis, between the thighs, knees, calves,
+    """Lower body front: hip bones, lower pelvis creases, round form of the mons pubis, between the thighs, knees, calves,
     ankle bones."""
     b = model.body
     for sign in (-1.0, 1.0):
-        # Light on the corners of the hip bones and the groin creases running down from them (V line).
+        # Light on the corners of the hip bones and the lower pelvis creases running down from them (V line).
         light_spot(cv, b.on_pelvis(sign * 0.54, -0.44), 0.05, 0.11, body_shape, angle=sign * -20, opacity=0.5)
         inner_line(cv, [b.on_pelvis(sign * 0.6, -0.44), b.on_pelvis(sign * 0.44, -0.1), b.on_pelvis(sign * 0.2, 0.28),
                         b.on_pelvis(sign * 0.08, 0.44)], body_shape, width=1.6, taper=(0.1, 1, 1, 0.3), opacity=0.7)
@@ -217,7 +217,7 @@ def paint_front_lower(cv, model, body_shape):
         ankle = np.array(b.joint("ankle_" + side))
         inner_line(cv, [knee + (0, UNIT * 0.3), (knee + ankle) / 2 + (sign * UNIT * 0.02, 0), ankle + (0, -UNIT * 0.3)],
                    body_shape, width=1.2, opacity=0.35)
-    # Mons pubis: the soft round form at the lower end where the groin creases meet. Only a lit top and a
+    # Mons pubis: the soft round form at the lower end where the lower pelvis creases meet. Only a lit top and a
     # shaded bottom.
     mound = b.on_pelvis(0.0, 0.3)
     light_spot(cv, mound, 0.16, 0.12, body_shape, opacity=0.55)

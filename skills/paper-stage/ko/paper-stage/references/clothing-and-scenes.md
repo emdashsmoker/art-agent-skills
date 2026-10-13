@@ -10,8 +10,8 @@
 
 | 이름 | 내용 | 사용 색 |
 |---|---|---|
-| `lingerie` | 하프컵 브라(컵 위 레이스, 가운데 심, 밑밴드, 어깨끈), 레이스 팬티와 리본 | `cloth` |
-| `lingerie_stockings` | 위 구성에 비치는 허벅지 스타킹과 레이스 밴드 추가 | `cloth` |
+| `innerwear` | 하프컵 브라(컵 위 레이스, 가운데 심, 밑밴드, 어깨끈), 레이스 팬티와 리본 | `cloth` |
+| `innerwear_stockings` | 위 구성에 비치는 허벅지 스타킹과 레이스 밴드 추가 | `cloth` |
 | `crop_top_shorts` | 크롭 반팔 티, 로우라이즈 데님 핫팬츠(올 풀린 밑단), 운동화 | `cloth`, `cloth_second` |
 | `hoodie` | 오버핏 후드티(뒤로 접힌 후드, 앞주머니, 끈, 시보리 소매와 밑단), 청바지, 운동화 | `cloth`, `cloth_second` |
 | `hoodie_shorts` | 후드티와 핫팬츠, 운동화 | `cloth`, `cloth_second` |
@@ -35,7 +35,7 @@ draw_figure(painting, spec, body, pose, style, dress=outfit)
     + `sleeve`는 팔을 그린 직후 그 팔 위에 그림, 형식 `f(painting, skeleton, side, masks, spec, style, light)`
     + `behind`는 뒷머리 직후 몸통보다 먼저 그림 (접힌 후드)
 - 일반 함수 의상도 그대로 사용 가능, `combine`이 Outfit으로 감쌈
-- 부품 함수는 `crop_tee`, `hot_pants`, `hoodie_body`, `hood`, `shirt`, `tie`, `jacket`, `suit_trousers`, `bra`, `panties`, `stockings`, `sneakers`, `dress_shoes`
+- 부품 함수는 `crop_tee`, `hot_pants`, `hoodie_body`, `hood`, `shirt`, `tie`, `jacket`, `suit_trousers`, `bra`, `briefs`, `stockings`, `sneakers`, `dress_shoes`
 
 ### 소매
 
@@ -185,7 +185,7 @@ his_pose = reach(his_pose, MALE_BODY, "l", target_pixel, painting.shape, depth=0
     + 팔꿈치 방향은 `pole`(기본은 바깥, 아래, 뒤)
 - `rest_hands(pose, body, shape, on="knees")`는 양손을 무릎(`"thighs"`는 허벅지 가운데) 위에 얹음
     + 어깨폭이 다른 체형에서도 앉은 손이 무릎에 닿음
-    + 정면에 가까운 착석(22도 이하)은 손을 무릎 바깥으로 `stage.REST_OUTWARD`만큼 옮김, 두 손이 사타구니 위에서 겹치지 않음
+    + 정면에 가까운 착석(22도 이하)은 손을 무릎 바깥으로 `stage.REST_OUTWARD`만큼 옮김, 두 손이 골반 앞쪽 위에서 겹치지 않음
 - 정면 착석은 허벅지가 짧게 보여 선 자세처럼 읽히기 쉬움
     + 무릎 아래 정강이에 허벅지와 의자면 그림자를 자동으로 칠함 (`body.shade_under_knees`)
     + 확실하게 앉은 자세로 읽히려면 `yaw=15`에서 `20`, 남성은 무릎을 벌림 (`leg_l=(-14, -6), leg_r=(14, 6)`)

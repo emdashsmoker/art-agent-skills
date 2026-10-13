@@ -404,8 +404,8 @@ class SideFigure(Figure):
                             dict(name="bikini_top", mask=np.maximum(top, band), zone="torso", fitted=True, **cloth)]
         if kind == "trunks":
             return shoes + [dict(name="trunks", mask=shorts(0.33), zone="torso", **cloth)]
-        if kind == "lingerie":
-            return shoes + self.side_lingerie(shorts, cloth, dark)
+        if kind == "innerwear":
+            return shoes + self.side_innerwear(shorts, cloth, dark)
         if kind == "crop_hotpants":
             tee = self.grow(torso, 0.016) * self.band(-0.14, -0.06, CROP_HEM_Y)
             hot = shorts(HOTPANTS_LENGTH, HOTPANTS_WAIST_Y)
@@ -446,8 +446,8 @@ class SideFigure(Figure):
             dict(name="shirt", mask=shirt, zone="torso", fitted=True, **cloth),
             dict(name="jacket", mask=jacket, zone="torso", **suit)]
 
-    def side_lingerie(self, shorts, cloth: dict, dark) -> list:
-        """Side view lingerie: a balconette cup with its band and strap, a lace brief;
+    def side_innerwear(self, shorts, cloth: dict, dark) -> list:
+        """Side view innerwear: a balconette cup with its band and strap, a lace brief;
         boxer briefs for a man."""
         torso = self.masks["torso"]
         if self.male:

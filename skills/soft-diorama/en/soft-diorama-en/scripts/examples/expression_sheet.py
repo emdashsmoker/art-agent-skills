@@ -23,7 +23,7 @@ LOOK = replace(ILLUSTRATION, light=(-0.6, -0.8))
 def portrait(name, sex, style):
     cv = Canvas(*CELL, '#e7e3dc')
     figure = Figure(**framing(CELL, 'face', headroom=0.25), pose=Pose(turn=12, head_yaw=10), look=LOOK, sex=sex,
-                    face=expression(face_style(sex, style), name), hair=hairstyle(HAIR[sex]), nude_details=False)
+                    face=expression(face_style(sex, style), name), hair=hairstyle(HAIR[sex]), body_details=False)
     draw_figure(cv, figure, [wardrobe.top('#7d8a99', sleeve=1.0, scoop=0.3)])
     return finish.finish_illustration(cv, glow=0.0, seed=1)
 

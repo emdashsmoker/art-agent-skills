@@ -486,9 +486,9 @@ _BIKINI_FRONT = (((0.0, 0.60, 1.10, _SEAM_X), (-0.60, -0.66, -0.76, -0.84)),
 _BIKINI_BACK = (((0.0, _SEAM_X), (-0.68, -0.84)),     # the opening rises diagonally from under the seat to the tie
                 ((0.0, 0.35, 0.80, 1.15, 1.45, _SEAM_X), (0.82, 0.76, 0.46, -0.10, -0.50, -0.56)))
 _BIKINI_KNOT_Y = -0.70        # pelvis frame; the side ties sit on the hip seam at this height
-_LINGERIE_FRONT = (((0.0, 0.70, _SEAM_X), (-0.74, -0.78, -0.86)),
+_INNERWEAR_FRONT = (((0.0, 0.70, _SEAM_X), (-0.74, -0.78, -0.86)),
                    ((0.0, 0.24, 0.62, 1.10, 1.45, _SEAM_X), (0.66, 0.60, 0.28, -0.22, -0.40, -0.44)))
-_LINGERIE_BACK = (((0.0, _SEAM_X), (-0.74, -0.86)),
+_INNERWEAR_BACK = (((0.0, _SEAM_X), (-0.74, -0.86)),
                   ((0.0, 0.40, 0.85, 1.30, 1.50, _SEAM_X), (0.84, 0.80, 0.62, 0.15, -0.35, -0.44)))
 _LACE_REACH = 1.7             # frame x the lace runs out to (past the hip's outline when seen from the front)
 _LACE_SAMPLES = 35            # samples along each trimmed edge, to find the stretches that face the viewer
@@ -613,7 +613,7 @@ def _shift(table, dy):
 
 
 def _lace(cv, edges, unit, color, clip, look):
-    """Scalloped lace along screen polylines (the free edges of lingerie)."""
+    """Scalloped lace along screen polylines (the free edges of innerwear)."""
     from .. import geometry
     dots = cv.empty()
     for edge in edges:
@@ -710,18 +710,18 @@ def bikini(color, tie=None, rise=0.0):
     return garment
 
 
-def lingerie(color, lace='#f4eef2', bow=None):
+def innerwear(color, lace='#f4eef2', bow=None):
     """Bra and briefs with scalloped lace edges and a small bow. lace: trim color (None = no lace).
     On a male figure only plain briefs are drawn."""
     def garment(cv, figure, skeleton, masks, look):
         unit, chest, pelvis = skeleton.unit, skeleton.chest, skeleton.pelvis
         body = np.maximum.reduce([masks['torso'], masks['left_leg'], masks['right_leg']])
         free = 1.0 - _arms_in_front(masks)
-        mask = _briefs(cv, figure, pelvis, body, _LINGERIE_FRONT, _LINGERIE_BACK) * free
+        mask = _briefs(cv, figure, pelvis, body, _INNERWEAR_FRONT, _INNERWEAR_BACK) * free
         _paint_cloth(cv, mask, color, figure, masks, look, 0.3 * unit)
         pieces = [mask]
         edges = []
-        waist = _LINGERIE_FRONT[0]
+        waist = _INNERWEAR_FRONT[0]
         if _female(figure):
             far = 'right' if chest.sin > 0 else 'left'
             for name in (far, 'left' if far == 'right' else 'right'):
@@ -750,7 +750,7 @@ def lingerie(color, lace='#f4eef2', bow=None):
             # The trim runs round the waistband and the leg openings, front and back, each side shown where it
             # faces the viewer (they part at the near side seam, like the briefs).
             reach = np.linspace(0.0, _LACE_REACH, _LACE_SAMPLES)
-            for (top, opening), is_front in ((_LINGERIE_FRONT, True), (_LINGERIE_BACK, False)):
+            for (top, opening), is_front in ((_INNERWEAR_FRONT, True), (_INNERWEAR_BACK, False)):
                 shows = _seam_side(cv, pelvis, figure.physique.hips, is_front)
                 if shows.max() <= 0.0:
                     continue

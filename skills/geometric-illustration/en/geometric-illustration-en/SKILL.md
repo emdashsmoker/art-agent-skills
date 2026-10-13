@@ -33,7 +33,7 @@ Soft forms such as the body, hands and fruit are mannequins built from spheres a
 | `subject` | Content | Recommended canvas |
 |---|---|---|
 | `portrait` | A clothed figure. `character.sex` picks female or male, `character.build` the body type. `framing` picks bust, upper body, full body or establishing shot (`wide`). A `characters` list makes a 2-3 person group. With `background.type: scene` the figure stands over a city or landscape | 1024 x 1280, full body 1024 x 1600, group 1280 x 1600 |
-| `nude` | Adult figure study. 4 poses each for women and men | Standing 1024 x 1600, reclining 1600 x 1024 |
+| `figure_study` | Adult figure study. 4 poses each for women and men | Standing 1024 x 1600, reclining 1600 x 1024 |
 | `still_life` | Still life. `scene.set`: `classic` (bottle, jug, fruit, drape), `desk` (laptop, mug, lamp, potted plant), `cafe` (latte, cake, iced drink), `gaming` (monitor, RGB keyboard, headset), `kitchen` (tea glass in a holder, radio cassette player, snowy housing blocks outside the window) | 1400 x 1050 |
 | `cityscape` | One-point perspective street. `scene.site`: `street` (shopping avenue, default), `panel` (prefabricated panel housing estate with bare street trees). `scene.time` picks the time of day | 1600 x 1000 |
 | `landscape` | `scene.site`: `lake` (mountains and lake, default), `outskirts` (field at the edge of town, a line of power pylons, birches, housing blocks and chimneys on the horizon). `scene.time` picks the time of day | 1600 x 1000 |
@@ -44,20 +44,20 @@ Color grade (`look`): `none` (default), `doomer` (lower saturation and cooler sh
 
 ## Figure Study
 
-The `nude` subject draws 4 academic nude poses of classical painting, for women and for men.
+The `figure_study` subject draws 4 academic figure study poses of classical painting, for women and for men.
 
 - Body proportions are fixed to adult values: US Army anthropometric data (ANSUR II female, male) adjusted to an anime illustration body (`references/anatomy.md`).
-- The current body model has no nipple or genital geometry. No interior lines are drawn around the pelvis. Women and men are the same in this.
+- The current body model has no chest mark or pelvic geometry. No interior lines are drawn around the pelvis. Women and men are the same in this.
 - The 4 poses are classical compositions in which posture, hands, hair or a drape cover the chest and pelvis.
 
-### (Content limit) Nudity and sexual acts involving minors
+### (Content limit) Unclothed figures and sexual acts involving minors
 
-- The skill does not draw nudity or sexual acts involving minors. This is the only content limit of this skill.
+- The skill does not draw unclothed figures or sexual acts involving minors. This is the only content limit of this skill.
 - The test is how the body is depicted.
     + A request to draw a body before puberty (a child's head-to-body ratio, undeveloped chest and pelvis, a child's build)
     + A figure stated to be under age or stated to be a child
 - Art style, large eyes or a youthful face alone are not the test.
-- Code implementation: body proportions are fixed to adult values. Face parameters of the `nude` subject are clamped to the `rig_nude.ADULT_FACE` ranges. The clamp applies only to the rendered result.
+- Code implementation: body proportions are fixed to adult values. Face parameters of the `figure_study` subject are clamped to the `rig_figure_study.ADULT_FACE` ranges. The clamp applies only to the rendered result.
 
 ## Dependencies
 
@@ -110,7 +110,7 @@ python render.py --spec my.json --out out.png --stages stages/              # st
 | Bright, friendly | `mouth.smile` 0.5-0.7, `brows.angle` 0.1, `eyes.gaze` straight ahead [0, 0] |
 
 - Sex: setting `character.sex` to `male` applies the male body, face, short hair and male outfit defaults together. Impression tuning uses the fields of the table above unchanged
-- Body type (`character.build`): female `standard`, `slender`, `glamour`, `athletic`, male `standard`, `slim`, `athletic` (muscular). All are variations within real adult body ranges, and clothes follow the body type
+- Body type (`character.build`): female `standard`, `slender`, `fuller`, `athletic`, male `standard`, `slim`, `athletic` (muscular). All are variations within real adult body ranges, and clothes follow the body type
 - Face preset (`character.face_preset`): `soft`, `sharp`, `mature`, `gentle` (drooping eyes), `cool` (narrow eyes), `bold` (strong features). They change the face only within the adult face ranges
 - Expression (`character.expression`): `smile`, `laugh` (closed eyes, open mouth), `neutral`, `surprised`, `serious`, `sad`
 - Hair (`character.hair.style`): `long`, `updo`, `short`, `bob`, `ponytail`, `medium`, `side_part`, `slicked` (combed back), `two_block`, `hime` (hime cut), `center_part`, `shoulder` (shoulder length), `crop` (short blunt bangs)
@@ -119,7 +119,7 @@ python render.py --spec my.json --out out.png --stages stages/              # st
     + `pose.turn`: body turn. `front`, `three_quarter`, `side`, `three_quarter_back`, `back`; a leading `-` turns to the other side; a number is radians
     + `pose.look`: `auto` (the face turns with the body and becomes the back of the head on large turns), `face` (face over the shoulder), `away` (back of the head)
     + `pose.custom`: set wrist and ankle targets of the limbs and rib cage and pelvis rotation directly
-- Outfit (`character.outfit.type`): `turtleneck_sleeveless` (turtleneck and skirt, female default), `bikini`, `lingerie`, `crop_hotpants` (crop top and hot pants), `tee_jeans` (T-shirt and jeans, male default), `suit`, `hoodie_joggers` (hoodie and joggers), `swim_trunks` (male only), `shirt_slacks` (shirt and slacks), `knit_coat` (knit and belted long coat), `polo_shorts` (polo and chino shorts), `tank_shorts` (singlet and running shorts), `denim_jacket` (denim jacket and T-shirt), `track_suit`. Men support the 10 outfits other than bikini, lingerie, turtleneck with skirt and crop top. Every outfit has default colors and shoes; `palette` changes only the colors
+- Outfit (`character.outfit.type`): `turtleneck_sleeveless` (turtleneck and skirt, female default), `bikini`, `innerwear`, `crop_hotpants` (crop top and hot pants), `tee_jeans` (T-shirt and jeans, male default), `suit`, `hoodie_joggers` (hoodie and joggers), `swim_trunks` (male only), `shirt_slacks` (shirt and slacks), `knit_coat` (knit and belted long coat), `polo_shorts` (polo and chino shorts), `tank_shorts` (singlet and running shorts), `denim_jacket` (denim jacket and T-shirt), `track_suit`. Men support the 10 outfits other than bikini, innerwear, turtleneck with skirt and crop top. Every outfit has default colors and shoes; `palette` changes only the colors
     + `outfit.hat`: `none` (default), `beanie` (knit beanie with a folded cuff, color `palette.hat`). The hat is drawn over the hair, so bangs and side locks show only below the cuff
     + `outfit.shoes`: replaces the outfit's default shoes with `pumps`, `sneakers`, `oxfords` or `none` (flat shoes for a woman in a coat on a snowy road, for example)
 - Group: list 2-3 figures in `characters` and pick `layout.type` (`side_by_side`, `facing`, `front_back`) and `layout.interaction` (`none`, `hold_hands`). Each figure has its own sex, build, outfit, pose, expression and `palette`
@@ -183,7 +183,7 @@ python render.py --spec my.json --out out.png --stages stages/              # st
 | Body looks like a log | Torso section proportions | Adjust waist width and z center in `rig_anatomy.TORSO_LOFT`, then check the turn sheet with `check_proportions.py --sheet` |
 | Limb outline is lumpy | Sudden changes in the radius profile | Smooth the `*_PROFILE` values in `rig_anatomy`, check the inflection count of `check_proportions.py` |
 | Limb shadow edge is jagged | Too few sweep segments | Raise `rig_anatomy.LIMB_SEGMENTS` |
-| Anatomy marks missing or in the wrong place | Mark points off the surface | Move the mark coordinates in `rig_anatomy` toward the surface, check `rig_nude.MARK_SURFACE_TOL` |
+| Anatomy marks missing or in the wrong place | Mark points off the surface | Move the mark coordinates in `rig_anatomy` toward the surface, check `rig_figure_study.MARK_SURFACE_TOL` |
 | Covering hand has no outline | Quiet-zone handling | Check that the hand piece names start with `hand_` (`mannequin.QUIET_KEEP`) |
 | Oil brushwork smears roughly | Brushes too large | Reduce `OIL_FIG_BRUSHES` in `painterly.py` |
 | Watercolor blotches too strong | Too much pigment modulation | Lower `WC_TURBULENCE`, `WC_EDGE_DARKEN` in `painterly.py` |

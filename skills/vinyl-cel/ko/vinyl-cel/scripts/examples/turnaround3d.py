@@ -21,7 +21,7 @@ CANVAS_UNITS = (1600.0, 1100.0)
 FLOOR_Y = 1010.0
 SPACING = 300.0
 YAWS = (0.0, 0.75, np.pi / 2, 2.35, np.pi)          # front, three-quarter, side, back three-quarter, back
-FIGURE = Figure3D(character=adult_face(default_character()), build=rig3d.FEMALE_GLAMOUR, pose=rig3d.CONTRAPPOSTO,
+FIGURE = Figure3D(character=adult_face(default_character()), build=rig3d.FEMALE_FULLER, pose=rig3d.CONTRAPPOSTO,
                   hair=head3d.LONG_HAIR, outfit=wardrobe3d.OUTFITS["crop_top_hot_pants"], head_height=118.0,
                   ground=FLOOR_Y)
 

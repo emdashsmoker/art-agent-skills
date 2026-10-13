@@ -29,9 +29,9 @@
     + 여성은 `adult_face()`, 남성은 `male_face()`(가는 눈, 낮은 눈썹, 긴 하관, 어두운 홍채, 짙은 피부)
     + `male_face()`는 속눈썹을 가늘게 하고 바깥 끝 꼬리를 없앰(`lash_weight` 0.55, `lash_flicks` False), 눈썹을 굵게(`brow_weight` 1.65), 홍채를 작게(`iris_scale` 0.88), 입술색과 볼 홍조를 약하게(`lip_tint` 0.30, `blush_strength` 0.35) 함
 - (체형) `Build(sex, shoulders, bust, waist, hips, thighs, limbs, muscle)`
-    + `FEMALE_AVERAGE`, `FEMALE_GLAMOUR`(가슴 1.32, 허리 0.84, 골반 1.12, 허벅지 1.06)
+    + `FEMALE_AVERAGE`, `FEMALE_FULLER`(가슴 1.32, 허리 0.84, 골반 1.12, 허벅지 1.06)
     + `MALE_SLIM`(어깨 1.12, 근육 0.25), `MALE_ATHLETIC`(어깨 1.26, 팔다리 굵기 1.20, 근육 1.0, 복근)
-    + 몸통은 `rig3d.TRUNK` 단면표(사타구니에서 목까지 10개 단면), 팔다리는 `ARM`, `LEG` 조절점과 반지름
+    + 몸통은 `rig3d.TRUNK` 단면표(골반 앞쪽에서 목까지 10개 단면), 팔다리는 `ARM`, `LEG` 조절점과 반지름
     + 가슴, 대흉근, 엉덩이, 삼각근, 승모근은 별도 타원체이며 승모근이 목에서 어깨로 내려가는 사선을 만듦
 - (자세) `Pose3D`는 관절별 국소 회전 `(rx, ry, rz)`와 손 자세, 손을 목표점에 놓는 `Reach`를 묶음
     + 아래를 향한 뼈는 `rx` 양수가 뒤로 감, 따라서 무릎은 `rx` 양수로 굽고 다리와 팔을 앞으로 들 때는 음수
@@ -79,7 +79,7 @@
     + 색은 슬롯(`top`, `bottom`, `outer`, `trim`, `accent`, `shoes`, `sole`, `outer_line`, `hat`, `gear`)마다 `Material`을 지정하며 의상이 쓰는 슬롯은 `OUTFITS`의 색 사전과 같음
 - (새 의상 추가) `(ctx) -> Piece(solids, decals)` 함수를 `GARMENTS`에 등록하고 `OUTFITS`에 조합을 추가
     + 몸통은 `trunk(ctx, 시작, 끝, 두께, 슬롯)`, 팔은 `sleeve()`, 다리는 `leg()`, 가슴은 `chest_cover()`, 엉덩이는 `seat_cover()`
-    + 시작과 끝은 몸통 위치(0 사타구니, 0.44 허리, 0.89 어깨, 1 목, `TRUNK_LANDMARKS`)
+    + 시작과 끝은 몸통 위치(0 골반 앞쪽, 0.44 허리, 0.89 어깨, 1 목, `TRUNK_LANDMARKS`)
     + 솔기, 주머니, 단추는 `decal(점 목록, 굵기, 슬롯, 불투명도, on=보일 표면 슬롯)`
     + 겹쳐 입는 옷이면 `GARMENT_LAYERS`에 층 번호를 추가하고 `selftest.py`로 피부 비침을 확인
 - (새 머리 모양) `replace(head3d.PONYTAIL_HAIR, ...)`로 앞머리 각도, 길이, 덩어리를 바꿈

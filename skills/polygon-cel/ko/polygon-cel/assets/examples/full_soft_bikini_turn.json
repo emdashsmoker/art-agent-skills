@@ -1,6 +1,6 @@
 {"style": "soft_illust", "framing": "full", "canvas": {"seed": 21},
  "character": {"head": {"yaw": 20, "roll": -3},
-   "body": {"yaw": 24, "figure": "curvy", "bust": "xlarge", "pose": "hand_on_hip", "stance": "contrapposto"},
+   "body": {"yaw": 24, "figure": "fuller", "bust": "xlarge", "pose": "hand_on_hip", "stance": "contrapposto"},
    "hair": {"color": "#1F1A1C", "style": "long", "bangs": "side_swept", "wave": 0.2},
    "face": {"lips": "full"}, "eyes": {"color": "#7A4E2E", "lashes": "heavy"},
    "expression": {"mouth": "soft", "blush": 0.25},

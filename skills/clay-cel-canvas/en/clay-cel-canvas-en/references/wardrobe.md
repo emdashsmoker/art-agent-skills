@@ -82,7 +82,7 @@ One garment is made in 4 steps: shell, cut, add, paint.
 
 | Garment | Thickness (m) | Constant |
 |---|---|---|
-| Swimwear, lingerie | 0.004 | `FIT` |
+| Swimwear, innerwear | 0.004 | `FIT` |
 | Tee, jeans, shorts | 0.008 | `SNUG` |
 | Suit jacket | 0.012 | `JACKET` |
 | Hoodie | 0.018 | |
@@ -160,7 +160,7 @@ A clothes function returns a list of things to paint. A `(group, colour, shadow 
 | Function | Parts | Build |
 |---|---|---|
 | `bikini(scene, marks)` | Triangle cups, halter strings, under strings, low-rise bottom | Female |
-| `lingerie(scene, marks, skin)` | Moulded-cup bra, shoulder straps, underband, high-cut briefs, thigh-high stockings | Female |
+| `innerwear(scene, marks, skin)` | Moulded-cup bra, shoulder straps, underband, high-cut briefs, thigh-high stockings | Female |
 | `crop_top(scene, marks)` | Sleeveless, hem under the chest, round neckline | Both |
 | `hot_pants(scene, marks)` | Hem at 22% down the thigh, rolled cuff, button, stitching | Both |
 | `tee(scene, marks, physique)` | Short sleeves, crew neck, hem tucked into the trousers | Both |
@@ -261,7 +261,7 @@ A clothes function returns a list of things to paint. A `(group, colour, shadow 
 
 - `staging.placed(staging, offset, turn)` turns and moves any pose
 - Give `frame()` lists of landmarks and builds and it places the camera to fit everyone
-- `nude.draw_cast(style, width, setting, [Actor(sitter, pose, extras), ...])` draws them
+- `figure_study.draw_cast(style, width, setting, [Actor(sitter, pose, extras), ...])` draws them
     + Each person's group names get a prefix (`p0.`, `p1.`) and everyone renders at once. They hide each other and cast shadows on each other
     + Painting goes from the farthest person. A nearer body covers the drawn head of a farther person
     + The place's post-painting (`Setting.painters`) runs once after everyone is painted
@@ -315,7 +315,7 @@ python examples/outfits.py painterly out.png 1280 custom f suit seated_chair off
 - One line `Look(sex, outfit, pose, place, shot, azimuth, elevation, aspect, margin, wind, face)` is one picture
 - One line `Duo((sex, outfit), (sex, outfit), pair, place, ..., faces)` is one picture of two people
 - `face` and `faces` are `HeadLook`s. They choose hair style, hair colour and features (hair and face templates in `references/figure.md`)
-- Outfit names: `bikini`, `swim_trunks`, `lingerie`, `crop_top`, `tee_jeans`, `suit`, `hoodie`, `flared_skirt`, `pleated_skirt`, `pencil_skirt`, `sundress`, `sundress_scarf`, `sheath_dress`, `dark_hoodie`
+- Outfit names: `bikini`, `swim_trunks`, `innerwear`, `crop_top`, `tee_jeans`, `suit`, `hoodie`, `flared_skirt`, `pleated_skirt`, `pencil_skirt`, `sundress`, `sundress_scarf`, `sheath_dress`, `dark_hoodie`
     + `dark_hoodie`: black hoodie, dark jeans, dark sneakers (`SHOES["dark_sneaker"]`). Both sexes
 - 15 preset single looks (`LOOKS`)
 
@@ -323,7 +323,7 @@ python examples/outfits.py painterly out.png 1280 custom f suit seated_chair off
 |---|---|---|---|---|
 | `beach_bikini` | F | Bikini | Hand on hip | Beach |
 | `beach_trunks` | M | Swim trunks | Standing | Beach |
-| `bedroom_lingerie` | F | Lingerie | Reclining | Bedroom |
+| `bedroom_innerwear` | F | Innerwear | Reclining | Bedroom |
 | `bedroom_hoodie` | F | Oversized hoodie | Standing (knee shot) | Bedroom |
 | `office_suit_f` | F | Beige suit | Seated on a chair | Office |
 | `office_suit_m` | M | Navy suit and tie | Arms folded (knee shot) | Office |
@@ -358,4 +358,4 @@ python examples/outfits.py painterly out.png 1280 custom f suit seated_chair off
     + `FRAME_SHIFT` slides the picture so the figure sits on the right third and the empty roof floor leaves the frame
     + Sliding is a crop from the same camera's wider view, so the perspective holds (`shifted(camera, dx, dy)`)
 - The clothed man uses the `figure_male.LEAN` build
-- Lingerie, the strap dress and the close-fitting dress are made only on the female mannequin
+- Innerwear, the strap dress and the close-fitting dress are made only on the female mannequin

@@ -295,7 +295,7 @@ def trunks(painting, skeleton, masks, spec, style, light, hem=0.55):
     painting.fill(band, spec.cloth_second)
     shade_form(painting, band, spec.cloth_second, style, light, bevel=skeleton.px(0.08))
     cloth_shadow = shadow_of(spec.cloth, style.shadow_tint, style.shadow_depth)
-    for sign in (1.0, -1.0):     # soft folds where the cloth pulls toward the groin
+    for sign in (1.0, -1.0):     # soft folds where the cloth pulls toward the lower pelvis
         fold = geo.smooth(skeleton.on_pelvis([(sign * 0.30, 0.05), (sign * 0.16, 0.24), (sign * 0.05, 0.36)]))
         painting.stroke(fold, skeleton.px(0.026), cloth_shadow, taper=(0.5, 0.4), opacity=0.5, layer="color", clip=cloth)
     if style.line_width > 0:

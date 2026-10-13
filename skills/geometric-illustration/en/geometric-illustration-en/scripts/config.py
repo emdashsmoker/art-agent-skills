@@ -8,7 +8,7 @@ import copy
 
 DEFAULT_SPEC = {
     "canvas": {"width": 1024, "height": 1280, "seed": 7},
-    "subject": "portrait",            # portrait | nude | still_life | cityscape | landscape
+    "subject": "portrait",            # portrait | figure study | still_life | cityscape | landscape
     "style": "anime",                 # anime | illustration | oil | watercolor
     "look": "none",                   # color grade over the finished image: none | doomer
     "framing": "bust",                # bust | upper_body | full_body | wide (a small full figure in its setting)
@@ -67,7 +67,7 @@ DEFAULT_SPEC = {
     },
     "character": {
         "sex": "female",                 # female | male (build, face and hair presets: SEX_PRESETS)
-        "build": "standard",             # body type: female standard|slender|glamour|athletic, male standard|slim|athletic
+        "build": "standard",             # body type: female standard|slender|fuller|athletic, male standard|slim|athletic
         "scale": None,                   # group pictures: drawn size relative to the others (None: men 1.06 beside women)
         "head": {"x": 0.50, "y": None, "size": None, "yaw": 0.22, "roll": -0.05},  # None = from framing
         "face": {"cheek": 0.485, "jaw_width": 0.385, "jaw_height": 0.44, "chin_length": 0.70,
@@ -87,7 +87,7 @@ DEFAULT_SPEC = {
         "expression": "default",         # default (the face fields as given) | EXPRESSIONS
         "face_preset": "default",        # default | FACE_PRESETS (soft, sharp, mature, gentle, cool, bold)
     },
-    "nude": {"pose": "venus", "hair": None},   # pose: back_three_quarter | venus | reclining | seated
+    "figure_study": {"pose": "venus", "hair": None},   # pose: back_three_quarter | venus | reclining | seated
     "characters": [],                 # group picture: 2-3 character dicts (each like "character", plus "palette")
     "layout": {"type": "side_by_side", "interaction": "none", "gap": None},   # side_by_side | facing | front_back;
                                                                            # none | hold_hands; gap in head widths
@@ -132,7 +132,7 @@ FREE_FORM = ("scene.palette.", "shadow_tint.", "cel_threshold.")   # maps whose 
 # Default colors per outfit (cloth = top, skirt = bottom); a spec's own palette entries win.
 OUTFIT_PALETTES = {
     "bikini": {"cloth": "#2F4A6E"},
-    "lingerie": {"cloth": "#2A2230", "accent": "#B98FA5"},
+    "innerwear": {"cloth": "#2A2230", "accent": "#B98FA5"},
     "crop_hotpants": {"cloth": "#F1EEF0", "skirt": "#7E9CC2", "shoe": "#F2F0F2", "sole": "#D9D6DC"},
     "tee_jeans": {"cloth": "#F1EEF0", "skirt": "#4C6A93", "shoe": "#2B2D35", "sole": "#F2F0F2"},
     "suit": {"cloth": "#2F3138", "shirt": "#F1F0F4", "tie": "#5B2A3A", "belt": "#1F1E24", "shoe": "#1F1E24"},
@@ -167,7 +167,7 @@ SEX_PRESETS = {
             "outfit": {"type": "tee_jeans", "earrings": "none"},
         },
         "palette": {"lips": "#D19A94"},
-        "nude": {"hair": "short"},
+        "figure_study": {"hair": "short"},
     },
 }
 
@@ -189,7 +189,7 @@ EXPRESSIONS = {
 
 
 # Face presets: adult face types as changes on top of the sex preset (same syntax as EXPRESSIONS).
-# Results stay inside FACE_LIMITS, the adult face ranges of the figure study (rig_nude.ADULT_FACE).
+# Results stay inside FACE_LIMITS, the adult face ranges of the figure study (rig_figure_study.ADULT_FACE).
 FACE_PRESETS = {
     "soft": {"face": {"jaw_sharpness+": -0.15, "cheek+": 0.012, "jaw_width+": 0.008}, "eyes": {"tilt+": -0.04,
                                                                                                "openness*": 1.03},

@@ -1,4 +1,4 @@
-"""애니메풍 예제: 아침 햇살이 드는 방에 선 남성(성인 누드 인체화, 정면).
+"""애니메풍 예제: 아침 햇살이 드는 방에 선 남성(성인 인체 습작, 정면).
 
 여성 장면(anime_city_window.py)과 같은 공정이다.
 공정: 창과 방 → 뒤쪽 팔과 손 → 몸 덩어리(셀 그림자, 설계 그림자, 근육 선) → 얼굴 → 머리카락 → 수건 → 앞쪽 손
@@ -28,7 +28,7 @@ LEAF = ("#9fd0a0", "#4f9a7a", "#2a5f58")
 POT = "#c97a52"
 SUN = "#ffe8b0"
 SKIN, SKIN_SHADE, SKIN_DEEP, SKIN_LIGHT = "#eab896", "#c7856c", "#93523f", "#fde2cc"
-NIPPLE = "#c07a64"
+CHEST_MARK = "#c07a64"
 HAIR, HAIR_SHADE, HAIR_LIGHT = "#3a2a22", "#1e1612", "#8a6a50"
 IRIS_TOP, IRIS_MID, IRIS_LOW = "#1a1210", "#5a3a26", "#c09060"
 LINE_SKIN, LINE_HAIR, LINE_DARK = "#6a3426", "#120c0a", "#1a0e0c"
@@ -141,8 +141,8 @@ def paint_body(cv):
                            BODY.on_thorax(sign * 0.04, 0.74)], body, opacity=0.85, soft=UNIT * 0.02)
         inner_line(cv, lower, body, width=2.2, taper=(0.3, 1, 1, 0.2))
         light_spot(cv, BODY.on_thorax(sign * 0.36 - 0.05, 0.3), 0.2, 0.12, body, opacity=0.5)
-        nipple = BODY.on_thorax(sign * 0.42, 0.52)
-        cv.fill(cv.shape(g.ellipse(nipple[0], nipple[1], UNIT * 0.026, UNIT * 0.022)), NIPPLE, clip=body)
+        chest_mark = BODY.on_thorax(sign * 0.42, 0.52)
+        cv.fill(cv.shape(g.ellipse(chest_mark[0], chest_mark[1], UNIT * 0.026, UNIT * 0.022)), CHEST_MARK, clip=body)
         for row in range(3):
             y = 0.82 + row * 0.16
             inner_line(cv, [BODY.on_thorax(sign * 0.76, y), BODY.on_thorax(sign * 0.66, y + 0.08)], body,

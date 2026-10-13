@@ -117,7 +117,7 @@ sculpt.paint(art, result, "clay", color, tint=shadow, deep=crease, sheen=0.3)
 - 그린 뒤에 덧칠할 때 쓰는 결과: `result.lit`, `result.shadow`, `result.ao`, `result.at(point)`, `result.visible(point)`, `result.disc(center, normal, radius)`
 - 1280px에서 장면 하나가 10-40초 걸린다
 - 카메라를 둘러쌀 만큼 큰 형태(넓은 바닥)도 그려진다
-- `mannequin.build()`의 표지점: `chin`, `head_up`, `head_frame`, `skull`, `neck`, `nipples`, `navel`, `pelvis`, `pelvis_frame`, `chest`, `chest_frame`, 좌우 `shoulder`, `elbow`, `wrist`, `hip`, `knee`, `ankle`, 그리고 `forms`, `form_sides`, `leg_radii`, `arm_radius`
+- `mannequin.build()`의 표지점: `chin`, `head_up`, `head_frame`, `skull`, `neck`, `chest_marks`, `navel`, `pelvis`, `pelvis_frame`, `chest`, `chest_frame`, 좌우 `shoulder`, `elbow`, `wrist`, `hip`, `knee`, `ankle`, 그리고 `forms`, `form_sides`, `leg_radii`, `arm_radius`
 - `mannequin.dress(..., side=1 또는 -1)`은 한쪽 팔다리 형태만 키운다
 
 ## 포즈와 프레이밍
@@ -168,7 +168,7 @@ d.ribbon(scene, group, points, across, half_width, thickness)    # 납작한 띠
 ```python
 from atelier.staging import pair_for, placed
 a, b = pair_for("holding_hands", physique_a, physique_b)        # 둘의 Staging
-art = nude.draw_cast(style, width, setting, [nude.Actor(sitter_a, pose_a, extras_a), nude.Actor(sitter_b, pose_b, extras_b)])
+art = figure_study.draw_cast(style, width, setting, [figure_study.Actor(sitter_a, pose_a, extras_a), figure_study.Actor(sitter_b, pose_b, extras_b)])
 ```
 
 - `Scene.named(prefix)` 문맥 안에서 더한 형태는 무리 이름에 접두어가 붙는다
@@ -198,7 +198,7 @@ art = nude.draw_cast(style, width, setting, [nude.Actor(sitter_a, pose_a, extras
 | `head.HAIR_STYLES` | 그 머리 모듈의 머리 모양 이름 |
 | `hair_tones(colour)`, `eye_tones(colour)` | 이름이나 `"#RRGGBB"`에서 명암 색 |
 | `portrait.draw(style, width, look)` | 흉상을 그 얼굴로 |
-| `nude.Sitter(..., look=look)` | 전신 인물의 얼굴 |
+| `figure_study.Sitter(..., look=look)` | 전신 인물의 얼굴 |
 | `outfits.Look(..., face=look)`, `outfits.Duo(..., faces=(a, b))` | 조합 예제의 얼굴 |
 | `head.draw_head_back(art)` | 뒤에서 본 머리: 뒷머리, 모자, 연기 |
 

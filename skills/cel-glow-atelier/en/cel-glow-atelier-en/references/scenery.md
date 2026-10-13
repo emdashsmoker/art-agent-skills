@@ -147,7 +147,7 @@ Six operations for the lonely mood of an Eastern European winter city, such as p
 - `art` : a framed picture at [x, y, width, height]. `art_color` is the picture's main color
 - `vanish_x` : horizontal position of the vanishing point the floorboards converge on
 - For a character indoors, put `room` as the first operation and draw the character right away (`sky`, `street` not needed)
-- For a character sitting on a bed, combine with `figure.furniture` `bed` (`figure_lingerie_room.json`)
+- For a character sitting on a bed, combine with `figure.furniture` `bed` (`figure_innerwear_room.json`)
 - Night interiors suit `window` `night`, `lamp`, `finish.bloom` 0.3 and a violet `shadow_tint`
 
 ## Matching character and perspective
@@ -194,7 +194,7 @@ Six operations for the lonely mood of an Eastern European winter city, such as p
 ]
 ```
 
-- Full specs : `assets/examples/landscape_lake.json`, `assets/examples/city_night.json`, `assets/examples/city_day.json`, `assets/examples/city_crowd.json` (nearby passers-by), `assets/examples/figure_city.json`, `assets/examples/male_figure_city.json`, `assets/examples/figure_pinup.json` (beach), `assets/examples/male_beach.json`, `assets/examples/figure_side_walk.json` (park), `assets/examples/figure_lingerie_room.json` (bedroom at night), `assets/examples/male_arms_crossed.json` (living room by day)
+- Full specs : `assets/examples/landscape_lake.json`, `assets/examples/city_night.json`, `assets/examples/city_day.json`, `assets/examples/city_crowd.json` (nearby passers-by), `assets/examples/figure_city.json`, `assets/examples/male_figure_city.json`, `assets/examples/figure_showcase.json` (beach), `assets/examples/male_beach.json`, `assets/examples/figure_side_walk.json` (park), `assets/examples/figure_innerwear_room.json` (bedroom at night), `assets/examples/male_arms_crossed.json` (living room by day)
 
 ## Style finish
 

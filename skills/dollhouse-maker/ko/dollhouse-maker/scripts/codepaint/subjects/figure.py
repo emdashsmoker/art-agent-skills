@@ -64,7 +64,7 @@ CHEST = [(0.15, -0.13), (0.33, -0.04), (0.60, 0.06), (0.775, 0.17), (0.795, 0.34
 # with the arm raised the shoulder tip lifts into the arm: the contour runs from the neck to the armpit
 CHEST_RAISED = [(0.15, -0.13), (0.30, -0.06), (0.47, 0.02), (0.60, 0.22), (0.635, 0.50), (0.625, 0.74), (0.560, 1.00)]
 WAIST = (0.450, 0.0)                                         # waist frame
-PELVIS = [(0.585, -0.74), (0.790, -0.40), (0.880, -0.06), (0.76, 0.18), (0.32, 0.30)]   # pelvis frame: flank .. groin
+PELVIS = [(0.585, -0.74), (0.790, -0.40), (0.880, -0.06), (0.76, 0.18), (0.32, 0.30)]   # pelvis frame: flank .. lower pelvis
 HIP_WIDEST = 2                          # index of the widest point in PELVIS
 # below the hip joint the thigh draws the contour, so the trunk tucks in under it
 CROTCH_Y = 0.30
@@ -92,7 +92,7 @@ FOREARM_W = [(0.0, 0.126, 0.122), (0.22, 0.142, 0.134), (0.70, 0.100, 0.096), (1
 BREAST_CENTER = (0.30, 0.70)
 BREAST = [(-0.17, -0.30), (0.08, -0.33), (0.27, -0.14), (0.325, 0.08), (0.22, 0.28), (0.0, 0.335),
           (-0.21, 0.24), (-0.285, 0.02)]                    # teardrop: fuller low and to the outside
-NIPPLE = (0.045, 0.075)
+CHEST_MARK = (0.045, 0.075)
 
 # --- bikini, drawn over the body and clipped to it -------------------------------
 CUP = [(0.02, -0.40), (0.02, -0.40), (0.34, 0.06), (0.24, 0.31), (-0.06, 0.345), (-0.31, 0.16)]   # around the breast center
@@ -124,7 +124,7 @@ SLIP_SIDE = dict(chest=[(0.68, 0.80), (0.62, 1.06)], waist=[(0.50, 0.0)],
                  pelvis=[(0.64, -0.74), (0.84, -0.38), (0.92, -0.06)])       # skims the waist, covers the flank
 SLIP_NECK_BACK = [(0.0, 0.50), (0.15, 0.42), (0.30, 0.37), (0.50, 0.42), (0.66, 0.52)]   # a lower, straight back
 SLIP_HEM = 0.50                     # hem height along the thigh (0 = hip joint, 1 = knee)
-OUTFITS_FEMALE = ("nude", "bikini", "onepiece", "highleg", "slip", "dressed")
+OUTFITS_FEMALE = ("figure_study", "bikini", "onepiece", "highleg", "slip", "dressed")
 
 # --- male body: broad shoulders, a straight waist, narrow hips, muscular limbs --------
 CHEST_M = [(0.20, -0.15), (0.46, -0.06), (0.80, 0.05), (0.98, 0.20), (0.96, 0.34), (0.81, 0.52),
@@ -135,7 +135,7 @@ PEC_CENTER = (0.32, 0.46)                                   # chest frame
 # around the pec center; the lower border is the drawn edge, a nearly straight line slanting up to the armpit
 PEC = [(-0.29, -0.32), (-0.02, -0.34), (0.24, -0.24), (0.32, -0.08), (0.30, 0.04), (0.14, 0.16), (-0.06, 0.25),
        (-0.22, 0.28), (-0.30, 0.22), (-0.31, -0.06)]
-MALE_NIPPLE = (0.04, 0.14)
+MALE_CHEST_MARK = (0.04, 0.14)
 ABS_ROWS = (-0.35, -0.10, 0.12)                             # tendinous intersections, waist frame y
 # swim briefs and trunks, pelvis frame, right half
 BRIEFS_M = [(0.0, -0.40), (0.98, -0.38), (0.98, -0.20), (0.56, 0.0), (0.22, 0.30), (0.0, 0.38)]
@@ -148,7 +148,7 @@ SHIRT = dict(shoulder=[(0.14, -0.17), (0.46, -0.08), (0.80, 0.03), (1.00, 0.20)]
              front=dict(pelvis=[(0.64, 0.02), (0.47, 0.08), (0.39, 0.02), (0.38, -0.40)], waist=[(0.37, 0.0)],
                         chest=[(0.35, 0.90), (0.31, 0.56), (0.23, 0.26), (0.17, 0.02)]))
 SLEEVE_ROLL = 0.90                  # sleeves rolled up to just above the elbow (fraction of the upper arm)
-OUTFITS_MALE = ("nude", "briefs", "trunks", "open_shirt", "dressed")
+OUTFITS_MALE = ("figure_study", "briefs", "trunks", "open_shirt", "dressed")
 
 # every value that differs by sex; methods read these instead of the module constants
 BODY = {
@@ -226,7 +226,7 @@ ARMS_UP = FigurePose(
     left_upper_arm=-146.0, left_forearm=56.0, left_arm_scale=(0.95, 0.80), left_hand="hidden", left_arm_front=True,
     right_upper_arm=150.0, right_forearm=-60.0, right_arm_scale=(0.95, 0.80), right_hand="hidden",
     right_arm_front=True, left_foot_turn=55.0, right_foot_turn=8.0)
-PINUP = FigurePose(                 # weight on the left leg, hip pushed out, one hand in the hair, one on the hip
+SHOWCASE = FigurePose(                 # weight on the left leg, hip pushed out, one hand in the hair, one on the hip
     turn=0.50, pelvis_tilt=12.0, chest_tilt=-9.0, spine_shift=-0.20, head_tilt=-6.0, head_yaw=4.0,
     left_thigh=3.0, left_shin=1.0, right_thigh=-9.0, right_shin=15.0, right_leg_scale=(0.93, 0.95),
     left_upper_arm=-30.0, left_forearm=38.0, left_arm_scale=(1.0, 0.82), left_hand="relaxed", left_arm_front=True,
@@ -252,7 +252,7 @@ AKIMBO = FigurePose(                # standing square, hands on the hips, weight
     left_upper_arm=-38.0, left_forearm=60.0, left_hand="relaxed", left_wrist=-50.0, left_arm_front=True,
     right_upper_arm=36.0, right_forearm=-60.0, right_hand="hidden", right_arm_front=False,
     left_foot_turn=14.0, right_foot_turn=50.0)
-HEROIC = FigurePose(                # a classical standing nude: weight on the right leg, the free leg set out
+HEROIC = FigurePose(                # a classical standing figure study: weight on the right leg, the free leg set out
     turn=0.40, pelvis_tilt=6.0, chest_tilt=-5.0, spine_shift=-0.06, head_tilt=-3.0, head_yaw=10.0,
     left_thigh=-10.0, left_shin=-3.0, left_leg_scale=(0.97, 0.97), right_thigh=3.0, right_shin=1.0,
     left_upper_arm=-7.0, left_forearm=-1.0, left_hand="relaxed", left_arm_front=True,
@@ -299,7 +299,7 @@ SIDE_PHONE = FigurePose(            # standing in profile, looking down at a pho
     view="side", lean=1.0, head_tilt=16.0, left_thigh=-2.0, right_thigh=3.0, right_shin=2.0,
     left_upper_arm=-3.0, left_forearm=6.0, right_upper_arm=8.0, right_forearm=128.0, right_arm_scale=(1.0, 0.92),
     right_hand="grip")
-POSES = {"contrapposto": CONTRAPPOSTO, "arms_up": ARMS_UP, "pinup": PINUP, "seated": SEATED,
+POSES = {"contrapposto": CONTRAPPOSTO, "arms_up": ARMS_UP, "showcase": SHOWCASE, "seated": SEATED,
          "reclining": RECLINING, "akimbo": AKIMBO, "heroic": HEROIC, "phone": PHONE, "coffee": COFFEE, "point": POINT,
          "desk": DESK, "standing": STANDING, "side_stand": SIDE_STAND, "walk": WALK, "side_seated": SIDE_SEATED,
          "side_phone": SIDE_PHONE}
@@ -352,7 +352,7 @@ class FigureSpec:
     form: float = 1.0               # roundness of the skin forms (1.5-1.8 turns them harder: an oil study under side light)
     light_side: float = -1.0        # -1 = scene light comes from the left, +1 = from the right
     sex: str = "female"             # female / male: proportions, chest, head defaults and outfits (BODY)
-    outfit: str = "nude"            # female: nude / bikini / onepiece / highleg / slip; male: nude / briefs / trunks / open_shirt
+    outfit: str = "figure_study"            # female: figure study / bikini / onepiece / highleg / slip; male: figure study / briefs / trunks / open_shirt
     cloth: object = "#1f3a5f"
     cloth2: object = None           # second garment: trunks under an open shirt, the bottom of "dressed"
     upper: str = None               # outfit "dressed", upper garment: tee / longsleeve / shirt / blouse (garments.TOPS)
@@ -519,7 +519,7 @@ class Figure(SideView):
             shadow = self._shadow()
             C = lambda pts: catmull_rom(self.I(self.F("chest", pts)), samples=8)
             Pv = lambda pts: catmull_rom(self.I(self.F("pelvis", pts)), samples=8)
-            for sd in (-1, 1):                                # clavicles, groin creases
+            for sd in (-1, 1):                                # clavicles, lower pelvis creases
                 strokes.append(Stroke(C([(sd * x, y) for x, y in self.b["clavicle"]]),
                                       width=1.6 * px, color=shadow, alpha=0.55))
                 if s.sex == "female":                         # a male figure draws the iliac furrow instead
@@ -570,7 +570,7 @@ class Figure(SideView):
 
     def _abs(self):
         """Male abdomen: the center line, the tendinous intersections across the rectus, the outer edge
-        of the rectus, and the iliac furrows running down to the groin (the V)."""
+        of the rectus, and the iliac furrows running down to the lower pelvis (the V)."""
         px, shadow = self.px, self._shadow(1.2)
         C = lambda frame, pts: self.I(self.F(frame, pts))
         strokes = [Stroke(catmull_rom(np.vstack([C("chest", [(0, 0.80)]), C("waist", [(0, 0.0)]),
@@ -603,9 +603,9 @@ class Figure(SideView):
                                     erase=[(ellipse(top[0], top[1], 0.50 * s.bust * u, 0.30 * s.bust * u), 0.10 * u)],
                                     joints=[(top[0], top[1], 0.44 * s.bust * u), (side[0], side[1], 0.17 * u)],
                                     line=Line(1.9 * self.px * s.line, alpha=0.5)))
-            c = self._breast_shape(sd, [MALE_NIPPLE], PEC_CENTER)[0]       # every male outfit leaves the chest bare
+            c = self._breast_shape(sd, [MALE_CHEST_MARK], PEC_CENTER)[0]       # every male outfit leaves the chest bare
             squash = 1 - 0.35 * self.a if self._is_far(sd) else 1.0
-            parts.append(Part("areola", mix(s.skin, "#b97a70", 0.45), polys=[ellipse(c[0], c[1], 0.030 * u * squash, 0.027 * u)],
+            parts.append(Part("chest_tone", mix(s.skin, "#b97a70", 0.45), polys=[ellipse(c[0], c[1], 0.030 * u * squash, 0.027 * u)],
                               shade=False, material="flat", blur=0.008 * u, alpha=0.75, receive=False, clip=f"breast_{sd}"))
         return parts
 
@@ -633,14 +633,14 @@ class Figure(SideView):
                                     erase=[(ellipse(top[0], top[1], 0.46 * s.bust * u, 0.27 * s.bust * u), 0.10 * u)],
                                     joints=[(top[0], top[1], 0.40 * s.bust * u)],
                                     line=Line(2.0 * self.px * s.line, alpha=0.85)))
-            if s.outfit != "nude":
+            if s.outfit != "figure_study":
                 continue
             shift = self.far * 0.06 * self.a                # both point toward where the chest faces
-            c = self._breast_shape(sd, [(NIPPLE[0] + sd * shift, NIPPLE[1])])[0]
+            c = self._breast_shape(sd, [(CHEST_MARK[0] + sd * shift, CHEST_MARK[1])])[0]
             squash = 1 - 0.35 * self.a if self._is_far(sd) else 1.0
-            parts.append(Part("areola", mix(s.skin, "#c9837c", 0.55), polys=[ellipse(c[0], c[1], 0.050 * u * squash, 0.046 * u)],
+            parts.append(Part("chest_tone", mix(s.skin, "#c9837c", 0.55), polys=[ellipse(c[0], c[1], 0.050 * u * squash, 0.046 * u)],
                               shade=False, material="flat", blur=0.010 * u, alpha=0.85, receive=False, clip=f"breast_{sd}"))
-            parts.append(Part("nipple", mix(s.skin, "#b86f6c", 0.75), polys=[ellipse(c[0], c[1], 0.017 * u * squash, 0.016 * u)],
+            parts.append(Part("chest_mark", mix(s.skin, "#b86f6c", 0.75), polys=[ellipse(c[0], c[1], 0.017 * u * squash, 0.016 * u)],
                               shade=False, material="flat", blur=0.004 * u, alpha=0.9, receive=False, clip=f"breast_{sd}"))
         return parts
 

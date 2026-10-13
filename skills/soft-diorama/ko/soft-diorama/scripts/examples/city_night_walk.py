@@ -66,7 +66,7 @@ def main():
         face=FaceSpec(skin='#f6d3bd', eye_color='#7a4a5a', eye_half_height=0.102, lip_color='#d0525e',
                       lip_fullness=0.8, smile=0.45, brow_color='#2a2230'),
         hair=HairSpec(color='#2a2238', bangs='side', part=-22, length=1.25, side_length=1.0, wave=0.2, seed=SEED),
-        look=look, nude_details=False,
+        look=look, body_details=False,
     )
     garments = [wardrobe.skirt('#2d3350', length=3.0, flare=0.32), wardrobe.top('#d9c8a8', sleeve=4.9, hem=-1.7)]
     masks = draw_figure(cv, figure, garments)

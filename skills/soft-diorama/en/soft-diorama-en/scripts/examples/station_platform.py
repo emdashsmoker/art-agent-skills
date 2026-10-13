@@ -49,12 +49,12 @@ def main():
     places = group((200, 120, 1400, 1700), [woman_pose, man_pose], sexes=['female', 'male'], scales=[0.94, 1.0],
                    gap=0.18)
     people = [
-        (Figure(**places[0], pose=woman_pose, look=LOOK, nude_details=False,
+        (Figure(**places[0], pose=woman_pose, look=LOOK, body_details=False,
                 hair=hairstyle('ponytail', color='#3a2a30', seed=SEED),
                 face=expression(face_style('female', 'bright', eye_color='#7a4a3a'), 'smile')),
          [wardrobe.bottoms('#2f3a52'), wardrobe.top('#c8743e', sleeve=4.9, hem=-0.6, scoop=0.3, loose=0.06),
           wardrobe.scarf('#e8dccb')]),
-        (Figure(**places[1], pose=man_pose, sex='male', look=LOOK, nude_details=False,
+        (Figure(**places[1], pose=man_pose, sex='male', look=LOOK, body_details=False,
                 hair=hairstyle('two_block', seed=SEED),
                 face=expression(face_style('male', 'gentle'), 'surprised', 0.7)),
          [wardrobe.bottoms('#2a2c34'), wardrobe.top('#e8e6e0', sleeve=4.9, scoop=0.15),

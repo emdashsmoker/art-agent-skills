@@ -527,7 +527,7 @@ BUILDERS = {"top": _top, "bottom": _bottom, "skirt": _skirt, "dress": _dress, "b
 
 # Outfit presets: lists of garments. 'color' is the default flat colour (overridable).
 OUTFITS = {
-    "nude": [],
+    "figure_study": [],
     "underwear": [dict(type="top", id="bra", top=0.585, bottom=0.455, sleeve="none", neckline="straps", color=(0.93, 0.92, 0.90)),
                   dict(type="bottom", id="briefs", top=0.19, length="brief", color=(0.93, 0.92, 0.90))],
     "briefs": [dict(type="bottom", id="briefs", top=0.19, length="brief", color=(0.93, 0.92, 0.90))],
@@ -597,7 +597,7 @@ OUTFITS = {
     "little_black_dress": [dict(type="dress", id="dress", neckline="scoop", length="above_knee", flare=0.0, folds=0.004, color=(0.09, 0.09, 0.11))],
     "evening_gown": [dict(type="dress", id="gown", neckline="strapless", length="floor", flare=0.10, folds=0.022, fold_count=14, color=(0.50, 0.08, 0.14))],
     "summer_dress": [dict(type="dress", id="dress", neckline="v", sleeve="cap", length="midi", flare=0.09, folds=0.02, color=(0.80, 0.88, 0.93))],
-    # a classical loincloth: a short wrapped drape low on the hips, the covering of Renaissance male nudes
+    # a classical loincloth: a short wrapped drape low on the hips, the covering of Renaissance male figure studies
     "perizoma": [dict(type="skirt", id="perizoma", length="micro", flare=0.02, folds=0.02, fold_count=7, waist=0.17, hem_slant=0.3,
                       color=(0.93, 0.91, 0.86))],
     "chiton": [dict(type="dress", id="chiton", neckline="v", length="ankle", flare=0.05, folds=0.026, fold_count=18,
@@ -685,7 +685,7 @@ def _closure_painter(material, top, bottom, buttons):
     return paint
 
 
-def make_outfit(figure, outfit="nude", colors=None, masculine=False):
+def make_outfit(figure, outfit="figure_study", colors=None, masculine=False):
     """Build an outfit. outfit: preset name or a list of garment dicts.
 
     colors: {garment_id: rgb} overrides. Returns (meshes, palette).

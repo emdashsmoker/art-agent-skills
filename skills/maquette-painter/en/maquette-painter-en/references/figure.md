@@ -41,7 +41,7 @@ Figure(sex="female", heads=7.75, slim=1.0, bust=1.0, pose="relaxed", hands=None,
 | sex | female, male | |
 | heads | Height in heads | Anime 6.8-7.4, natural 7.5-7.75, idealised 8, fashion 8.5 |
 | slim | Thickness of torso and limbs | 0.9 lean, 1.0 default, 1.1 sturdy |
-| bust | Female bust size | 0-1.3, classical nudes 0.9-1.15 |
+| bust | Female bust size | 0-1.3, classical figure studies 0.9-1.15 |
 | curves | Contrast between female waist and hips | 0.6 straight, 1.0 default, 1.3 pronounced |
 | tone | Strength of muscle tone | 0 smooth, female default 0.55, male default 0.75, 1 athletic |
 | pose | Preset name or a dictionary of joints | Table below |
@@ -60,7 +60,7 @@ Figure(sex="female", heads=7.75, slim=1.0, bust=1.0, pose="relaxed", hands=None,
 | walk | Walking |
 | sit | Sitting on a chair (draw the chair separately) |
 | arms_up | Both arms raised |
-| venus | Classical nude pose, one arm across the chest and one lowered |
+| venus | Classical figure study pose, one arm across the chest and one lowered |
 | allure | Contrapposto with one hand behind the head |
 | arms_behind_head | Both hands behind the head, ribcage open |
 | heroic | Both hands on the hips, chest out |
@@ -81,7 +81,7 @@ Figure(sex="female", heads=7.75, slim=1.0, bust=1.0, pose="relaxed", hands=None,
 - The spinal furrow, sternum, linea alba and navel are grooves pressed into the surface
     + Add a groove: `figure.extra_carves.append(dict(point=world point, radius=HU, depth=HU))`
 - Muscle tone (scaled by `tone`)
-    + Hollows: the notch below the neck, dimples of Venus, the groin furrow, the deltoid V, the line between biceps and triceps, the band down the outer thigh, either side of the knee tendon, either side of the Achilles tendon, the lower edge of the ribs
+    + Hollows: the notch below the neck, dimples of Venus, the lower pelvis furrow, the deltoid V, the line between biceps and triceps, the band down the outer thigh, either side of the knee tendon, either side of the Achilles tendon, the lower edge of the ribs
     + Swellings: sternocleidomastoid, shoulder blades, hip bones, brachioradialis, the teardrop muscle inside the knee, the two heads of the calf
     + Male figures add the abdominal grid, the lower edge of the chest and serratus anterior
     + For more swellings, extend `figure.anatomy()` or add grooves to `extra_carves`
@@ -105,7 +105,7 @@ Figure(sex="female", heads=7.75, slim=1.0, bust=1.0, pose="relaxed", hands=None,
     + Features: eye height 0.8 times, lashes 0.45 times, eye-corner slant 0.3 times, almost no blush, brows low, straight and thick
     + Semi male faces leave the lips unpainted and draw only the mouth line and the shadow under the lower lip, plus one line down one side of the nose
     + Male figures take only half of the style's neck slimming (anime 0.74, semi 0.82)
-- Classical male nude
+- Classical male figure study
     + A knotted cloth round the pelvis (`wardrobe.loincloth()`) follows the convention of classical painting and leaves the legs bare
     + Suggested: `pose="david"` or `heroic`, turn 10-25, rembrandt lighting, classic face, heads 7.9 (`figure_classical_male.py`)
 - Webtoon male portrait: semi face, `Hair("crop", "textured")`; a light top and studio lighting show the build well (`portrait_male.py`)
@@ -230,7 +230,7 @@ Hair(style="long", fringe="swept", color="#3e2f45", side=None, volume=None, wave
 | `dress(color, sleeves, hem, flare, neck)` | |
 | `coat(color, hem, sleeves)` | Outer layer worn over other garments |
 | `drape(color, top_y, hem, flare)` | Classical cloth wrapped round the hips (down to the feet like a skirt); on a man it follows his own hip width |
-| `loincloth(color, top_y, length, width, knot)` | Hip band, cloth hanging front and back, a knot on one hip (classical male nude); length is the front cloth length (HU), knot "l" or "r" |
+| `loincloth(color, top_y, length, width, knot)` | Hip band, cloth hanging front and back, a knot on one hip (classical male figure study); length is the front cloth length (HU), knot "l" or "r" |
 | `shoes(color)` | |
 | `hoodie(color, sleeves, hem, strings, pocket)` | Hoodie with the hood down: a thick hood collar round the neck, the empty hood lying on the back, two drawstrings at the throat, a pouch pocket |
 | `turtleneck(color, sleeves, hem)` | Fitted knit with a collar rolled up round the neck |
@@ -386,7 +386,7 @@ with canvas.layer(depth=0.3, group="figure"):
 | Messy fold shading on clothes | Garment `folds=0` |
 | Lines too thick or thin | `draw(line_width=...)` |
 | Stiff pose | Opposite side values on pelvis and chest, a slight twist and side on the head |
-| Nude looks like a mannequin | An asymmetric pose such as `allure`, turn 15-35, rembrandt lighting, classic face |
+| Figure study looks like a mannequin | An asymmetric pose such as `allure`, turn 15-35, rembrandt lighting, classic face |
 | Bust looks like attached balls | Keep bust 0.9-1.15, three-quarter lighting rather than side lighting |
 | Flat body shape | curves 1.1-1.3, heads 7.8-8 |
 | Muscle tone too strong or invisible | tone 0.3 or 0.8; tone on back and legs shows best in back or side light |

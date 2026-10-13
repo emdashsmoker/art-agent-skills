@@ -148,7 +148,7 @@ All keys and ranges are in `references/portrait-spec.md`. The most used keys are
 }
 ```
 
-- `pose` : `standing`, `contrapposto`, `akimbo`, `wave`, `clasped`, `peace`, `pinup`, `walk`, `sitting`, `sitting_crossed`, `three_quarter`, `lean`, `arms_crossed` (arms crossed), `pockets` (hands in pockets), `stretch` (stretching)
+- `pose` : `standing`, `contrapposto`, `akimbo`, `wave`, `clasped`, `peace`, `showcase`, `walk`, `sitting`, `sitting_crossed`, `three_quarter`, `lean`, `arms_crossed` (arms crossed), `pockets` (hands in pockets), `stretch` (stretching)
 - Profile `pose` : `side_stand`, `side_walk`, `side_sit`, `side_wave`, `side_lounge` (sofa), `side_lean` (pillar). Set `right` or `left` with `facing`
 - Back view `pose` : `back_stand`, `back_walk`, `back_lookback`, `back_sit`. Set `look` to `away` (back of the head), `left`, `right` (looks back in profile), `left_3q`, `right_3q` (looks back in three-quarter)
 - Hand angles : `hand_left_roll` (-90-90), `hand_left_pitch` (0-75) in `pose_overrides`, with `right` pairs
@@ -157,7 +157,7 @@ All keys and ranges are in `references/portrait-spec.md`. The most used keys are
 - Full body `outfit` 20 kinds (left out, female `dress`, male `shirt_pants`)
     + (Female) `dress`, `blouse_skirt`, `bodycon`, `swimsuit` (alias `bikini`), `crop_hotpants`, `knit_dress` (knit dress), `tank_jeans` (tank top and jeans)
     + (Male) `trunks` (swim trunks), `open_shirt_shorts` (open short-sleeve shirt and shorts)
-    + (Unisex) `suit` (suit), `shirt_pants`, `tshirt_jeans`, `sweater_pants`, `hoodie_jeans`, `tank_shorts` (tank top and training shorts), `denim_jacket_chinos`, `leather_jacket_jeans`, `coat_turtleneck` (long coat), `lingerie` (drawers for men), `none`
+    + (Unisex) `suit` (suit), `shirt_pants`, `tshirt_jeans`, `sweater_pants`, `hoodie_jeans`, `tank_shorts` (tank top and training shorts), `denim_jacket_chinos`, `leather_jacket_jeans`, `coat_turtleneck` (long coat), `innerwear` (drawers for men), `none`
     + The engine draws the outfit written in the spec regardless of gender. Matching outfits to gender is the job of whoever writes the spec
     + Jacket and coat color is `palette.outer`; empty uses the material color (denim blue, leather black, coat camel)
 - `build` : body scale factors (`bust`, `waist`, `hips`, `shoulders`, `legs`, `muscle`), 1.0 is the default
@@ -170,7 +170,7 @@ All keys and ranges are in `references/portrait-spec.md`. The most used keys are
 - In a street scene with a standing character, match `street.horizon` to the pelvis height and use `eye` 0.9 (perspective match)
 - Add distant cars and passers-by with `cars`, `people` of `street`
 - Put nearby people in top-level `extras` and place them on the street with `"at": [x, z]` in meters
-- `outfit` `none` is a body without clothes. The engine has no genital or female nipple shapes, so none are drawn (same for `lingerie`, `swimsuit`, topless `trunks`)
+- `outfit` `none` is a body without clothes. The engine has no pelvic or female chest mark shapes, so none are drawn (same for `innerwear`, `swimsuit`, bare-chested `trunks`)
 - An interior background is one `room` operation, like `{"type": "room", "window": "night", "lamp": [0.88, 0.48]}`
 - A hat is `character.hat` `"beanie"` (beanie), color `palette.hat`. Front, three-quarter, profile and back views all supported
 - A cigarette is `figure.cigarette` : `left`, `right` (between index and middle finger), `mouth` (mouth corner). Smoke rises automatically
@@ -285,7 +285,7 @@ All keys and ranges are in `references/portrait-spec.md`. The most used keys are
 | Elbow of a hand near the face juts sideways | Shrink `arm_*_scale` to [0.45, 0.65] so the arm reads as coming forward |
 | Face is smeared in a full body | Raise `head_height` (knee-up framing), canvas height 1800 or more |
 | Character floats on the street | `ground_shadow` 0.4 or more, match `street.horizon` to the `pelvis` y |
-| Body looks flat | `build` `waist` 0.95, `hips` 1.05, `bust` 1.08, pose `contrapposto` or `pinup` |
+| Body looks flat | `build` `waist` 0.95, `hips` 1.05, `bust` 1.08, pose `contrapposto` or `showcase` |
 | Arm is stiff and straight | Pull the `reach_*` target toward the body so the elbow bends |
 | Street looks empty | `street` `cars` 3-6, `people` 5-10 |
 | Object seems to float | Add a floor shadow with `stage.ground_shadow` |
@@ -303,7 +303,7 @@ All keys and ranges are in `references/portrait-spec.md`. The most used keys are
 | Half the face is dark in backlight | `style_overrides.face_shadow_level` -0.3 |
 | Eyes float in a painterly face | `eye_height` 0.078, `lip_fullness` 1.3 |
 | One person of a two-shot leaves the frame | Use `placement.shot`, canvas width 1400 or more |
-| A pocketed hand is visible | Switch to an outfit with pockets (`bodycon`, `knit_dress`, `swimsuit`, `trunks`, `lingerie` have no pockets) |
+| A pocketed hand is visible | Switch to an outfit with pockets (`bodycon`, `knit_dress`, `swimsuit`, `trunks`, `innerwear` have no pockets) |
 | A man ends up in a dress or bikini | Set `figure.outfit` to a male or unisex outfit (left out, a man gets `shirt_pants`) |
 | Inside of an open jacket sinks into darkness | Make the inner `cloth` lighter than the jacket `outer` |
 | A hand raised over the head is cut off | Use `placement.shot` instead of `head_height` (includes the fingertips automatically) |
@@ -319,8 +319,8 @@ All keys and ranges are in `references/portrait-spec.md`. The most used keys are
 ## Protection of minors
 
 - Do not draw the following 3 things for minors
-    + Nudity (`outfit` `none`, topless `trunks` on a female)
-    + Underwear (`lingerie`) and the `pinup` pose
+    + Unclothed figures (`outfit` `none`, bare-chested `trunks` on a female)
+    + Underwear (`innerwear`) and the `showcase` pose
     + Sexual acts
 - Shows of affection such as holding hands, hugging and kissing, and everyday swimwear, are not covered
 - Judge a character to be a minor only from explicit signals

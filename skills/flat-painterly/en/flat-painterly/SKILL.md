@@ -154,7 +154,7 @@ python <skill>/scripts/inspect_image.py out/final.png --width 1600 --crop 800 15
 | Outfits | Outfits from `garment` (casual, formal, outerwear, fantasy), `character.paint_figure` | `references/figure.md` | `anime_outfit_sheet.py` |
 | Two-person scenes (two-shots) | `Stage` (shared view, hand alignment with reach and fists, elbow direction with poles, held hands with palm_out, penetration checks with collisions, prop projection), `paint_figure(defer=...)` | `references/figure.md` | `anime_cafe_talk.py` (cafe), `watercolor_street_walk.py` (walking toward the viewer hand in hand), `illustration_fantasy_walk.py` (walking hand in hand), `oil_evening_dance.py` (dance) |
 | Hands | `figure.hand_open`, `figure.hand_side` | `references/figure.md` | `watercolor_hand_studies.py` |
-| Nude figures (adult) | `figure.Figure`, adult face markers, lower body markers | `references/figure.md` | `anime_figure_base.py` (female full-body base), `anime_figure_base_male.py` (male full-body base), `anime_turnaround.py` (male and female turnaround and poses), `oil_figure_study.py`, `oil_reclining_figure.py`, `anime_city_window.py` |
+| Figure studies (adult) | `figure.Figure`, adult face markers, lower body markers | `references/figure.md` | `anime_figure_base.py` (female full-body base), `anime_figure_base_male.py` (male full-body base), `anime_turnaround.py` (male and female turnaround and poses), `oil_figure_study.py`, `oil_reclining_figure.py`, `anime_city_window.py` |
 | Landscape | `motifs.cumulus`, `ridge`, `canopy`, `grass` | `references/subjects.md` | `oil_summer_fields.py`, `oil_harbor_sunset.py` |
 | City, interiors | `Perspective` | `references/subjects.md` | `watercolor_old_town.py` |
 | Still life | `form_shadow`, `form_light`, shape subtraction | `references/subjects.md` | `watercolor_still_life.py` |
@@ -168,7 +168,7 @@ python <skill>/scripts/inspect_image.py out/final.png --width 1600 --crop 800 15
 - `references/api.md`: every engine function and argument. Read it before writing scene code
 - `references/craft.md`: painting principles that apply to every style (composition, values, color, form) and the review checklist. Read it during the brief and review stages
 - `references/style-*.md`: per-style workflow, pass argument tuning, common defects and remedies
-- `references/figure.md`: rig poses, verified pose values, body marker coordinates, lower body markers, hands, nude figures, the 3D rig and heads by angle, face and hair templates, outfits, two-shots and the stage
+- `references/figure.md`: rig poses, verified pose values, body marker coordinates, lower body markers, hands, figure studies, the 3D rig and heads by angle, face and hair templates, outfits, two-shots and the stage
 - `references/subjects.md`: methods for landscapes, cities, still lifes and modern objects, with the perspective and solid tools
 - `references/mood-doomer.md`: color, light, subjects, composition, recipes by style and post-processing values for the doomer mood. Read it together with the style reference
 
@@ -189,9 +189,9 @@ python <skill>/scripts/inspect_image.py out/final.png --width 1600 --crop 800 15
     + The stage is orthographic, so size does not change with depth. Draw deep backgrounds separately with `Perspective`
 - Hands read plausibly up to three quarters of the head height, and enlarged to fill the frame the knuckles look simple
 - Faces and skin are at the level of stylized painting. Photographic realism and text rendering are out of scope
-- Nudity and sensual expression are limited to figure work of characters carrying all adult markers
+- Figure studies and appeal-focused poses are limited to figure work of characters carrying all adult markers
     + Any style may be used, and the list of adult markers is in `references/figure.md`
-    + The full-body base examples draw both women and men without covering, down to the lower body, and render the groin as a round form at the level of classical sculpture and anatomy plates
+    + The full-body base examples draw both women and men without covering, down to the lower body, and render the lower pelvis as a round form at the level of classical sculpture and anatomy plates
     + They are not applied to any character that could read as a minor
 - The solid tools handle only combinations of boxes, round slabs and prisms
     + Objects with many free-form surfaces, such as game pads and cars, need 2D outlines as a supplement

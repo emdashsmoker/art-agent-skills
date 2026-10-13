@@ -320,7 +320,7 @@ def check_rig3d():
     """Every 3D pose on every build keeps bone lengths and proper rotations, and reaches its targets."""
     from codeillust import rig3d
     from codeillust.body3d import Skeleton3D
-    builds = {"female_average": rig3d.FEMALE_AVERAGE, "female_glamour": rig3d.FEMALE_GLAMOUR,
+    builds = {"female_average": rig3d.FEMALE_AVERAGE, "female_fuller": rig3d.FEMALE_FULLER,
               "male_slim": rig3d.MALE_SLIM, "male_athletic": rig3d.MALE_ATHLETIC}
     worst_length, worst_rotation, worst_reach = 0.0, 0.0, 0.0
     for build in builds.values():
@@ -392,7 +392,7 @@ def check_figure3d():
     holes = {}
     for name, outfit in wardrobe3d.OUTFITS.items():
         male = name in ("shirt_trousers", "swim_trunks", "suit")
-        build = rig3d.MALE_ATHLETIC if male else rig3d.FEMALE_GLAMOUR
+        build = rig3d.MALE_ATHLETIC if male else rig3d.FEMALE_FULLER
         hair = head3d.MALE_SHORT_HAIR if male else head3d.PONYTAIL_HAIR
         for yaw in TEST3D_YAWS:
             figure = Figure3D(character=man if male else woman, build=build, pose=rig3d.CONTRAPPOSTO, hair=hair,
@@ -602,7 +602,7 @@ def check_garment_fit():
     from codeillust import rig3d, wardrobe3d
     from codeillust.body3d import Skeleton3D, distance_to_solids
     worst = np.inf
-    for build in (rig3d.FEMALE_AVERAGE, rig3d.FEMALE_GLAMOUR):
+    for build in (rig3d.FEMALE_AVERAGE, rig3d.FEMALE_FULLER):
         for pose in (rig3d.STAND, rig3d.CONTRAPPOSTO, rig3d.SIT, rig3d.LIE_FRONT):
             skeleton = rig3d.pose_skeleton(Skeleton3D, rig3d.joints(build), pose)
             context = wardrobe3d.Context(skeleton, build, wardrobe3d.OUTFITS["bikini"].colors)
@@ -612,7 +612,7 @@ def check_garment_fit():
     check(worst > wardrobe3d.STRING_CLEARANCE - STRING_TOLERANCE,
           f"garments: bikini strings stay on the skin ({worst:.3f} from it)")
     off = 0.0
-    for build in (rig3d.MALE_SLIM, rig3d.MALE_ATHLETIC, rig3d.FEMALE_GLAMOUR):
+    for build in (rig3d.MALE_SLIM, rig3d.MALE_ATHLETIC, rig3d.FEMALE_FULLER):
         skeleton = rig3d.pose_skeleton(Skeleton3D, rig3d.joints(build), rig3d.STAND)
         context = wardrobe3d.Context(skeleton, build, wardrobe3d.OUTFITS["tank_top_jeans"].colors)
         for _, sign in rig3d.SIDES:

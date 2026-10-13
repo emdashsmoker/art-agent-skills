@@ -110,12 +110,12 @@ Print every option with `python scripts/catalog.py [figures|poses|hair|outfits|p
 ## Ground rules
 
 - Age is not limited. Children and teenagers can be drawn clothed
-- Figures under 18 are never drawn nude, in underwear or in a sexual staging
-    + The engine refuses outfits that leave the chest or pelvis of an under-18 body bare (nude, underwear, bikini, `perizoma`). Swim trunks and shorts on a boy are allowed
+- Figures under 18 are never drawn unclothed, in underwear or in a sexual staging
+    + The engine refuses outfits that leave the chest or pelvis of an under-18 body bare (unclothed, underwear, bikini, `perizoma`). Swim trunks and shorts on a boy are allowed
     + Age follows the body model's own age calibration (`age` 0.77 is 18 years). A figure the request sets up or introduces as a minor is treated as under 18 as well
     + Adult presets' bust shaping is not applied to an under-18 body
-- Nudes of figures 18 and over are supported. The body model has no genital detail, so that area is rendered smooth
+- Figure studies of adults 18 and over are supported. The body model has no pelvic detail, so that area is rendered smooth
     + Anime-style or youthful faces, a small build and a short height are not restricted
-    + Male nudes look natural when composed with the classical `perizoma` or with `briefs`
+    + Male figure studies look natural when composed with the classical `perizoma` or with `briefs`
 - The same spec and seed reproduce the same picture. Vary it by changing `canvas.seed`
 - Treat the limits honestly. Complex folds, realistic hair strands and photographic texture are currently out of scope. Details in `references/extending.md`

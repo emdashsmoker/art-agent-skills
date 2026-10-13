@@ -137,7 +137,7 @@ class Figure:
 
     def on_pelvis(self, x, y):
         """Convert a point in pelvis coordinates (origin at the pelvis center) to screen coordinates. Used for the
-        navel, buttocks and groin."""
+        navel, buttocks and lower pelvis."""
         return self.frame.point(*self.pelvis.point(x, y))
 
     def limb_frame(self, start, end):

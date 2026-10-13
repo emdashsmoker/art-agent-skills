@@ -26,7 +26,7 @@ license: GPL-3.0-or-later with an output exception. Terms in LICENSE and OUTPUT_
 | 피사체 | `--subject` | 내용 | 기본 화면 | 잘 어울리는 화풍 |
 |---|---|---|---|---|
 | 초상 | `portrait` | 여성 또는 남성 흉상 | 1200x1600 | 8종 모두 |
-| 전신 인물 | `figure` | 여성 또는 남성. 정면, 3/4 비스듬한 시점, 뒷모습(어깨 너머 돌아보기), 측면, 누운 자세. 서기, 앉기, 다리 꼬고 앉기, 무릎 꿇고 앉기, 벽에 기대기, 걷기(측면, 정면), 뛰기, 점프, 웅크려 앉기, 팔짱, 손 흔들기, V 사인, 기지개, 턱 괴기, 컵, 책, 우산, 와인잔, 휴대폰 들기, 포옹과 입맞춤(측면 두 인물). 의상 또는 누드 습작 | 1200x1600 | paint, illust |
+| 전신 인물 | `figure` | 여성 또는 남성. 정면, 3/4 비스듬한 시점, 뒷모습(어깨 너머 돌아보기), 측면, 누운 자세. 서기, 앉기, 다리 꼬고 앉기, 무릎 꿇고 앉기, 벽에 기대기, 걷기(측면, 정면), 뛰기, 점프, 웅크려 앉기, 팔짱, 손 흔들기, V 사인, 기지개, 턱 괴기, 컵, 책, 우산, 와인잔, 휴대폰 들기, 포옹과 입맞춤(측면 두 인물). 의상 또는 인체 습작 | 1200x1600 | paint, illust |
 | 손 | `hand` | 여성 또는 남성 손. 손등과 손바닥 습작(펼침, 이완, V, 가리킴) | 1600x1200 | anime, illust |
 | 정물 | `still_life` | 탁자 위 병, 그릇, 과일 | 1600x1200 | paint, illust |
 | 책상 | `desk` | 모니터, 노트북, 키보드, 마우스, 휴대폰, 머그, 화분, 스탠드, 노트 | 1600x1200 | anime, illust |
@@ -59,7 +59,7 @@ license: GPL-3.0-or-later with an output exception. Terms in LICENSE and OUTPUT_
     + 미지원 요청은 사용자에게 한계를 먼저 알리고 가능한 범위를 제안
 - 내장 체형 표는 성인 비례(성인 체형과 얼굴 비례)
 - 미성년자 기준
-    + 18세 미만 인물의 누드와 성적 묘사는 그리지 않음
+    + 18세 미만 인물의 노출과 성적 묘사는 그리지 않음
     + 판단 근거는 명시적 신호로 한정: 18세 미만 나이 설정, 미성년 학생 신분 설정, 이차성징 이전의 아동 체형 묘사
     + 동안 얼굴, 작은 키, 애니메풍 그림체는 성인에게도 흔한 특징이므로 그것만으로 미성년으로 판단하지 않음
 
@@ -126,15 +126,15 @@ license: GPL-3.0-or-later with an output exception. Terms in LICENSE and OUTPUT_
 | 파일 | 내용 |
 |---|---|
 | `example_spec_bob.json` | 단발 초상(안경 훅 `example_props_glasses.py`와 함께) |
-| `example_spec_figure_nude.json` | 여성 정면 누드 습작, 손을 허리에 얹은 콘트라포스토 |
-| `example_spec_figure_back.json` | 여성 뒷모습 누드 습작 |
-| `example_spec_figure_side.json` | 여성 측면 누드 습작, 허리 아치 |
+| `example_spec_figure_study.json` | 여성 정면 인체 습작, 손을 허리에 얹은 콘트라포스토 |
+| `example_spec_figure_back.json` | 여성 뒷모습 인체 습작 |
+| `example_spec_figure_side.json` | 여성 측면 인체 습작, 허리 아치 |
 | `example_spec_figure_seated_side.json`, `example_spec_figure_seated_front.json` | 여성 앉은 자세(측면, 정면) |
 | `example_spec_portrait_male.json` | 남성 초상 |
 | `example_spec_figure_male.json` | 남성 전신(티셔츠, 긴바지) |
-| `example_spec_figure_male_nude.json` | 남성 정면 누드 습작, 골반 천 |
-| `example_spec_figure_male_back.json`, `example_spec_figure_male_side.json` | 남성 뒷모습, 측면 누드 습작 |
-| `example_spec_figure_male_seated_side.json`, `example_spec_figure_male_seated_front.json`, `example_spec_figure_male_seated_front_nude.json` | 남성 앉은 자세(측면 누드, 정면 의상, 정면 누드) |
+| `example_spec_figure_male_figure_study.json` | 남성 정면 인체 습작, 골반 천 |
+| `example_spec_figure_male_back.json`, `example_spec_figure_male_side.json` | 남성 뒷모습, 측면 인체 습작 |
+| `example_spec_figure_male_seated_side.json`, `example_spec_figure_male_seated_front.json`, `example_spec_figure_male_seated_front_figure_study.json` | 남성 앉은 자세(측면 인체 습작, 정면 의상, 정면 인체 습작) |
 | `example_spec_hand_male.json` | 남성 손(손등, 손바닥, 가리킴) |
 | `example_spec_figure_shirt_skirt.json`, `example_spec_figure_coat.json` | 긴소매 셔츠와 치마, 그 위의 코트 |
 | `example_spec_figure_male_jacket.json`, `example_spec_figure_male_shorts.json` | 남성 재킷, 반바지 |

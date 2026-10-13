@@ -70,7 +70,7 @@ save(scene.render("anime"), "portrait.png")
 ```python
 from codepaint.subjects.figure import Figure, FigureSpec
 figure = Figure(FigureSpec(cx=448, top=70, unit=180, outfit="slip", cloth="#2a2a40", bust=1.10, waist=0.95, legs=1.05),
-                pose="pinup")    # 자세 프리셋 16종, 목록은 references/subjects.md의 자세 항목
+                pose="showcase")    # 자세 프리셋 16종, 목록은 references/subjects.md의 자세 항목
 man = Figure(FigureSpec(cx=448, top=70, unit=180, sex="male", outfit="trunks", cloth="#1f5f8f"), pose="akimbo")
 scene.add(figure.parts())
 ```
@@ -126,7 +126,7 @@ save(finish(build_landscape(LandscapeSpec(seed=3)), "painterly"), "lake.png")
 | 얼굴, 상반신 초상(여성, 남성) | `subjects/head.py`, `subjects/bust.py` | `examples/portrait.py` | anime, illust |
 | 상황, 포즈, 구도, 그룹샷 시험 21장(빗속 2인, 밤 침실, 해변 휴식, 벤치, 수업, 포즈 16종, 노부부 산책, 뒷모습 4인, 라인업, 근접샷, 원경, 낮은 시점, 3분할, 단체 사진, 소파 4인, 횡단보도 8인, 공원 2쌍, 회의, 밤 사무실) | `subjects/scenes.py`, `subjects/stage.py`, `subjects/pair.py`, `subjects/figure.py` | `examples/variety.py`(`BUILDERS`) | 화풍 7종에 2-4장씩 |
 | 인물 다양화(표정 7종, 눈매 4종, 얼굴 폭, 눈썹 굵기, 나이와 흰머리, 수염 4종, 안경 3종, 주근깨, 점, 머리 모양 12종)와 군중 | `subjects/head.py`, `subjects/face_extras.py`, `subjects/profile.py` | `examples/faces.py`(`BUILDERS`: 견본 시트 4장, 공원 군중) | anime, illust |
-| 전신 인체(여성, 남성, 누드, 수영복, 슬립, 서기, 앉기, 눕기) | `subjects/figure.py` | `examples/figure.py` | anime, illust, painterly(scale 0.5) |
+| 전신 인체(여성, 남성, 인체 습작, 수영복, 슬립, 서기, 앉기, 눕기) | `subjects/figure.py` | `examples/figure.py` | anime, illust, painterly(scale 0.5) |
 | 일상복(상의 4종, 하의 4종, 신발 3종) | `subjects/garments.py`, `subjects/extremities.py` | `examples/figure.py`(`street`, `turnaround()`) | anime, illust |
 | 뒷모습, 옆모습(옆얼굴, 걷기, 의자 앉기) | `subjects/figure.py`, `subjects/side.py`, `subjects/profile.py` | `examples/figure.py`(`back`, `side_seated`), `examples/portrait.py`(`build_back()`) | anime, illust |
 | 투샷(나란히 서기, 손잡기, 어깨동무, 대화) | `subjects/pair.py` | `examples/scenes.py`(`pairs()`) | illust, anime |
@@ -187,7 +187,7 @@ save(finish(build_landscape(LandscapeSpec(seed=3)), "painterly"), "lake.png")
 
 ## 작도 범위
 
-- 미성년자의 누드와 성적 묘사는 작도하지 않음
+- 미성년자의 노출과 성적 묘사는 작도하지 않음
     + 판단 기준은 이차성징 이전의 신체 묘사(아동 비례, 발달 전 가슴과 골반)
     + 나이 또는 설정이 18세 미만으로 명시된 인물에도 같은 규정 적용
     + 화풍 특성(애니메풍의 큰 눈과 작은 코)만으로는 미성년으로 판단하지 않음

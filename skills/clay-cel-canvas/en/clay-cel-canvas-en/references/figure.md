@@ -1,6 +1,6 @@
 # Drawing people
 
-Values were verified in the figure examples under `examples/` (female: `portrait.py`, `nude.py`, `figure.py` / male: `portrait_male.py`, `nude_male.py`, `figure_male.py` / shared: `hands.py`, `feet.py`). The example people have adult proportions.
+Values were verified in the figure examples under `examples/` (female: `portrait.py`, `figure_study.py`, `figure.py` / male: `portrait_male.py`, `figure_study_male.py`, `figure_male.py` / shared: `hands.py`, `feet.py`). The example people have adult proportions.
 
 ## Contents
 
@@ -24,7 +24,7 @@ Values were verified in the figure examples under `examples/` (female: `portrait
 - Joining hands and feet to limbs
 - The 3-D mannequin
 - Men
-- Nude anatomy
+- Figure study anatomy
 - Dressing the 3-D body
 - Dressing (2-D)
 
@@ -289,7 +289,7 @@ Stand a figure in contrapposto. Standing symmetric, it becomes a mannequin.
 - Bend the other leg's knee slightly inward and set its foot out to the side
 - Give the two arms different shapes
     + The clothed example lets one arm hang and puts the other hand on the hip
-    + The standing nude raises one arm behind the head and rests the other hand on the thigh
+    + The standing figure study raises one arm behind the head and rests the other hand on the thigh
 - A body centre line that draws an S brings even a still standing figure to life
     + Push the pelvis centre 10-20 toward the weight side and the rib-cage centre 10 the other way
     + The waist on the weight side bends deeply; the other flank stretches long
@@ -344,7 +344,7 @@ with art.place(at=CHIN, scale=HEAD_SCALE, pivot=(500, 668), angle=-3):
 
 ## Turning the head
 
-A front-drawn head turns up to 35 degrees either way (`atelier.turn`). On a 3-D body, `nude.draw_figure()` computes the angle from the head direction and the camera and turns it automatically.
+A front-drawn head turns up to 35 degrees either way (`atelier.turn`). On a 3-D body, `figure_study.draw_figure()` computes the angle from the head direction and the camera and turns it automatically.
 
 - Principle: every point of the face gets a depth, how far it stands forward
     + The depth is a flat ellipsoid plus the height of the nose (`FaceDepth`)
@@ -364,7 +364,7 @@ A front-drawn head turns up to 35 degrees either way (`atelier.turn`). On a 3-D 
 - On a 3-D body, the head's anchor is the turned chin position
 - A head module provides a `turned(angle)` context and a `FACE_DEPTH` constant (`portrait.py`, `portrait_male.py`)
 - Profiles and turns beyond 35 degrees cannot be drawn
-- When the head is turned more than 110 degrees from the camera, only the hair is drawn, without a face (`nude.BACK_VIEW`)
+- When the head is turned more than 110 degrees from the camera, only the hair is drawn, without a face (`figure_study.BACK_VIEW`)
     + From behind, the back-hair drawing is laid over the body and clothes, because long hair covers the back
     + Without this the face is drawn on the back of the head
     + Between 35 and 110 degrees the face turned at 35 degrees shows together with the hair mass at the back of the head
@@ -458,7 +458,7 @@ sculpt.paint(art, result, "skin", skin, shadow, deep, sheen=0.28)
 - Elbows and knees are solved by inverse kinematics. Bone lengths hold in any pose
     + An unreachable target is reached as far as possible, and the shortfall is recorded in `marks["strain"]`
     + If it falls short by more than 2 cm, move the target toward the body
-- To put a hand behind the head or on a knee, `build()` once to get landmarks and use them as targets (`nude.resolve()`, `Setting.hand_behind_head`, `Setting.hand_at`)
+- To put a hand behind the head or on a knee, `build()` once to get landmarks and use them as targets (`figure_study.resolve()`, `Setting.hand_behind_head`, `Setting.hand_at`)
 - The ankle of a foot flat on the floor is about 0.081 high for a woman and 0.088 for a man. With a raised heel, 0.115-0.125
     + Lower, the foot sinks into the floor; higher, it floats. Check that the lowest point of the sole meets the floor
 - How the angles of `rotation(turn, lean, tilt)` feel
@@ -500,7 +500,7 @@ sculpt.paint(art, result, "skin", skin, shadow, deep, sheen=0.28)
 
 ## Men
 
-The same procedure as for women: bust, 3-D mannequin, nude, clothed.
+The same procedure as for women: bust, 3-D mannequin, figure study, clothed.
 
 ### Face (`examples/portrait_male.py`)
 
@@ -536,7 +536,7 @@ It uses the same function names as the bust example (`head_masks`, `draw_back_ha
 | Limbs | Smooth cylinders | Biceps, triceps and front thigh muscles as long ellipsoids melted on |
 | Hands and feet | Reference | Hands 1.10 times, feet 1.08 times |
 
-- Build the clothed full body thinner than the nude study (`figure_male.LEAN`)
+- Build the clothed full body thinner than the figure study (`figure_male.LEAN`)
     + Shoulder joint 0.157; deltoids and limbs thinner. The outer shoulder width comes to about 1.8 head heights
     + Change only the needed values with `dataclasses.replace(MALE, ...)`
 - Keep the shoulder band and trapezius lower than the neck root. Higher, they climb the neck and the head looks set on the shoulders
@@ -556,33 +556,33 @@ Items applied to the female bust (`portrait.py`). The same principles work on me
 | Cheeks | One light blush circle. Diagonal hatching over it looks like dated manga |
 | Mouth | A short stroke lifting the mouth corners slightly. Drawn downward it looks like a fang |
 
-## Nude anatomy
+## Figure study anatomy
 
-The aim is plausibility over detailed rendering. `examples/nude.py` holds 3 poses drawn on the mannequin: standing, seated, reclining.
+The aim is plausibility over detailed rendering. `examples/figure_study.py` holds 3 poses drawn on the mannequin: standing, seated, reclining.
 
 - The 3-D body gets proportion, overlap, shadow and crease darkness right. Little needs adding by hand
-    + Areolae, nipples and navel: stamp small discs on the surface with `result.disc()`. Skip hidden ones with `result.visible()`
+    + Chest tones, chest marks and navel: stamp small discs on the surface with `result.disc()`. Skip hidden ones with `result.visible()`
     + Warm flush on knees and elbows: lay a thin `art.blob()`
     + Warm reflected light and key light
-- The mannequin has no genital forms. The examples leave the place where the legs meet as a smooth form with shadow
-    + The female example reads as a classical nude from the smooth form alone
-    + On the male example the smooth form looks odd, so the groin is covered by pose or cloth, as in classical sculpture
+- The mannequin has no pelvic forms. The examples leave the place where the legs meet as a smooth form with shadow
+    + The female example reads as a classical figure study from the smooth form alone
+    + On the male example the smooth form looks odd, so the lower pelvis is covered by pose or cloth, as in classical sculpture
     + Standing: a cloth held at the hip by one hand hangs in front (`sculpt.hanging_cloth()`)
     + Seated: one foot rests on a support, so the raised thigh crosses the middle of the body
     + Reclining: the upper leg bends forward and overlaps
-- Sensuality comes from pose and light more than from the amount of detail
+- Appeal comes from pose and light more than from the amount of detail
     + Put the weight on one leg and tilt pelvis and chest opposite ways
     + Raising one arm behind the head stretches the torso long
     + In a reclining pose overlap the upper leg forward and rest the upper arm on the hip
     + A dark background, a key light from one side, warm reflected light on the opposite edge
 - The painterly style suits it best. In the anime style the shadow edges simplify and it reads as a manga body
-- The same machinery draws both sexes: `nude.draw_figure(style, width, setting, sitter)`
-    + `Sitter` bundles the build, the head to set on and the skin colours (`nude.WOMAN`, `nude_male.MAN`)
+- The same machinery draws both sexes: `figure_study.draw_figure(style, width, setting, sitter)`
+    + `Sitter` bundles the build, the head to set on and the skin colours (`figure_study.WOMAN`, `figure_study_male.MAN`)
     + `Setting` bundles camera, pose, props, room and things to add (`extras`)
 
 ## Dressing the 3-D body
 
-The method of `examples/figure_male.py`. It holds up to pose changes better than the 2-D mask method below. Clothes such as bikini, lingerie, suit, hoodie, skirts, dresses and scarves, plus wind, pose presets, two-shots and places, are in `references/wardrobe.md`.
+The method of `examples/figure_male.py`. It holds up to pose changes better than the 2-D mask method below. Clothes such as bikini, innerwear, suit, hoodie, skirts, dresses and scarves, plus wind, pose presets, two-shots and places, are in `references/wardrobe.md`.
 
 ```python
 from atelier.mannequin import TROUSERS, dress

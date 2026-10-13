@@ -1,4 +1,4 @@
-"""Classical standing nude in an old-master manner (adult figure, contrapposto with one hand in the hair).
+"""Classical standing figure study in an old-master manner (adult figure, contrapposto with one hand in the hair).
 
 Anatomy comes from the construction mannequin; the painting manner comes from the style preset.
 """

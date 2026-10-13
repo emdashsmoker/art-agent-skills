@@ -1,4 +1,4 @@
-"""Small surface marks shared by the figure builders (rig_nude, rig_figure).
+"""Small surface marks shared by the figure builders (rig_figure_study, rig_figure).
 
 Why a module: a fingernail is drawn the same way on a clothed figure and on a figure study,
 and both need the same visibility test (is this point on the front-most visible surface?).

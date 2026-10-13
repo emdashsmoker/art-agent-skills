@@ -49,7 +49,7 @@
 | body.pose | relaxed, close, behind, pocket, wave, hand_on_hip, hands_on_hips, arms_crossed, chin_rest, hair_tuck, hands_behind_head, walk, lean, sit, lie | relaxed | 팔 포즈 또는 전신 자세 |
 | body.stance | straight, contrapposto, wide, walk, lean, sit, lie | straight, 전신 자세는 같은 이름 | 다리 자세 (full 구도에서 보임) |
 | body.seat | chair, stool, bed | chair | 앉는 자리 (pose sit 전용, bed는 침대 가장자리) |
-| body.figure | slim, balanced, curvy, athletic | balanced | 체형 (curvy는 여성 전용, athletic은 남성 전용) |
+| body.figure | slim, balanced, fuller, athletic | balanced | 체형 (fuller는 여성 전용, athletic은 남성 전용) |
 | body.bust | small, medium, large, xlarge | medium | 가슴 크기 (여성 전용, large 이상은 옆 볼륨이 팔 앞으로 나옴) |
 | body.muscle | 0-1 | slim 0.10, balanced 0.30, athletic 0.50 | 남성 근육 표현 강도 (0 매끈, 1 복근과 팔 근육이 가장 선명) |
 | body.hands.right, body.hands.left | open, relaxed, flat, fist, point, peace | 포즈 기본값 | 손 제스처 (right는 화면 오른쪽 손) |
@@ -71,9 +71,9 @@
 - (stance 선택) contrapposto는 화면 왼쪽 다리에 체중, 골반 기울기와 반대쪽 다리 벌림
 - 손은 3D 손바닥과 손가락 3마디 골격을 투영한 형태, 제스처만 바꾸면 손가락 모양이 바뀜
 - wave와 peace 조합: `"body": {"pose": "wave", "hands": {"right": "peace"}}`
-- (figure 대체) 여성에 athletic을 주면 balanced, 남성에 curvy를 주면 athletic으로 대체
+- (figure 대체) 여성에 athletic을 주면 balanced, 남성에 fuller를 주면 athletic으로 대체
 - (3/4 구도) body.yaw와 head.yaw를 같은 방향으로 주면 자연스러움 (예: body.yaw 24, head.yaw 20)
-- (여성 체형) curvy는 허리가 가장 잘록하고 골반과 허벅지가 가장 넓음
+- (여성 체형) fuller는 허리가 가장 잘록하고 골반과 허벅지가 가장 넓음
 - (hold) 쥔 손의 팔 자세는 물건별로 고정되고 나머지 팔은 pose를 따름
     + phone은 가슴 앞에서 손바닥으로 휴대폰 뒷면을 받친 손 (관객에게 손등과 휴대폰 뒷면이 보임), 화면의 찬 빛이 손 주변을 밝힘
     + can은 배 높이에서 손등을 관객 쪽으로 두고 캔을 감싸 쥔 손
@@ -190,7 +190,7 @@
 - tank_top은 남녀 공용 민소매, shirtless는 남성 전용 상의 탈의
 - (남성 하의) board_shorts는 허벅지 중간 기장 보드 쇼츠와 옆선 줄무늬, 허리 끈
 - (남성 하의) swim_briefs는 낮은 허리선 수영 브리프, boxer_briefs는 밴드 허리 박서 브리프
-- 수영복과 속옷의 앞판은 매끈한 면으로 처리, 사타구니 형태는 강조하지 않음
+- 수영복과 속옷의 앞판은 매끈한 면으로 처리, 골반 앞쪽 형태는 강조하지 않음
 - 하의와 신발은 waist, full 구도에서만 렌더
 - 크롭티는 배꼽 위 기장, 청바지는 로우라이즈라 복부가 드러남 (스커트는 허리선이 높아 복부를 가림)
 - (bottom_style) classic은 기본 브리프형, high_leg는 옆선이 골반 위로 올라간 형태, string은 작은 앞판과 끈, 골반 옆 리본

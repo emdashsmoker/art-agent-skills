@@ -781,7 +781,7 @@ def baji(color="#ece6d6", ease=0.16, name="baji", **kw):
 
 
 def fundoshi(color="#f4f1ea", apron=0.0, twist=True, ease=0.02, name="fundoshi", **kw):
-    """Japanese loincloth: a twisted band round the hips, a pouch over the groin, a strand between the buttocks.
+    """Japanese loincloth: a twisted band round the hips, a pouch over the lower pelvis, a strand between the buttocks.
 
     apron  > 0 lets a front cloth hang that many HU below the band (etchu style); 0 is the plain rokushaku
     twist  draws the rolled twist of the band

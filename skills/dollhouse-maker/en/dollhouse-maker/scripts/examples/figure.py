@@ -1,8 +1,8 @@
 """Figures constructed in 2D, through the same steps for a woman and a man.
 
-Female: an anime pin-up in a bikini on a beach, an illustrated nude pin-up, an oil study of a nude in
+Female: an anime showcase pose in a bikini on a beach, an illustrated figure study in a showcase pose, an oil figure study in
 contrapposto, a woman in a slip dress seated on a block, and a reclining figure in a one-piece swimsuit.
-Male: an oil study of a standing nude, an anime swimmer in trunks on a beach, an illustrated nude in
+Male: an oil study of a standing figure study, an anime swimmer in trunks on a beach, an illustrated figure study in
 contrapposto, a man in an open shirt seated on a block, and a reclining figure in swim briefs.
 Everyday clothes, hands and views: a woman walking in profile, a woman seen from behind, a woman on her phone,
 an oil study in profile, a woman seated on a chair in profile; a man walking, a man from behind on a beach,
@@ -98,13 +98,13 @@ DRESS_F = dict(upper="tee", lower="jeans", cloth="#f2efe8", cloth2="#3b5b8a", sh
 # (name, pose, style, light, backdrop, figure options[, prop, layout])
 VARIANTS = {
     "painterly": ("contrapposto", get_style("painterly", painterly=dict(scale=0.5, jitter=3.5, relief=0.08)),
-                  (-0.78, -0.35, 0.52), studio_dark, dict(outfit="nude", skin="#eec6ab", form=1.8, modeling=0.95)),
-    # anime with soft cel edges, a warm rim light and a hint of light through the skin: a glossy pin-up look
-    "anime": ("pinup", get_style("anime", cel_edge=0.05, rim=0.5, rim_color=(1.0, 0.9, 0.8), sss=0.5),
+                  (-0.78, -0.35, 0.52), studio_dark, dict(outfit="figure_study", skin="#eec6ab", form=1.8, modeling=0.95)),
+    # anime with soft cel edges, a warm rim light and a hint of light through the skin: a glossy showcase look
+    "anime": ("showcase", get_style("anime", cel_edge=0.05, rim=0.5, rim_color=(1.0, 0.9, 0.8), sss=0.5),
               (-0.66, -0.45, 0.60), beach, dict(outfit="bikini", cloth="#c8323a", skin="#f3d2bb")),
-    "illust": ("pinup", "illust", (-0.66, -0.45, 0.60),
+    "illust": ("showcase", "illust", (-0.66, -0.45, 0.60),
                lambda: backdrop.light_beam(backdrop.wash(HEIGHT, WIDTH, ["#e9e1d5", "#d7cbbb", "#efe9df"], seed=4)),
-               dict(outfit="nude", skin="#f0cdb6")),
+               dict(outfit="figure_study", skin="#f0cdb6")),
     "seated": ("seated", get_style("anime", cel_edge=0.05, rim=0.5, rim_color=(1.0, 0.9, 0.8), sss=0.5),
                (-0.66, -0.45, 0.60), lambda: backdrop.studio(HEIGHT, WIDTH, "#e6dccd", "#a89a8c"),
                dict(outfit="slip", cloth="#2a2a40", skin="#f3d2bb"), seat_block, dict(top=200, cx=0.40)),
@@ -114,13 +114,13 @@ VARIANTS = {
                   dict(size=(1600, 960), unit=150, cx=0.52, rest=0.60)),
     # the same five pictures for a man
     "male_painterly": ("heroic", get_style("painterly", painterly=dict(scale=0.5, jitter=3.5, relief=0.08)),
-                       (-0.78, -0.35, 0.52), studio_dark, dict(sex="male", outfit="nude", skin="#dcae8c", form=1.8,
+                       (-0.78, -0.35, 0.52), studio_dark, dict(sex="male", outfit="figure_study", skin="#dcae8c", form=1.8,
                                                                modeling=0.95)),
     "male_anime": ("akimbo", get_style("anime", cel_edge=0.05, rim=0.5, rim_color=(1.0, 0.9, 0.8), sss=0.4),
                    (-0.66, -0.45, 0.60), beach, dict(sex="male", outfit="trunks", cloth="#1f5f8f", skin="#e2b48f")),
     "male_illust": ("contrapposto", "illust", (-0.66, -0.45, 0.60),
                     lambda: backdrop.light_beam(backdrop.wash(HEIGHT, WIDTH, ["#e3e6e8", "#c9cfd4", "#eef0f1"], seed=4)),
-                    dict(sex="male", outfit="nude", skin="#e6bf9f")),
+                    dict(sex="male", outfit="figure_study", skin="#e6bf9f")),
     "male_seated": ("seated", get_style("anime", cel_edge=0.05, rim=0.5, rim_color=(1.0, 0.9, 0.8), sss=0.4),
                     (-0.66, -0.45, 0.60), lambda: backdrop.studio(HEIGHT, WIDTH, "#e3e0da", "#9aa0a6"),
                     dict(sex="male", outfit="open_shirt", cloth="#e8e2d4", skin="#e2b48f"), seat_block,
@@ -140,7 +140,7 @@ VARIANTS = {
               dict(outfit="dressed", upper="longsleeve", lower="long_skirt", cloth="#c9b48a", cloth2="#4a5a3a",
                    shoes="boots", cloth3="#3a2a20", right_item="phone", skin="#f0cdb6")),
     "side_study": ("side_stand", get_style("painterly", painterly=dict(scale=0.5, jitter=3.5, relief=0.08)),
-                   (-0.78, -0.35, 0.52), studio_dark, dict(outfit="nude", skin="#eec6ab", form=1.8, modeling=0.95)),
+                   (-0.78, -0.35, 0.52), studio_dark, dict(outfit="figure_study", skin="#eec6ab", form=1.8, modeling=0.95)),
     "side_seated": (view("side_seated", facing=-1), ANIME_SOFT, (-0.66, -0.45, 0.60), studio_light,
                     dict(outfit="dressed", upper="blouse", lower="skirt", cloth="#f4e9e9", cloth2="#2b2b3a", shoes="heels",
                          cloth3="#8a1c2a", skin="#f3d2bb"), side_chair, dict(top=200, cx=0.62)),

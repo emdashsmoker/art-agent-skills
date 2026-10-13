@@ -218,7 +218,7 @@ Depth(chest, waist, hip, bust, glute)   # 몸통 앞뒤 반두께(머리 높이)
 | `body.surface(part, x, y, side="front")` | 몸통 겉면의 몸 좌표 점과 바깥 법선. part는 thorax 또는 pelvis, side는 front 또는 back |
 | `body.on_thorax(x, y, side)`, `body.on_pelvis(x, y, side)` | 겉면 점의 화면 좌표. x, y는 `figure.Figure`와 같은 흉곽 좌표와 골반 좌표 |
 | `body.facing(normal)`, `body.facing_at(part, x, y, side)` | 법선이 관찰자를 향하는 정도(-1에서 1). 0 이하면 보이지 않는 면 |
-| `body.bulge(part, x, y, z, radii)` | 부위 좌표의 타원체 윤곽. 가슴, 엉덩이, 사타구니의 둥근 덩어리 |
+| `body.bulge(part, x, y, z, radii)` | 부위 좌표의 타원체 윤곽. 가슴, 엉덩이, 골반 앞쪽의 둥근 덩어리 |
 | `body.local_point(part, x, y, z)` | 부위 좌표의 점을 몸 좌표로 |
 | `body.project(point)`, `body.project_path(points)`, `body.depth_of(point)` | 몸 좌표를 화면 좌표와 시선 깊이로 |
 | `body.head_center()`, `body.head_yaw()` | 두개골 중심의 몸 좌표, 관찰자 기준 머리 각도 |

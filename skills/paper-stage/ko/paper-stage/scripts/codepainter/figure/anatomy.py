@@ -21,7 +21,7 @@ BREAST_SAG = 0.07                   # a fuller breast hangs lower by this much p
 BREAST_FORWARD = 0.10               # the ball's centre sits this share of its radius in front of the ribcage
 BREAST_ROOT = 1.55                  # the upper slope starts this many radii above the centre
 BUTTOCK_ROOT = 1.25                 # the lower back runs into the buttock from this many radii above its centre
-AREOLA_DIRECTION = (0.16, 0.20)     # areola offset from the breast centre (out, down) as a share of the radius
+CHEST_TONE_DIRECTION = (0.16, 0.20)     # chest tone offset from the breast centre (out, down) as a share of the radius
 BUTTOCK_DEPTH = 0.90                # depth of a buttock volume as a share of its width
 BUTTOCK_SINK = 0.35                 # how far its centre sits inside the back surface, as a share of its depth
 BREAST_SPREAD = 0.06                # and sits further from the breastbone
@@ -193,18 +193,18 @@ def draw_breasts(painting, skeleton, clip, spec, style, light):
         base = geo.arc(center, radius, radius * 1.06, np.radians(2), np.radians(178), 30)
         painting.stroke(base, skeleton.px(MARK_WIDTH), ink, taper=(0.32, 0.32), opacity=_line_opacity(style, 0.85, 0.30),
                         layer="color", clip=own_clip)
-        # The areola sits on the front of the ball: it slides round and narrows as the body turns.
-        out, down = AREOLA_DIRECTION
+        # The chest tone sits on the front of the ball: it slides round and narrows as the body turns.
+        out, down = CHEST_TONE_DIRECTION
         forward = np.sqrt(1.0 - out ** 2 - down ** 2)
         facing = -sign * out * skeleton.sin_yaw + forward * skeleton.cos_yaw
         if facing <= 0.05:
             continue
-        areola_center = center + np.array([(sign * out * skeleton.cos_yaw + forward * skeleton.sin_yaw) * radius, down * radius])
+        chest_tone_center = center + np.array([(sign * out * skeleton.cos_yaw + forward * skeleton.sin_yaw) * radius, down * radius])
         squeeze = min(facing / forward, 1.0)
         tone = mix(skin, spec.lip, 0.42)
-        areola = geo.ellipse(areola_center, radius * 0.20 * squeeze, radius * 0.18)
-        painting.fill(sh.blur(painting.mask(areola), radius * 0.03) * own_clip, tone, 0.75)
-        painting.fill(painting.mask(geo.ellipse(areola_center, radius * 0.07 * max(squeeze, 0.5), radius * 0.065)) * own_clip,
+        chest_tone = geo.ellipse(chest_tone_center, radius * 0.20 * squeeze, radius * 0.18)
+        painting.fill(sh.blur(painting.mask(chest_tone), radius * 0.03) * own_clip, tone, 0.75)
+        painting.fill(painting.mask(geo.ellipse(chest_tone_center, radius * 0.07 * max(squeeze, 0.5), radius * 0.065)) * own_clip,
                       mix(tone, shadow_of(tone), 0.55), 0.85)
     if skeleton.body.bust >= 0.8:      # the hollow between
         ends = [(0.0, BREAST_CENTER[1] - 0.22), (0.0, BREAST_CENTER[1] + 0.25)]
@@ -248,7 +248,7 @@ def draw_hip_creases(painting, skeleton, clip, spec, style):
             continue
         crease = geo.smooth(skeleton.on_pelvis([(sign * 0.45, -0.02), (sign * 0.28, 0.20), (sign * 0.075, 0.37)], surface=True))
         painting.stroke(crease, width, ink, taper=(0.65, 0.15), opacity=_line_opacity(style, 0.65, 0.35), layer="color", clip=clip)
-    if skeleton.seated > 0.5:          # sitting: the thighs cover the groin, so neither shadow nor gap shows
+    if skeleton.seated > 0.5:          # sitting: the thighs cover the lower pelvis, so neither shadow nor gap shows
         return
     delta = geo.smooth(skeleton.on_pelvis([(-0.06, 0.33), (0.06, 0.33), (0.0, 0.45)], surface=True), closed=True)
     _soft(painting, skeleton, delta, clip, shadow, 0.32, 0.02)
@@ -298,9 +298,9 @@ def draw_pecs(painting, skeleton, clip, spec, style, light):
         painting.stroke(edge, width, ink, taper=(0.5, 0.2), opacity=_line_opacity(style, 0.75, 0.30), layer="color", clip=clip)
         glow = geo.ellipse(skeleton.on_chest([(sign * 0.24, 0.30)], surface=True)[0], skeleton.px(0.15), skeleton.px(0.10))
         _soft(painting, skeleton, glow, pec, _light(spec), (0.20 + 0.15 * style.gradient) * style.highlight, 0.05, "screen")
-        nipple = skeleton.on_chest([(sign * 0.25, PEC_OUTER - 0.02)], surface=True)[0]
+        chest_mark = skeleton.on_chest([(sign * 0.25, PEC_OUTER - 0.02)], surface=True)[0]
         tone = mix(rgb(spec.skin), spec.lip, 0.40)
-        painting.fill(sh.blur(painting.mask(geo.ellipse(nipple, skeleton.px(0.030), skeleton.px(0.026))), skeleton.px(0.006)) * clip, tone, 0.8)
+        painting.fill(sh.blur(painting.mask(geo.ellipse(chest_mark, skeleton.px(0.030), skeleton.px(0.026))), skeleton.px(0.006)) * clip, tone, 0.8)
     groove = geo.needle(*skeleton.on_chest([(0.0, 0.16), (0.0, PEC_LOW)], surface=True), skeleton.px(0.05))
     _soft(painting, skeleton, groove, clip, shadow, 0.40, 0.02)
 
@@ -330,7 +330,7 @@ def draw_male_abdomen(painting, skeleton, clip, spec, style):
             tooth = geo.needle(*skeleton.on_chest([(sign * (skeleton.body.chest - 0.02), y), (sign * (skeleton.body.chest - 0.12), y + 0.08)], surface=True),
                                skeleton.px(0.03))
             _soft(painting, skeleton, tooth, clip, shadow, 0.24, 0.012)
-        # the V over the hip bones runs from the flank down toward the groin
+        # the V over the hip bones runs from the flank down toward the lower pelvis
         v_line = geo.smooth(skeleton.on_pelvis([(sign * 0.42, -0.42), (sign * 0.30, -0.12), (sign * 0.12, 0.22)], surface=True))
         painting.stroke(v_line, skeleton.px(MARK_WIDTH), ink, taper=(0.55, 0.3), opacity=_line_opacity(style, 0.6, 0.3), layer="color", clip=clip)
         _soft(painting, skeleton, geo.tube(v_line + [sign * skeleton.px(0.02), 0.0], [skeleton.px(0.02), skeleton.px(0.035), skeleton.px(0.02)], count=24),

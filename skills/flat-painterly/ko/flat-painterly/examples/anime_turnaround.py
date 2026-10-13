@@ -4,7 +4,7 @@
 포즈 시트는 앉기, 옆에서 본 걷기, 어깨 너머로 돌아보기처럼 몸과 머리가 따로 도는 자세를 담는다.
 공정: 머리 단위 안내선 → 3차원 리그(figure3d) → 먼 팔다리, 몸, 가까운 팔다리 순서의 덩어리 → 겉면 표지
 → 손과 발 → 머리(head3d): 뒷머리 다발, 얼굴, 귀, 머리 덮개, 앞머리 다발.
-성인 표지와 사타구니 처리는 anime_figure_base.py, anime_figure_base_male.py와 같다.
+성인 표지와 골반 앞쪽 처리는 anime_figure_base.py, anime_figure_base_male.py와 같다.
 몸통 표지는 겉면 점의 법선이 관찰자를 향할 때만 그리고 가장자리로 갈수록 흐리게 한다.
 실행: python anime_turnaround.py [출력폴더] [scale]
 """

@@ -1,4 +1,4 @@
-"""Painterly (oil) example: a figure study by the window. A classical-painting-style standing nude of an adult
+"""Painterly (oil) example: a figure study by the window. A classical-painting-style standing figure study of an adult
 woman.
 
 Process: pose (rig angles) → large skin masses and values → anatomical markers (collarbones, breasts, navel, knees)
@@ -29,9 +29,9 @@ LIPS, EYE = "#a63c3c", "#24160f"
 
 # A three-quarter standing figure cropped above the knees. The weight rests on one leg, so the hip line and
 # shoulder line tilt opposite ways.
-CURVY = figure.Build(shoulder=0.70, ribcage=0.61, waist=0.50, hip=0.83, arm=0.86, leg=1.08, neck=0.34)
+FULLER = figure.Build(shoulder=0.70, ribcage=0.61, waist=0.50, hip=0.83, arm=0.86, leg=1.08, neck=0.34)
 BODY = figure.Figure(
-    g.Frame(origin=(560, 1010), unit=236), build=CURVY,
+    g.Frame(origin=(560, 1010), unit=236), build=FULLER,
     hip_tilt=-12, chest_tilt=9, spine=-5, neck=-4, head=-13,
     arm_l=(140, 290), arm_r=(10, -16), leg_l=(4, -6), leg_r=(-4, 2), stretch={"thigh_l": 0.96})
 UNIT = BODY.frame.unit
@@ -148,9 +148,9 @@ def paint_trunk(cv):
     mark(cv, BODY.on_pelvis(-0.1, -0.32), 0.32, 0.22, SKIN_LIGHT, 0.35, trunk, 0.09)
     for sign in (-1.0, 1.0):
         mark(cv, BODY.on_pelvis(sign * 0.52, -0.42), 0.06, 0.16, SKIN_LIGHT, 0.45, trunk, 0.04, angle=sign * -22)
-        groin = g.spline([BODY.on_pelvis(sign * 0.6, -0.3), BODY.on_pelvis(sign * 0.36, 0.05),
+        lower_pelvis = g.spline([BODY.on_pelvis(sign * 0.6, -0.3), BODY.on_pelvis(sign * 0.36, 0.05),
                           BODY.on_pelvis(sign * 0.1, 0.34)], closed=False)
-        cv.stroke(groin, SKIN_SHADE, width=UNIT * 0.05, taper=(0.2, 1, 0.6), opacity=0.4, soft=UNIT * 0.02,
+        cv.stroke(lower_pelvis, SKIN_SHADE, width=UNIT * 0.05, taper=(0.2, 1, 0.6), opacity=0.4, soft=UNIT * 0.02,
                   clip=trunk)
     # The armpit of the raised arm and the border of the shoulder muscle.
     mark(cv, BODY.on_thorax(-0.62, 0.2), 0.05, 0.15, SKIN_SHADE, 0.7, trunk, 0.03, angle=-25)

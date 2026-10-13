@@ -220,7 +220,7 @@ Add parts to `relief.Relief(canvas)` from back to front, then call `render(paint
 
 | Item | Content |
 |---|---|
-| `Build(sex, shoulders, bust, waist, hips, thighs, limbs, muscle)` | Build, presets `FEMALE_AVERAGE`, `FEMALE_GLAMOUR`, `MALE_SLIM`, `MALE_ATHLETIC` |
+| `Build(sex, shoulders, bust, waist, hips, thighs, limbs, muscle)` | Build, presets `FEMALE_AVERAGE`, `FEMALE_FULLER`, `MALE_SLIM`, `MALE_ATHLETIC` |
 | `Pose3D(rotations, hands, reach)`, `pose(hands=None, reach=None, **joint=(rx, ry, rz))` | Pose |
 | `Reach(target, pole, wrist, fingers, palm)` | Inverse kinematics that puts a hand on `target=(joint, local_point)` |
 | `HandPose3D(curl, spread, thumb_out, thumb_curl)` | Hand pose, presets `RELAXED`, `OPEN`, `FIST`, `POINTING`, `HOLDING`, `PEACE`, `FLAT_HAND`, `TYPING`, `PHONE_GRIP`, `CUP_GRIP`, `PAD_GRIP`, `RUN_HAND`, `POCKET_GRIP`, `CUPPED`, `SMOKE_GRIP` |

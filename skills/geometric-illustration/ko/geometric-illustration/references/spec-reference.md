@@ -21,7 +21,7 @@
 | `canvas.width` | 1024 | 256 이상 | 출력 폭(px) |
 | `canvas.height` | 1280 | 256 이상 | 출력 높이(px). 전신은 1600 이상 권장 |
 | `canvas.seed` | 7 | 정수 | 일러스트 그레인, 유화 붓터치, 수채 번짐의 난수 시드 |
-| `subject` | `portrait` | `portrait`, `nude`, `still_life`, `cityscape`, `landscape` | 그릴 대상 |
+| `subject` | `portrait` | `portrait`, `figure_study`, `still_life`, `cityscape`, `landscape` | 그릴 대상 |
 | `style` | `anime` | `anime`, `illustration`, `oil`, `watercolor` | 화풍 |
 | `framing` | `bust` | `bust`, `upper_body`, `full_body`, `wide` | `portrait` 전용. 머리 크기와 위치를 자동 계산. `wide`는 설정샷(전신 인물 높이가 화면의 34%, 발은 화면 높이 90% 지점) |
 | `look` | `none` | `none`, `doomer` | 화풍 렌더 뒤 그림 전체 색보정. `doomer`: 채도 하향, 어두운 톤을 푸르게, 밝은 주황 불빛만 채도 유지, 검정을 회청색으로 띄움, 필름 그레인, 비네트(`looks.DOOMER`) |
@@ -75,7 +75,7 @@
 | `male` | 성인 남성 체형(넓은 어깨, 좁은 골반, 가슴근육, 굵은 목, 작게 그린 머리), 남성 얼굴 프리셋, 머리 `short`, 의상 `tee_jeans`, 귀걸이 없음 |
 
 - 성별 프리셋은 기본값만 바꾼다. 명세에 적은 얼굴, 눈, 머리카락, 의상 필드가 프리셋보다 우선한다
-- 남성 의상은 아래 의상 표에서 `bikini`, `lingerie`, `turtleneck_sleeveless`, `crop_hotpants`를 뺀 10종이다. 정장, 셔츠, 코트의 구두는 끈 달린 구두로 바뀐다
+- 남성 의상은 아래 의상 표에서 `bikini`, `innerwear`, `turtleneck_sleeveless`, `crop_hotpants`를 뺀 10종이다. 정장, 셔츠, 코트의 구두는 끈 달린 구두로 바뀐다
 
 ### 체형 (`character.build`)
 
@@ -83,7 +83,7 @@
 |---|---|---|
 | 여성 | `standard` | 기본. ANSUR II 마른 하위 표본을 애니메 일러스트로 보정 |
 | 여성 | `slender` | 몸통 폭과 두께 약 9% 감소, 팔다리 약 12% 가늘게, 가슴 형태 0.8배 |
-| 여성 | `glamour` | 가슴 형태 1.3배, 엉덩이 폭 약 9% 증가, 허리 4% 감소, 허벅지와 둔부 증가. 과장 없는 성인 체형 범위 |
+| 여성 | `fuller` | 가슴 형태 1.3배, 엉덩이 폭 약 9% 증가, 허리 4% 감소, 허벅지와 둔부 증가. 과장 없는 성인 체형 범위 |
 | 여성 | `athletic` | 어깨 7% 증가, 허리 6% 증가, 위팔 14%, 종아리 10% 굵게 |
 | 남성 | `standard` | 기본. ANSUR II 남성 요약 통계에서 추정 |
 | 남성 | `slim` | 몸통 약 8% 감소, 팔다리 약 13% 가늘게 |
@@ -91,7 +91,7 @@
 
 - 세로 기준 높이(목, 허리, 무릎, 발목)는 모든 체형이 같다. 포즈와 의상 재단선이 그대로 맞는다
 - 의상은 체형의 몸을 부풀려 입히므로 체형을 따른다. 비키니와 브라 컵은 가슴 형태에 맞춰 커진다
-- 배율 표: `scripts/rig_anatomy.py`의 `VARIANTS`. 검사: `python scripts/check_proportions.py --build female_glamour`
+- 배율 표: `scripts/rig_anatomy.py`의 `VARIANTS`. 검사: `python scripts/check_proportions.py --build female_fuller`
 - `character.scale`: 투샷에서 다른 인물 대비 크기. null이면 여성 옆 남성 1.06
 
 ### 머리 배치 (`character.head`)
@@ -221,7 +221,7 @@
 |---|---|---|---|
 | `turtleneck_sleeveless` | 슬리브리스 터틀넥, 미디 스커트, 벨트 | 펌프스 | 차콜 / 카멜 |
 | `bikini` | 삼각 비키니, 끈 묶음 하의 | 맨발 | 네이비 |
-| `lingerie` | 레이스 테두리 브라, 브리프 | 맨발 | 검정, 레이스 `accent` |
+| `innerwear` | 레이스 테두리 브라, 브리프 | 맨발 | 검정, 레이스 `accent` |
 | `crop_hotpants` | 크롭 탱크톱, 데님 핫팬츠 | 운동화 | 흰색 / 연청 |
 | `tee_jeans` | 반팔 티셔츠, 청바지 | 운동화 | 흰색 / 진청 |
 | `suit` | 재킷, 셔츠, 넥타이, 슬랙스, 벨트 | 펌프스 | 차콜, `shirt`, `tie` |
@@ -236,7 +236,7 @@
 
 - 의상마다 기본 색이 있다. 명세의 `palette`에 적은 색이 기본 색보다 우선한다
 - 바스트업에서 `turtleneck_sleeveless`는 바스트업 전용 의상을, 다른 의상은 마네킹 몸에 입힌 3D 의상을 쓴다
-- 현재 몸 모델에는 유두와 생식기 형태가 구현되어 있지 않다
+- 현재 몸 모델에는 가슴 표시와 골반 세부 형태가 구현되어 있지 않다
 
 ### 포즈 (`character.pose`)
 
@@ -286,16 +286,16 @@
 - 프레이밍은 `framing`을 따르며 가장 큰 인물이 화면에 맞는다. 폭이 모자라면 전체가 줄어든다
 - 앉은 인물과 선 인물이 섞이면 같은 바닥에 선다
 - 앞뒤 순서는 목록 순서다(첫 인물이 맨 앞)
-- 인체 습작(`nude`)은 투샷을 지원하지 않는다
+- 인체 습작(`figure_study`)은 투샷을 지원하지 않는다
 
-## 인체 습작 (`nude`)
+## 인체 습작 (`figure_study`)
 
-`subject`가 `nude`일 때만 쓰인다. 인물은 성인 비례로 고정되고 화면에 맞춰 자동 배치된다.
+`subject`가 `figure_study`일 때만 쓰인다. 인물은 성인 비례로 고정되고 화면에 맞춰 자동 배치된다.
 
 | 필드 | 기본값 | 값 | 효과 |
 |---|---|---|---|
-| `nude.pose` | `venus` | `back_three_quarter`, `venus`, `reclining`, `seated` | 포즈. 아래 표 참조 |
-| `nude.hair` | null | null, `long`, `updo`, `short` | 머리 모양. null이면 포즈 기본값(남성은 `short`) |
+| `figure_study.pose` | `venus` | `back_three_quarter`, `venus`, `reclining`, `seated` | 포즈. 아래 표 참조 |
+| `figure_study.hair` | null | null, `long`, `updo`, `short` | 머리 모양. null이면 포즈 기본값(남성은 `short`) |
 
 | 포즈 | 구도 | 가림 방식 |
 |---|---|---|
@@ -304,7 +304,7 @@
 | `reclining` | 소파에 비스듬히 누운 뒷모습(오달리스크) | 등 방향 시점, 천 |
 | `seated` | 바닥에 앉아 무릎을 끌어안은 측면 | 허벅지와 팔 |
 
-`character.sex`가 `male`이면 같은 4포즈를 남성 체형으로 그린다. 가슴을 가리던 머리카락 다발은 없다. `venus`에서 가슴을 가리던 팔은 옆으로 내리고 골반을 가리는 손은 그대로 둔다. 생식기 형태가 없는 몸과 골반 주변 무선 구역 원칙은 남녀가 같다.
+`character.sex`가 `male`이면 같은 4포즈를 남성 체형으로 그린다. 가슴을 가리던 머리카락 다발은 없다. `venus`에서 가슴을 가리던 팔은 옆으로 내리고 골반을 가리는 손은 그대로 둔다. 골반 세부 형태가 없는 몸과 골반 주변 무선 구역 원칙은 남녀가 같다.
 
 `character`의 얼굴, 눈, 머리 색 필드는 그대로 적용되며 다음 범위로 보정된다: `eyes.size` 0.85-1.10, `eyes.openness` 0.70-0.95, `face.chin_length` 0.68-0.76, `face.jaw_width` 0.36-0.42, `blush` 0-0.35.
 
@@ -414,7 +414,7 @@
 {"style": "illustration", "framing": "full_body", "canvas": {"width": 1280, "height": 1600},
  "background": {"type": "scene", "scene": "cityscape"}, "scene": {"time": "dusk"},
  "characters": [
-   {"sex": "female", "build": "glamour", "outfit": {"type": "knit_coat"}, "hair": {"style": "bob"}, "expression": "laugh"},
+   {"sex": "female", "build": "fuller", "outfit": {"type": "knit_coat"}, "hair": {"style": "bob"}, "expression": "laugh"},
    {"sex": "male", "outfit": {"type": "shirt_slacks"}, "hair": {"style": "slicked"}, "palette": {"shirt": "#E8E4DA"}}],
  "layout": {"type": "side_by_side", "interaction": "hold_hands"}}
 ```
@@ -422,8 +422,8 @@
 ### 인체 습작과 장면
 
 ```json
-{"subject": "nude", "style": "oil", "canvas": {"width": 1600, "height": 1024},
- "nude": {"pose": "reclining"}, "palette": {"drape": "#3E4A6E"}}
+{"subject": "figure_study", "style": "oil", "canvas": {"width": 1600, "height": 1024},
+ "figure_study": {"pose": "reclining"}, "palette": {"drape": "#3E4A6E"}}
 ```
 
 ```json

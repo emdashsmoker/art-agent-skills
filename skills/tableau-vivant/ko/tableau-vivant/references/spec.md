@@ -108,7 +108,7 @@
 | `expression` | `"neutral"` | 프리셋 이름 또는 표정 단위 객체 |
 | `pose` | `"stand"` | 프리셋 이름 또는 자세 객체 |
 | `hair` | `"long_straight"` | 이름 또는 `{style, bangs, part, color, density, length_scale, wind}` |
-| `outfit` | `"nude"` | 프리셋 이름 또는 의상 객체 배열 |
+| `outfit` | `"figure_study"` | 프리셋 이름 또는 의상 객체 배열 |
 | `colors` | 없음 | `{의상 id: 색}` |
 | `skin` | `"light"` | 이름 또는 색 |
 | `look` | 프리셋값 | 화장과 눈 설정 |

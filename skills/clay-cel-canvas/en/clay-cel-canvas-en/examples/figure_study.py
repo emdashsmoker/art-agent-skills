@@ -1,15 +1,15 @@
-"""Worked example: nude figure studies of an adult woman in three classical poses.
+"""Worked example: figure studies of an adult woman in three classical poses.
 
-Usage: python nude.py <anime|illust|painterly> <output.png> [width_px] [standing|seated|reclining]
+Usage: python figure_study.py <anime|illust|painterly> <output.png> [width_px] [standing|seated|reclining]
 
-nude_male.py reuses draw_figure() with the male physique, head and poses.
+figure_study_male.py reuses draw_figure() with the male physique, head and poses.
 
 The body is a posed 3-D mannequin (atelier.mannequin), rendered with
 atelier.sculpt so anatomy, foreshortening, cast shadows and creases stay
 consistent in any pose; the anime head from portrait.py is painted on top. Each
 pose is data: where the pelvis sits, which way pelvis, chest and head face, and
 where the hands and feet go. Inverse kinematics keeps the bones at length.
-Genitals are not modelled; where the thighs meet is a smooth form in shadow.
+Pelvic detail are not modelled; where the thighs meet is a smooth form in shadow.
 """
 import sys
 from dataclasses import dataclass, replace
@@ -47,8 +47,8 @@ class Sitter:
     head: object                  # module with head_masks, draw_back_hair, draw_ear, draw_head_front, draw_head_back
     head_chin: tuple              # chin point of the painted head, in its own drawing
     head_units: float             # chin-to-crown length of the painted head, in its own drawing
-    skin: dict                    # skin, skin_shadow, skin_deep, flush, areola, nipple, hair
-    nipple: float = 0.0055        # radius in metres, scaled by the pose's bust
+    skin: dict                    # skin, skin_shadow, skin_deep, flush, chest tone, chest mark, hair
+    chest_mark: float = 0.0055        # radius in metres, scaled by the pose's bust
     look: object = None           # head_style.HeadLook for the painted head; None: the head's own
 
 
@@ -137,7 +137,7 @@ SETTINGS = {"standing": STANDING, "seated": SEATED, "reclining": RECLINING}
 WOMAN = Sitter(
     physique=FEMALE, head=portrait, head_chin=(500, 668), head_units=453,
     skin={"skin": "#FAE1D2", "skin_shadow": "#DDA294", "skin_deep": "#C98A82", "flush": "#F2A49A",
-          "areola": "#E09A90", "nipple": "#C47C76", "hair": portrait.PALETTE["hair"]})
+          "chest_tone": "#E09A90", "chest_mark": "#C47C76", "hair": portrait.PALETTE["hair"]})
 
 
 # ---- painting -----------------------------------------------------------------------
@@ -178,7 +178,7 @@ def draw_room(art, setting):
         art.paint(art.shape(ellipse(660, art.units_high * 0.32, 300, 300)), PALETTE["sun"], 0.85)
         art.blur(6)
         return
-    if setting.room == "hanging":                 # a green hanging behind, as in Venetian nudes
+    if setting.room == "hanging":                 # a green hanging behind, as in Venetian figure studies
         hanging = art.shape(np.array([(420, -20), (1020, -20), (1020, 330), (420, 330)], float))
         art.part(hanging, PALETTE["green"], shade=False, outline=False)
         for x in (500, 610, 720, 830, 940):
@@ -197,14 +197,14 @@ def draw_room(art, setting):
 
 
 def draw_details(art, result, marks, skin, bust, sitter=WOMAN):
-    """Areolas, nipples and navel: small discs lying on the surface, only where visible."""
+    """Chest tones, chest marks and navel: small discs lying on the surface, only where visible."""
     colors = sitter.skin
-    for point, normal in marks["nipples"]:
+    for point, normal in marks["chest_marks"]:
         if not result.visible(point, 0.015):
             continue
-        areola = art.feather(art.shape(result.disc(point, normal, marks["areola"])), 1.2) * skin
-        art.paint(areola, colors["areola"], 0.7)
-        art.paint(art.shape(result.disc(point, normal, sitter.nipple * bust)) * skin, colors["nipple"], 0.85)
+        chest_tone = art.feather(art.shape(result.disc(point, normal, marks["chest_tone"])), 1.2) * skin
+        art.paint(chest_tone, colors["chest_tone"], 0.7)
+        art.paint(art.shape(result.disc(point, normal, sitter.chest_mark * bust)) * skin, colors["chest_mark"], 0.85)
         glint = result.at(point - np.array([0.002, 0, -0.002]))
         art.light(art.blob(glint, 1.6 * result.camera.scale_at(point) * 0.006) * skin, "#FFFFFF", 0.4)
     navel, normal = marks["navel"]

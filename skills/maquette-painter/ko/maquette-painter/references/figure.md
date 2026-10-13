@@ -39,7 +39,7 @@ Figure(sex="female", heads=7.75, slim=1.0, bust=1.0, pose="relaxed", hands=None,
 | sex | female, male | |
 | heads | 등신 | 애니메 6.8-7.4, 자연 7.5-7.75, 이상화 8, 패션 8.5 |
 | slim | 몸통과 팔다리 굵기 배율 | 0.9 마름, 1.0 기본, 1.1 건장 |
-| bust | 여성 흉부 크기 배율 | 0-1.3, 고전 누드 0.9-1.15 |
+| bust | 여성 흉부 크기 배율 | 0-1.3, 고전 인체 습작 0.9-1.15 |
 | curves | 여성 허리와 골반의 대비 | 0.6 일자, 1.0 기본, 1.3 강조 |
 | tone | 근육 결의 강도 | 0 매끈함, 여성 기본 0.55, 남성 기본 0.75, 1 운동선수 |
 | pose | 프리셋 이름 또는 관절 사전 | 아래 표 |
@@ -58,7 +58,7 @@ Figure(sex="female", heads=7.75, slim=1.0, bust=1.0, pose="relaxed", hands=None,
 | walk | 걷기 |
 | sit | 의자에 앉은 자세 (의자는 별도로 그림) |
 | arms_up | 두 팔을 위로 올림 |
-| venus | 한 팔은 가슴 앞, 한 팔은 아래로 내린 고전 누드 자세 |
+| venus | 한 팔은 가슴 앞, 한 팔은 아래로 내린 고전 인체 습작 자세 |
 | allure | 콘트라포스토에 한 손을 머리 뒤로 올린 자세 |
 | arms_behind_head | 두 손을 머리 뒤로 올려 흉곽이 열린 자세 |
 | heroic | 두 손을 허리에 짚고 가슴을 편 자세 |
@@ -103,7 +103,7 @@ Figure(sex="female", heads=7.75, slim=1.0, bust=1.0, pose="relaxed", hands=None,
     + 이목구비: 눈 높이 0.8배, 속눈썹 0.45배, 눈꼬리 기울기 0.3배, 홍조 거의 없음, 눈썹은 낮고 곧고 굵음
     + semi 남성은 입술을 칠하지 않고 입선과 아랫입술 그늘만 그림, 콧대 한쪽에 선 1개 추가
     + 그리는 화풍의 목 가늘기(anime 0.74, semi 0.82)를 남성은 절반만 적용
-- 고전 남성 누드
+- 고전 남성 인체 습작
     + 골반에 매듭지은 천(`wardrobe.loincloth()`)을 두르면 고전 회화의 관례와 맞고 다리가 드러남
     + 권장: `pose="david"` 또는 `heroic`, turn 10-25, rembrandt 조명, classic 얼굴, heads 7.9 (`figure_classical_male.py`)
 - 웹툰 남성 초상: semi 얼굴, `Hair("crop", "textured")`, 밝은 상의와 studio 조명이 몸의 형태를 잘 보여 줌 (`portrait_male.py`)
@@ -228,7 +228,7 @@ Hair(style="long", fringe="swept", color="#3e2f45", side=None, volume=None, wave
 | `dress(color, sleeves, hem, flare, neck)` | |
 | `coat(color, hem, sleeves)` | 다른 옷 위에 입는 겉옷 |
 | `drape(color, top_y, hem, flare)` | 골반에 두른 고전 천 (치마처럼 발까지). 남성은 자신의 골반 폭을 따름 |
-| `loincloth(color, top_y, length, width, knot)` | 골반 띠, 앞뒤로 늘어진 천, 한쪽 골반의 매듭 (고전 남성 누드). length는 앞 천 길이(HU), knot은 "l" 또는 "r" |
+| `loincloth(color, top_y, length, width, knot)` | 골반 띠, 앞뒤로 늘어진 천, 한쪽 골반의 매듭 (고전 남성 인체 습작). length는 앞 천 길이(HU), knot은 "l" 또는 "r" |
 | `shoes(color)` | |
 | `hoodie(color, sleeves, hem, strings, pocket)` | 후드를 내린 후드티: 목을 감싸는 두툼한 후드 깃, 등에 늘어진 후드 자루, 목 앞 끈 2가닥, 배 앞 주머니 |
 | `turtleneck(color, sleeves, hem)` | 목을 감싸 접어 올린 깃의 몸에 붙는 니트 |
@@ -384,7 +384,7 @@ with canvas.layer(depth=0.3, group="figure"):
 | 옷 주름 음영이 지저분함 | 의상의 `folds=0` |
 | 선이 굵음, 가늚 | `draw(line_width=...)` |
 | 포즈가 뻣뻣함 | pelvis와 chest에 서로 반대 방향 side 값, head에 약한 twist와 side |
-| 누드가 마네킹처럼 보임 | `allure` 같은 비대칭 포즈, turn 15-35, rembrandt 조명, classic 얼굴 |
+| 인체 습작이 마네킹처럼 보임 | `allure` 같은 비대칭 포즈, turn 15-35, rembrandt 조명, classic 얼굴 |
 | 가슴이 붙인 공처럼 보임 | bust 0.9-1.15 유지, 측면 조명보다 반측면 조명 |
 | 체형이 밋밋함 | curves 1.1-1.3, heads 7.8-8 |
 | 근육 결이 너무 드러남, 안 보임 | tone 0.3 또는 0.8, 등과 다리의 결은 역광이나 측광에서 잘 보임 |

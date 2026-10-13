@@ -3,7 +3,7 @@
 옷, 수영복, 다른 자세를 그리기 전에 쓰는 몸의 기준 그림이다. 머리부터 발끝까지 가리지 않고 그린다.
 공정: 머리 단위 안내선 → 자세(리그) → 몸 전체 덩어리 → 상반신 표지 → 하반신 표지 → 손과 발 → 얼굴 또는 뒷머리.
 성인 표지: 8등신 리그, 작은 눈과 긴 턱의 얼굴, 쇄골과 갈비와 골반뼈, 성숙한 체형.
-하반신의 사타구니는 고전 조각과 해부도 수준의 둥근 덩어리로만 표현하고 성기의 세부는 그리지 않는다.
+하반신의 골반 앞쪽은 고전 조각과 해부도 수준의 둥근 덩어리로만 표현하고 골반의 세부는 그리지 않는다.
 실행: python anime_figure_base.py [출력폴더] [scale]
 """
 import sys
@@ -26,7 +26,7 @@ HEAD_TOP_Y = PELVIS_Y - 3.71 * UNIT   # 목 길이 배율 0.72를 반영한 정�
 # 팔레트: 밝은 회청색 종이 위에 살빛 하나. 머리카락의 남색이 화면을 조인다.
 PAPER_TOP, PAPER_LOW, GUIDE = "#eef1f7", "#dde3ee", "#b9c3d8"
 SKIN, SKIN_SHADE, SKIN_DEEP, SKIN_LIGHT = "#f7d3bf", "#dc9b8f", "#b0656a", "#fff1e8"
-NIPPLE, BLUSH = "#d98585", "#ff9aa0"
+CHEST_MARK, BLUSH = "#d98585", "#ff9aa0"
 NAIL = "#f9dcd2"
 HAIR, HAIR_SHADE, HAIR_LIGHT = "#22263e", "#12142a", "#5a6aa0"
 IRIS_TOP, IRIS_MID, IRIS_LOW = "#2a1a1a", "#7a3a2a", "#e0a060"
@@ -170,8 +170,8 @@ def paint_front_upper(cv, model, body_shape):
         inner_line(cv, [(cx - UNIT * 0.27, cy + UNIT * 0.1), (cx - UNIT * 0.1, cy + UNIT * 0.29),
                         (cx + UNIT * 0.12, cy + UNIT * 0.29), (cx + UNIT * 0.28, cy + UNIT * 0.1)], body_shape,
                    width=2.0, taper=(0.1, 1, 1, 0.2))
-        nipple = (cx + UNIT * 0.04, cy + UNIT * 0.06)
-        cv.fill(cv.shape(g.ellipse(nipple[0], nipple[1], UNIT * 0.038, UNIT * 0.034)), NIPPLE, clip=breast)
+        chest_mark = (cx + UNIT * 0.04, cy + UNIT * 0.06)
+        cv.fill(cv.shape(g.ellipse(chest_mark[0], chest_mark[1], UNIT * 0.038, UNIT * 0.034)), CHEST_MARK, clip=breast)
     inner_line(cv, [b.on_thorax(-0.03, -0.02), b.on_thorax(0.0, 0.06)], body_shape, width=1.8)
     inner_line(cv, [b.on_pelvis(0.0, -1.2), b.on_pelvis(0.01, -0.9)], body_shape, width=1.2, opacity=0.4)
     navel = b.on_pelvis(0.0, -0.7)
@@ -179,10 +179,10 @@ def paint_front_upper(cv, model, body_shape):
 
 
 def paint_front_lower(cv, model, body_shape):
-    """앞면 하반신: 골반뼈, 사타구니 주름, 치구의 둥근 면, 허벅지 사이, 무릎, 종아리, 복사뼈."""
+    """앞면 하반신: 골반뼈, 골반 앞쪽 주름, 치구의 둥근 면, 허벅지 사이, 무릎, 종아리, 복사뼈."""
     b = model.body
     for sign in (-1.0, 1.0):
-        # 골반뼈 모서리의 빛과 그 아래로 내려가는 사타구니 주름(V선).
+        # 골반뼈 모서리의 빛과 그 아래로 내려가는 골반 앞쪽 주름(V선).
         light_spot(cv, b.on_pelvis(sign * 0.54, -0.44), 0.05, 0.11, body_shape, angle=sign * -20, opacity=0.5)
         inner_line(cv, [b.on_pelvis(sign * 0.6, -0.44), b.on_pelvis(sign * 0.44, -0.1), b.on_pelvis(sign * 0.2, 0.28),
                         b.on_pelvis(sign * 0.08, 0.44)], body_shape, width=1.6, taper=(0.1, 1, 1, 0.3), opacity=0.7)
@@ -206,7 +206,7 @@ def paint_front_lower(cv, model, body_shape):
         ankle = np.array(b.joint("ankle_" + side))
         inner_line(cv, [knee + (0, UNIT * 0.3), (knee + ankle) / 2 + (sign * UNIT * 0.02, 0), ankle + (0, -UNIT * 0.3)],
                    body_shape, width=1.2, opacity=0.35)
-    # 치구: 사타구니 주름이 모이는 아래 끝의 부드러운 둥근 면. 빛 받는 위쪽과 그늘진 아래쪽만 둔다.
+    # 치구: 골반 앞쪽 주름이 모이는 아래 끝의 부드러운 둥근 면. 빛 받는 위쪽과 그늘진 아래쪽만 둔다.
     mound = b.on_pelvis(0.0, 0.3)
     light_spot(cv, mound, 0.16, 0.12, body_shape, opacity=0.55)
     shade(cv, [b.on_pelvis(-0.16, 0.4), b.on_pelvis(0.16, 0.4), b.on_pelvis(0.05, 0.58), b.on_pelvis(-0.05, 0.58)],

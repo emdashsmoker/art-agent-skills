@@ -75,7 +75,7 @@ Unit coordinates of a frontal face verified by rendering `examples/anime_sky_pil
 
 ## Anime Mature Adult Face
 
-Values verified in `examples/anime_city_window.py`. Pictures that need adult markers, such as nude figures, use this table.
+Values verified in `examples/anime_city_window.py`. Pictures that need adult markers, such as figure studies, use this table.
 
 | Part | Coordinates and treatment |
 |---|---|

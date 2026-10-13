@@ -42,7 +42,7 @@ SIDE_TRUNK = {
 SIDE_BREAST = [(0.26, 0.32), (0.40, 0.50), (0.52, 0.68), (0.565, 0.80), (0.53, 0.92), (0.43, 0.99), (0.32, 0.97),
                (0.20, 0.70)]                      # chest frame; the part beyond x = 0.30 grows with FigureSpec.bust
 SIDE_BREAST_ATTACH = ((0.22, 0.64), 0.34)         # joint zone hiding the edge where the breast meets the chest
-SIDE_NIPPLE = {"female": (0.552, 0.80), "male": (0.405, 0.58)}
+SIDE_CHEST_MARK = {"female": (0.552, 0.80), "male": (0.405, 0.58)}
 SIDE_DEPTH = 1.12        # the trunk tables are scaled by this front to back (a figure in profile needs body)
 SIDE_NECK = 0.04          # hu; the neck base sits this far forward of the pelvis center
 SIDE_HEAD = 0.09          # hu; the skull sits forward of the neck
@@ -172,15 +172,15 @@ class SideView:
             parts = [self._skin("breast_1", polys=[outline], bulge=0.85, cast=0.04 * u, focus=0.5,
                                 joints=[(c[0], c[1], SIDE_BREAST_ATTACH[1] * u * s.bust)],
                                 line=Line(2.0 * self.px * s.line, alpha=0.85))]
-        if s.outfit != "nude":
+        if s.outfit != "figure_study":
             return parts
-        n = SIDE_NIPPLE[s.sex]
+        n = SIDE_CHEST_MARK[s.sex]
         if s.sex == "female":
             n = tuple(self._side_breast_pts()[3] + [-0.014, 0.0])
         c = self.I(self.F("chest", [n], s.shoulder))[0]
         r = (0.020 if s.sex == "male" else 0.030) * u
         tone = "#b97a70" if s.sex == "male" else "#c9837c"
-        parts.append(Part("areola", mix(s.skin, tone, 0.5), polys=[ellipse(c[0], c[1], r * 0.45, r)], shade=False,
+        parts.append(Part("chest_tone", mix(s.skin, tone, 0.5), polys=[ellipse(c[0], c[1], r * 0.45, r)], shade=False,
                           material="flat", blur=0.008 * u, alpha=0.8, receive=False,
                           clip="trunk" if s.sex == "male" else "breast_1"))
         return parts

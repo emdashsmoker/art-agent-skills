@@ -28,7 +28,7 @@ license: GPL-3.0-or-later (full text in LICENSE, output permission and dependenc
     + 11 arm poses: 7 basic poses, arms crossed, chin rest, hair tuck, hands behind head
     + 6 hand gestures
     + Held props (body.hold): a phone, a canned drink, or a cigarette in one hand (front view)
-    + Figures: female slim, balanced (default), curvy; male slim, balanced (default), athletic
+    + Figures: female slim, balanced (default), fuller; male slim, balanced (default), athletic
     + Male muscle definition: body.muscle 0-1 (defaults slim 0.10, balanced 0.30, athletic 0.50)
     + Bust size: small, medium (default), large, xlarge (female)
     + Face: 4 face shapes, face length, 3 noses, 3 lip types, 4 lash levels, iris size, brow thickness
@@ -39,7 +39,7 @@ license: GPL-3.0-or-later (full text in LICENSE, output permission and dependenc
     + Shoes: sneakers, boots, sandals, heels, dress shoes, barefoot
     + One line `"gender": "male"` applies the male face, hair, skeleton, and outfit defaults at once
     + Revealing outfits show adult figures with anatomically plausible skin forms (female bust volume, male pectorals and abs)
-    + The bust is expressed with volume and shading; the engine has no layer that draws nipples or genitals
+    + The bust is expressed with volume and shading; the engine has no layer that draws chest marks or pelvic detail
     + The front panel of swim and underwear bottoms renders as a smooth surface
     + Backgrounds: plain, gradient, sky, bokeh, window, beach, bed, 5 interiors, landscape scene, city street scene
     + Head accessories: hairpin, earrings, beanie; body accessory: necklace
@@ -57,7 +57,7 @@ license: GPL-3.0-or-later (full text in LICENSE, output permission and dependenc
 - Mood: 1 preset, doomer (late-night solitude)
     + Bundles a cold desaturated grade, film grain, vignette, a night street with power lines, and a blank face with tired eyes as defaults
     + Also applies to landscapes and cityscapes (night time, moon and stars, power lines)
-- The skill does not depict minors in nudity or in sexual content, including sexual acts
+- The skill does not depict minors in unclothed figures or in sexual content, including sexual acts
     + (Stated minor) a character whose age under 18 or status as a minor is stated in the spec or the request
     + (Child body) a character requested to be drawn with a prepubescent child body
 - Tell the user up front that photorealism is out of scope
@@ -214,14 +214,14 @@ python scripts/render.py spec.json -o final.png --quality final
 ```json
 {"style": "soft_illust", "framing": "full",
  "character": {"view": "back", "head": {"yaw": 32, "roll": -3},
-   "body": {"figure": "curvy", "stance": "contrapposto"},
+   "body": {"figure": "fuller", "stance": "contrapposto"},
    "outfit": {"type": "bikini", "bottom_style": "high_leg"}},
  "background": {"type": "beach"}}
 ```
 - Request: "Woman in a slip dress, side profile"
 ```json
 {"style": "soft_illust", "framing": "full",
- "character": {"view": "side", "body": {"figure": "curvy", "bust": "large"}, "outfit": {"type": "slip_dress"}},
+ "character": {"view": "side", "body": {"figure": "fuller", "bust": "large"}, "outfit": {"type": "slip_dress"}},
  "background": {"type": "gradient"}}
 ```
 - Request: "Couple holding hands on a sunset street, full body"

@@ -42,12 +42,12 @@ def woman_outfit():
 
 def man(pose, look=LOOK, **placement):
     """The man of the cast in `pose`; placement is pelvis= and height= (from fit, framing or group)."""
-    return Figure(pose=pose, look=look, sex='male', face=MAN_FACE, hair=MAN_HAIR, nude_details=False, **placement)
+    return Figure(pose=pose, look=look, sex='male', face=MAN_FACE, hair=MAN_HAIR, body_details=False, **placement)
 
 
 def woman(pose, look=LOOK, **placement):
     """The woman of the cast in `pose`."""
-    return Figure(pose=pose, look=look, face=WOMAN_FACE, hair=WOMAN_HAIR, physique=WOMAN_BUILD, nude_details=False,
+    return Figure(pose=pose, look=look, face=WOMAN_FACE, hair=WOMAN_HAIR, physique=WOMAN_BUILD, body_details=False,
                   **placement)
 
 

@@ -70,8 +70,8 @@ Settle these six items in a comment at the top of the scene script or in a short
 
 - Start by copying the closest example in `scripts/examples/`
     + Bust figures: `anime_portrait.py`, `illustration_portrait.py`, `watercolor_portrait.py`, `oil_portrait.py`
-    + Full-body figures: `city_night_walk.py` (outfit + city background), `figure_nude_study.py` (figure study, female and male), `couple_bench.py` (seated pair, three-quarter view, seated skirt with the `skirt` argument), `figure_turnaround.py` (8-direction turnaround from front to back), `figure_back_view.py` (figure seen from behind, city at sunset)
-    + Outfits and situations: `beach_bikini.py` (bikini on the beach, rule of thirds), `bedroom_lingerie.py` (lingerie in a bedroom, lying), `hoodie_street.py` (hoodie on an autumn street, hands in the kangaroo pocket), `summer_street.py` (crop top and hot pants on a summer street, walking), `office_suits.py` (two people in suits in an office, `group`)
+    + Full-body figures: `city_night_walk.py` (outfit + city background), `figure_study.py` (figure study, female and male), `couple_bench.py` (seated pair, three-quarter view, seated skirt with the `skirt` argument), `figure_turnaround.py` (8-direction turnaround from front to back), `figure_back_view.py` (figure seen from behind, city at sunset)
+    + Outfits and situations: `beach_bikini.py` (bikini on the beach, rule of thirds), `bedroom_innerwear.py` (innerwear in a bedroom, lying), `hoodie_street.py` (hoodie on an autumn street, hands in the kangaroo pocket), `summer_street.py` (crop top and hot pants on a summer street, walking), `office_suits.py` (two people in suits in an office, `group`)
     + Close-ups cut from the full body: `figure_zoom.py` (full body, waist up, bust, face)
     + Hands: `hand_study.py`
     + Landscapes: `landscape_lake.py` (oil), `landscape_meadow.py` (anime background, road in perspective)
@@ -173,13 +173,13 @@ cv.paint_form(vase, '#7fb0c4', light=(-0.7, -0.7), shadow=0.22, line_width=2.4, 
 | Rig | Call | Supports |
 |---|---|---|
 | Bust | `draw_character` | Head turn up to ±40 degrees, 8 bang styles and none, long hair and bobs, waves, 6 tied styles, 24 hairstyle presets, 8 expressions, 5 outfits |
-| Full body | `draw_figure` | Female and male, 360-degree body turn (front, three-quarter, profile, back), 12 pose presets (`poses`), layout helpers (`fit`, `thirds`, `group`), joint-angle poses, seated poses (`aim`), body shape control, 17 garments, 24 hairstyles (`hairstyle`, tied styles and clipper cuts included), 8 face styles (`face_style`), 8 expressions (`expression`), figure studies (nude), lying poses seen from above, bust and face close-ups through `framing` |
+| Full body | `draw_figure` | Female and male, 360-degree body turn (front, three-quarter, profile, back), 12 pose presets (`poses`), layout helpers (`fit`, `thirds`, `group`), joint-angle poses, seated poses (`aim`), body shape control, 17 garments, 24 hairstyles (`hairstyle`, tied styles and clipper cuts included), 8 face styles (`face_style`), 8 expressions (`expression`), figure studies, lying poses seen from above, bust and face close-ups through `framing` |
 | Hands | `draw_hand` | Back and palm, 6 poses (open, relaxed, fist, point, V sign, thumbs up), side views through rotation about the wrist axis |
 
 - Full-body figures are fixed at adult proportions of 8 heads
 - Bust close-ups can also be made by zooming the full-body rig with `framing(cv.size, 'bust')`. Use this when the body turns or when drawing a man
-- Figure studies (nude) are drawn for both women and men. The engine draws the surface forms of the body. It has no function for drawing genital forms
-- Do not draw nudity or sexual acts involving minors
+- Figure studies are drawn for both women and men. The engine draws the surface forms of the body. It has no function for drawing pelvic forms
+- Do not draw unclothed figures or sexual acts involving minors
     + Two grounds decide it: a character stated to be a minor (an age set under 18, or designated as a child), and a depiction of a body before secondary sexual characteristics (child build and proportions)
 - For poses that turn the body past 90 degrees, give the arms with `aim(turn, ...)`. Directions in the body's own frame keep the pose the same from any angle
 - For hanging hands in a turned figure, use `HandSpec('relaxed', 'rest')`. The hand turns obliquely with the body
@@ -197,11 +197,11 @@ Minimal full-body example
 from paintkit.figure import ILLUSTRATION, Figure, Pose, draw_figure, framing, wardrobe
 
 figure = Figure(pelvis=(500, 760), height=1270, pose=Pose(hip_tilt=7, shoulder_tilt=-5, lean=-3),
-                look=ILLUSTRATION, nude_details=False)
+                look=ILLUSTRATION, body_details=False)
 masks = draw_figure(cv, figure, garments=[wardrobe.dress('#b0344a', length=2.6), wardrobe.shoes('#3a2020')])
 
 # a man in three-quarter view, close-up from the waist up
-man = Figure(**framing(cv.size, 'waist'), sex='male', pose=Pose(turn=-30, head_yaw=-24), nude_details=False)
+man = Figure(**framing(cv.size, 'waist'), sex='male', pose=Pose(turn=-30, head_yaw=-24), body_details=False)
 draw_figure(cv, man, garments=[wardrobe.bottoms('#3a3d48'), wardrobe.top('#c9d6e3', sleeve=1.25, scoop=0.25)])
 ```
 

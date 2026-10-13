@@ -185,11 +185,11 @@ man = Bust(head_m, BustSpec(sex="male", outfit="tshirt", cloth="#33404c", turn=-
 일러스트레이터의 작도 순서를 2D로 구현한다. 여성과 남성은 같은 절차를 거치고 비례표(`BODY`)만 다르다. 관절 뼈대로 자세를 잡고, 몸통은 해부학 기준점(목, 어깨, 겨드랑이, 가슴 옆, 허리, 골반, 가랑이)을 잇는 윤곽 1개로 그리고, 팔다리는 뼈를 따라 좌우 곡선이 다른 형태로 그린다. 모든 피부 도형은 한 표면으로 잉크 처리되어 관절에 선이 생기지 않는다. 단위는 머리 높이(hu)이며 기본 비례는 8등신이다.
 
 ```python
-figure = Figure(FigureSpec(cx=448, top=70, unit=180, skin="#eec6ab", outfit="nude",
+figure = Figure(FigureSpec(cx=448, top=70, unit=180, skin="#eec6ab", outfit="figure_study",
                            bust=1.08, waist=0.95, hip=1.02,
                            head=dict(hair_style="long", bangs="swept")), pose="contrapposto")
 scene.add(figure.parts())        # 뒤에서 앞 순서로 정렬된 전체 도형
-man = Figure(FigureSpec(cx=448, top=70, unit=180, sex="male", skin="#dcae8c", outfit="nude"), pose="heroic")
+man = Figure(FigureSpec(cx=448, top=70, unit=180, sex="male", skin="#dcae8c", outfit="figure_study"), pose="heroic")
 ```
 
 | 기준선 | 정수리 기준 hu |
@@ -217,7 +217,7 @@ man = Figure(FigureSpec(cx=448, top=70, unit=180, sex="male", skin="#dcae8c", ou
 | `blush` | 무릎, 팔꿈치, 어깨의 붉은 기 0..1 |
 | `modeling` | 몸통 측면, 복부 양옆, 가슴 아래, 안쪽 허벅지의 형태 음영 0..1 |
 | `light_side` | 장면 광원 방향, -1은 왼쪽, +1은 오른쪽(`Scene.light`의 x 부호와 일치시킴) |
-| `outfit`, `cloth` | 의상 1개와 옷 색, 여성 `nude`, `bikini`, `onepiece`, `highleg`, `slip`, `dressed`, 남성 `nude`, `briefs`, `trunks`, `open_shirt`, `dressed` |
+| `outfit`, `cloth` | 의상 1개와 옷 색, 여성 `figure_study`, `bikini`, `onepiece`, `highleg`, `slip`, `dressed`, 남성 `figure_study`, `briefs`, `trunks`, `open_shirt`, `dressed` |
 | `cloth2` | 열린 셔츠 아래 반바지 색, `dressed`의 하의 색, None은 `cloth`의 어두운 색 |
 | `upper`, `lower` | `dressed`의 상의 `tee`, `longsleeve`, `shirt`, `blouse`와 하의 `jeans`, `slacks`, `skirt`, `long_skirt` |
 | `shoes`, `cloth3` | 모든 의상 공통 신발 `sneakers`, `boots`, `heels`(None은 맨발)과 신발 색 |
@@ -251,7 +251,7 @@ man = Figure(FigureSpec(cx=448, top=70, unit=180, sex="male", skin="#dcae8c", ou
 | 손 폭, 발 크기 | 1.0, 1.0 | 1.12, 1.08 |
 
 - 수치는 `figure.py`의 `BODY["male"]` 사전에서 조정
-- 사타구니는 여성과 같은 매끈한 형태로 작도(성기 형태는 모듈에 없음)
+- 골반 앞쪽은 여성과 같은 매끈한 형태로 작도(골반 세부 형태는 모듈에 없음)
 
 ### 의상
 
@@ -309,7 +309,7 @@ man = Figure(FigureSpec(cx=448, top=70, unit=180, sex="male", skin="#dcae8c", ou
 
 ### 자세
 
-`pose`는 프리셋 이름 또는 `FigurePose` 객체다. 정면과 3/4 프리셋은 `pinup`, `contrapposto`, `arms_up`, `seated`, `reclining`, `akimbo`, `heroic`, `standing`, `phone`, `coffee`, `point`, `desk`이고 옆모습 프리셋은 `side_stand`, `walk`, `side_seated`, `side_phone`이다. 뒷모습은 아무 프리셋에 `dataclasses.replace(POSES["akimbo"], view="back")`처럼 시점만 바꿔 적용한다. 모든 프리셋은 여성과 남성에 공통으로 적용된다. 각도 단위는 도이며 0은 수직 아래, 양수는 화면 오른쪽이다. 왼쪽과 오른쪽은 항상 관찰자 기준이다.
+`pose`는 프리셋 이름 또는 `FigurePose` 객체다. 정면과 3/4 프리셋은 `showcase`, `contrapposto`, `arms_up`, `seated`, `reclining`, `akimbo`, `heroic`, `standing`, `phone`, `coffee`, `point`, `desk`이고 옆모습 프리셋은 `side_stand`, `walk`, `side_seated`, `side_phone`이다. 뒷모습은 아무 프리셋에 `dataclasses.replace(POSES["akimbo"], view="back")`처럼 시점만 바꿔 적용한다. 모든 프리셋은 여성과 남성에 공통으로 적용된다. 각도 단위는 도이며 0은 수직 아래, 양수는 화면 오른쪽이다. 왼쪽과 오른쪽은 항상 관찰자 기준이다.
 
 | FigurePose 필드 | 의미 |
 |---|---|
@@ -332,7 +332,7 @@ man = Figure(FigureSpec(cx=448, top=70, unit=180, sex="male", skin="#dcae8c", ou
 | `left_foot_turn`, `right_foot_turn` | 발끝 벌림 각도, 40 이상은 옆에서 본 발로 작도 |
 | `left_foot_pitch`, `right_foot_pitch` | 옆모습의 발 기울기, 양수는 발끝 들림(뒤꿈치 착지), 음수는 발끝 내림 |
 
-- `pinup`은 지지 다리 쪽으로 골반을 밀어내고 한 손은 머리, 한 손은 허리에 둔 자세
+- `showcase`는 지지 다리 쪽으로 골반을 밀어내고 한 손은 머리, 한 손은 허리에 둔 자세
 - `akimbo`는 양손을 허리에 얹고 팔꿈치를 벌린 자세, 손목을 꺾어 손이 골반 위로 내려옴
 - `heroic`은 오른다리로 서고 왼다리를 바깥으로 내놓은 고전 입상 자세
 - `seated`는 상자에 걸터앉아 무릎을 오른쪽으로 모은 자세, 소품 위치는 `figure.seat_y()`

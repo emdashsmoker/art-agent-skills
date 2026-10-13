@@ -25,7 +25,7 @@ man = Figure(**framing(cv.size, 'waist'), sex='male', pose=Pose(turn=-25, head_y
 9. Men
 10. Pose recipes and pose presets (poses)
 11. Garments (wardrobe)
-12. Figure studies (nude)
+12. Figure studies
 13. Hands
 14. Returned values
 15. Placing figures in a scene and composition (fit, thirds, group)
@@ -69,7 +69,7 @@ man = Figure(**framing(cv.size, 'waist'), sex='male', pose=Pose(turn=-25, head_y
 | `face`, `hair` | `FaceSpec`, `HairSpec` as in the bust rig. None gives the defaults per sex (`FEMALE_FACE` with long hair, `MALE_FACE` with `MALE_HAIR`) |
 | `look` | Default `ILLUSTRATION` |
 | `jaw` | Width scale of the lower face. None gives female 0.93, male 1.06 |
-| `nude_details` | Nipples, navel, body creases and muscle marks. False when clothes cover everything |
+| `body_details` | Chest marks, navel, body creases and muscle marks. False when clothes cover everything |
 
 ## 4. Pose
 
@@ -104,7 +104,7 @@ To stress female curves, start around `Physique(bust=1.15, waist=0.93, hips=1.10
 The curves of the body come from the structure below. To change the build, use the `Physique` scales first and edit the tables only when a form itself looks wrong.
 
 - Arms and legs have separate outer and inner contours (`_ARM_OUTER`, `_ARM_INNER`, `_LEG_OUTER`, `_LEG_INNER` in `fullbody.py`, prefixed `_MALE_` for men)
-    + Thigh: the outer side comes down gently from the hip, the inner side narrows quickly below the groin
+    + Thigh: the outer side comes down gently from the hip, the inner side narrows quickly below the lower pelvis
     + Calf: the outer swell sits a little higher than the inner one
     + Arm: the shoulder muscle outside the upper arm, the swell at the top of the forearm
     + Table values are `(t, half-width)` in head units. t runs 0-1 from joint to joint
@@ -122,7 +122,7 @@ three_quarter = Pose(turn=35, head_yaw=28, hip_tilt=5, shoulder_tilt=-3)
 - Each height of the torso is treated as a cross-section (half-width, front depth, back depth), and the turned silhouette is computed from them
     + The side lines of chest and belly show on the silhouette the body faces, the back and buttocks on the other side
     + The far breast becomes a side view whose upper slope continues from the chest wall
-- Navel, collarbones, the center line of the belly and nipples are points on the body surface, so they turn along (`skeleton.chest.surface(x, y)`)
+- Navel, collarbones, the center line of the belly and chest marks are points on the body surface, so they turn along (`skeleton.chest.surface(x, y)`)
 - The far arm hides behind the torso and chest. The far leg is painted behind the near leg
 - Turning the head less than the body looks natural: up to three-quarter `head_yaw = turn * 0.6-0.8`, profile and back `head_yaw = turn`
 - Profile (90): the front and back depths of the body give the side lines of chest, belly, back and buttocks, and the legs switch to side contours (thigh and knee in front, calf behind). The face becomes a profile with nose, lips and chin breaking the outline, and only the near eye shows. The sleeve of the near arm is drawn separately
@@ -137,7 +137,7 @@ back = Pose(turn=turn, head_yaw=turn,
             left_hand=HandSpec('relaxed', 'rest'), right_hand=HandSpec('relaxed', 'rest'))   # the hands turn with the body too
 ```
 
-- 8-direction turnaround sheet: `scripts/examples/figure_turnaround.py [out] [female|male] [clothed|nude] [around|front]`
+- 8-direction turnaround sheet: `scripts/examples/figure_turnaround.py [out] [female|male] [clothed|figure_study] [around|front]`
 - Back-view scene example: `scripts/examples/figure_back_view.py`
 
 ## 7. Seated poses and foreshortening (aim)
@@ -170,7 +170,7 @@ seat_y = pelvis_y + 0.80 * figure.unit                   # height of the top of 
 One full-body rig makes full body, knee-up, waist-up, bust and face close-ups. What lies below the frame simply falls off the canvas, and the whole body is computed as usual.
 
 ```python
-figure = Figure(**framing(cv.size, 'bust', center=0.5), pose=pose, sex='female', nude_details=False)
+figure = Figure(**framing(cv.size, 'bust', center=0.5), pose=pose, sex='female', body_details=False)
 ```
 
 | shot | Bottom edge of the picture |
@@ -272,7 +272,7 @@ Fitted clothes are cut out of the body masks by region, so they fit any pose and
 | `dress(color, neckline=0.60, length=2.4, flare=0.40)` | Top with straps + skirt |
 | `swimsuit(color, neckline=0.80, leg_cut=0.5)` | One-piece swimsuit |
 | `bikini(color, tie=None, rise=0.0)` | Triangle halter bikini and bottoms tied at the sides. The lower edge of the cups sits at the fold under the breasts, so the breasts do not slip out below the string. The neck string runs from the cup tip past the side of the neck to a bow at the nape, the under-bust string follows the fold linking both cups and runs to a bow on the back. The waistline of the bottoms runs from hip-bone height to the outline of the buttocks, and the side bows sit on the side seam of the hips. `tie`: string color. `rise`: height of the bottoms. Men get swim briefs only |
-| `lingerie(color, lace='#f4eef2', bow=None)` | Bra and briefs. The waistline of the briefs runs from hip-bone height to the outline of the buttocks. Lace runs all the way round the waist and leg openings of the briefs, front and back, and along the top edge of the bra cups. A small bow at the front of the waist. `lace=None` for no lace. Men get briefs only |
+| `innerwear(color, lace='#f4eef2', bow=None)` | Bra and briefs. The waistline of the briefs runs from hip-bone height to the outline of the buttocks. Lace runs all the way round the waist and leg openings of the briefs, front and back, and along the top edge of the bra cups. A small bow at the front of the waist. `lace=None` for no lace. Men get briefs only |
 | `hoodie(color, pocket=True, strings=True)` | Hooded sweatshirt. Long sleeves, ribbed cuffs and hem, kangaroo pocket, drawstrings, hood behind the neck (over the upper back from behind) |
 | `crop_top(color, sleeve=1.0, scoop=0.45)` | Top ending above the navel. `sleeve=0` for a strappy crop top |
 | `hot_pants(color='#5d7fae', waist=-1.25)` | Denim hot pants. Button, front pocket stitching, frayed hems, back pockets from behind |
@@ -289,7 +289,7 @@ Combination examples
 | Outfit | `garments` |
 |---|---|
 | Bikini | `[wardrobe.bikini('#e8505a', tie='#fbf4ea')]` |
-| Lingerie | `[wardrobe.lingerie('#7a2a4a', lace='#f4e6ea')]` |
+| Innerwear | `[wardrobe.innerwear('#7a2a4a', lace='#f4e6ea')]` |
 | Hoodie and jeans | `[wardrobe.bottoms('#2f3a52'), wardrobe.hoodie('#c8b48a'), wardrobe.shoes('#f0eee8')]` |
 | Crop top and hot pants | `[wardrobe.hot_pants(), wardrobe.crop_top('#f6f2ea'), wardrobe.shoes('#f4f4f4')]` |
 | Suit | `[wardrobe.suit('#2b2f3a', tie='#7a2a3a'), wardrobe.shoes('#1e1a18')]` |
@@ -298,7 +298,7 @@ Combination examples
 
 ```python
 garments = [wardrobe.skirt('#2d3350', length=3.0, flare=0.32), wardrobe.top('#d9c8a8', sleeve=4.9, hem=-1.7)]
-masks = draw_figure(cv, replace(figure, nude_details=False), garments)
+masks = draw_figure(cv, replace(figure, body_details=False), garments)
 ```
 
 - Arms and hands lie in front of every garment except sleeves
@@ -318,8 +318,8 @@ masks = draw_figure(cv, replace(figure, nude_details=False), garments)
     + The arm angles are ignored and recomputed by two-joint inverse kinematics from the shoulder to the pocket opening. The elbow bends out and back
     + `HandSpec('pouch')` puts the hand into the side opening of a hoodie's kangaroo pocket the same way. A sleeve crossing the front of the body is drawn as its own form
     + With a long top that covers the hips (a hoodie), `pocket` makes the hand vanish under the top. Use `pouch` for hoodies
-- Small pieces of cloth on the body surface, such as bikinis and lingerie, are drawn separately on the front and back of the body, so they turn with it
-    + Bikini and lingerie bottoms split the body surface between waistline and leg openings into narrow strips, project them and cut them with the body mask. So the waistband reaches the outline of the buttocks from any angle
+- Small pieces of cloth on the body surface, such as bikinis and innerwear, are drawn separately on the front and back of the body, so they turn with it
+    + Bikini and innerwear bottoms split the body surface between waistline and leg openings into narrow strips, project them and cut them with the body mask. So the waistband reaches the outline of the buttocks from any angle
     + When the body turns, the side seam nearer on screen divides the front piece from the back piece
     + A third value (lift) on a string point raises it off the body surface. A string starting from a raised cup tip settles onto the skin
     + Lace on briefs is drawn only along stretches facing the viewer. Lace on stretches turned behind the body would otherwise show over the cloth in front
@@ -330,14 +330,14 @@ masks = draw_figure(cv, replace(figure, nude_details=False), garments)
 - For a new garment, build regions from the part masks in `masks` and `skeleton.chest.pt(x, y)`, `skeleton.chest.surface(x, y)`, `skeleton.pelvis.round_pts(points)`, and cut them the same way
 - Chest frame y: 0 the pit of the neck, 1.4 the center of the chest. Pelvis frame y: -2.05 waist, -1.3 navel, 0 hip joints, 0.7 crotch
 
-## 12. Figure studies (nude)
+## 12. Figure studies
 
-- The rig draws the surface forms of the body. The crotch is treated as a soft shadow. It has no function for drawing genital forms
-    + Women: collarbones, breasts, nipples, center line of the belly, navel, groin creases, knees, toes
-    + Men: collarbones, lower line of the pectorals, small nipples, horizontal segments and edges of the rectus abdominis, iliac furrows (stopping above the crotch), serratus, Adam's apple
+- The rig draws the surface forms of the body. The crotch is treated as a soft shadow. It has no function for drawing pelvic forms
+    + Women: collarbones, breasts, chest marks, center line of the belly, navel, lower pelvis creases, knees, toes
+    + Men: collarbones, lower line of the pectorals, small chest marks, horizontal segments and edges of the rectus abdominis, iliac furrows (stopping above the crotch), serratus, Adam's apple
     + Back views (both): spinal groove with the muscles beside it, shoulder blades, lower-back dimples, the cleft and lower folds of the buttocks, creases behind the knees
     + Surface marks fade as they turn from the viewer and vanish beyond the outline
-- Do not draw nudity or sexual acts involving minors
+- Do not draw unclothed figures or sexual acts involving minors
     + Two grounds decide it: a character stated to be a minor (an age set under 18, or designated as a child), and a depiction of a body before secondary sexual characteristics (child build and proportions)
 - Elements that make it convincing, in order
     + Pose: contrapposto and an S-shaped flow, three-quarter view (`turn` 25-35)
@@ -345,7 +345,7 @@ masks = draw_figure(cv, replace(figure, nude_details=False), garments)
     + Background: dark and simple. A large value difference from the body
     + Rim light: a cool `add_rim_light` on the shadow side
 - Long hair (`side_length` 2.0 or more), cloth or the position of the arms can be used to cover
-- Complete example: `scripts/examples/figure_nude_study.py [out] [illustration|oil] [female|male]`
+- Complete example: `scripts/examples/figure_study.py [out] [illustration|oil] [female|male]`
 
 ## 13. Hands
 
@@ -421,7 +421,7 @@ Scenes without perspective place figures with the layout helpers. All three retu
 from paintkit.figure import fit, group, thirds
 pose = poses.contrapposto(turn=22)
 x0, _, x1, _ = thirds(cv.size, 'left')                          # standing on the left third line
-figure = Figure(**fit((x0, 120, x1, 1330), pose), pose=pose, nude_details=False)
+figure = Figure(**fit((x0, 120, x1, 1330), pose), pose=pose, body_details=False)
 
 man, woman = poses.arms_crossed(turn=30), poses.hands_on_hips(turn=-35)
 places = group((260, 80, 1300, 1050), [man, woman], sexes=['male', 'female'], scales=[1.0, 0.94], gap=0.10)
@@ -435,7 +435,7 @@ places = group((40, 60, 1160, 1500), trio, sexes=['female', 'male', 'male'], sca
 
 - The bottom of the box is the floor line the feet stand on. Lay floor shadows on the floor line below `figure.pelvis[0]`
 - For lying figures put the bottom of the `fit` box 0.4-0.5 head units below the surface. It includes room for standing feet
-- Scene examples per outfit: `beach_bikini.py`, `bedroom_lingerie.py`, `hoodie_street.py`, `summer_street.py`, `office_suits.py`
+- Scene examples per outfit: `beach_bikini.py`, `bedroom_innerwear.py`, `hoodie_street.py`, `summer_street.py`, `office_suits.py`
 - Scene examples per cast size and framing: `station_platform.py` (two-shot), `park_group.py` (5 people, standing and seated), `picnic.py` (two-shot seated on the ground), `group_portrait_oil.py` (overlapping waist shot of three)
 
 ## 16. Hairstyles (hairstyles)

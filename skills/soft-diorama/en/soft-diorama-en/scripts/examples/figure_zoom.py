@@ -34,7 +34,7 @@ def shot(name):
     scenery.wash_backdrop(cv, ('#f3d9c9', '#c9dcea', '#e9e2f3'), seed=SEED)
     pose = Pose(turn=18, head_yaw=14, head_tilt=-3, hip_tilt=5, shoulder_tilt=-3, left_arm=(-12, -5),
                 right_arm=(14, 30), right_hand=HandSpec('relaxed', 'back'), left_hand=HandSpec('relaxed', 'back'))
-    figure = Figure(**framing(cv.size, name, center=0.5), pose=pose, look=LOOK, sex=SEX, nude_details=False)
+    figure = Figure(**framing(cv.size, name, center=0.5), pose=pose, look=LOOK, sex=SEX, body_details=False)
     masks = draw_figure(cv, figure, outfit())
     add_rim_light(cv, masks['all'], LOOK, opacity=0.5)
     return finish.finish_illustration(cv, glow=0.15, seed=SEED)

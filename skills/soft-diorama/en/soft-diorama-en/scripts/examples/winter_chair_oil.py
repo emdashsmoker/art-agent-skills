@@ -54,7 +54,7 @@ def main():
                 left_arm=aim(turn, (0.06, 1.0, 0.35), (0.20, 0.70, 1.0)),
                 right_arm=aim(turn, (-0.06, 1.0, 0.30), (-0.25, 0.70, 1.0)),
                 left_hand=HandSpec('relaxed', 'back'), right_hand=HandSpec('relaxed', 'back'))
-    figure = Figure(pelvis=(800, SEAT_Y - 0.80 * UNIT), height=FIGURE_HEIGHT, pose=pose, look=LOOK, nude_details=False,
+    figure = Figure(pelvis=(800, SEAT_Y - 0.80 * UNIT), height=FIGURE_HEIGHT, pose=pose, look=LOOK, body_details=False,
                     hair=hairstyle('hime', color='#2a1e1a', seed=SEED),
                     face=expression(face_style('female', 'mature'), 'tired'))
     masks = draw_figure(cv, figure, [wardrobe.bottoms('#3a3a40'), wardrobe.top('#d8cfc0', sleeve=4.9, scoop=0.3),

@@ -218,7 +218,7 @@ Depth(chest, waist, hip, bust, glute)   # front and back half-depth of the torso
 | `body.surface(part, x, y, side="front")` | Body-coordinate point on the torso surface and its outward normal. part is thorax or pelvis, side is front or back |
 | `body.on_thorax(x, y, side)`, `body.on_pelvis(x, y, side)` | Screen coordinates of a surface point. x and y are the same thorax and pelvis coordinates as in `figure.Figure` |
 | `body.facing(normal)`, `body.facing_at(part, x, y, side)` | How much a normal faces the viewer (-1 to 1). At 0 or below the surface is hidden |
-| `body.bulge(part, x, y, z, radii)` | Outline of an ellipsoid in part coordinates. Round masses of breasts, buttocks and groin |
+| `body.bulge(part, x, y, z, radii)` | Outline of an ellipsoid in part coordinates. Round masses of breasts, buttocks and lower pelvis |
 | `body.local_point(part, x, y, z)` | Convert a point in part coordinates to body coordinates |
 | `body.project(point)`, `body.project_path(points)`, `body.depth_of(point)` | Body coordinates to screen coordinates and view depth |
 | `body.head_center()`, `body.head_yaw()` | Body coordinates of the skull center, head angle relative to the viewer |

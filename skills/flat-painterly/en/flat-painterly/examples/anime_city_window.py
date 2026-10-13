@@ -1,4 +1,4 @@
-"""Anime style example: a woman standing at the window of a high-rise apartment at night (adult nude figure).
+"""Anime style example: a woman standing at the window of a high-rise apartment at night (adult figure study).
 
 Process: city outside → back hair and back arm → body masses (cel shadows, designed shadows, inner lines) → face →
 bangs → curtain → hand → compositing.
@@ -28,7 +28,7 @@ CITY = ["#141a40", "#0e1232", "#090c24"]
 CITY_LIGHTS = ["#7fe0ff", "#ffd38a", "#ff7ab0", "#e6f2ff"]
 ROOM = "#0b0d20"
 SKIN, SKIN_SHADE, SKIN_DEEP, SKIN_LIGHT = "#f7d3bf", "#dc9b8f", "#b0656a", "#fff1e8"
-NIPPLE, BLUSH = "#d98585", "#ff9aa0"
+CHEST_MARK, BLUSH = "#d98585", "#ff9aa0"
 HAIR, HAIR_SHADE, HAIR_LIGHT = "#22263e", "#12142a", "#5a6aa0"
 IRIS_TOP, IRIS_MID, IRIS_LOW = "#2a1a1a", "#7a3a2a", "#e0a060"
 LIPS, LIPS_SHADE = "#d4707a", "#9a4050"
@@ -134,7 +134,7 @@ def paint_body(cv):
     body = figure.shape_of(cv, paths)
     cel_part(cv, body)
 
-    # Designed shadows: under the jaw, armpit, under the breasts, the folded side of the waist, groin crease.
+    # Designed shadows: under the jaw, armpit, under the breasts, the folded side of the waist, lower pelvis crease.
     # The under-jaw shadow uses face coordinates so it stays on the jaw when the head size or neck length
     # changes.
     designed_shadow(cv, HEAD([(-0.7, 1.0), (0.8, 1.0), (0.7, 1.9), (0.1, 2.1), (-0.4, 1.8)]), body)
@@ -151,7 +151,7 @@ def paint_body(cv):
                          BODY.on_pelvis(0.5, -0.7)], body)
     paint_breasts(cv, body)
 
-    # Inner lines: collarbones, base of the neck, rib arch, the groove down the belly, navel, hip bones, groin
+    # Inner lines: collarbones, base of the neck, rib arch, the groove down the belly, navel, hip bones, lower pelvis
     # crease, knees.
     for sign in (-1.0, 1.0):
         inner_line(cv, [BODY.on_thorax(sign * 0.1, -0.02), BODY.on_thorax(sign * 0.36, -0.09),
@@ -193,9 +193,9 @@ def paint_breasts(cv, body):
         underline = [(cx - UNIT * 0.27, cy + UNIT * 0.1), (cx - UNIT * 0.1, cy + UNIT * 0.29),
                      (cx + UNIT * 0.12, cy + UNIT * 0.29), (cx + UNIT * 0.28, cy + UNIT * 0.1)]
         inner_line(cv, underline, body, width=2.2, taper=(0.1, 1, 1, 0.2))
-        nipple = (cx + UNIT * 0.04, cy + UNIT * 0.06)
-        cv.fill(cv.shape(g.ellipse(nipple[0], nipple[1], UNIT * 0.04, UNIT * 0.036)), NIPPLE, clip=breast)
-        cv.fill(cv.shape(g.ellipse(nipple[0], nipple[1] + UNIT * 0.006, UNIT * 0.016)), SKIN_DEEP, opacity=0.6,
+        chest_mark = (cx + UNIT * 0.04, cy + UNIT * 0.06)
+        cv.fill(cv.shape(g.ellipse(chest_mark[0], chest_mark[1], UNIT * 0.04, UNIT * 0.036)), CHEST_MARK, clip=breast)
+        cv.fill(cv.shape(g.ellipse(chest_mark[0], chest_mark[1] + UNIT * 0.006, UNIT * 0.016)), SKIN_DEEP, opacity=0.6,
                 clip=breast)
 
 

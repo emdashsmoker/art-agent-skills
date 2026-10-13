@@ -1,6 +1,6 @@
 # 애니메풍
 
-셀 채색 인물과 그린 배경을 합성하고 촬영 효과로 마감하는 화풍. 예제는 `examples/anime_sky_pilot.py`(인물과 하늘), `anime_night_desk.py`(사물과 실내), `anime_city_window.py`(성인 누드 인체화), `anime_figure_base.py`(여성 전신 베이스), `anime_figure_base_male.py`(남성 전신 베이스), `anime_morning_light.py`(남성 정면 반나체 장면), `anime_turnaround.py`(남녀 턴어라운드와 포즈 시트), `anime_outfit_sheet.py`(의상 시트), `anime_cafe_talk.py`(카페에 마주 앉은 두 사람), `anime_doomer_bus_stop.py`(눈 내리는 밤 정류장의 남자), `anime_doomer_courtyard.py`(인물 없는 단지 안마당 설정샷), `anime_face_templates.py`(얼굴 템플릿 시트), `anime_hair_templates.py`(머리 템플릿 시트), `anime_hair_colors.py`(머리색 시트), `anime_long_hair_platform.py`(해 질 녘 승강장의 긴 생머리), `anime_long_hair_window.py`(창가 역광 뒷모습), `anime_long_hair_walk.py`(공원길 투샷).
+셀 채색 인물과 그린 배경을 합성하고 촬영 효과로 마감하는 화풍. 예제는 `examples/anime_sky_pilot.py`(인물과 하늘), `anime_night_desk.py`(사물과 실내), `anime_city_window.py`(성인 인체 습작), `anime_figure_base.py`(여성 전신 베이스), `anime_figure_base_male.py`(남성 전신 베이스), `anime_morning_light.py`(남성 정면 상의를 벗은 몸 장면), `anime_turnaround.py`(남녀 턴어라운드와 포즈 시트), `anime_outfit_sheet.py`(의상 시트), `anime_cafe_talk.py`(카페에 마주 앉은 두 사람), `anime_doomer_bus_stop.py`(눈 내리는 밤 정류장의 남자), `anime_doomer_courtyard.py`(인물 없는 단지 안마당 설정샷), `anime_face_templates.py`(얼굴 템플릿 시트), `anime_hair_templates.py`(머리 템플릿 시트), `anime_hair_colors.py`(머리색 시트), `anime_long_hair_platform.py`(해 질 녘 승강장의 긴 생머리), `anime_long_hair_window.py`(창가 역광 뒷모습), `anime_long_hair_walk.py`(공원길 투샷).
 
 ## 시각 특징
 

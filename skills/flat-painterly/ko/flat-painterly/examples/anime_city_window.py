@@ -1,4 +1,4 @@
-"""애니메풍 예제: 밤의 고층 아파트 창가에 선 여성(성인 누드 인체화).
+"""애니메풍 예제: 밤의 고층 아파트 창가에 선 여성(성인 인체 습작).
 
 공정: 창 밖 도시 → 뒷머리와 뒤쪽 팔 → 몸 덩어리(셀 그림자, 설계 그림자, 안쪽 선) → 얼굴 → 앞머리 → 커튼 → 손 → 촬영.
 성인으로 읽히게 하는 표지: 8등신 리그, 작은 눈과 긴 턱의 얼굴, 뚜렷한 코와 입술, 성숙한 체형과 쇄골, 갈비, 골반뼈.
@@ -25,7 +25,7 @@ CITY = ["#141a40", "#0e1232", "#090c24"]
 CITY_LIGHTS = ["#7fe0ff", "#ffd38a", "#ff7ab0", "#e6f2ff"]
 ROOM = "#0b0d20"
 SKIN, SKIN_SHADE, SKIN_DEEP, SKIN_LIGHT = "#f7d3bf", "#dc9b8f", "#b0656a", "#fff1e8"
-NIPPLE, BLUSH = "#d98585", "#ff9aa0"
+CHEST_MARK, BLUSH = "#d98585", "#ff9aa0"
 HAIR, HAIR_SHADE, HAIR_LIGHT = "#22263e", "#12142a", "#5a6aa0"
 IRIS_TOP, IRIS_MID, IRIS_LOW = "#2a1a1a", "#7a3a2a", "#e0a060"
 LIPS, LIPS_SHADE = "#d4707a", "#9a4050"
@@ -128,7 +128,7 @@ def paint_body(cv):
     body = figure.shape_of(cv, paths)
     cel_part(cv, body)
 
-    # 설계 그림자: 턱 밑, 겨드랑이, 가슴 밑, 허리의 접힌 쪽, 사타구니 주름.
+    # 설계 그림자: 턱 밑, 겨드랑이, 가슴 밑, 허리의 접힌 쪽, 골반 앞쪽 주름.
     # 턱 밑 그림자는 얼굴 좌표로 잡아야 머리 크기나 목 길이를 바꿔도 턱에 붙어 따라온다.
     designed_shadow(cv, HEAD([(-0.7, 1.0), (0.8, 1.0), (0.7, 1.9), (0.1, 2.1), (-0.4, 1.8)]), body)
     designed_shadow(cv, [BODY.on_thorax(-0.66, 0.0), BODY.on_thorax(-0.5, 0.12), BODY.on_thorax(-0.56, 0.5),
@@ -144,7 +144,7 @@ def paint_body(cv):
                          BODY.on_pelvis(0.5, -0.7)], body)
     paint_breasts(cv, body)
 
-    # 안쪽 선: 쇄골, 목 밑, 갈비 아치, 배 가운데 골, 배꼽, 골반뼈, 사타구니 주름, 무릎.
+    # 안쪽 선: 쇄골, 목 밑, 갈비 아치, 배 가운데 골, 배꼽, 골반뼈, 골반 앞쪽 주름, 무릎.
     for sign in (-1.0, 1.0):
         inner_line(cv, [BODY.on_thorax(sign * 0.1, -0.02), BODY.on_thorax(sign * 0.36, -0.09),
                         BODY.on_thorax(sign * 0.58, -0.04)], body)
@@ -185,9 +185,9 @@ def paint_breasts(cv, body):
         underline = [(cx - UNIT * 0.27, cy + UNIT * 0.1), (cx - UNIT * 0.1, cy + UNIT * 0.29),
                      (cx + UNIT * 0.12, cy + UNIT * 0.29), (cx + UNIT * 0.28, cy + UNIT * 0.1)]
         inner_line(cv, underline, body, width=2.2, taper=(0.1, 1, 1, 0.2))
-        nipple = (cx + UNIT * 0.04, cy + UNIT * 0.06)
-        cv.fill(cv.shape(g.ellipse(nipple[0], nipple[1], UNIT * 0.04, UNIT * 0.036)), NIPPLE, clip=breast)
-        cv.fill(cv.shape(g.ellipse(nipple[0], nipple[1] + UNIT * 0.006, UNIT * 0.016)), SKIN_DEEP, opacity=0.6,
+        chest_mark = (cx + UNIT * 0.04, cy + UNIT * 0.06)
+        cv.fill(cv.shape(g.ellipse(chest_mark[0], chest_mark[1], UNIT * 0.04, UNIT * 0.036)), CHEST_MARK, clip=breast)
+        cv.fill(cv.shape(g.ellipse(chest_mark[0], chest_mark[1] + UNIT * 0.006, UNIT * 0.016)), SKIN_DEEP, opacity=0.6,
                 clip=breast)
 
 

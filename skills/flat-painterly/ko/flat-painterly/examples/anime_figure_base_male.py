@@ -3,7 +3,7 @@
 여성 베이스(anime_figure_base.py)와 같은 공정으로 그린다. 머리부터 발끝까지 가리지 않는다.
 공정: 머리 단위 안내선 → 자세(리그) → 몸 전체 덩어리 → 상반신 근육 → 하반신 근육 → 손과 발 → 얼굴 또는 뒷머리.
 성인 남성 표지: 8등신 리그, 넓은 어깨와 좁은 골반, 각진 턱과 가는 눈, 울대뼈, 목빗근, 가슴근, 복근, 골반 V선.
-사타구니는 여성 베이스와 같은 수준으로 처리한다. 세부 없는 둥근 덩어리의 빛과 그늘만 두고 성기의 세부는 그리지 않는다.
+골반 앞쪽은 여성 베이스와 같은 수준으로 처리한다. 세부 없는 둥근 덩어리의 빛과 그늘만 두고 골반의 세부는 그리지 않는다.
 실행: python anime_figure_base_male.py [출력폴더] [scale]
 """
 import sys
@@ -27,7 +27,7 @@ HEAD_TOP_Y = PELVIS_Y - (2.35 + 0.5 * NECK_STRETCH + 1.0) * UNIT
 # 팔레트: 여성 베이스와 같은 종이 위에 조금 더 그을린 살빛. 짙은 갈색 머리가 화면을 조인다.
 PAPER_TOP, PAPER_LOW, GUIDE = "#eef1f7", "#dde3ee", "#b9c3d8"
 SKIN, SKIN_SHADE, SKIN_DEEP, SKIN_LIGHT = "#efc3a4", "#cf8f78", "#9c5a4c", "#fde6d4"
-NIPPLE, NAIL = "#c98472", "#f6d8c8"
+CHEST_MARK, NAIL = "#c98472", "#f6d8c8"
 HAIR, HAIR_SHADE, HAIR_LIGHT = "#2b211d", "#17110f", "#6b5244"
 IRIS_TOP, IRIS_MID, IRIS_LOW = "#1a1614", "#4a3a30", "#a08060"
 LINE_SKIN, LINE_HAIR, LINE_DARK = "#6e3a30", "#0d0a09", "#1a0e0c"
@@ -114,8 +114,8 @@ def on_bone(body, start, end, t, out):
     return a + (b - a) * t + across * out * UNIT
 
 
-def groin_volume(body):
-    """사타구니의 단순한 둥근 덩어리. 세부 없이 빛과 그늘만 받는 면이다."""
+def lower_pelvis_volume(body):
+    """골반 앞쪽의 단순한 둥근 덩어리. 세부 없이 빛과 그늘만 받는 면이다."""
     return g.ellipse(*body.on_pelvis(0.0, 0.47), UNIT * 0.1, UNIT * 0.14)
 
 
@@ -132,7 +132,7 @@ def body_paths(body, back_view):
                 for path in body.limb(bone, side)]
              + [path for side in "lr" for path in body.foot(side, view=foot_view, turn=10)]
              + [path for side in "lr" for path in relaxed_hand(body, side).parts["palm"]])
-    return paths if back_view else paths + [groin_volume(body)]
+    return paths if back_view else paths + [lower_pelvis_volume(body)]
 
 
 def paint_hands_and_feet(cv, body, body_shape, back_view):
@@ -253,8 +253,8 @@ def paint_front_upper(cv, model, body_shape):
               body_shape, opacity=0.85, soft=UNIT * 0.02)
         inner_line(cv, lower, body_shape, width=2.0, taper=(0.3, 1, 1, 0.2))
         light_spot(cv, b.on_thorax(sign * 0.36 - 0.05, 0.3), 0.2, 0.12, body_shape, opacity=0.55)
-        nipple = b.on_thorax(sign * 0.42, 0.52)
-        cv.fill(cv.shape(g.ellipse(nipple[0], nipple[1], UNIT * 0.026, UNIT * 0.022)), NIPPLE, clip=body_shape)
+        chest_mark = b.on_thorax(sign * 0.42, 0.52)
+        cv.fill(cv.shape(g.ellipse(chest_mark[0], chest_mark[1], UNIT * 0.026, UNIT * 0.022)), CHEST_MARK, clip=body_shape)
     inner_line(cv, [b.on_thorax(0.0, 0.1), b.on_thorax(0.0, 0.6)], body_shape, width=1.5, opacity=0.6)
 
 
@@ -274,7 +274,7 @@ def paint_front_abdomen(cv, model, body_shape):
         for y in (0.9, 1.12):
             light_spot(cv, b.on_thorax(sign * 0.17 - 0.03, y), 0.08, 0.06, body_shape, opacity=0.45)
         light_spot(cv, b.on_pelvis(sign * 0.15 - 0.03, -0.86), 0.07, 0.06, body_shape, opacity=0.4)
-        # 배빗근과 골반 V선(엉덩뼈 능선에서 사타구니로 내려가는 선).
+        # 배빗근과 골반 V선(엉덩뼈 능선에서 골반 앞쪽으로 내려가는 선).
         inner_line(cv, [b.on_thorax(sign * 0.62, 1.12), b.on_pelvis(sign * 0.6, -0.8), b.on_pelvis(sign * 0.58, -0.42)],
                    body_shape, width=1.4, opacity=0.5)
         inner_line(cv, [b.on_pelvis(sign * 0.56, -0.44), b.on_pelvis(sign * 0.36, -0.12), b.on_pelvis(sign * 0.16, 0.24)],
@@ -284,10 +284,10 @@ def paint_front_abdomen(cv, model, body_shape):
     cv.fill(cv.shape(g.ellipse(navel[0], navel[1], UNIT * 0.022, UNIT * 0.034)), SKIN_DEEP, clip=body_shape)
 
 
-def paint_front_groin(cv, model, body_shape):
-    """사타구니: 단순한 둥근 덩어리. 위쪽 빛과 아래쪽 그늘만 두고 안쪽 선은 긋지 않는다."""
+def paint_front_lower_pelvis(cv, model, body_shape):
+    """골반 앞쪽: 단순한 둥근 덩어리. 위쪽 빛과 아래쪽 그늘만 두고 안쪽 선은 긋지 않는다."""
     b = model.body
-    volume = cv.shape(groin_volume(b)) & body_shape
+    volume = cv.shape(lower_pelvis_volume(b)) & body_shape
     cv.fill(cv.form_shadow(volume, LIGHT, 0.4, soft=0.4), SKIN_SHADE, opacity=0.8)
     light_spot(cv, b.on_pelvis(-0.03, 0.4), 0.05, 0.06, volume, opacity=0.4)
     shade(cv, [b.on_pelvis(-0.2, 0.25), b.on_pelvis(0.2, 0.25), b.on_pelvis(0.14, 0.34), b.on_pelvis(-0.14, 0.34)],
@@ -385,7 +385,7 @@ def paint_front(cv):
     body_shape = cel_part(cv, figure.shape_of(cv, body_paths(b, back_view=False)))
     paint_front_upper(cv, model, body_shape)
     paint_front_abdomen(cv, model, body_shape)
-    paint_front_groin(cv, model, body_shape)
+    paint_front_lower_pelvis(cv, model, body_shape)
     paint_arm_muscles(cv, b, body_shape, back_view=False)
     paint_leg_muscles(cv, b, body_shape, back_view=False)
     paint_hands_and_feet(cv, b, body_shape, back_view=False)

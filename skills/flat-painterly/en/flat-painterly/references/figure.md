@@ -12,7 +12,7 @@ Read this document when drawing full figures, half figures and hands. It covers 
 - Clothes
 - Hands and feet
 - Painting skin by style
-- Nude figures
+- Figure studies
 - Lower body markers
 - Male markers
 - 3D rig
@@ -105,7 +105,7 @@ Values verified by rendering the examples. Start new poses from the nearest valu
     + An arm crossing in front of the body is drawn behind the torso
 - Connected parts are merged and painted as one mass, or seams appear at the joints
     + Group neck, torso and upper arms, thighs and shins
-    + At elbows and the groin, where separately painted parts meet, a soft skin-colored ellipse covers and loosens the seam
+    + At elbows and the lower pelvis, where separately painted parts meet, a soft skin-colored ellipse covers and loosens the seam
 
 ## Body Marker Coordinates
 
@@ -119,7 +119,7 @@ Values verified by rendering the examples. Start new poses from the nearest valu
 | Rib arch | thorax (±0.06, 1.04) to (±0.5, 1.5) |
 | Navel | pelvis (0, -0.72) |
 | Hip bone corners | pelvis (±0.52, -0.42) |
-| Groin creases | pelvis (±0.6, -0.3) to (±0.1, 0.34) |
+| Lower pelvis creases | pelvis (±0.6, -0.3) to (±0.1, 0.34) |
 | Spine groove (back) | thorax (0, -0.3) to pelvis (0, -0.2) |
 | Shoulder blades (back) | thorax (±0.36, 0.42) |
 | Sacral dimples (back) | pelvis (±0.17, -0.27) |
@@ -185,22 +185,22 @@ finger = figure.shape_of(cv, hand.parts["index"])  # one part
 - Bone and muscle markers are elliptical blotches with loosened edges and no outlines
     + `cv.fill(cv.shape(g.ellipse(...), soft=...), color, opacity=0.3-0.6, clip=mass)`
 
-## Nude Figures
+## Figure studies
 
 - Subjects are limited to adults and carry all of the adult markers below
     + Body: eight-head rig and an adult build (`figure.FEMALE`, `figure.MALE` or an equivalent Build)
     + Face: small eyes and a long jaw. Anime style uses the adult female or adult male face table in `references/craft.md`
     + Markers: a defined nose and colored lips, inner lines of collarbones, ribs and hip bones
     + Context: no elements that suggest a minor, such as school uniforms, school bags or children's items
-    + If any marker is missing and the figure could read as a minor, nudity and sensual expression are not applied
+    + If any marker is missing and the figure could read as a minor, unclothed figures and appeal-focused poses are not applied
 - All four styles are possible
     + In anime style the face markers above matter most. Large eyes and a short jaw look young at once
 - The scope is figure work in painting, illustration and anatomy plates
     + The full-body reference (base) is drawn from head to toe without covering, because it is the reference for clothes and other poses
     + The forms and values of breasts, back, buttocks, pelvis and thighs are drawn
-    + The groin of the full-body base examples is rendered at the level of classical sculpture and anatomy plates. The female has the round form where the groin creases meet (mons pubis), the male only light and shade on a small round mass without detail
+    + The lower pelvis of the full-body base examples is rendered at the level of classical sculpture and anatomy plates. The female has the round form where the lower pelvis creases meet (mons pubis), the male only light and shade on a small round mass without detail
     + Scene pictures may also cover with cloth, pose or a back view
-- Sensuality comes from the curves of the pose
+- Appeal comes from the curves of the pose
     + Tilt the hip line and shoulder line strongly in opposite directions for an S-flow in the torso
     + Use a Build with a larger difference between waist and pelvis widths. The example uses `Build(shoulder=0.70, ribcage=0.61, waist=0.50, hip=0.83, ...)`
     + Raised arms, swept hair and falling cloth continue the curves
@@ -221,9 +221,9 @@ Values verified in `examples/anime_figure_base.py`. Coordinates are `on_pelvis` 
 | Marker | Front | Treatment |
 |---|---|---|
 | Hip bone corners | (±0.54, -0.44) | Tall vertical light |
-| Groin creases (V line) | (±0.6, -0.44) to (±0.08, 0.44) | Inner lines thin at both ends. The lower ends meet at the mons pubis |
+| Lower pelvis creases (V line) | (±0.6, -0.44) to (±0.08, 0.44) | Inner lines thin at both ends. The lower ends meet at the mons pubis |
 | Mons pubis | center (0, 0.3) | Light on top with radius 0.16×0.12, soft shade below between (±0.16, 0.4) and (±0.05, 0.58) |
-| Between the thighs | Below the groin | Spread the legs slightly as in `leg_l=(6, 1), leg_r=(3, -1)` to leave a small gap |
+| Between the thighs | Below the lower pelvis | Spread the legs slightly as in `leg_l=(6, 1), leg_r=(3, -1)` to leave a small gap |
 | Inner thighs | From the hip joint to the inner knee | Soft shade along the inside of the legs |
 | Outer thighs | From 0.3 outside the hip joint to 0.14 outside the knee | A weak line along the muscle border |
 | Knees | Knee joint | Kneecap light, a short arc below it, a short line on the inner knee |
@@ -266,12 +266,12 @@ Values verified in `examples/anime_figure_base_male.py`. The workflow matches th
 | Adam's apple | thorax (0, -0.4) | A short arc and a small light |
 | Collarbones | thorax (±0.08, -0.03) to (±0.76, -0.04) | Longer and darker lines than on a woman |
 | Pectoralis major | Lower border thorax (±0.04, 0.6), (±0.3, 0.7), (±0.56, 0.62), (±0.72, 0.34) | A shade band below the border, broad light above |
-| Nipples | thorax (±0.42, 0.52) | Small ellipses |
+| Chest marks | thorax (±0.42, 0.52) | Small ellipses |
 | Serratus | Three rows from thorax (±0.76, 0.82) at 0.16 spacing | Short diagonals |
 | Abdominals | Linea alba from thorax (0, 0.78) to pelvis (0, -0.5), segment lines at thorax y 1.0, 1.26 and pelvis y -1.0 | Small lights between segments |
 | Obliques | thorax (±0.62, 1.12) to pelvis (±0.58, -0.42) | Flank lines |
-| Pelvic V line | pelvis (±0.56, -0.44) to (±0.16, 0.24) | Dark lines. The lower ends meet at the groin |
-| Groin | pelvis (0, 0.47), radius 0.1×0.14 | A round mass merged into the body mass. Light and shade only, no inner lines |
+| Pelvic V line | pelvis (±0.56, -0.44) to (±0.16, 0.24) | Dark lines. The lower ends meet at the lower pelvis |
+| Lower pelvis | pelvis (0, 0.47), radius 0.1×0.14 | A round mass merged into the body mass. Light and shade only, no inner lines |
 | Deltoid | Upper arm 0.08 to 0.5 | A diagonal front border and light at the shoulder tip |
 | Sartorius | From the outside of the pelvis to the inner knee | A long slanted line |
 | Vastus medialis | Thigh 0.82, inside 0.12 | A teardrop light above the inner knee and its border line |
@@ -552,7 +552,7 @@ model = ch.place(look, origin, unit, turn, outfit=garment.long_coat())
 | The jaw shows above the neck in back view | At angles where the face turns away, paint the jaw mass before the body |
 | The face looks split in half | Halve the head mass shadow relative to the body and give the shading through the cheek shade band |
 | The crease under the buttocks gets pushed to the flanks | Draw the crease along the lower edge of the buttock ellipsoid |
-| In seated poses the groin mass shows below the thighs | With the thigh raised more than 40 degrees it hides between the thighs, so it is not drawn |
+| In seated poses the lower pelvis mass shows below the thighs | With the thigh raised more than 40 degrees it hides between the thighs, so it is not drawn |
 | Hair locks look spiky | Bob locks get a taper with an end value above 0 and a width of 0.5 or more |
 | Clothing outline corners stick out like ears | A curve joining only section end points bulges at the corners. Loft closes the top and bottom with ring arcs |
 | The trouser waist pokes out beside the top | Give the top loose 0.5-0.7 to fill the concave waist |

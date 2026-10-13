@@ -129,7 +129,7 @@ class Figure:
         return self.frame.point(*self.thorax.point(x, y))
 
     def on_pelvis(self, x, y):
-        """골반 좌표(골반 중심이 원점)의 점을 화면 좌표로. 배꼽, 엉덩이, 사타구니 표현에 쓴다."""
+        """골반 좌표(골반 중심이 원점)의 점을 화면 좌표로. 배꼽, 엉덩이, 골반 앞쪽 표현에 쓴다."""
         return self.frame.point(*self.pelvis.point(x, y))
 
     def limb_frame(self, start, end):

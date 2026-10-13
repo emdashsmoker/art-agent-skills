@@ -152,7 +152,7 @@ python <skill>/scripts/inspect_image.py out/final.png --width 1600 --crop 800 15
 | 의상 | `garment`의 옷 한 벌(일상복, 정장, 외투, 판타지), `character.paint_figure` | `references/figure.md` | `anime_outfit_sheet.py` |
 | 두 사람 장면(투샷) | `Stage`(같은 시선, reach와 fists로 손 맞추기, poles로 팔꿈치 방향, palm_out으로 맞잡은 손, collisions로 관통 점검, 소품 투영), `paint_figure(defer=...)` | `references/figure.md` | `anime_cafe_talk.py`(카페), `watercolor_street_walk.py`(손잡고 걸어오기), `illustration_fantasy_walk.py`(손잡고 걷기), `oil_evening_dance.py`(춤) |
 | 손 | `figure.hand_open`, `figure.hand_side` | `references/figure.md` | `watercolor_hand_studies.py` |
-| 누드 인체화(성인) | `figure.Figure`, 성인 얼굴 표지, 하반신 표지 | `references/figure.md` | `anime_figure_base.py`(여성 전신 베이스), `anime_figure_base_male.py`(남성 전신 베이스), `anime_turnaround.py`(남녀 턴어라운드와 포즈), `oil_figure_study.py`, `oil_reclining_figure.py`, `anime_city_window.py` |
+| 인체 습작(성인) | `figure.Figure`, 성인 얼굴 표지, 하반신 표지 | `references/figure.md` | `anime_figure_base.py`(여성 전신 베이스), `anime_figure_base_male.py`(남성 전신 베이스), `anime_turnaround.py`(남녀 턴어라운드와 포즈), `oil_figure_study.py`, `oil_reclining_figure.py`, `anime_city_window.py` |
 | 풍경 | `motifs.cumulus`, `ridge`, `canopy`, `grass` | `references/subjects.md` | `oil_summer_fields.py`, `oil_harbor_sunset.py` |
 | 도시, 실내 | `Perspective` | `references/subjects.md` | `watercolor_old_town.py` |
 | 정물 | `form_shadow`, `form_light`, 형태 뺄셈 | `references/subjects.md` | `watercolor_still_life.py` |
@@ -166,7 +166,7 @@ python <skill>/scripts/inspect_image.py out/final.png --width 1600 --crop 800 15
 - `references/api.md`: 엔진의 모든 함수와 인자. 장면 코드를 쓰기 전에 읽음
 - `references/craft.md`: 화풍과 무관한 작화 원칙(구도, 명암, 색, 형태)과 검수 목록. 기획과 검수 단계에서 읽음
 - `references/style-*.md`: 화풍별 작업 순서, 패스 인자 조절법, 흔한 결함과 처방
-- `references/figure.md`: 인체 리그의 자세 지정, 검증된 자세 값, 몸의 표지 좌표, 하반신 표지, 손, 누드 인체화, 3차원 리그와 각도별 머리, 얼굴과 머리 템플릿, 의상, 투샷과 무대
+- `references/figure.md`: 인체 리그의 자세 지정, 검증된 자세 값, 몸의 표지 좌표, 하반신 표지, 손, 인체 습작, 3차원 리그와 각도별 머리, 얼굴과 머리 템플릿, 의상, 투샷과 무대
 - `references/subjects.md`: 풍경, 도시, 정물, 현대 사물의 작업법과 투시, 입체 도구
 - `references/mood-doomer.md`: 두머 분위기의 색, 빛, 소재, 구도, 화풍별 처방, 후보정 값. 화풍 문서와 함께 읽음
 
@@ -187,9 +187,9 @@ python <skill>/scripts/inspect_image.py out/final.png --width 1600 --crop 800 15
     + 무대는 정사영이라 깊이에 따른 크기 변화가 없음. 깊은 배경은 `Perspective`로 따로 그림
 - 손은 머리 높이의 4분의 3 크기까지는 그럴듯하게 읽히고 화면을 채우는 확대에서는 마디가 단순해 보임
 - 인물의 얼굴과 살은 양식화된 회화 수준이며 사진 같은 사실 묘사와 글자 렌더링은 범위 밖
-- 누드와 관능적 표현은 성인 표지를 모두 갖춘 인물의 인체화로 한정
+- 인체 습작과 매력 연출은 성인 표지를 모두 갖춘 인물의 인체화로 한정
     + 화풍은 가리지 않으며 성인 표지 목록은 `references/figure.md`
-    + 전신 베이스 예제는 여성과 남성 모두 하반신까지 가리지 않고 그리며 사타구니는 고전 조각과 해부도 수준의 둥근 면으로 표현
+    + 전신 베이스 예제는 여성과 남성 모두 하반신까지 가리지 않고 그리며 골반 앞쪽은 고전 조각과 해부도 수준의 둥근 면으로 표현
     + 미성년으로 보일 여지가 있는 인물에는 적용하지 않음
 - 입체 도구는 상자, 둥근 판, 기둥의 조합만 다룸
     + 게임 패드, 자동차처럼 자유 곡면이 많은 사물은 2D 윤곽으로 보완해야 함

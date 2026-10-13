@@ -1,4 +1,4 @@
-"""회화풍(유화) 예제: 등을 보이고 누운 인체 습작. 성인 여성의 고전 회화풍 누드 와상.
+"""회화풍(유화) 예제: 등을 보이고 누운 인체 습작. 성인 여성의 고전 회화풍 인체 습작 와상.
 
 공정: 자세(리그를 눕혀 배치) → 침상과 휘장 → 살의 큰 덩어리와 명암 → 등의 표지(척추 골, 어깨뼈, 엉덩이) → 유화 패스.
 선 자세용 리그를 Frame의 rotate로 90도 눕히면 누운 자세가 된다. 골반과 허리와 어깨의 폭 차이가
@@ -24,10 +24,10 @@ SKIN, SKIN_LIGHT, SKIN_SHADE, SKIN_DEEP = "#e6b492", "#fbe4cc", "#a6644c", "#5a2
 SKIN_ROSE = "#d6806e"
 HAIR, HAIR_LIGHT = "#2a1810", "#8a5a34"
 
-CURVY = figure.Build(shoulder=0.68, ribcage=0.60, waist=0.48, hip=0.86, arm=0.86, leg=1.1, neck=0.33)
+FULLER = figure.Build(shoulder=0.68, ribcage=0.60, waist=0.48, hip=0.86, arm=0.86, leg=1.1, neck=0.33)
 # 머리가 화면 왼쪽을 향하도록 리그를 반시계로 90도 눕힌다. 리그의 오른쪽(r)이 화면 위쪽이 된다.
 BODY = figure.Figure(
-    g.Frame(origin=(850, 560), unit=188, rotate=-90), build=CURVY,
+    g.Frame(origin=(850, 560), unit=188, rotate=-90), build=FULLER,
     hip_tilt=9, chest_tilt=-9, spine=7, neck=24, head=34,
     arm_l=(172, 200), arm_r=(-7, 12), leg_l=(7, 22), leg_r=(-15, -2),
     stretch={"forearm_l": 0.6, "thigh_l": 0.95})

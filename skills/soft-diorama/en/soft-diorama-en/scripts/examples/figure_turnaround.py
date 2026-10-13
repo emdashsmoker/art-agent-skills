@@ -1,11 +1,11 @@
 """Character turnaround: the same adult figure seen all the way round - front, three-quarter,
-profile, back three-quarter and back - clothed or as a nude study. A model sheet for keeping a
+profile, back three-quarter and back - clothed or as a figure study. A model sheet for keeping a
 character consistent from every side.
 
 Arms are aimed in the body's own frame with aim(), so they hang the same way from every side
 (screen angles would swing them across the body once it turns its back).
 
-Run:  python figure_turnaround.py [output.png] [female|male] [clothed|nude] [around|front]
+Run:  python figure_turnaround.py [output.png] [female|male] [clothed|figure_study] [around|front]
       around: 8 views (0, 45, 90, 135, 180, -135, -90, -45); front: 5 views from -55 to 55
 """
 import sys
@@ -48,7 +48,7 @@ def panel(turn):
                 left_arm=aim(turn, (-0.15, 1.0, 0.02), (-0.05, 1.0, 0.08)),
                 right_arm=aim(turn, (0.15, 1.0, 0.02), (0.05, 1.0, 0.08)),
                 left_hand=HandSpec('relaxed', 'rest'), right_hand=HandSpec('relaxed', 'rest'))
-    figure = Figure(pelvis=(PANEL[0] / 2, 760), height=1360, pose=pose, look=LOOK, sex=SEX, nude_details=not CLOTHED)
+    figure = Figure(pelvis=(PANEL[0] / 2, 760), height=1360, pose=pose, look=LOOK, sex=SEX, body_details=not CLOTHED)
     floor = cv.ellipse(PANEL[0] / 2, 1440, 150, 16)
     cv.tint(blur(floor, 10), '#5a5048', 'multiply', 0.45)
     draw_figure(cv, figure, garments())

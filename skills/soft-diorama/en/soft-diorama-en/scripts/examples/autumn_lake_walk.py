@@ -38,7 +38,7 @@ def main():
     cv = Canvas(WIDTH, HEIGHT)
     paint_lake(cv)
     pose = poses.walk(turn=150, phase=0.25)
-    figure = Figure(**fit((1020, 520, 1300, 930), pose), pose=pose, look=LOOK, nude_details=False,
+    figure = Figure(**fit((1020, 520, 1300, 930), pose), pose=pose, look=LOOK, body_details=False,
                     hair=hairstyle('braid', color='#3a2a22', seed=SEED))
     cv.tint(blur(cv.ellipse(figure.pelvis[0] + 10, 930, 70, 9), 6), '#7a6a4a', 'multiply', 0.4)
     draw_figure(cv, figure, [wardrobe.bottoms('#3a3a44'), wardrobe.long_coat('#9a3a2a', belt='#9a3a2a'),

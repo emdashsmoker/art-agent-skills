@@ -1,9 +1,9 @@
-"""Figure study: standing adult nude in contrapposto, studio light, soft illustration finish.
+"""Figure study: standing adult figure study in contrapposto, studio light, soft illustration finish.
 
-Non-explicit figure art: the rig draws surface forms only (no genital detail).
+Non-explicit figure art: the rig draws surface forms only (no pelvic detail).
 The male study turns the body three-quarters (Pose.turn) toward the light.
 
-Run:  python figure_nude_study.py [output.png] [illustration|oil] [female|male]
+Run:  python figure_study.py [output.png] [illustration|oil] [female|male]
 """
 import sys
 from dataclasses import replace
@@ -17,7 +17,7 @@ from paintkit import Canvas, blur, finish, grow, save_image, scenery, shading
 from paintkit.figure import (ILLUSTRATION, MALE_FACE, MALE_HAIR, FaceSpec, Figure, HairSpec, HandSpec, Physique, Pose,
                              add_rim_light, draw_figure)
 
-OUTPUT = sys.argv[1] if len(sys.argv) > 1 else 'figure_nude_study.png'
+OUTPUT = sys.argv[1] if len(sys.argv) > 1 else 'figure_study.png'
 STYLE = sys.argv[2] if len(sys.argv) > 2 else 'illustration'      # or 'oil'
 SEX = sys.argv[3] if len(sys.argv) > 3 else 'female'               # or 'male'
 WIDTH, HEIGHT = 1024, 1536

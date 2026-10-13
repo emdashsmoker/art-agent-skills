@@ -41,7 +41,7 @@ def main():
     figure = Figure(**fit((x0, 90, x1, 1060), pose), pose=pose, physique=Physique(hips=1.04),
                     face=FaceSpec(skin='#f0c8a8', eye_color='#3a5a7a', smile=0.6, lip_color='#d8606a'),
                     hair=HairSpec(color='#2a1e1a', bangs='wispy', length=1.9, wave=0.3, seed=SEED),
-                    look=look, nude_details=False)
+                    look=look, body_details=False)
     cv.tint(blur(cv.ellipse(figure.pelvis[0] + 40, 1058, 190, 18), 8), '#4a4048', 'multiply', 0.4)
     masks = draw_figure(cv, figure, [wardrobe.hot_pants(), wardrobe.crop_top('#f6f2ea', sleeve=1.0),
                                      wardrobe.shoes('#f4f4f4')])

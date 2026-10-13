@@ -57,7 +57,7 @@ def main():
                 left_arm=aim(turn, (-0.12, 1.0, 0.05), (-0.02, 1.0, 0.25)),
                 right_arm=aim(turn, (0.15, 1.0, 0.02), (0.08, 1.0, 0.15)),
                 left_hand=HandSpec('relaxed', 'rest'), right_hand=HandSpec('relaxed', 'rest'))
-    figure = Figure(**framing(cv.size, 'thigh', center=0.56), pose=pose, look=look, nude_details=False,
+    figure = Figure(**framing(cv.size, 'thigh', center=0.56), pose=pose, look=look, body_details=False,
                     hair=HairSpec(color='#3b2a2a', bangs='side', part=20, length=3.4, wave=0.4, fullness=1.05,
                                   shine=0.8, seed=SEED))
     masks = draw_figure(cv, figure, [wardrobe.dress('#f2e8f0', length=3.4, flare=0.30), wardrobe.shoes('#5a3a3a')])

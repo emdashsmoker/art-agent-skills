@@ -181,7 +181,7 @@
 | `figure.group(box, poses, sexes, scales, gap, shot=None, headroom)` | 여러 인물을 한 바닥선에 나란히 놓는 배치 목록. `shot='waist'` 등으로 단체 클로즈업 |
 | `figure.pose_bounds(figure)` | 인물이 차지하는 화면 상자 |
 | `figure.poses.*` | 포즈 프리셋 12종 (`contrapposto`, `arms_crossed`, `hands_on_hips`, `hands_in_pockets(pouch=False)`, `stretch`, `walk`, `run`, `cross_legged_seat`, `squat`, `sit_floor`, `lean_wall`, `lie_side`). `poses.POSES`는 이름과 함수의 표 |
-| `wardrobe.bikini`, `lingerie`, `hoodie`, `crop_top`, `hot_pants`, `suit` | 의상 (`references/fullbody.md` 11절) |
+| `wardrobe.bikini`, `innerwear`, `hoodie`, `crop_top`, `hot_pants`, `suit` | 의상 (`references/fullbody.md` 11절) |
 | `wardrobe.long_coat`, `padded_jacket`, `scarf`, `beanie`, `boots` | 겨울 외투, 목도리, 비니, 부츠. `beanie`는 머리 다음에 칠해진다 (`references/fullbody.md` 11절) |
 | `Figure(sex='male')`, `MALE_FACE`, `MALE_HAIR` | 남성 체형과 얼굴, 머리 프리셋 |
 | `figure.hairstyle(name, **changes)` | 이름 붙은 헤어 24종 (`FEMALE_STYLES` 12, `MALE_STYLES` 12, 합친 표 `HAIRSTYLES`). 묶음머리, 클리퍼 컷 포함 (`references/fullbody.md` 16절) |

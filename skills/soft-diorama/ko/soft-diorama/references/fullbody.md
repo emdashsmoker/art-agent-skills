@@ -25,7 +25,7 @@ man = Figure(**framing(cv.size, 'waist'), sex='male', pose=Pose(turn=-25, head_y
 9. 남성
 10. 포즈 조리법과 포즈 프리셋 (poses)
 11. 의상 (wardrobe)
-12. 인체화(누드)
+12. 인체 습작
 13. 손
 14. 돌려받는 값
 15. 배경 속에 세우기와 구도 (fit, thirds, group)
@@ -69,7 +69,7 @@ man = Figure(**framing(cv.size, 'waist'), sex='male', pose=Pose(turn=-25, head_y
 | `face`, `hair` | 상반신 리그와 같은 `FaceSpec`, `HairSpec`. None이면 성별 기본값 (`FEMALE_FACE`와 긴 머리, `MALE_FACE`와 `MALE_HAIR`) |
 | `look` | 기본 `ILLUSTRATION` |
 | `jaw` | 얼굴 아래쪽 폭 배율. None이면 여성 0.93, 남성 1.06 |
-| `nude_details` | 유두, 배꼽, 몸의 주름과 근육 표시. 옷으로 전부 덮을 때는 False |
+| `body_details` | 가슴 표시, 배꼽, 몸의 주름과 근육 표시. 옷으로 전부 덮을 때는 False |
 
 ## 4. Pose
 
@@ -104,7 +104,7 @@ man = Figure(**framing(cv.size, 'waist'), sex='male', pose=Pose(turn=-25, head_y
 몸의 곡선은 아래 구조로 만든다. 체형을 바꿀 때는 `Physique` 배율을 먼저 쓰고, 표는 형태 자체가 어색할 때만 고친다.
 
 - 팔다리는 바깥쪽과 안쪽 윤곽을 따로 정한다 (`fullbody.py`의 `_ARM_OUTER`, `_ARM_INNER`, `_LEG_OUTER`, `_LEG_INNER`, 남성은 `_MALE_` 접두어)
-    + 허벅지: 바깥쪽은 엉덩이에서 완만하게 내려오고 안쪽은 사타구니 아래에서 빨리 좁아진다
+    + 허벅지: 바깥쪽은 엉덩이에서 완만하게 내려오고 안쪽은 골반 앞쪽 아래에서 빨리 좁아진다
     + 종아리: 바깥쪽 볼록함이 안쪽보다 조금 높다
     + 팔: 위팔 바깥의 어깨 근육, 아래팔 위쪽의 볼록함
     + 표의 값은 `(t, 반폭)`, 단위는 머리 단위. t는 관절에서 관절까지 0-1
@@ -122,7 +122,7 @@ three_quarter = Pose(turn=35, head_yaw=28, hip_tilt=5, shoulder_tilt=-3)
 - 몸통의 각 높이를 단면(반폭, 앞 깊이, 뒤 깊이)으로 보고 돌린 실루엣을 계산한다
     + 몸이 향한 쪽 실루엣에 가슴과 배의 옆선이, 반대쪽에 등과 엉덩이가 드러난다
     + 먼 쪽 가슴은 위쪽 비탈이 가슴벽에서 이어지는 옆모습이 된다
-- 배꼽, 쇄골, 복부 중심선, 유두는 몸 표면 위의 점이라서 함께 돈다 (`skeleton.chest.surface(x, y)`)
+- 배꼽, 쇄골, 복부 중심선, 가슴 표시는 몸 표면 위의 점이라서 함께 돈다 (`skeleton.chest.surface(x, y)`)
 - 먼 쪽 팔은 몸통과 가슴 뒤로 숨는다. 먼 쪽 다리는 가까운 다리 뒤에 그려진다
 - 고개는 몸보다 덜 돌리는 편이 자연스럽다: 3/4까지는 `head_yaw = turn * 0.6-0.8`, 옆모습과 뒷모습은 `head_yaw = turn`
 - 옆모습(90): 몸 앞뒤 깊이로 가슴, 배, 등, 엉덩이 옆선이 생기고 다리는 옆에서 본 윤곽(앞은 허벅지와 무릎, 뒤는 종아리)으로 바뀐다. 얼굴은 코, 입술, 턱이 윤곽 밖으로 나온 옆얼굴, 눈은 가까운 쪽 하나만 보인다. 가까운 팔의 소매는 따로 그려진다
@@ -137,7 +137,7 @@ back = Pose(turn=turn, head_yaw=turn,
             left_hand=HandSpec('relaxed', 'rest'), right_hand=HandSpec('relaxed', 'rest'))   # 손도 몸을 따라 돈다
 ```
 
-- 8방향 턴어라운드 시트: `scripts/examples/figure_turnaround.py [out] [female|male] [clothed|nude] [around|front]`
+- 8방향 턴어라운드 시트: `scripts/examples/figure_turnaround.py [out] [female|male] [clothed|figure_study] [around|front]`
 - 뒷모습 장면 예시: `scripts/examples/figure_back_view.py`
 
 ## 7. 앉은 자세와 단축 (aim)
@@ -170,7 +170,7 @@ seat_y = pelvis_y + 0.80 * figure.unit                   # 의자 윗면 높이
 전신 리그 하나로 전신, 무릎 위, 허리 위, 상반신, 얼굴 클로즈업을 모두 만든다. 프레임 아래는 캔버스 밖으로 나갈 뿐 몸 전체가 그대로 계산된다.
 
 ```python
-figure = Figure(**framing(cv.size, 'bust', center=0.5), pose=pose, sex='female', nude_details=False)
+figure = Figure(**framing(cv.size, 'bust', center=0.5), pose=pose, sex='female', body_details=False)
 ```
 
 | shot | 화면 아래 끝 |
@@ -272,7 +272,7 @@ hair_up = replace(poses.contrapposto(turn=22), right_arm=(150, -78), right_hand=
 | `dress(color, neckline=0.60, length=2.4, flare=0.40)` | 끈 달린 상의 + 치마 |
 | `swimsuit(color, neckline=0.80, leg_cut=0.5)` | 원피스 수영복 |
 | `bikini(color, tie=None, rise=0.0)` | 홀터넥 삼각 비키니와 옆을 묶은 하의. 컵 아랫단은 가슴 아래 주름 높이에 놓여 가슴이 끈 아래로 나오지 않는다. 목끈은 컵 꼭짓점에서 목 옆을 지나 목덜미 리본까지, 가슴 아래 끈은 주름을 따라 두 컵을 잇고 등 뒤 리본까지 간다. 하의 허리선은 골반뼈 높이에서 엉덩이 윤곽까지 닿고 옆 리본은 골반 옆선 위에 있다. `tie`: 끈 색. `rise`: 하의 높이 조절. 남성에게는 수영 팬티만 |
-| `lingerie(color, lace='#f4eef2', bow=None)` | 브래지어와 팬티. 팬티 허리선은 골반뼈 높이에서 엉덩이 윤곽까지 닿는다. 레이스는 팬티 허리와 다리 트임을 앞뒤로 한 바퀴 두르고 브래지어 컵 윗단에 있다. 허리 앞에 작은 리본. `lace=None`이면 레이스 없음. 남성에게는 팬티만 |
+| `innerwear(color, lace='#f4eef2', bow=None)` | 브래지어와 팬티. 팬티 허리선은 골반뼈 높이에서 엉덩이 윤곽까지 닿는다. 레이스는 팬티 허리와 다리 트임을 앞뒤로 한 바퀴 두르고 브래지어 컵 윗단에 있다. 허리 앞에 작은 리본. `lace=None`이면 레이스 없음. 남성에게는 팬티만 |
 | `hoodie(color, pocket=True, strings=True)` | 후드티. 긴소매, 손목과 밑단 시보리, 캥거루 주머니, 끈, 목 뒤 후드(뒷모습에서는 등 위) |
 | `crop_top(color, sleeve=1.0, scoop=0.45)` | 배꼽 위에서 끝나는 상의. `sleeve=0`이면 끈 크롭탑 |
 | `hot_pants(color='#5d7fae', waist=-1.25)` | 데님 핫팬츠. 단추, 앞주머니 스티치, 올이 풀린 밑단, 뒷모습에서 뒷주머니 |
@@ -289,7 +289,7 @@ hair_up = replace(poses.contrapposto(turn=22), right_arm=(150, -78), right_hand=
 | 의상 | `garments` |
 |---|---|
 | 비키니 | `[wardrobe.bikini('#e8505a', tie='#fbf4ea')]` |
-| 란제리 | `[wardrobe.lingerie('#7a2a4a', lace='#f4e6ea')]` |
+| 이너웨어 | `[wardrobe.innerwear('#7a2a4a', lace='#f4e6ea')]` |
 | 후드티와 청바지 | `[wardrobe.bottoms('#2f3a52'), wardrobe.hoodie('#c8b48a'), wardrobe.shoes('#f0eee8')]` |
 | 크롭티와 핫팬츠 | `[wardrobe.hot_pants(), wardrobe.crop_top('#f6f2ea'), wardrobe.shoes('#f4f4f4')]` |
 | 양복 | `[wardrobe.suit('#2b2f3a', tie='#7a2a3a'), wardrobe.shoes('#1e1a18')]` |
@@ -298,7 +298,7 @@ hair_up = replace(poses.contrapposto(turn=22), right_arm=(150, -78), right_hand=
 
 ```python
 garments = [wardrobe.skirt('#2d3350', length=3.0, flare=0.32), wardrobe.top('#d9c8a8', sleeve=4.9, hem=-1.7)]
-masks = draw_figure(cv, replace(figure, nude_details=False), garments)
+masks = draw_figure(cv, replace(figure, body_details=False), garments)
 ```
 
 - 팔과 손은 소매를 제외한 모든 옷보다 앞에 놓인다
@@ -318,8 +318,8 @@ masks = draw_figure(cv, replace(figure, nude_details=False), garments)
     + 팔 각도는 무시되고 어깨에서 주머니 입구까지 2관절 역운동학으로 다시 계산된다. 팔꿈치는 바깥 뒤쪽으로 굽는다
     + `HandSpec('pouch')`는 같은 방식으로 후드티 캥거루 주머니의 옆 입구로 손을 넣는다. 몸 앞을 가로지르는 소매는 별도 형태로 그려진다
     + 엉덩이를 덮는 긴 상의(후드티)에 `pocket`을 쓰면 손이 상의 아래로 사라진다. 후드티에는 `pouch`를 쓴다
-- 비키니, 란제리처럼 몸 표면에 붙는 작은 천 조각은 몸 앞면과 뒷면에 따로 그려 몸을 돌려도 따라 돈다
-    + 비키니와 란제리 하의는 허리선과 다리 트임 사이의 몸 표면을 좁은 띠로 나눠 투영한 뒤 몸 마스크로 자른다. 그래서 어느 각도에서도 허리띠가 엉덩이 윤곽까지 닿는다
+- 비키니, 이너웨어처럼 몸 표면에 붙는 작은 천 조각은 몸 앞면과 뒷면에 따로 그려 몸을 돌려도 따라 돈다
+    + 비키니와 이너웨어 하의는 허리선과 다리 트임 사이의 몸 표면을 좁은 띠로 나눠 투영한 뒤 몸 마스크로 자른다. 그래서 어느 각도에서도 허리띠가 엉덩이 윤곽까지 닿는다
     + 몸을 돌리면 화면에서 가까운 쪽 옆선을 경계로 앞면 조각과 뒷면 조각이 나뉜다
     + 끈의 점에 세 번째 값(lift)을 주면 몸 표면에서 띄운다. 띄운 컵 꼭짓점에서 시작한 끈이 피부로 내려앉는다
     + 팬티 레이스는 관객을 향한 구간에만 그린다. 몸 뒤로 돌아간 구간의 레이스는 앞쪽 천 위에 겹쳐 보인다
@@ -330,14 +330,14 @@ masks = draw_figure(cv, replace(figure, nude_details=False), garments)
 - 새 옷이 필요하면 `masks`의 부위 마스크와 `skeleton.chest.pt(x, y)`, `skeleton.chest.surface(x, y)`, `skeleton.pelvis.round_pts(points)`로 영역을 만들어 같은 방식으로 자른다
 - 가슴 프레임 y: 0 목 아래 오목한 곳, 1.4 가슴 중심. 골반 프레임 y: -2.05 허리, -1.3 배꼽, 0 고관절, 0.7 가랑이
 
-## 12. 인체화(누드)
+## 12. 인체 습작
 
-- 리그는 몸의 표면 형태를 그린다. 가랑이는 부드러운 그림자로 처리한다. 성기 형태를 그리는 기능은 없다
-    + 여성: 쇄골, 가슴, 유두, 복부 중심선, 배꼽, 서혜부 주름, 무릎, 발가락
-    + 남성: 쇄골, 가슴근육 아랫선, 작은 유두, 복직근의 가로 마디와 가장자리, 장골 고랑(가랑이 위에서 멈춤), 전거근, 울대뼈
+- 리그는 몸의 표면 형태를 그린다. 가랑이는 부드러운 그림자로 처리한다. 골반 세부 형태를 그리는 기능은 없다
+    + 여성: 쇄골, 가슴, 가슴 표시, 복부 중심선, 배꼽, 서혜부 주름, 무릎, 발가락
+    + 남성: 쇄골, 가슴근육 아랫선, 작은 가슴 표시, 복직근의 가로 마디와 가장자리, 장골 고랑(가랑이 위에서 멈춤), 전거근, 울대뼈
     + 뒷모습(공통): 척추 고랑과 양옆 근육, 날개뼈, 허리 보조개, 엉덩이 골과 아랫주름, 무릎 뒤 주름
     + 표면 표시는 관객을 향한 정도에 따라 옅어지고 윤곽 너머에서는 사라진다
-- 미성년자의 누드와 성행위 묘사는 그리지 않는다
+- 미성년자의 노출과 성행위 묘사는 그리지 않는다
     + 판단 근거는 두 가지다. 미성년자로 명시된 인물(18세 미만 나이 설정, 아동 지정), 이차성징 이전의 몸 묘사(아동 체형과 비례)
 - 그럴듯함을 만드는 요소 순서
     + 포즈: 콘트라포스토와 S자 흐름, 3/4 각도(`turn` 25-35)
@@ -345,7 +345,7 @@ masks = draw_figure(cv, replace(figure, nude_details=False), garments)
     + 배경: 어둡고 단순하게. 몸과 명도 차이를 크게
     + 테두리 빛: 그림자 쪽에 차가운 색 `add_rim_light`
 - 긴 머리(`side_length` 2.0 이상)나 천, 팔의 위치로 가리는 연출이 가능하다
-- 전체 예시는 `scripts/examples/figure_nude_study.py [out] [illustration|oil] [female|male]`
+- 전체 예시는 `scripts/examples/figure_study.py [out] [illustration|oil] [female|male]`
 
 ## 13. 손
 
@@ -421,7 +421,7 @@ figure = Figure(pelvis=view.project(x_m, 0.90, z_m), height=1.70 * scale, ...)
 from paintkit.figure import fit, group, thirds
 pose = poses.contrapposto(turn=22)
 x0, _, x1, _ = thirds(cv.size, 'left')                          # 왼쪽 3분할선에 세우기
-figure = Figure(**fit((x0, 120, x1, 1330), pose), pose=pose, nude_details=False)
+figure = Figure(**fit((x0, 120, x1, 1330), pose), pose=pose, body_details=False)
 
 man, woman = poses.arms_crossed(turn=30), poses.hands_on_hips(turn=-35)
 places = group((260, 80, 1300, 1050), [man, woman], sexes=['male', 'female'], scales=[1.0, 0.94], gap=0.10)
@@ -435,7 +435,7 @@ places = group((40, 60, 1160, 1500), trio, sexes=['female', 'male', 'male'], sca
 
 - 상자의 바닥이 발이 닿는 바닥선이다. 바닥 그림자는 `figure.pelvis[0]` 아래 바닥선에 깐다
 - 누운 인물은 `fit`의 상자 바닥을 바닥면보다 0.4-0.5 머리 단위 아래로 둔다. 서 있는 발 기준 여유가 들어 있다
-- 의상별 장면 예시: `beach_bikini.py`, `bedroom_lingerie.py`, `hoodie_street.py`, `summer_street.py`, `office_suits.py`
+- 의상별 장면 예시: `beach_bikini.py`, `bedroom_innerwear.py`, `hoodie_street.py`, `summer_street.py`, `office_suits.py`
 - 인원과 구도별 장면 예시: `station_platform.py` (투샷), `park_group.py` (5명, 서기와 앉기), `picnic.py` (바닥에 앉은 투샷), `group_portrait_oil.py` (겹친 3인 허리샷)
 
 ## 16. 헤어스타일 (hairstyles)

@@ -40,7 +40,7 @@ def main():
     cv = Canvas(WIDTH, HEIGHT)
     paint_riverside(cv)
     pose = poses.run(turn=80, phase=0.1)
-    figure = Figure(**fit((380, 140, 1000, 935), pose), pose=pose, look=LOOK, nude_details=False,
+    figure = Figure(**fit((380, 140, 1000, 935), pose), pose=pose, look=LOOK, body_details=False,
                     hair=hairstyle('ponytail', color='#2a2026', tail_length=2.2, flow=0.7, seed=SEED),
                     face=expression(face_style('female', 'sharp', eye_color='#5a3a2a'), 'grin', 0.8))
     cv.tint(blur(cv.ellipse(figure.pelvis[0], 935, 140, 12), 8), '#4a5a3a', 'multiply', 0.4)

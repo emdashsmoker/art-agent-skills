@@ -64,8 +64,8 @@ python <skill>/scripts/selftest.py                 # "all passed" 확인
 
 - `scripts/examples/`에서 가장 가까운 예제를 복사해 출발한다
     + 상반신 인물: `anime_portrait.py`, `illustration_portrait.py`, `watercolor_portrait.py`, `oil_portrait.py`
-    + 전신 인물: `city_night_walk.py` (의상 + 도시 배경), `figure_nude_study.py` (인체화, 여성과 남성), `couple_bench.py` (앉은 남녀, 3/4 각도, `skirt` 인자로 앉은 치마), `figure_turnaround.py` (정면부터 뒷모습까지 8방향 턴어라운드), `figure_back_view.py` (뒤돌아선 인물과 노을 도시)
-    + 의상과 상황: `beach_bikini.py` (해변 비키니, 3분할), `bedroom_lingerie.py` (침실 란제리, 눕기), `hoodie_street.py` (가을 거리 후드티, 캥거루 주머니에 손), `summer_street.py` (여름 거리 크롭티와 핫팬츠, 걷기), `office_suits.py` (사무실 양복 두 명, `group`)
+    + 전신 인물: `city_night_walk.py` (의상 + 도시 배경), `figure_study.py` (인체화, 여성과 남성), `couple_bench.py` (앉은 남녀, 3/4 각도, `skirt` 인자로 앉은 치마), `figure_turnaround.py` (정면부터 뒷모습까지 8방향 턴어라운드), `figure_back_view.py` (뒤돌아선 인물과 노을 도시)
+    + 의상과 상황: `beach_bikini.py` (해변 비키니, 3분할), `bedroom_innerwear.py` (침실 이너웨어, 눕기), `hoodie_street.py` (가을 거리 후드티, 캥거루 주머니에 손), `summer_street.py` (여름 거리 크롭티와 핫팬츠, 걷기), `office_suits.py` (사무실 양복 두 명, `group`)
     + 전신에서 잘라낸 클로즈업: `figure_zoom.py` (전신, 허리 위, 상반신, 얼굴)
     + 손: `hand_study.py`
     + 풍경: `landscape_lake.py` (유화), `landscape_meadow.py` (애니메 배경, 원근 도로)
@@ -167,13 +167,13 @@ cv.paint_form(vase, '#7fb0c4', light=(-0.7, -0.7), shadow=0.22, line_width=2.4, 
 | 리그 | 호출 | 지원 |
 |---|---|---|
 | 상반신 | `draw_character` | 고개 회전 ±40도, 앞머리 8종과 없음, 긴 머리와 단발, 웨이브, 묶음머리 6종, 헤어 프리셋 24종, 표정 8종, 옷 5종 |
-| 전신 | `draw_figure` | 여성과 남성, 360도 몸 돌리기(정면, 3/4, 옆모습, 뒷모습), 포즈 프리셋 12종(`poses`), 구도 도우미(`fit`, `thirds`, `group`), 관절 각도 포즈, 앉은 자세(`aim`), 체형 조절, 의상 17종, 헤어 24종(`hairstyle`, 묶음머리와 클리퍼 컷 포함), 얼굴 스타일 8종(`face_style`), 표정 8종(`expression`), 인체화(누드), 위에서 본 누운 자세, `framing`으로 상반신과 얼굴 클로즈업 |
+| 전신 | `draw_figure` | 여성과 남성, 360도 몸 돌리기(정면, 3/4, 옆모습, 뒷모습), 포즈 프리셋 12종(`poses`), 구도 도우미(`fit`, `thirds`, `group`), 관절 각도 포즈, 앉은 자세(`aim`), 체형 조절, 의상 17종, 헤어 24종(`hairstyle`, 묶음머리와 클리퍼 컷 포함), 얼굴 스타일 8종(`face_style`), 표정 8종(`expression`), 인체 습작, 위에서 본 누운 자세, `framing`으로 상반신과 얼굴 클로즈업 |
 | 손 | `draw_hand` | 손등과 손바닥, 포즈 6종 (편 손, 힘 뺀 손, 주먹, 가리킴, 브이, 엄지 척), 손목 축 회전으로 옆에서 본 손 |
 
 - 전신 인물은 성인 8등신 비례로 고정되어 있다
 - 상반신 클로즈업도 전신 리그를 `framing(cv.size, 'bust')`로 줌해서 만들 수 있다. 몸을 돌리거나 남성을 그릴 때는 이 방법을 쓴다
-- 인체화(누드)는 여성과 남성 모두 그린다. 엔진은 몸의 표면 형태를 그린다. 성기 형태를 그리는 기능은 없다
-- 미성년자의 누드와 성행위 묘사는 그리지 않는다
+- 인체 습작은 여성과 남성 모두 그린다. 엔진은 몸의 표면 형태를 그린다. 골반 세부 형태를 그리는 기능은 없다
+- 미성년자의 노출과 성행위 묘사는 그리지 않는다
     + 판단 근거는 두 가지다. 미성년자로 명시된 인물(18세 미만 나이 설정, 아동 지정), 이차성징 이전의 몸 묘사(아동 체형과 비례)
 - 몸을 90도 넘게 돌리는 포즈는 팔을 `aim(turn, ...)`으로 준다. 몸 기준 방향이라 어느 각도에서도 같은 자세로 보인다
 - 몸을 돌리는 그림의 늘어뜨린 손은 `HandSpec('relaxed', 'rest')`를 쓴다. 손이 몸 방향을 따라 비스듬히 돈다
@@ -191,11 +191,11 @@ cv.paint_form(vase, '#7fb0c4', light=(-0.7, -0.7), shadow=0.22, line_width=2.4, 
 from paintkit.figure import ILLUSTRATION, Figure, Pose, draw_figure, framing, wardrobe
 
 figure = Figure(pelvis=(500, 760), height=1270, pose=Pose(hip_tilt=7, shoulder_tilt=-5, lean=-3),
-                look=ILLUSTRATION, nude_details=False)
+                look=ILLUSTRATION, body_details=False)
 masks = draw_figure(cv, figure, garments=[wardrobe.dress('#b0344a', length=2.6), wardrobe.shoes('#3a2020')])
 
 # 3/4 각도의 남성, 허리 위 클로즈업
-man = Figure(**framing(cv.size, 'waist'), sex='male', pose=Pose(turn=-30, head_yaw=-24), nude_details=False)
+man = Figure(**framing(cv.size, 'waist'), sex='male', pose=Pose(turn=-30, head_yaw=-24), body_details=False)
 draw_figure(cv, man, garments=[wardrobe.bottoms('#3a3d48'), wardrobe.top('#c9d6e3', sleeve=1.25, scoop=0.25)])
 ```
 

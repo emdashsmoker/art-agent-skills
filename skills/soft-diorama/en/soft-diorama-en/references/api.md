@@ -181,7 +181,7 @@ New tools of the figure rigs (details in `references/fullbody.md`)
 | `figure.group(box, poses, sexes, scales, gap, shot=None, headroom)` | Placements of several figures side by side on one floor line. `shot='waist'` and so on for group close-ups |
 | `figure.pose_bounds(figure)` | Screen box a figure occupies |
 | `figure.poses.*` | 12 pose presets (`contrapposto`, `arms_crossed`, `hands_on_hips`, `hands_in_pockets(pouch=False)`, `stretch`, `walk`, `run`, `cross_legged_seat`, `squat`, `sit_floor`, `lean_wall`, `lie_side`). `poses.POSES` is a table of names and functions |
-| `wardrobe.bikini`, `lingerie`, `hoodie`, `crop_top`, `hot_pants`, `suit` | Outfits (`references/fullbody.md` section 11) |
+| `wardrobe.bikini`, `innerwear`, `hoodie`, `crop_top`, `hot_pants`, `suit` | Outfits (`references/fullbody.md` section 11) |
 | `wardrobe.long_coat`, `padded_jacket`, `scarf`, `beanie`, `boots` | Winter outerwear, scarf, beanie, boots. `beanie` is painted after the head (`references/fullbody.md` section 11) |
 | `Figure(sex='male')`, `MALE_FACE`, `MALE_HAIR` | Male build, face and hair presets |
 | `figure.hairstyle(name, **changes)` | 24 named hairstyles (`FEMALE_STYLES` 12, `MALE_STYLES` 12, combined table `HAIRSTYLES`). Tied styles and clipper cuts included (`references/fullbody.md` section 16) |

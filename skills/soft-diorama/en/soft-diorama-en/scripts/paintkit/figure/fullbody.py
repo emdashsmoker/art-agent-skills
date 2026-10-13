@@ -67,7 +67,7 @@ _LEG_INNER = [(0.00, 0.66), (0.08, 0.71), (0.20, 0.64), (0.34, 0.50), (0.45, 0.3
               (0.57, 0.37), (0.66, 0.50), (0.74, 0.46), (0.86, 0.27), (0.95, 0.19), (1.00, 0.18)]    # low inner calf
 # Right half of the torso outline: chest frame (from the pit of the neck) ...
 _CHEST_SIDE = [(0.34, -0.46), (0.62, -0.17), (1.10, 0.04), (1.40, 0.42), (1.23, 1.05), (1.14, 1.82)]
-# ... and pelvis frame (from the hip-joint line). Waist, hip bone, widest hip, thigh root, groin.
+# ... and pelvis frame (from the hip-joint line). Waist, hip bone, widest hip, thigh root, lower pelvis.
 _PELVIS_SIDE = [(0.84, -2.18), (0.96, -1.62), (1.21, -0.95), (1.41, -0.34), (1.49, 0.24), (1.40, 0.66),
                 (0.60, 0.82)]
 # Front and back depth of the body at each outline point above (head units from the body's
@@ -140,7 +140,7 @@ _MALE_PELVIS_DEPTH = [(0.72, 0.64), (0.72, 0.66), (0.74, 0.78), (0.74, 0.94), (0
 _MALE_HIP_CAP = (0.66, 0.20, 0.62, 0.72)
 # Pectoral outline in the chest frame (right side): sternum, collarbone, armpit, lower edge.
 _PEC = [(0.07, 0.52), (0.55, 0.36), (1.06, 0.52), (1.22, 0.92), (1.02, 1.48), (0.50, 1.66), (0.08, 1.54)]
-_PEC_NIPPLE = (0.66, 1.30)
+_PEC_CHEST_MARK = (0.66, 1.30)
 
 
 @dataclass(frozen=True)
@@ -214,7 +214,7 @@ class Figure:
     hair: HairSpec = None         # None = long hair (female) or MALE_HAIR
     look: Look = field(default_factory=lambda: ILLUSTRATION)
     jaw: float = None             # Head.jaw; None = 0.93 (slim, female) or 1.06 (broad, male)
-    nude_details: bool = True     # nipples, navel, body creases (turn off under full clothing)
+    body_details: bool = True     # chest marks, navel, body creases (turn off under full clothing)
     sex: str = 'female'           # 'female' | 'male': body build, face and hair defaults
 
     def __post_init__(self):
@@ -626,7 +626,7 @@ def _breast(cv, chest, side, size, far=False):
     mask = cv.blob(points)
     if far:
         # Seen from the side the breast's upper slope runs straight down from the chest to the
-        # nipple: wrap the round shape and a point high on the chest wall in one convex outline.
+        # chest mark: wrap the round shape and a point high on the chest wall in one convex outline.
         anchor = chest.surface(side * 0.55, sy - _BREAST_SLOPE * r)
         hull = cv2.convexHull(np.vstack([points, [anchor]]).astype(np.float32))[:, 0, :]
         upper = cv.polygon(hull) * cv.polygon(np.array([chest.place(-9.0, -9.0), chest.place(9.0, -9.0),
@@ -653,8 +653,8 @@ def _pec(cv, chest, side, size, far=False):
                 line_mask=lower_edge)
 
 
-def _nipple(chest, side, size):
-    """Nipple position on the breast's front, following the turn."""
+def _chest_mark(chest, side, size):
+    """Chest mark position on the breast's front, following the turn."""
     r = _BREAST_RADIUS * size
     sx, sy = _breast_center(chest, side, size)
     return chest.place(sx + side * 0.10 * r * chest.cos + 0.85 * r * chest.sin, sy + 0.22 * r)
@@ -716,7 +716,7 @@ def build_body(cv, figure, skeleton):
     if seat is not None:
         torso = np.maximum(torso, seat)
     add('torso', torso, 0.55, overlay=False)
-    below_torso = 1.0 - masks['torso']          # leg-against-leg lines belong below the groin only
+    below_torso = 1.0 - masks['torso']          # leg-against-leg lines belong below the lower pelvis only
     neck = cv.ribbon([joints['neck_base'], joints['neck_top']], figure.build.neck_width * unit, [1.12, 0.98, 1.0], smooth=False)
     add('neck', neck, 0.26, joints['neck_base'], 1.05, shadow=0.0, overlay=False, line_mask=cv.empty())
     front_leg = _front_leg(pose)
@@ -813,9 +813,9 @@ def _seen(frame, x, y, back=False):
 
 
 def _anatomy_details(cv, figure, skeleton, masks, look):
-    """Quiet surface cues that make a nude read as a body: collarbones, the
-    center line, navel, hip creases, knees, nipples; from behind the spine,
-    shoulder blades and buttock folds. No genital detail."""
+    """Quiet surface cues that make a figure study read as a body: collarbones, the
+    center line, navel, hip creases, knees, chest marks; from behind the spine,
+    shoulder blades and buttock folds. No pelvic detail."""
     unit, chest, pelvis, joints = skeleton.unit, skeleton.chest, skeleton.pelvis, skeleton.joints
     skin = figure.face.skin
     shade = skin_shadow(skin, look.shade_depth)
@@ -833,7 +833,7 @@ def _anatomy_details(cv, figure, skeleton, masks, look):
         strokes = np.maximum(strokes, cv.ribbon(bone, 0.035 * unit, [0.5, 1.0, 0.3]) * seen)
         hollow = cv.ribbon(bone + (0.0, 0.07 * unit), 0.14 * unit, [0.7, 1.0, 0.2])
         cv.tint(raster.blur(hollow, soft) * open_torso, shade, 'normal', 0.35 * seen)
-        crease = pelvis.surface_pts([(side * 0.78, -0.42), (side * 0.50, 0.02), (side * 0.22, 0.42)])   # hip to groin
+        crease = pelvis.surface_pts([(side * 0.78, -0.42), (side * 0.50, 0.02), (side * 0.22, 0.42)])   # hip to lower pelvis
         cv.tint(raster.blur(cv.ribbon(crease, 0.06 * unit, [0.2, 1.0, 0.7]), soft * 0.8) * open_torso,
                 shade, 'normal', 0.28 * _seen(pelvis, side * 0.50, 0.02))
     cv.tint(raster.blur(strokes, 0.4 * look.scale) * open_torso, line, 'normal', 0.5)
@@ -860,26 +860,26 @@ def _anatomy_details(cv, figure, skeleton, masks, look):
         cv.tint(raster.blur(cv.ellipse(navel[0] - light_side * 0.03 * unit, navel[1] + 0.16 * unit, 0.10 * unit,
                                        0.05 * unit), 0.03 * unit) * open_torso, '#ffffff', 'soft_light', 0.5 * navel_seen)
 
-    groin = cv.radial(pelvis.surface(0.0, 0.62), 0.42 * unit, 0.36 * unit)      # shadow where the thighs meet
+    lower_pelvis = cv.radial(pelvis.surface(0.0, 0.62), 0.42 * unit, 0.36 * unit)      # shadow where the thighs meet
     legs = np.maximum(masks['left_leg'], masks['right_leg'])
-    cv.tint(groin * np.maximum(torso, legs) * (1.0 - arms), shade, 'normal', 0.45 * _seen(pelvis, 0.0, 0.62))
+    cv.tint(lower_pelvis * np.maximum(torso, legs) * (1.0 - arms), shade, 'normal', 0.45 * _seen(pelvis, 0.0, 0.62))
 
-    areola = adjust(mix(skin, figure.face.lip_color, 0.50), lightness=-0.03)
+    chest_tone = adjust(mix(skin, figure.face.lip_color, 0.50), lightness=-0.03)
     male = figure.sex == 'male'
     if male:
         _male_torso(cv, figure, skeleton, masks, look, open_torso, soft)
     for side, name in ((-1, 'left'), (1, 'right')):
         if male:
-            nipple, size = chest.surface(side * _PEC_NIPPLE[0], _PEC_NIPPLE[1], 0.06), 0.62
-            visible = open_torso * _seen(chest, side * _PEC_NIPPLE[0], _PEC_NIPPLE[1])
+            chest_mark, size = chest.surface(side * _PEC_CHEST_MARK[0], _PEC_CHEST_MARK[1], 0.06), 0.62
+            visible = open_torso * _seen(chest, side * _PEC_CHEST_MARK[0], _PEC_CHEST_MARK[1])
         else:
-            nipple, size = _nipple(chest, side, figure.physique.bust), 1.0
+            chest_mark, size = _chest_mark(chest, side, figure.physique.bust), 1.0
             visible = masks[f'{name}_breast'] * (1.0 - arms) * _seen(chest, side * 0.62, 1.45)
-        cv.tint(raster.blur(cv.ellipse(nipple[0], nipple[1], 0.115 * size * unit * max(abs(chest.cos), 0.4),
+        cv.tint(raster.blur(cv.ellipse(chest_mark[0], chest_mark[1], 0.115 * size * unit * max(abs(chest.cos), 0.4),
                                        0.105 * size * unit), 0.02 * unit) * visible,
-                areola, 'normal', 0.80 if not male else 0.65)
-        cv.tint(raster.blur(cv.ellipse(nipple[0], nipple[1], 0.042 * size * unit), 0.012 * unit) * visible,
-                adjust(areola, lightness=-0.08), 'normal', 0.85)
+                chest_tone, 'normal', 0.80 if not male else 0.65)
+        cv.tint(raster.blur(cv.ellipse(chest_mark[0], chest_mark[1], 0.042 * size * unit), 0.012 * unit) * visible,
+                adjust(chest_tone, lightness=-0.08), 'normal', 0.85)
     if pelvis.cos < _BACK_DETAIL_START:
         _back_details(cv, figure, skeleton, masks, look, soft)
     front_knee = float(raster.smoothstep(np.float32(pelvis.cos), -0.1, 0.5))
@@ -947,7 +947,7 @@ def _back_details(cv, figure, skeleton, masks, look, soft):
 def _male_torso(cv, figure, skeleton, masks, look, open_torso, soft):
     """Muscle landmarks of a lean male torso, all as soft shadows: the lower edge of the
     pectorals, the rows and edges of the abdominal wall, the iliac furrows running down
-    toward the groin (they stop above it), and the serratus over the ribs."""
+    toward the lower pelvis (they stop above it), and the serratus over the ribs."""
     unit, chest, pelvis = skeleton.unit, skeleton.chest, skeleton.pelvis
     shade = skin_shadow(figure.face.skin, look.shade_depth)
 
@@ -1144,7 +1144,7 @@ def draw_figure(cv, figure, garments=()):
         finish_hand(cv, details, skin, look, union if details['visible'] is None else union * details['visible'])
     hair_parts, casters = hair_module.front_hair_masks(cv, head, figure.hair)
     head_shadow = np.maximum(cv.polygon(head.silhouette()), casters)
-    if figure.nude_details:
+    if figure.body_details:
         _anatomy_details(cv, figure, skeleton, masks, look)
     _skin_finish(cv, figure, skeleton, masks, union, look, head_shadow)
     masks['skin'] = union

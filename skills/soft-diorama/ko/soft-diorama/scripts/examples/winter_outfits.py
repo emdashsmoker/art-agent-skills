@@ -61,7 +61,7 @@ def main():
                    sexes=[sex for _, sex, *_ in people], scales=[0.94, 1.0, 0.94, 1.0], gap=0.06)
     for (pose, sex, extra, garments), place in zip(people, places):
         cv.tint(blur(cv.ellipse(place['pelvis'][0], FLOOR_Y, 120, 14), 8), '#6a7480', 'multiply', 0.45)
-        draw_figure(cv, Figure(**place, pose=pose, sex=sex, look=LOOK, nude_details=False, **extra), garments)
+        draw_figure(cv, Figure(**place, pose=pose, sex=sex, look=LOOK, body_details=False, **extra), garments)
     doomer.snowfall(cv, 260, size=2.0, color='#ffffff', seed=SEED)
     save_image(OUTPUT, finish.finish_illustration(cv, glow=0.06, seed=SEED))
 

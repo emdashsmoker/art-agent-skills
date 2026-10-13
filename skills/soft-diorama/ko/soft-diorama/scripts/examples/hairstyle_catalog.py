@@ -26,7 +26,7 @@ BACKGROUND, SHIRT = '#e7e3dc', '#7d8a99'
 def view(name, turn, yaw):
     cv = Canvas(*CELL, BACKGROUND)
     figure = Figure(**framing(CELL, 'bust', headroom=0.9), pose=Pose(turn=turn, head_yaw=yaw), look=LOOK, sex=SEX,
-                    hair=hairstyle(name), nude_details=False)
+                    hair=hairstyle(name), body_details=False)
     draw_figure(cv, figure, [wardrobe.top(SHIRT, sleeve=1.0, scoop=0.3)])
     return finish.finish_illustration(cv, glow=0.0, seed=1)
 

@@ -45,7 +45,7 @@ def main():
     look = replace(base, light=LIGHT, light_height=0.55)
     pose = poses.hands_in_pockets(turn=-25, pouch=True)      # hands in the hoodie's kangaroo pocket
     x0, _, x1, _ = thirds(cv.size, 'right')
-    figure = Figure(**fit((x0, 180, x1, 1340), pose, 'male'), pose=pose, sex='male', look=look, nude_details=False,
+    figure = Figure(**fit((x0, 180, x1, 1340), pose, 'male'), pose=pose, sex='male', look=look, body_details=False,
                     hair=replace(MALE_HAIR, color='#3a2a26', seed=SEED))
     cv.tint(blur(cv.ellipse(figure.pelvis[0], 1338, 170, 22), 10), '#2a2030', 'multiply', 0.45)
     masks = draw_figure(cv, figure, [wardrobe.bottoms('#2f3a52'), wardrobe.hoodie('#c8b48a'),

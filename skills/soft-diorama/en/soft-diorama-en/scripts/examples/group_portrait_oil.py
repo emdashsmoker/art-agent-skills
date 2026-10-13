@@ -46,7 +46,7 @@ def main():
     for index in order:
         pose, sex, hair, face, garments = people[index]
         masks = draw_figure(cv, Figure(**places[index], pose=pose, sex=sex, look=LOOK, hair=hair, face=face,
-                                       nude_details=False), garments)
+                                       body_details=False), garments)
         detail = np.maximum(detail, masks['face'])
     save_image(OUTPUT, finish.finish_oil(cv, seed=SEED, detail=detail))
 

@@ -1,4 +1,4 @@
-"""Figure subject: a full or three-quarter figure, clothed or as a nude study.
+"""Figure subject: a full or three-quarter figure, clothed or as a figure study.
 
 Views
   front  the portrait's head at a smaller scale on a body from anatomy_body
@@ -371,9 +371,9 @@ def paint_front_accents(scene, body, skin_mask):
         soft_mark(scene, under, shadow, 0.40 * strength, 0.03, skin_mask)
         scene.ink(bone, 1.6, profile=taper(len(bone), 0.0, 0.0, 0.4), opacity=0.6, clip=skin_mask)
         breast = body.marks[f"breast_{side}"]
-        areola = fill(scene.size, ellipse(breast + [sign * 0.06 * unit, 0.06 * unit], 0.125 * unit, 0.115 * unit, 24))
+        chest_tone = fill(scene.size, ellipse(breast + [sign * 0.06 * unit, 0.06 * unit], 0.125 * unit, 0.115 * unit, 24))
         tip = fill(scene.size, ellipse(breast + [sign * 0.06 * unit, 0.06 * unit], 0.042 * unit, 0.040 * unit, 16))
-        over(scene.image, mix(shadow, flush, 0.6), blur(areola, 0.015 * unit) * skin_mask, 0.62)
+        over(scene.image, mix(shadow, flush, 0.6), blur(chest_tone, 0.015 * unit) * skin_mask, 0.62)
         over(scene.image, mix(deep, flush, 0.4), blur(tip, 0.008 * unit) * skin_mask, 0.55)
         hip_bone = body.marks[f"hip_bone_{side}"]
         crease(scene, [hip_bone + [sign * 0.10 * unit, 0.25 * unit], (hip_bone + crotch) / 2 + [sign * 0.22 * unit, 0.30 * unit],
@@ -394,7 +394,7 @@ def paint_front_accents(scene, body, skin_mask):
 
 
 def paint_male_front_accents(scene, body, skin_mask):
-    """A man's front: chest edge, small nipples, the line down the abdomen, the V over the hips."""
+    """A man's front: chest edge, small chest marks, the line down the abdomen, the V over the hips."""
     unit = body.unit
     tones = scene.style["palette"]["skin"]
     strength = scene.style["body_render"]["accent"]
@@ -408,11 +408,11 @@ def paint_male_front_accents(scene, body, skin_mask):
                   shadow, 0.40 * strength, 0.03, skin_mask)
         scene.ink(bone, 1.6, profile=taper(len(bone), 0.0, 0.0, 0.4), opacity=0.6, clip=skin_mask)
         chest = body.marks[f"breast_{side}"]
-        nipple = chest + [sign * 0.12 * unit, 0.12 * unit]
-        over(scene.image, mix(shadow, flush, 0.5), blur(fill(scene.size, ellipse(nipple, 0.075 * unit, 0.065 * unit, 20)), 0.012 * unit) * skin_mask, 0.6)
+        chest_mark = chest + [sign * 0.12 * unit, 0.12 * unit]
+        over(scene.image, mix(shadow, flush, 0.5), blur(fill(scene.size, ellipse(chest_mark, 0.075 * unit, 0.065 * unit, 20)), 0.012 * unit) * skin_mask, 0.6)
         hip_bone = body.marks[f"hip_bone_{side}"]
-        groin = crotch + [sign * 0.30 * unit, -0.55 * unit]
-        crease(scene, [hip_bone + [sign * 0.05 * unit, -0.10 * unit], (hip_bone + groin) / 2 + [sign * 0.05 * unit, 0.0], groin],
+        lower_pelvis = crotch + [sign * 0.30 * unit, -0.55 * unit]
+        crease(scene, [hip_bone + [sign * 0.05 * unit, -0.10 * unit], (hip_bone + lower_pelvis) / 2 + [sign * 0.05 * unit, 0.0], lower_pelvis],
                0.08, shadow, 0.35 * strength, 0.04, skin_mask, (0.0, 0.3, 0.5))
         hollow = fill(scene.size, ellipse(body.marks[f"knee_{side}"] + [0, 0.30 * unit], 0.28 * unit, 0.10 * unit))
         soft_mark(scene, hollow, shadow, 0.28 * strength, 0.05, skin_mask)
@@ -440,8 +440,8 @@ def ink_male_muscles(scene, body, skin_mask):
             tick = smooth([spine_at(body, level, sign * 0.08), spine_at(body, level + 0.04, sign * 0.30), spine_at(body, level, sign * 0.48)])
             scene.ink(tick, 1.1, profile=taper(len(tick), 0.0, 0.0, 0.5), opacity=0.35, clip=skin_mask)
         hip_bone = body.marks[f"hip_bone_{side}"]
-        groin = body.marks["crotch"] + [sign * 0.30 * unit, -0.55 * unit]
-        v_line = smooth([hip_bone + [sign * 0.02 * unit, -0.05 * unit], (hip_bone + groin) / 2 + [sign * 0.04 * unit, 0.0], groin])
+        lower_pelvis = body.marks["crotch"] + [sign * 0.30 * unit, -0.55 * unit]
+        v_line = smooth([hip_bone + [sign * 0.02 * unit, -0.05 * unit], (hip_bone + lower_pelvis) / 2 + [sign * 0.04 * unit, 0.0], lower_pelvis])
         scene.ink(v_line, 1.3, profile=taper(len(v_line), 0.0, 0.0, 0.5), opacity=0.45, clip=skin_mask)
 
 

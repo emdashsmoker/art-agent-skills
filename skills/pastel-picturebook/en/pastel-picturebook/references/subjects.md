@@ -150,7 +150,7 @@ Giving an arm `reach` makes the code solve the upper arm and forearm angles so t
 - `figure.clothes.drape` turns into a lap cloth in the seated front view
     + It wraps the pelvis, covers the thighs and knees, then sags between the knees. The knot ends rest on the thigh
     + The hands are drawn over the cloth
-- Examples: `example_spec_figure_seated_front.json` (female nude), `example_spec_figure_male_seated_front.json` (male, clothed), `example_spec_figure_male_seated_front_nude.json` (male nude, lap cloth)
+- Examples: `example_spec_figure_seated_front.json` (female figure study), `example_spec_figure_male_seated_front.json` (male, clothed), `example_spec_figure_male_seated_front_figure_study.json` (male figure study, lap cloth)
 - Seated test: only a leg whose thigh comes more than half its length toward the viewer gets the knee outline, top light, creases and bulging trousers
 
 ### Front walk
@@ -268,11 +268,11 @@ The side figure is drawn in a frame rotated 90 degrees and then rotated back so 
 | `figure.clothes.bikini` | Bikini. Halter-neck triangle cups with an underband, low-rise bottoms. `bottom_level` (waist line of the bottoms, default 4.9), `group` (default `swim`) |
 | `figure.clothes.trunks` | Men's swim trunks. Mid-thigh length, a drawstring knot at the waistband. Takes the trouser keys as they are (`waist_level` 4.85, `length` 0.32, `leg_widths`), `group` (default `swim`) |
 | `figure.clothes.shoes` | true paints the feet in the shoe colour |
-| `figure.clothes` | null gives a nude study |
+| `figure.clothes` | null gives a figure study |
 
 - Heights (`*_level`) are head units measured along the torso spine. 4.85 is the belt, 5.45 the pelvis, 6.5 the crotch
 - The male preset turns on `shirt`, `pants` and `shoes` and sets `dress` to null
-    + A male nude is `{"shirt": null, "pants": null, "shoes": false}`. To wrap the pelvis in cloth, add `drape`
+    + A male figure study is `{"shirt": null, "pants": null, "shoes": false}`. To wrap the pelvis in cloth, add `drape`
 - Painting order (inside to outside): underwear, swimsuit, bikini, drape, trousers, swim trunks, hanbok trousers, skirt, hanbok skirt, shirt, dress, hoodie, jeogori, jacket, coat, bags and scarves. Then the arms are placed back over the clothes and the sleeves are painted
 - To dress a man in a hoodie, turn off the default T-shirt: `{"shirt": null, "hoodie": true}`. Swim trunks are `{"shirt": null, "pants": null, "shoes": false, "trunks": true}`
 - Swimsuits cling to the body. They follow its curves and do not hang from the chest like loose clothes
@@ -280,17 +280,17 @@ The side figure is drawn in a frame rotated 90 degrees and then rotated back so 
 - Patterns (stripes, check, dots) are applied by putting `pattern` in any of the palette groups above (Patterns in `references/spec.md`)
 - Accessories (glasses, hats, scarves, bags) use the top-level `accessories` key (accessories in `references/spec.md`)
 - Clothing examples: `example_spec_figure_shirt_skirt.json`, `example_spec_figure_coat.json`, `example_spec_figure_male_jacket.json`, `example_spec_figure_male_shorts.json`, `example_spec_figure_hanbok.json`, `example_spec_figure_male_hanbok.json`, `example_spec_figure_side_hanbok.json`, `example_spec_figure_hoodie.json` (hoodie, hat, bag), `example_spec_figure_side_hoodie.json` (side hoodie, beanie, glasses), `example_spec_figure_swimsuit.json` (striped swimsuit, wide-brimmed hat), `example_spec_figure_bikini.json` (polka-dot bikini), `example_spec_figure_male_trunks.json` (striped swim trunks, cap), `example_spec_figure_patterns.json` (striped shirt, check skirt, scarf)
-- Nude study examples
+- Figure study examples
 
 | File | Content |
 |---|---|
-| `example_spec_figure_nude.json` | Woman, front, knee-up framing, contrapposto with a hand on the hip |
+| `example_spec_figure_study.json` | Woman, front, knee-up framing, contrapposto with a hand on the hip |
 | `example_spec_figure_back.json` | Woman, back view |
 | `example_spec_figure_side.json` | Woman, side, arched back |
-| `example_spec_figure_male_nude.json` | Man, front, pelvis drape |
+| `example_spec_figure_male_figure_study.json` | Man, front, pelvis drape |
 | `example_spec_figure_male_back.json` | Man, back view |
 | `example_spec_figure_male_side.json` | Man, side, near leg stepping forward |
-| `example_spec_figure_male_seated_front_nude.json` | Man, seated front, lap cloth |
+| `example_spec_figure_male_seated_front_figure_study.json` | Man, seated front, lap cloth |
 
 ### Rendering strength
 

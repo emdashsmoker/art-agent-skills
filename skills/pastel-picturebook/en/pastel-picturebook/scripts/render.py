@@ -6,7 +6,7 @@ Usage
 
 Subjects
   portrait    bust portrait (default)
-  figure      full or three-quarter figure, clothed or nude study
+  figure      full or three-quarter figure, clothed or figure study
   hand        hand studies
   still_life  objects on a table
   landscape   mountains, water, trees, sky

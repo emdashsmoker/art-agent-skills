@@ -150,7 +150,7 @@
 - `figure.clothes.drape`는 앉은 정면에서 무릎 천으로 바뀜
     + 골반을 두르고 허벅지와 무릎을 덮은 뒤 무릎 사이로 처짐, 매듭 끝자락은 허벅지 위에 놓임
     + 손은 천 위에 그려짐
-- 예제: `example_spec_figure_seated_front.json`(여성 누드), `example_spec_figure_male_seated_front.json`(남성 의상), `example_spec_figure_male_seated_front_nude.json`(남성 누드, 무릎 천)
+- 예제: `example_spec_figure_seated_front.json`(여성 인체 습작), `example_spec_figure_male_seated_front.json`(남성 의상), `example_spec_figure_male_seated_front_figure_study.json`(남성 인체 습작, 무릎 천)
 - 앉은 자세 판정: 허벅지가 길이의 절반 넘게 관객 쪽으로 나온 다리만 무릎 윤곽, 위쪽 조명, 접힘, 부푼 바지를 받음
 
 ### 정면 걷기
@@ -268,11 +268,11 @@
 | `figure.clothes.bikini` | 비키니. 홀터넥 삼각 컵과 밑밴드, 낮은 하의. `bottom_level`(하의 허리선, 기본 4.9), `group`(기본 `swim`) |
 | `figure.clothes.trunks` | 남성 수영 바지. 허벅지 중간 길이, 허리띠 자리에 허리끈 매듭. 바지 키(`waist_level` 4.85, `length` 0.32, `leg_widths`)를 그대로 받음, `group`(기본 `swim`) |
 | `figure.clothes.shoes` | true면 발을 구두 색으로 칠함 |
-| `figure.clothes` | null이면 누드 습작 |
+| `figure.clothes` | null이면 인체 습작 |
 
 - 높이(`*_level`)는 몸통 척추를 따라 잰 머리 단위. 4.85는 허리띠, 5.45는 골반, 6.5는 가랑이
 - 남성 프리셋은 `shirt`, `pants`, `shoes`를 켜고 `dress`를 null로 둠
-    + 남성 누드는 `{"shirt": null, "pants": null, "shoes": false}`. 골반을 천으로 두르려면 `drape`를 함께 지정
+    + 남성 인체 습작은 `{"shirt": null, "pants": null, "shoes": false}`. 골반을 천으로 두르려면 `drape`를 함께 지정
 - 칠하는 순서(안에서 밖): 속옷, 수영복, 비키니, 천, 바지, 수영 바지, 한복 바지, 치마, 한복 치마, 셔츠, 원피스, 후드티, 저고리, 재킷, 코트, 가방과 목도리. 그다음 팔을 옷 위에 다시 놓고 소매를 칠함
 - 후드티를 남성에게 입힐 때는 기본 티셔츠를 끔: `{"shirt": null, "hoodie": true}`. 수영 바지는 `{"shirt": null, "pants": null, "shoes": false, "trunks": true}`
 - 수영복은 몸에 밀착: 몸의 굴곡을 그대로 따르고, 헐렁한 옷처럼 가슴에서 늘어지지 않음
@@ -280,17 +280,17 @@
 - 무늬(줄무늬, 체크, 물방울)는 위 팔레트 묶음 어디에나 `pattern`을 넣어 입힘(`references/spec.md`의 무늬)
 - 소품(안경, 모자, 목도리, 가방)은 최상위 `accessories` 키(`references/spec.md`의 accessories)
 - 의상 예제: `example_spec_figure_shirt_skirt.json`, `example_spec_figure_coat.json`, `example_spec_figure_male_jacket.json`, `example_spec_figure_male_shorts.json`, `example_spec_figure_hanbok.json`, `example_spec_figure_male_hanbok.json`, `example_spec_figure_side_hanbok.json`, `example_spec_figure_hoodie.json`(후드티, 모자, 가방), `example_spec_figure_side_hoodie.json`(측면 후드티, 비니, 안경), `example_spec_figure_swimsuit.json`(줄무늬 수영복, 챙 넓은 모자), `example_spec_figure_bikini.json`(물방울 비키니), `example_spec_figure_male_trunks.json`(줄무늬 수영 바지, 캡), `example_spec_figure_patterns.json`(줄무늬 셔츠, 체크 치마, 목도리)
-- 누드 습작 예제
+- 인체 습작 예제
 
 | 파일 | 내용 |
 |---|---|
-| `example_spec_figure_nude.json` | 여성 정면, 무릎 위 구도, 손을 허리에 얹은 콘트라포스토 |
+| `example_spec_figure_study.json` | 여성 정면, 무릎 위 구도, 손을 허리에 얹은 콘트라포스토 |
 | `example_spec_figure_back.json` | 여성 뒷모습 |
 | `example_spec_figure_side.json` | 여성 측면, 허리 아치 |
-| `example_spec_figure_male_nude.json` | 남성 정면, 골반 천 |
+| `example_spec_figure_male_figure_study.json` | 남성 정면, 골반 천 |
 | `example_spec_figure_male_back.json` | 남성 뒷모습 |
 | `example_spec_figure_male_side.json` | 남성 측면, 가까운 다리를 앞으로 내딛은 구도 |
-| `example_spec_figure_male_seated_front_nude.json` | 남성 정면 앉은 자세, 무릎 천 |
+| `example_spec_figure_male_seated_front_figure_study.json` | 남성 정면 앉은 자세, 무릎 천 |
 
 ### 표현 강도
 

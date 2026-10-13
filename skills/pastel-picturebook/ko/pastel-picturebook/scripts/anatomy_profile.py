@@ -125,7 +125,7 @@ FEMALE = {
     "SOFT_DEPTH": SOFT_DEPTH, "SHOULDER": SHOULDER, "HIP": HIP,
     "UPPER_ARM": UPPER_ARM, "FOREARM": FOREARM, "HAND": HAND, "THIGH": THIGH, "SHIN": SHIN,
     "UPPER_ARM_WIDTHS": UPPER_ARM_WIDTHS, "FOREARM_WIDTHS": FOREARM_WIDTHS, "THIGH_BACK": THIGH_BACK, "THIGH_FRONT": THIGH_FRONT,
-    "SHIN_BACK": SHIN_BACK, "SHIN_FRONT": SHIN_FRONT, "FOOT_SCALE": 1.0, "HAND_WIDTH": 1.0, "NIPPLE": (0.07, 0.12),
+    "SHIN_BACK": SHIN_BACK, "SHIN_FRONT": SHIN_FRONT, "FOOT_SCALE": 1.0, "HAND_WIDTH": 1.0, "CHEST_MARK": (0.07, 0.12),
 }
 # A man in profile: a brow ridge over a deeper-set eye, a longer straight nose, thinner lips, a chin that
 # stands forward and a jaw that runs level to a marked angle. The short cut ends above the ear and at the nape.
@@ -163,7 +163,7 @@ MALE = {
     "FOREARM_WIDTHS": np.array([0.45, 0.51, 0.45, 0.37, 0.31]),
     "THIGH_BACK": np.array([1.08, 1.02, 0.90, 0.72, 0.56]), "THIGH_FRONT": np.array([1.00, 1.00, 0.90, 0.72, 0.56]),
     "SHIN_BACK": np.array([0.56, 0.74, 0.62, 0.42, 0.33]), "SHIN_FRONT": np.array([0.52, 0.48, 0.44, 0.38, 0.33]),
-    "FOOT_SCALE": 1.12, "HAND_WIDTH": 1.15, "NIPPLE": (0.045, 0.045),
+    "FOOT_SCALE": 1.12, "HAND_WIDTH": 1.15, "CHEST_MARK": (0.045, 0.045),
 }
 BUILDS = {"female": FEMALE, "male": MALE}
 # Seated: the stool's top sits this share of the thigh's back depth under the hip joint; it reaches this
@@ -359,7 +359,7 @@ def lay_out_body(fig, setup, body, table):
             foot = foot @ np.array([[np.cos(turn), np.sin(turn)], [-np.sin(turn), np.cos(turn)]])
         layout[f"{name}_foot"] = body(ankle + foot)
     breast = layout["breast"]
-    layout["marks"] = {"nipple": breast[min(3, len(breast) - 1)], "navel": body((center[6] + front[6] - 0.02, 6.35))[0],
+    layout["marks"] = {"chest_mark": breast[min(3, len(breast) - 1)], "navel": body((center[6] + front[6] - 0.02, 6.35))[0],
                        "pit": body((center[0] + front[0], 2.35))[0], "fold": body((center[-1] - 0.55, 8.97))[0],
                        "blade": body((center[2] - back[2] + 0.25, 3.60))[0], "lumbar": body((center[5] - back[5] + 0.2, 5.70))[0]}
     if seated:
@@ -675,16 +675,16 @@ def paint_profile_expression(scene, table, head, unit):
 
 
 def paint_profile_accents(scene, layout, skin):
-    """Nipple, navel, the fold under the buttock, the lumbar hollow, the shoulder blade; a man's chest edge."""
+    """Chest mark, navel, the fold under the buttock, the lumbar hollow, the shoulder blade; a man's chest edge."""
     unit, table = layout["unit"], layout["table"]
     tones = scene.style["palette"]["skin"]
     strength = scene.style["body_render"]["accent"]
     marks = layout["marks"]
     shadow, deep, flush = rgb(tones["shadow"]), rgb(tones["deep"]), rgb(tones["blush"])
-    tip = marks["nipple"]
-    radius_x, radius_y = table["NIPPLE"]
-    areola = fill(scene.size, ellipse(tip + [-0.06 * unit, 0.0], radius_x * unit, radius_y * unit, 20)) * skin
-    over(scene.image, mix(shadow, flush, 0.6), blur(areola, 0.01 * unit), 0.6)
+    tip = marks["chest_mark"]
+    radius_x, radius_y = table["CHEST_MARK"]
+    chest_tone = fill(scene.size, ellipse(tip + [-0.06 * unit, 0.0], radius_x * unit, radius_y * unit, 20)) * skin
+    over(scene.image, mix(shadow, flush, 0.6), blur(chest_tone, 0.01 * unit), 0.6)
     navel = marks["navel"]
     over(scene.image, deep, scene.soften(stroke(scene.size, smooth([navel + [0, -0.06 * unit], navel + [-0.05 * unit, 0], navel + [0, 0.05 * unit]]),
                                                 0.025 * unit), 0.006) * skin, 0.7)

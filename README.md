@@ -139,3 +139,25 @@ skills/vinyl-cel/
 `image-gen`이 내려받는 모델은 각자의 라이선스를 따릅니다. 모델별 라이선스는 `references/components.md`에 정리되어 있습니다. CreativeML OpenRAIL-M과 OpenRAIL++-M은 모델과 생성물의 사용 범위를 제한합니다. `image-gen-addon-codeformer`가 불러오는 CodeFormer는 비상업적 용도만 허용하는 S-Lab License 1.0을 따릅니다.
 
 </details>
+
+## References
+
+Thanks to the developers and contributors of these projects.
+
+이 프로젝트들의 개발자와 기여자분들께 감사드립니다.
+
+- [DreamShaper 8 LCM](https://huggingface.co/Lykon/dreamshaper-8-lcm)
+- [SDXS-512-DreamShaper](https://huggingface.co/IDKiro/sdxs-512-dreamshaper)
+- [tiny-sd](https://huggingface.co/segmind/tiny-sd)
+- [FLUX.2 [klein] 4B](https://huggingface.co/black-forest-labs/FLUX.2-klein-4B)
+- [FLUX.2 [klein] 4B GGUF](https://huggingface.co/unsloth/FLUX.2-klein-4B-GGUF)
+- [Qwen3-4B GGUF](https://huggingface.co/unsloth/Qwen3-4B-GGUF)
+- [Stable Diffusion 1.5 Inpainting](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-inpainting)
+- [LCM-LoRA SD 1.5](https://huggingface.co/latent-consistency/lcm-lora-sdv1-5)
+- [stable-diffusion.cpp](https://github.com/leejet/stable-diffusion.cpp)
+- [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN)
+- [GFPGAN](https://github.com/TencentARC/GFPGAN)
+- [facexlib](https://github.com/xinntao/facexlib)
+- [CodeFormer](https://github.com/sczhou/CodeFormer)
+- [Anny](https://github.com/naver/anny)
+- [skia-python](https://github.com/kyamagu/skia-python)

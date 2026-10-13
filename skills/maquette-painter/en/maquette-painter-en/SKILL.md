@@ -20,7 +20,7 @@ A maquette (a small working model) built in code. Build figures and objects as 3
     + Code can run without errors and the picture can still be wrong; looking at the image is the only real check
 - Construction rules guarantee anatomical accuracy
     + Five fingers, five toes and joint proportions come from the skeleton definition, so only pose and proportion values need to be set
-- Do not draw minors in nude, sexual or sexually suggestive scenes
+- Do not draw minors in unclothed, sexual or sexually suggestive scenes
     + Sexually suggestive includes provocative poses, underwear and framing that singles out body parts
     + Decide whether a figure is a minor from a stated age or school year, child body proportions, a prepubescent body, or a context that clearly marks a child
     + A youthful face, the large eyes of anime and webtoon styles, an idol-like look or short height alone do not make a figure a minor
@@ -127,8 +127,8 @@ if __name__ == "__main__":
 |---|---|
 | `portrait_anime.py` | Anime bust, the basic structure |
 | `portrait_webtoon.py` | Semi-realistic webtoon half figure, custom pose and interior background |
-| `figure_classical.py` | Renaissance-style full-length nude, contrapposto with one hand behind the head |
-| `figure_classical_male.py` | Renaissance-style full-length male nude, David pose and loincloth |
+| `figure_classical.py` | Renaissance-style full-length figure study, contrapposto with one hand behind the head |
+| `figure_classical_male.py` | Renaissance-style full-length male figure study, David pose and loincloth |
 | `portrait_male.py` | Webtoon male bust, short hair and knit top, city lights behind |
 | `duo_couple.py` | Webtoon two-shot: his arm over her shoulder, her arm round his waist, shirt collar and glasses, sunset city |
 | `scene_anime_film.py` | Figure in a perspective city street (facades, overhead wires, building shadows), anime-film compositing |
@@ -210,7 +210,7 @@ python scene.py --style oil --light rembrandt --scale 1.5 --out final.png
 | Level | Subjects | State |
 |---|---|---|
 | Stable | Flat illustration, stock art, anime and webtoon busts and half figures, landscapes in every medium, still lifes, modern objects, city streets and cars, ink painting, print styles, doomer backgrounds and still lifes | Done in 1-2 revisions |
-| Good | Full figures and clothing, build and muscle tone of classical nudes (female and male), semi-realistic faces, male faces and short hair, two-person contact poses and hand-holding from behind, figures in perspective scenes, three-point perspective, oil figures, weather scenes and wet ground, interiors and seated figures, figures holding umbrellas, kimono and hanbok, doomer figures (beanie, hoodie, cigarette) | Needs pose and lighting adjustment |
+| Good | Full figures and clothing, build and muscle tone of classical figure studies (female and male), semi-realistic faces, male faces and short hair, two-person contact poses and hand-holding from behind, figures in perspective scenes, three-point perspective, oil figures, weather scenes and wet ground, interiors and seated figures, figures holding umbrellas, kimono and hanbok, doomer figures (beanie, hoodie, cigarette) | Needs pose and lighting adjustment |
 | Limited | Tendon- and vein-level anatomy, complex clothing folds, curly and braided hair, poses with two people's arms wrapped round each other such as a hug, resting the chin on a hand, lying poses, crowds, kimono patterns that bend with the folds | Offer a stylised result |
 
 - Tell the user in advance what kind of result to expect for requests at the Limited level

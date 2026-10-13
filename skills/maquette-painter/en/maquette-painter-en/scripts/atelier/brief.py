@@ -68,14 +68,14 @@ OPTIONS = {
         "tired": "tired eyes (heavy half-closed lids)"}),
     "pose": ("Pose", "relaxed", {
         "stand": "at attention", "relaxed": "relaxed standing", "contrapposto": "contrapposto", "hand_on_hip": "hand on hip",
-        "walk": "walking", "sit": "sitting", "arms_up": "arms raised", "venus": "classical nude pose",
+        "walk": "walking", "sit": "sitting", "arms_up": "arms raised", "venus": "classical figure study pose",
         "allure": "contrapposto with one hand behind the head", "arms_behind_head": "both hands behind the head",
         "heroic": "hands on hips (heroic)", "david": "one hand on the shoulder (David)", "arms_crossed": "folded arms"}),
     "outfit": ("Outfit", "casual", {
         "casual": "T-shirt and trousers", "dress": "dress", "coat": "coat", "blouse_skirt": "blouse and skirt",
         "drape": "classical drape", "kimono": "kimono and obi", "hanbok": "hanbok (women: jeogori and chima, men: jeogori and baji)",
         "festival": "sarashi and fundoshi (Japanese festival dress)", "hoodie": "hoodie and trousers",
-        "turtleneck": "turtleneck and long coat", "none": "no clothing (classical nude)"}),
+        "turtleneck": "turtleneck and long coat", "none": "no clothing (classical figure study)"}),
     "finish": ("Finish", "style_default", {
         "style_default": "style default", "clean": "no effects", "film": "film grain and vignette", "glow": "glow",
         "aged": "aged painting (craquelure, varnish)"}),

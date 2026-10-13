@@ -8,25 +8,25 @@
 
 ### 확산 모델 기반
 
-- `image-gen`: 로컬 확산 모델을 CPU로 실행해 이미지를 생성하고 가장자리 정리, 얼굴 복원, 부분 다시 그리기, 업스케일로 결함을 보정합니다. [예시](skills/image-gen/demo/)
-- `image-gen-addon-codeformer`: `image-gen`의 얼굴 복원 단계에 CodeFormer를 추가하는 애드온입니다.
+- [`image-gen`](skills/image-gen/): 로컬 확산 모델을 CPU로 실행해 이미지를 생성하고 가장자리 정리, 얼굴 복원, 부분 다시 그리기, 업스케일로 결함을 보정합니다. [예시](skills/image-gen/demo/)
+- [`image-gen-addon-codeformer`](skills/image-gen-addon-codeformer/): `image-gen`의 얼굴 복원 단계에 CodeFormer를 추가하는 애드온입니다.
 
 ### 비확산 모델 기반
 
 원근, 비례, 명암, 색채 같은 조형 원리와 그리는 과정을 담은 스킬 지침에 따라 확산 모델 없이 그림을 완성합니다. 스킬 이름은 각 스킬의 화풍에서 따왔습니다.
 
-- `cel-glow-atelier`: 빛 벡터 하나로 모든 명암을 계산해 림라이트와 블룸이 번지는 셀 셰이딩 그림을 그립니다. [예시](skills/cel-glow-atelier/demo/)
-- `clay-cel-canvas`: 3D 점토 마네킹으로 양감과 그림자를 잡은 뒤 2D 셀 채색을 입힙니다. [예시](skills/clay-cel-canvas/demo/)
-- `dollhouse-maker`: 실루엣을 부풀린 매끈한 인형과 1점 투시 모형 방으로 벽 한 면을 연 인형의 집 같은 그림을 만듭니다. [예시](skills/dollhouse-maker/demo/)
-- `flat-painterly`: 관절 마네킹과 원근 상자로 무대를 짠 뒤 붓질로 칠해 정지 화면 같은 회화풍 그림을 만듭니다. [예시](skills/flat-painterly/demo/)
-- `geometric-illustration`: 구와 원뿔로 형태를 짠 뒤 손그림 순서대로 그려 선명한 잉크 실루엣과 차분한 남색 톤의 그림을 만듭니다. [예시](skills/geometric-illustration/demo/)
-- `maquette-painter`: 조명을 비춘 3D 마케트를 보고 칠하듯 형태와 그림자가 분명한 그림을 그립니다. [예시](skills/maquette-painter/demo/)
-- `paper-stage`: 곡선으로 오린 종이 조각을 앞뒤로 겹치고 부풀려 무대 조명과 필름 그레인이 있는 종이 무대 그림을 만듭니다. [예시](skills/paper-stage/demo/)
-- `pastel-picturebook`: 밑그림, 밑색, 명암, 선화 공정을 거쳐 맑은 색, 가는 선, 단정한 셀 명암의 파스텔 그림책 그림을 그립니다. [예시](skills/pastel-picturebook/demo/)
-- `polygon-cel`: 수식으로 만든 다각형 형태에 굵은 색 선화, 투톤 셀 명암, 차분한 저채도 색을 입힙니다. [예시](skills/polygon-cel/demo/)
-- `soft-diorama`: 굵기가 변하는 리본 선, 초승달 모양 셀 그림자, 부드러운 양감으로 작은 무대 세트 같은 그림을 만듭니다. [예시](skills/soft-diorama/demo/)
-- `tableau-vivant`: 매개변수 인체를 3D 무대에 세운 뒤 칠해 숨을 멈춘 듯한 포즈와 무대 조명의 정지 장면을 만듭니다. [예시](skills/tableau-vivant/demo/)
-- `vinyl-cel`: 구, 타원체, 거리 함수로 만든 형태를 깊이 맵으로 조명해 둥글고 매끈한 비닐 피규어 같은 셀 그림을 그립니다. [예시](skills/vinyl-cel/demo/)
+- [`cel-glow-atelier`](skills/cel-glow-atelier/): 빛 벡터 하나로 모든 명암을 계산해 림라이트와 블룸이 번지는 셀 셰이딩 그림을 그립니다. [예시](skills/cel-glow-atelier/demo/)
+- [`clay-cel-canvas`](skills/clay-cel-canvas/): 3D 점토 마네킹으로 양감과 그림자를 잡은 뒤 2D 셀 채색을 입힙니다. [예시](skills/clay-cel-canvas/demo/)
+- [`dollhouse-maker`](skills/dollhouse-maker/): 실루엣을 부풀린 매끈한 인형과 1점 투시 모형 방으로 벽 한 면을 연 인형의 집 같은 그림을 만듭니다. [예시](skills/dollhouse-maker/demo/)
+- [`flat-painterly`](skills/flat-painterly/): 관절 마네킹과 원근 상자로 무대를 짠 뒤 붓질로 칠해 정지 화면 같은 회화풍 그림을 만듭니다. [예시](skills/flat-painterly/demo/)
+- [`geometric-illustration`](skills/geometric-illustration/): 구와 원뿔로 형태를 짠 뒤 손그림 순서대로 그려 선명한 잉크 실루엣과 차분한 남색 톤의 그림을 만듭니다. [예시](skills/geometric-illustration/demo/)
+- [`maquette-painter`](skills/maquette-painter/): 조명을 비춘 3D 마케트를 보고 칠하듯 형태와 그림자가 분명한 그림을 그립니다. [예시](skills/maquette-painter/demo/)
+- [`paper-stage`](skills/paper-stage/): 곡선으로 오린 종이 조각을 앞뒤로 겹치고 부풀려 무대 조명과 필름 그레인이 있는 종이 무대 그림을 만듭니다. [예시](skills/paper-stage/demo/)
+- [`pastel-picturebook`](skills/pastel-picturebook/): 밑그림, 밑색, 명암, 선화 공정을 거쳐 맑은 색, 가는 선, 단정한 셀 명암의 파스텔 그림책 그림을 그립니다. [예시](skills/pastel-picturebook/demo/)
+- [`polygon-cel`](skills/polygon-cel/): 수식으로 만든 다각형 형태에 굵은 색 선화, 투톤 셀 명암, 차분한 저채도 색을 입힙니다. [예시](skills/polygon-cel/demo/)
+- [`soft-diorama`](skills/soft-diorama/): 굵기가 변하는 리본 선, 초승달 모양 셀 그림자, 부드러운 양감으로 작은 무대 세트 같은 그림을 만듭니다. [예시](skills/soft-diorama/demo/)
+- [`tableau-vivant`](skills/tableau-vivant/): 매개변수 인체를 3D 무대에 세운 뒤 칠해 숨을 멈춘 듯한 포즈와 무대 조명의 정지 장면을 만듭니다. [예시](skills/tableau-vivant/demo/)
+- [`vinyl-cel`](skills/vinyl-cel/): 구, 타원체, 거리 함수로 만든 형태를 깊이 맵으로 조명해 둥글고 매끈한 비닐 피규어 같은 셀 그림을 그립니다. [예시](skills/vinyl-cel/demo/)
 
 ## 설치
 

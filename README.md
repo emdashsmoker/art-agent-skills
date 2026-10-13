@@ -8,25 +8,25 @@ Agent Skills that make creative pictures such as illustrations, paintings and ph
 
 ### Diffusion-based
 
-- `image-gen`: Generates images with local diffusion models on the CPU, then fixes defects with edge trimming, face restoration, region redrawing and upscaling. [Samples](skills/image-gen/demo/)
-- `image-gen-addon-codeformer`: Add-on that brings CodeFormer into the face restoration step of `image-gen`.
+- [`image-gen`](skills/image-gen/): Generates images with local diffusion models on the CPU, then fixes defects with edge trimming, face restoration, region redrawing and upscaling. [Samples](skills/image-gen/demo/)
+- [`image-gen-addon-codeformer`](skills/image-gen-addon-codeformer/): Add-on that brings CodeFormer into the face restoration step of `image-gen`.
 
 ### Non-diffusion
 
 These skills finish a picture without diffusion models, following the principles of perspective, proportion, shading and color and the painting process written into each skill. Each skill takes its name from its painting style.
 
-- `cel-glow-atelier`: Computes all shading from one light vector for cel-shaded pictures with spreading rim light and bloom. [Samples](skills/cel-glow-atelier/demo/)
-- `clay-cel-canvas`: Sets volume and shadow on a 3-D clay mannequin, then lays 2-D cel color over it. [Samples](skills/clay-cel-canvas/demo/)
-- `dollhouse-maker`: Sets smooth dolls with inflated silhouettes in a one-point-perspective model room, like a dollhouse with one wall open. [Samples](skills/dollhouse-maker/demo/)
-- `flat-painterly`: Stages jointed mannequins and perspective boxes, then paints them with brushwork for a still-frame look. [Samples](skills/flat-painterly/demo/)
-- `geometric-illustration`: Builds forms from spheres and cones and draws them in hand-drawing order, with crisp ink silhouettes on calm navy tones. [Samples](skills/geometric-illustration/demo/)
-- `maquette-painter`: Paints as if from a lit 3-D maquette, with clear form and cast shadows. [Samples](skills/maquette-painter/demo/)
-- `paper-stage`: Stacks and inflates curve-cut paper pieces into a paper stage with stage light and film grain. [Samples](skills/paper-stage/demo/)
-- `pastel-picturebook`: Works through sketch, flat color, shading and inking for pastel picture-book art with clear colors, thin lines and tidy cel shading. [Samples](skills/pastel-picturebook/demo/)
-- `polygon-cel`: Lays bold colored line art, two-tone cel shading and a calm muted palette over polygon forms built from formulas. [Samples](skills/polygon-cel/demo/)
-- `soft-diorama`: Uses swelling ribbon lines, crescent cel shadows and soft volume for pictures like small stage sets. [Samples](skills/soft-diorama/demo/)
-- `tableau-vivant`: Poses a parametric human body on a 3-D stage and paints it as a still scene with held-breath poses and stage light. [Samples](skills/tableau-vivant/demo/)
-- `vinyl-cel`: Lights forms made of spheres, ellipsoids and distance functions from a depth map for round, smooth, vinyl-figure cel art. [Samples](skills/vinyl-cel/demo/)
+- [`cel-glow-atelier`](skills/cel-glow-atelier/): Computes all shading from one light vector for cel-shaded pictures with spreading rim light and bloom. [Samples](skills/cel-glow-atelier/demo/)
+- [`clay-cel-canvas`](skills/clay-cel-canvas/): Sets volume and shadow on a 3-D clay mannequin, then lays 2-D cel color over it. [Samples](skills/clay-cel-canvas/demo/)
+- [`dollhouse-maker`](skills/dollhouse-maker/): Sets smooth dolls with inflated silhouettes in a one-point-perspective model room, like a dollhouse with one wall open. [Samples](skills/dollhouse-maker/demo/)
+- [`flat-painterly`](skills/flat-painterly/): Stages jointed mannequins and perspective boxes, then paints them with brushwork for a still-frame look. [Samples](skills/flat-painterly/demo/)
+- [`geometric-illustration`](skills/geometric-illustration/): Builds forms from spheres and cones and draws them in hand-drawing order, with crisp ink silhouettes on calm navy tones. [Samples](skills/geometric-illustration/demo/)
+- [`maquette-painter`](skills/maquette-painter/): Paints as if from a lit 3-D maquette, with clear form and cast shadows. [Samples](skills/maquette-painter/demo/)
+- [`paper-stage`](skills/paper-stage/): Stacks and inflates curve-cut paper pieces into a paper stage with stage light and film grain. [Samples](skills/paper-stage/demo/)
+- [`pastel-picturebook`](skills/pastel-picturebook/): Works through sketch, flat color, shading and inking for pastel picture-book art with clear colors, thin lines and tidy cel shading. [Samples](skills/pastel-picturebook/demo/)
+- [`polygon-cel`](skills/polygon-cel/): Lays bold colored line art, two-tone cel shading and a calm muted palette over polygon forms built from formulas. [Samples](skills/polygon-cel/demo/)
+- [`soft-diorama`](skills/soft-diorama/): Uses swelling ribbon lines, crescent cel shadows and soft volume for pictures like small stage sets. [Samples](skills/soft-diorama/demo/)
+- [`tableau-vivant`](skills/tableau-vivant/): Poses a parametric human body on a 3-D stage and paints it as a still scene with held-breath poses and stage light. [Samples](skills/tableau-vivant/demo/)
+- [`vinyl-cel`](skills/vinyl-cel/): Lights forms made of spheres, ellipsoids and distance functions from a depth map for round, smooth, vinyl-figure cel art. [Samples](skills/vinyl-cel/demo/)
 
 ## Installation
 

@@ -9,7 +9,7 @@ as plain shapes: straight sleeves, a looser straight trouser leg below the
 knee, a collar, a belt, shoes. A hand in a pocket is simply a hand pushed into
 the trousers; the cloth in front of it hides the fingers.
 
-The clothed man is built leaner than the nude study: narrower shoulders and
+The clothed man is built leaner than the figure study: narrower shoulders and
 slimmer arms. Sleeves are plain tubes, so the arm muscles do not show through
 the cloth; a sleeve grown from the arm would show every muscle and make the
 figure look like a bodybuilder.
@@ -22,8 +22,8 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import nude  # noqa: E402
-import nude_male  # noqa: E402
+import figure_study  # noqa: E402
+import figure_study_male  # noqa: E402
 from atelier import Camera  # noqa: E402
 from atelier.mannequin import MALE, TROUSERS, Pose, Reach, dress  # noqa: E402
 from atelier.sculpt import Capsule, Ellipsoid, RoundBox, facing, rotation  # noqa: E402
@@ -32,7 +32,7 @@ LEAN = replace(MALE, shoulder_joint=(0.157, 0.012, 0.296),
                deltoid=((0.160, 0.012, 0.292), (0.050, 0.054, 0.064)),
                arm_radii=(0.047, 0.035, 0.037, 0.037, 0.026),
                thigh_radii=(0.084, 0.050), shin_radii=(0.049, 0.029), calf_radii=(0.046, 0.044, 0.13))
-SITTER = replace(nude_male.MAN, physique=LEAN)
+SITTER = replace(figure_study_male.MAN, physique=LEAN)
 SHIRT_BODY = ("chest", "abdomen")  # the sleeves are separate tubes
 SHIRT_FIT = 0.012                  # metres of cloth over the skin
 SLEEVE = (0.060, 0.050, 0.041)     # radius at the shoulder, the elbow and the cuff
@@ -128,7 +128,7 @@ def clothes(scene, marks):
     return tuple((group, *COLORS[group]) for group in ("shirt", "belt", "trousers", "shoes"))
 
 
-SETTING = nude.Setting(
+SETTING = figure_study.Setting(
     aspect=1.6,
     # Near eye level: a camera at hip height looks up at the figure, the heroic
     # angle that makes anyone look big and strong.
@@ -141,7 +141,7 @@ SETTING = nude.Setting(
 
 
 def draw(style_name, width_px):
-    return nude.draw_figure(style_name, width_px, SETTING, SITTER)
+    return figure_study.draw_figure(style_name, width_px, SETTING, SITTER)
 
 
 if __name__ == "__main__":

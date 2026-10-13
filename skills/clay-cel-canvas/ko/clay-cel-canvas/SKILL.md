@@ -81,15 +81,15 @@ from atelier import Art, STYLES, spline, ellipse, symmetric, rotate, mix
 - 풍경은 `references/scenery.md`, 도시는 `references/city.md`, 정물은 `references/still-life.md`의 조립 방법을 따른다
 - 노트북, 가구, 건물처럼 상자와 원기둥으로 된 사물은 3차원 좌표로 정하고 `Camera`로 투영한다
     + 눈대중 좌표로는 평행한 모서리들이 한 소실점으로 모이지 않는다
-- 전신 인물, 특히 앉거나 누운 자세와 누드는 3차원 마네킹으로 만든다 (`atelier.mannequin`, `atelier.sculpt`)
+- 전신 인물, 특히 앉거나 누운 자세와 인체 습작은 3차원 마네킹으로 만든다 (`atelier.mannequin`, `atelier.sculpt`)
     + 2차원 좌표로 찍은 팔다리는 자세가 복잡해질수록 길이와 겹침이 어긋나 몸이 뒤틀린다
     + 마네킹은 골반, 가슴, 머리의 방향과 손발의 목표 위치만 받고 팔꿈치와 무릎은 스스로 계산한다
     + 얼굴은 흉상 예제의 머리를 마네킹의 턱 위치에 얹는다
-    + 체형은 `FEMALE`, `MALE` 2종이다. 남성은 흉상, 누드, 착의 예제를 따로 갖춘다
+    + 체형은 `FEMALE`, `MALE` 2종이다. 남성은 흉상, 인체 습작, 착의 예제를 따로 갖춘다
 - 옷 입은 인물은 `examples/outfits.py`의 조합으로 시작한다 (`references/wardrobe.md`)
     + 포즈 프리셋(`atelier.staging`), 옷(`atelier.wardrobe`), 장면(`examples/scenes.py`), 샷을 고른다
     + 카메라는 `frame()`이 샷에 맞춰 놓고, 머리는 몸의 고개 방향을 따라 3/4 측면까지 돈다
-    + 치마, 드레스, 스카프와 바람은 `atelier.drape`, 2명은 `DUOS`와 `nude.draw_cast()`로 그린다
+    + 치마, 드레스, 스카프와 바람은 `atelier.drape`, 2명은 `DUOS`와 `figure_study.draw_cast()`로 그린다
 - 그림자 계산에 쓰일 마스크는 `art.shape(curve)`로 미리 만들어 둔다
 
 ### 3단계 밑색
@@ -203,7 +203,7 @@ art.save("out.png")
 | 옷 입은 전신이 근육질로 보임 | 머리에 비해 넓고 각진 어깨, 근육을 따라 키운 소매, 올려다본 카메라 | 어깨 바깥 폭을 머리 높이의 1.6배(여성), 1.8배(남성) 안팎으로 줄이고 어깨를 처지게 함. 소매는 곧은 원통, 카메라는 눈높이 (`references/figure.md`) |
 | 발가락이 끊어진 것처럼 보임 | 발볼이 발가락 줄보다 좁아 바깥 발가락이 발 밖으로 나옴 | 발볼을 넓히는 납작한 타원체 (`FOREFOOT`) |
 | 신발 위로 살이 비침 | 신발 상자가 발보다 작음 | 발을 얇게 키운 막을 신발 무리에 더함 |
-| 누드에서 손가락이 사타구니 근처로 처져 의도하지 않은 동작으로 읽힘 | 손등이 위를 볼 때 엄지는 손바닥 아래로 내려감 | 손을 평평하게 눕히고 `curl`을 올려 엄지를 접고, 손목을 조금 올림 |
+| 인체 습작에서 손가락이 골반 앞쪽 근처로 처져 의도하지 않은 동작으로 읽힘 | 손등이 위를 볼 때 엄지는 손바닥 아래로 내려감 | 손을 평평하게 눕히고 `curl`을 올려 엄지를 접고, 손목을 조금 올림 |
 | 바지 다리나 스타킹이 엉덩이에서 공처럼 부풂 | 다리를 따로 된 무리로 키워 엉덩이에 녹지 않음 | 골반과 다리를 한 무리로 키우고 `cut_leg()`로 다리마다 자름 |
 | 목둘레 아래에 둥근 구멍이 뚫림 | 목선을 앞쪽만 파서 목 둘레 천이 고리로 남음 | 목 뿌리 위를 통째로 파냄 |
 | 넥타이, 끈, 라펠, 주머니가 안 보임 | 녹임으로 부푼 옷 속에 묻힘 | `patch()`로 아래 옷과 같은 방식으로 키운 천을 얹음 |
@@ -223,7 +223,7 @@ art.save("out.png")
 | 치마 허리 아래로 상의가 비어져 나옴 | 안에 넣은 상의가 치마 허리 여유보다 두꺼움 | `ease`를 상의 두께만큼 줌 (티셔츠 위 1.4cm) |
 | 스카프가 초커처럼 뜨고 끝자락이 울퉁불퉁함 | 목에 가는 고리 1개, 타원체를 이은 끝자락 | 굵은 고리 2바퀴와 매듭, `Ribbon` 끝자락 2개 |
 | 다리를 꼬거나 무릎을 세우면 치마가 무릎에서 공처럼 부풂 | 다리 사이를 둥근 막대로 잇고 두 다리를 한 평면으로 자름 | 무릎까지만 덮고 다리마다 자름. 다리 사이는 납작한 천 (`_web`) |
-| 뒤에서 본 인물의 뒤통수에 얼굴이 그려짐 | 그려진 머리는 정면 그림 | 머리가 110도 넘게 돌면 머리카락만 얹음 (`nude.BACK_VIEW`) |
+| 뒤에서 본 인물의 뒤통수에 얼굴이 그려짐 | 그려진 머리는 정면 그림 | 머리가 110도 넘게 돌면 머리카락만 얹음 (`figure_study.BACK_VIEW`) |
 | 의자나 누울 자리가 흰 상자나 회색 판으로 보임 | 장소에 그 받침 역할의 색이 없음 | 장소마다 `seat`, `bed`, `wall` 색을 정함 |
 | 같은 색 잔디에 바닥 판 윤곽선이 가로로 보임 | 배경 땅과 3차원 바닥의 경계가 어긋남 | 배경 언덕의 밑자락을 `ground_edge()`에 맞춤 |
 | 바닥 먼 끝에 굵고 어두운 가로 띠 | 지평선 5도 안의 바닥은 행마다 깊이가 튀어 윤곽선이 겹침 | 바닥 길이를 줄여 먼 끝을 지평선 5도 아래에 둠 |
@@ -254,7 +254,7 @@ art.save("out.png")
 | 문서 | 내용 | 읽는 때 |
 |---|---|---|
 | `references/api.md` | 엔진 함수 전체 목록 | 스크립트를 쓰기 전 항상 |
-| `references/figure.md` | 얼굴, 머리 모양과 머리색과 이목구비 템플릿, 머리 소품, 머리 돌리기, 전신 비례, 자세, 손, 발, 3차원 마네킹, 누드 인체, 옷 | 사람을 그릴 때 |
+| `references/figure.md` | 얼굴, 머리 모양과 머리색과 이목구비 템플릿, 머리 소품, 머리 돌리기, 전신 비례, 자세, 손, 발, 3차원 마네킹, 인체 습작, 옷 | 사람을 그릴 때 |
 | `references/wardrobe.md` | 옷, 치마와 드레스, 바람, 포즈 프리셋 10종, 투샷, 카메라 프레이밍, 장면 9종, 조합 예제, 두머 인물 4종 | 옷 입은 인물이나 2명을 그릴 때 |
 | `references/scenery.md` | 하늘, 구름, 산, 물, 나무, 풀밭 | 자연 풍경을 그릴 때 |
 | `references/city.md` | 투시 투영, 건물, 창문, 젖은 도로의 반사 | 거리와 건물을 그릴 때 |
@@ -270,9 +270,9 @@ art.save("out.png")
 | `examples/hands.py` | 손 습작 5종 | 손 (`draw_hand`, `draw_hand_side`, `hand_parts`, `finish_hand`, `Pose`) |
 | `examples/feet.py` | 발 습작 3종 | 발가락이 달린 발 (`draw_foot`, `foot_parts`, `finish_foot`) |
 | `examples/figure.py` | 착의 전신 입상 | 옷 입은 몸 (`body_masks`, `add_limb`), 자세 좌표 |
-| `examples/nude.py` | 여성 누드 입상, 좌상, 와상 | 마네킹 자세 3종, 남녀 공통 작화 장치 (`draw_figure`, `draw_cast`, `Actor`, `Sitter`, `Setting`, `head_placement`) |
+| `examples/figure_study.py` | 여성 인체 습작 입상, 좌상, 와상 | 마네킹 자세 3종, 남녀 공통 작화 장치 (`draw_figure`, `draw_cast`, `Actor`, `Sitter`, `Setting`, `head_placement`) |
 | `examples/portrait_male.py` | 성인 남성 흉상 | 남성 머리 전체 (`head_masks`, `draw_back_hair`, `draw_ear`, `draw_head_front`), 머리 모양 4종과 눈썹 (`styled`, `HAIR_STYLES`) |
-| `examples/nude_male.py` | 남성 누드 입상, 좌상, 와상 | 남성 자세 3종, 손에 든 천 (`held_cloth`) |
+| `examples/figure_study_male.py` | 남성 인체 습작 입상, 좌상, 와상 | 남성 자세 3종, 손에 든 천 (`held_cloth`) |
 | `examples/outfits.py` | 혼자 15종, 2명 3종 조합 | 조합 장치 (`Look`, `Duo`, `LOOKS`, `DUOS`, `dress_outfit`, `cast_for`) |
 | `examples/scenes.py` | 장소 9종 | 장소 (`Place`, `PLACES`, `horizon`, `ground_edge`, `looking_back`), 조립식 아파트 (`panel_block`), 잎 없는 나무 (`bare_tree`), 내리는 눈 (`snowfall`) |
 | `examples/head_props.py` | 머리 소품 | 털모자, 담배와 연기, 유선 이어폰 (`PropPlaces`, `draw_beanie`, `draw_cigarette`, `draw_smoke`, `draw_earphones`) |
@@ -289,7 +289,7 @@ art.save("out.png")
 
 ## 금지
 
-- 미성년자의 누드와 성적 묘사는 그리지 않는다
+- 미성년자의 노출과 성적 묘사는 그리지 않는다
     + 미성년자: 18세 미만으로 설정된 인물, 아동의 몸(이차성징 이전 체형)으로 그려진 인물
     + 큰 눈 같은 그림체 특징만으로 미성년자로 판단하지 않는다
     + 요청의 일부가 여기에 해당하면 그 부분만 거절하고 나머지 작업은 계속한다
@@ -313,7 +313,7 @@ art.save("out.png")
 - 마네킹 렌더링은 1280px에서 장면당 10-40초가 걸린다
 - 인체는 그럴듯함을 목표로 한다
     + 비례와 무게중심과 큰 굴곡은 맞추고 근육 하나하나의 정밀 묘사는 하지 않는다
-- 마네킹에는 성기 형태가 없다
-    + 누드 예제 3종은 고전 인체화 구도다
+- 마네킹에는 골반 세부 형태가 없다
+    + 인체 습작 예제 3종은 고전 인체화 구도다
 - 한 장의 완성에는 렌더링과 검수를 5-15회 반복해야 한다
     + 반복 횟수를 줄이면 품질이 먼저 떨어진다

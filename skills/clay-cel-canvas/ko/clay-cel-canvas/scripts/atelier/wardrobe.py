@@ -22,7 +22,7 @@ from .mannequin import dress
 from .sculpt import (Capsule, Ellipsoid, Form, HalfSpace, Intersection, Offset, RoundBox, Sphere,
                      _group_distances, facing, paint)
 
-FIT = 0.004             # metres of cloth over the skin for swimwear and lingerie
+FIT = 0.004             # metres of cloth over the skin for swimwear and innerwear
 BRA_CUP = 0.012         # a moulded cup stands a little off the breast
 SNUG = 0.008            # tees, jeans, shorts
 SMOOTH = 0.012          # cloth bridges small hollows; larger values inflate (see figure.md)
@@ -273,9 +273,9 @@ def _sides():
     return ((1, "left"), (-1, "right"))
 
 
-def _nipple_local(marks, index):
+def _chest_mark_local(marks, index):
     origin, frame = _chest(marks)
-    return frame.T @ (marks["nipples"][index][0] - origin)
+    return frame.T @ (marks["chest_marks"][index][0] - origin)
 
 
 def _band(scene, group, marks, regions, origin, axis, front, offset, radius, arc=(0.0, 360.0), blend=0.003,
@@ -351,7 +351,7 @@ def bikini(scene, marks, colour=("#E8505B", "#A3405E"), tie=("#F6E7E2", "#C9A7B5
         # A cup is the chest and breast grown, trimmed to a triangle: the breast alone
         # would leave out the melted slope round it and look like a patch on top.
         group = f"bikini_cup_{side}"
-        n = _nipple_local(marks, index)
+        n = _chest_mark_local(marks, index)
         apex = n + (-side * 0.006, 0, 0.072)
         patch(scene, group, marks, ("chest", "breast"), FIT, SMOOTH, origin, c,
               [apex, n + (side * 0.066, 0, -0.050), n + (-side * 0.056, 0, -0.058)])
@@ -362,7 +362,7 @@ def bikini(scene, marks, colour=("#E8505B", "#A3405E"), tie=("#F6E7E2", "#C9A7B5
         items.append((group, *colour))
     # The underband runs all the way round: along the cups' lower edges, across the
     # middle between them, and round the back; an arc stopping short left a gap at each cup.
-    under = np.mean([_nipple_local(marks, i)[2] for i in (0, 1)]) - 0.050
+    under = np.mean([_chest_mark_local(marks, i)[2] for i in (0, 1)]) - 0.050
     _band(scene, "bikini_tie", marks, CHEST_BAND, _local(origin, c, (0, 0.01, under)), c[:, 2], -c[:, 1],
           STRAP_LIFT, TIE, melted=True)
 
@@ -378,19 +378,19 @@ def bikini(scene, marks, colour=("#E8505B", "#A3405E"), tie=("#F6E7E2", "#C9A7B5
     return items + [("bikini_bottom", *colour), ("bikini_tie", *tie)]
 
 
-def lingerie(scene, marks, skin, colour=("#1F1A24", "#120E16"), stockings=True):
+def innerwear(scene, marks, skin, colour=("#1F1A24", "#120E16"), stockings=True):
     """Balconette bra, briefs and thigh-high stockings, in lace and sheer nylon.
     Female mannequin only. skin: the sitter's skin colours."""
     origin, c = _chest(marks)
     lace_groups = []
     cups = shapes_of(marks, ("breast",))
-    under = np.mean([_nipple_local(marks, i)[2] for i in (0, 1)]) - 0.052
+    under = np.mean([_chest_mark_local(marks, i)[2] for i in (0, 1)]) - 0.052
     for index, side in enumerate((-1, 1)):
         # A moulded cup: the breast grown enough to cover the slope melted round it, its
         # lower edge curving under the breast by itself; only the top edge is cut, running
-        # from low at the middle to high at the side, over the nipple.
+        # from low at the middle to high at the side, over the chest mark.
         group = f"bra_cup_{side}"
-        n = _nipple_local(marks, index)
+        n = _chest_mark_local(marks, index)
         scene.add(Offset(cups[index], BRA_CUP), group)
         scene.carve(_edge_cut(origin, c, n + (-side * 0.045, 0, 0.020), n + (side * 0.060, 0, 0.055),
                               n - (0, 0, 0.03), keep_inside=True), group, 0.003)
@@ -435,7 +435,7 @@ def crop_top(scene, marks, colour=("#F4F1EC", "#B9B6C8")):
     origin, c = _chest(marks)
     group = "crop_top"
     dress(scene, marks, group, ("chest", "breast", "abdomen"), 0.006, SMOOTH)
-    under = np.mean([_nipple_local(marks, i)[2] for i in (0, 1)]) - 0.085
+    under = np.mean([_chest_mark_local(marks, i)[2] for i in (0, 1)]) - 0.085
     hem(scene, group, _local(origin, c, (0, 0, under)), c[:, 2])
     scene.carve(Ellipsoid(marks["neck"] + c @ (0, -0.015, 0.000), (0.085, 0.105, 0.080), c), group, 0.006)
     scene.carve(Ellipsoid(marks["neck"] + c @ (0, -0.080, -0.045), (0.070, 0.060, 0.070), c), group, 0.006)
@@ -735,5 +735,5 @@ def shoes(scene, marks, pose, physique, kind="oxford"):
 
 __all__ = ["ARM_CLEARANCE", "FIT", "SHOES", "SMOOTH", "SNUG", "Skin", "around", "bikini", "clear_arms",
            "crop_top", "cut_leg", "cut_wedge", "dress_trousers", "hem", "hoodie", "hot_pants", "jeans",
-           "keep_polygon", "lace", "lingerie", "onto", "patch", "rod", "seam", "shapes_of", "sheer",
+           "keep_polygon", "lace", "innerwear", "onto", "patch", "rod", "seam", "shapes_of", "sheer",
            "shirt", "shoes", "strap", "suit", "swim_trunks", "tee"]

@@ -82,7 +82,7 @@
 
 | 옷 | 두께 (m) | 상수 |
 |---|---|---|
-| 수영복, 란제리 | 0.004 | `FIT` |
+| 수영복, 이너웨어 | 0.004 | `FIT` |
 | 티셔츠, 청바지, 반바지 | 0.008 | `SNUG` |
 | 정장 재킷 | 0.012 | `JACKET` |
 | 후드티 | 0.018 | |
@@ -160,7 +160,7 @@
 | 함수 | 부분 | 체형 |
 |---|---|---|
 | `bikini(scene, marks)` | 삼각 컵, 홀터 끈, 아래 끈, 낮은 하의 | 여성 |
-| `lingerie(scene, marks, skin)` | 몰드 컵 브라, 어깨끈, 밑밴드, 하이컷 팬티, 허벅지 스타킹 | 여성 |
+| `innerwear(scene, marks, skin)` | 몰드 컵 브라, 어깨끈, 밑밴드, 하이컷 팬티, 허벅지 스타킹 | 여성 |
 | `crop_top(scene, marks)` | 민소매, 가슴 아래 밑단, 둥근 목선 | 공용 |
 | `hot_pants(scene, marks)` | 허벅지 위 22% 밑단, 말아 올린 단, 단추, 박음질 | 공용 |
 | `tee(scene, marks, physique)` | 반소매, 크루넥, 바지 안으로 넣은 밑단 | 공용 |
@@ -261,7 +261,7 @@
 
 - `staging.placed(staging, offset, turn)`는 어떤 자세든 돌려서 옮긴다
 - `frame()`에 표지점과 체형을 목록으로 주면 모두가 들어오게 카메라를 놓는다
-- 그리기는 `nude.draw_cast(style, width, setting, [Actor(sitter, pose, extras), ...])`가 한다
+- 그리기는 `figure_study.draw_cast(style, width, setting, [Actor(sitter, pose, extras), ...])`가 한다
     + 사람마다 무리 이름에 접두어(`p0.`, `p1.`)를 붙여 한 번에 렌더링한다. 서로 가리고 그림자를 드리운다
     + 칠하기는 먼 사람부터 한다. 가까운 몸이 먼 사람의 그려진 머리를 덮는다
     + 장면의 후처리(`Setting.painters`)는 모두를 칠한 뒤 한 번만 실행한다
@@ -315,7 +315,7 @@ python examples/outfits.py painterly out.png 1280 custom f suit seated_chair off
 - `Look(sex, outfit, pose, place, shot, azimuth, elevation, aspect, margin, wind, face)` 1줄이 그림 1장이다
 - `Duo((성별, 옷), (성별, 옷), pair, place, ..., faces)` 1줄이 2명 그림 1장이다
 - `face`와 `faces`는 `HeadLook`이다. 머리 모양, 머리색, 이목구비를 고른다 (`references/figure.md`의 머리와 얼굴 템플릿)
-- 옷 이름: `bikini`, `swim_trunks`, `lingerie`, `crop_top`, `tee_jeans`, `suit`, `hoodie`, `flared_skirt`, `pleated_skirt`, `pencil_skirt`, `sundress`, `sundress_scarf`, `sheath_dress`, `dark_hoodie`
+- 옷 이름: `bikini`, `swim_trunks`, `innerwear`, `crop_top`, `tee_jeans`, `suit`, `hoodie`, `flared_skirt`, `pleated_skirt`, `pencil_skirt`, `sundress`, `sundress_scarf`, `sheath_dress`, `dark_hoodie`
     + `dark_hoodie`: 검은 후드티, 짙은 청바지, 검은 운동화 (`SHOES["dark_sneaker"]`). 남녀 모두
 - 미리 정한 혼자 조합 15개 (`LOOKS`)
 
@@ -323,7 +323,7 @@ python examples/outfits.py painterly out.png 1280 custom f suit seated_chair off
 |---|---|---|---|---|
 | `beach_bikini` | 여 | 비키니 | 허리에 손 | 해변 |
 | `beach_trunks` | 남 | 수영 바지 | 서기 | 해변 |
-| `bedroom_lingerie` | 여 | 란제리 | 눕기 | 침실 |
+| `bedroom_innerwear` | 여 | 이너웨어 | 눕기 | 침실 |
 | `bedroom_hoodie` | 여 | 오버핏 후드티 | 서기 (무릎 위 샷) | 침실 |
 | `office_suit_f` | 여 | 베이지 정장 | 의자에 앉기 | 사무실 |
 | `office_suit_m` | 남 | 남색 정장과 넥타이 | 팔짱 (무릎 위 샷) | 사무실 |
@@ -358,4 +358,4 @@ python examples/outfits.py painterly out.png 1280 custom f suit seated_chair off
     + `FRAME_SHIFT`로 그림을 밀어 인물을 오른쪽 3분의 1에 두고 빈 옥상 바닥을 화면 밖으로 뺀다
     + 미는 것은 같은 카메라의 넓은 시야에서 잘라 내는 것이라 원근이 맞다 (`shifted(camera, dx, dy)`)
 - 옷 입은 남성은 `figure_male.LEAN` 체형을 쓴다
-- 란제리, 끈 원피스, 몸에 붙는 원피스는 여성 마네킹에서만 만든다
+- 이너웨어, 끈 원피스, 몸에 붙는 원피스는 여성 마네킹에서만 만든다

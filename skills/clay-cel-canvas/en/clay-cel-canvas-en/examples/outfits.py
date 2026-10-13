@@ -11,7 +11,7 @@ A look is one line of choices (see LOOKS); a duo is two people and a pair pose
 - atelier.wardrobe: clothes that follow the body; atelier.drape: skirts, dresses,
   scarves, which fall free and move in the wind;
 - scenes.py: the backdrop and the furniture the pose touches;
-- nude.draw_cast: render everyone together, paint far to near, heads turned to match.
+- figure study.draw_cast: render everyone together, paint far to near, heads turned to match.
 The clothed man is built on the lean physique of figure_male.py.
 """
 import sys
@@ -21,8 +21,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import figure_male  # noqa: E402
-import nude  # noqa: E402
-import nude_male  # noqa: E402
+import figure_study  # noqa: E402
+import figure_study_male  # noqa: E402
 from atelier import drape as d  # noqa: E402
 from atelier import wardrobe as w  # noqa: E402
 from atelier.mannequin import Trunk, build  # noqa: E402
@@ -30,8 +30,8 @@ from atelier.sculpt import Scene  # noqa: E402
 from atelier.staging import frame, pair_for, pose_for  # noqa: E402
 from scenes import PLACES, ground_prop, looking_back  # noqa: E402
 
-WOMAN = nude.WOMAN
-MAN = replace(nude_male.MAN, physique=figure_male.LEAN)
+WOMAN = figure_study.WOMAN
+MAN = replace(figure_study_male.MAN, physique=figure_male.LEAN)
 WOMAN_BUST = 0.95
 FALLBACK_SUPPORT = ("#8A8290", "#5A5262")     # colour for a support the place has no colour for
 BREEZE = (0.35, -0.06, 0.05)                   # wind: metres of hem sway toward the viewer's right
@@ -79,14 +79,14 @@ def dress_outfit(name, scene, marks, sitter, pose, wind=None):
     """Build an outfit on the posed body; returns what to paint."""
     body = sitter.physique
     female = _female(sitter)
-    if name in ("lingerie", "sundress", "sheath_dress", "sundress_scarf") and not female:
+    if name in ("innerwear", "sundress", "sheath_dress", "sundress_scarf") and not female:
         raise ValueError(f"{name} is built on the female mannequin; choose another outfit")
     if name == "bikini":
         return w.bikini(scene, marks) if female else w.swim_trunks(scene, marks)
     if name == "swim_trunks":
         return w.swim_trunks(scene, marks)
-    if name == "lingerie":
-        return w.lingerie(scene, marks, sitter.skin)
+    if name == "innerwear":
+        return w.innerwear(scene, marks, sitter.skin)
     if name == "crop_top":
         return w.crop_top(scene, marks) + w.hot_pants(scene, marks) + w.shoes(scene, marks, pose, body, "sneaker")
     if name == "tee_jeans":
@@ -123,13 +123,13 @@ def dress_outfit(name, scene, marks, sitter, pose, wind=None):
     raise ValueError(f"unknown outfit {name!r}; choose from {OUTFITS}")
 
 
-OUTFITS = ("bikini", "swim_trunks", "lingerie", "crop_top", "tee_jeans", "suit", "hoodie", "flared_skirt",
+OUTFITS = ("bikini", "swim_trunks", "innerwear", "crop_top", "tee_jeans", "suit", "hoodie", "flared_skirt",
            "pleated_skirt", "pencil_skirt", "sundress", "sundress_scarf", "sheath_dress", "dark_hoodie")
 
 LOOKS = {
     "beach_bikini": Look("f", "bikini", "hand_on_hip", "beach", azimuth=25),
     "beach_trunks": Look("m", "swim_trunks", "standing", "beach", azimuth=-20),
-    "bedroom_lingerie": Look("f", "lingerie", "reclining", "bedroom", azimuth=8, elevation=12, aspect=0.72,
+    "bedroom_innerwear": Look("f", "innerwear", "reclining", "bedroom", azimuth=8, elevation=12, aspect=0.72,
                              margin=0.12),
     "bedroom_hoodie": Look("f", "hoodie", "standing", "bedroom", shot="knee", azimuth=-25),
     "office_suit_f": Look("f", "suit", "seated_chair", "office", azimuth=30),
@@ -168,10 +168,10 @@ def _actor(sex, outfit, staging, wind, face=None):
     """A posed, dressed person: the pose resolved (hands on landmarks) for the body,
     the painted head in its look."""
     sitter = replace(_sitter(sex), look=face)
-    pose = nude.resolve(nude.Setting(1.0, None, staging.pose, hand_at=staging.hand_at,
+    pose = figure_study.resolve(figure_study.Setting(1.0, None, staging.pose, hand_at=staging.hand_at,
                                      hand_behind_head=staging.hand_behind_head), sitter.physique)
     extras = lambda scene, marks: dress_outfit(outfit, scene, marks, sitter, pose, wind)   # noqa: E731
-    return nude.Actor(sitter, pose, extras)
+    return figure_study.Actor(sitter, pose, extras)
 
 
 def cast_for(look):
@@ -192,7 +192,7 @@ def cast_for(look):
     marks = [build(Scene(), actor.pose, physique=actor.sitter.physique) for actor in cast]
     camera = frame(marks, [actor.sitter.physique for actor in cast], look.shot, look.azimuth, look.elevation,
                    aspect=look.aspect, margin=look.margin)
-    setting = nude.Setting(aspect=look.aspect, camera=camera, pose=cast[0].pose, props=_props(place, supports, looking_back(camera)),
+    setting = figure_study.Setting(aspect=look.aspect, camera=camera, pose=cast[0].pose, props=_props(place, supports, looking_back(camera)),
                            room=place.backdrop, painters=place.painters)
     return setting, cast
 
@@ -201,7 +201,7 @@ def draw(style_name, width_px, look="beach_bikini"):
     if isinstance(look, str):
         look = LOOKS[look] if look in LOOKS else DUOS[look]
     setting, cast = cast_for(look)
-    return nude.draw_cast(style_name, width_px, setting, cast)
+    return figure_study.draw_cast(style_name, width_px, setting, cast)
 
 
 if __name__ == "__main__":

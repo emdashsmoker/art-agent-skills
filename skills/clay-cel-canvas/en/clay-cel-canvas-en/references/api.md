@@ -117,7 +117,7 @@ sculpt.paint(art, result, "clay", color, tint=shadow, deep=crease, sheen=0.3)
 - Results for painting over afterwards: `result.lit`, `result.shadow`, `result.ao`, `result.at(point)`, `result.visible(point)`, `result.disc(center, normal, radius)`
 - One scene takes 10-40 seconds at 1280 px
 - Forms large enough to surround the camera (a wide floor) are drawn too
-- Landmarks from `mannequin.build()`: `chin`, `head_up`, `head_frame`, `skull`, `neck`, `nipples`, `navel`, `pelvis`, `pelvis_frame`, `chest`, `chest_frame`, left and right `shoulder`, `elbow`, `wrist`, `hip`, `knee`, `ankle`, plus `forms`, `form_sides`, `leg_radii`, `arm_radius`
+- Landmarks from `mannequin.build()`: `chin`, `head_up`, `head_frame`, `skull`, `neck`, `chest_marks`, `navel`, `pelvis`, `pelvis_frame`, `chest`, `chest_frame`, left and right `shoulder`, `elbow`, `wrist`, `hip`, `knee`, `ankle`, plus `forms`, `form_sides`, `leg_radii`, `arm_radius`
 - `mannequin.dress(..., side=1 or -1)` grows the limb forms of one side only
 
 ## Poses and framing
@@ -168,7 +168,7 @@ d.ribbon(scene, group, points, across, half_width, thickness)    # a flat band (
 ```python
 from atelier.staging import pair_for, placed
 a, b = pair_for("holding_hands", physique_a, physique_b)        # Staging for both
-art = nude.draw_cast(style, width, setting, [nude.Actor(sitter_a, pose_a, extras_a), nude.Actor(sitter_b, pose_b, extras_b)])
+art = figure_study.draw_cast(style, width, setting, [figure_study.Actor(sitter_a, pose_a, extras_a), figure_study.Actor(sitter_b, pose_b, extras_b)])
 ```
 
 - Forms added inside a `Scene.named(prefix)` context get the prefix on their group names
@@ -198,7 +198,7 @@ art = nude.draw_cast(style, width, setting, [nude.Actor(sitter_a, pose_a, extras
 | `head.HAIR_STYLES` | Hair style names of that head module |
 | `hair_tones(colour)`, `eye_tones(colour)` | Shading tones from a name or `"#RRGGBB"` |
 | `portrait.draw(style, width, look)` | A bust with that face |
-| `nude.Sitter(..., look=look)` | The face of a full-body figure |
+| `figure_study.Sitter(..., look=look)` | The face of a full-body figure |
 | `outfits.Look(..., face=look)`, `outfits.Duo(..., faces=(a, b))` | Faces in the combination examples |
 | `head.draw_head_back(art)` | A head seen from behind: back hair, hat, smoke |
 

@@ -413,10 +413,10 @@ def _bodice(scene, marks, group, thickness, neckline, straps, waist):
     origin, c, pelvis, p = _frames(marks)
     dress(scene, marks, group, ("chest", "breast", "abdomen", "pelvis"), thickness, SMOOTH)
     hem(scene, group, pelvis + p @ (0, 0, waist - 0.01), p[:, 2])
-    nipples = [c.T @ (point - origin) for point, _ in marks["nipples"]]
-    top_z = float(np.mean([n[2] for n in nipples])) + neckline
+    chest_marks = [c.T @ (point - origin) for point, _ in marks["chest_marks"]]
+    top_z = float(np.mean([n[2] for n in chest_marks])) + neckline
     hem(scene, group, origin + c @ (0, 0, top_z), -c[:, 2])
-    for name, n in zip(("right", "left"), nipples):
+    for name, n in zip(("right", "left"), chest_marks):
         side = 1 if name == "left" else -1
         scene.carve(Ellipsoid(marks[f"{name}_shoulder"] + c @ (side * 0.012, 0.0, -0.035), (0.058, 0.09, 0.088), c),
                     group, 0.006)

@@ -5,7 +5,7 @@ eight heads high. A pose says where the pelvis is and which way the pelvis,
 chest and head face, then where each hand and foot goes. Elbows and knees are
 found by inverse kinematics, so every bone keeps its length whatever the pose;
 a target out of reach is pulled in and reported. build() adds the body to a
-sculpt.Scene and returns landmarks for painting afterwards (chin, nipples,
+sculpt.Scene and returns landmarks for painting afterwards (chin, chest marks,
 navel, joints). dress() covers chosen body regions with clothing that follows
 the body exactly.
 
@@ -51,7 +51,7 @@ class Physique:
     calf_radii: tuple
     hand_scale: float
     foot_scale: float
-    areola: float                # radius of the painted areola
+    chest_tone: float                # radius of the painted chest tone
 
 
 FEMALE = Physique(
@@ -62,7 +62,7 @@ FEMALE = Physique(
     chin=(0.0, -0.050, 0.075), skull=(0.0, 0.035, 0.185), skull_radii=(0.074, 0.090, 0.102),
     arm_radii=(0.044, 0.033, 0.035, 0.032, 0.023), thigh_radii=(0.088, 0.048),
     shin_radii=(0.047, 0.026), calf_radii=(0.042, 0.040, 0.12),
-    hand_scale=1.0, foot_scale=1.0, areola=0.017)
+    hand_scale=1.0, foot_scale=1.0, chest_tone=0.017)
 
 MALE = Physique(
     trunk=Trunk.MALE, head_length=0.230, thigh=0.435, shin=0.430, upper_arm=0.300, forearm=0.255,
@@ -72,7 +72,7 @@ MALE = Physique(
     chin=(0.0, -0.052, 0.090), skull=(0.0, 0.035, 0.205), skull_radii=(0.080, 0.096, 0.108),
     arm_radii=(0.052, 0.038, 0.040, 0.041, 0.028), thigh_radii=(0.094, 0.054),
     shin_radii=(0.053, 0.030), calf_radii=(0.051, 0.048, 0.13),
-    hand_scale=1.10, foot_scale=1.08, areola=0.0105)
+    hand_scale=1.10, foot_scale=1.08, chest_tone=0.0105)
 
 PHYSIQUES = {"female": FEMALE, "male": MALE}
 
@@ -184,7 +184,7 @@ class Body:
     def __init__(self, scene, physique, group="skin"):
         self.scene, self.p, self.group = scene, physique, group
         self.region, self.side = "chest", 0           # side: +1 left limb, -1 right limb, 0 trunk
-        self.marks = {"strain": [], "forms": [], "form_sides": [], "areola": physique.areola}
+        self.marks = {"strain": [], "forms": [], "form_sides": [], "chest_tone": physique.chest_tone}
 
     def add(self, shape, blend=0.0, anchor=None, reach=None):
         self.scene.add(shape, self.group, blend, anchor, reach)
@@ -235,16 +235,16 @@ class Body:
     def breasts(self, pose, chest_origin, c):
         self.region = "breast"                       # its own region, so cups and bras can cover it alone
         settle = np.array([0.0, 0.0, -1.0]) - (-c[:, 2])          # gravity not along the spine
-        nipples = []
+        chest_marks = []
         for side in (-1, 1):
             frame = _turned(c, side * 22, np.degrees(0.12))
             radii = np.array([0.058, 0.047, 0.054]) * pose.bust
             center = chest_origin + c @ (side * 0.082, -0.068, 0.118) + settle * GRAVITY_SHIFT * pose.bust
             self.add(Ellipsoid(center, radii, frame), BREAST_BLEND)
             front = frame @ (0, -1.0, -0.08)
-            nipples.append((center + front / np.linalg.norm(front) * radii[1] * 0.98, front))
-        self.marks["nipples"] = nipples
-        self.marks["areola"] = self.p.areola * pose.bust
+            chest_marks.append((center + front / np.linalg.norm(front) * radii[1] * 0.98, front))
+        self.marks["chest_marks"] = chest_marks
+        self.marks["chest_tone"] = self.p.chest_tone * pose.bust
 
     def male_trunk(self, pelvis, p, chest_origin, c, waist, between):
         """Narrow hips, broad rib cage and back, flat chest muscles, a firm belly."""
@@ -253,7 +253,7 @@ class Body:
         self.add(Ellipsoid(pelvis + p @ (0, -0.020, 0.122), (0.112, 0.082, 0.10), p), TORSO_BLEND)
         for side in (-1, 1):
             self.add(Ellipsoid(pelvis + p @ (side * 0.066, 0.066, -0.020), (0.078, 0.068, 0.088), p), 0.04)
-            # The ridge over the hip bone that runs down toward the groin: the "V" of a fit man.
+            # The ridge over the hip bone that runs down toward the lower pelvis: the "V" of a fit man.
             self.add(Ellipsoid(pelvis + p @ (side * 0.094, -0.030, 0.108), (0.036, 0.050, 0.060), p), 0.04)
         self.region = "abdomen"
         self.add(Ellipsoid(waist, (0.122, 0.088, 0.085), between), TORSO_BLEND)
@@ -275,7 +275,7 @@ class Body:
                              chest_origin + c @ (side * 0.150, 0.028, 0.298), 0.042), 0.04)
             self.add(Capsule(chest_origin + c @ (side * 0.025, -0.052, 0.322), 0.011,
                              chest_origin + c @ (side * 0.160, -0.016, 0.328), 0.010), 0.022)
-        nipples = []
+        chest_marks = []
         for side in (-1, 1):                           # chest muscles
             frame = _turned(c, side * 14)
             center = chest_origin + c @ (side * 0.066, -0.066, 0.212)
@@ -283,8 +283,8 @@ class Body:
             self.add(Ellipsoid(center, radii, frame), PEC_BLEND)
             front = frame @ (0, -1.0, -0.15)
             point = center + frame @ (side * 0.017, -radii[1] * 0.92, -0.020)
-            nipples.append((point, front / np.linalg.norm(front)))
-        self.marks.update(pelvis=pelvis, chest=chest_origin, nipples=nipples,
+            chest_marks.append((point, front / np.linalg.norm(front)))
+        self.marks.update(pelvis=pelvis, chest=chest_origin, chest_marks=chest_marks,
                           navel=(pelvis + p @ (0, -0.100, 0.150), p @ (0, -1.0, 0.1)))
 
     def neck_and_skull(self, pose, chest_origin, c):
@@ -424,7 +424,7 @@ def build(scene, pose, group="skin", physique=FEMALE):
     """Add a posed body to a scene; return its landmarks.
 
     Landmarks: chin, head_up, head_frame, skull (centre of the skull), neck,
-    nipples [(point, normal) x2], areola (radius), navel (point, normal), pelvis,
+    chest marks [(point, normal) x2], chest tone (radius), navel (point, normal), pelvis,
     pelvis_frame, chest, chest_frame, left/right shoulder, elbow, wrist, hip, knee,
     ankle, and forms (for dress()).
     'strain' lists hands or feet that could not reach their targets.

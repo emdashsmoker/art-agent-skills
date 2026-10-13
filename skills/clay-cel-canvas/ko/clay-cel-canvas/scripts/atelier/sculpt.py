@@ -339,7 +339,7 @@ class Render:
         return bool(self.depth[row, col] >= distance - tolerance)
 
     def disc(self, center, normal, radius, stretch=1.0, samples=24):
-        """Canvas outline of a small disc lying on a surface: areolas, navels, moles.
+        """Canvas outline of a small disc lying on a surface: chest tones, navels, moles.
 
         stretch > 1 elongates it along the surface's up direction.
         """

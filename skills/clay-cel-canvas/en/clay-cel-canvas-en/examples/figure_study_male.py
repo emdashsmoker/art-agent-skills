@@ -1,10 +1,10 @@
-"""Worked example: nude figure studies of an adult man in three classical poses.
+"""Worked example: figure studies of an adult man in three classical poses.
 
-Usage: python nude_male.py <anime|illust|painterly> <output.png> [width_px] [standing|seated|reclining]
+Usage: python figure_study_male.py <anime|illust|painterly> <output.png> [width_px] [standing|seated|reclining]
 
-Same machinery as nude.py (draw_figure), with the male physique, the head from
-portrait_male.py and poses of its own. Genitals are not modelled; as in
-classical sculpture and academic figure drawing, each pose hides the groin
+Same machinery as figure_study.py (draw_figure), with the male physique, the head from
+portrait_male.py and poses of its own. Pelvic detail are not modelled; as in
+classical sculpture and academic figure drawing, each pose hides the lower pelvis
 with something natural: a cloth held at the hip, a raised thigh, a leg drawn
 forward.
 """
@@ -15,17 +15,17 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import nude  # noqa: E402
+import figure_study  # noqa: E402
 import portrait_male  # noqa: E402
 from atelier import Camera  # noqa: E402
 from atelier.mannequin import MALE, Pose, Reach  # noqa: E402
 from atelier.sculpt import Ellipsoid, RoundBox, facing, hanging_cloth, rotation  # noqa: E402
 
-MAN = nude.Sitter(
+MAN = figure_study.Sitter(
     physique=MALE, head=portrait_male, head_chin=portrait_male.CHIN, head_units=portrait_male.HEAD_UNITS,
     skin={"skin": "#EFC9AE", "skin_shadow": "#C99080", "skin_deep": "#A9705F", "flush": "#E2A08C",
-          "areola": "#C98C7E", "nipple": "#A86A5E", "hair": portrait_male.PALETTE["hair"]},
-    nipple=0.0032)
+          "chest_tone": "#C98C7E", "chest_mark": "#A86A5E", "hair": portrait_male.PALETTE["hair"]},
+    chest_mark=0.0032)
 
 LINEN = ("#F1ECE3", "#B5AAC0")       # colour, shadow colour
 
@@ -39,7 +39,7 @@ def held_cloth(scene, marks):
     return (("cloth", *LINEN),)
 
 
-STANDING = nude.Setting(
+STANDING = figure_study.Setting(
     aspect=1.6,
     camera=Camera(eye=(0.0, -4.9, 1.12), target=(0.02, 0, 0.95), focal=3560, center=(500, 760)),
     pose=Pose(
@@ -54,8 +54,8 @@ STANDING = nude.Setting(
 )
 
 # The raised thigh crosses toward the middle of the body, so from this camera it
-# passes in front of the groin; the forearm rests over the knee.
-SEATED = nude.Setting(
+# passes in front of the lower pelvis; the forearm rests over the knee.
+SEATED = figure_study.Setting(
     aspect=1.2,
     camera=Camera(eye=(0.45, -2.7, 1.3), target=(-0.02, -0.12, 0.62), focal=1900, center=(500, 590)),
     pose=Pose(
@@ -72,7 +72,7 @@ SEATED = nude.Setting(
     # The left wrist lies just past the raised knee, so the forearm rests over it.
 )
 
-RECLINING = nude.Setting(
+RECLINING = figure_study.Setting(
     aspect=0.66,
     camera=Camera(eye=(0.12, -2.9, 1.25), target=(0.12, 0.1, 0.66), focal=1500, center=(475, 340)),
     pose=Pose(
@@ -98,7 +98,7 @@ SETTINGS = {"standing": STANDING, "seated": SEATED, "reclining": RECLINING}
 
 
 def draw(style_name, width_px, pose_name="standing"):
-    return nude.draw_figure(style_name, width_px, SETTINGS[pose_name], MAN)
+    return figure_study.draw_figure(style_name, width_px, SETTINGS[pose_name], MAN)
 
 
 if __name__ == "__main__":

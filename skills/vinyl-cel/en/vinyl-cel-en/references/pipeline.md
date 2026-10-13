@@ -123,7 +123,7 @@ Write one `.md` file in the template below before writing the scene script. Sett
 - (Floor contact) The lowest point of every ellipsoid and sphere is found analytically to decide which parts touch the floor
     + If no part lies `FLOOR_SLACK` or more below the soles, the soles touch; otherwise those parts rest on the floor, so lying and kneeling are handled by the same placement function
 - (Strings that follow the surface) A string path is split every 1.5 cm, and only points whose approximate distance to the torso (`distance_to_solids`) is below the clearance are pushed out, with smoothing repeated
-    + Points already clear stay where they are, so the string bridges hollows such as the cleavage
+    + Points already clear stay where they are, so the string bridges hollows such as the chest gap
 
 ## 3D scene renderer principles
 

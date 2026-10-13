@@ -23,7 +23,7 @@ DARK_HAIR = Material(base=rgb("#2E2422"), shadow=rgb("#140E10"), line=rgb("#0A06
 WOMAN = adult_face(replace(default_character(), palette=figure_palette()))
 MAN = male_face(replace(default_character(), palette=replace(figure_palette(), hair=DARK_HAIR,
                                                              hair_highlight=rgb("#7A6A66"))))
-HER = Figure3D(character=WOMAN, build=rig3d.FEMALE_GLAMOUR, pose=rig3d.HAND_ON_HIP, hair=head3d.LONG_HAIR,
+HER = Figure3D(character=WOMAN, build=rig3d.FEMALE_FULLER, pose=rig3d.HAND_ON_HIP, hair=head3d.LONG_HAIR,
                outfit=replace(wardrobe3d.OUTFITS["bikini"], colors={"top": SWIMSUIT}),
                position=(340.0, 600.0), head_height=128.0, yaw=0.45, ground=FLOOR_Y)
 HIM = Figure3D(character=MAN, build=rig3d.MALE_ATHLETIC, pose=rig3d.WAVE, hair=head3d.MALE_SHORT_HAIR,

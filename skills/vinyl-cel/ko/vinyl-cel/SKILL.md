@@ -105,7 +105,7 @@ license: GPL-3.0-or-later, Copyright (C) 2026 Em Dash Smoker. Images rendered wi
 - 얼굴 인상은 프리셋과 머리 비율로 고름
     + `adult_face()`는 하관이 길고 눈이 작은 성숙한 인상, 남성은 `male_face()`, 기본 얼굴은 큰 눈의 애니메 인상
     + `head_scale` 1.0은 사실적 비례, 1.08-1.15는 애니메식 큰 머리
-- 미성년자의 누드와 성적 묘사는 그리지 않음
+- 미성년자의 노출과 성적 묘사는 그리지 않음
     + 대상은 이차성징 이전의 신체로 묘사한 인물, 18세 미만으로 명시된 인물
     + 큰 눈, 큰 머리 비율, 앳된 얼굴, 의상 같은 화풍 요소만으로는 미성년으로 판정하지 않음
 - 예제는 `scripts/examples/` 안에서는 그대로 실행되며 다른 폴더로 복사한 경우 `_toolkit.py`도 함께 복사
@@ -149,7 +149,7 @@ from codeillust import background, head3d, rig3d, wardrobe3d
 from codeillust.character import adult_face, default_character, male_face
 from codeillust.figure3d import Figure3D, draw_figure3d
 
-HER = Figure3D(character=adult_face(default_character()), build=rig3d.FEMALE_GLAMOUR,
+HER = Figure3D(character=adult_face(default_character()), build=rig3d.FEMALE_FULLER,
                pose=rig3d.POSES["hand_on_hip"], hair=head3d.LONG_HAIR,
                outfit=wardrobe3d.OUTFITS["tank_top_jeans"], position=(500, 600), head_height=128,
                yaw=0.45, ground=1250)           # yaw 0 정면, π/2 측면, π 뒷모습
@@ -159,7 +159,7 @@ def compose(painter):
     draw_figure3d(painter, HER)                 # 여러 명이면 뒤에 선 인물부터 그림
 ```
 
-- 체형은 `FEMALE_AVERAGE`, `FEMALE_GLAMOUR`, `MALE_SLIM`, `MALE_ATHLETIC`
+- 체형은 `FEMALE_AVERAGE`, `FEMALE_FULLER`, `MALE_SLIM`, `MALE_ATHLETIC`
 - 자세는 `rig3d.POSES`의 27종
     + 서기, 콘트라포스토, 허리에 손, 팔짱, 걷기, 앉기(소품 `stool`), 손 흔들기, 가리키기, 생각하기, 뒷짐, 환호, 브이, A 자세
     + 달리기(`run`), 주머니에 손(`hands_in_pockets`, 바지류 의상과 함께), 무릎 꿇기(`kneel`), 무릎 꿇고 앉기(`kneel_sit`), 등 대고 눕기(`lie_back`), 엎드리기(`lie_front`)

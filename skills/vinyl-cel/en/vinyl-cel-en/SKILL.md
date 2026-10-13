@@ -107,7 +107,7 @@ A skill that draws people, landscapes, cities and still lifes with code alone. T
 - The face is chosen by preset and head ratio
     + `adult_face()` is a mature look with a longer lower face and smaller eyes, `male_face()` is for men, and the default face is a big-eyed anime look
     + `head_scale` 1.0 is realistic proportion, and 1.08-1.15 is the larger anime head
-- Nudity and sexual depiction of minors are not drawn
+- Unclothed figures and sexual depiction of minors are not drawn
     + This covers figures drawn with a pre-pubescent body and figures stated to be under 18
     + Style elements alone, such as big eyes, a large head ratio, a youthful face or an outfit, are not grounds to judge a figure a minor
 - Examples run as they are inside `scripts/examples/`; when copied to another folder, copy `_toolkit.py` with them
@@ -151,7 +151,7 @@ from codeillust import background, head3d, rig3d, wardrobe3d
 from codeillust.character import adult_face, default_character, male_face
 from codeillust.figure3d import Figure3D, draw_figure3d
 
-HER = Figure3D(character=adult_face(default_character()), build=rig3d.FEMALE_GLAMOUR,
+HER = Figure3D(character=adult_face(default_character()), build=rig3d.FEMALE_FULLER,
                pose=rig3d.POSES["hand_on_hip"], hair=head3d.LONG_HAIR,
                outfit=wardrobe3d.OUTFITS["tank_top_jeans"], position=(500, 600), head_height=128,
                yaw=0.45, ground=1250)           # yaw 0 front, π/2 side, π back
@@ -161,7 +161,7 @@ def compose(painter):
     draw_figure3d(painter, HER)                 # with several figures, draw the one standing furthest back first
 ```
 
-- Builds are `FEMALE_AVERAGE`, `FEMALE_GLAMOUR`, `MALE_SLIM` and `MALE_ATHLETIC`
+- Builds are `FEMALE_AVERAGE`, `FEMALE_FULLER`, `MALE_SLIM` and `MALE_ATHLETIC`
 - There are 27 poses in `rig3d.POSES`
     + Standing, contrapposto, hand on hip, arms crossed, walking, sitting (prop `stool`), waving, pointing, thinking, hands behind the back, cheering, peace sign and A pose
     + Running (`run`), hands in pockets (`hands_in_pockets`, with trousers-type outfits), kneeling (`kneel`), sitting on the heels (`kneel_sit`), lying on the back (`lie_back`) and lying on the front (`lie_front`)

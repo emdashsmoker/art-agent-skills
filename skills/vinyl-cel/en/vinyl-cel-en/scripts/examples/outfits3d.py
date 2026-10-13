@@ -25,12 +25,12 @@ WOMAN = adult_face(default_character())
 MAN = male_face(replace(default_character(), palette=replace(default_character().palette, hair=DARK_HAIR,
                                                              hair_highlight=rgb("#8A7A76"))))
 ROWS = (
-    ((WOMAN, "crop_top_hot_pants", rig3d.FEMALE_GLAMOUR, head3d.LONG_HAIR, "contrapposto"),
+    ((WOMAN, "crop_top_hot_pants", rig3d.FEMALE_FULLER, head3d.LONG_HAIR, "contrapposto"),
      (WOMAN, "hoodie_jeans", rig3d.FEMALE_AVERAGE, head3d.PONYTAIL_HAIR, "stand"),
      (WOMAN, "hoodie_shorts", rig3d.FEMALE_AVERAGE, head3d.BOB_HAIR, "peace"),
-     (WOMAN, "tank_top_jeans", rig3d.FEMALE_GLAMOUR, head3d.PONYTAIL_HAIR, "hand_on_hip"),
+     (WOMAN, "tank_top_jeans", rig3d.FEMALE_FULLER, head3d.PONYTAIL_HAIR, "hand_on_hip"),
      (WOMAN, "sundress", rig3d.FEMALE_AVERAGE, head3d.LONG_HAIR, "hands_behind"),
-     (WOMAN, "bikini", rig3d.FEMALE_GLAMOUR, head3d.LONG_HAIR, "contrapposto"),
+     (WOMAN, "bikini", rig3d.FEMALE_FULLER, head3d.LONG_HAIR, "contrapposto"),
      (WOMAN, "t_shirt_jeans", rig3d.FEMALE_AVERAGE, head3d.BOB_HAIR, "think")),
     ((MAN, "shirt_trousers", rig3d.MALE_SLIM, head3d.MALE_MEDIUM_HAIR, "point"),
      (MAN, "swim_trunks", rig3d.MALE_ATHLETIC, head3d.MALE_SHORT_HAIR, "cheer"),

@@ -61,7 +61,7 @@ ANKLE_BONE = (0.075, 0.02, 0.040, 0.045, 0.012)
 # Breast: an edged swelling (centre x, centre y, radius x, radius y, thickness) in the chest frame.
 BREAST = (0.285, 0.175, 0.265, 0.275, 0.62)
 BREAST_SOFT_TOP = 0.70              # share of the breast height over which its upper slope fades in
-BREAST_SPREAD = 0.25                # centre moves outward per unit of extra bust (keeps a cleavage gap)
+BREAST_SPREAD = 0.25                # centre moves outward per unit of extra bust (keeps a gap between the breasts)
 BREAST_DROP = 0.25                  # centre moves down per unit of extra bust (fuller breasts sit lower)
 BREAST_PROJECTION = 0.80            # share of the extra bust added to the projection
 UNDERBUST_FOLD = 0.020              # groove depth under the breast per unit of bust (head heights)
@@ -80,7 +80,7 @@ COLLARBONE = ((0.07, -0.52), (0.30, -0.535), (0.56, -0.47))
 STERNUM = ((0.0, -0.36), (0.0, 0.52))
 MIDLINE = ((0.0, -1.00), (0.0, -0.48))          # pelvis frame: abdomen centre line down to the navel
 NAVEL = (0.0, -0.46)
-GROIN_FOLD = ((0.50, -0.20), (0.30, 0.08), (0.12, 0.24))
+LOWER_PELVIS_FOLD = ((0.50, -0.20), (0.30, 0.08), (0.12, 0.24))
 RIB_ARCH = ((0.04, 0.50), (0.22, 0.60), (0.42, 0.56))      # chest frame: lower edge of the ribcage
 GROOVE_SOFTNESS = 0.045
 SKIN_GLOSS = 0.06
@@ -397,7 +397,7 @@ def _anatomy(relief, figure, skeleton):
         x, y, radius_x, radius_y, height = OUTER_HIP
         _soft_swelling(relief, pelvis, (x * figure.body.hips, y, radius_x, radius_y, height * figure.body.hips), sign)
         # Breast: a full lower curve that grows gently out of the chest above it. Each side is
-        # clipped at the midline so the two never add up; the gap between them is the cleavage.
+        # clipped at the midline so the two never add up; the gap between them is the chest gap.
         center, radius_x, radius_y, thickness = breast_geometry(figure.body, sign)
         shape = chest.apply(ellipse(center, radius_x, radius_y, samples=64))
         side_only = canvas.mask(chest.apply([(0.0, -3.0), (sign * 3.0, -3.0), (sign * 3.0, 3.0), (0.0, 3.0)]))
@@ -410,7 +410,7 @@ def _anatomy(relief, figure, skeleton):
                      UNDERBUST_FOLD * max(figure.body.bust - 0.8, 0.0) * 2)
         _groove_line(relief, chest, COLLARBONE, sign, 0.012, -0.020)       # negative depth = raised ridge
         _groove_line(relief, chest, RIB_ARCH, sign, 0.020, 0.012)
-        _groove_line(relief, pelvis, GROIN_FOLD, sign, 0.016, 0.016)
+        _groove_line(relief, pelvis, LOWER_PELVIS_FOLD, sign, 0.016, 0.016)
         joints = skeleton.joints[side]
         shin_angle = getattr(figure.pose, f"shin_{side}")
         knee = Frame(tuple(joints["knee"]), scale, -shin_angle)
@@ -516,7 +516,7 @@ BIKINI_BRIEF_HALF = ((0.0, -0.16), (0.48, -0.14), (0.84, -0.10), (0.84, -0.01), 
                      (0.07, 0.36))
 BIKINI_TIE = (0.80, -0.05)          # pelvis frame; side tie position
 BIKINI_TIE_SIZE = 0.085             # head heights
-BIKINI_BRIDGE = 45.0                # canvas units of hollow the taut fabric spans (no dents at the groin)
+BIKINI_BRIDGE = 45.0                # canvas units of hollow the taut fabric spans (no dents at the lower pelvis)
 
 
 def _bikini(relief, painter, figure, skeleton):

@@ -37,7 +37,7 @@ class Build:
 
 
 FEMALE_AVERAGE = Build()
-FEMALE_GLAMOUR = Build(bust=1.32, waist=0.84, hips=1.12, thighs=1.06)
+FEMALE_FULLER = Build(bust=1.32, waist=0.84, hips=1.12, thighs=1.06)
 MALE_SLIM = Build(sex=Sex.MALE, shoulders=1.12, waist=1.02, hips=0.86, thighs=0.90, limbs=1.02, muscle=0.25)
 MALE_ATHLETIC = Build(sex=Sex.MALE, shoulders=1.26, waist=1.06, hips=0.90, thighs=1.0, limbs=1.20, muscle=1.0)
 

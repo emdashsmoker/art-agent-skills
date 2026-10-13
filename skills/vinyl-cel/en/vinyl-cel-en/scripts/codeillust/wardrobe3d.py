@@ -144,7 +144,7 @@ def flat_hem(points):
 
 
 def chest_cover(ctx, thickness, slot, bridge=True):
-    """Fabric over the breasts (or a man's chest muscles); bridge spans the cleavage the way a top
+    """Fabric over the breasts (or a man's chest muscles); bridge spans the chest gap the way a top
     does (a bikini does not)."""
     thickness = ctx.lift(thickness)
     s = ctx.skeleton
@@ -733,7 +733,7 @@ def _ring(ctx, position, angles, lift):
 def over_skin(ctx, path, clearance=STRING_CLEARANCE, hug=False):
     """Resample a path and lift every point that lies inside or too near the skin, so a string drawn
     along it rests on the body instead of sinking into breasts, collarbones or the neck. Points
-    already clear stay where they are, so a string still bridges hollows such as the cleavage.
+    already clear stay where they are, so a string still bridges hollows such as the chest gap.
     hug=True also pulls points that stand off the body down onto it: a shoulder strap laid by fixed
     chest-frame points would otherwise hang in the air over a broad or narrow shoulder."""
     points = _resample(np.asarray(path, dtype=np.float64), STRING_SPACING)

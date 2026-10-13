@@ -151,6 +151,7 @@ Thanks to the developers and contributors of these projects.
 - [tiny-sd](https://huggingface.co/segmind/tiny-sd)
 - [FLUX.2 [klein] 4B](https://huggingface.co/black-forest-labs/FLUX.2-klein-4B)
 - [FLUX.2 [klein] 4B GGUF](https://huggingface.co/unsloth/FLUX.2-klein-4B-GGUF)
+- [Qwen3-4B](https://huggingface.co/Qwen/Qwen3-4B)
 - [Qwen3-4B GGUF](https://huggingface.co/unsloth/Qwen3-4B-GGUF)
 - [Stable Diffusion 1.5 Inpainting](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-inpainting)
 - [LCM-LoRA SD 1.5](https://huggingface.co/latent-consistency/lcm-lora-sdv1-5)

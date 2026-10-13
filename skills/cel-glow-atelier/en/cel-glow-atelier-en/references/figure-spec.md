@@ -67,7 +67,7 @@ When the spec has a `figure` key, the full body rig runs. Face and hair use the 
 | `legs` | 0.95-1.1 | Leg length |
 | `muscle` | 0.8-1.4 | Limb thickness and muscle shading strength. Male abs and chest muscles deepen with it |
 
-- Curvy female build example : `{"bust": 1.08, "waist": 0.96, "hips": 1.04}`
+- Fuller female build example : `{"bust": 1.08, "waist": 0.96, "hips": 1.04}`
 - Muscular male build example : `{"muscle": 1.3, "shoulders": 1.05}`
 - Changing a factor by more than 0.1 at once easily misaligns outfit shapes, so check after rendering
 
@@ -135,7 +135,7 @@ Framing is set in one of 2 ways.
 | `wave` | Right hand raised in greeting | |
 | `clasped` | Both hands joined in front | |
 | `peace` | Right hand V sign beside the face, the arm drawn in front of the hair | |
-| `pinup` | One hand behind the head, the other on the raised hip. S curve | |
+| `showcase` | One hand behind the head, the other on the raised hip. S curve | |
 | `walk` | Walking seen from the front | |
 | `sitting` | Seated with knees together and both hands on the knees | `stool` |
 | `sitting_crossed` | Seated with the screen-right leg crossed over the other knee, both hands on the upper knee | `stool` |
@@ -158,7 +158,7 @@ Framing is set in one of 2 ways.
 - Presets fit both genders. Hand positions adjust to the gender's body automatically
 - `three_quarter` turns only the body, so set the face direction separately with `character.head_turn`
 - `pockets` puts the hands into pockets on outfits with pockets (`dress`, `blouse_skirt`, `sweater_pants`, `suit`, `shirt_pants`, `tshirt_jeans`, `crop_hotpants`, `hoodie_jeans`, the 6 v9 outfits with pants or shorts)
-    + Outfits without pockets (`bodycon`, `knit_dress`, `swimsuit`, `trunks`, `lingerie`, `none`) lower relaxed hands diagonally away from the body
+    + Outfits without pockets (`bodycon`, `knit_dress`, `swimsuit`, `trunks`, `innerwear`, `none`) lower relaxed hands diagonally away from the body
 - `arms_crossed` reads best in upper body framing (`thigh`, `knee`, `waist`) because the arms pass in front of the torso
 - `stretch` raises the hands over the head, so with `shot` the framing adjusts automatically to keep the fingertips in the picture
 
@@ -240,7 +240,7 @@ Put the items below in `pose_overrides` to modify a preset (front rig). Profile 
 - The bed shows the character sitting on its long edge, drawn turned about 18 degrees so the headboard shows
     + It is about 6 heads long, so a wide canvas (e.g. [1500, 1300]) with `"shot": "full"` and `"x": 0.42` is stable
     + `furniture_color` is the duvet color
-    + Together with the interior background `room` it becomes a bedroom scene (`figure_lingerie_room.json`)
+    + Together with the interior background `room` it becomes a bedroom scene (`figure_innerwear_room.json`)
 
 ## Profile
 
@@ -341,8 +341,8 @@ When `pose` is `back_stand`, `back_lookback`, `back_walk` or `back_sit`, the bac
 | `suit` | unisex | Suit jacket, shirt, tie, straight pants | jacket and pants `cloth2`, shirt `cloth`, tie `accent` |
 | `shirt_pants` | unisex | Collared shirt (tucked in), belt, straight pants | shirt `cloth`, pants `cloth2`, belt `shoe` |
 | `tshirt_jeans` | unisex | Short-sleeve T-shirt + jeans | T-shirt `cloth`, pants `cloth2` |
-| `trunks` | male | Swim trunks (on a woman, a topless figure study) | `cloth`, `cloth_shadow` |
-| `lingerie` | unisex | Female : lace-trimmed bra + briefs. Male : drawers + contrasting waistband | `cloth`, `cloth_shadow`, male waistband `accent` |
+| `trunks` | male | Swim trunks (on a woman, a bare-chested figure study) | `cloth`, `cloth_shadow` |
+| `innerwear` | unisex | Female : lace-trimmed bra + briefs. Male : drawers + contrasting waistband | `cloth`, `cloth_shadow`, male waistband `accent` |
 | `crop_hotpants` | female | Cropped T-shirt showing the navel + denim hot pants (fly, curved pockets, frayed hems) | T-shirt `cloth`, hot pants `cloth2` |
 | `hoodie_jeans` | unisex | Hoodie (hood, strings, kangaroo pocket, ribbed hem and cuffs) + jeans | hoodie `cloth`, pants `cloth2` |
 | `open_shirt_shorts` | male | Short-sleeve open-collar shirt (untucked, buttoned) + shorts above the knee | shirt `cloth`, shorts `cloth2` |
@@ -363,7 +363,7 @@ When `pose` is `back_stand`, `back_lookback`, `back_walk` or `back_sit`, the bac
     + Pairs by situation : bikini `swimsuit` and `trunks`, crop top and hot pants `crop_hotpants` and `open_shirt_shorts`, dress `dress` and `suit`, blouse and skirt `blouse_skirt` and `shirt_pants`, knit dress `knit_dress` and `coat_turtleneck` or `sweater_pants`
 - Jacket and coat color is `palette.outer`; empty uses the material color (denim `#5f7fa8`, leather `#34303a`, coat `#b08860`)
 - Shoe color is `palette.shoe`
-- `swimsuit`, `trunks`, `lingerie`, `none` default to bare feet; with `heels` on, shoes are drawn
+- `swimsuit`, `trunks`, `innerwear`, `none` default to bare feet; with `heels` on, shoes are drawn
 - Every outfit is also drawn in profile and back views
     + v9 outfits from the back : shirt collar band, denim jacket yoke and waistband, coat center line and back vent, tank top back neckline
     + v9 outfits in profile : the inner clothes show between the front panels of open jackets and coats, and coat skirts fall straight from the hips
@@ -380,11 +380,11 @@ When `pose` is `back_stand`, `back_lookback`, `back_walk` or `back_sit`, the bac
 
 - `outfit` `none` is a body without clothes (figure study, outfit design underdrawing and the like)
 - What the engine draws
-    + The engine has no genital shapes
-    + Female : the torso is shown with collarbones, breast shading, navel and groin lines. The engine has no nipple shapes
-    + Male : the torso is shown with chest muscles, abs, the iliac V line and navel. Nipples are faint color dots
-- `trunks` on a woman is topless, with the same torso treatment as above
-- `lingerie` also uses the same torso treatment; see-through or removed underwear is not in the engine
+    + The engine has no pelvic shapes
+    + Female : the torso is shown with collarbones, breast shading, navel and lower pelvis lines. The engine has no chest mark shapes
+    + Male : the torso is shown with chest muscles, abs, the iliac V line and navel. Chest marks are faint color dots
+- `trunks` on a woman is bare-chested, with the same torso treatment as above
+- `innerwear` also uses the same torso treatment; see-through or removed underwear is not in the engine
 - Minor standards follow the protection of minors section of SKILL.md
 - The painterly style (`painterly`) and knee-up framing look most like a painting
     + Smaller eyes (`eye_height` 0.062-0.074), fuller lips (female `lip_fullness` 1.3)

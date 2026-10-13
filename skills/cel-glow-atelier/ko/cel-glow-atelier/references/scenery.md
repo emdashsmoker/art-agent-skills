@@ -147,7 +147,7 @@
 - `art` : [x, y, 가로, 세로]의 액자 그림. `art_color`가 그림의 주조색
 - `vanish_x` : 바닥 널빤지가 모이는 소실점의 가로 위치
 - 실내 인물은 `room`을 첫 연산으로 두고 바로 인물을 그림 (`sky`, `street` 불필요)
-- 침대에 앉은 인물은 `figure.furniture` `bed`와 조합 (`figure_lingerie_room.json`)
+- 침대에 앉은 인물은 `figure.furniture` `bed`와 조합 (`figure_innerwear_room.json`)
 - 밤 실내는 `window` `night`, `lamp`, `finish.bloom` 0.3, `shadow_tint`에 보라 계열이 잘 맞음
 
 ## 인물과 원근 맞추기
@@ -194,7 +194,7 @@
 ]
 ```
 
-- 전체 spec : `assets/examples/landscape_lake.json`, `assets/examples/city_night.json`, `assets/examples/city_day.json`, `assets/examples/city_crowd.json` (가까운 행인), `assets/examples/figure_city.json`, `assets/examples/male_figure_city.json`, `assets/examples/figure_pinup.json` (해변), `assets/examples/male_beach.json`, `assets/examples/figure_side_walk.json` (공원), `assets/examples/figure_lingerie_room.json` (밤 침실), `assets/examples/male_arms_crossed.json` (낮 거실)
+- 전체 spec : `assets/examples/landscape_lake.json`, `assets/examples/city_night.json`, `assets/examples/city_day.json`, `assets/examples/city_crowd.json` (가까운 행인), `assets/examples/figure_city.json`, `assets/examples/male_figure_city.json`, `assets/examples/figure_showcase.json` (해변), `assets/examples/male_beach.json`, `assets/examples/figure_side_walk.json` (공원), `assets/examples/figure_innerwear_room.json` (밤 침실), `assets/examples/male_arms_crossed.json` (낮 거실)
 
 ## 화풍 마감
 

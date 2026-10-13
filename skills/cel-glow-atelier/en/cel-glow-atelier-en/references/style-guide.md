@@ -95,7 +95,7 @@
 
 | Outfit | cloth / cloth_shadow / cloth2 | Tip |
 |---|---|---|
-| `lingerie` (bedroom at night) | #2a2230 / #140f18 | A near-black violet contrasts with the skin and the lace trim stands out bright. For white, #f4f0ea / #c8c0b8 |
+| `innerwear` (bedroom at night) | #2a2230 / #140f18 | A near-black violet contrasts with the skin and the lace trim stands out bright. For white, #f4f0ea / #c8c0b8 |
 | `crop_hotpants` | #f6f2ea / #c0b4a4 / #5a7aa8 | White T-shirt and mid-value denim. Denim too dark hides the pocket stitching |
 | `hoodie_jeans` | #3a3f4c / #1e212a / #34405e | Grey or charcoal hoodie with navy jeans. Similar values for hoodie and pants make the silhouette look long |
 | `suit` (suit) | #f4f2ee / #b8b4ae / #2a3040 | White shirt, dark navy suit, `accent` wine #5a2a3a tie |

@@ -26,9 +26,9 @@ SKIRT_GARMENTS = ("dress", "skirt", "bodycon") + wardrobe.SKIRT_GARMENTS
 LAP_COVER = 0.90                  # share of the thigh a skirt covers on a seated figure
 BUST_SIDE_LIGHT = 0.35            # share of the light's sideways component kept on the bust
 OUTFITS = ("dress", "blouse_skirt", "sweater_pants", "bodycon", "swimsuit", "suit", "shirt_pants",
-           "tshirt_jeans", "trunks", "lingerie", "crop_hotpants", "hoodie_jeans", "none") + wardrobe.OUTFITS
+           "tshirt_jeans", "trunks", "innerwear", "crop_hotpants", "hoodie_jeans", "none") + wardrobe.OUTFITS
 OUTFIT_ALIASES = {"bikini": "swimsuit"}
-BAREFOOT_OUTFITS = ("swimsuit", "trunks", "lingerie", "none")
+BAREFOOT_OUTFITS = ("swimsuit", "trunks", "innerwear", "none")
 # Who each outfit is cut for. Any outfit is drawn on either gender when a spec asks for it;
 # the table picks the default outfit and groups the names in error messages and documents.
 OUTFIT_GENDER = {"dress": "female", "blouse_skirt": "female", "bodycon": "female", "swimsuit": "female",
@@ -61,15 +61,15 @@ TIE_SHAPE = ((-0.040, -0.110), (0.040, -0.110), (0.030, -0.020), (0.070, 0.700),
              (-0.030, -0.020))
 SHIRT_COLLAR_WING = ((0.100, -0.210), (0.165, -0.170), (0.215, -0.040), (0.120, 0.060), (0.050, 0.110),
                      (0.085, -0.060))
-# Lingerie (chest frame, relative to each bust center in bust radii): a balconette cup
+# Innerwear (chest frame, relative to each bust center in bust radii): a balconette cup
 # cut low across the top, and the brief (pelvis frame) cut higher on the hip than a bikini.
 BRA_CUP = ((-0.95, 0.55), (-0.30, -0.50), (0.95, -0.38), (0.88, 0.72), (0.05, 1.02))
 BRA_STRAP_TOP = (0.285, -0.120)   # over the collarbone, halfway out to the shoulder
-LINGERIE_BRIEF = ((-0.610, -0.140), (-0.540, -0.250), (0.0, -0.190), (0.540, -0.250), (0.610, -0.140),
+INNERWEAR_BRIEF = ((-0.610, -0.140), (-0.540, -0.250), (0.0, -0.190), (0.540, -0.250), (0.610, -0.140),
                   (0.205, 0.365), (0.0, 0.440), (-0.205, 0.365))
 BRA_BAND_TOP = 0.78              # underband top, in bust radii below the bust center
 BRA_BAND_DEPTH = 0.07            # underband height (head units)
-LACE_TRIM = 0.045                 # width of the lace border inside a lingerie edge (head units)
+LACE_TRIM = 0.045                 # width of the lace border inside a innerwear edge (head units)
 LACE_DOT = 0.016                  # spacing of the lace mesh
 BOXER_LENGTH = 0.30               # share of the thigh covered by boxer briefs
 # Casual wear (pelvis frame unless noted): crop tee hem above the navel, low-rise hot pants.
@@ -364,8 +364,8 @@ class Figure(Portrait):
         cloth = dict(color=pal.cloth, shadow=pal.cloth_shadow)
         if kind in ("suit", "shirt_pants", "tshirt_jeans", "trunks"):
             return self.menswear_masks(kind, shoes, cloth, dark)
-        if kind == "lingerie":
-            return shoes + self.lingerie_masks(cloth, dark)
+        if kind == "innerwear":
+            return shoes + self.innerwear_masks(cloth, dark)
         if kind in ("crop_hotpants", "hoodie_jeans"):
             return self.casual_masks(kind, shoes, cloth, dark)
         if kind in wardrobe.OUTFITS:
@@ -497,7 +497,7 @@ class Figure(Portrait):
             dict(name="lapels", mask=lapels, color=pk.adjust(pal.cloth2, value=1.25), shadow=suit["color"],
                  zone="torso", fitted=True)]
 
-    def lingerie_masks(self, cloth: dict, dark) -> list:
+    def innerwear_masks(self, cloth: dict, dark) -> list:
         """Lace bra and brief; a man's set is boxer briefs with a contrast waistband."""
         m, pal = self.masks, self.pal
         skin = self.grow(np.maximum(m["torso"], m["legs"]), 0.008)
@@ -530,7 +530,7 @@ class Figure(Portrait):
         hips = self.build.hips
         depths = [0.0, 0.0, DEPTH["belly"], 0.0, 0.0, DEPTH["crotch"], DEPTH["crotch"], DEPTH["crotch"]]
         brief = pk.fill_mask(self.shape, self.at(pk.spline(np.array(
-            [self.pelvis_pt(x * (hips if abs(x) > 0.5 else 1.0), y, d) for (x, y), d in zip(LINGERIE_BRIEF, depths)]),
+            [self.pelvis_pt(x * (hips if abs(x) > 0.5 else 1.0), y, d) for (x, y), d in zip(INNERWEAR_BRIEF, depths)]),
             closed=True))) * skin
         return [dict(name="brief", mask=brief, zone="torso", fitted=True, lace=True, **cloth),
                 dict(name="bra", mask=bra, zone="torso", fitted=True, lace=True, **cloth)]
@@ -613,7 +613,7 @@ class Figure(Portrait):
                 bust = np.maximum(bust, dome * self.plan.bust_dome + slope)
             height = height + bust * bumps
             normals = lt.normals_from_height(pk.blur(height, self.px(0.012)))
-            # Side light draws a claw of shadow up the cleavage. A steeper light on the bust
+            # Side light draws a claw of shadow up the chest gap. A steeper light on the bust
             # keeps the shadow underneath, where it describes the volume.
             steep = self.light * np.array([BUST_SIDE_LIGHT, 1.0, 1.0], np.float32)
             zone = pk.blur((bust > 0).astype(np.float32), self.px(0.03))
@@ -837,7 +837,7 @@ class Figure(Portrait):
         self.paint_garments(layer, "torso", casters)
 
     def paint_torso_details(self, layer, torso):
-        """Collarbones, bust, navel and groin lines: what a bare torso needs to read as a body."""
+        """Collarbones, bust, navel and lower pelvis lines: what a bare torso needs to read as a body."""
         if self.male:
             self.paint_male_torso(layer, torso)
             return
@@ -870,7 +870,7 @@ class Figure(Portrait):
             layer.paint(spot, color, opacity * air)
 
         soft(self.chest_pt(0.0, 0.930, belly), 0.085, 4.6, pal.skin_shadow, 0.30)     # furrow down the abdomen
-        soft(self.chest_pt(0.0, 0.520, chest), 0.060, 2.6, pal.skin_shadow, 0.34)     # cleavage
+        soft(self.chest_pt(0.0, 0.520, chest), 0.060, 2.6, pal.skin_shadow, 0.34)     # chest gap
         soft(self.chest_pt(0.0, 0.100, chest), 0.150, 0.8, light, 0.22)               # upper chest catches light
         for sign in (1.0, -1.0):
             soft(self.pelvis_pt(0.365 * self.build.hips * sign, -0.330), 0.090, 1.3, light, 0.26)   # hip bone
@@ -905,15 +905,15 @@ class Figure(Portrait):
                                          self.chest_pt((cx + radius * 1.10) * sign, cy + radius * 0.55)], 0.50 * strength,
                           head=0.2, tail=0.6, peak=0.4)
             soft(self.chest_pt((cx + 0.04) * sign, cy + radius * 1.05, chest), radius * 1.2, 0.16, tone, 0.40)
-            nipple = self.at(self.chest_pt((cx + 0.02) * sign, cy + radius * 0.55, chest))
-            dot = pk.fill_mask(self.shape, pk.ellipse(nipple[0], nipple[1], self.px(0.020), self.px(0.017)))
+            chest_mark = self.at(self.chest_pt((cx + 0.02) * sign, cy + radius * 0.55, chest))
+            dot = pk.fill_mask(self.shape, pk.ellipse(chest_mark[0], chest_mark[1], self.px(0.020), self.px(0.017)))
             layer.paint(pk.blur(dot, self.px(0.004)) * torso, pk.mix(pal.skin_shadow, pal.lip, 0.35), 0.55)
             for row, y in enumerate((0.86, 1.04)):
                 # Abdominal plates: shade between the plates, light on them.
                 soft(self.chest_pt(0.105 * sign, y, belly), 0.085, 0.45, tone, 0.30)
                 soft(self.chest_pt(0.115 * sign, y - 0.09, belly), 0.075, 0.9, light, 0.22)
             soft(self.pelvis_pt(0.115 * sign, -0.52, belly), 0.075, 0.9, light, 0.18)
-            # Iliac furrow (the V from the hip bone toward the groin).
+            # Iliac furrow (the V from the hip bone toward the lower pelvis).
             self.skin_ink(layer, torso, [self.pelvis_pt(0.385 * sign, -0.330), self.pelvis_pt(0.260 * sign, -0.080, belly),
                                          self.pelvis_pt(0.150 * sign, 0.120, DEPTH["crotch"])], 0.45,
                           head=0.3, tail=0.9, peak=0.4)

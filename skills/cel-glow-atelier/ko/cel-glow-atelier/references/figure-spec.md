@@ -135,7 +135,7 @@ spec에 `figure` 키가 있으면 전신 리그가 동작함. 얼굴과 머리�
 | `wave` | 오른손 들어 인사 | |
 | `clasped` | 두 손을 앞에서 모음 | |
 | `peace` | 오른손 얼굴 옆 브이, 팔이 머리카락 앞에 그려짐 | |
-| `pinup` | 한 손은 머리 뒤, 한 손은 올라간 골반 위. S자 곡선 | |
+| `showcase` | 한 손은 머리 뒤, 한 손은 올라간 골반 위. S자 곡선 | |
 | `walk` | 정면에서 본 걷기 | |
 | `sitting` | 무릎을 모으고 두 손을 무릎 위에 올려 앉음 | `stool` |
 | `sitting_crossed` | 화면 오른쪽 다리를 다른 무릎 위에 꼬고 앉음, 두 손은 위쪽 무릎 위 | `stool` |
@@ -158,7 +158,7 @@ spec에 `figure` 키가 있으면 전신 리그가 동작함. 얼굴과 머리�
 - 프리셋은 두 성별 모두에 맞음. 손 위치는 성별 체형에 맞춰 자동 조정됨
 - `three_quarter`는 몸만 돌리므로 `character.head_turn`으로 얼굴 방향을 따로 지정
 - `pockets`는 주머니가 있는 의상(`dress`, `blouse_skirt`, `sweater_pants`, `suit`, `shirt_pants`, `tshirt_jeans`, `crop_hotpants`, `hoodie_jeans`, 바지나 반바지가 있는 v9 의상 6종)에서 손이 주머니에 들어감
-    + 주머니가 없는 의상(`bodycon`, `knit_dress`, `swimsuit`, `trunks`, `lingerie`, `none`)은 힘을 뺀 손을 몸 바깥으로 비스듬히 내림
+    + 주머니가 없는 의상(`bodycon`, `knit_dress`, `swimsuit`, `trunks`, `innerwear`, `none`)은 힘을 뺀 손을 몸 바깥으로 비스듬히 내림
 - `arms_crossed`는 팔이 몸통 앞을 지나므로 상반신 구도(`thigh`, `knee`, `waist`)에서 가장 잘 읽힘
 - `stretch`는 손이 머리 위로 올라가므로 `shot`을 쓰면 손끝까지 화면에 들어오도록 자동 조정됨
 
@@ -240,7 +240,7 @@ spec에 `figure` 키가 있으면 전신 리그가 동작함. 얼굴과 머리�
 - 침대는 긴 쪽 가장자리에 앉은 모습이며 헤드보드가 보이도록 약 18도 돌려 그려짐
     + 길이가 약 6 머리이므로 가로가 긴 캔버스(예 : [1500, 1300])와 `"shot": "full"`, `"x": 0.42` 조합이 안정적
     + `furniture_color`는 이불 색
-    + 실내 배경 `room`과 함께 쓰면 침실 장면이 됨 (`figure_lingerie_room.json`)
+    + 실내 배경 `room`과 함께 쓰면 침실 장면이 됨 (`figure_innerwear_room.json`)
 
 ## 옆모습
 
@@ -342,7 +342,7 @@ spec에 `figure` 키가 있으면 전신 리그가 동작함. 얼굴과 머리�
 | `shirt_pants` | 공용 | 칼라 셔츠(넣어 입음), 벨트, 일자 바지 | 셔츠 `cloth`, 바지 `cloth2`, 벨트 `shoe` |
 | `tshirt_jeans` | 공용 | 반소매 티셔츠 + 청바지 | 티셔츠 `cloth`, 바지 `cloth2` |
 | `trunks` | 남성 | 수영 반바지 (여성에게 쓰면 상의 없는 인체 습작) | `cloth`, `cloth_shadow` |
-| `lingerie` | 공용 | 여성 : 레이스 테두리 브라 + 브리프. 남성 : 드로즈 + 대비색 허리 밴드 | `cloth`, `cloth_shadow`, 남성 허리 밴드 `accent` |
+| `innerwear` | 공용 | 여성 : 레이스 테두리 브라 + 브리프. 남성 : 드로즈 + 대비색 허리 밴드 | `cloth`, `cloth_shadow`, 남성 허리 밴드 `accent` |
 | `crop_hotpants` | 여성 | 배꼽이 드러나는 크롭 티셔츠 + 데님 핫팬츠(앞여밈, 주머니 곡선, 올이 풀린 밑단) | 티셔츠 `cloth`, 핫팬츠 `cloth2` |
 | `hoodie_jeans` | 공용 | 후드티(후드, 끈, 캥거루 주머니, 시보리 밑단과 소매) + 청바지 | 후드티 `cloth`, 바지 `cloth2` |
 | `open_shirt_shorts` | 남성 | 반소매 오픈 칼라 셔츠(빼 입음, 단추 여밈) + 무릎 위 반바지 | 셔츠 `cloth`, 반바지 `cloth2` |
@@ -363,7 +363,7 @@ spec에 `figure` 키가 있으면 전신 리그가 동작함. 얼굴과 머리�
     + 상황별 짝 : 비키니 `swimsuit`와 `trunks`, 크롭티와 핫팬츠 `crop_hotpants`와 `open_shirt_shorts`, 원피스 `dress`와 `suit`, 블라우스와 치마 `blouse_skirt`와 `shirt_pants`, 니트 원피스 `knit_dress`와 `coat_turtleneck` 또는 `sweater_pants`
 - 재킷과 코트 색은 `palette.outer`, 비우면 소재 색 (데님 `#5f7fa8`, 가죽 `#34303a`, 코트 `#b08860`)
 - 신발 색은 `palette.shoe`
-- `swimsuit`, `trunks`, `lingerie`, `none`은 맨발이 기본이며 `heels`를 켜면 구두를 신음
+- `swimsuit`, `trunks`, `innerwear`, `none`은 맨발이 기본이며 `heels`를 켜면 구두를 신음
 - 모든 의상은 옆모습과 뒷모습에서도 그려짐
     + v9 의상 뒷모습 : 셔츠 칼라 띠, 데님 재킷 요크와 허리 밴드, 코트 중심선과 뒤트임, 민소매 뒤 목선
     + v9 의상 옆모습 : 열린 재킷과 코트의 앞자락 사이로 안의 옷이 보이고 코트 자락은 엉덩이에서 곧게 떨어짐
@@ -380,11 +380,11 @@ spec에 `figure` 키가 있으면 전신 리그가 동작함. 얼굴과 머리�
 
 - `outfit` `none`은 의상 없는 인체 (인체 습작, 의상 디자인 밑그림 등)
 - 엔진이 그리는 범위
-    + 성기 형태는 엔진에 없음
-    + 여성 : 쇄골, 가슴 음영, 배꼽, 서혜부 선으로 몸통을 표현. 유두 형태는 엔진에 없음
-    + 남성 : 가슴 근육, 복근, 장골 V선, 배꼽으로 몸통을 표현. 유두는 옅은 색점
+    + 골반 세부 형태는 엔진에 없음
+    + 여성 : 쇄골, 가슴 음영, 배꼽, 서혜부 선으로 몸통을 표현. 가슴 표시 형태는 엔진에 없음
+    + 남성 : 가슴 근육, 복근, 장골 V선, 배꼽으로 몸통을 표현. 가슴 표시는 옅은 색점
 - `trunks`를 여성에게 쓰면 상의가 없는 상태이며 몸통 표현은 위와 같음
-- `lingerie`도 몸통 표현은 위와 같으며 속옷이 비치거나 벗겨진 표현은 엔진에 없음
+- `innerwear`도 몸통 표현은 위와 같으며 속옷이 비치거나 벗겨진 표현은 엔진에 없음
 - 미성년자 기준은 SKILL.md의 미성년자 보호 절을 따름
 - 회화풍(`painterly`)과 무릎 위 구도가 가장 그림답게 나옴
     + 눈을 작게 (`eye_height` 0.062-0.074), 입술을 도톰하게 (여성 `lip_fullness` 1.3)

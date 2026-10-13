@@ -19,7 +19,7 @@
   },
   "figure": {
     "pose": "sitting_crossed",
-    "outfit": "lingerie",
+    "outfit": "innerwear",
     "furniture": "bed",
     "furniture_color": "#d9c8d2",
     "ground_shadow": 0.3,

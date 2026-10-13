@@ -1,0 +1,93 @@
+{
+ "framing": "waist",
+ "style": "soft_illust",
+ "background": {
+  "type": "office"
+ },
+ "pair": {
+  "rows": 2
+ },
+ "characters": [
+  {
+   "hair": {
+    "style": "long",
+    "color": "#5A3C38"
+   },
+   "outfit": {
+    "type": "knit_sweater",
+    "variant": "turtleneck",
+    "color": "#E8DCCB"
+   }
+  },
+  {
+   "hair": {
+    "style": "bob",
+    "bangs": "full",
+    "color": "#2E2A2E"
+   },
+   "outfit": {
+    "type": "shirt",
+    "color": "#B9C9E0"
+   }
+  },
+  {
+   "hair": {
+    "style": "ponytail",
+    "color": "#8A5A3C"
+   },
+   "outfit": {
+    "type": "hoodie",
+    "color": "#D9B8B0"
+   }
+  },
+  {
+   "hair": {
+    "style": "long",
+    "color": "#5A3C38"
+   },
+   "outfit": {
+    "type": "knit_sweater",
+    "variant": "turtleneck",
+    "color": "#E8DCCB"
+   }
+  },
+  {
+   "gender": "male",
+   "place": {
+    "scale": 1.06
+   },
+   "outfit": {
+    "type": "shirt",
+    "color": "#F2F2F0",
+    "bottom": "slacks"
+   }
+  },
+  {
+   "gender": "male",
+   "place": {
+    "scale": 1.06
+   },
+   "hair": {
+    "color": "#6A4A34"
+   },
+   "outfit": {
+    "type": "tee",
+    "color": "#3C4652"
+   }
+  },
+  {
+   "gender": "male",
+   "place": {
+    "scale": 1.06
+   },
+   "outfit": {
+    "type": "shirt",
+    "color": "#F2F2F0",
+    "bottom": "slacks"
+   }
+  }
+ ],
+ "canvas": {
+  "seed": 5
+ }
+}

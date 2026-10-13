@@ -1,0 +1,173 @@
+{
+  "name": "illust",
+  "shading": "grain",
+  "line_scale": 0.0,
+  "soft_blur": 0.07,
+  "figure": {
+    "pose": {
+      "head_center": [
+        0.5,
+        0.385
+      ],
+      "head_unit": 0.185
+    },
+    "face": {
+      "chin_y": 1.26,
+      "cheek_width": 0.95,
+      "jaw_width": 0.74,
+      "jaw_height": 0.61,
+      "chin_width": 0.12,
+      "jaw_sharpness": 0.9
+    },
+    "eyes": {
+      "center_x": 0.46,
+      "half_width": 0.245,
+      "open_up": 0.135,
+      "open_down": 0.088,
+      "tilt": 0.09,
+      "lash_thickness": 0.048,
+      "wing_length": 0.14,
+      "wing_lift": 0.3,
+      "crease_gap": 0.06,
+      "brow_gap": 0.33,
+      "gaze_x": -0.03,
+      "gaze_y": -0.03,
+      "iris_rx": 0.128,
+      "iris_ry": 0.135,
+      "pupil_ratio": 0.45
+    },
+    "nose": {
+      "tip_y": 0.58,
+      "width": 0.13,
+      "protrusion": 0.27
+    },
+    "mouth": {
+      "y": 0.88,
+      "half_width": 0.235,
+      "lip_height": 0.055,
+      "smile": 0.014
+    },
+    "body": {
+      "neck_half_width": 0.42,
+      "shoulder_half_width": 1.85,
+      "shoulder_y": 2.3,
+      "neck_pit_y": 2.08
+    },
+    "outfit": {
+      "neckline_half_width": 1.42,
+      "neckline_dip_y": 2.7
+    }
+  },
+  "palette": {
+    "skin": {
+      "base": "#F7D4BC",
+      "shadow": "#E39A7E",
+      "deep": "#C9694F",
+      "light": "#FFF1E2",
+      "blush": "#EE8F78"
+    },
+    "hair": {
+      "base": "#1D4148",
+      "shadow": "#0F262C",
+      "light": "#5FA3A6",
+      "line": "#0B1B20",
+      "deep": "#0B1B20"
+    },
+    "eye": {
+      "white": "#FFF8EF",
+      "white_shadow": "#D9C4B4",
+      "iris": "#2E6F73",
+      "iris_dark": "#0F2F36",
+      "iris_light": "#8ED0C6",
+      "pupil": "#081418",
+      "catchlight": "#FFFFFF"
+    },
+    "lip": {
+      "upper": "#C9553F",
+      "lower": "#D96850",
+      "shine": "#FFD9C6",
+      "line": "#7A2A20"
+    },
+    "cloth": {
+      "base": "#E6AE45",
+      "shadow": "#B87A22",
+      "line": "#7A4E12"
+    },
+    "line": {
+      "main": "#7A3B2E"
+    },
+    "accent": {
+      "metal": "#FFF3D6",
+      "shine": "#FFFFFF"
+    },
+    "background": {
+      "top": "#F3E8D3",
+      "bottom": "#EFDFC4",
+      "disc": "#DE7350",
+      "disc_x": 0.6,
+      "disc_y": 0.4,
+      "disc_r": 0.44,
+      "disc_blur": 0.0,
+      "disc_opacity": 1.0,
+      "mottle": 0.0,
+      "bokeh": 0,
+      "bokeh_color": "#FFFFFF"
+    }
+  },
+  "hair_render": {
+    "form_level": 0.55,
+    "shadow_wedges": 8,
+    "light_wedges": 7,
+    "ring_thickness": 0.12,
+    "ring_teeth": 8,
+    "light_opacity": 0.55,
+    "strand_lines": 0,
+    "texture_strands": 0,
+    "flyaways": 4,
+    "form_spread": 0.8,
+    "broad_wedges": 2
+  },
+  "face_render": {
+    "hair_shadow_reach": 0.08,
+    "cheek_shadow_width": 0.08,
+    "form_level": 0.22,
+    "form_range": 0.55,
+    "light_level": 1.0,
+    "light_opacity": 0.0,
+    "blush_opacity": 0.38,
+    "nose_side_opacity": 0.0,
+    "nose_under_opacity": 0.0,
+    "nose_wedge_opacity": 0.8,
+    "nose_light_opacity": 0.0,
+    "lip_opacity": 0.95,
+    "lip_shine_opacity": 0.35,
+    "mouth_line": 2.6,
+    "plane_strength": 0.0
+  },
+  "body_render": {
+    "chin_shadow_reach": 0.2,
+    "form_level": 0.5,
+    "collar_opacity": 0.3,
+    "cloth_form_level": 0.62,
+    "knit_opacity": 0.3
+  },
+  "eye_render": {
+    "lid_shadow": 0.045,
+    "iris_ring": 0.01,
+    "lower_lash": 0.01,
+    "crease": 0.008,
+    "brow": 0.04,
+    "brow_opacity": 0.95,
+    "lash_spikes": 0.0,
+    "lid_tone": 0.0,
+    "lower_rim": 0.0
+  },
+  "finish": {
+    "kind": "illust",
+    "paper_cell": 5,
+    "paper": 0.06,
+    "grain": 0.012,
+    "vignette": 0.0
+  },
+  "grain_spread": 0.75
+}

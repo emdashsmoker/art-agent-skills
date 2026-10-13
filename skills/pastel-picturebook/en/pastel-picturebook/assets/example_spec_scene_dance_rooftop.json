@@ -1,0 +1,157 @@
+{
+  "canvas": {
+    "width": 1600,
+    "height": 1200
+  },
+  "seed": 72,
+  "pose": {
+    "head_center": [
+      0.6,
+      0.38
+    ],
+    "head_unit": 0.027,
+    "yaw_deg": -18,
+    "roll_deg": -8,
+    "horizon_drop": 0.012
+  },
+  "expression": "laugh",
+  "look": {
+    "hair_style": "long",
+    "identity": 3,
+    "hair_color": "dark_brown"
+  },
+  "figure": {
+    "pose": {
+      "turn": -10,
+      "arm_left": {
+        "reach": {
+          "at": [
+            0.486,
+            0.235
+          ]
+        },
+        "bend": "out",
+        "front": true
+      },
+      "hand_left": "relaxed",
+      "arm_right": {
+        "upper": 62.0,
+        "fore": 40.0,
+        "hand": 20.0
+      },
+      "hand_right": "relaxed"
+    },
+    "clothes": {
+      "dress": {
+        "strap_outer": 1.02,
+        "strap_inner": 0.62,
+        "neck_level": 1.05,
+        "hem_level": 9.6,
+        "hem_half": 3.2,
+        "folds": 7,
+        "fold_depth": 0.2
+      },
+      "shoes": true
+    }
+  },
+  "style": {
+    "palette": {
+      "cloth": {
+        "base": "#E8586B",
+        "shadow": "#B83A50",
+        "line": "#5A1624"
+      }
+    }
+  },
+  "backdrop": {
+    "subject": "rooftop",
+    "spec": {
+      "camera": {
+        "horizon_y": 0.38
+      },
+      "sky": {
+        "sun_y": 0.355
+      }
+    },
+    "place": "horizon",
+    "blur": 0.0015
+  },
+  "grade": {
+    "color": "#FFB98A",
+    "amount": 0.22
+  },
+  "companions": [
+    {
+      "sex": "male",
+      "seed": 71,
+      "pose": {
+        "head_center": [
+          0.4,
+          0.38
+        ],
+        "head_unit": 0.02808,
+        "roll_deg": 4
+      },
+      "expression": "smile",
+      "look": {
+        "hair_style": "short",
+        "identity": 4,
+        "hair_color": "black"
+      },
+      "figure": {
+        "view": "side",
+        "floor": null,
+        "clothes": {
+          "shoes": true,
+          "shirt": {
+            "ease": 0.08,
+            "neck_half": 0.6,
+            "neck_level": 0.2,
+            "hem_level": 4.6,
+            "sleeve": 1.9
+          },
+          "pants": {
+            "waist_level": 4.6,
+            "hem_drop": 0.2,
+            "leg_widths": [
+              1.0,
+              0.7,
+              0.6
+            ],
+            "length": 1.0
+          }
+        },
+        "profile_pose": {
+          "lean": -2.0,
+          "leg_near": {
+            "thigh": 10.0,
+            "shin": -4.0
+          },
+          "leg_far": {
+            "thigh": -8.0,
+            "shin": -6.0
+          },
+          "arm": {
+            "reach": {
+              "at": [
+                0.478,
+                0.245
+              ]
+            },
+            "bend": "down"
+          },
+          "hand": "relaxed"
+        }
+      },
+      "style": {
+        "palette": {
+          "cloth": {
+            "base": "#F5F2EC",
+            "shadow": "#CFC8BC",
+            "line": "#4E4A44"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "seed": 23,
+  "light": [
+    0.6,
+    -0.5,
+    0.62
+  ],
+  "pose": {
+    "head_center": [
+      0.45,
+      0.42
+    ],
+    "head_unit": 0.06,
+    "roll_deg": 6
+  },
+  "expression": {
+    "name": "smile",
+    "amount": 0.4
+  },
+  "figure": {
+    "view": "side",
+    "floor": {
+      "at_feet": true
+    },
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "hoodie": true,
+      "pants": {
+        "waist_level": 4.6,
+        "hem_drop": 0.2,
+        "leg_widths": [
+          1.0,
+          0.62,
+          0.5
+        ],
+        "length": 1.0
+      }
+    },
+    "profile_pose": {
+      "lean": 30.0,
+      "arm": {
+        "reach": {
+          "mark": "knee",
+          "offset": [
+            0.7,
+            1.3
+          ]
+        },
+        "bend": "forward"
+      },
+      "hand": "relaxed",
+      "leg_near": {
+        "thigh": 135.0,
+        "shin": 15.0,
+        "foot": -10.0
+      },
+      "leg_far": {
+        "thigh": 128.0,
+        "shin": 18.0,
+        "foot": -8.0
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "hoodie": {
+        "base": "#E7A9B5",
+        "shadow": "#B87584",
+        "light": "#F7D9DF",
+        "line": "#5E2C38",
+        "string": "#FFFFFF"
+      }
+    }
+  }
+}

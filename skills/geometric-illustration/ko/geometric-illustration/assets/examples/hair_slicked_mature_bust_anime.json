@@ -1,0 +1,14 @@
+{
+  "style": "anime",
+  "framing": "bust",
+  "character": {
+    "sex": "male",
+    "hair": {
+      "style": "slicked"
+    },
+    "face_preset": "mature",
+    "outfit": {
+      "type": "knit_coat"
+    }
+  }
+}

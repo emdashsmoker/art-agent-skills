@@ -1,0 +1,48 @@
+{
+  "sex": "male",
+  "seed": 5,
+  "light": [
+    0.6,
+    -0.5,
+    0.62
+  ],
+  "pose": {
+    "head_center": [
+      0.38,
+      0.17
+    ],
+    "head_unit": 0.06,
+    "roll_deg": -4
+  },
+  "hair": {
+    "wave": 0.02,
+    "tip_locks": 4,
+    "tip_split": 0.85
+  },
+  "figure": {
+    "view": "side",
+    "body_scale": 1.0,
+    "floor": {
+      "at_feet": true
+    },
+    "clothes": null,
+    "profile_pose": {
+      "seat": true,
+      "lean": 6.0,
+      "arm": {
+        "upper": 16.0,
+        "fore": 72.0
+      },
+      "leg_near": {
+        "thigh": 84.0,
+        "shin": 8.0
+      },
+      "leg_far": {
+        "thigh": 78.0,
+        "shin": -10.0
+      },
+      "hand": "relaxed",
+      "arch": 0.0
+    }
+  }
+}

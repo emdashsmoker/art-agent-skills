@@ -1,0 +1,53 @@
+{
+ "canvas": {
+  "aspect": "4:5",
+  "detail": "standard",
+  "seed": 45
+ },
+ "environment": {
+  "type": "studio",
+  "top": [
+   0.2,
+   0.2,
+   0.22
+  ],
+  "bottom": [
+   0.12,
+   0.12,
+   0.13
+  ]
+ },
+ "figures": [
+  {
+   "name": "a",
+   "preset": "man_mature",
+   "pose": {
+    "preset": "stand",
+    "head": {
+     "turn": -10,
+     "nod": -3
+    }
+   },
+   "outfit": "suit",
+   "hair": {
+    "style": "side_part",
+    "color": "gray"
+   },
+   "beard": "short_beard",
+   "expression": "determined",
+   "skin": "light"
+  }
+ ],
+ "camera": {
+  "subject": "a",
+  "shot": "closeup",
+  "yaw": -25,
+  "pitch": 2
+ },
+ "light": {
+  "preset": "rembrandt",
+  "mood": "warm",
+  "rim": 0.4
+ },
+ "style": "digital"
+}

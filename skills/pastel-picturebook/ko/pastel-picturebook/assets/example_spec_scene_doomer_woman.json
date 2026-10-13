@@ -1,0 +1,116 @@
+{
+  "canvas": {
+    "width": 1200,
+    "height": 1600
+  },
+  "seed": 131,
+  "light": [
+    0.5,
+    -0.55,
+    0.65
+  ],
+  "pose": {
+    "head_center": [
+      0.48,
+      0.4
+    ],
+    "head_unit": 0.037,
+    "yaw_deg": 10,
+    "roll_deg": 5,
+    "horizon_drop": 0.01
+  },
+  "look": {
+    "hair_style": "bob",
+    "identity": 33,
+    "hair_color": "black",
+    "eye_shape": "droopy"
+  },
+  "expression": {
+    "name": "sad",
+    "amount": 0.4
+  },
+  "backdrop": {
+    "subject": "panelka",
+    "spec": {
+      "camera": {
+        "horizon_y": 0.39,
+        "x": -500
+      },
+      "seed": 57,
+      "lamps": [
+        {
+          "x": 420,
+          "z": 380,
+          "arm": -1,
+          "height": 650
+        },
+        {
+          "x": -1100,
+          "z": 3100,
+          "arm": 1,
+          "height": 650
+        }
+      ]
+    },
+    "place": "horizon",
+    "blur": 0.0015
+  },
+  "weather": {
+    "kind": "snow",
+    "amount": 0.35
+  },
+  "grade": {
+    "color": "#FFB878",
+    "amount": 0.1
+  },
+  "figure": {
+    "floor": {
+      "at_feet": true
+    },
+    "pose": {
+      "turn": 8,
+      "arm_left": {
+        "upper": 10.0,
+        "fore": -38.0,
+        "hand": -20.0
+      },
+      "hand_left": "relaxed"
+    },
+    "holds": {
+      "left": {
+        "kind": "cigarette",
+        "smoke": 1.2
+      }
+    },
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "hoodie": {
+        "hem_level": 5.4
+      },
+      "skirt": {
+        "hem_level": 8.4,
+        "hem_half": 1.9,
+        "folds": 5,
+        "fold_depth": 0.14
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "hoodie": {
+        "base": "#26272C",
+        "shadow": "#141518",
+        "light": "#4A4C54",
+        "line": "#060608",
+        "string": "#B8B8B8"
+      },
+      "skirt": {
+        "base": "#2A2C34",
+        "shadow": "#16171C",
+        "line": "#060608"
+      },
+      "skin": {}
+    }
+  }
+}

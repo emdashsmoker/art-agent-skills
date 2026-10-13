@@ -1,0 +1,22 @@
+{
+ "style": "soft_illust",
+ "canvas": {
+  "seed": 3
+ },
+ "character": {
+  "head": {
+   "yaw": 8,
+   "roll": 0
+  },
+  "body": {
+   "pose": "lie",
+   "bust": "large"
+  },
+  "hair": {
+   "style": "long"
+  },
+  "outfit": {
+   "type": "camisole"
+  }
+ }
+}

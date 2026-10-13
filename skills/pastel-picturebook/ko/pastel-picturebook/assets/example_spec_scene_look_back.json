@@ -1,0 +1,104 @@
+{
+  "seed": 94,
+  "pose": {
+    "head_center": [
+      0.5,
+      0.38
+    ],
+    "head_unit": 0.04,
+    "yaw_deg": 0,
+    "roll_deg": 6
+  },
+  "hair": {
+    "length": 5.0,
+    "wave": 0.09,
+    "waves": 2.2,
+    "volume": 0.14,
+    "bangs": {
+      "near": 0,
+      "far": 0,
+      "length": 0.6,
+      "width": 0.1,
+      "seed": 1
+    },
+    "tip_locks": 2,
+    "tip_split": 0.93
+  },
+  "figure": {
+    "view": "back",
+    "body_scale": 1.05,
+    "floor": null,
+    "clothes": {
+      "dress": {
+        "strap_outer": 1.02,
+        "strap_inner": 0.62,
+        "neck_level": 1.05,
+        "hem_level": 9.6,
+        "hem_half": 2.4,
+        "folds": 6,
+        "fold_depth": 0.16
+      },
+      "shoes": true
+    },
+    "shape": {
+      "shoulders": 0.98,
+      "bust": 1.0,
+      "waist": 0.95,
+      "hips": 1.08,
+      "thighs": 1.06
+    },
+    "pose": {
+      "shoulder_tilt": 4.0,
+      "pelvis_tilt": -11.0,
+      "arm_left": {
+        "upper": 12.0,
+        "fore": 4.0,
+        "hand": 0.0
+      },
+      "arm_right": {
+        "upper": 16.0,
+        "fore": 10.0,
+        "hand": 6.0
+      },
+      "leg_left": {
+        "thigh": -1.0,
+        "shin": 0.0,
+        "foot": 10.0
+      },
+      "leg_right": {
+        "thigh": 8.0,
+        "shin": -10.0,
+        "foot": 18.0
+      }
+    },
+    "look_back": true
+  },
+  "canvas": {
+    "width": 1200,
+    "height": 1600
+  },
+  "expression": "smile",
+  "backdrop": {
+    "subject": "sakura",
+    "spec": {
+      "camera": {
+        "horizon_y": 0.38
+      }
+    },
+    "place": "horizon",
+    "blur": 0.002
+  },
+  "weather": {
+    "kind": "petals",
+    "amount": 0.8
+  },
+  "style": {
+    "palette": {
+      "cloth": {
+        "base": "#F7F3EA",
+        "shadow": "#D6CFC2",
+        "line": "#5E584C"
+      }
+    }
+  }
+}

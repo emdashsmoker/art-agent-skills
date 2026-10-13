@@ -1,0 +1,47 @@
+{
+  "skill_name": "flat-painterly",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Paint a still life with an oil painting feel. A blue ceramic teapot and a few lemons on a table in front of a dark wall. Use code only, no image generation model.",
+      "expected_output": "brief.md, scene code scene.py, final PNG after the oil pass. The teapot and lemons are recognizable, and brush texture and paint relief show",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "In illustration style, draw a cat sitting at a window at sunset, seen from behind as it looks outside. Vertical poster ratio, code-based please.",
+      "expected_output": "brief.md, scene code scene.py, final PNG after the print texture pass. Built from flat shapes of a limited palette and stipple shading",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Could you draw a full-body adult male swordsman in a cape in anime style? One hand rests on the sword hilt, and the background is a hill at evening sunset. No diffusion model, use codepaint.",
+      "expected_output": "brief.md, scene code scene.py, final PNG after the compositing pass. An eight-head full figure posed with figure.Figure, the hand touching the sword hilt, two-step cel shading",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Paint an alley after the rain in watercolor. Low houses on both sides and one person with an umbrella at the end of the street. Code only.",
+      "expected_output": "brief.md, scene code scene.py, final PNG after the watercolor pass. Buildings projected with Perspective, window rows converging on the vanishing point, a figure sized for its depth",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "In anime style, draw a cafe window table on a rainy day. An open laptop, a latte cup, a smartphone and an open book. Code only.",
+      "expected_output": "brief.md, scene code scene.py, final PNG after the compositing pass. Objects made with props and solids share one camera's perspective, and screen and book content attach to faces",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "Draw a character sheet of an adult woman in a suit in anime style. A turnaround of front, 3/4, profile and back views plus one pose seated on a chair. Code only.",
+      "expected_output": "brief.md, scene code scene.py, final PNG after the compositing pass. figure3d.Figure3D and head3d.Head3D draw the same person at several angles with consistent proportions and facial parts at every angle, and the thighs of the seated pose come forward and touch the chair",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "In oil style, paint a couple sitting side by side on a park bench on a winter night drinking cocoa. Both in coats and scarves. Code only.",
+      "expected_output": "brief.md, scene code scene.py, final PNG after the oil pass. Two figures and the bench placed on a Stage with one view and dressed in garment.long_coat, with hands holding cups reaching them through grips and reach",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "subject": "still_life",
+  "style": "illustration",
+  "look": "doomer",
+  "canvas": {
+    "width": 1400,
+    "height": 1050,
+    "seed": 7
+  },
+  "scene": {
+    "set": "kitchen"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "style": "illustration",
+  "framing": "full_body",
+  "canvas": {
+    "width": 1024,
+    "height": 1600
+  },
+  "character": {
+    "build": "glamour",
+    "outfit": {
+      "type": "bikini"
+    },
+    "pose": {
+      "preset": "hand_on_hip",
+      "turn": 0.3
+    }
+  }
+}

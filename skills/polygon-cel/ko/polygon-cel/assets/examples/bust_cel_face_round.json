@@ -1,0 +1,6 @@
+{"style": "anime_cel", "framing": "bust", "canvas": {"seed": 15},
+ "character": {"face_shape": "round", "face": {"length": 0.94, "nose": "button", "lips": "full"},
+   "eyes": {"shape": "round", "iris": 1.12, "lashes": "heavy", "color": "#B07A3A"},
+   "hair": {"style": "bob", "bangs": "full", "color": "#2E2629"},
+   "outfit": {"type": "shirt"}},
+ "background": {"type": "bokeh"}}

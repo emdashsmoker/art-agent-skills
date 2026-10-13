@@ -1,0 +1,114 @@
+{
+ "canvas": {
+  "aspect": "3:2",
+  "detail": "standard",
+  "seed": 42
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "seaside",
+  "time": "day"
+ },
+ "props": [
+  {
+   "kind": "ball",
+   "at": [
+    0.15,
+    0.3,
+    2.55
+   ],
+   "scale": 1.3
+  }
+ ],
+ "figures": [
+  {
+   "name": "a",
+   "preset": "woman_athletic",
+   "pose": "run",
+   "outfit": "bikini",
+   "hair": {
+    "style": "ponytail",
+    "color": "black"
+   },
+   "expression": "smile",
+   "skin": "tan",
+   "position": [
+    -1.5,
+    -0.3,
+    0
+   ],
+   "facing": -60
+  },
+  {
+   "name": "b",
+   "preset": "man_athletic",
+   "pose": {
+    "preset": "jump",
+    "arm.L": {
+     "lift": 165,
+     "forward": 20,
+     "elbow": 8
+    },
+    "arm.R": {
+     "lift": 160,
+     "forward": 30,
+     "elbow": 10
+    }
+   },
+   "outfit": "board_shorts",
+   "hair": {
+    "style": "textured_crop",
+    "color": "dark_brown"
+   },
+   "expression": "determined",
+   "skin": "brown",
+   "position": [
+    0.25,
+    0.3,
+    0
+   ],
+   "facing": 20
+  },
+  {
+   "name": "c",
+   "preset": "woman",
+   "pose": "arms_up",
+   "outfit": "swimsuit",
+   "hair": {
+    "style": "long_wavy",
+    "color": "golden"
+   },
+   "expression": "smile",
+   "skin": "light",
+   "position": [
+    1.6,
+    0.6,
+    0
+   ],
+   "facing": 30,
+   "colors": {
+    "swimsuit": [
+     0.9,
+     0.35,
+     0.3
+    ]
+   }
+  }
+ ],
+ "camera": {
+  "fit": [
+   "a",
+   "b",
+   "c",
+   "ball"
+  ],
+  "yaw": 5,
+  "pitch": 4,
+  "fill": 0.8
+ },
+ "light": {
+  "preset": "three_quarter",
+  "mood": "neutral"
+ },
+ "style": "watercolor_loose"
+}

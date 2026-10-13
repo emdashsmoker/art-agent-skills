@@ -1,0 +1,42 @@
+{
+  "name": "doomer",
+  "base": "anime",
+  "finish": {
+    "kind": "doomer",
+    "saturation": 0.4,
+    "tint": 0.55,
+    "gamma": 1.05,
+    "ramp": [
+      [
+        0.0,
+        "#06080F"
+      ],
+      [
+        0.25,
+        "#1D2536"
+      ],
+      [
+        0.55,
+        "#5A6778"
+      ],
+      [
+        0.85,
+        "#B4BCC4"
+      ],
+      [
+        1.0,
+        "#E6E8E6"
+      ]
+    ],
+    "warm_from": 0.5,
+    "sodium": "#FFAA4C",
+    "black_point": 0.035,
+    "halation": 0.55,
+    "halation_size": 14.0,
+    "vignette": 0.45,
+    "grain": 0.03,
+    "warm_low": 0.2,
+    "warm_high": 0.45,
+    "contrast": 1.35
+  }
+}

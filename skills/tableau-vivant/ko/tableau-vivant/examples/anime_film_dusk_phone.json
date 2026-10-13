@@ -1,0 +1,77 @@
+{
+ "canvas": {
+  "aspect": "4:5",
+  "detail": "standard",
+  "seed": 44
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "city",
+  "time": "dusk"
+ },
+ "pairs": [
+  {
+   "kind": "hand_on_shoulder",
+   "facing": 0,
+   "a": {
+    "name": "a",
+    "preset": "man",
+    "outfit": "hoodie_jeans",
+    "hair": {
+     "style": "textured_crop",
+     "color": "black"
+    },
+    "expression": "smile",
+    "pose": {
+     "preset": "stand",
+     "head": {
+      "turn": 28,
+      "nod": 24
+     }
+    },
+    "colors": {
+     "hoodie": [
+      0.85,
+      0.85,
+      0.88
+     ]
+    }
+   },
+   "b": {
+    "name": "b",
+    "preset": "woman",
+    "outfit": "little_black_dress",
+    "hair": {
+     "style": "long_straight",
+     "color": "pink"
+    },
+    "expression": "smile",
+    "pose": {
+     "preset": "look_at_phone",
+     "head": {
+      "turn": -6,
+      "nod": 26
+     }
+    }
+   }
+  }
+ ],
+ "props": [
+  {
+   "kind": "phone",
+   "held_by": "b:hand.R"
+  }
+ ],
+ "camera": {
+  "fit": "people",
+  "shot": "cowboy",
+  "yaw": 12,
+  "pitch": 6,
+  "fill": 0.95
+ },
+ "light": {
+  "preset": "loop",
+  "mood": "neon"
+ },
+ "style": "anime_film"
+}

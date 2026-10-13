@@ -1,0 +1,57 @@
+{
+  "canvas": [
+    1200,
+    1500
+  ],
+  "style": "anime",
+  "seed": 1,
+  "character": {
+    "jaw_sharpness": 0.85,
+    "hair_style": "long_straight",
+    "bangs": "side_swept",
+    "parting": -0.1,
+    "head_tilt": -5,
+    "smile": 0.35,
+    "outfit": "blazer",
+    "hair_seed": 7,
+    "head_turn": 0.65,
+    "gaze": [
+      -0.45,
+      0.0
+    ]
+  },
+  "palette": {
+    "hair": "#2b3050",
+    "hair_shadow": "#16182a",
+    "hair_light": "#9aa9dc",
+    "iris": "#3f7fb5",
+    "cloth": "#f4f1ec",
+    "cloth_shadow": "#c7c3d1",
+    "cloth2": "#343848"
+  },
+  "placement": {
+    "head_height": 0.413,
+    "eye_center": [
+      0.5,
+      0.36
+    ]
+  },
+  "light": {
+    "azimuth": 135,
+    "elevation": 42
+  },
+  "background": [
+    {
+      "type": "gradient",
+      "top": "#b9c8e6",
+      "bottom": "#e9eef7"
+    },
+    {
+      "type": "light_shafts",
+      "color": "#ffffff",
+      "count": 3,
+      "opacity": 0.28,
+      "seed": 3
+    }
+  ]
+}

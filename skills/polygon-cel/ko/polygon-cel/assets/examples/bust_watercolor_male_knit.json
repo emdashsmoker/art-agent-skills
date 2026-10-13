@@ -1,0 +1,6 @@
+{"style": "watercolor", "framing": "bust", "canvas": {"seed": 14},
+ "character": {"gender": "male", "head": {"yaw": -14, "roll": 2},
+   "eyes": {"shape": "almond", "color": "#5E8F6A"},
+   "expression": {"mouth": "soft"},
+   "outfit": {"type": "knit_sweater", "variant": "crew", "color": "#C9B79C"}},
+ "background": {"type": "gradient"}}

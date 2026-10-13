@@ -1,0 +1,119 @@
+{
+ "canvas": {
+  "aspect": "16:9",
+  "detail": "standard",
+  "seed": 36
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "plain",
+  "ground": "snow",
+  "forest": {
+   "count": 70,
+   "kinds": [
+    "pine",
+    "bare"
+   ],
+   "area": [
+    -110,
+    110,
+    135,
+    162
+   ],
+   "min_distance": 4.0,
+   "height": [
+    7.0,
+    12.0
+   ],
+   "grouping": 0.4,
+   "clearing": 0
+  },
+  "time": "overcast",
+  "hills": 0.8,
+  "ridges": 0,
+  "clouds": 0.9,
+  "tufts": 0,
+  "snow_line": -10,
+  "flat_radius": 30,
+  "haze_distance": 260
+ },
+ "props": [
+  {
+   "kind": "power_line",
+   "at": [
+    6,
+    40,
+    0
+   ],
+   "rotate_deg": 62,
+   "length": 260
+  },
+  {
+   "kind": "panel_block",
+   "at": [
+    -60,
+    170,
+    0
+   ],
+   "floors": 12,
+   "sections": 4
+  },
+  {
+   "kind": "panel_block",
+   "at": [
+    10,
+    190,
+    0
+   ],
+   "floors": 16,
+   "sections": 2
+  },
+  {
+   "kind": "panel_block",
+   "at": [
+    70,
+    175,
+    0
+   ],
+   "rotate_deg": -20,
+   "floors": 9,
+   "sections": 5
+  }
+ ],
+ "trees": [
+  {
+   "kind": "bare",
+   "at": [
+    -9,
+    26
+   ],
+   "height": 6.5
+  },
+  {
+   "kind": "bare",
+   "at": [
+    -13,
+    31
+   ],
+   "height": 5.0
+  }
+ ],
+ "camera": {
+  "eye": [
+   0,
+   -6,
+   1.7
+  ],
+  "target": [
+   0,
+   60,
+   4.0
+  ],
+  "fov": 52
+ },
+ "post": {
+  "contrast": 1.12,
+  "brightness": -0.07
+ },
+ "style": "doomer_mono"
+}

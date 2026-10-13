@@ -1,0 +1,44 @@
+{
+  "style": "anime",
+  "look": "doomer",
+  "framing": "wide",
+  "canvas": {
+    "width": 1600,
+    "height": 1000,
+    "seed": 7
+  },
+  "background": {
+    "type": "scene",
+    "scene": "cityscape"
+  },
+  "scene": {
+    "time": "snow_night",
+    "site": "panel"
+  },
+  "character": {
+    "sex": "female",
+    "head": {
+      "x": 0.34
+    },
+    "hair": {
+      "style": "medium"
+    },
+    "outfit": {
+      "type": "knit_coat",
+      "hat": "beanie",
+      "earrings": "none",
+      "shoes": "oxfords"
+    },
+    "pose": {
+      "preset": "walking"
+    },
+    "expression": "neutral"
+  },
+  "palette": {
+    "cloth": "#423E3C",
+    "shirt": "#7E7A76",
+    "skirt": "#202227",
+    "hat": "#6A7078",
+    "hair": "#231E1C"
+  }
+}

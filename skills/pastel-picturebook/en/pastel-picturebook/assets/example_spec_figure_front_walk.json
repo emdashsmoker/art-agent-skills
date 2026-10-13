@@ -1,0 +1,35 @@
+{
+  "figure": {
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "shirt": {
+        "ease": 0.08,
+        "neck_half": 0.55,
+        "neck_level": 0.1,
+        "hem_level": 3.7,
+        "sleeve": 1.92
+      },
+      "skirt": {
+        "hem_level": 9.0,
+        "hem_half": 2.1,
+        "folds": 5,
+        "fold_depth": 0.14
+      }
+    },
+    "pose": {
+      "stride": {
+        "lead": "left"
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "cloth": {
+        "base": "#F4F1EA",
+        "shadow": "#C8C6CF",
+        "line": "#6B6A80"
+      }
+    }
+  }
+}

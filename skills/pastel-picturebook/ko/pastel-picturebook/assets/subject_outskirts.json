@@ -1,0 +1,220 @@
+{
+  "spec": {
+    "canvas": {
+      "width": 1600,
+      "height": 1200
+    },
+    "seed": 53,
+    "light": [
+      0.4,
+      -0.5,
+      0.7
+    ],
+    "time": "dusk",
+    "camera": {
+      "horizon_y": 0.64,
+      "focal": 0.8,
+      "eye_height": 160,
+      "center_x": 0.5
+    },
+    "sky": {
+      "clouds": 0.6
+    },
+    "haze": {
+      "distance": 40000,
+      "amount": 0.5
+    },
+    "ground": {
+      "snow": false,
+      "path": [
+        [
+          300,
+          200
+        ],
+        [
+          700,
+          5000
+        ],
+        [
+          200,
+          20000
+        ],
+        [
+          -600,
+          60000
+        ]
+      ],
+      "width": 320,
+      "stalks": 800
+    },
+    "blocks": [
+      {
+        "face": "front",
+        "z": 37860,
+        "x0": -30000,
+        "x1": -25692,
+        "floors": 9,
+        "lit": 0.15,
+        "salt": 10
+      },
+      {
+        "face": "front",
+        "z": 31302,
+        "x0": -23657,
+        "x1": -17178,
+        "floors": 9,
+        "lit": 0.15,
+        "salt": 11
+      },
+      {
+        "face": "front",
+        "z": 28176,
+        "x0": -15914,
+        "x1": -11423,
+        "floors": 12,
+        "lit": 0.15,
+        "salt": 12
+      },
+      {
+        "face": "front",
+        "z": 29032,
+        "x0": -10592,
+        "x1": -6564,
+        "floors": 9,
+        "lit": 0.15,
+        "salt": 13
+      },
+      {
+        "face": "front",
+        "z": 34115,
+        "x0": 2018,
+        "x1": 7435,
+        "floors": 9,
+        "lit": 0.15,
+        "salt": 15
+      },
+      {
+        "face": "front",
+        "z": 31085,
+        "x0": 9740,
+        "x1": 13341,
+        "floors": 16,
+        "lit": 0.15,
+        "salt": 16
+      },
+      {
+        "face": "front",
+        "z": 31341,
+        "x0": 13678,
+        "x1": 17404,
+        "floors": 9,
+        "lit": 0.15,
+        "salt": 17
+      },
+      {
+        "face": "front",
+        "z": 31975,
+        "x0": 18569,
+        "x1": 24036,
+        "floors": 9,
+        "lit": 0.15,
+        "salt": 18
+      },
+      {
+        "face": "front",
+        "z": 30622,
+        "x0": 24827,
+        "x1": 28363,
+        "floors": 12,
+        "lit": 0.15,
+        "salt": 19
+      },
+      {
+        "face": "front",
+        "z": 32062,
+        "x0": 28874,
+        "x1": 33338,
+        "floors": 12,
+        "lit": 0.15,
+        "salt": 20
+      }
+    ],
+    "pylons": {
+      "x": -1800,
+      "z0": 2600,
+      "spacing": 9000,
+      "count": 7,
+      "height": 3200,
+      "drift": 500,
+      "sag": 450
+    },
+    "crows": {
+      "perched": 9,
+      "flying": 6
+    }
+  },
+  "style": {
+    "palette": {
+      "sky": {
+        "night_top": "#0E1220",
+        "night_middle": "#1F2534",
+        "night_low": "#4A4446",
+        "night_cloud": "#2A2F3C",
+        "night_lit": "#6E5A50",
+        "dusk_top": "#4A5262",
+        "dusk_middle": "#8A8890",
+        "dusk_low": "#E6B488",
+        "dusk_cloud": "#5E636E",
+        "dusk_lit": "#E8A878",
+        "haze_night": "#2C3040",
+        "haze_dusk": "#80838C"
+      },
+      "ground": {
+        "snow_far": "#8C93A0",
+        "snow_near": "#C9CED6",
+        "snow_shadow": "#8E97A8",
+        "grass_far": "#A8A08A",
+        "grass_near": "#857B64",
+        "grass_shadow": "#8A8070",
+        "path": "#5E6068",
+        "stalk": "#4E4636",
+        "path_dirt": "#6A6258",
+        "stalk_light": "#A89A7C",
+        "rut": "#3A3E48"
+      },
+      "block": {
+        "wall": "#7A7C80",
+        "shade": "#4E5158",
+        "day": "#A8AAAC",
+        "glass": "#22262E",
+        "glass_day": "#5A6470",
+        "lit": "#FFC46E",
+        "lit_amber": "#F29A4A",
+        "tv": "#8FB4E8",
+        "balcony": "#9A9890",
+        "door": "#2A2620",
+        "line": "#1C1E24"
+      },
+      "lamp": {
+        "head": "#FFD08A",
+        "off": "#C8C4B8",
+        "pool": "#FFAA55",
+        "glow": "#FFB060"
+      },
+      "pole": {
+        "base": "#3A3C42",
+        "line": "#16171B",
+        "wire": "#1A1B20",
+        "metal": "#4A4E58",
+        "crow": "#101114"
+      },
+      "birch": {
+        "bark": "#D8D6CE",
+        "mark": "#2A2A2C",
+        "shade": "#8E9098",
+        "twig": "#2E2C2E",
+        "line": "#3A3A3E"
+      }
+    }
+  }
+}

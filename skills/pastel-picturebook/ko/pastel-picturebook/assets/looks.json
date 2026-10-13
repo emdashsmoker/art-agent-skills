@@ -1,0 +1,243 @@
+{
+  "_doc": "Character looks. face_shape, eye_shape, hair_style: preset operations (as in expressions.json). skin_tone: a target skin colour; every skin colour of the style is scaled channel by channel by target / reference (so each style keeps its own look). hair_color: a full hair palette. identity: the largest change (head units) the identity seed may make to each setting. eye_color: iris colours.",
+  "face_shape": {
+    "oval": {},
+    "round": {
+      "add": {
+        "face.chin_y": -0.06,
+        "face.cheek_width": 0.03,
+        "face.jaw_width": 0.07,
+        "face.chin_width": 0.07,
+        "face.jaw_height": -0.03
+      },
+      "set": {
+        "face.jaw_sharpness": 0.3
+      }
+    },
+    "long": {
+      "add": {
+        "face.chin_y": 0.1,
+        "face.jaw_height": 0.03,
+        "nose.tip_y": 0.04,
+        "mouth.y": 0.06
+      },
+      "scale": {
+        "face.cheek_width": 0.97
+      }
+    },
+    "square": {
+      "add": {
+        "face.jaw_width": 0.1,
+        "face.chin_width": 0.08,
+        "face.jaw_height": 0.04
+      },
+      "set": {
+        "face.jaw_sharpness": 1.0
+      }
+    },
+    "heart": {
+      "add": {
+        "face.cheek_width": 0.03,
+        "face.jaw_width": -0.05,
+        "face.chin_width": -0.03
+      },
+      "set": {
+        "face.jaw_sharpness": 0.9
+      }
+    }
+  },
+  "eye_shape": {
+    "almond": {},
+    "big": {
+      "scale": {
+        "eyes.half_width": 1.08,
+        "eyes.open_up": 1.22,
+        "eyes.open_down": 1.15,
+        "eyes.iris_rx": 1.12,
+        "eyes.iris_ry": 1.12
+      }
+    },
+    "narrow": {
+      "scale": {
+        "eyes.open_up": 0.7,
+        "eyes.open_down": 0.72,
+        "eyes.iris_rx": 0.92,
+        "eyes.iris_ry": 0.92
+      }
+    },
+    "droopy": {
+      "add": {
+        "eyes.tilt": -0.1,
+        "eyes.brow_inner": 0.03
+      },
+      "scale": {
+        "eyes.wing_lift": 0.2
+      }
+    },
+    "cat": {
+      "add": {
+        "eyes.tilt": 0.06,
+        "eyes.wing_length": 0.06
+      },
+      "scale": {
+        "eyes.wing_lift": 1.4
+      }
+    }
+  },
+  "hair_style": {
+    "long": {
+      "set": {
+        "hair.style": "long"
+      }
+    },
+    "short": {
+      "set": {
+        "hair.style": "short"
+      }
+    },
+    "bob": {
+      "set": {
+        "hair.style": "long",
+        "hair.length": 1.55
+      }
+    },
+    "ponytail": {
+      "set": {
+        "hair.style": "ponytail",
+        "hair.length": 3.0
+      }
+    },
+    "bun": {
+      "set": {
+        "hair.style": "bun"
+      }
+    },
+    "curly": {
+      "set": {
+        "hair.style": "long",
+        "hair.wave": 0.12,
+        "hair.waves": 3.4,
+        "hair.volume": 0.26,
+        "hair.tip_locks": 5,
+        "hair.tip_split": 0.84
+      }
+    }
+  },
+  "skin_tone": {
+    "reference": "#F2D2BD",
+    "fair": "#F5DACA",
+    "light": "#F2D2BD",
+    "medium": "#DDB08E",
+    "tan": "#C58C64",
+    "deep": "#8D5A3F",
+    "dark": "#5E3A28"
+  },
+  "hair_color": {
+    "black": {
+      "base": "#232228",
+      "shadow": "#121117",
+      "light": "#6A6D80",
+      "line": "#0A0A0E",
+      "deep": "#08080B"
+    },
+    "dark_brown": {
+      "base": "#3C2A22",
+      "shadow": "#22160F",
+      "light": "#8E6A52",
+      "line": "#140C08",
+      "deep": "#100906"
+    },
+    "brown": {
+      "base": "#6B4630",
+      "shadow": "#3F2618",
+      "light": "#C08E68",
+      "line": "#24150D",
+      "deep": "#1C0F08"
+    },
+    "blonde": {
+      "base": "#D9B26E",
+      "shadow": "#A57D3E",
+      "light": "#F7E3B0",
+      "line": "#5E4520",
+      "deep": "#4A3417"
+    },
+    "red": {
+      "base": "#9A3B22",
+      "shadow": "#5E1F10",
+      "light": "#E08A5B",
+      "line": "#3A1208",
+      "deep": "#2C0D06"
+    },
+    "silver": {
+      "base": "#B9BCC6",
+      "shadow": "#7E828F",
+      "light": "#F2F3F7",
+      "line": "#4A4D57",
+      "deep": "#3A3C44"
+    }
+  },
+  "identity": {
+    "face.chin_y": 0.06,
+    "face.cheek_width": 0.03,
+    "face.jaw_width": 0.05,
+    "face.jaw_height": 0.04,
+    "face.chin_width": 0.03,
+    "face.jaw_sharpness": 0.15,
+    "eyes.half_width": 0.02,
+    "eyes.open_up": 0.02,
+    "eyes.open_down": 0.015,
+    "eyes.tilt": 0.04,
+    "eyes.brow_gap": 0.04,
+    "eyes.brow_slant": 0.2,
+    "eyes.center_x": 0.02,
+    "nose.tip_y": 0.04,
+    "nose.width": 0.02,
+    "nose.protrusion": 0.04,
+    "mouth.half_width": 0.02,
+    "mouth.lip_height": 0.01,
+    "mouth.y": 0.03,
+    "hair.part_x": 0.08
+  },
+  "limits": {
+    "face.jaw_sharpness": [
+      0.0,
+      1.0
+    ],
+    "eyes.brow_slant": [
+      0.0,
+      1.0
+    ]
+  },
+  "eye_color": {
+    "dark_brown": {
+      "iris": "#5A3A26",
+      "iris_dark": "#24150D",
+      "iris_light": "#9A6E4C"
+    },
+    "brown": {
+      "iris": "#8A5A32",
+      "iris_dark": "#3E2412",
+      "iris_light": "#C99A63"
+    },
+    "hazel": {
+      "iris": "#7E7A3A",
+      "iris_dark": "#3A3418",
+      "iris_light": "#B9AE68"
+    },
+    "green": {
+      "iris": "#3E8A5A",
+      "iris_dark": "#1A3E28",
+      "iris_light": "#7FC896"
+    },
+    "blue": {
+      "iris": "#3F72B8",
+      "iris_dark": "#1A2E5C",
+      "iris_light": "#8DB8EA"
+    },
+    "gray": {
+      "iris": "#7C8794",
+      "iris_dark": "#3A414A",
+      "iris_light": "#BCC6D2"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "style": "illustration",
+  "framing": "upper_body",
+  "canvas": {
+    "width": 1280,
+    "height": 1280
+  },
+  "characters": [
+    {
+      "sex": "female",
+      "outfit": {
+        "type": "shirt_slacks"
+      },
+      "hair": {
+        "style": "bob"
+      },
+      "expression": "laugh"
+    },
+    {
+      "sex": "male",
+      "outfit": {
+        "type": "polo_shorts"
+      },
+      "expression": "smile"
+    }
+  ],
+  "layout": {
+    "type": "facing"
+  }
+}

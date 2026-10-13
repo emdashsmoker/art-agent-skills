@@ -1,0 +1,78 @@
+{
+ "canvas": {
+  "aspect": "3:2",
+  "detail": "standard",
+  "seed": 9
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "seaside",
+  "time": "sunset",
+  "sun_side": "front",
+  "forest": {
+   "count": 3,
+   "kinds": [
+    "palm"
+   ],
+   "area": [
+    -30,
+    30,
+    4,
+    8
+   ],
+   "min_distance": 9.0,
+   "height": [
+    7.0,
+    9.0
+   ],
+   "clearing": 9.0
+  }
+ },
+ "camera": {
+  "eye": [
+   0.5,
+   -7.5,
+   1.5
+  ],
+  "target": [
+   0.3,
+   0,
+   1.0
+  ],
+  "fov": 30
+ },
+ "style": "watercolor",
+ "pairs": [
+  {
+   "kind": "hold_hands",
+   "facing": 35,
+   "a": {
+    "name": "a",
+    "preset": "woman",
+    "pose": "walk",
+    "hair": {
+     "style": "long_straight",
+     "color": "black",
+     "wind": [
+      -0.35,
+      0.5,
+      0
+     ]
+    },
+    "outfit": "summer_dress",
+    "skin": "light"
+   },
+   "b": {
+    "name": "b",
+    "preset": "man",
+    "pose": "walk",
+    "hair": {
+     "style": "short_crop",
+     "color": "dark_brown"
+    },
+    "outfit": "tshirt_jeans",
+    "skin": "tan"
+   }
+  }
+ ]
+}

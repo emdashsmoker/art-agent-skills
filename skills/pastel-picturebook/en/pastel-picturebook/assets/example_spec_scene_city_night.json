@@ -1,0 +1,61 @@
+{
+  "pose": {
+    "head_center": [
+      0.5,
+      0.4
+    ],
+    "head_unit": 0.044,
+    "yaw_deg": 8
+  },
+  "backdrop": {
+    "subject": "city",
+    "spec": {
+      "night": {
+        "on": true
+      },
+      "camera": {
+        "horizon_y": 0.4
+      }
+    },
+    "place": "horizon",
+    "blur": 0.0015
+  },
+  "grade": {
+    "color": "#8C93C8",
+    "amount": 0.3
+  },
+  "figure": {
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "shirt": {
+        "ease": 0.08,
+        "neck_half": 0.55,
+        "neck_level": 0.1,
+        "hem_level": 3.7,
+        "sleeve": 1.92
+      },
+      "skirt": {
+        "hem_level": 9.0,
+        "hem_half": 2.1
+      },
+      "coat": {
+        "ease": 0.16,
+        "hem_level": 10.4,
+        "hem_half": 2.3,
+        "button_level": 3.0,
+        "sleeve": 1.93,
+        "buttons": 3
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "cloth": {
+        "base": "#F4F1EA",
+        "shadow": "#C8C6CF",
+        "line": "#6B6A80"
+      }
+    }
+  }
+}

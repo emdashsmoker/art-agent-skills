@@ -1,0 +1,40 @@
+{
+  "pose": {
+    "head_center": [
+      0.5,
+      0.4
+    ],
+    "head_unit": 0.044,
+    "yaw_deg": 8
+  },
+  "backdrop": {
+    "subject": "cafe",
+    "spec": {
+      "camera": {
+        "horizon_y": 0.4
+      }
+    },
+    "place": "horizon",
+    "blur": 0.0015
+  },
+  "weather": {
+    "kind": "rain"
+  },
+  "expression": "smile",
+  "accessories": {
+    "scarf": true
+  },
+  "figure": {
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "hoodie": true,
+      "skirt": {
+        "hem_level": 8.6,
+        "hem_half": 2.0,
+        "folds": 5,
+        "fold_depth": 0.14
+      }
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "sex": "male",
+  "seed": 4,
+  "pose": {
+    "head_center": [
+      0.5,
+      0.14
+    ],
+    "head_unit": 0.064,
+    "yaw_deg": 6,
+    "roll_deg": -2
+  },
+  "figure": {
+    "floor": {
+      "y": 0.88
+    },
+    "seat": {
+      "half_width": 3.0
+    },
+    "pose": {
+      "shoulder_tilt": 2.0,
+      "pelvis_tilt": -2.0,
+      "arm_left": {
+        "upper": 14.0,
+        "fore": -6.0,
+        "hand": -4.0,
+        "foreshorten": [
+          1.0,
+          0.7
+        ],
+        "toward": [
+          0,
+          1
+        ]
+      },
+      "arm_right": {
+        "upper": 12.0,
+        "fore": -4.0,
+        "hand": -2.0,
+        "foreshorten": [
+          1.0,
+          0.7
+        ],
+        "toward": [
+          0,
+          1
+        ]
+      },
+      "leg_left": {
+        "thigh": 12.0,
+        "shin": -8.0,
+        "foot": 14.0,
+        "foreshorten": [
+          0.34,
+          1.0
+        ],
+        "toward": [
+          1,
+          0
+        ]
+      },
+      "leg_right": {
+        "thigh": 10.0,
+        "shin": -9.0,
+        "foot": 18.0,
+        "foreshorten": [
+          0.34,
+          1.0
+        ],
+        "toward": [
+          1,
+          0
+        ]
+      }
+    }
+  }
+}

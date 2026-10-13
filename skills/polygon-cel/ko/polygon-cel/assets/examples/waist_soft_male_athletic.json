@@ -1,0 +1,6 @@
+{"style": "soft_illust", "framing": "waist", "canvas": {"seed": 22},
+ "character": {"gender": "male", "head": {"yaw": -8, "roll": 1},
+   "body": {"figure": "athletic"}, "hair": {"color": "#6A4A34"},
+   "expression": {"mouth": "smile"},
+   "outfit": {"type": "shirtless", "bottom": "board_shorts", "bottom_color": "#1E2430"}},
+ "background": {"type": "landscape", "landscape": {"time": "day"}}}

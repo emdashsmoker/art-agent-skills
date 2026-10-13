@@ -1,0 +1,120 @@
+{
+  "canvas": [
+    1400,
+    1300
+  ],
+  "style": "illust",
+  "seed": 35,
+  "character": {
+    "gender": "female",
+    "hair_style": "long_straight",
+    "bangs": "see_through",
+    "smile": 0.5,
+    "hair_seed": 7
+  },
+  "figure": {
+    "pose": "side_stand",
+    "outfit": "swimsuit",
+    "ground_shadow": 0.4,
+    "build": {
+      "waist": 0.96,
+      "hips": 1.04
+    }
+  },
+  "palette": {
+    "hair": "#3a2620",
+    "hair_shadow": "#1c110d",
+    "hair_light": "#e0a070",
+    "iris": "#4a7a6a",
+    "cloth": "#f2f0ea",
+    "cloth_shadow": "#b8c0cc",
+    "skin": "#f8dccb",
+    "skin_shadow": "#d9a08e"
+  },
+  "placement": {
+    "shot": "waist"
+  },
+  "light": {
+    "azimuth": 135,
+    "elevation": 35
+  },
+  "background": [
+    {
+      "type": "sky",
+      "top": "#3f8fd8",
+      "bottom": "#fbe6c8",
+      "horizon": 0.5
+    },
+    {
+      "type": "sun",
+      "center": [
+        0.2,
+        0.2
+      ],
+      "radius": 0.035,
+      "glow_radius": 0.45,
+      "glow_opacity": 0.8
+    },
+    {
+      "type": "clouds",
+      "color": "#ffffff",
+      "shadow": "#c9cfe6",
+      "coverage": 0.36,
+      "top": 0.03,
+      "bottom": 0.42,
+      "seed": 9
+    },
+    {
+      "type": "water",
+      "top": 0.5,
+      "bottom": 0.7,
+      "tint": "#1f7f9c",
+      "tint_strength": 0.45,
+      "ripples": 120,
+      "seed": 4
+    },
+    {
+      "type": "ground",
+      "top": 0.68,
+      "color": "#ead3a4",
+      "far_color": "#f4e4c0",
+      "roll": 0.012,
+      "seed": 2
+    }
+  ],
+  "style_overrides": {
+    "rim_light": 0.5
+  },
+  "finish": {
+    "bloom": 0.3,
+    "highlight_tint": "#fff0d0",
+    "shadow_tint": "#2a3a6a",
+    "tint_strength": 0.1
+  },
+  "duo": {
+    "pose": "face_to_face",
+    "partner": {
+      "character": {
+        "gender": "male",
+        "hair_style": "layered",
+        "bangs": "layered",
+        "hair_seed": 2
+      },
+      "palette": {
+        "cloth": "#2f6fa8",
+        "cloth_shadow": "#1d4470",
+        "hair": "#2a1d18",
+        "hair_shadow": "#140c08",
+        "skin": "#eec5a6",
+        "skin_shadow": "#c08a70"
+      },
+      "figure": {
+        "pose": "side_stand",
+        "outfit": "trunks",
+        "build": {
+          "muscle": 1.2
+        }
+      }
+    }
+  }
+}

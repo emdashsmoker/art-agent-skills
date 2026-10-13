@@ -1,0 +1,230 @@
+{
+  "spec": {
+    "canvas": {
+      "width": 1600,
+      "height": 1200
+    },
+    "seed": 41,
+    "light": [
+      -0.4,
+      -0.35,
+      0.85
+    ],
+    "time": "sunset",
+    "camera": {
+      "horizon_y": 0.5,
+      "focal": 0.75,
+      "eye_height": 155,
+      "center_x": 0.5
+    },
+    "sky": {
+      "sun_x": 0.64,
+      "sun_y": 0.47,
+      "sun_r": 0.022,
+      "clouds": 0.38
+    },
+    "skyline": [
+      {
+        "z": 90000,
+        "height": [
+          -800,
+          9000
+        ],
+        "width": [
+          1500,
+          4000
+        ],
+        "gap": [
+          0,
+          600
+        ],
+        "haze": 0.78
+      },
+      {
+        "z": 50000,
+        "height": [
+          -1500,
+          6000
+        ],
+        "width": [
+          1500,
+          3500
+        ],
+        "gap": [
+          0,
+          900
+        ],
+        "haze": 0.55
+      },
+      {
+        "z": 26000,
+        "height": [
+          -2500,
+          3000
+        ],
+        "width": [
+          1200,
+          2800
+        ],
+        "gap": [
+          200,
+          1200
+        ],
+        "haze": 0.32
+      },
+      {
+        "z": 13000,
+        "height": [
+          -3500,
+          1200
+        ],
+        "width": [
+          1500,
+          2500
+        ],
+        "gap": [
+          300,
+          1500
+        ],
+        "haze": 0.15
+      }
+    ],
+    "city_base": -6000,
+    "floor": {
+      "kind": "roof",
+      "tile": 60
+    },
+    "railing": {
+      "z": 650,
+      "wall": 28,
+      "height": 110,
+      "posts": 180,
+      "glass": true
+    },
+    "lights": [
+      {
+        "from": [
+          -700,
+          330,
+          150
+        ],
+        "to": [
+          650,
+          300,
+          900
+        ],
+        "sag": 40,
+        "bulbs": 16
+      },
+      {
+        "from": [
+          700,
+          330,
+          150
+        ],
+        "to": [
+          -650,
+          300,
+          900
+        ],
+        "sag": 40,
+        "bulbs": 16
+      }
+    ],
+    "plants": [
+      {
+        "x": -330,
+        "z": 580,
+        "radius": 26,
+        "height": 55
+      },
+      {
+        "x": 340,
+        "z": 560,
+        "radius": 22,
+        "height": 48
+      }
+    ]
+  },
+  "style": {
+    "palette": {
+      "sky": {
+        "top": "#2E3A78",
+        "middle": "#7A5C9E",
+        "low": "#F08A6A",
+        "horizon": "#FFC77A",
+        "glow": "#FFD58A",
+        "sun": "#FFF4D6",
+        "cloud": "#6A4E86",
+        "cloud_warm": "#C9637A",
+        "cloud_lit": "#FFB27A",
+        "night_top": "#070B22",
+        "night_middle": "#141A44",
+        "night_low": "#2B2E5E"
+      },
+      "city": {
+        "face": "#3B3459",
+        "shade": "#2A2546",
+        "haze": "#C98A8E",
+        "base": "#5A4466",
+        "glass": "#6D6290",
+        "window_lit": "#FFD38A",
+        "rim": "#FFB070",
+        "beacon": "#FF4A3A",
+        "line": "#1E1A30"
+      },
+      "city_night": {
+        "face": "#1C1F3B",
+        "shade": "#13152B",
+        "haze": "#30335F",
+        "base": "#1A1C38",
+        "glass": "#262B4C",
+        "window_lit": "#FFD68E",
+        "rim": "#000000",
+        "beacon": "#FF4A3A",
+        "line": "#0B0C1A"
+      },
+      "water": {
+        "deep": "#0E1430",
+        "light": "#8A93C8",
+        "bank": "#0A0D1E"
+      },
+      "floor": {
+        "base": "#8E7F88",
+        "far": "#B49A98",
+        "joint": "#CDC2C6"
+      },
+      "railing": {
+        "wall": "#4A3F5C",
+        "cap": "#6E6080",
+        "shadow": "#BDB2C8",
+        "metal": "#2A2438",
+        "shine": "#FFB98A",
+        "line": "#1A1424",
+        "glass": "#B9C6E6"
+      },
+      "lights": {
+        "wire": "#2A2230",
+        "bulb": "#FFF1C8",
+        "glow": "#FFC46A"
+      },
+      "leaf": {
+        "base": "#4F8A4A",
+        "shadow": "#22482A",
+        "deep": "#14301B",
+        "light": "#D8F2B8",
+        "line": "#10261A"
+      },
+      "pot": {
+        "base": "#C9744E",
+        "shadow": "#7E3E26",
+        "deep": "#52281A",
+        "light": "#FFD9C2",
+        "line": "#3E1E12"
+      },
+      "desk": {
+        "cast": "#4A3624"
+      }
+    }
+  }
+}

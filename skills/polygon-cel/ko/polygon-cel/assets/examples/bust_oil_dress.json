@@ -1,0 +1,6 @@
+{"style": "painterly", "canvas": {"seed": 5},
+ "character": {"head": {"yaw": -18, "roll": 2}, "face_shape": "sharp",
+   "hair": {"color": "#7E4536", "style": "long", "bangs": "parted", "wave": 0.5},
+   "eyes": {"color": "#5E8F6A", "shape": "almond", "tilt": 5}, "expression": {"mouth": "soft", "blush": 0.3},
+   "outfit": {"type": "offshoulder_dress", "color": "#6F8FBF"}, "accessories": ["necklace"]},
+ "background": {"type": "sky"}}

@@ -1,0 +1,11 @@
+{
+  "subject": "cityscape",
+  "style": "watercolor",
+  "canvas": {
+    "width": 1600,
+    "height": 1000
+  },
+  "scene": {
+    "time": "rain_night"
+  }
+}

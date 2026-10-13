@@ -1,0 +1,27 @@
+{
+ "style": "soft_illust",
+ "framing": "full",
+ "canvas": {
+  "seed": 3
+ },
+ "character": {
+  "head": {
+   "yaw": 10,
+   "roll": -2
+  },
+  "body": {
+   "pose": "sit",
+   "seat": "bed"
+  },
+  "hair": {
+   "style": "bob",
+   "bangs": "full"
+  },
+  "outfit": {
+   "type": "oversized_tee"
+  }
+ },
+ "background": {
+  "type": "bedroom"
+ }
+}

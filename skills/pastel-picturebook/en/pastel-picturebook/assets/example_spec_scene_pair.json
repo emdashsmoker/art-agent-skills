@@ -1,0 +1,30 @@
+{
+  "pose": {
+    "head_center": [
+      0.38,
+      0.42
+    ],
+    "head_unit": 0.04,
+    "yaw_deg": 10
+  },
+  "backdrop": {
+    "subject": "landscape",
+    "spec": {
+      "horizon_y": 0.42
+    },
+    "place": "horizon"
+  },
+  "companions": [
+    {
+      "sex": "male",
+      "pose": {
+        "head_center": [
+          0.64,
+          0.42
+        ],
+        "head_unit": 0.042,
+        "yaw_deg": -8
+      }
+    }
+  ]
+}

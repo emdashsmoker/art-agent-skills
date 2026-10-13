@@ -1,0 +1,9 @@
+{
+  "figure": {
+    "clothes": {
+      "dress": null,
+      "shoes": false,
+      "underwear": true
+    }
+  }
+}

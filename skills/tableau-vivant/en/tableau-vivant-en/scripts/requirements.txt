@@ -1,0 +1,10 @@
+numpy
+scipy
+opencv-python-headless
+pillow
+numba
+roma
+safetensors
+trimesh
+pyyaml
+requests

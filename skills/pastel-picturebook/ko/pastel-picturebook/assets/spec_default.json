@@ -1,0 +1,89 @@
+{
+  "canvas": {
+    "width": 1200,
+    "height": 1600
+  },
+  "seed": 7,
+  "pose": {
+    "head_center": [
+      0.515,
+      0.375
+    ],
+    "head_unit": 0.19,
+    "yaw_deg": 12,
+    "roll_deg": -4,
+    "shoulder_roll_deg": 2,
+    "mirror": false
+  },
+  "light": [
+    -0.55,
+    -0.55,
+    0.63
+  ],
+  "face": {
+    "chin_y": 1.22,
+    "cheek_width": 0.95,
+    "jaw_width": 0.73,
+    "jaw_height": 0.62,
+    "chin_width": 0.11,
+    "jaw_sharpness": 0.85
+  },
+  "eyes": {
+    "center_x": 0.47,
+    "half_width": 0.255,
+    "open_up": 0.15,
+    "open_down": 0.1,
+    "tilt": 0.1,
+    "lash_thickness": 0.06,
+    "wing_length": 0.16,
+    "wing_lift": 0.3,
+    "crease_gap": 0.07,
+    "brow_gap": 0.37,
+    "gaze_x": -0.03,
+    "gaze_y": -0.035,
+    "iris_rx": 0.145,
+    "iris_ry": 0.152,
+    "pupil_ratio": 0.48,
+    "brow_slant": 0.75
+  },
+  "nose": {
+    "tip_y": 0.55,
+    "width": 0.11,
+    "protrusion": 0.26
+  },
+  "mouth": {
+    "y": 0.84,
+    "half_width": 0.215,
+    "lip_height": 0.045,
+    "smile": 0.012
+  },
+  "body": {
+    "neck_half_width": 0.42,
+    "shoulder_half_width": 1.75,
+    "shoulder_y": 2.24,
+    "neck_pit_y": 2.02
+  },
+  "outfit": {
+    "neckline_half_width": 1.36,
+    "neckline_dip_y": 2.62,
+    "ease": 0.06,
+    "band_width": 0.13,
+    "rib_spacing": 0.085
+  },
+  "hair": {
+    "part_x": 0.32,
+    "length": 3.4,
+    "volume": 0.14,
+    "tip_locks": 3,
+    "band_y": -0.8,
+    "wave": 0.025,
+    "waves": 1.4,
+    "bangs": {
+      "near": 4,
+      "far": 2,
+      "length": 0.72,
+      "width": 0.14,
+      "seed": 3
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "seed": 33,
+  "canvas": {
+    "width": 1600,
+    "height": 1200
+  },
+  "light": [
+    0.6,
+    -0.5,
+    0.62
+  ],
+  "pose": {
+    "head_center": [
+      0.355,
+      0.36
+    ],
+    "head_unit": 0.028,
+    "roll_deg": -2
+  },
+  "backdrop": {
+    "subject": "cafe",
+    "spec": {
+      "camera": {
+        "horizon_y": 0.36
+      }
+    },
+    "place": "horizon",
+    "blur": 0.002
+  },
+  "weather": {
+    "kind": "rain"
+  },
+  "props": [
+    {
+      "kind": "table",
+      "cups": [
+        -1.4,
+        1.5
+      ],
+      "elbow_of": "main",
+      "radius": 3.3
+    }
+  ],
+  "expression": "smile",
+  "hair": {
+    "length": 4.2,
+    "wave": 0.05
+  },
+  "figure": {
+    "view": "side",
+    "floor": {
+      "at_feet": true
+    },
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "shirt": {
+        "ease": 0.1,
+        "neck_half": 0.6,
+        "neck_level": 0.2,
+        "hem_level": 4.4,
+        "sleeve": 1.9
+      },
+      "pants": {
+        "waist_level": 4.6,
+        "hem_drop": 0.2,
+        "leg_widths": [
+          1.0,
+          0.62,
+          0.5
+        ],
+        "length": 1.0
+      }
+    },
+    "profile_pose": {
+      "seat": true,
+      "lean": 10.0,
+      "arm": {
+        "reach": {
+          "mark": "chin",
+          "offset": [
+            0.05,
+            0.35
+          ]
+        },
+        "bend": "down",
+        "front": true
+      },
+      "leg_near": {
+        "thigh": 84.0,
+        "shin": 4.0
+      },
+      "leg_far": {
+        "thigh": 80.0,
+        "shin": -8.0
+      },
+      "hand": "fist"
+    }
+  },
+  "style": {
+    "palette": {
+      "cloth": {
+        "base": "#E8D3B0",
+        "shadow": "#B89E78",
+        "line": "#55442C"
+      }
+    }
+  },
+  "companions": [
+    {
+      "sex": "male",
+      "seed": 34,
+      "pose": {
+        "head_center": [
+          0.345,
+          0.36
+        ],
+        "head_unit": 0.029,
+        "mirror": true
+      },
+      "expression": {
+        "name": "smile",
+        "amount": 0.6
+      },
+      "figure": {
+        "view": "side",
+        "floor": {
+          "at_feet": true
+        },
+        "profile_pose": {
+          "seat": true,
+          "lean": 6.0,
+          "arm": {
+            "upper": 26.0,
+            "fore": 128.0
+          },
+          "hand": "grip",
+          "leg_near": {
+            "thigh": 84.0,
+            "shin": 8.0
+          },
+          "leg_far": {
+            "thigh": 78.0,
+            "shin": -10.0
+          }
+        },
+        "holds": {
+          "near": {
+            "kind": "cup"
+          }
+        }
+      }
+    }
+  ]
+}

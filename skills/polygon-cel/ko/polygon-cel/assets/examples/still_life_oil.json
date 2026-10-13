@@ -1,0 +1,8 @@
+{"subject": "still_life", "style": "painterly", "canvas": {"seed": 3},
+ "still_life": {"wall": "#E2D6C2", "table": "#7A4E34", "cloth": "#F0ECE4",
+   "objects": [{"type": "bottle", "x": 0.24, "depth": 0.05, "color": "#3F6B4F"},
+               {"type": "vase", "x": 0.44, "depth": 0.15, "color": "#5E7FA8", "flowers": "#E8707A"},
+               {"type": "cup", "x": 0.73, "depth": 0.45},
+               {"type": "lemon", "x": 0.30, "depth": 0.70},
+               {"type": "apple", "x": 0.50, "depth": 0.78},
+               {"type": "orange", "x": 0.60, "depth": 0.62}]}}

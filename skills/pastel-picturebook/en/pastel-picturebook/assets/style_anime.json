@@ -1,0 +1,121 @@
+{
+  "name": "anime",
+  "shading": "cel",
+  "line_scale": 1.0,
+  "soft_blur": 0.0,
+  "finish": {
+    "kind": "anime",
+    "warm": "#FFE9C8",
+    "cool": "#B9C4EC",
+    "wash": 0.16,
+    "glow_radius": 0.1,
+    "glow": 0.14,
+    "vignette": 0.1
+  },
+  "figure": {},
+  "palette": {
+    "skin": {
+      "base": "#FCE6D8",
+      "shadow": "#EDB9AC",
+      "deep": "#DC9C95",
+      "light": "#FFF6EE",
+      "blush": "#F6A79C"
+    },
+    "hair": {
+      "base": "#34385C",
+      "shadow": "#1F2140",
+      "light": "#8FA0D6",
+      "line": "#14152B",
+      "deep": "#14152B"
+    },
+    "eye": {
+      "white": "#FFFFFF",
+      "white_shadow": "#C9CDE3",
+      "iris": "#3FA39B",
+      "iris_dark": "#164A55",
+      "iris_light": "#9BE6D0",
+      "pupil": "#0C1A24",
+      "catchlight": "#FFFFFF"
+    },
+    "lip": {
+      "upper": "#E08C8A",
+      "lower": "#EE9F98",
+      "shine": "#FFE4DC",
+      "line": "#7A2F3C"
+    },
+    "cloth": {
+      "base": "#FBFAF6",
+      "shadow": "#CBD0E2",
+      "line": "#6D6F8C"
+    },
+    "line": {
+      "main": "#6B3A42"
+    },
+    "accent": {
+      "metal": "#D9AE5F",
+      "shine": "#FFF3C9"
+    },
+    "background": {
+      "top": "#BFD8EE",
+      "bottom": "#EEF4F8",
+      "disc": "#FFFFFF",
+      "disc_x": 0.62,
+      "disc_y": 0.36,
+      "disc_r": 0.4,
+      "disc_blur": 0.1,
+      "disc_opacity": 0.75,
+      "mottle": 0.0,
+      "bokeh": 9,
+      "bokeh_color": "#FFFFFF"
+    }
+  },
+  "hair_render": {
+    "form_level": 0.3,
+    "shadow_wedges": 9,
+    "light_wedges": 8,
+    "ring_thickness": 0.1,
+    "ring_teeth": 13,
+    "light_opacity": 0.7,
+    "strand_lines": 10,
+    "texture_strands": 0,
+    "flyaways": 5,
+    "form_spread": 0.3,
+    "broad_wedges": 3
+  },
+  "face_render": {
+    "hair_shadow_reach": 0.09,
+    "form_level": 0.0,
+    "blush_opacity": 0.3,
+    "nose_side_opacity": 0.0,
+    "nose_under_opacity": 0.0,
+    "nose_light_opacity": 0.0,
+    "lip_opacity": 0.55,
+    "lip_shine_opacity": 0.5,
+    "mouth_line": 3.0,
+    "cheek_shadow_width": 0.07,
+    "nose_wedge_opacity": 0.85,
+    "plane_strength": 0.0,
+    "form_range": 1.0,
+    "light_level": 1.0,
+    "light_opacity": 0.0
+  },
+  "eye_render": {
+    "lid_shadow": 0.055,
+    "iris_ring": 0.012,
+    "lower_lash": 0.012,
+    "crease": 0.008,
+    "brow": 0.034,
+    "brow_opacity": 0.92,
+    "lash_spikes": 1.0,
+    "lid_tone": 0.0,
+    "lower_rim": 0.0
+  },
+  "body_render": {
+    "chin_shadow_reach": 0.2,
+    "form_level": -1.0,
+    "collar_opacity": 0.35,
+    "cloth_form_level": 0.35,
+    "knit_opacity": 0.28
+  },
+  "grain_spread": 0.0
+}

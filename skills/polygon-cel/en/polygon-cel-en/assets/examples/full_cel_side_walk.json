@@ -1,0 +1,25 @@
+{
+ "style": "anime_cel",
+ "framing": "full",
+ "canvas": {
+  "seed": 3
+ },
+ "character": {
+  "view": "side",
+  "head": {
+   "yaw": 0,
+   "roll": 0
+  },
+  "body": {
+   "pose": "walk",
+   "bust": "large"
+  },
+  "outfit": {
+   "type": "tee",
+   "bottom": "jeans"
+  }
+ },
+ "background": {
+  "type": "plain"
+ }
+}

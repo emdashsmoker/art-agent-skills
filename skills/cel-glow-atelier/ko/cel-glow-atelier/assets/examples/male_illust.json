@@ -1,0 +1,66 @@
+{
+  "canvas": [
+    1200,
+    1500
+  ],
+  "style": "illust",
+  "seed": 5,
+  "character": {
+    "gender": "male",
+    "head_turn": -0.45,
+    "head_tilt": 2,
+    "gaze": [
+      0.35,
+      0.0
+    ],
+    "jaw_sharpness": 0.85,
+    "hair_style": "layered",
+    "bangs": "layered",
+    "outfit": "suit",
+    "smile": 0.2
+  },
+  "palette": {
+    "hair": "#2b2420",
+    "hair_shadow": "#140f0c",
+    "hair_light": "#b08a6a",
+    "iris": "#5a4632",
+    "cloth": "#f4f2ee",
+    "cloth_shadow": "#c4bfb8",
+    "cloth2": "#26304a",
+    "accent": "#7a2434"
+  },
+  "light": {
+    "azimuth": 50,
+    "elevation": 38
+  },
+  "background": [
+    {
+      "type": "gradient",
+      "top": "#5b5f6e",
+      "bottom": "#c9c2b8"
+    },
+    {
+      "type": "glow",
+      "center": [
+        0.75,
+        0.22
+      ],
+      "radius": 0.55,
+      "color": "#ffe6c8",
+      "opacity": 0.55
+    },
+    {
+      "type": "bokeh",
+      "colors": [
+        "#ffe2b0",
+        "#fff4dc"
+      ],
+      "count": 16,
+      "opacity": 0.35,
+      "seed": 4
+    }
+  ],
+  "finish": {
+    "vignette": 0.3
+  }
+}

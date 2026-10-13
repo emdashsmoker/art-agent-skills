@@ -1,0 +1,28 @@
+{
+  "sex": "male",
+  "seed": 3,
+  "hands": [
+    {
+      "pose": "relaxed",
+      "x": 0.22,
+      "y": 0.76,
+      "size": 0.52,
+      "angle": -12
+    },
+    {
+      "pose": "open",
+      "view": "palm",
+      "x": 0.52,
+      "y": 0.76,
+      "size": 0.52,
+      "angle": 4
+    },
+    {
+      "pose": "point",
+      "x": 0.82,
+      "y": 0.76,
+      "size": 0.5,
+      "angle": 10
+    }
+  ]
+}

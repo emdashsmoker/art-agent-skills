@@ -1,0 +1,5 @@
+{"style": "anime_cel", "framing": "waist", "canvas": {"seed": 7},
+ "character": {"head": {"yaw": -12, "roll": 3}, "body": {"pose": "pocket"},
+   "hair": {"color": "#3A2A2E", "style": "bob", "bangs": "full"},
+   "outfit": {"type": "hoodie", "color": "#B7A8D6"}},
+ "background": {"type": "city", "city": {"time": "night"}}}

@@ -1,0 +1,86 @@
+{
+  "seed": 93,
+  "light": [
+    0.5,
+    -0.6,
+    0.62
+  ],
+  "pose": {
+    "head_center": [
+      0.42,
+      0.4
+    ],
+    "head_unit": 0.04,
+    "roll_deg": -4,
+    "horizon_drop": 0.085
+  },
+  "expression": "smile",
+  "look": {
+    "hair_style": "bob",
+    "identity": 13,
+    "hair_color": "brown"
+  },
+  "backdrop": {
+    "subject": "cafe",
+    "spec": {
+      "camera": {
+        "horizon_y": 0.4
+      }
+    },
+    "place": "horizon",
+    "blur": 0.0015
+  },
+  "figure": {
+    "view": "side",
+    "floor": null,
+    "clothes": {
+      "dress": null,
+      "shoes": true,
+      "shirt": {
+        "ease": 0.08,
+        "neck_half": 0.6,
+        "neck_level": 0.2,
+        "hem_level": 4.4,
+        "sleeve": 1.9
+      },
+      "pants": {
+        "waist_level": 4.6,
+        "hem_drop": 0.2,
+        "leg_widths": [
+          1.0,
+          0.62,
+          0.5
+        ],
+        "length": 1.0
+      }
+    },
+    "profile_pose": {
+      "seat": true,
+      "lean": -4.0,
+      "arch": 0.5,
+      "arm": {
+        "upper": 8.0,
+        "fore": 60.0
+      },
+      "hand": "relaxed",
+      "leg_near": {
+        "thigh": 94.0,
+        "shin": 12.0,
+        "foot": 25.0
+      },
+      "leg_far": {
+        "thigh": 84.0,
+        "shin": -4.0
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "cloth": {
+        "base": "#2F3E5C",
+        "shadow": "#1E2940",
+        "line": "#0C121E"
+      }
+    }
+  }
+}

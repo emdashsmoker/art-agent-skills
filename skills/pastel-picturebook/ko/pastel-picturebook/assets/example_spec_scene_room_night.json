@@ -1,0 +1,29 @@
+{
+  "pose": {
+    "head_center": [
+      0.45,
+      0.4
+    ],
+    "head_unit": 0.044,
+    "yaw_deg": 8
+  },
+  "backdrop": {
+    "subject": "room",
+    "spec": {
+      "camera": {
+        "horizon_y": 0.4
+      },
+      "time": "night"
+    },
+    "place": "horizon",
+    "blur": 0.0015
+  },
+  "grade": {
+    "color": "#E9C79A",
+    "amount": 0.18
+  },
+  "expression": "smile",
+  "look": {
+    "hair_style": "bun"
+  }
+}

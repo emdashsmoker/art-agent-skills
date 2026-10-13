@@ -1,0 +1,30 @@
+{
+  "style": "anime",
+  "framing": "full_body",
+  "canvas": {
+    "width": 1280,
+    "height": 1600
+  },
+  "characters": [
+    {
+      "sex": "female",
+      "outfit": {
+        "type": "tee_jeans"
+      },
+      "expression": "smile"
+    },
+    {
+      "sex": "male",
+      "outfit": {
+        "type": "denim_jacket"
+      },
+      "hair": {
+        "style": "side_part"
+      }
+    }
+  ],
+  "layout": {
+    "type": "side_by_side",
+    "interaction": "hold_hands"
+  }
+}

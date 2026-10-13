@@ -1,0 +1,45 @@
+{
+ "style": "anime_cel",
+ "framing": "full",
+ "canvas": {
+  "seed": 3
+ },
+ "pair": {
+  "contact": "shoulder_arm",
+  "lead": 1
+ },
+ "characters": [
+  {
+   "gender": "male",
+   "expression": {
+    "mouth": "smile"
+   },
+   "outfit": {
+    "type": "tank_top",
+    "color": "#C8D2DC",
+    "bottom": "joggers",
+    "shoes": "sneakers"
+   }
+  },
+  {
+   "gender": "male",
+   "hair": {
+    "color": "#6A4A34"
+   },
+   "body": {
+    "figure": "athletic",
+    "pose": "hand_on_hip"
+   },
+   "outfit": {
+    "type": "tee",
+    "color": "#3C4652",
+    "bottom": "joggers",
+    "bottom_color": "#2A2E36",
+    "shoes": "sneakers"
+   }
+  }
+ ],
+ "background": {
+  "type": "gym"
+ }
+}

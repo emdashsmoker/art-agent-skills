@@ -1,0 +1,28 @@
+{
+ "style": "anime_cel",
+ "framing": "full",
+ "canvas": {
+  "seed": 3
+ },
+ "character": {
+  "head": {
+   "yaw": -10
+  },
+  "body": {
+   "pose": "hand_on_hip",
+   "figure": "curvy",
+   "bust": "large"
+  },
+  "hair": {
+   "style": "ponytail",
+   "bangs": "full"
+  },
+  "outfit": {
+   "type": "sports_bra",
+   "color": "#3E5A7A"
+  }
+ },
+ "background": {
+  "type": "gym"
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "canvas": {
+  "aspect": "3:2",
+  "detail": "standard",
+  "seed": 38
+ },
+ "environment": {
+  "type": "room",
+  "wall": [
+   0.78,
+   0.74,
+   0.66
+  ],
+  "floor": [
+   0.62,
+   0.5,
+   0.38
+  ],
+  "depth": 2.6
+ },
+ "pairs": [
+  {
+   "kind": "dance",
+   "facing": 35,
+   "at": [
+    -0.5,
+    0.2
+   ],
+   "distance": 0.5,
+   "a": {
+    "name": "a",
+    "preset": "man_slim",
+    "outfit": "shirt_trousers",
+    "hair": {
+     "style": "slick_back",
+     "color": "black"
+    },
+    "expression": "serene",
+    "colors": {
+     "shirt": [
+      0.95,
+      0.95,
+      0.93
+     ]
+    }
+   },
+   "b": {
+    "name": "b",
+    "preset": "woman_slender",
+    "outfit": "bodysuit",
+    "hair": {
+     "style": "bun",
+     "color": "dark_brown"
+    },
+    "expression": "serene",
+    "skin": "fair",
+    "colors": {
+     "bodysuit": [
+      0.86,
+      0.66,
+      0.68
+     ]
+    }
+   }
+  }
+ ],
+ "figures": [
+  {
+   "name": "c",
+   "preset": "woman_athletic",
+   "pose": "arms_behind_head",
+   "outfit": "sportswear",
+   "hair": {
+    "style": "ponytail",
+    "color": "auburn"
+   },
+   "expression": "neutral",
+   "position": [
+    1.3,
+    0.8,
+    0
+   ],
+   "facing": -30
+  }
+ ],
+ "camera": {
+  "fit": "people",
+  "yaw": -20,
+  "pitch": 6,
+  "fill": 0.92
+ },
+ "light": {
+  "preset": "soft",
+  "mood": "pastel"
+ },
+ "style": "pastel"
+}

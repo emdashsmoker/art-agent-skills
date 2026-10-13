@@ -1,0 +1,19 @@
+{
+  "style": "anime",
+  "framing": "full_body",
+  "canvas": {
+    "width": 1024,
+    "height": 1600
+  },
+  "character": {
+    "sex": "male",
+    "build": "athletic",
+    "outfit": {
+      "type": "tank_shorts"
+    },
+    "pose": {
+      "preset": "relaxed",
+      "turn": 0.4
+    }
+  }
+}

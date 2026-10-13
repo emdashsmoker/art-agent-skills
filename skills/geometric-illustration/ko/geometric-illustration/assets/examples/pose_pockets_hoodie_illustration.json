@@ -1,0 +1,20 @@
+{
+  "style": "illustration",
+  "framing": "full_body",
+  "canvas": {
+    "width": 1024,
+    "height": 1600
+  },
+  "character": {
+    "outfit": {
+      "type": "hoodie_joggers"
+    },
+    "hair": {
+      "style": "ponytail"
+    },
+    "pose": {
+      "preset": "hands_in_pockets",
+      "turn": -0.4
+    }
+  }
+}

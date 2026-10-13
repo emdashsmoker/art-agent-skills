@@ -1,0 +1,10 @@
+{
+  "style": "anime",
+  "framing": "bust",
+  "character": {
+    "sex": "male",
+    "outfit": {
+      "type": "suit"
+    }
+  }
+}

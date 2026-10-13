@@ -1,0 +1,263 @@
+{
+  "spec": {
+    "canvas": {
+      "width": 1600,
+      "height": 1200
+    },
+    "seed": 12,
+    "light": [
+      -0.55,
+      -0.6,
+      0.58
+    ],
+    "time": "day",
+    "camera": {
+      "eye_height": 150,
+      "horizon_y": 0.46,
+      "focal": 0.62,
+      "center_x": 0.5
+    },
+    "room": {
+      "width": 640,
+      "height": 300,
+      "depth": 600,
+      "near": 40,
+      "floor": "tiles",
+      "tile": 50
+    },
+    "items": [
+      {
+        "kind": "window",
+        "wall": "left",
+        "a0": 120,
+        "a1": 520,
+        "y0": 55,
+        "y1": 245,
+        "panes": [
+          3,
+          2
+        ],
+        "view": "street"
+      },
+      {
+        "kind": "menu",
+        "wall": "back",
+        "a0": -250,
+        "a1": -90,
+        "y0": 140,
+        "y1": 235
+      },
+      {
+        "kind": "shelf",
+        "wall": "back",
+        "a0": 40,
+        "a1": 290,
+        "levels": [
+          150,
+          190
+        ]
+      },
+      {
+        "kind": "counter",
+        "a0": 20,
+        "a1": 300,
+        "z": 470,
+        "depth": 60,
+        "height": 105,
+        "machine": true,
+        "cups": 4
+      },
+      {
+        "kind": "stool",
+        "x": 70,
+        "z": 430
+      },
+      {
+        "kind": "stool",
+        "x": 150,
+        "z": 430
+      },
+      {
+        "kind": "stool",
+        "x": 230,
+        "z": 430
+      },
+      {
+        "kind": "table",
+        "x": -170,
+        "z": 330,
+        "cups": 2
+      },
+      {
+        "kind": "chair",
+        "x": -170,
+        "z": 380,
+        "angle": 0
+      },
+      {
+        "kind": "chair",
+        "x": -170,
+        "z": 280,
+        "angle": 180
+      },
+      {
+        "kind": "table",
+        "x": -20,
+        "z": 250,
+        "cups": 1
+      },
+      {
+        "kind": "chair",
+        "x": -20,
+        "z": 300,
+        "angle": 0
+      },
+      {
+        "kind": "pendant",
+        "x": -170,
+        "z": 330,
+        "drop": 95
+      },
+      {
+        "kind": "pendant",
+        "x": -20,
+        "z": 250,
+        "drop": 95
+      },
+      {
+        "kind": "pendant",
+        "x": 160,
+        "z": 500,
+        "drop": 85
+      },
+      {
+        "kind": "plant",
+        "x": -275,
+        "z": 540,
+        "radius": 20,
+        "height": 42,
+        "leaves": 12
+      }
+    ]
+  },
+  "style": {
+    "palette": {
+      "lamp": {
+        "base": "#2F3238",
+        "shadow": "#121318",
+        "deep": "#08090B",
+        "light": "#FFFFFF",
+        "line": "#050607",
+        "bulb": "#FFD58A"
+      },
+      "shade": {
+        "base": "#F1E6D0",
+        "shadow": "#C9B48E",
+        "light": "#FFFFFF",
+        "line": "#6B5A3E"
+      },
+      "device": {
+        "base": "#B9BEC6",
+        "shadow": "#5E636D",
+        "deep": "#33363C",
+        "light": "#FFFFFF",
+        "line": "#24262B"
+      },
+      "mug": {
+        "base": "#F2EFE8",
+        "shadow": "#A9A396",
+        "deep": "#6E685E",
+        "light": "#FFFFFF",
+        "line": "#4E4A42"
+      },
+      "coffee": {
+        "base": "#4A2C1A"
+      },
+      "pot": {
+        "base": "#C9744E",
+        "shadow": "#7E3E26",
+        "deep": "#52281A",
+        "light": "#FFD9C2",
+        "line": "#3E1E12"
+      },
+      "leaf": {
+        "base": "#4F8A4A",
+        "shadow": "#22482A",
+        "deep": "#14301B",
+        "light": "#D8F2B8",
+        "line": "#10261A"
+      },
+      "art": {
+        "frame": "#3A2E24",
+        "paper": "#F3EEE2",
+        "a": "#D98C5F",
+        "b": "#4E7A8C"
+      },
+      "outside": {
+        "sky_top": "#8FC0EA",
+        "sky_bottom": "#DCEBF5",
+        "far": "#B7C0CB",
+        "window": "#EAF1F7",
+        "ground": "#8E949B",
+        "trees": "#6E9E63",
+        "lawn": "#9CBC74",
+        "night_top": "#121935",
+        "night_bottom": "#2B3563",
+        "far_night": "#1C2134",
+        "lit": "#FFD98A",
+        "ground_night": "#20253A",
+        "trees_night": "#18261F",
+        "sun": "#FFF1C9"
+      },
+      "room_wall": {
+        "base": "#E9DCC6",
+        "shadow": "#B39D7F",
+        "ceiling": "#D8CAB2",
+        "line": "#5C4A36"
+      },
+      "room_floor": {
+        "base": "#E4DCCD",
+        "shadow": "#B5AA98",
+        "alt": "#59606C",
+        "line": "#6E655A",
+        "cast": "#3E3328"
+      },
+      "room_trim": {
+        "base": "#3B3835",
+        "shadow": "#22201E",
+        "line": "#141210"
+      },
+      "desk": {
+        "base": "#9C6C45",
+        "shadow": "#6A4429",
+        "deep": "#4A2E1B",
+        "line": "#2E1C10",
+        "cast": "#3A2A1C"
+      },
+      "counter": {
+        "base": "#2F4A43",
+        "shadow": "#1C2D29",
+        "line": "#0E1714"
+      },
+      "chair": {
+        "base": "#8A5A36",
+        "shadow": "#5B3A22",
+        "line": "#2E1C10"
+      },
+      "jars": {
+        "a": "#C9744E",
+        "b": "#E8D9B8",
+        "c": "#5E8A6E",
+        "d": "#B04A3A",
+        "e": "#3E5A86",
+        "shadow": "#4A3A2A",
+        "line": "#2A1E14"
+      },
+      "board": {
+        "base": "#2B2F2C",
+        "chalk": "#F2F0E6",
+        "frame": "#7A5A3A"
+      }
+    }
+  }
+}

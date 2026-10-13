@@ -1,0 +1,60 @@
+{
+  "canvas": [
+    1200,
+    1500
+  ],
+  "style": "painterly",
+  "seed": 7,
+  "character": {
+    "gender": "male",
+    "head_turn": 0.5,
+    "head_tilt": -2,
+    "gaze": [
+      -0.3,
+      0.05
+    ],
+    "hair_style": "layered",
+    "bangs": "layered",
+    "outfit": "crewneck",
+    "eye_height": 0.06,
+    "hair_seed": 9,
+    "jaw_sharpness": 0.9
+  },
+  "palette": {
+    "skin": "#ecc8ae",
+    "skin_shadow": "#b07e66",
+    "hair": "#3a2a20",
+    "hair_shadow": "#1c120c",
+    "hair_light": "#a87a52",
+    "iris": "#4f5a3a",
+    "cloth": "#e9dfcc",
+    "cloth_shadow": "#a89a84"
+  },
+  "light": {
+    "azimuth": 140,
+    "elevation": 35
+  },
+  "background": [
+    {
+      "type": "wash",
+      "colors": [
+        "#4a4a38",
+        "#6a6448",
+        "#3a3c34",
+        "#7a6a50"
+      ],
+      "scale": 0.35,
+      "seed": 3
+    },
+    {
+      "type": "glow",
+      "center": [
+        0.35,
+        0.3
+      ],
+      "radius": 0.5,
+      "color": "#a08a64",
+      "opacity": 0.5
+    }
+  ]
+}

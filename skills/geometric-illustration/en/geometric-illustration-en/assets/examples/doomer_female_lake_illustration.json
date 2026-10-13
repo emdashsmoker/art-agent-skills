@@ -1,0 +1,42 @@
+{
+  "style": "illustration",
+  "look": "doomer",
+  "framing": "upper_body",
+  "canvas": {
+    "width": 1200,
+    "height": 1500,
+    "seed": 5
+  },
+  "background": {
+    "type": "scene",
+    "scene": "landscape"
+  },
+  "scene": {
+    "time": "snow_night",
+    "site": "lake"
+  },
+  "character": {
+    "sex": "female",
+    "hair": {
+      "style": "shoulder"
+    },
+    "outfit": {
+      "type": "knit_coat",
+      "hat": "beanie",
+      "earrings": "none",
+      "shoes": "oxfords"
+    },
+    "pose": {
+      "preset": "relaxed"
+    },
+    "expression": "sad"
+  },
+  "palette": {
+    "cloth": "#4A4542",
+    "shirt": "#8A8580",
+    "skirt": "#24262B",
+    "hat": "#5E666E",
+    "hair": "#2A2420",
+    "hair_highlight": "#6A5E58"
+  }
+}

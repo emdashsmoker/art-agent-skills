@@ -1,0 +1,50 @@
+{
+  "canvas": [
+    1200,
+    1500
+  ],
+  "style": "anime",
+  "seed": 3,
+  "character": {
+    "gender": "male",
+    "head_turn": 0.55,
+    "head_tilt": -3,
+    "gaze": [
+      -0.4,
+      0.0
+    ],
+    "hair_style": "layered",
+    "bangs": "layered",
+    "outfit": "shirt",
+    "hair_seed": 4
+  },
+  "palette": {
+    "hair": "#26252e",
+    "hair_shadow": "#121216",
+    "hair_light": "#8f9ab8",
+    "iris": "#4a5a70",
+    "cloth": "#f2f3f5",
+    "cloth_shadow": "#b9c0cc"
+  },
+  "light": {
+    "azimuth": 135,
+    "elevation": 40
+  },
+  "background": [
+    {
+      "type": "gradient",
+      "top": "#b9c9de",
+      "bottom": "#eef1f6"
+    },
+    {
+      "type": "glow",
+      "center": [
+        0.28,
+        0.25
+      ],
+      "radius": 0.5,
+      "color": "#ffffff",
+      "opacity": 0.6
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "style": "illustration",
+  "framing": "full_body",
+  "canvas": {
+    "width": 1024,
+    "height": 1600
+  },
+  "character": {
+    "sex": "male",
+    "outfit": {
+      "type": "suit"
+    },
+    "pose": {
+      "preset": "relaxed",
+      "turn": "side"
+    }
+  }
+}

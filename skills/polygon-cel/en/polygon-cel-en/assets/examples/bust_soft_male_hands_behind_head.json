@@ -1,0 +1,28 @@
+{
+ "style": "soft_illust",
+ "framing": "bust",
+ "background": {
+  "type": "sky"
+ },
+ "character": {
+  "gender": "male",
+  "head": {
+   "yaw": 12,
+   "roll": -4
+  },
+  "body": {
+   "pose": "hands_behind_head"
+  },
+  "expression": {
+   "mouth": "open_smile",
+   "eye_smile": 0.2
+  },
+  "outfit": {
+   "type": "tee",
+   "color": "#F2F2F0"
+  }
+ },
+ "canvas": {
+  "seed": 3
+ }
+}

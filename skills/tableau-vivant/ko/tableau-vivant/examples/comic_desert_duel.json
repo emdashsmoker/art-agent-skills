@@ -1,0 +1,80 @@
+{
+ "canvas": {
+  "aspect": "3:2",
+  "detail": "standard",
+  "seed": 31
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "desert",
+  "time": "golden_hour"
+ },
+ "figures": [
+  {
+   "name": "a",
+   "preset": "woman_athletic",
+   "pose": "fight_stance",
+   "outfit": "tactical",
+   "hair": {
+    "style": "ponytail",
+    "color": "black"
+   },
+   "expression": "determined",
+   "skin": "light",
+   "position": [
+    -0.85,
+    0,
+    0
+   ],
+   "facing": [
+    0.85,
+    -0.3
+   ]
+  },
+  {
+   "name": "b",
+   "preset": "man_athletic",
+   "pose": {
+    "preset": "fight_stance",
+    "head": {
+     "nod": 0
+    }
+   },
+   "outfit": "hoodie_jeans",
+   "hair": {
+    "style": "undercut",
+    "color": "dark_brown"
+   },
+   "expression": "angry",
+   "skin": "tan",
+   "position": [
+    0.85,
+    0,
+    0
+   ],
+   "facing": [
+    -0.85,
+    -0.3
+   ],
+   "colors": {
+    "hoodie": [
+     0.62,
+     0.12,
+     0.12
+    ]
+   }
+  }
+ ],
+ "camera": {
+  "fit": "people",
+  "yaw": 8,
+  "pitch": -14,
+  "fill": 0.8
+ },
+ "light": {
+  "preset": "rim",
+  "mood": "warm",
+  "rim": 0.6
+ },
+ "style": "comic"
+}

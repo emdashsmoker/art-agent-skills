@@ -1,0 +1,76 @@
+{
+  "canvas": [
+    1100,
+    1800
+  ],
+  "style": "illust",
+  "seed": 9,
+  "character": {
+    "gender": "male",
+    "head_turn": 0.5,
+    "head_tilt": -4,
+    "gaze": [
+      -0.35,
+      0.0
+    ],
+    "hair_style": "slicked",
+    "bangs": "swept_back",
+    "jaw_sharpness": 0.85,
+    "smile": 0.2
+  },
+  "figure": {
+    "pose": "lean",
+    "outfit": "suit",
+    "ground_shadow": 0.4,
+    "furniture_color": "#b9aea2"
+  },
+  "palette": {
+    "hair": "#241e1c",
+    "hair_shadow": "#100c0a",
+    "hair_light": "#c49a74",
+    "cloth": "#f4f2ee",
+    "cloth_shadow": "#c4bfb8",
+    "cloth2": "#2a2f3c",
+    "accent": "#8a2f3c",
+    "shoe": "#1c1a1e"
+  },
+  "placement": {
+    "head_height": 0.108,
+    "pelvis": [
+      0.55,
+      0.47
+    ]
+  },
+  "light": {
+    "azimuth": 60,
+    "elevation": 30
+  },
+  "background": [
+    {
+      "type": "sky",
+      "top": "#3b3f7a",
+      "bottom": "#f4a57a",
+      "horizon": 0.47
+    },
+    {
+      "type": "street",
+      "horizon": 0.47,
+      "time": "dusk",
+      "seed": 3,
+      "eye": 0.95,
+      "cars": 3,
+      "people": 3
+    }
+  ],
+  "ambient": {
+    "color": "#4a4470",
+    "opacity": 0.2,
+    "from": 0.6
+  },
+  "finish": {
+    "bloom": 0.35,
+    "shadow_tint": "#2a2458",
+    "highlight_tint": "#ffd9b0",
+    "tint_strength": 0.12
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "style": "illustration",
+  "framing": "upper_body",
+  "character": {
+    "pose": {
+      "preset": "chin_rest"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "subject": "nude",
+  "style": "illustration",
+  "canvas": {
+    "width": 1024,
+    "height": 1600
+  },
+  "nude": {
+    "pose": "venus"
+  }
+}

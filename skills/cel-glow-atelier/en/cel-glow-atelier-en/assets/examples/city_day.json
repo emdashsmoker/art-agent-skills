@@ -1,0 +1,43 @@
+{
+  "canvas": [
+    1500,
+    1000
+  ],
+  "style": "illust",
+  "subject": "none",
+  "seed": 2,
+  "light": {
+    "azimuth": 60,
+    "elevation": 30
+  },
+  "background": [
+    {
+      "type": "sky",
+      "top": "#5f9ad6",
+      "bottom": "#dbeaf7",
+      "horizon": 0.56
+    },
+    {
+      "type": "clouds",
+      "color": "#ffffff",
+      "shadow": "#b9c6dc",
+      "coverage": 0.38,
+      "top": 0.02,
+      "bottom": 0.42,
+      "seed": 4
+    },
+    {
+      "type": "street",
+      "horizon": 0.56,
+      "vanish_x": 0.5,
+      "time": "day",
+      "seed": 7,
+      "cars": 5,
+      "people": 8
+    }
+  ],
+  "finish": {
+    "bloom": 0.25,
+    "vignette": 0.2
+  }
+}

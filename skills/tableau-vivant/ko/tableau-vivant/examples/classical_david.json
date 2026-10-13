@@ -1,0 +1,62 @@
+{
+ "canvas": {
+  "aspect": "2:3",
+  "detail": "standard",
+  "seed": 9
+ },
+ "environment": {
+  "type": "studio",
+  "top": [
+   0.1,
+   0.09,
+   0.08
+  ],
+  "bottom": [
+   0.19,
+   0.15,
+   0.12
+  ],
+  "glow": [
+   0.4,
+   0.32,
+   0.24
+  ],
+  "floor_color": [
+   0.22,
+   0.17,
+   0.13
+  ]
+ },
+ "figures": [
+  {
+   "name": "david",
+   "preset": "man_classical",
+   "pose": "david",
+   "hair": {
+    "style": "curly",
+    "color": "brown",
+    "length_scale": 0.45
+   },
+   "outfit": "perizoma",
+   "expression": "serious",
+   "skin": "light",
+   "look": {
+    "iris_color": "brown",
+    "flesh_variation": 0.55
+   }
+  }
+ ],
+ "camera": {
+  "subject": "david",
+  "shot": "knee",
+  "yaw": -15,
+  "pitch": 2,
+  "fill": 0.9
+ },
+ "light": {
+  "preset": "rembrandt",
+  "mood": "old_master",
+  "ambient": 0.3
+ },
+ "style": "classical"
+}

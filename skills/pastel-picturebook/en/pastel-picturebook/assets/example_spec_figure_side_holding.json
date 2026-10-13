@@ -1,0 +1,32 @@
+{
+  "light": [
+    0.6,
+    -0.5,
+    0.62
+  ],
+  "pose": {
+    "head_center": [
+      0.5,
+      0.12
+    ],
+    "head_unit": 0.062
+  },
+  "figure": {
+    "view": "side",
+    "floor": {
+      "at_feet": true
+    },
+    "profile_pose": {
+      "arm": {
+        "upper": 8.0,
+        "fore": 130.0
+      },
+      "hand": "grip"
+    },
+    "holds": {
+      "near": {
+        "kind": "cup"
+      }
+    }
+  }
+}

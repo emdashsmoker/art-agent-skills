@@ -1,0 +1,7 @@
+{"style": "anime_cel", "framing": "waist", "canvas": {"seed": 12},
+ "character": {"head": {"yaw": -12, "roll": 4}, "body": {"pose": "wave", "hands": {"right": "open"}},
+   "expression": {"mouth": "open_smile", "blush": 0.4, "eye_smile": 0.2},
+   "hair": {"color": "#3A2A2E", "style": "bob", "bangs": "full"},
+   "eyes": {"color": "#B07A3A", "shape": "round"},
+   "outfit": {"type": "shirt", "color": "#F4F2EE", "bottom": "a_line_skirt", "bottom_color": "#4E5A78"}},
+ "background": {"type": "window"}}

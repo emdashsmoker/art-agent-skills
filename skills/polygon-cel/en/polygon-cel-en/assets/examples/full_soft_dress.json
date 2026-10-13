@@ -1,0 +1,5 @@
+{"style": "soft_illust", "framing": "full", "canvas": {"seed": 9},
+ "character": {"head": {"yaw": 10, "roll": -2}, "body": {"pose": "behind"},
+   "hair": {"color": "#5A3C38", "style": "long", "bangs": "full", "wave": 0.3},
+   "outfit": {"type": "offshoulder_dress", "color": "#7F9DC6", "shoes": "sneakers"}, "accessories": ["necklace"]},
+ "background": {"type": "sky"}}

@@ -1,0 +1,16 @@
+{
+  "style": "watercolor",
+  "framing": "upper_body",
+  "canvas": {
+    "width": 1024,
+    "height": 1280
+  },
+  "character": {
+    "outfit": {
+      "type": "lingerie"
+    },
+    "pose": {
+      "preset": "hair_touch"
+    }
+  }
+}

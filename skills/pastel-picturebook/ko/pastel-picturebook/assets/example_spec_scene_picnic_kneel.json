@@ -1,0 +1,103 @@
+{
+  "canvas": {
+    "width": 1600,
+    "height": 1200
+  },
+  "seed": 91,
+  "light": [
+    0.55,
+    -0.6,
+    0.6
+  ],
+  "pose": {
+    "head_center": [
+      0.47,
+      0.45
+    ],
+    "head_unit": 0.021,
+    "roll_deg": -4,
+    "horizon_drop": 0.036
+  },
+  "expression": "smile",
+  "look": {
+    "hair_style": "long",
+    "identity": 11,
+    "hair_color": "dark_brown"
+  },
+  "backdrop": {
+    "subject": "park",
+    "spec": {
+      "camera": {
+        "horizon_y": 0.45,
+        "eye_height": 100
+      },
+      "blanket": {
+        "x": 10,
+        "z": 300,
+        "width": 210,
+        "depth": 170,
+        "turn_deg": 8,
+        "check": 16
+      },
+      "basket": {
+        "x": 75,
+        "z": 285,
+        "turn_deg": -15
+      }
+    },
+    "place": "horizon"
+  },
+  "figure": {
+    "view": "side",
+    "floor": null,
+    "clothes": {
+      "dress": null,
+      "shoes": false,
+      "shirt": {
+        "ease": 0.08,
+        "neck_half": 0.6,
+        "neck_level": 0.2,
+        "hem_level": 4.4,
+        "sleeve": 1.2
+      },
+      "pants": {
+        "waist_level": 4.6,
+        "hem_drop": 0.2,
+        "leg_widths": [
+          1.0,
+          0.62,
+          0.5
+        ],
+        "length": 1.0
+      }
+    },
+    "profile_pose": {
+      "lean": 2.0,
+      "arch": 0.4,
+      "arm": {
+        "upper": 6.0,
+        "fore": 48.0
+      },
+      "hand": "relaxed",
+      "leg_near": {
+        "thigh": 70.0,
+        "shin": -90.0,
+        "foot": 172.0
+      },
+      "leg_far": {
+        "thigh": 68.0,
+        "shin": -91.0,
+        "foot": 172.0
+      }
+    }
+  },
+  "style": {
+    "palette": {
+      "cloth": {
+        "base": "#F6EFD9",
+        "shadow": "#D3C7A6",
+        "line": "#5E5640"
+      }
+    }
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "seed": 111,
+  "light": [
+    0.55,
+    -0.55,
+    0.62
+  ],
+  "table": {
+    "back_y": 0.47,
+    "front_y": 0.67
+  },
+  "cloth": {
+    "left": 0.06,
+    "right": 0.97,
+    "drop": 0.06,
+    "folds": 6
+  },
+  "wall_items": [
+    {
+      "kind": "window",
+      "x0": 0.1,
+      "x1": 0.52,
+      "y0": 0.06,
+      "y1": 0.4,
+      "block_top": 0.38,
+      "columns": 11,
+      "lit": 0.22
+    }
+  ],
+  "objects": [
+    {
+      "kind": "bottle",
+      "x": 0.7,
+      "base_y": 0.56,
+      "height": 0.33,
+      "radius": 0.042,
+      "group": "glass",
+      "gloss": 0.85,
+      "shininess": 90,
+      "label": {
+        "top": 0.45,
+        "bottom": 0.22
+      }
+    },
+    {
+      "kind": "can",
+      "x": 0.83,
+      "base_y": 0.6,
+      "radius": 0.038,
+      "height": 0.13
+    },
+    {
+      "kind": "tea_glass",
+      "x": 0.3,
+      "base_y": 0.6,
+      "radius": 0.042,
+      "height": 0.13,
+      "handle": "left"
+    },
+    {
+      "kind": "ashtray",
+      "x": 0.52,
+      "base_y": 0.635,
+      "radius": 0.085,
+      "butts": 3,
+      "lit": true,
+      "smoke": 1.4
+    },
+    {
+      "kind": "ball",
+      "x": 0.16,
+      "base_y": 0.64,
+      "rx": 0.036,
+      "ry": 0.033,
+      "group": "apple",
+      "stem": true,
+      "gloss": 0.4,
+      "shininess": 30
+    }
+  ],
+  "style": {
+    "palette": {
+      "wall": {
+        "top": "#2E3532",
+        "bottom": "#1C201E",
+        "glow": "#9A7A50"
+      },
+      "cloth": {
+        "base": "#D8D2C4",
+        "shadow": "#9C968A",
+        "line": "#4A463E",
+        "pattern": {
+          "kind": "check",
+          "color": "#6E8A9E",
+          "scale": 0.08,
+          "width": 0.3
+        }
+      },
+      "glass": {
+        "base": "#C9D6D8",
+        "shadow": "#7E9296",
+        "deep": "#4C5E62",
+        "light": "#FFFFFF",
+        "line": "#2E3A3C"
+      },
+      "label": {
+        "base": "#E8E2D2",
+        "shadow": "#A8A090",
+        "accent": "#B8342C",
+        "line": "#3A3630"
+      },
+      "ashtray": {
+        "base": "#8FA6A0",
+        "shadow": "#4E625C",
+        "deep": "#2E3C38",
+        "light": "#E6F2EE",
+        "line": "#1E2A26",
+        "ash": "#7A7A78"
+      },
+      "tea": {
+        "base": "#8A3E14",
+        "shadow": "#4A1E08",
+        "light": "#F2C890",
+        "line": "#2A1206"
+      },
+      "holder": {
+        "base": "#B8B2A4",
+        "shadow": "#6E685C",
+        "light": "#F4F0E6",
+        "line": "#2E2A24"
+      },
+      "can": {
+        "base": "#B8BEC4",
+        "shadow": "#6A7078",
+        "light": "#FFFFFF",
+        "line": "#2A2E34",
+        "band": "#2E5E9A"
+      },
+      "window": {
+        "sky_top": "#0B1020",
+        "sky_low": "#2A3046",
+        "wall": "#3A3E48",
+        "lit": "#FFC46E",
+        "dark": "#1A1E28",
+        "frame": "#C9C4B8",
+        "frame_shadow": "#8E897E",
+        "line": "#22201C"
+      }
+    }
+  }
+}

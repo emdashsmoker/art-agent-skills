@@ -1,0 +1,49 @@
+{
+ "subject": "still_life",
+ "style": "anime_cel",
+ "canvas": {
+  "seed": 5
+ },
+ "still_life": {
+  "table": "#D8D2C8",
+  "wall": "#DCE2E8",
+  "cloth": null,
+  "objects": [
+   {
+    "type": "monitor",
+    "x": 0.42,
+    "depth": 0.05
+   },
+   {
+    "type": "lamp",
+    "x": 0.8,
+    "depth": 0.1
+   },
+   {
+    "type": "plant",
+    "x": 0.12,
+    "depth": 0.12
+   },
+   {
+    "type": "keyboard",
+    "x": 0.42,
+    "depth": 0.55
+   },
+   {
+    "type": "mouse",
+    "x": 0.66,
+    "depth": 0.58
+   },
+   {
+    "type": "mug",
+    "x": 0.82,
+    "depth": 0.5
+   },
+   {
+    "type": "phone",
+    "x": 0.18,
+    "depth": 0.7
+   }
+  ]
+ }
+}

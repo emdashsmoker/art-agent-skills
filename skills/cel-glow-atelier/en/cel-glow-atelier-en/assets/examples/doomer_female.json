@@ -1,0 +1,150 @@
+{
+ "canvas": [
+  1500,
+  1100
+ ],
+ "style": "illust",
+ "seed": 52,
+ "character": {
+  "gender": "female",
+  "hair_style": "long_straight",
+  "bangs": "see_through",
+  "smile": 0.0,
+  "eyelid_open": 0.85,
+  "hair_seed": 6
+ },
+ "figure": {
+  "pose": "side_walk",
+  "outfit": "coat_turtleneck",
+  "facing": "left",
+  "ground_shadow": 0.35
+ },
+ "palette": {
+  "hair": "#16161c",
+  "hair_shadow": "#08080c",
+  "hair_light": "#9a8ca8",
+  "skin": "#f2ddd2",
+  "skin_shadow": "#c9a3a0",
+  "cloth": "#3a3a44",
+  "cloth_shadow": "#22222a",
+  "cloth2": "#22232a",
+  "outer": "#26262c",
+  "shoe": "#16161a"
+ },
+ "placement": {
+  "head_height": 0.095,
+  "pelvis": [
+   0.64,
+   0.56
+  ]
+ },
+ "light": {
+  "azimuth": 155,
+  "elevation": 18
+ },
+ "background": [
+  {
+   "type": "sky",
+   "top": "#3a4258",
+   "bottom": "#c49c94",
+   "horizon": 0.7
+  },
+  {
+   "type": "ground",
+   "top": 0.7,
+   "color": "#b9bdc8",
+   "far_color": "#9a9eae",
+   "roll": 0.008
+  },
+  {
+   "type": "panel_blocks",
+   "time": "dusk",
+   "vanish": [
+    0.2,
+    0.66
+   ],
+   "seed": 12,
+   "blocks": [
+    {
+     "x": [
+      0.02,
+      0.36
+     ],
+     "base": 0.7,
+     "top": 0.36,
+     "floors": 9,
+     "haze": 0.55
+    },
+    {
+     "x": [
+      0.4,
+      1.05
+     ],
+     "base": 0.74,
+     "top": 0.14,
+     "floors": 9,
+     "haze": 0.2,
+     "side": -0.06
+    }
+   ]
+  },
+  {
+   "type": "bare_tree",
+   "base": [
+    0.18,
+    0.92
+   ],
+   "height": 0.62,
+   "birch": true,
+   "seed": 4
+  },
+  {
+   "type": "bare_tree",
+   "base": [
+    0.3,
+    0.84
+   ],
+   "height": 0.45,
+   "color": "#2a262c",
+   "seed": 8
+  },
+  {
+   "type": "fog",
+   "top": 0.5,
+   "bottom": 0.82,
+   "color": "#8c8494",
+   "opacity": 0.35
+  },
+  {
+   "type": "snow",
+   "count": 500,
+   "size": [
+    0.0015,
+    0.006
+   ],
+   "seed": 5
+  }
+ ],
+ "foreground": [
+  {
+   "type": "snow",
+   "count": 60,
+   "size": [
+    0.003,
+    0.011
+   ],
+   "seed": 11
+  }
+ ],
+ "style_overrides": {
+  "rim_light": 0.7
+ },
+ "ambient": {
+  "color": "#4a4458",
+  "opacity": 0.2,
+  "from": 0.6
+ },
+ "finish": {
+  "preset": "doomer"
+ }
+}

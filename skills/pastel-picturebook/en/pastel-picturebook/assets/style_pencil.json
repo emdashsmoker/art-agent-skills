@@ -1,0 +1,33 @@
+{
+  "name": "pencil",
+  "base": "illust",
+  "shading": "soft",
+  "line_scale": 0.8,
+  "soft_blur": 0.04,
+  "finish": {
+    "kind": "pencil",
+    "contrast": 1.0,
+    "smudge": 0.3,
+    "spacing": 6.0,
+    "angles": [
+      45,
+      -40,
+      8
+    ],
+    "thresholds": [
+      0.18,
+      0.42,
+      0.66
+    ],
+    "hatch": 0.6,
+    "line_gain": 5.0,
+    "paper": 0.04,
+    "paper_color": "#F6F3EC",
+    "lead_color": "#33343B",
+    "gamma": 1.35,
+    "levels": [
+      2,
+      98
+    ]
+  }
+}

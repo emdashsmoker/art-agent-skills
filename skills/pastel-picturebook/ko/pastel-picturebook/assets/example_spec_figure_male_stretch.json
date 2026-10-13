@@ -1,0 +1,46 @@
+{
+  "sex": "male",
+  "seed": 13,
+  "expression": {
+    "name": "smile",
+    "amount": 0.5
+  },
+  "pose": {
+    "head_center": [
+      0.5,
+      0.2
+    ],
+    "head_unit": 0.05,
+    "yaw_deg": 4
+  },
+  "figure": {
+    "floor": {
+      "y": 0.93
+    },
+    "pose": {
+      "arm_left": {
+        "reach": {
+          "mark": "crown",
+          "offset": [
+            -0.15,
+            -0.6
+          ]
+        },
+        "bend": "out"
+      },
+      "arm_right": {
+        "reach": {
+          "mark": "crown",
+          "offset": [
+            0.15,
+            -0.6
+          ]
+        },
+        "bend": "out",
+        "over": true
+      },
+      "hand_left": "relaxed",
+      "hand_right": "relaxed"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+ "canvas": {
+  "aspect": "16:9",
+  "detail": "standard",
+  "seed": 12
+ },
+ "environment": {
+  "type": "landscape",
+  "preset": "city",
+  "time": "night",
+  "clouds": 0.35
+ },
+ "figures": [
+  {
+   "name": "major",
+   "preset": "woman_athletic",
+   "pose": {
+    "preset": "fight_stance",
+    "head": {
+     "turn": 24
+    }
+   },
+   "hair": {
+    "style": "bob",
+    "bangs": "wispy",
+    "part": "left",
+    "color": "purple",
+    "wind": [
+     0.3,
+     0,
+     0
+    ]
+   },
+   "outfit": "tactical",
+   "expression": "determined",
+   "skin": "fair",
+   "look": {
+    "iris_color": "red"
+   },
+   "facing": -20,
+   "position": [
+    0.8,
+    2.0,
+    0
+   ]
+  }
+ ],
+ "props": [],
+ "camera": {
+  "subject": "major",
+  "shot": "knee",
+  "yaw": 62,
+  "pitch": -5,
+  "offset": [
+   0.16,
+   0.0
+  ],
+  "fov": 36
+ },
+ "light": {
+  "preset": "rim",
+  "mood": "neon",
+  "azimuth": 140,
+  "elevation": 25,
+  "ambient": 0.5
+ },
+ "style": "anime_film"
+}

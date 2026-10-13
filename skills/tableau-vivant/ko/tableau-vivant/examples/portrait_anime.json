@@ -1,0 +1,73 @@
+{
+ "canvas": {
+  "aspect": "4:5",
+  "detail": "standard",
+  "seed": 7
+ },
+ "environment": {
+  "type": "studio",
+  "top": [
+   0.78,
+   0.86,
+   0.95
+  ],
+  "bottom": [
+   0.93,
+   0.88,
+   0.9
+  ]
+ },
+ "figures": [
+  {
+   "name": "a",
+   "preset": "woman_anime",
+   "pose": {
+    "preset": "stand",
+    "head": {
+     "tilt": -8,
+     "turn": 12
+    },
+    "torso": {
+     "twist": -12
+    },
+    "reach.R": {
+     "to": "heart",
+     "elbow": "down",
+     "offset": 0.04,
+     "lay": true
+    },
+    "hand.R": "rest"
+   },
+   "hair": {
+    "style": "bob",
+    "bangs": "full",
+    "part": "none",
+    "color": "black"
+   },
+   "outfit": "sweater_skirt",
+   "colors": {
+    "sweater": [
+     0.93,
+     0.9,
+     0.84
+    ]
+   },
+   "expression": "soft_smile",
+   "skin": "fair",
+   "look": {
+    "iris_color": "violet"
+   }
+  }
+ ],
+ "camera": {
+  "subject": "a",
+  "shot": "bust",
+  "yaw": -12,
+  "pitch": 2
+ },
+ "light": {
+  "preset": "loop",
+  "mood": "pastel"
+ },
+ "style": "anime"
+}

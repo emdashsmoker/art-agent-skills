@@ -1,0 +1,80 @@
+{
+  "spec": {
+    "canvas": {
+      "width": 1600,
+      "height": 1200
+    },
+    "seed": 14,
+    "light": [
+      0.5,
+      -0.6,
+      0.62
+    ],
+    "horizon_y": 0.44,
+    "sky": {
+      "sun_x": 0.78,
+      "sun_y": 0.14,
+      "sun_r": 0.028,
+      "clouds": 0.42
+    },
+    "sea": {
+      "shore_y": 0.62,
+      "waves": 80,
+      "glitter": 160
+    },
+    "sand": {
+      "ripples": 40
+    },
+    "palms": [
+      [
+        0.93,
+        0.98,
+        0.62,
+        -0.22
+      ]
+    ]
+  },
+  "style": {
+    "palette": {
+      "sky": {
+        "top": "#3F86D2",
+        "middle": "#86BDEB",
+        "horizon": "#DCEFF8",
+        "glow": "#FFF6D8",
+        "sun": "#FFFDF2",
+        "cloud": "#FFFFFF",
+        "cloud_lit": "#FFF8EC",
+        "cloud_shadow": "#B3C9E0",
+        "haze": "#EAF4FA"
+      },
+      "sea": {
+        "deep": "#1F5E9C",
+        "shallow": "#4FC2C9",
+        "light": "#F4FBFF",
+        "glitter": "#FFFFF4",
+        "foam": "#FFFFFF"
+      },
+      "sand": {
+        "far": "#EED9AE",
+        "near": "#E2C48E",
+        "wet": "#C9A877",
+        "shadow": "#B08E5E"
+      },
+      "palm": {
+        "trunk": "#9C7A55",
+        "trunk_shadow": "#6B5034",
+        "leaf": "#3E8A4E",
+        "leaf_shadow": "#245A33",
+        "line": "#1C3322"
+      }
+    }
+  },
+  "style_paint": {
+    "palette": {
+      "sea": {
+        "deep": "#1D4F80",
+        "shallow": "#3FA8B0"
+      }
+    }
+  }
+}

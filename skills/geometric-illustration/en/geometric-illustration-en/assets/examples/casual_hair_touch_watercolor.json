@@ -1,0 +1,17 @@
+{
+  "style": "watercolor",
+  "framing": "full_body",
+  "canvas": {
+    "width": 1024,
+    "height": 1600
+  },
+  "character": {
+    "pose": {
+      "preset": "hair_touch"
+    }
+  },
+  "palette": {
+    "cloth": "#ECE6DA",
+    "skirt": "#5D6B7C"
+  }
+}

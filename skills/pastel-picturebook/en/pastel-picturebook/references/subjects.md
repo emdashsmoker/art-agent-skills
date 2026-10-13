@@ -419,7 +419,7 @@ Props shared by several figures. The scene measures the figures to set size and 
 |---|---|---|
 | `glass` | `drink` (drink colour, default "#A3263A" red wine), `size` | A wine glass held by the stem. A clear bowl and wine above the fist, the foot below |
 | `phone` | `turn` (tilt in degrees), `size` | A phone seen from the back (two camera lenses). The hand taking a selfie |
-| `cigarette` | `point` (1 or -1, direction of the lit end), `lit`, `smoke`, `size` | A cigarette held between the index and middle fingers, with smoke. Hand pose `relaxed`. It lies over the fingers, so the hand is not repainted over it |
+| `cigarette` | `point` (1 or -1, direction of the lit end), `lit`, `smoke`, `size` | A cigarette held between the index and middle fingers, with smoke. Hand pose `relaxed`. The four fingers are laid back over it, so it comes out from between them |
 
 - Colours: `style.palette.glass` (`base` glass tint, `light` reflection, `line`, `drink`), `style.palette.phone` (`base`, `shadow`, `line`, `lens`)
 

@@ -7,7 +7,7 @@ round the far side) stays hidden. Where the hand grips decides where the object 
   book  hanging, its top edge at the finger roots, so the fingers lie over the cover
   glass a wine glass held by its stem: the bowl with its drink above the fist, the foot below it
   phone a phone held up for a photo: its back toward us, the camera lenses in a top corner
-  cigarette  across the index and middle fingers, lit, with its smoke (smoking.held_cigarette)
+  cigarette  between the index and middle fingers, behind them, lit, with its smoke (smoking.held_cigarette)
 """
 import cv2
 import numpy as np
@@ -244,9 +244,16 @@ def paint_held(scene, hands, items, unit, forearms=None):
             continue
         hand, kind = hands[side], item["kind"]
         if kind == "cigarette":
-            # Held across the fingers, it lies in front of them: nothing of the hand is laid back over it.
+            # Pinched between the index and middle fingers: the four fingers are laid back over it, so
+            # it reads as coming out from between them instead of floating in front of the hand.
             import smoking
-            total = np.maximum(total, smoking.held_cigarette(scene, hand, unit, item))
+            snapshot = scene.image.copy()
+            mask = smoking.held_cigarette(scene, hand, unit, item)
+            front = np.clip(np.maximum.reduce([hand.fingers[name].mask for name in FINGERS_OVER]), 0.0, 1.0)
+            over(scene.image, snapshot, front)
+            near = cv2.dilate((mask > 0.5).astype(np.uint8), np.ones((5, 5), np.uint8)).astype(np.float32)
+            kit.ink_edges(scene, front, 1.8, clip=near)
+            total = np.maximum(total, mask * (1.0 - front))
             continue
         snapshot = scene.image.copy()
         point = anchor(hand, kind) + np.array(item.get("offset", (0.0, 0.0))) * unit

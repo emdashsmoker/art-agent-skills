@@ -2,7 +2,7 @@
 
 ## This project
 
-tableau-vivant, including its English edition tableau-vivant-en
+tableau-vivant, including its English edition
 
 Copyright (C) 2026 Em Dash Smoker
 

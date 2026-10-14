@@ -1,6 +1,6 @@
 # Notice
 
-maquette-painter (including its English edition, maquette-painter-en)
+maquette-painter (including its English edition)
 Copyright (C) 2026 Em Dash Smoker
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.

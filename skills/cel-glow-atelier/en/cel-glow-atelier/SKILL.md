@@ -1,5 +1,5 @@
 ---
-name: cel-glow-atelier-en
+name: cel-glow-atelier
 description: Illustration atelier painting with Python alone (numpy, OpenCV), no image model. Parametric rigs shape the forms and one light vector drives all shading through masks, in three flavors - crisp cel-shaded anime with angel-ring hair, soft illustration with airbrush, rim light and bloom, and oil painting rebuilt from brush strokes. Paints women and men as busts and full figures (any view, 20 outfits, 12 hair styles, face presets, 6 skin tones), two-shots, city nights, snow, landscapes, interiors, objects and still lifes under one light. References - process.md (process), portrait-spec.md (character keys), figure-spec.md (full body, poses, outfits, two-shots), scenery.md (scenes), style-guide.md (palettes, lighting), paintkit-api.md (drawing API). Use when the user asks to draw with code, draw an illustration, character, couple, landscape, city night view, background or still life, wants anime, illustration or oil painting style, or needs a picture without a diffusion model. Not for charts, diagrams or logos.
 license: GPL-3.0-or-later with an output exception. Terms in LICENSE and THIRD_PARTY_NOTICES.md
 ---

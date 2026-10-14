@@ -40,13 +40,13 @@ skills/vinyl-cel/
 ├── vinyl-cel-ko.skill    Korean install package
 ├── vinyl-cel-en.skill    English install package
 ├── ko/vinyl-cel/         Korean source
-├── en/vinyl-cel-en/      English source
+├── en/vinyl-cel/         English source
 └── demo/                 sample pictures
 ```
 
 - A `.skill` file is a zip archive of the skill folder. Where only `.zip` uploads are accepted, rename the extension to `.zip`.
 - To install from source, copy the folder named after the skill (for example `ko/vinyl-cel/`) into your agent's skills folder.
-- Where the Korean and English editions share one skill name, only one of them can be installed at a time.
+- The Korean and English editions share one skill name, so only one of them can be installed at a time.
 
 ## Limitations
 
@@ -108,13 +108,13 @@ skills/vinyl-cel/
 ├── vinyl-cel-ko.skill    한국어판 설치용 패키지
 ├── vinyl-cel-en.skill    영어판 설치용 패키지
 ├── ko/vinyl-cel/         한국어판 소스
-├── en/vinyl-cel-en/      영어판 소스
+├── en/vinyl-cel/         영어판 소스
 └── demo/                 예시 그림
 ```
 
 - `.skill` 파일은 스킬 폴더를 묶은 zip 파일입니다. `.zip` 파일만 올릴 수 있는 환경에서는 확장자를 `.zip`으로 바꿔 업로드하면 됩니다.
 - 소스로 설치할 때는 스킬 이름과 같은 폴더(예를 들어 `ko/vinyl-cel/`)를 에이전트의 스킬 폴더에 복사합니다.
-- 스킬 이름이 같은 한국어판과 영어판은 둘 중 하나만 설치할 수 있습니다.
+- 한국어판과 영어판은 스킬 이름이 같아서 둘 중 하나만 설치할 수 있습니다.
 
 ## 한계
 

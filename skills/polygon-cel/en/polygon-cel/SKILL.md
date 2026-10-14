@@ -1,10 +1,10 @@
 ---
-name: polygon-cel-en
-description: Draws illustrations shaped as polygons and painted as cels. Formulas build every form (head-height proportions, 3D hand skeletons, solids of revolution, perspective streets, fractal mountains) with no diffusion model, so one JSON spec always renders the same picture. The base look is bold colored line art, crisp two-tone cel shading, volume shading that rolls off the edges, and a calm muted palette; scenes can also be finished as soft illustration, oil paint, or watercolor. Draws young adult women and men (closeup to wide shot, any view, sitting, lying, holding props, two-shots, groups), still lifes, landscapes, streets, and interiors. Spec fields are in references/spec.md, process principles and the defect table in references/process.md, extension recipes in references/extending.md. Use when the user says '/polygon-cel-en', 'draw with code', 'anime character', 'couple illustration', 'still life', 'cityscape', 'cel shaded', 'watercolor style', or needs a reproducible picture without a GPU or an image model.
+name: polygon-cel
+description: Draws illustrations shaped as polygons and painted as cels. Formulas build every form (head-height proportions, 3D hand skeletons, solids of revolution, perspective streets, fractal mountains) with no diffusion model, so one JSON spec always renders the same picture. The base look is bold colored line art, crisp two-tone cel shading, volume shading that rolls off the edges, and a calm muted palette; scenes can also be finished as soft illustration, oil paint, or watercolor. Draws young adult women and men (closeup to wide shot, any view, sitting, lying, holding props, two-shots, groups), still lifes, landscapes, streets, and interiors. Spec fields are in references/spec.md, process principles and the defect table in references/process.md, extension recipes in references/extending.md. Use when the user says '/polygon-cel', 'draw with code', 'anime character', 'couple illustration', 'still life', 'cityscape', 'cel shaded', 'watercolor style', or needs a reproducible picture without a GPU or an image model.
 license: GPL-3.0-or-later (full text in LICENSE, output permission and dependency notices in THIRD_PARTY_NOTICES.md)
 ---
 
-# polygon-cel-en
+# polygon-cel
 
 ## Translation notice
 - This skill is an English translation of the Korean original (polygon-cel)

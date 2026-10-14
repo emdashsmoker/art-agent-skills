@@ -18,11 +18,11 @@ Additional permission under GNU GPL version 3 section 7:
 
 Images produced by running clay-cel-canvas, or by running a program that uses it, are not covered by the GNU General Public License. Whoever produces such an image may use, modify, distribute, sublicense and sell it under terms of their choice, including commercial and proprietary terms. This permission also applies when the image shows faces, hairstyles, clothing, poses or other designs drawn from the templates of clay-cel-canvas.
 
-This permission covers the images only. The code, documents and evals of clay-cel-canvas stay under the GNU General Public License.
+This permission covers the images only. The code and documents of clay-cel-canvas stay under the GNU General Public License.
 
 ## Bundled third-party material
 
-None. All code, documents and evals in this skill were written for it. The skill bundles no third-party source code, fonts, images or data.
+None. All code and documents in this skill were written for it. The skill bundles no third-party source code, fonts, images or data.
 
 ## Runtime dependencies
 

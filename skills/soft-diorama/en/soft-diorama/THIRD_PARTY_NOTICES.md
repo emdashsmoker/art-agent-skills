@@ -1,6 +1,6 @@
 # Third-Party Notices
 
-soft-diorama-en, the English edition of soft-diorama, is free software licensed under the GNU General Public License, version 3 or (at your option) any later version. The full license text is in `LICENSE`. The copyright notice and the exception for generated images are in `NOTICE.md`.
+soft-diorama is free software licensed under the GNU General Public License, version 3 or (at your option) any later version. The full license text is in `LICENSE`. The copyright notice and the exception for generated images are in `NOTICE.md`.
 
 This file lists the third-party software and published work the skill depends on. The repository contains none of their code or binaries.
 

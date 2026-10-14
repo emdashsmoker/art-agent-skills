@@ -2,7 +2,7 @@
 
 ## Project license
 
-Cel Glow Atelier, in its Korean edition (`cel-glow-atelier`) and its English edition (`cel-glow-atelier-en`).
+Cel Glow Atelier, in its Korean and English editions (`cel-glow-atelier`).
 
 Copyright (C) 2026 Em Dash Smoker
 

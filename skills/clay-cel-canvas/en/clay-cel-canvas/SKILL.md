@@ -1,10 +1,10 @@
 ---
-name: clay-cel-canvas-en
-description: "Code-sculpted, cel-painted pictures, no image model. A 3-D clay mannequin sets proportion, pose and shadow; 2-D anime faces sit on it. Layers follow a painter's order and every render is checked by eye. Three flavours: anime (cel shading, bloom), illustration (paper tooth, print grain), painterly (brush strokes, impasto), plus an optional mood grade. Draws sharp-jawed characters, clothes and wind-blown skirts, two-shots, hair and face templates, props, still life, landscapes and perspective cities. References: api.md (engine), figure.md (faces, hair, anatomy, mannequin), wardrobe.md (clothes, poses, places), styles.md (styles, mood), scenery.md (nature), city.md (streets), still-life.md (objects). Use whenever the user asks for a picture: '/clay-cel-canvas-en', 'draw with code', 'anime-style picture', 'illustration', 'draw a character', 'full body', 'figure drawing', 'two people', 'still life', 'landscape', 'cityscape'. Also when no image API exists. Not for charts, diagrams, UI mockups, icons or logos."
+name: clay-cel-canvas
+description: "Code-sculpted, cel-painted pictures, no image model. A 3-D clay mannequin sets proportion, pose and shadow; 2-D anime faces sit on it. Layers follow a painter's order and every render is checked by eye. Three flavours: anime (cel shading, bloom), illustration (paper tooth, print grain), painterly (brush strokes, impasto), plus an optional mood grade. Draws sharp-jawed characters, clothes and wind-blown skirts, two-shots, hair and face templates, props, still life, landscapes and perspective cities. References: api.md (engine), figure.md (faces, hair, anatomy, mannequin), wardrobe.md (clothes, poses, places), styles.md (styles, mood), scenery.md (nature), city.md (streets), still-life.md (objects). Use whenever the user asks for a picture: '/clay-cel-canvas', 'draw with code', 'anime-style picture', 'illustration', 'draw a character', 'full body', 'figure drawing', 'two people', 'still life', 'landscape', 'cityscape'. Also when no image API exists. Not for charts, diagrams, UI mockups, icons or logos."
 license: GPL-3.0-or-later with an output exception. Terms in LICENSE and THIRD_PARTY_NOTICES.md
 ---
 
-# clay-cel-canvas-en
+# clay-cel-canvas
 
 > Translation notice: this English edition was translated from the Korean original (`clay-cel-canvas`). Its performance, logic and behaviour may differ from what the original intends.
 

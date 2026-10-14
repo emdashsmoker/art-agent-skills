@@ -1,6 +1,6 @@
 # Third-Party Notices
 
-geometric-illustration-en (English edition of geometric-illustration)
+geometric-illustration
 Copyright (C) 2026 Em Dash Smoker
 
 This program is free software: you can redistribute it and/or modify it under the terms of the

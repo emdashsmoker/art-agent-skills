@@ -1,10 +1,10 @@
 ---
-name: tableau-vivant-en
-description: "Draws pictures with code: build a stage, pose people on it, then paint the scene. A parametric human body with correct hands and faces is posed, dressed and placed with props in 3D rooms, cities or landscapes, then painted in many media, from anime cel, manga and watercolor to ukiyo-e, oil, impressionism and charcoal. The results taste of a tableau vivant: smooth skin, crisp silhouettes, poses held as if breath were stopped, stage-like light, deliberate composition; the same spec and seed give the same picture. Use whenever asked to draw or paint people, scenes or still lifes in a style or art movement, on '/tableau-vivant-en' or 'draw with code', or where no image API exists. Not for charts, diagrams, UI mockups, logos or photo editing. References: references/planning.md (brief), references/spec.md (fields), references/figures.md (bodies, poses, outfits, pairs, groups), references/scenes.md (settings, props, camera, light), references/styles.md (styles, fixes), references/extending.md (extending, limits)."
+name: tableau-vivant
+description: "Draws pictures with code: build a stage, pose people on it, then paint the scene. A parametric human body with correct hands and faces is posed, dressed and placed with props in 3D rooms, cities or landscapes, then painted in many media, from anime cel, manga and watercolor to ukiyo-e, oil, impressionism and charcoal. The results taste of a tableau vivant: smooth skin, crisp silhouettes, poses held as if breath were stopped, stage-like light, deliberate composition; the same spec and seed give the same picture. Use whenever asked to draw or paint people, scenes or still lifes in a style or art movement, on '/tableau-vivant' or 'draw with code', or where no image API exists. Not for charts, diagrams, UI mockups, logos or photo editing. References: references/planning.md (brief), references/spec.md (fields), references/figures.md (bodies, poses, outfits, pairs, groups), references/scenes.md (settings, props, camera, light), references/styles.md (styles, fixes), references/extending.md (extending, limits)."
 license: GPL-3.0-or-later with an output exception. Terms in LICENSE and THIRD_PARTY_NOTICES.md
 ---
 
-# tableau-vivant-en
+# tableau-vivant
 
 > **Translation notice.** This skill is an English translation of the Korean original `tableau-vivant`. Meaning can shift in translation, so the logic, behaviour and performance of this version may differ from what the original intends.
 

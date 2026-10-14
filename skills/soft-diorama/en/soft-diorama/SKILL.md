@@ -1,10 +1,10 @@
 ---
-name: soft-diorama-en
+name: soft-diorama
 description: English edition of soft-diorama. Sculpts PNG pictures from Python code alone. Lines and hair are ribbons that swell and thin, cel shadows are crescents, bodies swell with soft volume shading, and scenes stack from back to front. The result tastes like a small stage set where smooth, doll-like figures stand among simple geometric props, each scene a quiet, paused moment. Anime, illustration, watercolor and oil finishes. A 360-degree adult full-body rig and a bust rig give poses, two-shots, groups, 24 hairstyles, 8 expressions and everyday to winter clothes. Also still lifes, objects, landscapes, perspective cities and a winter-night mood preset. References are primitives.md (shapes), api.md (functions), styles.md (finishes, fixes), figure.md (face, hair), fullbody.md (body, poses, clothes), objects.md (objects), city.md (perspective), doomer.md (winter-night mood). Use it for drawings, illustrations, characters and scenes made with code. Charts, diagrams, UI mockups and logos are out of scope.
 license: GPL-3.0-or-later with an exception for generated images (see NOTICE.md)
 ---
 
-# soft-diorama-en
+# soft-diorama
 
 A skill that paints with code. The steps of drawing become function calls, and each render is checked by eye and refined.
 

@@ -1,10 +1,10 @@
 ---
-name: maquette-painter-en
+name: maquette-painter
 description: "Paints like an artist working from a lit maquette: builds figures and objects as 3D models, lights them with cast shadows, then paints them in 34 styles, from anime cel and watercolour to oil, ink, ukiyo-e and doomer. Pure Python, no diffusion models. Jointed mannequin figures keep hands and faces intact, and a seed repeats the picture. Results show clear form and shading, tidy and quiet. Model and paint are separate, so any scene can be repainted in another style. Outputs PNG figures, duos, folk dress, landscapes, streets, interiors, still lifes, weather and stock art. Use it whenever the user asks to draw, paint or illustrate (portrait, character, landscape, still life, wallpaper, poster, cover) or mentions 'maquette-painter'. Not for charts, diagrams, UI mock-ups or photo editing. References: figure.md (figures, poses, clothing), scenery-objects.md (landscape, city, interiors, objects), styles.md (styles, lights, media), workflow.md (planning), api.md (low-level drawing), critique.md (review and fixes)."
 license: GPL-3.0-or-later. Generated images are free to use under the additional permission in NOTICE.md
 ---
 
-# maquette-painter-en
+# maquette-painter
 
 A maquette (a small working model) built in code. Build figures and objects as 3D forms to fix the structure (what stands where), light them, then lay on the medium (how it is painted).
 

@@ -1,6 +1,6 @@
 # Notice
 
-soft-diorama-en, the English edition of soft-diorama, a skill that paints soft, diorama-like pictures with Python code alone.
+soft-diorama, a skill that paints soft, diorama-like pictures with Python code alone.
 Copyright (C) 2026 Em Dash Smoker
 
 This program is free software: you can redistribute it and/or modify

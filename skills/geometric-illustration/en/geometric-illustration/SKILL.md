@@ -1,5 +1,5 @@
 ---
-name: geometric-illustration-en
+name: geometric-illustration
 description: "Draws illustrations with numpy and OpenCV alone: sphere-and-cone mannequins, a one-point pinhole camera and flat-faced props, staged like hand drawing (construction, line art, flats, shading, finish) with no diffusion model. The flavor is quiet geometry: crisp ink silhouettes, calm navy and blue-gray grounds, a few amber window lights, one key light, figures holding a pose. Renders men and women (bust to wide shot, groups of 2-3), streets drawn into a vanishing point, layered landscapes and tabletop still lifes in anime cel, soft illustration, oil or watercolor with color-grade looks, reproducibly from one JSON spec. Spec fields: references/spec-reference.md. Modules and extension: references/pipeline.md. Body proportions and form checks: references/anatomy.md. Styles and color grading: references/styles.md. Use for 'draw with code', 'procedural anime character', 'night city in code', 'still life in code', and any portrait or background request with no image generation tool."
 license: GPL-3.0-or-later. Rendered images are not covered by the GPL (additional permission in THIRD_PARTY_NOTICES.md). Complete terms in LICENSE
 ---

@@ -1,10 +1,10 @@
 ---
-name: vinyl-cel-en
-description: A code-only drawing skill that paints round, smooth, vinyl-figure-like people and objects with cel shading and coloured line art. Spheres, ellipsoids and signed distance functions lit from a depth map make PNG dioramas that look like stage sets open at the front. Finishes are anime, illust (soft shading, paper grain) or painterly (layered brushwork), with optional film-like colour grades. Only numpy and opencv are used, so the same seed gives the same picture. It covers portraits, 3D figures from any angle, modern objects, interiors, snowy night streets, landscapes, cities and still lifes. References are references/subjects.md (subjects and limits), references/pipeline.md (process and design brief), references/api.md (functions), references/styles.md (style constants) and references/qa.md (review and fixes). Use it when asked to draw with code or without a diffusion model, for figure-like cel art, dioramas, turnarounds, pose or outfit sheets, or "/vinyl-cel-en". Not for charts, diagrams, icons or logos.
+name: vinyl-cel
+description: A code-only drawing skill that paints round, smooth, vinyl-figure-like people and objects with cel shading and coloured line art. Spheres, ellipsoids and signed distance functions lit from a depth map make PNG dioramas that look like stage sets open at the front. Finishes are anime, illust (soft shading, paper grain) or painterly (layered brushwork), with optional film-like colour grades. Only numpy and opencv are used, so the same seed gives the same picture. It covers portraits, 3D figures from any angle, modern objects, interiors, snowy night streets, landscapes, cities and still lifes. References are references/subjects.md (subjects and limits), references/pipeline.md (process and design brief), references/api.md (functions), references/styles.md (style constants) and references/qa.md (review and fixes). Use it when asked to draw with code or without a diffusion model, for figure-like cel art, dioramas, turnarounds, pose or outfit sheets, or "/vinyl-cel". Not for charts, diagrams, icons or logos.
 license: GPL-3.0-or-later, Copyright (C) 2026 Em Dash Smoker. Images rendered with the skill are free of GPL conditions (output exception). Terms in LICENSE and THIRD_PARTY_NOTICES.md
 ---
 
-# Vinyl Cel (vinyl-cel-en)
+# Vinyl Cel (vinyl-cel)
 
 > (Translation notice) This skill is an English translation of the Korean original `vinyl-cel`. The instructions were reworded during translation, so the way a model reads and follows them, and the resulting logic, behaviour and output quality, may differ from the original. The code, example scenes and reference images are the same files as in the original.
 

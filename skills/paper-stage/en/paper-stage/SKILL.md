@@ -1,10 +1,10 @@
 ---
-name: paper-stage-en
-description: "A code-only drawing skill that paints like a cut-paper stage. Curves are cut into masks and stacked back to front. Inflated height maps give each piece a soft, plump volume. Figures stand among sets, props and stage lights like quietly directed actors. Glow and film grain finish each picture as anime, illustration or painterly art. Pure Python, no image generator or 3D engine. Covers portraits, full figures, two-shots, group shots, scenes, figure studies, still life, cities, landscapes and animals. References: drawing-process.md (techniques, defects), engine-api.md (functions), figure-rig.md (faces, hair, colour), figure-body.md (bodies, poses, hands), clothing-and-scenes.md (outfits, framing, sets), subject-recipes.md (rigless subjects), style-recipes.md (styles, moods). Use for 'draw with code', 'make an illustration', 'anime-style character', 'draw a scene', 'still life', 'oil painting look', 'paper-stage-en' when a code-made picture is wanted. Not for charts, diagrams, UI mockups or logos."
+name: paper-stage
+description: "A code-only drawing skill that paints like a cut-paper stage. Curves are cut into masks and stacked back to front. Inflated height maps give each piece a soft, plump volume. Figures stand among sets, props and stage lights like quietly directed actors. Glow and film grain finish each picture as anime, illustration or painterly art. Pure Python, no image generator or 3D engine. Covers portraits, full figures, two-shots, group shots, scenes, figure studies, still life, cities, landscapes and animals. References: drawing-process.md (techniques, defects), engine-api.md (functions), figure-rig.md (faces, hair, colour), figure-body.md (bodies, poses, hands), clothing-and-scenes.md (outfits, framing, sets), subject-recipes.md (rigless subjects), style-recipes.md (styles, moods). Use for 'draw with code', 'make an illustration', 'anime-style character', 'draw a scene', 'still life', 'oil painting look', 'paper-stage' when a code-made picture is wanted. Not for charts, diagrams, UI mockups or logos."
 license: GPL-3.0-or-later with an output exception. Terms in LICENSE and NOTICE
 ---
 
-# paper-stage-en
+# paper-stage
 
 > Translation notice: this skill is an English translation of the Korean original `paper-stage`. Wording shifted in translation can make its performance and logic differ from the original intent. When a result looks off, compare the step with the Korean original.
 

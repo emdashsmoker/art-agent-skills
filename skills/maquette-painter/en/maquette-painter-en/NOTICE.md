@@ -15,4 +15,6 @@ The copyright holder does not regard images or other output produced by running 
 
 Additional permission under GNU GPL version 3 section 7: you may use, modify, distribute and sell images and other output that you produce by running this program, or a modified version of it, under any terms you choose, with or without attribution.
 
-This permission applies to the output only. The program itself, including its source code, documentation and the bundled `assets/gallery.jpg`, remains under the GNU General Public License.
+The bundled `assets/gallery.jpg` was rendered by this program, so it counts as output in this sense and may be used the same way.
+
+This permission applies to the output only. The program itself, including its source code and documentation, remains under the GNU General Public License.

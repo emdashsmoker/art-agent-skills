@@ -56,7 +56,7 @@ skills/vinyl-cel/
 - The model uses the examples bundled in each skill as a reference for edge cases, so results may come out close to those examples or the demos.
 - For results that do not resemble them, add an instruction such as `Do not make it similar to the examples or demos in the skill.` to your request.
 - Every skill needs a code execution environment and network access.
-- Each skill reads long reference files and checks rendered images over several rounds, so a single picture can use many tokens.
+- Drawing a single picture can use many tokens because the model reads long reference files and the images it renders over several rounds of checking.
 - `image-gen` downloads several gigabytes of model files on first use and generates on the CPU, so each image takes time.
 
 ## Disclaimer
@@ -125,7 +125,7 @@ skills/vinyl-cel/
 - 모델은 예외 상황을 처리할 때 스킬에 들어 있는 예제를 기준 자료로 참고합니다. 그래서 결과물이 예제나 데모와 비슷해질 수 있습니다.
 - 예제를 닮지 않은 결과물이 필요하면 요청할 때 `스킬에 들어 있는 예제나 데모와 비슷하게 만들지 마세요` 같은 제외 지시를 함께 적기를 권장합니다.
 - 모든 스킬은 코드 실행 환경과 네트워크 연결이 있어야 작동합니다.
-- 스킬은 긴 참고 문서를 읽고 렌더링한 그림을 여러 차례 확인하므로 그림 한 장에도 토큰을 많이 사용합니다.
+- 그림 한 장을 그리는 데도 토큰이 많이 듭니다. 모델이 긴 참고 문서와 여러 차례 렌더링한 확인용 그림을 읽기 때문입니다.
 - `image-gen`은 처음 실행할 때 수 GB의 모델 파일을 내려받습니다. CPU로 생성하므로 이미지 한 장을 만드는 데 시간이 걸립니다.
 
 ## 면책 고지

@@ -1,0 +1,2 @@
+3aae487fdee52d9cf4933c0488de9ed10daa0bbf381ac09cd5c8dfb3cf804001  tableau-vivant-en.skill
+69ab3ca19717689a4f51d020e15869467e0af422a94583edfb6406466c31f74f  tableau-vivant-ko.skill

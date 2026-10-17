@@ -1,0 +1,2 @@
+c2abbe0f6f6058fd9c7876f849198750a6d1eeeac33058bac9737e747d33e3bc  geometric-illustration-en.skill
+dee3b0cb8ea9fecfdf5e655204da966d8e479714fe46da714a866ba3f70f834d  geometric-illustration-ko.skill

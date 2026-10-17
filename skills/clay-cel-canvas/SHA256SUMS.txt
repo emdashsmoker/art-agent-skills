@@ -1,0 +1,2 @@
+b8fd3f2846783276db9b8614ab1bd7b6c552f49bae3e6b9bb7796e281415c683  clay-cel-canvas-en.skill
+f02bc5386e943dd73ba9ee44a86a3d4573e53f4a849fde1fa8bd324f354649c9  clay-cel-canvas-ko.skill

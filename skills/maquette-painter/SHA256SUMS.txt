@@ -1,0 +1,2 @@
+e49b58e42b8e5477a455ba69879aaab25d4249af60ba0670ca94cc58948c423d  maquette-painter-en.skill
+abae912a2c1f96daf7324d13462e504673dd9ab4e909cde8596660cd9aa1a4e0  maquette-painter-ko.skill

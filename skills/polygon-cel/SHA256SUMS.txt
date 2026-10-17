@@ -1,0 +1,2 @@
+15f4f6316f6725ea1dc57926f9ecf6ddfac9f181fc2458153618aafc48e01447  polygon-cel-en.skill
+727f151722a0eb4b2a8bf419bf125a3cf217d8bf5c29e2f59251d7d3454e3708  polygon-cel-ko.skill

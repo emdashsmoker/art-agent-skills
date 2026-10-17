@@ -1,0 +1,2 @@
+43e904aed6a314084800ff07bfc71f4b8a5e8e90905d866c5adc1fd0006c2275  dollhouse-maker-en.skill
+10b8c882e487e0a878ca65363932d41490fc0a9b5e3beb67e068425cce69c80f  dollhouse-maker-ko.skill

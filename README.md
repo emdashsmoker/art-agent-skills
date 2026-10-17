@@ -33,12 +33,13 @@ These skills finish a picture without diffusion models, following the principles
 
 ## Installation
 
-Each skill folder holds the install packages, the source folders and sample pictures.
+Each skill folder holds the install packages, a checksum file, the source folders and sample pictures.
 
 ```
 skills/vinyl-cel/
 ├── vinyl-cel-ko.skill    Korean install package
 ├── vinyl-cel-en.skill    English install package
+├── SHA256SUMS.txt        SHA-256 checksums of the packages
 ├── ko/vinyl-cel/         Korean source
 ├── en/vinyl-cel/         English source
 └── demo/                 sample pictures
@@ -102,12 +103,13 @@ The models that `image-gen` downloads keep their own licenses, listed in `refere
 
 ## 설치
 
-스킬 폴더마다 설치용 패키지, 소스 폴더, 예시 그림이 들어 있습니다.
+스킬 폴더마다 설치용 패키지, 체크섬 파일, 소스 폴더, 예시 그림이 들어 있습니다.
 
 ```
 skills/vinyl-cel/
 ├── vinyl-cel-ko.skill    한국어판 설치용 패키지
 ├── vinyl-cel-en.skill    영어판 설치용 패키지
+├── SHA256SUMS.txt        설치용 패키지 SHA-256 체크섬
 ├── ko/vinyl-cel/         한국어판 소스
 ├── en/vinyl-cel/         영어판 소스
 └── demo/                 예시 그림

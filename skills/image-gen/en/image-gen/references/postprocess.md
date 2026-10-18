@@ -99,7 +99,8 @@ PY scripts/patch_basicsr.py                                                     
   - `pip download` runs the same setup.py, so download the basicsr source archive (.tar.gz) straight from PyPI. `https://pypi.org/pypi/basicsr/json` lists its URL. Unpack it in a temporary folder.
   - In `get_version()` of setup.py, pass a new empty dict to `exec` as its globals, and read `__version__` from that dict instead of `locals()`.
   - Install from the unpacked folder with `PY -m pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu <folder>`, then run the gfpgan install again.
-  - Delete the temporary folder afterwards. If the install still fails, turn face restoration off and tell the user.
+  - Delete the temporary folder afterwards.
+  - If the install still fails, try once more with an earlier Python (3.12 or 3.11, both confirmed to install). Recreating the virtual environment deletes it, so ask the user first. If no earlier Python exists or it fails too, turn face restoration off and tell the user.
 
 ## Cleanup
 

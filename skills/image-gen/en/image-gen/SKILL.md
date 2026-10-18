@@ -32,6 +32,7 @@ Diffusion models cannot draw text, exact connector lines, numbers, or exact coun
 - Run commands from the user's working folder. Save results to the path the user gives. Without one, use the output folder the environment defines, and without that, save to the working folder and tell the user the absolute path.
 - The scripts run with the same commands on Linux, macOS, and Windows. Only the precise preset needs Linux x86_64.
 - Every file the skill downloads goes to the cache folder `~/.cache/image-gen`. Set the environment variable `IMAGE_GEN_HOME` to move it.
+- Features that fetch files from GitHub: the precise preset engine (`leejet/stable-diffusion.cpp`), final upscaling (`xinntao/Real-ESRGAN`) and face restoration (`TencentARC/GFPGAN`, `xinntao/facexlib`). If the execution environment has a tool that attaches a GitHub repository to the session, call it with the matching repository before each feature's first run. Pass the parts before and after `/` as separate owner and repository name values. Follow any access route the tool's reply names. Skip this step when no such tool exists or the call is refused.
 
 ## Setup
 

@@ -30,6 +30,7 @@ license: GPL-3.0-or-later with an output exception. Terms in LICENSE and NOTICE.
 - 명령은 사용자의 작업 폴더에서 실행한다. 결과 파일은 사용자가 정한 경로에 저장한다. 정한 경로가 없으면 실행 환경이 정한 산출 폴더에 저장하고, 산출 폴더도 없으면 작업 폴더에 저장한 뒤 절대 경로를 알린다.
 - 스크립트는 리눅스, macOS, 윈도우에서 같은 명령으로 동작한다. 정밀 프리셋만 리눅스 x86_64에서 동작한다.
 - 스킬이 내려받는 모든 파일은 캐시 폴더 `~/.cache/image-gen`에 모인다. 환경변수 `IMAGE_GEN_HOME`으로 위치를 바꿀 수 있다.
+- GitHub에서 파일을 받는 기능은 정밀 프리셋 엔진(`leejet/stable-diffusion.cpp`), 화질 보정(`xinntao/Real-ESRGAN`), 얼굴 복원(`TencentARC/GFPGAN`, `xinntao/facexlib`)이다. 세션에 GitHub 저장소를 연결하는 도구가 실행 환경에 있으면 각 기능의 첫 실행 전에 해당 저장소로 호출한다. 소유자와 저장소 이름은 `/` 앞뒤를 각각 따로 전달한다. 도구 응답이 안내하는 접근 경로를 따른다. 도구가 없거나 호출이 거부되면 이 단계를 건너뛴다.
 
 ## 환경 준비
 

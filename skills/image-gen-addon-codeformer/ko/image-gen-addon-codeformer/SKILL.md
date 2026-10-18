@@ -74,6 +74,7 @@ PY <image-gen 폴더>/scripts/patch_basicsr.py
 
 - CPU 인덱스를 함께 주는 이유는 image-gen의 얼굴 복원 설치와 같다.
 - codeformer-pip은 import할 때 현재 폴더 아래에 가중치(약 0.6GB)를 받고 결과를 `output/out.png`에 쓴다. face_fix_codeformer.py는 image-gen 캐시 폴더 안의 `codeformer` 폴더로 옮겨 가서 실행하므로 사용자 폴더나 스킬 폴더에 파일이 생기지 않는다.
+- 가중치는 GitHub `sczhou/CodeFormer` 저장소의 릴리스에서 받는다. 세션에 GitHub 저장소를 연결하는 도구가 실행 환경에 있으면 첫 실행 전에 호출한다. 인자는 소유자 `sczhou`, 저장소 이름 `CodeFormer`를 각각 따로 전달한다. 도구 응답이 안내하는 접근 경로를 따른다. 도구가 없거나 호출이 거부되면 이 단계를 건너뛴다.
 
 ### 정리
 

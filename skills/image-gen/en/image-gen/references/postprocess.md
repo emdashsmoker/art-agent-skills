@@ -95,6 +95,11 @@ PY scripts/patch_basicsr.py                                                     
 - Region redrawing uses the same packages as generation (diffusers, transformers, accelerate, peft, huggingface_hub), so it needs no extra install. Only the model downloads on first use.
 - Pass the CPU index with `--extra-index-url` when installing the face restoration packages. basicsr builds from source during installation and downloads torch again into a separate build environment. Without the index it pulls a CUDA build of torch and related packages worth several GB, which can fill the disk. The same option keeps the torchvision that gfpgan requires on the CPU build.
 - patch_basicsr.py replaces a module path that torchvision removed, only inside the basicsr package. It touches no other package.
+- If the gfpgan install fails with `KeyError: '__version__'`, the version reader in basicsr's setup.py is at fault (seen on Python 3.13 with basicsr 1.4.2). Apply the steps below only in that case.
+  - `pip download` runs the same setup.py, so download the basicsr source archive (.tar.gz) straight from PyPI. `https://pypi.org/pypi/basicsr/json` lists its URL. Unpack it in a temporary folder.
+  - In `get_version()` of setup.py, pass a new empty dict to `exec` as its globals, and read `__version__` from that dict instead of `locals()`.
+  - Install from the unpacked folder with `PY -m pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu <folder>`, then run the gfpgan install again.
+  - Delete the temporary folder afterwards. If the install still fails, turn face restoration off and tell the user.
 
 ## Cleanup
 

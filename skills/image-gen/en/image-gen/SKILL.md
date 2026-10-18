@@ -354,4 +354,5 @@ PY scripts/cache.py delete all    # the whole cache except the virtual environme
 | Mushy shapes | Preset settings were changed | Keep the script's steps, guidance, and scheduler |
 | Text, counts, or states ignored | A limit of diffusion models | Drop those instructions and add them in an editing tool |
 | The object the user named is missing | A named subject was sorted as a message request | Sort it as a named subject and regenerate with that object |
+| `KeyError: '__version__'` while installing gfpgan | basicsr's setup.py fails on newer Python (seen on Python 3.13 with basicsr 1.4.2) | Follow the workaround in the install section of references/postprocess.md |
 | functional_tensor error when importing gfpgan | basicsr imports a module torchvision removed | Run `PY scripts/patch_basicsr.py` and try again |

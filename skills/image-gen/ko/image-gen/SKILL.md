@@ -352,4 +352,5 @@ PY scripts/cache.py delete all    # 가상환경을 뺀 캐시 전체
 | 형태가 뭉개짐 | 프리셋 설정을 바꿈 | 스텝 수, guidance, 스케줄러를 스크립트 기본값으로 둔다 |
 | 글자, 개수, 상태 지시 미반영 | 확산모델의 한계 | 해당 지시를 빼고 편집 도구에서 보완한다 |
 | 사용자가 정한 사물이 나오지 않음 | 지정 피사체를 메시지 요청으로 잘못 나눔 | 지정 피사체로 다시 나누고 그 사물로 다시 생성한다 |
+| gfpgan 설치 중 `KeyError: '__version__'` | 새 Python에서 basicsr의 setup.py가 실패함(Python 3.13과 basicsr 1.4.2 조합에서 확인) | references/postprocess.md 설치 절의 우회 절차를 따른다 |
 | gfpgan import 시 functional_tensor 오류 | torchvision에서 사라진 모듈을 basicsr가 참조 | `PY scripts/patch_basicsr.py` 실행 후 다시 시도한다 |

@@ -4,6 +4,27 @@ Agent Skills that make creative pictures such as illustrations, paintings and ph
 
 일러스트, 회화, 실사풍 인물처럼 창작용 그림을 만드는 에이전트 스킬 모음입니다. 모든 스킬은 한국어 원본과 영어 번역본을 함께 제공합니다.
 
+<p align="center">
+<b>Diffusion-based · 확산 기반</b><br>
+<a href="skills/image-gen/demo/"><img src="skills/image-gen/demo/thumbs/studio_monochrome.jpg" width="23.5%" alt="image-gen sample"></a>
+<a href="skills/image-gen/demo/"><img src="skills/image-gen/demo/thumbs/rooftop_hoodie.jpg" width="23.5%" alt="image-gen sample"></a>
+<a href="skills/image-gen/demo/"><img src="skills/image-gen/demo/thumbs/winter_street.jpg" width="23.5%" alt="image-gen sample"></a>
+<a href="skills/image-gen/demo/"><img src="skills/image-gen/demo/thumbs/underpass_light.jpg" width="23.5%" alt="image-gen sample"></a>
+</p>
+
+<p align="center">
+<b>Non-diffusion-based · 비확산 기반</b><br>
+<a href="skills/paper-stage/demo/"><img src="skills/paper-stage/demo/thumbs/muted_city_illust.jpg" width="23.5%" alt="paper-stage sample"></a>
+<a href="skills/tableau-vivant/demo/"><img src="skills/tableau-vivant/demo/thumbs/muted_still.jpg" width="23.5%" alt="tableau-vivant sample"></a>
+<a href="skills/cel-glow-atelier/demo/"><img src="skills/cel-glow-atelier/demo/thumbs/muted_establishing.jpg" width="23.5%" alt="cel-glow-atelier sample"></a>
+<a href="skills/cel-glow-atelier/demo/"><img src="skills/cel-glow-atelier/demo/thumbs/muted_still_life.jpg" width="23.5%" alt="cel-glow-atelier sample"></a>
+<br>
+<a href="skills/clay-cel-canvas/demo/"><img src="skills/clay-cel-canvas/demo/thumbs/muted_still_life.jpg" width="23.5%" alt="clay-cel-canvas sample"></a>
+<a href="skills/vinyl-cel/demo/"><img src="skills/vinyl-cel/demo/thumbs/muted_city_illust.jpg" width="23.5%" alt="vinyl-cel sample"></a>
+<a href="skills/pastel-picturebook/demo/"><img src="skills/pastel-picturebook/demo/thumbs/kitchen_still_life_muted.jpg" width="23.5%" alt="pastel-picturebook sample"></a>
+<a href="skills/flat-painterly/demo/"><img src="skills/flat-painterly/demo/thumbs/cel_muted_courtyard.jpg" width="23.5%" alt="flat-painterly sample"></a>
+</p>
+
 <details>
 <summary>English</summary>
 

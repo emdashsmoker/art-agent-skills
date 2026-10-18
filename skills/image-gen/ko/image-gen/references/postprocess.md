@@ -95,6 +95,11 @@ PY scripts/patch_basicsr.py                                                     
 - 부위 다시 그리기는 생성과 같은 패키지(diffusers, transformers, accelerate, peft, huggingface_hub)를 쓰므로 추가 설치가 없다. 첫 사용 때 모델만 내려받는다.
 - 얼굴 복원 패키지를 설치할 때 CPU 인덱스를 `--extra-index-url`로 함께 준다. basicsr는 설치할 때 소스를 빌드하면서 별도 빌드 환경에 torch를 새로 받는데, 인덱스를 주지 않으면 CUDA용 torch와 관련 패키지를 수 GB 받아 디스크가 모자랄 수 있다. 같은 옵션으로 gfpgan이 요구하는 torchvision도 CPU용으로 맞춰진다.
 - patch_basicsr.py는 torchvision에서 사라진 모듈 경로를 basicsr 패키지 안에서만 현재 경로로 바꾼다. 다른 패키지는 건드리지 않는다.
+- gfpgan 설치가 `KeyError: '__version__'` 오류로 실패하면 basicsr setup.py의 버전 읽기 코드가 원인이다(Python 3.13과 basicsr 1.4.2 조합에서 확인). 이 경우에만 아래 절차를 적용한다.
+  - `pip download`도 같은 setup.py를 실행하므로 basicsr 소스 압축 파일(.tar.gz)을 PyPI에서 직접 받는다. 주소는 `https://pypi.org/pypi/basicsr/json`에 있다. 받은 파일은 임시 폴더에 푼다.
+  - setup.py의 `get_version()`에서 `exec`에 빈 dict를 전역 이름공간으로 넘기고, `locals()` 대신 그 dict에서 `__version__`을 읽도록 고친다.
+  - `PY -m pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu <푼 폴더>`로 설치한 뒤 gfpgan 설치를 다시 실행한다.
+  - 설치 후 임시 폴더를 지운다. 그래도 실패하면 얼굴 복원을 끄고 사용자에게 알린다.
 
 ## 정리
 

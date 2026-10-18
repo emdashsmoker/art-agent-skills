@@ -99,7 +99,8 @@ PY scripts/patch_basicsr.py                                                     
   - `pip download`도 같은 setup.py를 실행하므로 basicsr 소스 압축 파일(.tar.gz)을 PyPI에서 직접 받는다. 주소는 `https://pypi.org/pypi/basicsr/json`에 있다. 받은 파일은 임시 폴더에 푼다.
   - setup.py의 `get_version()`에서 `exec`에 빈 dict를 전역 이름공간으로 넘기고, `locals()` 대신 그 dict에서 `__version__`을 읽도록 고친다.
   - `PY -m pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu <푼 폴더>`로 설치한 뒤 gfpgan 설치를 다시 실행한다.
-  - 설치 후 임시 폴더를 지운다. 그래도 실패하면 얼굴 복원을 끄고 사용자에게 알린다.
+  - 설치 후 임시 폴더를 지운다.
+  - 그래도 실패하면 이전 버전 Python(설치가 확인된 3.12나 3.11)으로 한 번 더 시도한다. 가상환경을 다시 만들면 기존 환경이 지워지므로 먼저 사용자에게 묻는다. 이전 버전 Python이 없거나 다시 실패하면 얼굴 복원을 끄고 사용자에게 알린다.
 
 ## 정리
 

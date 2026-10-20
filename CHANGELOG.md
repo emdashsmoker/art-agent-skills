@@ -20,7 +20,7 @@ Changelog rules
 - (Korean entries) Leave one blank line after the English entries and list the same changes in the same order with the "*" bullet so that they render as a separate list.
 - (English format) - Description that starts with the change type verb (#PR number)
 - (Korean format) * Korean noun-ending description that ends with the change type word (#PR number)
-- (Korean style) Write each Korean entry as one short formal sentence in note style with a noun ending. Avoid colloquial expressions.
+- (Korean style) Write each Korean entry in formal note style as a simple sentence (단문) with a noun ending. Keep one subject-predicate relation per entry, turn other clauses into noun phrases, and split an entry that carries two messages. Avoid colloquial expressions and placeholder nouns such as 것, 곳, 거, 셈 and 부분.
 - (Change types) Added (추가), Changed (변경), Fixed (수정), Removed (삭제), Action needed (필요)
 - (Include) Changes to skill outputs, usage steps, or installation.
 - (Exclude) Typo and wording fixes, demo image replacements, README changes unrelated to installation, internal refactoring without behavior changes, and commits that only change CHANGELOG.md.
@@ -50,7 +50,7 @@ Changelog rules
 - Added a README note on building a dependency skill with offline-deps-builder where network access is blocked (#15)
 
 * 스킬 폴더별 설치용 패키지의 체크섬을 담은 SHA256SUMS.txt 파일 추가 (#14)
-* 네트워크 접근이 차단된 환경에서 offline-deps-builder로 의존성 스킬을 생성하는 README 안내 추가 (#15)
+* 네트워크 차단 환경에서 offline-deps-builder로 의존성 스킬을 생성하는 README 안내 추가 (#15)
 
 ## 2026-10-14
 

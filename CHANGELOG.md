@@ -40,7 +40,7 @@ Changelog rules
 - Fixed the face helper downloading the detection and parsing weights again into the package folder (#18)
 
 * 가중치 다운로드 전 GitHub 저장소 연결 단계 추가 (#16)
-* 얼굴 보조 모듈이 검출 및 파싱 가중치를 패키지 폴더에 다시 내려받는 오류 수정 (#18)
+* 얼굴 보조 모듈이 검출 및 파싱 가중치를 패키지 폴더에 중복 다운로드하는 오류 수정 (#18)
 
 ## 2026-10-17
 
@@ -49,54 +49,54 @@ Changelog rules
 - Added a README note on building a dependency skill with offline-deps-builder where network access is blocked (#15)
 
 * 스킬 폴더별 설치용 패키지의 체크섬을 담은 SHA256SUMS.txt 파일 추가 (#14)
-* 네트워크 접근이 차단된 환경에서 offline-deps-builder로 의존성 스킬을 만드는 README 안내 추가 (#15)
+* 네트워크 접근이 차단된 환경에서 offline-deps-builder로 의존성 스킬을 생성하는 README 안내 추가 (#15)
 
 ## 2026-10-14
 
 ### cel-glow-atelier
 - Changed the English edition skill name to the Korean edition name (#11)
 
-* 영어판 스킬 이름을 한국어판 스킬 이름과 같게 변경 (#11)
+* 영어판 스킬 이름을 한국어판 스킬 이름과 동일하게 변경 (#11)
 
 ### clay-cel-canvas
 - Changed the English edition skill name to the Korean edition name (#11)
 
-* 영어판 스킬 이름을 한국어판 스킬 이름과 같게 변경 (#11)
+* 영어판 스킬 이름을 한국어판 스킬 이름과 동일하게 변경 (#11)
 
 ### geometric-illustration
 - Changed the English edition skill name to the Korean edition name (#11)
 
-* 영어판 스킬 이름을 한국어판 스킬 이름과 같게 변경 (#11)
+* 영어판 스킬 이름을 한국어판 스킬 이름과 동일하게 변경 (#11)
 
 ### maquette-painter
 - Changed the English edition skill name to the Korean edition name (#11)
 
-* 영어판 스킬 이름을 한국어판 스킬 이름과 같게 변경 (#11)
+* 영어판 스킬 이름을 한국어판 스킬 이름과 동일하게 변경 (#11)
 
 ### paper-stage
 - Changed the English edition skill name to the Korean edition name (#11)
 
-* 영어판 스킬 이름을 한국어판 스킬 이름과 같게 변경 (#11)
+* 영어판 스킬 이름을 한국어판 스킬 이름과 동일하게 변경 (#11)
 
 ### polygon-cel
 - Changed the English edition skill name to the Korean edition name (#11)
 
-* 영어판 스킬 이름을 한국어판 스킬 이름과 같게 변경 (#11)
+* 영어판 스킬 이름을 한국어판 스킬 이름과 동일하게 변경 (#11)
 
 ### soft-diorama
 - Changed the English edition skill name to the Korean edition name (#11)
 
-* 영어판 스킬 이름을 한국어판 스킬 이름과 같게 변경 (#11)
+* 영어판 스킬 이름을 한국어판 스킬 이름과 동일하게 변경 (#11)
 
 ### tableau-vivant
 - Changed the English edition skill name to the Korean edition name (#11)
 
-* 영어판 스킬 이름을 한국어판 스킬 이름과 같게 변경 (#11)
+* 영어판 스킬 이름을 한국어판 스킬 이름과 동일하게 변경 (#11)
 
 ### vinyl-cel
 - Changed the English edition skill name to the Korean edition name (#11)
 
-* 영어판 스킬 이름을 한국어판 스킬 이름과 같게 변경 (#11)
+* 영어판 스킬 이름을 한국어판 스킬 이름과 동일하게 변경 (#11)
 
 ## 2026-10-13
 

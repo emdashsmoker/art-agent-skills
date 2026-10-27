@@ -27,6 +27,28 @@ Changelog rules
 - (Push) Commit on top of the latest main and push directly to main.
 -->
 
+## 2026-10-27
+
+### geometric-illustration
+- Fixed the Korean spec-reference.md table that ended before the line.weight row on GitHub (#22)
+
+* GitHub 화면에서 line.weight 행이 표 밖으로 밀려나던 한국어판 spec-reference.md 표 오류 수정 (#22)
+
+### pastel-picturebook
+- Fixed the side placeholders in lift part names that GitHub hid in pipeline.md and subjects.md (#22)
+
+* GitHub 화면에서 lift 부위 이름의 side 자리 표시자가 사라지던 pipeline.md, subjects.md 표기 오류 수정 (#22)
+
+### soft-diorama
+- Fixed the tree row of the api.md table that lost its description column on GitHub (#22)
+
+* GitHub 화면에서 api.md 표 tree 행의 설명 열이 사라지던 오류 수정 (#22)
+
+### vinyl-cel
+- Fixed the yaw row of the English api.md table that lost the text after the absolute value bars on GitHub (#22)
+
+* GitHub 화면에서 영어판 api.md 표 yaw 행의 설명 일부가 사라지던 오류 수정 (#22)
+
 ## 2026-10-18
 
 ### image-gen

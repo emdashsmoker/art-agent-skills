@@ -46,7 +46,7 @@
 | `head_center` | (445, 505) | Head centre, canvas units |
 | `head_radius` | 228 | Head size; larger fills more of the frame |
 | `roll` | 0.06 | Head tilt (radians), positive clockwise |
-| `yaw` | -0.22 | Head turn; negative faces image left, keep |yaw| within 0.3 |
+| `yaw` | -0.22 | Head turn; negative faces image left, keep \|yaw\| within 0.3 |
 | `eye_x`, `eye_y` | 0.41, 0.30 | Eye centre position |
 | `eye_half_width` | 0.23 | Eye size; 0.20 a mature look, 0.25 a young look |
 | `eye_open` | 1.0 | How open the eyes are; 0.6 sleepy, 1.15 wide open |

@@ -374,9 +374,9 @@
 |---|---|---|
 | `background.type` | `glow` | `flat`, `gradient`, `glow`, `scene` |
 | `background.scene` | `cityscape` | `type`이 `scene`일 때 인물 뒤에 그릴 장면: `cityscape`, `landscape`. 시간대는 `scene.time` |
+| `line.weight` | 1.0 | 전체 선 굵기 배율 |
 
 `scene` 배경에서 인물은 장면의 광원 방향을 받고, 피부와 옷 색에 시간대 색조가(`character.SCENE_TINTS`), 림 라이트에 시간대 색이(`SCENE_RIMS`) 적용된다.
-| `line.weight` | 1.0 | 전체 선 굵기 배율 |
 
 ## 예시
 

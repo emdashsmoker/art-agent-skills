@@ -1,2 +1,2 @@
-7f2e9ff7854997a76021e001644e0795178ca3712647f5b9325d0bfbd66e46fd  pastel-picturebook-en.skill
-9291bb0a732de5c520a6590db00e5a116147d7eb8f6682cb64bf10bf0f174bd6  pastel-picturebook-ko.skill
+352afb227bb276291e0e42bd50fed4e1c78ad5cf57babf859a613658120e1e8c  pastel-picturebook-en.skill
+453d7307331c4ac16a8ca2856c20ce69546dc5aa47a74b2de743f9972d9d97d8  pastel-picturebook-ko.skill

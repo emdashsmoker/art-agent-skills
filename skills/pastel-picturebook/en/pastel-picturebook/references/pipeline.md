@@ -260,7 +260,7 @@
 | Sleeve of a folded arm covers the hand or breaks on the upper arm | `2_flat` | Arms with a hand target or `front` keep the upper and lower sleeves separately and leave the hand bare. For other arms check the sleeve end by the angles |
 | Far shoulder pokes over the clothes in a 3/4 view | `2_flat` | The far arm is treated as behind the torso. If it must come forward, place it with `reach` |
 | A hand on the other's shoulder does not show | final | Make the hand's owner a companion and name the hand or forearm in `lift` |
-| The sleeve of an arm over the shoulder shows as an angular block by the other's neck | final | `lift` {"part": "forearm_<side>", "from": 0.7} lifts only the cuff. `lift_under_head` true |
+| The sleeve of an arm over the shoulder shows as an angular block by the other's neck | final | `lift` `{"part": "forearm_<side>", "from": 0.7}` lifts only the cuff. `lift_under_head` true |
 | In a front group photo, the cuff of an arm around the shoulders stays as a block on the other's shoulder | final | Set `lift` to the hand only (`"hand_<side>"`) and shorten that figure's sleeve to about 1.6 |
 | The elbow of a V sign beside the face juts far out from the body | `1_sketch` | Upper arm `foreshorten` 0.45 and `toward` -1 send the upper arm behind the body and keep the elbow near the shoulder |
 | A hand on the other's arm is covered by its own sleeve | `1_sketch` | Space the two figures apart to straighten the arm and turn the `hand` angle toward the other |

@@ -132,7 +132,7 @@ For skin shadows use `paintkit.figure.look.skin_shadow(color)` (shifts toward re
 | `hills(cv, base_y, amplitude, color, scale)` | Gentle hills |
 | `horizon_sea(cv, horizon_y, far, near, sparkle)` | Sea below the horizon with glints |
 | `water_reflection(cv, water_y, darken, ripple, tint)` | Mirrors the picture above the water line. Call after everything to be reflected is painted |
-| `tree(cv, base, height, kind='round'|'pine', leaf, trunk, light, line_width=0)` | Tree. `round` has a three-tone mass of leaves |
+| `tree(cv, base, height, kind='round'\|'pine', leaf, trunk, light, line_width=0)` | Tree. `round` has a three-tone mass of leaves |
 | `grass(cv, y_range, count, colors, blade)` | Blades of grass |
 | `leaves(cv, center, reach, count, colors, size, blur_px)` | Cluster of leaves. Placed at a corner it frames the picture |
 | `petals(cv, count, color, size, region, blur_range)` | Drifting petals |

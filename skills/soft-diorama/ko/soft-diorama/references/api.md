@@ -132,7 +132,7 @@
 | `hills(cv, base_y, amplitude, color, scale)` | 완만한 언덕 |
 | `horizon_sea(cv, horizon_y, far, near, sparkle)` | 수평선 아래 바다와 윤슬 |
 | `water_reflection(cv, water_y, darken, ripple, tint)` | 수면 위쪽 그림을 뒤집어 비춤. 비출 대상을 모두 그린 뒤 호출 |
-| `tree(cv, base, height, kind='round'|'pine', leaf, trunk, light, line_width=0)` | 나무. `round`는 잎 덩어리 3색조 |
+| `tree(cv, base, height, kind='round'\|'pine', leaf, trunk, light, line_width=0)` | 나무. `round`는 잎 덩어리 3색조 |
 | `grass(cv, y_range, count, colors, blade)` | 풀잎 |
 | `leaves(cv, center, reach, count, colors, size, blur_px)` | 잎 무더기. 모서리에 두면 화면 틀이 된다 |
 | `petals(cv, count, color, size, region, blur_range)` | 흩날리는 꽃잎 |

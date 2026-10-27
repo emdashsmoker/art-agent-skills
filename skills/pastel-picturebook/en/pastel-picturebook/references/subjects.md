@@ -337,7 +337,7 @@ Keys placed in portrait and full-length figure specs. The background is drawn fi
     + The scene stands the partner figure first, reads the point, and converts it to a screen position
     + Two arms aiming at each other form a cycle, so holding hands uses the same `at` point
 - Front-back overlap: list the parts to lift again in the companion's `lift`
-    + "hand_<side>", "forearm_<side>" (forearm and hand, with sleeve), "arm_<side>" (the whole arm)
+    + `"hand_<side>"`, `"forearm_<side>"` (forearm and hand, with sleeve), `"arm_<side>"` (the whole arm)
     + {"part": "forearm_right", "from": 0.7} lifts only from 70% along the forearm to the hand
     + The lifted area is limited to pixels the figure actually painted. In the band outside the part, only the outline follows (only pixels darker than what lies below)
     + With the companion's `lift_under_head` true, the lifted part passes under the face and fringe of the figure drawn later

@@ -27,6 +27,24 @@ Changelog rules
 - (Push) Commit on top of the latest main and push directly to main.
 -->
 
+## 2026-10-31
+
+### image-gen
+- Added candidate generation that makes more candidates than the target count at once and adopts from them (#24)
+- Added a user pick that chooses candidates by number from a numbered contact sheet (#24)
+- Added a question about deleting the spare candidates that were not picked (#24)
+- Changed the pre-generation questions to leave out choices that need a preview where images cannot be shown to the user (#24)
+
+* 목표 장수보다 많은 후보를 한 번에 만들어 고르는 후보 생성 기능 추가 (#24)
+* 번호를 붙인 모아보기에서 후보를 고르는 사용자 선택 추가 (#24)
+* 고르지 않은 여분 후보의 삭제 여부 질의 추가 (#24)
+* 이미지 표시 수단이 없는 환경의 미리보기 선택지 제외를 위한 생성 전 질의 변경 (#24)
+
+### image-gen-addon-codeformer
+- Changed the question numbering example to include the new candidate items of image-gen (#24)
+
+* image-gen 후보 항목을 반영한 질의 번호 예시 변경 (#24)
+
 ## 2026-10-27
 
 ### geometric-illustration

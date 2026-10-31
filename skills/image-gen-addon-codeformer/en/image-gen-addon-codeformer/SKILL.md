@@ -23,7 +23,7 @@ CodeFormer is distributed under the S-Lab License 1.0. The license allows use an
 
 ### Pre-generation questions
 
-Insert a face restoration strength item right after image-gen's face restoration scope item. The items after it move down by one number.
+Insert a face restoration strength item right after image-gen's face restoration scope item. The items after it move down by one number. Item numbers that later items cite in their conditions move the same way (for example, candidate pick's "Only if item 6 is not a" becomes "Only if item 7 is not a").
 
 - Ask when a person appears and face restoration can run. Do not ask when face restoration scope is off. Do not ask when the scope is "only on defects" and defect post-processing is "workarounds only", because restoration never runs in that combination.
 - If the user already stated the strength, do not ask.
@@ -38,7 +38,7 @@ Example (insert after item 4 of image-gen's example):
 After the user answers, run this add-on's record script right after image-gen's preflight.py. Run it again whenever image-gen's record is rewritten.
 
 ```
-PY scripts/preflight_codeformer.py --out ./outputs --face-strength stepwise --user-reply "1-b, 2-c, 3-a, 4-b, 5-b, 6-a"
+PY scripts/preflight_codeformer.py --out ./outputs --face-strength stepwise --user-reply "1-b, 2-c, 3-a, 4-b, 5-b, 6-a, 7-d, 8-b, 9-c"
 ```
 
 - `scripts/` is the scripts folder inside this add-on's folder. `PY` is the Python of image-gen's virtual environment.

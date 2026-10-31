@@ -31,9 +31,10 @@ For requests with a person, the same questions offer: only on defects, always, o
 
 - Only on defects (`defect`): apply at stage 3, following the defect post-processing policy, only when a face defect shows.
 - Always (`always`): apply face restoration once to every output with a person right after generation, and do the visual check on the restored image. Apply it to regenerated results too. Install the face restoration dependencies even when the defect policy is workarounds only. Region redrawing stays uninstalled in that case. The order is generation, face restoration, final upscaling.
+- In candidate mode, always (`always`) follows the spare candidate finishing value in force (`spare_finish_resolved`). With `adopted`, apply it to adopted images only. With `all`, apply it once to every candidate. Running it again at a lower strength is a defect repair, so only adopted images get it.
 - Off (`off`): do not install the face restoration dependencies. Handle face defects with stages 1, 2, and 4. Off covers face restoration only, so region redrawing of clothing, accessories, and precise objects still follows the defect post-processing policy.
 
-For non-photographic styles (flat vector, line art, cel shading and so on), mark off as recommended in the questions. Face restoration tools were trained on real photographs of faces, so only the restored area turns photographic and clashes with painted hair. If the user chose restoration in such a style anyway, show before and after side by side and ask whether to adopt, even in automatic mode and in always-on scope.
+For non-photographic styles (flat vector, line art, cel shading and so on), mark off as recommended in the questions. Face restoration tools were trained on real photographs of faces, so only the restored area turns photographic and clashes with painted hair. If the user chose restoration in such a style anyway, show before and after side by side and ask whether to adopt, even in automatic mode and in always-on scope. In candidate mode, compare adopted images only. Without a display path, pick the version that suits the style yourself and give a one-line reason on delivery (display path judgment in the delivery section of SKILL.md).
 
 Outputs where no face is detected (back views, distant figures) are saved with the same pixels as the input. Use them as normal outputs.
 
@@ -72,7 +73,8 @@ For requests with a person where the defect policy is automatic or ask each time
 
 - Even when chosen, use up stage 1 seed changes, edge trimming, and stage 2 workarounds first. Then apply it once at stage 3.
 - If the defect remains, do not repeat it with other strengths or seeds. Go to the stage 4 composition workaround.
-- Hand size and pose can change a lot, so even in automatic mode show before and after side by side and ask whether to adopt.
+- Hand size and pose can change a lot, so even in automatic mode show before and after side by side and ask whether to adopt. This comparison is required, so without a display path remove the on choice from the pre-generation questions (display path judgment in the delivery section of SKILL.md).
+- In candidate mode, apply it only to adopted candidates.
 - It applies to hands shown on their own, overlapping nothing. A hand holding an object, or two overlapping hands, would lose the object inside the box, so skip them even when the user chose this tool.
 - The strength is 0.85. At 0.65 the wrong finger count stays, and at 1.0 the whole hand turns into another pose and no longer connects to the arm.
 - Draw the box from the fingertips to just before the wrist. Describe the desired result in the prompt.

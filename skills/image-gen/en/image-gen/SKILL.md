@@ -361,7 +361,7 @@ When the multiplier in force is 2 or more, check the whole candidate pool, then 
 1. Check every candidate on its original file with the items above. When face restoration scope is always, follow the spare candidate finishing value in force. With all candidates, restore every candidate once and check the restored images. With adopted only, check the originals, then restore only the adopted images and judge them on the restored versions.
 2. Build the contact sheet from all candidates. If every candidate got face restoration, use the restored images. Otherwise use the generated originals. Final upscaling comes after adoption, so the sheet does not reflect it.
 3. Adopt as the candidate pick answer says.
-4. If spare candidate finishing is all candidates and final upscaling was chosen, apply final upscaling once to each spare. The input is the restored image if there is one, the generated original otherwise. finalize.py reads preflight.json from the output folder, so apply it in the output folder before moving.
+4. If spare candidate finishing is all candidates and final upscaling was chosen, apply final upscaling once to each spare. The input is the restored image if there is one, the generated original otherwise. finalize.py reads preflight.json from the output folder, so apply it in the output folder before moving. Skip it if the user answered to delete the spares.
 5. Move the spares' generated originals and finished versions to the `candidates` folder inside the output folder. Adopted images stay in the output folder for defect handling, trimming, and final upscaling.
 
 ```
@@ -372,7 +372,7 @@ PY scripts/contact_sheet.py "./outputs/reader-0?_face.png" --out ./outputs/reade
 - The contact sheet numbers its inputs from 1 in the given order. stdout prints the number-to-file mapping as JSON.
 - The contact sheet is for choosing framing and expression. Judge small defects on the original candidate files.
 - With agent pick, adopt the target count in the adoption order below and carry on to the end. Record the adopted candidates, their ranks, and the reasons.
-- With user pick, show the contact sheet right after generation and let the user pick by number. Report the defects found in each candidate, one line each. Run defect handling and finishing on the picked candidates.
+- With user pick, show the contact sheet right after generation and let the user pick by number. Report the defects found in each candidate, one line each. Ask in one line whether to delete the spares, so the same reply can answer it (spare deletion in the delivery section). Run defect handling and finishing on the picked candidates.
 - If a candidate the user picked has a defect with no means of repair, report the defect and ask whether to pick again from the remaining candidates or go to defect handling stage 2.
 - Without a display path, do not ask for user pick and go on with agent pick.
 
@@ -451,6 +451,15 @@ PY scripts/finalize.py ./outputs/banner_trim.png ./outputs/banner_final.png --si
 - For trimmed results, report the trim, the body part the cut line crosses, and the cut ratio (for free ratio, the adopted ratio and the remaining area).
 - For JPEG, generate with `--format jpg` or convert the PNG.
 
+### Spare deletion
+
+Spares are kept by default. Deletion cannot be undone, so delete them only when the user, having seen the candidates, answers to delete them. The question comes only where the work already waits for the user's reply, so it never interrupts an automatic run.
+
+- Ask about deletion once, in one line. With user pick, ask when you show the contact sheet. With agent pick, ask on delivery.
+- Delete at the delivery step, after defect handling and finishing. Until then, pool swaps may need the spares.
+- Delete only the spare files made in this request (generated originals, restored versions, finished versions). Keep the adopted images and the contact sheet. If the candidates folder ends up empty, delete the folder too.
+- Report the names of the deleted files on delivery.
+
 ### Display path judgment
 
 Every point that shows images to the user follows this judgment. Make it once, at the pre-generation question stage. Look at the tools you have and where you run, and pick one of the three below.
@@ -479,7 +488,7 @@ Without a display path, handle each point as below.
 - Check disk and memory again right before each download and each run. The models, face restoration, region redrawing, and final upscaling each download weights, so free space keeps changing within one conversation.
 - Run generation, face restoration, region redrawing, and final upscaling as separate processes, one at a time. Confirm the previous process has exited before starting the next. Two at once can run out of memory and get killed.
 - If a process is killed for lack of memory, clean up leftover processes and retry once. If memory is still short, offer the lighter presets that can run.
-- The skill deletes only files inside its cache folder. It never touches files outside it or the model caches of other programs.
+- The skill deletes only files inside its cache folder. It never touches files outside it or the model caches of other programs. The one exception is spare files of candidate mode that the user answered to delete (spare deletion in the delivery section).
 - If disk runs short, delete finished post-processing weights first, then presets other than the default. Keep files you will use again in the same conversation, because downloading them again takes time.
 - Record what you deleted and the free space afterwards.
 - In environments that wipe files when the session ends, set up the virtual environment and models again in the next session.

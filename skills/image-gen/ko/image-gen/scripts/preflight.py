@@ -15,8 +15,8 @@ import sys
 from common import EXIT_OK, EXIT_QUERY_OR_ARGUMENT, PREFLIGHT_FILENAME
 
 AUTO = "auto"
-# WHY: the automatic multiplier stays within the fixed choices of the question (1x to 3x)
-AUTO_MULTIPLIERS = [1, 2, 3]
+WHOLE_NUMBER_HINT = "use a whole number of 1 or more"
+AUTO_OR_WHOLE_NUMBER_HINT = "use auto or a whole number of 1 or more"
 SPARE_FINISH_DECISIONS = ["adopted", "all"]
 
 
@@ -56,17 +56,23 @@ QUERY_LABELS = {
 NEEDS_DISPLAY = {"trim": "free", "finger_inpaint": "on", "candidate_pick": "user"}
 
 
+def whole_multiplier(text, hint=WHOLE_NUMBER_HINT):
+    """A candidate multiplier, chosen by the user or decided for auto: a whole number of 1 or more."""
+    try:
+        value = int(text)
+    except ValueError:
+        raise argparse.ArgumentTypeError(hint)
+    if value < 1:
+        raise argparse.ArgumentTypeError("the multiplier must be 1 or more")
+    return value
+
+
 def multiplier_answer(text):
     """The candidate multiplier answer: auto or a whole number of 1 or more."""
     if text == AUTO:
         return AUTO
-    try:
-        value = int(text)
-    except ValueError:
-        raise argparse.ArgumentTypeError("use auto or a whole number of 1 or more")
-    if value < 1:
-        raise argparse.ArgumentTypeError("the multiplier must be 1 or more")
-    return value
+    # WHY: name auto in the hint, so a mistyped auto answer gets fixed as auto and not recorded as a number
+    return whole_multiplier(text, AUTO_OR_WHOLE_NUMBER_HINT)
 
 
 def flag(name):
@@ -137,7 +143,7 @@ def parse_arguments(argv):
     for name, values in CHOICES.items():
         parser.add_argument(flag(name), dest=name, choices=values)
     parser.add_argument("--candidates", type=multiplier_answer, help="candidate multiplier: 1 or more, or auto")
-    parser.add_argument("--candidates-resolved", dest="candidates_resolved", type=int, choices=AUTO_MULTIPLIERS,
+    parser.add_argument("--candidates-resolved", dest="candidates_resolved", type=whole_multiplier,
                         help="with --candidates auto: the multiplier the agent decided")
     parser.add_argument("--candidates-reason", dest="candidates_reason",
                         help="with --candidates auto: one-line reason for the decided multiplier")

@@ -155,17 +155,28 @@ Before the first image, ask every applicable item from the table below in one me
 | Defect post-processing | A person or a precise object appears | Never |
 | Face restoration scope | A person appears | Never |
 | Finger redrawing | A person appears | Defect post-processing is workarounds only |
+| Candidate generation | Every request | Never |
+| Candidate pick | A display path exists | Candidate generation is 1x |
+| Spare candidate finishing | Every request | Candidate generation is 1x, or final upscaling is none while face restoration scope is other than always |
 | Model choice | A model choice condition applies | The user named a model, or said speed or quality comes first |
 
 - If even one person appears in the frame, treat the request as one with a person, whatever the size, share of the frame, or style. Small, distant people have the worst face defects, so a small share is no reason to skip. If unsure, treat it as a request with a person.
 - A precise object is one recognized by how its parts connect: a bicycle, glasses, a chair, a ladder, a keyboard.
 - Skip only the items the user already answered. Ask items that have a recommended option too.
-- If the user delegates ("you decide", "use the defaults"), show the recommended combination in one line and get a confirmation. Example: "Shall I go with 1-b, 2-b, 3-a, 4-a, 5-a?" For non-photographic styles the recommendation turns face restoration off. Example: "Shall I go with 1-b, 2-b, 3-a, 4-c, 5-a?"
-- Ask about final upscaling and edge trimming even when only objects appear.
+- If the user delegates ("you decide", "use the defaults"), show the recommended combination in one line and get a confirmation. Example: "Shall I go with 1-b, 2-b, 3-a, 4-a, 5-a, 6-a?" For non-photographic styles the recommendation turns face restoration off. Example: "Shall I go with 1-b, 2-b, 3-a, 4-c, 5-a, 6-a?" The recommended candidate generation is 1x.
+- Ask about final upscaling, edge trimming, and candidate generation even when only objects appear.
+- Before asking, make the display path judgment from the delivery section. Without a display path, reduce the items and choices as that section's table says.
+- Candidate generation makes more candidates than the target count at once and picks from them. It runs defect handling step 1 (regenerate with the same prompt and a new seed) ahead of time, at generation. The default 1x makes only the target count.
+- For fixed multiplier choices, write the total count (target count times multiplier) and the estimated time from probe.py, and say it is an estimate. For the automatic choice, write the range of total counts and times from 1x up to the cap of the automatic judgment.
+- Take a custom answer as a whole-number multiplier. When each target image has its own prompt, a total count alone does not decide how many images each prompt gets.
+- In the choices of spare candidate finishing, name only the batch processes the user can pick in this question. For objects only, name final upscaling alone.
+- Judge the 10-image condition of the model choice question by the target count. The multiplier comes in the same question, so whether to ask the model question cannot follow the multiplier answer.
+- If automatic resolves to 1x, the answers for candidate pick and spare candidate finishing go unused.
 
 Question format:
 
 - Number only the applicable items from 1 in order, and write choices as a), b), c). Model choice is always the last number.
+- For a conditional item (finger redrawing, candidate pick, spare candidate finishing), state its condition in the first sentence with the actual item numbers.
 - Write a numbered list in plain conversation text. Do not use code blocks or tables.
 - Put the answer format and an example answer on the first line.
 - For photographic or watercolor requests, add a one-line warning to the final upscaling item. Example: "Upscaling a photo or watercolor style wipes out skin texture and paper grain."
@@ -173,7 +184,7 @@ Question format:
 
 Example for a request with a person:
 
-> Before I generate, please answer the items below with the item number and letter. (Example: 1-b, 2-c, 3-a, 4-b, 5-a)
+> Before I generate, please answer the items below with the item number and letter. (Example: 1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c)
 > 1. [Final upscaling] Applied once at the end, after defect fixes and trimming.
 >    a) None: trimming and enlargement to the target size leave some blur
 >    b) general: works for most styles
@@ -194,28 +205,78 @@ Example for a request with a person:
 > 5. [Finger redrawing] Only if item 3 is a or c. It seldom fixes fingers, so seed changes, edge trimming, and prompt workarounds always come first.
 >    a) Off (recommended): remaining finger defects get a composition that keeps hands out of the frame
 >    b) On: one attempt on remaining defects, with a before and after comparison. Used only on hands shown on their own. Hand size and pose may change
+> 6. [Candidate generation] I make more candidates than the target count at once and pick from them. You wait less for regeneration after a defect. Counts and times are for a target of 1 image and are estimates for this runtime environment.
+>    a) 1x: 1 image, about 40 seconds
+>    b) 2x: 2 images, about 1 minute 20 seconds
+>    c) 3x: 3 images, about 2 minutes
+>    d) Automatic: 1-3 images, about 40 seconds to 2 minutes. I raise it only for defect-prone requests such as people, hands, or crowds, and tell you the multiplier before generating
+>    e) Custom: write a whole-number multiplier (example: 6-e 4)
+> 7. [Candidate pick] Only if item 6 is not a.
+>    a) Agent pick: I pick the target count, starting from candidates without defects, and carry on to the end
+>    b) User pick: right after generation I show one contact sheet with numbers, and finish the candidates you pick by number
+> 8. [Spare candidate finishing] Only if item 6 is not a, and item 1 is not a or item 4 is b. Decides whether the candidates you do not pick (spares) get final upscaling and always-on face restoration. Defect repairs go to adopted images only.
+>    a) Adopted only: spares come as generated. You can have any spare finished later
+>    b) All candidates: spares come finished too. Post-processing time grows with the number of candidates
+>    c) Automatic: I choose a or b for the task and tell you before generating
 
 If a model choice condition applies, continue with the last number. Example:
 
-> 6. [Model choice] A person is the main subject, so the rate of shape defects depends on the model. Times are estimates for this runtime environment.
+> 9. [Model choice] A person is the main subject, so the rate of shape defects depends on the model. Times are estimates for this runtime environment.
 >    a) Standard (DreamShaper 8 LCM): about 40 seconds per image, 512px, frequent hand and clothing defects
 >    b) Precise (FLUX.2 klein 4B): about 15 minutes per image, 384x512, the most accurate shapes. Downloads about 5.2GB on first run
 
 The times in the example only show the format. Use probe.py's estimates in real questions.
+
+### Automatic candidate multiplier
+
+When the candidate generation answer is automatic, decide the multiplier after the answers arrive and before recording them with preflight.py. The baseline is 1x. Raise it only on the grounds below.
+
+- The main subject is prone to shape defects (a person, an animal, a precise object).
+- The framing shows a person's hands or full body.
+- The scene has several people or a background crowd.
+
+Keep 1x in the cases below.
+
+- The precise preset is in use. It takes the longest per image and draws shapes most accurately.
+- An object icon or a landscape scene with no subject prone to shape defects.
+
+Decide the multiplier within these limits.
+
+- With one ground, consider 2x. With overlapping grounds, consider up to 3x.
+- The cap is 3x.
+- Keep the total count (target count times multiplier) under 10. The model choice question is skipped by the target count, so the automatic multiplier must not push the total time past the model choice threshold. The cap is 2x for 4 target images and 1x for 5 or more.
+- Before generation starts, report the multiplier, a one-line reason, the total count, and the estimated time. Then go on without waiting for a confirmation, the same way as the free-ratio automatic trim.
+
+### Automatic spare candidate finishing
+
+When the spare candidate finishing answer is automatic, decide it after the multiplier is set and before recording with preflight.py. The baseline is a) adopted only. Adopted only keeps the generated originals, so spares can be finished one by one later and the choice can be undone. All candidates spends post-processing time up front and cannot be undone.
+
+Choose b) all candidates only in the cases below.
+
+- Candidate pick is user pick and face restoration scope is always. Faces differ a lot before and after restoration, so the contact sheet must show restored images for the user to pick by the final look.
+- The request shows an intent to receive every alternative.
+
+- When only final upscaling applies, keep a. Final upscaling mostly changes sharpness and size, so it hardly affects comparing framing and expression.
+- Before generation starts, report the choice and a one-line reason. Then go on without waiting for a confirmation.
 
 ### Recording answers
 
 After the user answers, write preflight.json to the output folder with preflight.py. The generation scripts stop with exit code 2 when this file is missing, and preflight.py stops with exit code 2 and lists missing items when a required answer is absent. Never record values you filled in without asking.
 
 ```
-# A person appears, answer "1-b, 2-c, 3-a, 4-b, 5-a"
-PY scripts/preflight.py --out ./outputs --subject person --enhance general --trim free --postfix auto --face-scope always --finger-inpaint off --user-reply "1-b, 2-c, 3-a, 4-b, 5-a"
+# A person appears, answer "1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c", automatic judgment chose 3x and all candidates
+PY scripts/preflight.py --out ./outputs --subject person --display available --enhance general --trim free --postfix auto --face-scope always --finger-inpaint off --candidates auto --candidates-resolved 3 --candidates-reason "full body framing with hands visible" --candidate-pick user --spare-finish auto --spare-finish-resolved all --spare-finish-reason "user pick with always-on face restoration" --user-reply "1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c"
 
-# Objects only, with a model choice, answer "1-b, 2-b, 3-b"
-PY scripts/preflight.py --out ./outputs --subject other --enhance general --trim same --preset sdxs --user-reply "1-b, 2-b, 3-b"
+# Objects only, with a model choice, answer "1-b, 2-b, 3-a, 6-b"
+PY scripts/preflight.py --out ./outputs --subject other --display available --enhance general --trim same --candidates 1 --preset sdxs --user-reply "1-b, 2-b, 3-a, 6-b"
 ```
 
 - `--subject` is `person` when a person appears, `precise-object` when a precise object appears without a person, and `other` otherwise.
+- `--display` is the result of the display path judgment in the delivery section: `available` with a display path, `none` without one. With `none`, `--trim free`, `--finger-inpaint on`, and `--candidate-pick user` are refused with exit code 2.
+- `--candidates` is a whole-number multiplier or `auto`. With `auto`, put the decided multiplier (1-3) in `--candidates-resolved` and a one-line reason in `--candidates-reason`.
+- `--candidate-pick` is `auto` for agent pick and `user` for user pick.
+- `--spare-finish` is `adopted` for adopted only, `all` for all candidates, and `auto` for automatic. With `auto`, put the decided value in `--spare-finish-resolved` and a one-line reason in `--spare-finish-reason`.
+- Candidate pick and spare candidate finishing are needed only when the multiplier in force is 2 or more. Unused items are recorded as null. Later steps use the values recorded in `candidates_resolved` and `spare_finish_resolved`.
 - `--user-reply` holds the user's answer word for word.
 - Later images in the same conversation reuse the record in the same output folder. If the user changes a choice or whether a person appears, rerun preflight.py.
 - If the style changes into photographic or watercolor, ask only the final upscaling item again. If the style moves between photographic and non-photographic, ask only the face restoration scope item again.
@@ -259,6 +320,21 @@ PY scripts/generate.py --preset tiny-sd --prompt "flat vector illustration of a 
 - Open any result cropped to another ratio and check that the subject is not cut off. If it is, run again with the same seed and only the anchor changed. If no anchor fits the whole subject, add a framing that suits the target ratio (distant placement, upper body) to the prompt and regenerate.
 - Run the precise preset with generate_klein.py following the precise preset section of references/models.md.
 
+When the multiplier in force is 2 or more, make target count times multiplier candidates. This set of candidates is the candidate pool.
+
+```
+# Same prompt, 2 target images, 2x candidates
+PY scripts/generate.py --prompt "a red bicycle leaning against a brick wall, side view, watercolor illustration" --out ./outputs --name bicycle --count 4
+
+# Precise preset, 2x candidates, one image per run with a new seed and file name
+PY scripts/generate_klein.py "an elderly man reading a newspaper on a park bench, photorealistic" ./outputs/reader-01.png --seed 42
+PY scripts/generate_klein.py "an elderly man reading a newspaper on a park bench, photorealistic" ./outputs/reader-02.png --seed 43
+```
+
+- For target images that share a prompt, run once with `--count` set to target count times multiplier. When each target image has its own prompt, give each prompt `--count` equal to the multiplier.
+- The precise preset makes one image per run. Run each candidate separately with the seed raised by 1 and a new file name. Start the next run after the previous one finishes.
+- Make candidates in the output folder. The generation scripts and finalize.py read preflight.json from the output folder, so saving into a subfolder stops them with exit code 2. Spares move to the `candidates` folder after adoption (candidate adoption in the check section).
+
 ## Check
 
 generate.py checks each file right after saving: size over 10KB, magic bytes (JPEG `FFD8FF`, PNG `89504E47`), and pixel size. On exit code 7, regenerate before looking.
@@ -278,6 +354,55 @@ Once the machine check passes, open the file and look.
 
 If final upscaling is chosen, run these checks on the working-size output.
 
+### Candidate adoption
+
+When the multiplier in force is 2 or more, check the whole candidate pool, then adopt the target count.
+
+1. Check every candidate on its original file with the items above. When face restoration scope is always, follow the spare candidate finishing value in force. With all candidates, restore every candidate once and check the restored images. With adopted only, check the originals, then restore only the adopted images and judge them on the restored versions.
+2. Leave candidates with unrequested exposure of genitals or female nipples out of the contact sheet and the candidates folder. The generation pipeline runs with the safety checker off, so such candidates can appear. When you show the contact sheet, report in one line how many were left out and why.
+3. Build the contact sheet from the remaining candidates. If every candidate got face restoration, use the restored images. Otherwise use the generated originals. Final upscaling comes after adoption, so the sheet does not reflect it.
+4. Adopt as the candidate pick answer says.
+5. If spare candidate finishing is all candidates and final upscaling was chosen, apply final upscaling once to each spare. The input is the restored image if there is one, the generated original otherwise. finalize.py reads preflight.json from the output folder, so apply it in the output folder before moving.
+6. Move the spares' generated originals and finished versions to the `candidates` folder inside the output folder. Adopted images stay in the output folder for defect handling, trimming, and final upscaling.
+
+```
+PY scripts/contact_sheet.py ./outputs/bicycle-01.png ./outputs/bicycle-02.png ./outputs/bicycle-03.png ./outputs/bicycle-04.png --out ./outputs/bicycle_sheet.png
+PY scripts/contact_sheet.py "./outputs/reader-0?_face.png" --out ./outputs/reader_sheet.png   # restored images, the script expands the wildcard
+```
+
+- The contact sheet numbers its inputs from 1 in the given order. stdout prints the number-to-file mapping as JSON.
+- The contact sheet is for choosing framing and expression. Judge small defects on the original candidate files.
+- With agent pick, adopt the target count in the adoption order below and carry on to the end. Record the adopted candidates, their ranks, and the reasons.
+- With user pick, show the contact sheet right after generation and let the user pick by number. Report the defects found in each candidate, one line each. Run defect handling and finishing on the picked candidates.
+- If a candidate the user picked has a defect with no means of repair, report the defect and ask whether to pick again from the remaining candidates or go to defect handling stage 2.
+- Without a display path, do not ask for user pick and go on with agent pick.
+
+The agent adoption order:
+
+1. Candidates without defects
+2. Candidates whose only defects trimming resolves (trim answer other than off). Candidates resolved by same-ratio trimming come before those that need free-ratio trimming.
+3. Candidates whose only defects post-processing resolves (defect post-processing answer is automatic or ask each time). Face defects that always-on face restoration resolves fall in this rank whatever the defect post-processing answer. A candidate left out of the contact sheet for exposure counts only in this rank, and only when cover redrawing resolves it.
+
+- Within a rank, pick the candidate closest to the subject, framing, and style of the original request.
+- Do not adopt candidates with defects that have no means of repair. General defects that need a new image (style, color, count, and so on) belong here too.
+- Fill slots the pool cannot fill with the defect handling procedure. Fragile subjects start at stage 2 without a stage 1 regeneration (references/defects.md).
+
+### Scope in candidate mode
+
+The answers to the existing items apply in candidate mode as below.
+
+| Existing item | Candidate mode behavior |
+|---|---|
+| Final upscaling | Applied once to the adopted images only, or to every candidate, as the spare candidate finishing value in force says |
+| Edge trim | Applied only to defects of adopted candidates. With off, the adoption order has no rank 2 |
+| Defect post-processing | Automatic serves as rank 3 of the adoption order. Workarounds only treats candidates that need post-processing as having no means of repair. Ask each time asks only when the higher ranks fall short |
+| Face restoration scope | Always follows the spare candidate finishing value in force. Only on defects follows the defect post-processing rules. Off does not apply |
+| Finger redrawing | Applied only to adopted candidates |
+
+- Defect repairs (trimming, face restoration on defects, face restoration again at a lower strength, region redrawing, finger redrawing) go to adopted images only, whatever the answers. Each repair needs its own judgment and user confirmation per candidate, so repairing spares too would multiply questions and time by the number of candidates.
+- Always-on face restoration runs once per candidate. Running it again at a lower strength is a defect repair, so only adopted images get it.
+- If the user wants some spares, move each one's generated original to the output folder and run the same repairs and finishing as for adopted images. Final upscaling is applied only once, so start over from the generated original.
+
 ## Defect handling
 
 If you find a defect, follow the order in references/defects.md. In short:
@@ -286,6 +411,8 @@ If you find a defect, follow the order in references/defects.md. In short:
 2. General defects: fix style, color, count, background, and framing problems with prompt edits and seed changes.
 3. Fragile subjects (people, animals, precise objects, background crowds): go through stage 1 seed change, stage 2 prompt workaround, stage 3 post-processing, stage 4 composition workaround.
 4. If the regeneration limit is reached, show the best result with the defect marked and ask how to proceed.
+
+When the multiplier in force is 2 or more, swapping within the candidate pool replaces stage 1 for fragile subjects. Once the pool runs out, go to stage 2 without a stage 1 regeneration. For general defects, add the number of pool swaps to the count of seed changes. The detailed rules and the regeneration limits are in references/defects.md.
 
 Choosing, tuning, installing, and cleaning up the post-processing tools (face restoration, region redrawing, finger redrawing) is covered in references/postprocess.md.
 
@@ -300,6 +427,7 @@ Final upscaling enlarges 4x with super-resolution and then scales down to the ta
 | flat | Flat vector backgrounds | Waxy skin, exaggerated nostril edges, and clumped hair on people |
 
 - Apply it once, to the adopted image, after all defect fixes and trimming. Applying it right after generation means enlarging again after a trim or running it twice, and the waxy look builds up. Face restoration and region redrawing are tuned for the pre-upscaling size too. Discarded attempts never get it, so the extra time covers one adopted image.
+- In candidate mode, follow the spare candidate finishing value in force. With all candidates, each spare gets it once too, so the extra time grows with the number of candidates. Spares get no defect repairs, so apply it in the output folder right after adoption.
 - Texture loss comes from the post-processing itself, so no prompt or seed brings it back.
 - Super-resolution does not repair facial features. Face defects go through defect handling.
 - On first use it downloads weights of a few MB from GitHub and checks their SHA-256. Nothing else needs installing.
@@ -313,14 +441,39 @@ PY scripts/finalize.py ./outputs/banner_trim.png ./outputs/banner_final.png --si
 - Without `--size` the result is 768x768. The mode follows the answer in preflight.json.
 - If trimming changed the ratio, pass the `target=WxH` printed by edge_trim.py to `--size` unchanged. Passing the original target crops back to the original ratio and cuts off the parts you kept.
 - Open the result and check for a waxy look, exaggerated nostril and lip edges, clumped hair, and lost texture. If you see side effects, show it next to the adopted image enlarged to the same size, and let the user choose.
+- Compare side effects on adopted images only. Without a display path, pick the version with fewer side effects yourself and give a one-line reason on delivery.
 
 ## Delivery
 
 - Name files in lowercase English with underscores that describe the content, for example `lighthouse_flat_vector.png`.
 - If the environment has a way to present files, use it. Otherwise give the absolute path.
 - Keep the reproduction details: prompt, seed, preset, size, and the final upscaling choice.
+- In candidate mode, present the candidates folder path and the contact sheet along with the adopted images. Add each candidate's seed, the multiplier in force, and the spare candidate finishing choice to the reproduction details. For a multiplier or spare candidate finishing choice decided automatically, include the reason.
 - For trimmed results, report the trim, the body part the cut line crosses, and the cut ratio (for free ratio, the adopted ratio and the remaining area).
 - For JPEG, generate with `--format jpg` or convert the PNG.
+
+### Display path judgment
+
+Every point that shows images to the user follows this judgment. Make it once, at the pre-generation question stage. Look at the tools you have and where you run, and pick one of the three below.
+
+| Display path | Criterion | `--display` |
+|---|---|---|
+| File presentation tool | The runtime environment has a tool that shows files on the user's screen | `available` |
+| Shared file system | The agent runs on the user's computer, so the user can open an absolute path you give | `available` |
+| No display path | As in a remote runtime environment without a presentation tool, the user cannot open an absolute path you give | `none` |
+
+Without a display path, handle each point as below.
+
+| Point that shows images | Without a display path |
+|---|---|
+| User pick in candidate pick | Do not ask the item. Go on with agent pick |
+| Free ratio too in edge trim | Remove the choice |
+| On in finger redrawing | Remove the choice, because it needs a before and after comparison |
+| Before and after comparison of face restoration in non-photographic styles | Pick the version that suits the style yourself and give a one-line reason on delivery |
+| Side effect comparison of final upscaling | Pick the version with fewer side effects yourself and give a one-line reason on delivery |
+| Regeneration limit reached | Describe the defect location in words and ask how to proceed |
+
+- After removing a choice, relabel the remaining choices from a) in order. Ask finger redrawing and record the answer even when only off remains.
 
 ## Resources and cache
 

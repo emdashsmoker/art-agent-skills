@@ -38,6 +38,7 @@ Defects outside the fragile subjects (next section) go down one of two paths. If
 - A person that belongs to the request, or a small figure mixed into the background, is not an unrequested-person defect. Abstract style words in scene prompts can read as a photographic portrait, which causes this defect.
 - Change one thing in the prompt at a time, so you can tell which change worked.
 - If the same defect remains after up to three prompt edits and up to three seed changes, keep the chosen model and respond by request type.
+- When the multiplier in force is 2 or more, add the number of moves to the next candidate in the pool to the count of seed changes, because every candidate has its own seed. For example, if all three candidates of a 3x pool show the same defect, count two seed changes as used and regenerate only once more.
 - For message requests and diagram requests, go back to the original message and choose another stand-in. A seed change only rearranges the same metaphor, so repeating it does nothing when the metaphor is wrong.
 - For named-subject requests, keep the subject, show the best result with its defects, and ask how to proceed.
 - For scene requests that went through no substitution, change the element combination.
@@ -60,6 +61,8 @@ Respond in this order.
 
 Enter a stage only when the same defect remains after the previous stage has used all its attempts. Never skip stage 1 to go straight to stage 2 or later. Workarounds give up part of the original intent, such as a bare face, a natural pose, or the original scene. Seed changes alone often fix the defect, so use the free option first.
 
+When the multiplier in force is 2 or more, swapping within the candidate pool replaces stage 1. The candidates are stage 1's seed changes made ahead of time, at generation. When too few candidates can be adopted or an adopted candidate has to be replaced, swap in a remaining candidate. Once the pool runs out, go to stage 2 without a stage 1 regeneration. A candidate adopted at rank 3 of the adoption order in SKILL.md goes straight to stage 3 post-processing without stage 2. The pool has already shown it holds no better candidate, and post-processing keeps the original intent.
+
 Edge trimming needs no installation and loses almost nothing of the original intent, so run it first at any stage. It applies when the defect touches or comes close to an edge, and the trim-first check decides whether to run it.
 
 The answers in preflight.json decide whether to enter stage 3.
@@ -68,21 +71,23 @@ The answers in preflight.json decide whether to enter stage 3.
 - With `face_scope` set to `off`, face defects skip stage 3 and go to stage 4 once stage 2 is used up.
 - Finger defects enter stage 3 only when `finger_inpaint` is `on`. With `off`, they go to stage 4 once stage 2 is used up.
 - With `face_scope` set to `always`, face restoration runs right after generation as the default step, and face defects are judged on the restored image.
+- In candidate mode, `always` follows `spare_finish_resolved`. With `adopted`, judge the originals to adopt, restore only the adopted images, and judge them on the restored versions. With `all`, restore every candidate once and judge on the restored images.
 
 ### Regeneration limit
 
 By default each stage allows one regeneration. If the limit is reached, stop regenerating.
 
-| Preset | Stage 1 | Stage 2 | Stage 4 | Total |
-|---|---|---|---|---|
-| Light | 1 | 2 | 1 | 4 |
-| Standard, Flat | 1 | 1 | 1 | 3 |
-| Precise | 1 | 0 | 0 | 1 |
+| Preset | Stage 1 | Stage 2 | Stage 4 | Total | Total with 2x or more candidates |
+|---|---|---|---|---|---|
+| Light | 1 | 2 | 1 | 4 | 3 |
+| Standard, Flat | 1 | 1 | 1 | 3 | 2 |
+| Precise | 1 | 0 | 0 | 1 | 0 |
 
+- When the multiplier in force is 2 or more, swapping within the candidate pool replaces stage 1, so stage 1 has no regeneration. The last column is the total in that case. A pool swap picks an image that already exists, so it does not count as a regeneration.
 - Light makes images fast, so it gets one extra round of trial and error for choosing a workaround. The second stage-2 attempt must use a different workaround from the first. Changing only the seed with the same workaround counts as stage 1, not stage 2.
 - Precise takes the longest per image, so one regeneration reaches the limit.
 - Stage 3 post-processing fixes part of an existing output and does not count as a regeneration. Apply each tool once and compare.
-- At the limit, show the best result with the defect marked and ask how to proceed. The choices are: adopt the best result, try again with a workaround the user picks, switch to a scene without people or an object icon, or change the model (with its download size and estimated time).
+- At the limit, show the best result with the defect marked and ask how to proceed. Without a display path, describe the defect location in words (display path judgment in the delivery section of SKILL.md). The choices are: adopt the best result, try again with a workaround the user picks, switch to a scene without people or an object icon, or change the model (with its download size and estimated time).
 
 ### Workarounds
 
@@ -109,6 +114,7 @@ The table holds examples. If another option fits the theme, time of day, or styl
 If a defect sits at an edge, cut that edge as little as possible to push the defect out of the frame. The typical case is a finger caught at the bottom. The cut pixels are gone, so the fix is certain for anatomical and object defects alike. It cannot help when the defect is in the middle of the frame. It uses only Pillow and takes seconds.
 
 - The order is generation (already cropped to the target ratio), edge trimming, then final upscaling.
+- In candidate mode, trim only the defects of adopted candidates. Spares are not trimmed even when they have defects.
 - If final upscaling is chosen, save with `--no-resize` and skip enlarging. finalize.py produces the target size. If final upscaling is off, run without that option to enlarge back to the original size. The enlargement lowers sharpness by the same factor.
 
 ### Measuring coordinates

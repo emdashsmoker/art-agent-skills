@@ -21,7 +21,7 @@ CodeFormer는 S-Lab License 1.0으로 배포된다. 이 라이선스는 비상�
 
 ### 생성 전 질의
 
-image-gen의 얼굴 복원 범위 항목 바로 뒤에 얼굴 복원 강도 항목을 넣는다. 뒤 항목의 번호는 하나씩 밀린다.
+image-gen의 얼굴 복원 범위 항목 바로 뒤에 얼굴 복원 강도 항목을 넣는다. 뒤 항목의 번호는 하나씩 밀린다. 다른 항목의 조건 안내에 적힌 뒤 항목 번호도 밀린 번호로 적는다(예: 후보 선택의 "6번이 a가 아닐 때만"은 "7번이 a가 아닐 때만").
 
 - 묻는 조건: 인물이 나오고, 얼굴 복원이 실제로 돌 수 있는 조합이다. 얼굴 복원 범위가 미사용이면 묻지 않는다. 얼굴 복원 범위가 결함 시에만이고 결함 후처리가 우회만 자동이면 복원이 돌지 않으므로 묻지 않는다.
 - 사용자가 강도를 직접 말했으면 묻지 않는다.
@@ -36,7 +36,7 @@ image-gen의 얼굴 복원 범위 항목 바로 뒤에 얼굴 복원 강도 항�
 답을 받으면 image-gen의 preflight.py를 실행한 직후 이 애드온의 기록 스크립트를 실행한다. image-gen의 기록을 다시 쓸 때마다 이 기록도 다시 실행한다.
 
 ```
-PY scripts/preflight_codeformer.py --out ./outputs --face-strength stepwise --user-reply "1-b, 2-c, 3-a, 4-b, 5-b, 6-a"
+PY scripts/preflight_codeformer.py --out ./outputs --face-strength stepwise --user-reply "1-b, 2-c, 3-a, 4-b, 5-b, 6-a, 7-d, 8-b, 9-c"
 ```
 
 - `scripts/`는 이 애드온 폴더 안의 scripts 폴더 경로다. `PY`는 image-gen의 가상환경 파이썬이다.

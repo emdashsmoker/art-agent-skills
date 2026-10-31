@@ -167,7 +167,7 @@ Before the first image, ask every applicable item from the table below in one me
 - Ask about final upscaling, edge trimming, and candidate generation even when only objects appear.
 - Before asking, make the display path judgment from the delivery section. Without a display path, reduce the items and choices as that section's table says.
 - Candidate generation makes more candidates than the target count at once and picks from them. It runs defect handling step 1 (regenerate with the same prompt and a new seed) ahead of time, at generation. The default 1x makes only the target count.
-- For fixed multiplier choices, write the total count (target count times multiplier) and the estimated time from probe.py, and say it is an estimate. For the automatic choice, write the range of total counts and times from 1x up to the cap of the automatic judgment.
+- For fixed multiplier choices, write the total count (target count times multiplier) and the estimated time from probe.py, and say it is an estimate. For the automatic choice, write the range of total counts and times from 1x up to 3x, the end of the recommended range.
 - Take a custom answer as a whole-number multiplier. When each target image has its own prompt, a total count alone does not decide how many images each prompt gets.
 - In the choices of spare candidate finishing, name only the batch processes the user can pick in this question. For objects only, name final upscaling alone.
 - Judge the 10-image condition of the model choice question by the target count. The multiplier comes in the same question, so whether to ask the model question cannot follow the multiplier answer.
@@ -235,16 +235,15 @@ When the candidate generation answer is automatic, decide the multiplier after t
 - The framing shows a person's hands or full body.
 - The scene has several people or a background crowd.
 
-Keep 1x in the cases below.
+1x is recommended in the cases below.
 
 - The precise preset is in use. It takes the longest per image and draws shapes most accurately.
 - An object icon or a landscape scene with no subject prone to shape defects.
 
-Decide the multiplier within these limits.
+Decide the multiplier by the recommended criteria below.
 
-- With one ground, consider 2x. With overlapping grounds, consider up to 3x.
-- The cap is 3x.
-- Keep the total count (target count times multiplier) under 10. The model choice question is skipped by the target count, so the automatic multiplier must not push the total time past the model choice threshold. The cap is 2x for 4 target images and 1x for 5 or more.
+- With one ground, consider 2x. With overlapping grounds, consider 3x.
+- The recommended range is 1x to 3x.
 - Before generation starts, report the multiplier, a one-line reason, the total count, and the estimated time. Then go on without waiting for a confirmation, the same way as the free-ratio automatic trim.
 
 ### Automatic spare candidate finishing
@@ -273,7 +272,7 @@ PY scripts/preflight.py --out ./outputs --subject other --display available --en
 
 - `--subject` is `person` when a person appears, `precise-object` when a precise object appears without a person, and `other` otherwise.
 - `--display` is the result of the display path judgment in the delivery section: `available` with a display path, `none` without one. With `none`, `--trim free`, `--finger-inpaint on`, and `--candidate-pick user` are refused with exit code 2.
-- `--candidates` is a whole-number multiplier or `auto`. With `auto`, put the decided multiplier (1-3) in `--candidates-resolved` and a one-line reason in `--candidates-reason`.
+- `--candidates` is a whole-number multiplier or `auto`. With `auto`, put the decided multiplier (a whole number of 1 or more) in `--candidates-resolved` and a one-line reason in `--candidates-reason`.
 - `--candidate-pick` is `auto` for agent pick and `user` for user pick.
 - `--spare-finish` is `adopted` for adopted only, `all` for all candidates, and `auto` for automatic. With `auto`, put the decided value in `--spare-finish-resolved` and a one-line reason in `--spare-finish-reason`.
 - Candidate pick and spare candidate finishing are needed only when the multiplier in force is 2 or more. Unused items are recorded as null. Later steps use the values recorded in `candidates_resolved` and `spare_finish_resolved`.

@@ -359,11 +359,10 @@ If final upscaling is chosen, run these checks on the working-size output.
 When the multiplier in force is 2 or more, check the whole candidate pool, then adopt the target count.
 
 1. Check every candidate on its original file with the items above. When face restoration scope is always, follow the spare candidate finishing value in force. With all candidates, restore every candidate once and check the restored images. With adopted only, check the originals, then restore only the adopted images and judge them on the restored versions.
-2. Leave candidates with unrequested exposure of genitals or female nipples out of the contact sheet and the candidates folder. The generation pipeline runs with the safety checker off, so such candidates can appear. When you show the contact sheet, report in one line how many were left out and why.
-3. Build the contact sheet from the remaining candidates. If every candidate got face restoration, use the restored images. Otherwise use the generated originals. Final upscaling comes after adoption, so the sheet does not reflect it.
-4. Adopt as the candidate pick answer says.
-5. If spare candidate finishing is all candidates and final upscaling was chosen, apply final upscaling once to each spare. The input is the restored image if there is one, the generated original otherwise. finalize.py reads preflight.json from the output folder, so apply it in the output folder before moving.
-6. Move the spares' generated originals and finished versions to the `candidates` folder inside the output folder. Adopted images stay in the output folder for defect handling, trimming, and final upscaling.
+2. Build the contact sheet from all candidates. If every candidate got face restoration, use the restored images. Otherwise use the generated originals. Final upscaling comes after adoption, so the sheet does not reflect it.
+3. Adopt as the candidate pick answer says.
+4. If spare candidate finishing is all candidates and final upscaling was chosen, apply final upscaling once to each spare. The input is the restored image if there is one, the generated original otherwise. finalize.py reads preflight.json from the output folder, so apply it in the output folder before moving.
+5. Move the spares' generated originals and finished versions to the `candidates` folder inside the output folder. Adopted images stay in the output folder for defect handling, trimming, and final upscaling.
 
 ```
 PY scripts/contact_sheet.py ./outputs/bicycle-01.png ./outputs/bicycle-02.png ./outputs/bicycle-03.png ./outputs/bicycle-04.png --out ./outputs/bicycle_sheet.png
@@ -381,7 +380,7 @@ The agent adoption order:
 
 1. Candidates without defects
 2. Candidates whose only defects trimming resolves (trim answer other than off). Candidates resolved by same-ratio trimming come before those that need free-ratio trimming.
-3. Candidates whose only defects post-processing resolves (defect post-processing answer is automatic or ask each time). Face defects that always-on face restoration resolves fall in this rank whatever the defect post-processing answer. A candidate left out of the contact sheet for exposure counts only in this rank, and only when cover redrawing resolves it.
+3. Candidates whose only defects post-processing resolves (defect post-processing answer is automatic or ask each time). Face defects that always-on face restoration resolves fall in this rank whatever the defect post-processing answer.
 
 - Within a rank, pick the candidate closest to the subject, framing, and style of the original request.
 - Do not adopt candidates with defects that have no means of repair. General defects that need a new image (style, color, count, and so on) belong here too.

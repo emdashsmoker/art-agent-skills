@@ -94,6 +94,13 @@ Before generating, sort the request into one of three types. The test is whether
 - If the user gives both an object and a message, draw the object and carry the message through style and color.
 - Substitution rules, example tables, and the consent wording are in references/composition.md.
 
+## Protection of minors
+
+The skill does not generate unclothed figures or sexual depictions (sexual acts included) of minors.
+
+- A minor is a figure stated to be under 18 or stated to have minor status, or a figure that clearly has a body before secondary sexual characteristics (a child's head-to-body ratio and build).
+- A youthful face, large eyes, an idol-like look, cel-style art, short height, a slim build, or a trendy outfit alone does not make a figure a minor.
+
 ## Composition
 
 There are two compositions: icon and scene. Follow the user if they name one. Otherwise decide from where the image will go. If that is unknown too, make an icon.
@@ -334,7 +341,7 @@ Once the machine check passes, open the file and look.
 - Does a person's face show a face defect (eyes of different sizes, features out of place or unevenly spaced, a face mushy as a whole, a missing eye, nose, or mouth, and the like)?
 - Do people and animals show any other anatomical defect (distorted animal facial features, the shape of hands and feet, body distortion, and the like)?
 - Do clothing, accessories, objects, and buildings show a connection or structure defect (broken glasses frames, missing straps, tangled spokes, a distorted complex machine, a building with a distorted form such as a roof floating without pillars, and the like)?
-- Is there unrequested exposure of genitals or female nipples?
+- Is there an unclothed figure or a sexual depiction that falls under the protection of minors section?
 - Does each defect touch or come close to one of the four edges?
 - For a substituted diagram request, or a framing or subject changed under the maximum upfront workaround, does the picture carry the original message?
 - Even outside this list, is there any part that looks like a typical diffusion model defect, looks visually wrong, or fails to reflect the staging the user asked for?

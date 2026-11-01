@@ -43,4 +43,4 @@ The skill package contains no model weights, executables, or external packages. 
 
 ## Safety checker
 
-The generation pipeline runs with the diffusers safety checker turned off. The checker needs a separate model (about 1.2GB) and replaces any flagged result with a black image. Instead, the check step looks for unrequested exposure and covers it with fabric through region redrawing. Do not use unfiltered results as they are in a public-facing service.
+The generation pipeline runs with the diffusers safety checker turned off. The checker needs a separate model (about 1.2GB) and replaces any flagged result with a black image. Content rules follow the protection of minors section of SKILL.md.

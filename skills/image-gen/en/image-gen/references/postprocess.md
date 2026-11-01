@@ -51,7 +51,7 @@ PY scripts/face_fix.py in.png out_face.png
 
 ## Region redrawing
 
-If the whole image works except for one defect, redraw just that part. Examples: a broken glasses frame, a missing strap, unrequested exposure of genitals or female nipples, tangled bicycle spokes.
+If the whole image works except for one defect, redraw just that part. Examples: a broken glasses frame, a missing strap, tangled bicycle spokes.
 
 - Extending: fixes that continue an existing shape, such as a broken frame or a strap that vanishes halfway, use strength 0.65. At 0.85 the shape gets drawn over itself and looks worse.
 - Covering: fixes that put another material over skin, such as covering exposed skin with fabric or lengthening a short sleeve, use strength 1.0. Lower strengths follow the original colors and the material does not change.

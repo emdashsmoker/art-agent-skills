@@ -54,7 +54,7 @@ PY scripts/preflight_codeformer.py --out ./outputs --face-strength stepwise --us
 
 - To choose w for the always-on scope, look at the face in the generated original before restoration. The face defect judgment after restoration uses the restored image, as image-gen's rules say.
 - Stepwise starts at w=0.5 and lowers to 0.25, then 0.0, while a defect remains. A lower w changes the original look more, but fixing the defect comes first.
-- Restoring again with a lower w is a defect repair in image-gen's stage 3. Follow image-gen's stage 3 rules as they are, such as the defect post-processing answer and the adopted-only rule of candidate mode. With defect post-processing set to workarounds only, do not lower w, and move on to image-gen's stages 2 and 4.
+- Restoring again with a lower w is a defect repair in image-gen's stage 3. In candidate mode, restore again with a lower w on adopted images only. Follow image-gen's stage 3 rules as they are, such as the defect post-processing answer and the like. With defect post-processing set to workarounds only, do not lower w, and move on to image-gen's stages 2 and 4.
 - At w=0.0 the face can look like a different person. If the same person appears in several images, compare them.
 - CodeFormer shares the problem of restored faces turning photographic in non-photographic styles. Follow image-gen's rules for non-photographic styles as they are, such as the before-and-after comparison, the direct choice without a display path, and comparing only the adopted image in candidate mode.
 - On a face that has fallen apart, CodeFormer can fail to rebuild it and change only the texture. If the defect remains even at w=0.0, move on to image-gen's region redrawing.

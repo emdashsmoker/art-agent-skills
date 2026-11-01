@@ -27,6 +27,15 @@ Changelog rules
 - (Push) Commit on top of the latest main and push directly to main.
 -->
 
+## 2026-11-01
+
+### image-gen
+- Changed when the references are read: defects.md after every generation before the check, and postprocess.md as well when the answers use post-processing (#26)
+- Changed the visual check to name defect types with example lists, take a second look at enlarged parts of fragile subjects, and keep a one-line record per image (#26)
+
+* 생성 직후 점검 전의 defects.md 읽기와 후처리 사용 시 postprocess.md 읽기로 참조 문서 읽기 시점 변경 (#26)
+* 예시 목록을 붙인 결함 유형 항목, 취약 피사체의 부위 확대 확인, 이미지별 한 줄 기록을 담은 눈 점검 방식 변경 (#26)
+
 ## 2026-10-31
 
 ### image-gen

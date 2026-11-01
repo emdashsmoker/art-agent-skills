@@ -110,7 +110,7 @@ The table holds examples. If another option fits the theme, time of day, or styl
 |---|---|---|
 | Face defect | Closed eyes (`eyes closed`), a hat or hood, helmet, visor, sunglasses, a simple expression (`neutral expression`) | Side or back view, an upper-body close-up that makes the face larger |
 | Wrong number of limbs | (Trim first if it touches an edge) a simple pose (`standing, arms at sides`), a coat or cape | An upper-body shot that leaves the legs out of the frame |
-| Warped fingers or toes | (Trim first if it touches an edge) gloves, `hands in pockets`, long sleeves, holding a prop | A shot that leaves hands and feet out of the frame |
+| Warped fingers or toes | (Trim first if it touches an edge) hands lowered at the sides (`arms at sides`), gloves, `hands in pockets`, long sleeves, holding a prop | A shot that leaves hands and feet out of the frame |
 | Warped animal limbs or face | A sitting pose (`sitting`) | A side silhouette |
 | Tangled parts on a precise object | Render as a silhouette | Swap in an object with a simple outline |
 | Mushy faces in a background crowd | Crowd silhouettes (`silhouettes of people in the distance`) | Remove the crowd and keep the main subject alone |
@@ -118,6 +118,9 @@ The table holds examples. If another option fits the theme, time of day, or styl
 - Face defects get worse the fewer pixels the face occupies. The two directions are covering part of the face (helmet, visor, sunglasses, hat) and enlarging the face (close-up). Covering part of it keeps some features and hides only the weak spots, so it looks less out of place.
 - Closed eyes help when mismatched gaze or pupils are the main defect. Use them only where closed eyes look natural, such as rest, meditation, or listening to music.
 - Turning the main person into a backlit silhouette gives up the facial features, so use it only as the last attempt within the limit. Silhouettes look natural for distant figures and background crowds, so this restriction does not apply to them.
+- When a workaround sets or changes a pose, choose a static pose over a dynamic one. Diffusion models break more often as the joints of a pose grow more complex, with limbs overlapping, bending, touching other parts, and the like. Examples of static poses are standing, sitting, arms lowered at the sides, and the like.
+- Choose hiding staging that keeps the drawing easy as well. Hands behind the head, hands in the hair, a hand on the face, crossed arms, and the like seem to hide the hands, but the fingers blend into the hair or other body parts and the arms bend, so defects grow more frequent. Avoid staging with large motion, such as running, jumping, a twisted body, and the like, for the same reason.
+- Work around hand defects first with poses such as hands resting at the sides or lowered toward the bottom, and the like. Lowered hands are easy to trim away if a defect remains, because in a framing that ends at the waist or thighs they touch the bottom edge or leave the frame.
 - Add one workaround at a time, so you can tell what caused the effect.
 - Check that the adopted workaround (accessory, clothing, framing) fits the scene's time of day, color, and original message before using it.
 - Record the stage, seed, and prompt of every attempt to track which stages are used up. Record the adopted result the same way.
@@ -143,6 +146,7 @@ The table below gives examples by target. The table holds examples, so choose op
 
 - Add workaround staging only to the parts that the requested framing makes defect-prone. For the same person, a full-body framing makes the small face and the hands defect-prone, and an upper-body framing makes the hands defect-prone.
 - Within what the answer allows, choose in this order: a form that lacks the defect-prone part altogether, a framing that leaves that part out of the frame, then staging that hides it. The more the cause of the defect leaves the frame, the stronger the effect. An object that is hard to draw itself (such as heavily folded cloth) brings new defects, so hide parts only with simple objects.
+- Choose poses by the rules of the workarounds section (static poses, hiding that keeps the drawing easy, lowered hands, and the like). Workaround staging never makes the pose more dynamic than the original request.
 - Choose only options that pass the fit check of the workarounds section and suit the scene's theme, time of day, and style. Leave a part without a workaround if nothing fits. Staging that clashes with the scene, such as wool gloves on a summer beach, stands out as much as a defect.
 - Optimize never uses an option that conflicts with a look the user specified. For example, a person waving a hand never gets hands in pockets.
 - The first prompt may hold one option per part. The rule of adding one workaround at a time applies to the attempts of the defect handling stages.

@@ -1,33 +1,33 @@
 # Request types, substitution, and scene building
 
-Details for the request type and composition sections of SKILL.md. Read this when sorting a request, turning a message into something drawable, or writing a scene prompt.
+Details for the request type and composition sections of SKILL.md. Read this when classifying a request, converting a message into something drawable, or writing a scene prompt.
 
 ## Named subject test
 
 A noun in the request that has a physical form and a recognizable outline is a named subject. Use it as the subject of the English prompt as it is, and skip substitution and consent.
 
-- Keep a symbolic object the user named. Naming it means the user already chose.
-- If the user gives an object and a message, make the object the subject and carry the message through style and color.
+- Keep a symbolic object the user specified. Specifying it means the user has already made the choice.
+- If the user provides an object and a message, make the object the subject and convey the message through style and color.
 - People, animals, and places are named subjects too. Examples: "a woman standing on a beach", "a cat on a desk", "a harbor at dawn".
-- With the upfront workaround at maximum, a named subject may be replaced too. The replacement standard and the confirmation follow the upfront workaround section of defects.md.
+- With the upfront workaround at maximum, a named subject may also be replaced. The replacement standard and the confirmation follow the upfront workaround section of defects.md.
 
 ## What a prompt can control
 
-Diffusion models reflect the subject noun, style, color, background, and time of day. Counts, relations between elements, states and actions, directions, and text rarely come through. Substitution therefore makes no attempt to reproduce them. Its goal is to carry the mood and meaning of a topic with one object or one scene.
+Diffusion models reflect the subject noun, style, color, background, and time of day. Counts, relations between elements, states and actions, directions, and text are rarely reflected. Substitution therefore does not attempt to reproduce them. Its goal is to convey the mood and meaning of a topic with one object or one scene.
 
 ## Substitution rules
 
 Use substitution for message requests and diagram requests. With the upfront workaround at maximum, the same rules apply when replacing a named subject.
 
-- Start from the message of the original request and substitute once. Never chain substitutions by swapping a chosen stand-in for another. To change the stand-in, go back to the original message and pick another candidate.
-- If the stand-in is more abstract than the noun in the original request, drop the substitution and use the original noun. Substitution turns what cannot be drawn into something that can. Going more abstract makes the picture harder to read.
+- Start from the message of the original request and substitute once. Do not chain substitutions by replacing a chosen stand-in with another. To change the stand-in, go back to the original message and select another candidate.
+- If the stand-in is more abstract than the noun in the original request, cancel the substitution and use the original noun. Substitution turns what cannot be drawn into something that can. Moving toward abstraction makes the picture harder to recognize.
 - Choose by the message. A rising-trend graph request becomes something that embodies rising. Check that the usual impression of the stand-in fits the message before you offer it.
-- For icons, choose an object with a silhouette that fills the frame. Skip landscapes made only of air and terrain, and subjects defined by material.
-- Among several candidates, pick the one with the simplest, most familiar outline. Simple, common subjects give stable results.
-- Convey direction and state by choosing a subject that carries that meaning itself. Phrases such as "rising" or "collapsing" rarely come through.
-- More elements mean more omissions and misplacements, so keep elements few. Exact counts do not come through, so never make a count the message.
+- For icons, choose an object with a silhouette that fills the frame. Do not choose landscapes made only of air and terrain, and subjects defined by material.
+- Among several candidates, select the one with the simplest, most familiar outline. Simple, common subjects give stable results.
+- Convey direction and state by choosing a subject that carries that meaning itself. Phrases such as "rising" or "collapsing" are rarely reflected.
+- More elements mean more omissions and misplacements, so keep elements few. Exact counts are not reflected, so do not make a count the message.
 - Keep the subject description short. Limit mood words to color and time of day.
-- For subjects outside the tables below, try at least two seeds before judging whether the style comes through.
+- For subjects outside the tables below, try at least two seeds before judging whether the style is reflected.
 
 ### Icon substitution examples
 
@@ -70,27 +70,27 @@ A scene draws one metaphor as a whole scene. Element counts are hard to control,
 
 ## Consent for diagram requests
 
-Present the limits, the substitute, the output, and a request for confirmation in one message. Generate after the user agrees.
+Present the limitations, the substitute, the output, and a request for confirmation in one message. Generate after the user agrees.
 
-- Limits: drawn as requested, the diagram's text and connectors would carry no meaning. Numbers and ratios come through only as up and down, more and less.
-- Substitute: sum up the core message of the original request in one sentence and offer one stand-in that fits it. Example: the core message of a three-stage growth roadmap is "we climb step by step".
+- Limitations: if drawn as requested, the diagram's text and connectors would carry no meaning. Numbers and ratios can be conveyed only as increase and decrease, more and less.
+- Substitute: summarize the core message of the original request in one sentence and propose one stand-in that fits it. Example: the core message of a three-stage growth roadmap is "we climb step by step".
 - Output: the result is an icon or a scene of the stand-in.
-- Text: if text and numbers are needed, keep the image as a background and add text on top in an editing tool.
+- Text: if text and numbers are needed, use the image as a background and add text on top in an editing tool.
 
 Example:
 
-> Diffusion models cannot draw text or precise line structures. I can turn your [original request] into a picture of [stand-in] that carries [core message]. You can add the text on top of the finished picture in an editing tool. Shall I go ahead?
+> Diffusion models cannot render text or precise line structures. I can create your [original request] as a picture of [stand-in] that conveys [core message]. You can add the text on top of the finished picture in an editing tool. Shall I proceed?
 
-- If the user agrees, generate with the substitute prompt. From there it is a normal request.
-- If the user declines, pick another stand-in from the original message and offer it.
+- If the user agrees, generate with the substitute prompt. The rest of the process is the same as for a normal request.
+- If the user declines, select another stand-in from the original message and propose it.
 
 ## Scene building
 
-Scenes come out most stable with two or three common elements plus a time of day and a color. Diffusion models reproduce scene types they saw often in training.
+Scenes are most stable with two or three common elements plus a time of day and a color. Diffusion models reproduce scene types they saw often in training.
 
-- Elements: choose common ones such as sky, sea, mountains, a road, trees, a river, a forest, a city, a village, an industrial area, a lab, an office. Four or more elements bring more omissions and misplacements.
-- Replace elements that point to a specific company or product with common ones. Specific products rarely come out right.
-- Time of day: pick one of dawn, sunrise, noon, sunset, or night to fix the light direction and contrast.
-- Color: pick one color family to match the palette of where it will be used.
+- Elements: choose common ones such as sky, sea, mountains, a road, trees, a river, a forest, a city, a village, an industrial area, a lab, an office. Four or more elements increase omissions and misplacements.
+- Replace elements that point to a specific company or product with common ones. Specific products are rarely reproduced accurately.
+- Time of day: select one of dawn, sunrise, noon, sunset, or night to fix the light direction and contrast.
+- Color: select one color family that matches the palette of where it will be used.
 - Example: a river and a city skyline at sunset with a warm orange family. Prompt: `city skyline beside a river at sunset, warm orange palette, wide horizon, watercolor illustration`
 - To fit a full-body person into a wide banner, place the person in the distance or use an upper-body framing.

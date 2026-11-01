@@ -27,7 +27,7 @@ Insert a face restoration strength item right after image-gen's face restoration
 
 - Ask when a person appears and face restoration can run. Do not ask when face restoration scope is off. Do not ask when the scope is "only on defects" and defect post-processing is "workarounds only", because restoration never runs in that combination.
 - If the user already stated the strength, do not ask.
-- In the recommended combination for delegated answers, the recommendation for this item is stepwise.
+- In the recommended combination for delegated answers, the recommendation for this item is stepwise. Write the other numbers of the combination with the moved numbers as well. For example, image-gen's "1-b, 2-b, 3-a, 4-a, 5-a, 6-a, 9-a" becomes "1-b, 2-b, 3-a, 4-a, 5-b, 6-a, 7-a, 10-a".
 
 Example (insert after item 4 of image-gen's example):
 
@@ -38,7 +38,7 @@ Example (insert after item 4 of image-gen's example):
 After the user answers, run this add-on's record script right after image-gen's preflight.py. Run it again whenever image-gen's record is rewritten.
 
 ```
-PY scripts/preflight_codeformer.py --out ./outputs --face-strength stepwise --user-reply "1-b, 2-c, 3-a, 4-b, 5-b, 6-a, 7-d, 8-b, 9-c"
+PY scripts/preflight_codeformer.py --out ./outputs --face-strength stepwise --user-reply "1-b, 2-c, 3-a, 4-b, 5-b, 6-a, 7-d, 8-b, 9-c, 10-a"
 ```
 
 - `scripts/` is the scripts folder inside this add-on's folder. `PY` is the Python of image-gen's virtual environment.
@@ -52,9 +52,11 @@ PY scripts/preflight_codeformer.py --out ./outputs --face-strength stepwise --us
 | Distortion (asymmetry, misplaced features) | GFPGAN, then region redrawing if it remains | CodeFormer (strength per the face restoration strength answer), then region redrawing if it remains |
 | Always-on scope | GFPGAN | CodeFormer. w=0.5 when no defect shows, the starting value of the strength answer when a defect shows |
 
-- Stepwise starts at w=0.5 and lowers to 0.25, then 0.0, while a defect remains. A lower w changes the original look more, but fixing the defect comes first, so never leave a defect in place.
+- To choose w for the always-on scope, look at the face in the generated original before restoration. The face defect judgment after restoration uses the restored image, as image-gen's rules say.
+- Stepwise starts at w=0.5 and lowers to 0.25, then 0.0, while a defect remains. A lower w changes the original look more, but fixing the defect comes first.
+- Restoring again with a lower w is a defect repair in image-gen's stage 3. Follow image-gen's stage 3 rules as they are, such as the defect post-processing answer and the adopted-only rule of candidate mode. With defect post-processing set to workarounds only, do not lower w, and move on to image-gen's stages 2 and 4.
 - At w=0.0 the face can look like a different person. If the same person appears in several images, compare them.
-- CodeFormer shares the problem of restored faces turning photographic in non-photographic styles. Follow image-gen's rule: show before and after side by side and ask whether to adopt.
+- CodeFormer shares the problem of restored faces turning photographic in non-photographic styles. Follow image-gen's rules for non-photographic styles as they are, such as the before-and-after comparison, the direct choice without a display path, and comparing only the adopted image in candidate mode.
 - On a face that has fallen apart, CodeFormer can fail to rebuild it and change only the texture. If the defect remains even at w=0.0, move on to image-gen's region redrawing.
 - Areas outside the face, and hands, stay as in the original. Hand defects are not fixed.
 

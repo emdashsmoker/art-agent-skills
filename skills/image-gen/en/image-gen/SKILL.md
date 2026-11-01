@@ -315,25 +315,31 @@ Once the machine check passes, open the file and look.
 - Can you still read the shape at the size it will be used?
 - Does a person nobody asked for take the center of the frame?
 - Is there a count defect (more objects than intended, the same subject twice, and the like)?
-- Do people and animals show an anatomical defect (distorted facial features, the number of limbs, the shape of hands and feet, and the like)?
-- Do clothing, accessories, and precise objects show a connection defect (broken glasses frames, missing straps, tangled spokes, and the like)?
+- Does the body count of people and animals match the standard count (5 fingers on each hand, 5 toes on each foot, 2 arms, and 2 legs for a person, 4 legs for a four-legged animal, and the like)?
+- Does a person's face show a face defect (eyes of different sizes, features out of place or unevenly spaced, a face mushy as a whole, a missing eye, nose, or mouth, and the like)?
+- Do people and animals show any other anatomical defect (distorted animal facial features, the shape of hands and feet, body distortion, and the like)?
+- Do clothing, accessories, objects, and buildings show a connection or structure defect (broken glasses frames, missing straps, tangled spokes, a distorted complex machine, a building with a distorted form such as a roof floating without pillars, and the like)?
 - Is there unrequested exposure of genitals or female nipples?
 - Does each defect touch or come close to one of the four edges?
 - For a substituted diagram request, does the picture carry the original message?
 - If the subject looks squashed horizontally or vertically, regenerate as a square.
 
-The items in parentheses are examples. Treat any other shape problem as a defect by the same standard. If final upscaling is chosen, run these checks on the working-size output.
+The items in parentheses are examples. A shape problem is a part that differs from the real thing or from the requested style and that nothing visible in the frame explains. Visible causes include occlusion, the frame edge, the angle of the face and the pose, and omissions and exaggerations the style intends. Treat any other shape problem as a defect by the same standard. If unsure, treat it as a defect. If final upscaling is chosen, run these checks on the working-size output.
 
 For fragile subjects, look at the full frame first, then enlarge the parts where defects tend to appear (faces, hands and feet, joints between parts, and the like) and look again. A part drawn small rarely shows its defects in the full frame.
 
 - Make the enlarged view with grid_measure.py and a region. A rough, generous region is fine. View nearby parts together in one region.
+- Count arms and legs in the full frame. Count fingers and toes one by one on the enlarged view, for each hand and foot.
+- On the enlarged view of a face, check that the eyes, nose, and mouth are all there. Compare their position, spacing, size, and left-right balance with the placement criteria in defects.md.
+- Follow the outline of large parts such as the belly, waist, thighs, and chest in the full frame. A part whose outline breaks off, melts into clothing or the background, or twists is body distortion.
 - If you find a defect, use the enlarged grid for the trim and region-redrawing coordinates as well.
 - Skip enlarging an image you have already decided not to adopt.
 
-Record the check result in one line per image. Write the parts you looked at and what you saw, and for items without a defect, write what you based that on. In candidate mode, the adoption ranking and the defects reported in the user pick come from this record.
+Record the check result in one line per image. Write the parts you looked at and what you saw, and for items without a defect, write what you based that on. Write the body count as the number you counted for each part. For a face, write the angle of the face, whether the eyes, nose, and mouth are there, and how they compare with the placement criteria. In candidate mode, the adoption ranking and the defects reported in the user pick come from this record.
 
-- Example: `reader-02: no anatomical defect (face in profile, both hands holding a newspaper), no count defect, connection defect (left glasses frame broken, far from the edges)`
-- Leave out items that do not apply (such as anatomical defects in an image with objects only).
+- Example: `reader-01: body count wrong (right hand 6 fingers, touching the bottom edge), no face defect (three-quarter view, all features there, far eye narrower by the angle, both eyes level, nose and mouth on the turned center line), no anatomical defect (elbows and knees bend naturally), no count defect, no connection defect (glasses frame intact)`
+- Example: `reader-02: body count right (2 arms, 2 legs, left hand 5 fingers, right hand 3 fingers plus 2 behind the newspaper, toes covered by shoes), no face defect (profile, far eye hidden by the head, visible eye, nose, and mouth in natural order and spacing), no anatomical defect (hands holding the newspaper look natural), no count defect, connection defect (left glasses frame broken, far from the edges)`
+- Leave out items that do not apply (such as body count, face, and anatomical defects in an image with objects only).
 
 When the multiplier in force is 2 or more, adopt the target count as the candidate adoption section of references/candidates.md says. Apply the answers to the existing items as the scope in candidate mode section of the same file says.
 

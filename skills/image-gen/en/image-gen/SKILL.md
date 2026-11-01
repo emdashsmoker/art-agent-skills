@@ -21,7 +21,7 @@ Diffusion models cannot draw text, exact connector lines, numbers, or exact coun
 5. Pre-generation questions: ask about correction policies once and record the answers in preflight.json.
 6. Prompt: write an English prompt.
 7. Generate: run generate.py or generate_klein.py.
-8. Check and fix: first read the reference files whose conditions apply. Open the output and fix defects.
+8. Check and fix: first read the reference files in the reading-before-the-check section. Open the output and fix defects.
 9. Final upscaling: if chosen, apply it once to the adopted image.
 10. Deliver: hand over the file and the reproduction details.
 
@@ -340,14 +340,10 @@ generate.py checks each file right after saving: size over 10KB, magic bytes (JP
 
 ### Reading before the check
 
-Once generation ends, read the reference files whose conditions apply, before the check and before always-on face restoration. The defect criteria and the scope of each fix are in those files. Reading them only after a defect turns up means checking without those criteria.
+Once generation ends, read references/defects.md before the check and before always-on face restoration. It holds the defect criteria and the scope of the fixes that the trim-first check and the candidate adoption order rely on. Reading it only after a defect turns up means checking without those criteria.
 
-| Reference file | Read when | Used for |
-|---|---|---|
-| references/defects.md | A fragile subject appears (people, animals, precise objects, background crowds, and the like) | Defect judgment, the trim-first check, the candidate adoption order |
-| references/postprocess.md | Defect post-processing is automatic post-processing or ask each time, or the face restoration scope is always | Always-on face restoration, which defects post-processing covers and excludes, the candidate adoption order |
+When defect post-processing is automatic post-processing or ask each time, or the face restoration scope is always, read references/postprocess.md as well. It says which defects post-processing can and cannot fix. With any other answers, no post-processing tool is used.
 
-- For requests that meet neither condition, read defects.md when you find a defect.
 - If what you read is still in the conversation, do not read it again.
 
 ### Visual check

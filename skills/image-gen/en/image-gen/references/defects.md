@@ -1,6 +1,6 @@
 # Defect checks and responses
 
-Details for the defect handling section of SKILL.md. Read this when you find a defect in an output. postprocess.md covers the post-processing tools.
+Details for the defect handling section of SKILL.md. Read this once generation ends, before the check, because the defect criteria are here. postprocess.md covers the post-processing tools.
 
 ## Trim-first check
 

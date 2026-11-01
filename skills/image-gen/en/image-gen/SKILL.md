@@ -21,7 +21,7 @@ Diffusion models cannot draw text, exact connector lines, numbers, or exact coun
 5. Pre-generation questions: ask about correction policies once and record the answers in preflight.json.
 6. Prompt: write an English prompt.
 7. Generate: run generate.py or generate_klein.py.
-8. Check and fix: open the output and fix defects.
+8. Check and fix: first read the reference files in the reading-before-the-check section. Open the output and fix defects.
 9. Final upscaling: if chosen, apply it once to the adopted image.
 10. Deliver: hand over the file and the reproduction details.
 
@@ -338,20 +338,42 @@ PY scripts/generate_klein.py "an elderly man reading a newspaper on a park bench
 
 generate.py checks each file right after saving: size over 10KB, magic bytes (JPEG `FFD8FF`, PNG `89504E47`), and pixel size. On exit code 7, regenerate before looking.
 
+### Reading before the check
+
+Once generation ends, read references/defects.md before the check and before always-on face restoration. It holds the defect criteria and the scope of the fixes that the trim-first check and the candidate adoption order rely on. Reading it only after a defect turns up means checking without those criteria.
+
+When defect post-processing is automatic post-processing or ask each time, or the face restoration scope is always, read references/postprocess.md as well. It says which defects post-processing can and cannot fix. With any other answers, no post-processing tool is used.
+
+- If what you read is still in the conversation, do not read it again.
+
+### Visual check
+
 Once the machine check passes, open the file and look.
 
 - Did the subject the user named appear as named?
 - Did the prompt's style and color come through?
 - Can you still read the shape at the size it will be used?
 - Does a person nobody asked for take the center of the frame?
-- Are there more objects than intended, or the same subject twice?
-- Are the facial features, number of limbs, and hands and feet of people and animals right?
-- Do clothing and accessories show broken glasses frames, missing straps, or unrequested exposure of genitals or female nipples?
+- Is there a count defect (more objects than intended, the same subject twice, and the like)?
+- Do people and animals show an anatomical defect (distorted facial features, the number of limbs, the shape of hands and feet, and the like)?
+- Do clothing, accessories, and precise objects show a connection defect (broken glasses frames, missing straps, tangled spokes, and the like)?
+- Is there unrequested exposure of genitals or female nipples?
 - Does each defect touch or come close to one of the four edges?
 - For a substituted diagram request, does the picture carry the original message?
 - If the subject looks squashed horizontally or vertically, regenerate as a square.
 
-If final upscaling is chosen, run these checks on the working-size output.
+The items in parentheses are examples. Treat any other shape problem as a defect by the same standard. If final upscaling is chosen, run these checks on the working-size output.
+
+For fragile subjects, look at the full frame first, then enlarge the parts where defects tend to appear (faces, hands and feet, joints between parts, and the like) and look again. A part drawn small rarely shows its defects in the full frame.
+
+- Make the enlarged view with grid_measure.py and a region. A rough, generous region is fine. View nearby parts together in one region.
+- If you find a defect, use the enlarged grid for the trim and region-redrawing coordinates as well.
+- Skip enlarging an image you have already decided not to adopt.
+
+Record the check result in one line per image. Write the parts you looked at and what you saw, and for items without a defect, write what you based that on. In candidate mode, the adoption ranking and the defects reported in the user pick come from this record.
+
+- Example: `reader-02: no anatomical defect (face in profile, both hands holding a newspaper), no count defect, connection defect (left glasses frame broken, far from the edges)`
+- Leave out items that do not apply (such as anatomical defects in an image with objects only).
 
 ### Candidate adoption
 

@@ -1,6 +1,6 @@
 # Post-processing: face restoration and region redrawing
 
-Read this for stage 3 of the fragile-subject procedure and for always-on face restoration. Post-processing redraws only the defective part and leaves the rest of the image as it was. It keeps the original intent at the cost of installation size and time.
+This covers stage 3 of the fragile-subject procedure and always-on face restoration. When defect post-processing is automatic post-processing or ask each time, or the face restoration scope is always, read this once generation ends, before the check and before always-on face restoration, because it says which defects post-processing can and cannot fix. Post-processing redraws only the defective part and leaves the rest of the image as it was. It keeps the original intent at the cost of installation size and time.
 
 ## Tools
 

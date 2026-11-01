@@ -1,6 +1,6 @@
 ---
 name: image-gen
-description: "Generates images with local models on the CPU of the runtime environment, for hobby, daily, or work use. Two compositions: icons with one centered subject, and mood scenes of two or three elements. Turns abstract messages into drawable objects or scenes. For charts or diagrams that need text, draws a substitute once the user agrees. Fixes defects with edge trimming, face restoration, region redrawing, and final upscaling. Default model: DreamShaper 8 LCM. Use this skill whenever the user asks to make or draw an image, illustration, background, banner, cover, divider, slide background, landscape, portrait, or a picture for a report ('image generation', 'generate an illustration'), and to fix faces, hands, or edges in images it made. Details: references/composition.md (requests, substitution, scenes), references/models.md (presets, time estimates, cache), references/defects.md (defects, trimming), references/postprocess.md (face restoration, region redrawing), references/components.md (external sources)."
+description: "Generates images with local models on the CPU of the runtime environment, for hobby, daily, or work use. Two compositions: icons with one centered subject, and mood scenes of two or three elements. Turns abstract messages into drawable objects or scenes. For charts or diagrams that need text, draws a substitute once the user agrees. Fixes defects with edge trimming, face restoration, region redrawing, and final upscaling. Default model: DreamShaper 8 LCM. Use this skill whenever the user asks to make or draw an image, illustration, background, banner, cover, divider, slide background, landscape, portrait, or a picture for a report ('image generation', 'generate an illustration'), and to fix faces, hands, or edges in images it made. Details in references/: composition.md (requests, substitution, scenes), models.md (presets, time estimates, cache), candidates.md (candidate mode), defects.md (defects, trimming), postprocess.md (face restoration, region redrawing), components.md (external sources)."
 license: GPL-3.0-or-later with an output exception. Terms in LICENSE and NOTICE.md
 ---
 
@@ -18,7 +18,7 @@ Diffusion models cannot draw text, exact connector lines, numbers, or exact coun
 2. Environment check: run probe.py to see what can run and how long it will take.
 3. Request type and composition: decide what to draw and how to frame it.
 4. Preset: choose the model.
-5. Pre-generation questions: ask about correction policies once and record the answers in preflight.json.
+5. Pre-generation questions: ask about correction policies once and record the answers in preflight.json. If the candidate generation answer is not 1x (automatic included), read references/candidates.md before recording.
 6. Prompt: write an English prompt.
 7. Generate: run generate.py or generate_klein.py.
 8. Check and fix: first read the reference files in the reading-before-the-check section. Open the output and fix defects.
@@ -227,36 +227,9 @@ If a model choice condition applies, continue with the last number. Example:
 
 The times in the example only show the format. Use probe.py's estimates in real questions.
 
-### Automatic candidate multiplier
+### Reading before recording
 
-When the candidate generation answer is automatic, decide the multiplier after the answers arrive and before recording them with preflight.py. The baseline is 1x. Raise it only on the grounds below.
-
-- The main subject is prone to shape defects (a person, an animal, a precise object).
-- The framing shows a person's hands or full body.
-- The scene has several people or a background crowd.
-
-1x is recommended in the cases below.
-
-- The precise preset is in use. It takes the longest per image and draws shapes most accurately.
-- An object icon or a landscape scene with no subject prone to shape defects.
-
-Decide the multiplier by the recommended criteria below.
-
-- With one ground, consider 2x. With overlapping grounds, consider 3x.
-- The recommended range is 1x to 3x.
-- Before generation starts, report the multiplier, a one-line reason, the total count, and the estimated time. Then go on without waiting for a confirmation, the same way as the free-ratio automatic trim.
-
-### Automatic spare candidate finishing
-
-When the spare candidate finishing answer is automatic, decide it after the multiplier is set and before recording with preflight.py. The baseline is a) adopted only. Adopted only keeps the generated originals, so spares can be finished one by one later and the choice can be undone. All candidates spends post-processing time up front and cannot be undone.
-
-Choose b) all candidates only in the cases below.
-
-- Candidate pick is user pick and face restoration scope is always. Faces differ a lot before and after restoration, so the contact sheet must show restored images for the user to pick by the final look.
-- The request shows an intent to receive every alternative.
-
-- When only final upscaling applies, keep a. Final upscaling mostly changes sharpness and size, so it hardly affects comparing framing and expression.
-- Before generation starts, report the choice and a one-line reason. Then go on without waiting for a confirmation.
+If the candidate generation answer is not 1x (automatic included), read references/candidates.md right after the answers arrive and before recording them with preflight.py. It holds the automatic decisions on the candidate multiplier and spare candidate finishing, the candidate pool, candidate adoption, the scope in candidate mode, and spare deletion. With 1x, go on without it.
 
 ### Recording answers
 
@@ -319,20 +292,7 @@ PY scripts/generate.py --preset tiny-sd --prompt "flat vector illustration of a 
 - Open any result cropped to another ratio and check that the subject is not cut off. If it is, run again with the same seed and only the anchor changed. If no anchor fits the whole subject, add a framing that suits the target ratio (distant placement, upper body) to the prompt and regenerate.
 - Run the precise preset with generate_klein.py following the precise preset section of references/models.md.
 
-When the multiplier in force is 2 or more, make target count times multiplier candidates. This set of candidates is the candidate pool.
-
-```
-# Same prompt, 2 target images, 2x candidates
-PY scripts/generate.py --prompt "a red bicycle leaning against a brick wall, side view, watercolor illustration" --out ./outputs --name bicycle --count 4
-
-# Precise preset, 2x candidates, one image per run with a new seed and file name
-PY scripts/generate_klein.py "an elderly man reading a newspaper on a park bench, photorealistic" ./outputs/reader-01.png --seed 42
-PY scripts/generate_klein.py "an elderly man reading a newspaper on a park bench, photorealistic" ./outputs/reader-02.png --seed 43
-```
-
-- For target images that share a prompt, run once with `--count` set to target count times multiplier. When each target image has its own prompt, give each prompt `--count` equal to the multiplier.
-- The precise preset makes one image per run. Run each candidate separately with the seed raised by 1 and a new file name. Start the next run after the previous one finishes.
-- Make candidates in the output folder. The generation scripts and finalize.py read preflight.json from the output folder, so saving into a subfolder stops them with exit code 2. Spares move to the `candidates` folder after adoption (candidate adoption in the check section).
+When the multiplier in force is 2 or more, make the candidates as the candidate pool section of references/candidates.md says.
 
 ## Check
 
@@ -375,53 +335,7 @@ Record the check result in one line per image. Write the parts you looked at and
 - Example: `reader-02: no anatomical defect (face in profile, both hands holding a newspaper), no count defect, connection defect (left glasses frame broken, far from the edges)`
 - Leave out items that do not apply (such as anatomical defects in an image with objects only).
 
-### Candidate adoption
-
-When the multiplier in force is 2 or more, check the whole candidate pool, then adopt the target count.
-
-1. Check every candidate on its original file with the items above. When face restoration scope is always, follow the spare candidate finishing value in force. With all candidates, restore every candidate once and check the restored images. With adopted only, check the originals, then restore only the adopted images and judge them on the restored versions.
-2. Build the contact sheet from all candidates. If every candidate got face restoration, use the restored images. Otherwise use the generated originals. Final upscaling comes after adoption, so the sheet does not reflect it.
-3. Adopt as the candidate pick answer says.
-4. If spare candidate finishing is all candidates and final upscaling was chosen, apply final upscaling once to each spare. The input is the restored image if there is one, the generated original otherwise. finalize.py reads preflight.json from the output folder, so apply it in the output folder before moving. Skip it if the user answered to delete the spares.
-5. Move the spares' generated originals and finished versions to the `candidates` folder inside the output folder. Adopted images stay in the output folder for defect handling, trimming, and final upscaling.
-
-```
-PY scripts/contact_sheet.py ./outputs/bicycle-01.png ./outputs/bicycle-02.png ./outputs/bicycle-03.png ./outputs/bicycle-04.png --out ./outputs/bicycle_sheet.png
-PY scripts/contact_sheet.py "./outputs/reader-0?_face.png" --out ./outputs/reader_sheet.png   # restored images, the script expands the wildcard
-```
-
-- The contact sheet numbers its inputs from 1 in the given order. stdout prints the number-to-file mapping as JSON.
-- The contact sheet is for choosing framing and expression. Judge small defects on the original candidate files.
-- With agent pick, adopt the target count in the adoption order below and carry on to the end. Record the adopted candidates, their ranks, and the reasons.
-- With user pick, show the contact sheet right after generation and let the user pick by number. Report the defects found in each candidate, one line each. Ask in one line whether to delete the spares, so the same reply can answer it (spare deletion in the delivery section). Run defect handling and finishing on the picked candidates.
-- If a candidate the user picked has a defect with no means of repair, report the defect and ask whether to pick again from the remaining candidates or go to defect handling stage 2.
-- Without a display path, do not ask for user pick and go on with agent pick.
-
-The agent adoption order:
-
-1. Candidates without defects
-2. Candidates whose only defects trimming resolves (trim answer other than off). Candidates resolved by same-ratio trimming come before those that need free-ratio trimming.
-3. Candidates whose only defects post-processing resolves (defect post-processing answer is automatic or ask each time). Face defects that always-on face restoration resolves fall in this rank whatever the defect post-processing answer.
-
-- Within a rank, pick the candidate closest to the subject, framing, and style of the original request.
-- Do not adopt candidates with defects that have no means of repair. General defects that need a new image (style, color, count, and so on) belong here too.
-- Fill slots the pool cannot fill with the defect handling procedure. Fragile subjects start at stage 2 without a stage 1 regeneration (references/defects.md).
-
-### Scope in candidate mode
-
-The answers to the existing items apply in candidate mode as below.
-
-| Existing item | Candidate mode behavior |
-|---|---|
-| Final upscaling | Applied once to the adopted images only, or to every candidate, as the spare candidate finishing value in force says |
-| Edge trim | Applied only to defects of adopted candidates. With off, the adoption order has no rank 2 |
-| Defect post-processing | Automatic serves as rank 3 of the adoption order. Workarounds only treats candidates that need post-processing as having no means of repair. Ask each time asks only when the higher ranks fall short |
-| Face restoration scope | Always follows the spare candidate finishing value in force. Only on defects follows the defect post-processing rules. Off does not apply |
-| Finger redrawing | Applied only to adopted candidates |
-
-- Defect repairs (trimming, face restoration on defects, face restoration again at a lower strength, region redrawing, finger redrawing) go to adopted images only, whatever the answers. Each repair needs its own judgment and user confirmation per candidate, so repairing spares too would multiply questions and time by the number of candidates.
-- Always-on face restoration runs once per candidate. Running it again at a lower strength is a defect repair, so only adopted images get it.
-- If the user wants some spares, move each one's generated original to the output folder and run the same repairs and finishing as for adopted images. Final upscaling is applied only once, so start over from the generated original.
+When the multiplier in force is 2 or more, adopt the target count as the candidate adoption section of references/candidates.md says. Apply the answers to the existing items as the scope in candidate mode section of the same file says.
 
 ## Defect handling
 
@@ -472,14 +386,7 @@ PY scripts/finalize.py ./outputs/banner_trim.png ./outputs/banner_final.png --si
 - For trimmed results, report the trim, the body part the cut line crosses, and the cut ratio (for free ratio, the adopted ratio and the remaining area).
 - For JPEG, generate with `--format jpg` or convert the PNG.
 
-### Spare deletion
-
-Spares are kept by default. Deletion cannot be undone, so delete them only when the user, having seen the candidates, answers to delete them. The question comes only where the work already waits for the user's reply, so it never interrupts an automatic run.
-
-- Ask about deletion once, in one line. With user pick, ask when you show the contact sheet. With agent pick, ask on delivery.
-- Delete at the delivery step, after defect handling and finishing. Until then, pool swaps may need the spares.
-- Delete only the spare files made in this request (generated originals, restored versions, finished versions). Keep the adopted images and the contact sheet. If the candidates folder ends up empty, delete the folder too.
-- Report the names of the deleted files on delivery.
+When the multiplier in force is 2 or more, spare deletion follows the spare deletion section of references/candidates.md.
 
 ### Display path judgment
 
@@ -509,7 +416,7 @@ Without a display path, handle each point as below.
 - Check disk and memory again right before each download and each run. The models, face restoration, region redrawing, and final upscaling each download weights, so free space keeps changing within one conversation.
 - Run generation, face restoration, region redrawing, and final upscaling as separate processes, one at a time. Confirm the previous process has exited before starting the next. Two at once can run out of memory and get killed.
 - If a process is killed for lack of memory, clean up leftover processes and retry once. If memory is still short, offer the lighter presets that can run.
-- The skill deletes only files inside its cache folder. It never touches files outside it or the model caches of other programs. The one exception is spare files of candidate mode that the user answered to delete (spare deletion in the delivery section).
+- The skill deletes only files inside its cache folder. It never touches files outside it or the model caches of other programs. The one exception is spare files of candidate mode that the user answered to delete (the spare deletion section of references/candidates.md).
 - If disk runs short, delete finished post-processing weights first, then presets other than the default. Keep files you will use again in the same conversation, because downloading them again takes time.
 - Record what you deleted and the free space afterwards.
 - In environments that wipe files when the session ends, set up the virtual environment and models again in the next session.

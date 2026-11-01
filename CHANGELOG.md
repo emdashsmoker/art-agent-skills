@@ -38,6 +38,9 @@ Changelog rules
 - Added body distortion of large parts (including melting into another body part, except twists the pose explains), distorted machine structures, and distorted building forms to the visual check examples (#28, #29, #30)
 - Changed shape judgment to one rule that treats a difference no visible cause explains, and any unsure case, as a defect for every subject including objects and buildings, with occlusion limited to something visibly covering the part and unintended darkness, blur, or out-of-focus areas not counted as occlusion (#28, #30)
 - Changed the slight-blur exception and the uncounted distant figures to apply only to the background (#30)
+- Added an upfront workaround item to the pre-generation questions: off (default), optimize (keeps the subject and scene and removes, hides, or frames out defect-prone parts), and maximum (keeps only the message and may replace the subject after a confirmation), recorded by preflight.py as a required --upfront-workaround answer (#32)
+- Added a visual check item that treats a typical diffusion model defect, a visually wrong part, or staging the user asked for that did not appear as a defect, even outside the list (#32)
+- Added a prompt rule that replaces proper nouns, technical terms, and rare words the model may not know with a similar common object or spells out their look with 2 or 3 simple shapes, materials, or colors, and reports each rewrite on delivery (#32)
 
 * 생성 직후 점검 전의 defects.md 읽기와 후처리 사용 시 postprocess.md 읽기로 참조 문서 읽기 시점 변경 (#26)
 * 예시 목록을 붙인 결함 유형 항목, 취약 부위별 단독 확대 확인, 확대 파일을 적는 이미지별 한 줄 기록을 담은 눈 점검 방식 변경 (#26, #30)
@@ -47,6 +50,9 @@ Changelog rules
 * 큰 부위의 신체 왜곡(다른 신체 부위와의 섞임 포함, 자세로 설명되는 비틀림 제외), 기계 구조의 왜곡, 건물 형태의 왜곡에 대한 눈 점검 예시 추가 (#28, #29, #30)
 * 보이는 원인으로 설명되지 않는 차이와 애매한 경우를 사물과 건물까지 모든 피사체의 결함으로 보는 단일 형태 판정 원칙과 앞을 덮은 물체만 인정하는 가림 기준(의도하지 않은 어둠, 흐림, 아웃포커스 제외)으로 변경 (#28, #30)
 * 약한 흐림 예외와 원경 인물 개수 생략 예외의 적용 대상을 배경 인물로 변경 (#30)
+* 미사용(기본값), 최적화(피사체와 장면 유지 상태의 결함 부분 제거, 가림, 프레임아웃), 최대 우회(메시지만 유지, 확인 후 피사체 교체 가능) 선택지와 preflight.py 필수 답(--upfront-workaround) 기록을 담은 첫 프롬프트 우회 질의 항목 추가 (#32)
+* 목록 밖의 확산모델 전형 결함, 시각적으로 어색한 부분, 요청한 연출의 미반영을 결함으로 보는 눈 점검 항목 추가 (#32)
+* 모델이 모를 수 있는 고유명사, 전문용어, 드문 단어에 대한 흔한 사물 대체, 단순한 구성요소(모양, 재질, 색 2-3개) 묘사, 전달 시 원래 단어 알림을 담은 프롬프트 규칙 추가 (#32)
 
 ## 2026-10-31
 

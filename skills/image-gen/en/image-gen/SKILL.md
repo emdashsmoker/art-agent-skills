@@ -331,7 +331,7 @@ For fragile subjects, look at the full frame first, then enlarge the parts where
 - Make the enlarged view with grid_measure.py and a region. A rough, generous region is fine. View nearby parts together in one region.
 - Count arms and legs in the full frame. Count fingers and toes one by one on the enlarged view, for each hand and foot.
 - On the enlarged view of a face, check that the eyes, nose, and mouth are all there. Compare their position, spacing, size, and left-right balance with the placement criteria in defects.md.
-- Follow the outline of large parts such as the belly, waist, thighs, and breasts in the full frame. A part whose outline breaks off, melts into clothing or the background, or twists is body distortion.
+- Follow the outline of large parts such as the belly, waist, thighs, and chest in the full frame. A part whose outline breaks off, melts into clothing or the background, or twists is body distortion.
 - If you find a defect, use the enlarged grid for the trim and region-redrawing coordinates as well.
 - Skip enlarging an image you have already decided not to adopt.
 

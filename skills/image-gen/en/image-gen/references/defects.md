@@ -124,22 +124,33 @@ The table holds examples. If another option fits the theme, time of day, or styl
 
 ## Upfront workaround
 
-With `upfront_workaround` in preflight.json set to `optimize` or `max`, the first prompt already includes workaround staging. This choice is for users who want fewer defects in the first result instead of waiting for regeneration after a defect. Workarounds give up part of the original intent, so each answer fixes what it keeps. With `off`, this section does not apply.
+With `upfront_workaround` in preflight.json set to `optimize` or `max`, the first prompt already includes workaround staging. This choice is for users who want fewer defects in the first result instead of waiting for regeneration after a defect. Diffusion models often break the complex parts of animals, objects, buildings, and scene elements as well as people, so use it whatever the subject is. Workarounds give up part of the original intent, so each answer fixes what it keeps. With `off`, this section does not apply.
 
 | Answer | Keeps | Uses |
 |---|---|---|
-| `optimize` (Optimize) | The subject, shot range, scene layout, and any look the user specified | Stage 2 workarounds from the workaround table that keep the subject's look (accessories, poses, props, a simple expression, background crowd silhouettes, and the like) |
-| `max` (Maximum) | The message and where the image will be used | All stage 2 workarounds, stage 4 composition workarounds, removing defect-prone elements, and subject replacement |
+| `optimize` (Optimize) | The subject, shot range, scene layout, and any look the user specified | Staging that hides defect-prone parts or makes them less noticeable, among options that keep the subject's look |
+| `max` (Maximum) | The message and where the image will be used | The optimize options, all stage 2 and stage 4 options of the workaround table, removing defect-prone elements, and subject replacement |
 
-- Add workaround staging only to the parts that the requested shot makes defect-prone. Examples are the small face and exposed hands of a full-body figure, the hands of an upper-body figure, the joints of a precise object, and the faces of a background crowd.
-- Choose only options that pass the fit check of the workarounds section and suit the scene's theme, time of day, and style. Leave a part without a workaround if nothing fits. Awkward staging such as sunglasses in a night scene stands out as much as a defect.
-- Optimize never uses an option that conflicts with a look the user specified. For example, a person asked to make eye contact gets no sunglasses.
+The table below gives examples by target. The table holds examples, so choose options that suit the scene on the same principle: hide or avoid the defect-prone parts.
+
+| Target | Defect-prone parts | Optimize examples | Maximum examples |
+|---|---|---|---|
+| People | Small faces, exposed hands | A hat, sunglasses, gloves, hands in pockets | A back view, a backlit silhouette, a shot that leaves the hands out of the frame |
+| Animals | Legs, face | A sitting pose, tall grass covering the legs | A side silhouette |
+| Precise objects and machines | Joints between parts, spokes, the number of legs | Grass covering part of a wheel, a tablecloth covering chair legs | A silhouette, a swap to an object with a simple outline |
+| Buildings | Joints of pillars and roofs, repeated windows | Trees covering the lower part | A distant silhouette, a swap to a building with a simple form |
+| Background crowds | Faces | Crowd silhouettes | Removing the crowd |
+| Reflections and grid patterns | Left-right match of reflections, misaligned grids | A reflection broken up by ripples | Removing reflections and grid patterns |
+
+- Add workaround staging only to the parts that the requested framing makes defect-prone. For the same person, a full-body framing makes the small face and the hands defect-prone, and an upper-body framing makes the hands defect-prone.
+- Choose only options that pass the fit check of the workarounds section and suit the scene's theme, time of day, and style. Leave a part without a workaround if nothing fits. Staging that clashes with the scene, such as wool gloves on a summer beach, stands out as much as a defect.
+- Optimize never uses an option that conflicts with a look the user specified. For example, a bicycle request that asks to show the spokes gets no grass covering the wheels.
 - The first prompt may hold one option per part. The rule of adding one workaround at a time applies to the attempts of the defect handling stages.
 - Put the subject and style first in the prompt, and add the workaround phrases briefly after them.
 
 ### Maximum workaround
 
-Maximum combines the options above to remove defect-prone elements as far as possible. Examples are a full-body figure seen from behind or as a backlit silhouette, no background crowd, no water reflections or grid patterns, and fewer complex parts. A backlit silhouette of the main subject may go into the first prompt too, because the user has already chosen to keep only the message.
+Maximum combines the options in the examples by target to remove defect-prone elements as far as possible. A backlit silhouette of the main subject may go into the first prompt too, because the user has already chosen to keep only the message.
 
 Subject replacement carries the same message with an object or scene that has fewer defect-prone elements. Choose the stand-in from the message of the original request, following the substitution rules of composition.md. For example, "a person working by a window with a coffee" can become "a desk by a window with a steaming coffee cup".
 

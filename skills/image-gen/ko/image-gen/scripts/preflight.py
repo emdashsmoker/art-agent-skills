@@ -51,8 +51,9 @@ QUERY_LABELS = {
     "candidates": "candidate multiplier (a whole number of 1 or more, or auto)",
     "candidate_pick": "candidate pick (auto = the agent picks, user = the user picks from the contact sheet)",
     "spare_finish": "spare candidate finishing (adopted = adopted images only, all = every candidate, auto)",
-    "upfront_workaround": "upfront workaround in the first prompt (off, optimize = covering accessories, poses, "
-                          "and props, max = composition changes and subject replacement too)",
+    "upfront_workaround": "upfront workaround in the first prompt (off, optimize = staging that hides defect-prone "
+                          "parts while the subject, shot, and scene stay, max = composition changes, element removal, "
+                          "and subject replacement too)",
 }
 
 # WHY: these answers show images to the user and wait for a choice, which needs a way to display images

@@ -174,7 +174,7 @@ Before the first image, ask every applicable item from the table below in one me
 - In the choices of spare candidate finishing, name only the batch processes the user can pick in this question. For objects only, name final upscaling alone.
 - Judge the 10-image condition of the model choice question by the target count. The multiplier comes in the same question, so whether to ask the model question cannot follow the multiplier answer.
 - If automatic resolves to 1x, the answers for candidate pick and spare candidate finishing go unused.
-- The upfront workaround uses the workarounds of defect handling from the first image, before any defect is seen. The default, off, makes the image as requested first and works around only after a defect shows. Optimize keeps the subject, shot range, and scene, and adds only accessories, poses, and props that cover defect-prone parts. Maximum keeps only the message and goes as far as composition changes and subject replacement.
+- The upfront workaround avoids the parts where diffusion models often produce defects from the first image, before any defect is seen. It applies to people, animals, objects, buildings, and scene elements alike. The default, off, makes the image as requested first and works around only after a defect shows. Optimize keeps the subject, shot range, and scene, and adds only staging that hides defect-prone parts. Maximum keeps only the message and goes as far as composition changes, element removal, and subject replacement.
 
 Question format:
 
@@ -182,7 +182,7 @@ Question format:
 - For a conditional item (finger redrawing, candidate pick, spare candidate finishing), state its condition in the first sentence with the actual item numbers.
 - Write a numbered list in plain conversation text. Do not use code blocks or tables.
 - Put the answer format and an example answer on the first line.
-- Fit the examples in the upfront workaround choices to the parts of the request where defects tend to appear.
+- Fit the examples in the upfront workaround choices to the parts of the request where defects tend to appear. Example: for a bicycle request, name grass covering part of a wheel for optimize and a silhouette for maximum.
 - For photographic or watercolor requests, add a one-line warning to the final upscaling item. Example: "Upscaling a photo or watercolor style wipes out skin texture and paper grain."
 - For non-photographic styles such as flat vector, line art, or cel shading, mark "off" as recommended for face restoration scope and add a one-line reason. Example: "In this style only the restored face turns photographic and clashes with the drawing." Face restoration tools were trained on real photographs of faces.
 
@@ -222,10 +222,10 @@ Example for a request with a person:
 >    a) Adopted only: spares come as generated. You can have any spare finished later
 >    b) All candidates: spares come finished too. Post-processing time grows with the number of candidates
 >    c) Automatic: I choose a or b for the task and tell you before generating
-> 9. [Upfront workaround] Decides whether the first image already avoids defect-prone parts such as faces and fingers. The more it works around, the fewer the defects and the more the image departs from what you asked for.
+> 9. [Upfront workaround] Diffusion models often produce defects in complex parts such as people's faces and fingers, the joints of objects, building structures, and water reflections. Decides whether the first image already avoids such parts. The more it works around, the fewer the defects and the more the image departs from what you asked for.
 >    a) Off (default): I make the image as you asked first, and work around step by step once a defect shows
->    b) Optimize: the subject, shot range, and scene stay as asked, and the first prompt adds accessories, poses, and props that cover defect-prone parts, such as sunglasses, gloves, or hands in pockets
->    c) Maximum: only the message you want to convey stays, and defect-prone elements are avoided as much as possible. I switch to framings such as a side view or a silhouette, and if needed to another object or scene with the same meaning. I ask before changing the subject
+>    b) Optimize: the subject, shot range, and scene stay as asked, and the first prompt adds staging that hides defect-prone parts. For this request that means staging such as sunglasses, gloves, or hands in pockets
+>    c) Maximum: only the message you want to convey stays, and defect-prone elements are avoided as much as possible. I switch to framings such as a side view or a silhouette or remove elements such as crowds and reflections, and if needed switch to another object or scene with the same meaning. I ask before changing the subject
 
 If a model choice condition applies, continue with the last number. Example:
 

@@ -41,6 +41,7 @@ Changelog rules
 - Added an upfront workaround item to the pre-generation questions: off (default), optimize (keeps the subject and scene and removes, hides, or frames out defect-prone parts), and maximum (keeps only the message and may replace the subject after a confirmation), recorded by preflight.py as a required --upfront-workaround answer (#32)
 - Added a visual check item that treats a typical diffusion model defect, a visually wrong part, or staging the user asked for that did not appear as a defect, even outside the list (#32)
 - Added a prompt rule that replaces proper nouns, technical terms, and rare words the model may not know with a similar common object or spells out their look with 2 or 3 simple shapes, materials, or colors, and reports each rewrite on delivery (#32)
+- Changed the content policy to match the other non-diffusion image generation skills (#33)
 
 * 생성 직후 점검 전의 defects.md 읽기와 후처리 사용 시 postprocess.md 읽기로 참조 문서 읽기 시점 변경 (#26)
 * 예시 목록을 붙인 결함 유형 항목, 취약 부위별 단독 확대 확인, 확대 파일을 적는 이미지별 한 줄 기록을 담은 눈 점검 방식 변경 (#26, #30)
@@ -53,6 +54,7 @@ Changelog rules
 * 미사용(기본값), 최적화(피사체와 장면 유지 상태의 결함 부분 제거, 가림, 프레임아웃), 최대 우회(메시지만 유지, 확인 후 피사체 교체 가능) 선택지와 preflight.py 필수 답(--upfront-workaround) 기록을 담은 첫 프롬프트 우회 질의 항목 추가 (#32)
 * 목록 밖의 확산모델 전형 결함, 시각적으로 어색한 부분, 요청한 연출의 미반영을 결함으로 보는 눈 점검 항목 추가 (#32)
 * 모델이 모를 수 있는 고유명사, 전문용어, 드문 단어에 대한 흔한 사물 대체, 단순한 구성요소(모양, 재질, 색 2-3개) 묘사, 전달 시 원래 단어 알림을 담은 프롬프트 규칙 추가 (#32)
+* 다른 비확산 이미지 생성 스킬과 같은 기준으로 콘텐츠 정책 변경 (#33)
 
 ## 2026-10-31
 

@@ -46,6 +46,7 @@ Changelog rules
 - Fixed the pre-generation question texts that differed from the defect handling order, now with trimming and seed changes ahead of workarounds, lowered hands first in the optimize example, and the use of the image kept under maximum (#35)
 - Changed the Korean and English documents, including the pre-generation question texts shown to users, to a formal style without colloquial wording (#36)
 - Changed the English choice labels Candidate pick, Agent pick, User pick, and Free ratio too to Candidate selection, Agent selection, User selection, and Free ratio allowed (#36)
+- Added a non-frontal face rule that, after each restoration of a three-quarter view or profile face, adopts whichever of the original and the restored image has fewer defects without asking, keeps the restored image on a tie, records the result, and adds a one-line notice to the face restoration scope question (#37)
 
 * 생성 직후 점검 전의 defects.md 읽기와 후처리 사용 시 postprocess.md 읽기로 참조 문서 읽기 시점 변경 (#26)
 * 예시 목록을 붙인 결함 유형 항목, 취약 부위별 단독 확대 확인, 확대 파일을 적는 이미지별 한 줄 기록을 담은 눈 점검 방식 변경 (#26, #30)
@@ -63,6 +64,7 @@ Changelog rules
 * 우회보다 앞선 트림과 seed 변경, 최적화 예시의 내린 손 우선, 최대 우회의 쓰일 자리 유지를 담은 생성 전 질의 문구 수정 (#35)
 * 구어 표현 없는 격식체로 생성 전 질의 문안과 문서 문체(한국어판, 영어판) 변경 (#36)
 * Candidate selection, Agent selection, User selection, Free ratio allowed로 영어판 선택지 이름(Candidate pick, Agent pick, User pick, Free ratio too) 변경 (#36)
+* 3/4 측면과 옆모습 얼굴의 복원마다 원본과 복원본 중 결함이 적은 쪽의 질의 없는 채택, 동점 시 복원본 유지, 비교 결과 기록, 얼굴 복원 범위 질의의 안내 한 줄을 담은 비정면 얼굴 규칙 추가 (#37)
 
 ### image-gen-addon-codeformer
 - Changed the CodeFormer license consent to one line in the pre-generation questions instead of a question right before the first installation (#34)
@@ -72,6 +74,9 @@ Changelog rules
 - Fixed the always-on scope to choose w from the face in the generated original (#34)
 - Fixed the non-photographic style rule that left out image-gen's handling for environments that cannot show images (#34)
 - Changed the Korean and English documents, including the face restoration strength question text, to a formal style without colloquial wording (#36)
+- Changed the strength for non-frontal faces to stay at w=0.5 even with the aggressive strength, with a remaining defect moving to image-gen's next response stages instead of a lower w, and noted it in the face restoration strength question (#37)
+- Added image-gen's non-frontal face comparison to CodeFormer restoration (#37)
+- Changed the correction scope to exclude the natural asymmetry of a face angle, such as the far eye looking narrower (#37)
 
 * 생성 전 질의의 한 줄 안내로 CodeFormer 라이선스 동의 시점 변경 (#34)
 * 라이선스 미동의 사용자와 상업 목적 사용자를 위한 얼굴 복원 강도 항목의 사용 안 함 선택지 추가 (#34)
@@ -80,6 +85,9 @@ Changelog rules
 * 생성 원본 얼굴 기준의 상시 적용 w 결정 방식 수정 (#34)
 * 이미지 표시 수단이 없는 환경의 image-gen 처리를 누락한 비사진 화풍 규칙 수정 (#34)
 * 구어 표현 없는 격식체로 얼굴 복원 강도 질의 문안과 문서 문체(한국어판, 영어판) 변경 (#36)
+* 적극 강도의 w=0.5 유지, 남은 결함의 image-gen 다음 대응 단계 진행, 얼굴 복원 강도 질의의 안내 문장을 담은 비정면 얼굴 강도 기준 변경 (#37)
+* CodeFormer 복원에 대한 image-gen 비정면 얼굴 비교 규칙 적용 추가 (#37)
+* 얼굴 각도로 생기는 자연스러운 비대칭(먼 쪽 눈이 좁아 보이는 현상 등)의 제외를 담은 보정 범위 변경 (#37)
 
 ## 2026-10-31
 

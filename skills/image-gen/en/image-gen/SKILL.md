@@ -192,6 +192,7 @@ Question format:
 - Fit the examples in the upfront workaround choices to the parts of the request where defects tend to appear. Example: for a bicycle request, name a futuristic e-bike without spokes for optimize and a replacement with a futuristic vehicle without wheels for maximum.
 - For photographic or watercolor requests, add a one-line warning to the final upscaling item. Example: "Upscaling removes skin texture and paper grain from photographic and watercolor styles."
 - For non-photographic styles such as flat vector, line art, or cel shading, mark "off" as recommended for face restoration scope and add a one-line reason. Example: "In this style, only the restored face becomes photographic and does not match the drawing." Face restoration tools were trained on real photographs of faces.
+- In the description of the face restoration scope item, add one line on how non-frontal faces are handled. Example: "For a person whose face is turned at an angle or to the side, restoration can make the face look unnatural, so I compare it with the original and use the better one." Face restoration tools were trained mostly on frontal photographs and align faces to a frontal reference.
 
 Example for a request with a person:
 
@@ -209,7 +210,7 @@ Example for a request with a person:
 >    a) Automatic post-processing: defects remaining after seed changes and prompt workarounds are corrected automatically with face restoration and region redrawing (about 1.2GB to install, about 2.3GB more for region redrawing)
 >    b) Workarounds only: proceeds without installation, using seed changes, prompt workarounds, and composition workarounds
 >    c) Ask each time: I will ask each time post-processing is needed
-> 4. [Face restoration scope]
+> 4. [Face restoration scope] For a person whose face is turned at an angle or to the side, restoration can make the face look unnatural, so I compare it with the original and use the better one.
 >    a) Only on defects: applied according to item 3 when a face defect is found
 >    b) Always: applies face restoration to every image with a person, regardless of defects. Eyes and teeth become sharper (applies even if item 3 is b, about 1.2GB to install)
 >    c) Off: face restoration is neither installed nor used. Face defects are handled with seed changes and workarounds, and the clothing and accessory redrawing selected in item 3 remains as chosen

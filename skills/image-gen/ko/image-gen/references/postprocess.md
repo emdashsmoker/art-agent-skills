@@ -36,6 +36,8 @@
 
 비사진 화풍(플랫 벡터, 선화, 셀 채색 등)은 질의에서 미사용을 권장으로 표시한다. 얼굴 복원 도구는 실제 사진 얼굴로 학습되어 복원한 부위만 사진처럼 바뀌므로 채색된 머리카락과 어울리지 않는다. 이런 화풍에서 복원을 사용하기로 했다면 자동 모드와 상시 적용에서도 복원 전후를 나란히 제시하고 채택 여부를 질의한다. 후보 모드에서는 채택본만 비교한다. 표시 경로가 없으면 화풍과 어울리는 안을 직접 선택하고 전달할 때 이유를 한 줄로 안내한다(SKILL.md 전달 절의 표시 경로 판정).
 
+눈 점검에서 얼굴 방향이 3/4 측면이나 옆모습으로 판정된 얼굴(비정면 얼굴)에 복원을 적용하면 원본과 복원본을 눈 점검의 같은 기준으로 비교하고 결함이 적은 쪽을 채택한다. 얼굴 복원 도구는 정면 위주의 얼굴 사진으로 학습되었고 얼굴을 정면 기준으로 정렬해 복원하므로, 비정면 얼굴은 복원 후 이목구비가 어색해지거나 질감 오류가 생길 수 있다. 결함이 같으면 눈동자와 치아가 선명한 복원본을 채택한다. 원본을 채택하면 이후 절차에서 복원본 대신 원본을 사용한다. 이 비교는 자동 모드와 상시 적용을 포함한 모든 답변에서 사용자에게 질의하지 않고 에이전트가 판정한다. 3/4 측면은 자주 나타나는 얼굴 방향이므로 비교마다 질의하면 자동 진행이 자주 중단되기 때문이다. 비사진 화풍에서는 위 전후 비교 질의가 이 비교를 대신한다. 채택 기록에 비교 결과와 채택 이유를 한 줄로 기재한다.
+
 얼굴이 탐지되지 않은 산출물(뒷모습, 멀리 있는 인물)은 입력과 같은 화소로 저장되므로 그대로 정상 산출물로 사용한다.
 
 ## 얼굴 복원 사용법
@@ -123,6 +125,7 @@ PY scripts/cache.py delete inpaint
 |---|---|---|
 | 얼굴 복원(뒤틀림) | a businessman pointing his finger toward the camera, arm extended forward, waist up shot, office at night, photorealistic | 비대칭이 줄고 인상이 유지되는지 |
 | 얼굴 복원(흐림) | a young woman smiling, waist up portrait, office daylight, photorealistic | 눈동자와 치아가 선명해지는지 |
+| 얼굴 복원(비정면) | a middle aged man in three quarter view, waist up portrait, city street daylight, photorealistic | 이목구비가 정면처럼 바뀌는지, 질감 오류가 생기는지 |
 | 작은 얼굴과 손 | a construction worker in a safety vest holding a power drill, building site, full body, hands visible, photorealistic | 작은 얼굴의 복원 여부, 손과 공구 |
 | 팔다리 연결 붕괴 | a gymnast in a handstand pose, one leg extended, gymnasium floor, full body, hands and feet visible, photorealistic | 후처리로 해결되지 않는 결함인지 |
 | 손가락 다시 그리기 | a woman waving her open hand at the camera, waist up, bare hands visible, park daylight, photorealistic | 손가락 개수, 손 크기와 자세 변화 |

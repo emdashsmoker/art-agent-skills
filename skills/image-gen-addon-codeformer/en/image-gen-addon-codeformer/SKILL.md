@@ -8,7 +8,7 @@ license: GPL-3.0-or-later with an output exception. Terms in LICENSE and NOTICE.
 
 > This English edition is a translation of the Korean original. Its behavior may differ from what the original intends.
 
-This add-on extends the face restoration of the image-gen skill. image-gen sharpens blurry faces with GFPGAN, but faces with misplaced eyes or left-right asymmetry follow the original and retain part of the defect. CodeFormer reconstructs the face from a learned dictionary of face parts (a codebook), so it also corrects asymmetry and misplaced features. A lower fidelity weight w gives a stronger symmetry fix, and a higher one preserves more of the original look.
+This add-on extends the face restoration of the image-gen skill. image-gen sharpens blurry faces with GFPGAN, but faces with misplaced eyes or left-right asymmetry follow the original and retain part of the defect. CodeFormer reconstructs the face from a learned dictionary of face parts (a codebook), so it also corrects asymmetry judged as a defect and misplaced features. A lower fidelity weight w makes the reconstruction rely more on the dictionary of face parts and gives a stronger correction, and a higher one preserves more of the original look.
 
 If loaded together with image-gen, the rules below replace the matching rules of image-gen. Rules not mentioned here follow image-gen unchanged.
 
@@ -32,7 +32,7 @@ Insert a face restoration strength item right after image-gen's face restoration
 
 Example (insert after item 4 of image-gen's example):
 
-> 5. [Face restoration strength] Only when item 4 is not c, and items 3-b and 4-a are not both chosen. CodeFormer, which corrects asymmetric faces, is distributed under a license that allows non-commercial use only (S-Lab License 1.0). Selecting a or b indicates that you agree to this condition.
+> 5. [Face restoration strength] Only when item 4 is not c, and items 3-b and 4-a are not both chosen. For a person whose face is turned at an angle or to the side, either strength uses w=0.5. CodeFormer, which corrects asymmetric faces, is distributed under a license that allows non-commercial use only (S-Lab License 1.0). Selecting a or b indicates that you agree to this condition.
 >    a) Aggressive: corrects in one pass with w=0.0 from the start. The look of the face may change from the original
 >    b) Stepwise: starts at w=0.5 and lowers to 0.25, then 0.0, while a defect remains
 >    c) Do not use: select this for a commercial purpose or if you do not agree. Face restoration continues with the default tool
@@ -55,11 +55,14 @@ PY scripts/preflight_codeformer.py --out ./outputs --face-strength stepwise --us
 | Distortion (asymmetry, misplaced features) | GFPGAN, then region redrawing if it remains | CodeFormer (strength per the face restoration strength answer), then region redrawing if it remains |
 | Always-on scope | GFPGAN | CodeFormer. w=0.5 when no defect is visible, the starting value of the strength answer when a defect is visible |
 
-- To choose w for the always-on scope, examine the face in the generated original before restoration. The face defect judgment after restoration uses the restored image, as image-gen's rules say.
+- To choose w for the always-on scope, examine the angle of the face and any defect in the generated original before restoration. The face defect judgment after restoration follows image-gen's rules.
 - Stepwise starts at w=0.5 and lowers to 0.25, then 0.0, while a defect remains. A lower w changes the original look more, but resolving the defect takes priority.
 - Restoring again with a lower w is a defect repair in image-gen's stage 3. In candidate mode, restore again with a lower w on adopted images only. Follow image-gen's stage 3 rules as they are, including the defect post-processing answer. With defect post-processing set to workarounds only, do not lower w, and proceed to image-gen's stages 2 and 4.
 - At w=0.0 the face can look like a different person. If the same person appears in several images, compare them.
 - CodeFormer has the same problem of restored faces becoming photographic in non-photographic styles. Follow image-gen's rules for non-photographic styles as they are, such as the before-and-after comparison, the direct choice without a display path, and comparing only the adopted image in candidate mode.
+- CodeFormer has the same problem of non-frontal faces coming out with unnatural features or texture errors after restoration. Follow image-gen's non-frontal face rule as it is, such as the comparison of the original and the restored image, adopting the one with fewer defects, and judging without asking the user.
+- For a non-frontal face (a face in a three-quarter view or profile), do not lower w below 0.5. Use w=0.5 even when the face restoration strength is aggressive, and if a defect remains at w=0.5, proceed to image-gen's next response stages (region redrawing, composition workaround, and the like). At w=0.0, CodeFormer rebuilds the face only from the dictionary of face parts, learned mostly from frontal photographs, without the features of the input face. CodeFormer's path has a face detection confidence threshold of 0.8, so it restores more ambiguous faces than image-gen's GFPGAN path (0.97).
+- Exclude the natural asymmetry that a face angle creates (such as the far eye looking narrower) from correction, and do not treat it as a defect when choosing or lowering w. image-gen's definition of a shape problem does not count differences that the angle of the face explains as defects.
 - On a severely broken face, CodeFormer may fail to reconstruct it and change only the texture. If the defect remains even at w=0.0, proceed to image-gen's region redrawing.
 - Areas outside the face, and hands, remain as in the original. Hand defects are not corrected.
 

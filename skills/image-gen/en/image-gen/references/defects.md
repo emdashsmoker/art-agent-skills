@@ -50,7 +50,7 @@ Defects outside the fragile subjects (next section) go down one of two paths. If
 
 These are people, animals, precise objects, and background crowds. Diffusion models cannot control facial features, the number of limbs, fingers, or how parts connect, so run the procedure on the assumption that defects will occur. A person nobody asked for follows the general defect table above.
 
-Face defects include mushy faces and also unclear features, eyes, nose, or mouth out of place or out of proportion, left-right asymmetry, mismatched gaze or pupils, and broken mouths and teeth. If unsure, treat it as a defect and start the procedure. If it still looks off at the size it will be used, the defect is confirmed. Slight blur on a distant figure is not a defect.
+Face defects include a face mushy in part or as a whole and also unclear features, missing features, eyes, nose, or mouth out of place or out of proportion, left-right asymmetry such as eyes of different sizes or heights, mismatched gaze or pupils, broken mouths and teeth, and the like. Features hidden by the angle of the face, hair, a hand, or something worn count as hidden. If nothing visible hides a feature and it is not there, it is missing. If unsure, treat it as a defect and start the procedure. If it still looks off at the size it will be used, the defect is confirmed. Slight blur on a distant figure is not a defect.
 
 A body count defect is an anatomical defect in which the number of a body part differs from the standard count. The standard counts are 5 fingers on each hand, 5 toes on each foot, 2 arms, and 2 legs for a person, 4 legs for a four-legged animal, and the like. The list holds examples, so for animals not on it, use the real count of the species.
 

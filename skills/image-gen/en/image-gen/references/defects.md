@@ -137,14 +137,14 @@ The table below gives examples by target. The table holds examples, so choose op
 |---|---|---|---|
 | People | Small faces, exposed hands | A hat, sunglasses, gloves, hands in pockets | A back view, a backlit silhouette, a shot that leaves the hands out of the frame |
 | Animals | Legs, face | A sitting pose, tall grass covering the legs | A side silhouette |
-| Precise objects and machines | Joints between parts, spokes, the number of legs | Grass covering part of a wheel, a tablecloth covering chair legs | A silhouette, a swap to an object with a simple outline |
+| Precise objects and machines | Joints between parts, the number of legs | A long tablecloth covering the table legs | A top-down view, a silhouette, a swap to an object with a simple outline |
 | Buildings | Joints of pillars and roofs, repeated windows | Trees covering the lower part | A distant silhouette, a swap to a building with a simple form |
 | Background crowds | Faces | Crowd silhouettes | Removing the crowd |
 | Reflections and grid patterns | Left-right match of reflections, misaligned grids | A reflection broken up by ripples | Removing reflections and grid patterns |
 
 - Add workaround staging only to the parts that the requested framing makes defect-prone. For the same person, a full-body framing makes the small face and the hands defect-prone, and an upper-body framing makes the hands defect-prone.
 - Choose only options that pass the fit check of the workarounds section and suit the scene's theme, time of day, and style. Leave a part without a workaround if nothing fits. Staging that clashes with the scene, such as wool gloves on a summer beach, stands out as much as a defect.
-- Optimize never uses an option that conflicts with a look the user specified. For example, a bicycle request that asks to show the spokes gets no grass covering the wheels.
+- Optimize never uses an option that conflicts with a look the user specified. For example, a person waving a hand never gets hands in pockets.
 - The first prompt may hold one option per part. The rule of adding one workaround at a time applies to the attempts of the defect handling stages.
 - Put the subject and style first in the prompt, and add the workaround phrases briefly after them.
 

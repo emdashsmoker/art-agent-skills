@@ -182,7 +182,7 @@ Question format:
 - For a conditional item (finger redrawing, candidate pick, spare candidate finishing), state its condition in the first sentence with the actual item numbers.
 - Write a numbered list in plain conversation text. Do not use code blocks or tables.
 - Put the answer format and an example answer on the first line.
-- Fit the examples in the upfront workaround choices to the parts of the request where defects tend to appear. Example: for a bicycle request, name grass covering part of a wheel for optimize and a silhouette for maximum.
+- Fit the examples in the upfront workaround choices to the parts of the request where defects tend to appear. Example: for a dining table request, name a long tablecloth covering the table legs for optimize and a top-down view for maximum.
 - For photographic or watercolor requests, add a one-line warning to the final upscaling item. Example: "Upscaling a photo or watercolor style wipes out skin texture and paper grain."
 - For non-photographic styles such as flat vector, line art, or cel shading, mark "off" as recommended for face restoration scope and add a one-line reason. Example: "In this style only the restored face turns photographic and clashes with the drawing." Face restoration tools were trained on real photographs of faces.
 
@@ -334,6 +334,7 @@ Once the machine check passes, open the file and look.
 - Is there unrequested exposure of genitals or female nipples?
 - Does each defect touch or come close to one of the four edges?
 - For a substituted diagram request, or a framing or subject changed under the maximum upfront workaround, does the picture carry the original message?
+- Even outside this list, is there any part that looks like a typical diffusion model defect, looks visually wrong, or fails to reflect the staging the user asked for?
 - If the subject looks squashed horizontally or vertically, regenerate as a square.
 
 The items in parentheses are examples. A shape problem is a part that differs from the real thing or from the requested style and that nothing visible in the frame explains. Visible causes are occlusion (something visibly covering the front of the part), the frame edge, the angle of the face and the pose, and omissions and exaggerations the style intends. Darkness, blur, out-of-focus areas, and the like that were not meant to hide that part do not count as occlusion. Treat any other shape problem as a defect by the same standard. If unsure, treat it as a defect. If final upscaling is chosen, run these checks on the working-size output.

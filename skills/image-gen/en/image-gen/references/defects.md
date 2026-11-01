@@ -128,19 +128,18 @@ With `upfront_workaround` in preflight.json set to `optimize` or `max`, the firs
 
 | Answer | Keeps | Uses |
 |---|---|---|
-| `optimize` (Optimize) | The subject, shot range, scene layout, and any look the user specified | Staging that removes or hides defect-prone parts, among options that keep the subject |
+| `optimize` (Optimize) | The subject, scene layout, and any look or shot range the user specified | Staging that removes, hides, or frames out defect-prone parts, among options that keep the subject |
 | `max` (Maximum) | The message and where the image will be used | The optimize options, all stage 2 and stage 4 options of the workaround table, removing defect-prone elements, and subject replacement |
 
-The table below gives examples by target. The table holds examples, so choose options that suit the scene on the same principle: remove or hide the defect-prone parts.
+The table below gives examples by target. The table holds examples, so choose options that suit the scene on the same principle: keep the defect-prone parts from showing.
 
 | Target | Defect-prone parts | Optimize examples | Maximum examples |
 |---|---|---|---|
-| People | Small faces, exposed hands | A hat, sunglasses, gloves, hands in pockets | A back view, a backlit silhouette, a shot that leaves the hands out of the frame |
-| Animals | Legs, face | Lying down with the legs tucked under the body | An upper-body framing that leaves the legs out of the frame |
-| Precise objects and machines | Spokes, joints between parts | A futuristic e-bike without spokes | A swap to a motorcycle |
+| People | Small faces, exposed hands | A hat, sunglasses, gloves, hands in pockets, a shot that leaves the hands out of the frame | A back view, a backlit silhouette |
+| Animals | Legs, face | An upper-body framing that leaves the legs out of the frame | A swap to things that suggest the animal is there (an empty doghouse, a food bowl, and the like) |
+| Precise objects and machines | Spokes, joints between parts | A futuristic e-bike without spokes | A swap to a futuristic vehicle without wheels |
 | Buildings | Joints of pillars and roofs, repeated windows | A smooth facade with few windows and ornaments | A distant silhouette |
 | Background crowds | Faces | Crowd silhouettes | Removing the crowd |
-| Reflections and grid patterns | Left-right match of reflections, misaligned grids | None | Removing reflections and grid patterns |
 
 - Add workaround staging only to the parts that the requested framing makes defect-prone. For the same person, a full-body framing makes the small face and the hands defect-prone, and an upper-body framing makes the hands defect-prone.
 - Within what the answer allows, choose in this order: a form that lacks the defect-prone part altogether, a framing that leaves that part out of the frame, then staging that hides it. The more the cause of the defect leaves the frame, the stronger the effect. An object that is hard to draw itself (such as heavily folded cloth) brings new defects, so hide parts only with simple objects.

@@ -1,2 +1,2 @@
-33096e7e29711e2c4119529425b21aa87d76ebfd59fda7b8767955af70dc70a5  image-gen-en.skill
-9313753ba8b2f974c82d75db5203ace4bf716ce3ddd164ccf1465b5b947fadcb  image-gen-ko.skill
+e8603f64fa99384caaeca67151f1afcb69b7e8ff77a762a08c75ba169012bcab  image-gen-en.skill
+fce12dec50d5b9880a2d2cd36ec49de3e062a44a11dcb6743328231ba54332ce  image-gen-ko.skill

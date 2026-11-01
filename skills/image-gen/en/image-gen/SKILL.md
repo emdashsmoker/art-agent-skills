@@ -270,6 +270,9 @@ PY scripts/preflight.py --out ./outputs --subject other --display available --en
 - Put the subject and the style keywords first. Do not pad the prompt with strings of modifiers.
 - Name the style by its technique. Keywords such as `watercolor illustration`, `flat vector illustration`, `digital painting`, and `photorealistic` register better than abstract phrases such as `minimal editorial style`.
 - Name the color family, for example `muted blue and beige palette`.
+- Proper nouns, technical terms, and words that are not widely used may not register with the model. Diffusion models tie a word to a shape only when it appeared often in the captions of their training images. Judge by whether the word would often appear in an everyday English photo caption.
+- Replace such a word with a similar common object, or spell out its look by its components. Replace it when the exact look is not the point of the request, and spell it out when its particular look is the point. Examples: a little-known car model name becomes `a small white electric car`, and a gat (a traditional Korean hat) becomes `a sheer black wide-brimmed hat with a tall crown`.
+- Name only the 2 or 3 shapes, materials, or colors needed to recognize it. A long description runs into the 77-token limit of the SD 1.5 family presets, and more elements go missing.
 - Never ask for text inside the image.
 - Leave out single quotes ('). They clash with command-line quoting.
 - Standard, Light, and Flat belong to the SD 1.5 family. They respond to short keyword-style English and lose track of long natural sentences. Their text window is 77 tokens, and anything beyond it is ignored without an error. The 75 tokens left after the start and end markers are about 50 English words. If generate.py prints a warning with the ignored text, shorten the prompt and run again.
@@ -406,6 +409,7 @@ PY scripts/finalize.py ./outputs/banner_trim.png ./outputs/banner_final.png --si
 - If the upfront workaround was used, add the choice to the reproduction details, and report the workaround staging you added and the elements that differ from the original request.
 - In candidate mode, present the candidates folder path and the contact sheet along with the adopted images. Add each candidate's seed, the multiplier in force, and the spare candidate finishing choice to the reproduction details. For a multiplier or spare candidate finishing choice decided automatically, include the reason.
 - For trimmed results, report the trim, the body part the cut line crosses, and the cut ratio (for free ratio, the adopted ratio and the remaining area).
+- If the prompt replaced or spelled out a word the model may not know, report the original word with the expression used.
 - For JPEG, generate with `--format jpg` or convert the PNG.
 
 When the multiplier in force is 2 or more, spare deletion follows the spare deletion section of references/candidates.md.
@@ -465,5 +469,6 @@ PY scripts/cache.py delete all    # the whole cache except the virtual environme
 | Mushy shapes | Preset settings were changed | Keep the script's steps, guidance, and scheduler |
 | Text, counts, or states ignored | A limit of diffusion models | Drop those instructions and add them in an editing tool |
 | The object the user named is missing | A named subject was sorted as a message request | Sort it as a named subject and regenerate with that object |
+| The object the user named comes out as something else | The model does not know the name (proper noun, technical term, rare word) | Replace it with a similar common object or spell out its components, as the prompt section says |
 | `KeyError: '__version__'` while installing gfpgan | basicsr's setup.py fails on newer Python (seen on Python 3.13 with basicsr 1.4.2) | Follow the workaround in the install section of references/postprocess.md |
 | functional_tensor error when importing gfpgan | basicsr imports a module torchvision removed | Run `PY scripts/patch_basicsr.py` and try again |

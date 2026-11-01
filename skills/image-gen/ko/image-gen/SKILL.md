@@ -268,6 +268,9 @@ PY scripts/preflight.py --out ./outputs --subject other --display available --en
 - 피사체와 화풍 키워드를 앞에 둔다. 수식어를 늘어놓아 길이를 늘리지 않는다.
 - 화풍은 기법 이름으로 적는다. `watercolor illustration`, `flat vector illustration`, `digital painting`, `photorealistic`처럼 기법을 밝힌 키워드가 `minimal editorial style` 같은 추상적인 표현보다 잘 반영된다.
 - 색은 `muted blue and beige palette`처럼 계열을 직접 적는다.
+- 고유명사, 전문용어, 널리 쓰이지 않는 단어는 모델이 알아듣지 못할 수 있다. 확산모델은 학습 이미지 설명에 자주 나온 단어만 모양과 연결하기 때문이다. 판단 기준은 그 단어가 일상적인 영어 사진 설명에 흔히 나올지다.
+- 이런 단어는 비슷한 흔한 사물로 바꾸거나 생김새를 구성요소로 풀어 쓴다. 정확한 모습이 요청의 핵심이 아니면 바꾸고, 고유한 모습이 핵심이면 풀어 쓴다. 예: 잘 알려지지 않은 자동차 모델명은 `a small white electric car`로 바꾸고, 갓은 `a sheer black wide-brimmed hat with a tall crown`으로 풀어 쓴다.
+- 구성요소는 알아보는 데 필요한 모양, 재질, 색 2-3개만 적는다. 길게 풀면 SD 1.5 계열 프리셋의 77토큰 제한에 걸리고 요소 누락도 늘어난다.
 - 이미지 안에 글자를 넣으라고 쓰지 않는다.
 - 작은따옴표(')는 명령행 인용과 부딪히므로 쓰지 않는다.
 - 표준, 경량, 플랫 프리셋은 SD 1.5 계열이다. 짧은 키워드형 영문에 반응하고 긴 자연어 문장은 반영이 약하다. 문장 해석 창이 77토큰이라 그 뒤의 글은 오류 없이 무시된다. 시작과 끝 표지를 뺀 75토큰은 영어로 약 50단어다. generate.py가 무시된 문구를 경고로 출력하면 프롬프트를 줄여 다시 실행한다.
@@ -404,6 +407,7 @@ PY scripts/finalize.py ./outputs/banner_trim.png ./outputs/banner_final.png --si
 - 첫 프롬프트 우회를 쓴 경우 재현 정보에 그 선택을 더하고, 넣은 우회 연출과 원 요청에서 달라진 요소를 함께 알린다.
 - 후보 모드에서는 채택본과 함께 후보 폴더 경로와 모아보기를 제시한다. 재현 정보에 후보마다의 seed, 정해진 배수, 여분 후보 보정 선택을 더한다. 자동으로 정한 배수와 여분 후보 보정 선택은 근거를 함께 적는다.
 - 트림한 결과는 트림 사실, 절단선이 지나는 부위, 잘린 비율(자유 비율이면 채택 비율과 남은 면적)을 함께 알린다.
+- 프롬프트에서 모델이 모를 단어를 바꾸거나 풀어 쓴 경우 원래 단어와 바꾼 표현을 함께 알린다.
 - JPEG가 필요하면 `--format jpg`로 생성하거나 PNG를 변환한다.
 
 정해진 배수가 2 이상이면 여분 삭제는 references/candidates.md의 여분 삭제 절을 따른다.
@@ -463,5 +467,6 @@ PY scripts/cache.py delete all    # 가상환경을 뺀 캐시 전체
 | 형태가 뭉개짐 | 프리셋 설정을 바꿈 | 스텝 수, guidance, 스케줄러를 스크립트 기본값으로 둔다 |
 | 글자, 개수, 상태 지시 미반영 | 확산모델의 한계 | 해당 지시를 빼고 편집 도구에서 보완한다 |
 | 사용자가 정한 사물이 나오지 않음 | 지정 피사체를 메시지 요청으로 잘못 나눔 | 지정 피사체로 다시 나누고 그 사물로 다시 생성한다 |
+| 사용자가 정한 사물이 엉뚱한 모습으로 나옴 | 모델이 모르는 이름(고유명사, 전문용어, 드문 단어) | 프롬프트 절에 따라 비슷한 흔한 사물로 바꾸거나 구성요소로 풀어 쓴다 |
 | gfpgan 설치 중 `KeyError: '__version__'` | 새 Python에서 basicsr의 setup.py가 실패함(Python 3.13과 basicsr 1.4.2 조합에서 확인) | references/postprocess.md 설치 절의 우회 절차를 따른다 |
 | gfpgan import 시 functional_tensor 오류 | torchvision에서 사라진 모듈을 basicsr가 참조 | `PY scripts/patch_basicsr.py` 실행 후 다시 시도한다 |

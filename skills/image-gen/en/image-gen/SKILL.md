@@ -271,7 +271,7 @@ PY scripts/preflight.py --out ./outputs --subject other --display available --en
 - Name the style by its technique. Keywords such as `watercolor illustration`, `flat vector illustration`, `digital painting`, and `photorealistic` register better than abstract phrases such as `minimal editorial style`.
 - Name the color family, for example `muted blue and beige palette`.
 - Proper nouns, technical terms, and words that are not widely used may not register with the model. Diffusion models tie a word to a shape only when it appeared often in the captions of their training images. Judge by whether the word would often appear in an everyday English photo caption.
-- Replace such a word with a similar common object, or spell out its look by its components. Replace it when the exact look is not the point of the request, and spell it out when its particular look is the point. Examples: a little-known car model name becomes `a small white electric car`, and a gat (a traditional Korean hat) becomes `a sheer black wide-brimmed hat with a tall crown`.
+- Replace such a word with a similar common object, or spell out its look by its components. Replace it when the exact look is not the point of the request, and spell it out when its particular look is the point. Examples: a little-known car model name becomes `a small white electric car`, and the name of a piece of armor from a game becomes `black metal plate armor with spiked shoulders and glowing red trim`.
 - Name only the 2 or 3 shapes, materials, or colors needed to recognize it. A long description runs into the 77-token limit of the SD 1.5 family presets, and more elements go missing.
 - Never ask for text inside the image.
 - Leave out single quotes ('). They clash with command-line quoting.

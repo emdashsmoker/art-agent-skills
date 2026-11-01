@@ -269,7 +269,7 @@ PY scripts/preflight.py --out ./outputs --subject other --display available --en
 - 화풍은 기법 이름으로 적는다. `watercolor illustration`, `flat vector illustration`, `digital painting`, `photorealistic`처럼 기법을 밝힌 키워드가 `minimal editorial style` 같은 추상적인 표현보다 잘 반영된다.
 - 색은 `muted blue and beige palette`처럼 계열을 직접 적는다.
 - 고유명사, 전문용어, 널리 쓰이지 않는 단어는 모델이 알아듣지 못할 수 있다. 확산모델은 학습 이미지 설명에 자주 나온 단어만 모양과 연결하기 때문이다. 판단 기준은 그 단어가 일상적인 영어 사진 설명에 흔히 나올지다.
-- 이런 단어는 비슷한 흔한 사물로 바꾸거나 생김새를 구성요소로 풀어 쓴다. 정확한 모습이 요청의 핵심이 아니면 바꾸고, 고유한 모습이 핵심이면 풀어 쓴다. 예: 잘 알려지지 않은 자동차 모델명은 `a small white electric car`로 바꾸고, 갓은 `a sheer black wide-brimmed hat with a tall crown`으로 풀어 쓴다.
+- 이런 단어는 비슷한 흔한 사물로 바꾸거나 생김새를 구성요소로 풀어 쓴다. 정확한 모습이 요청의 핵심이 아니면 바꾸고, 고유한 모습이 핵심이면 풀어 쓴다. 예: 잘 알려지지 않은 자동차 모델명은 `a small white electric car`로 바꾸고, 게임 속 갑옷 이름은 `black metal plate armor with spiked shoulders and glowing red trim`으로 풀어 쓴다.
 - 구성요소는 알아보는 데 필요한 모양, 재질, 색 2-3개만 적는다. 길게 풀면 SD 1.5 계열 프리셋의 77토큰 제한에 걸리고 요소 누락도 늘어난다.
 - 이미지 안에 글자를 넣으라고 쓰지 않는다.
 - 작은따옴표(')는 명령행 인용과 부딪히므로 쓰지 않는다.

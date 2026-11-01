@@ -1,6 +1,6 @@
 ---
 name: image-gen-addon-codeformer
-description: "Add-on that brings CodeFormer into the face restoration of the image-gen skill. If installed, it adds a face restoration strength item to image-gen's pre-generation questions and changes image-gen's face restoration so that asymmetric faces and misplaced features get fixed with CodeFormer. Whenever the image-gen skill makes an image with a person, or restores, fixes, or corrects a face, and this add-on is installed, always load it together with image-gen. It does nothing without the image-gen skill. CodeFormer is distributed under a license that allows non-commercial use only (S-Lab License 1.0), so get the user's consent before installing it."
+description: "Add-on that brings CodeFormer into the face restoration of the image-gen skill. If installed, it adds a face restoration strength item to image-gen's pre-generation questions and changes image-gen's face restoration so that asymmetric faces and misplaced features get fixed with CodeFormer. Whenever the image-gen skill makes an image with a person, or restores, fixes, or corrects a face, and this add-on is installed, always load it together with image-gen. It does nothing without the image-gen skill. CodeFormer is distributed under a license that allows non-commercial use only (S-Lab License 1.0), so get the user's consent in the pre-generation questions."
 license: GPL-3.0-or-later with an output exception. Terms in LICENSE and NOTICE.md
 ---
 
@@ -14,7 +14,7 @@ If loaded together with image-gen, the rules below replace the matching rules of
 
 ## Terms of use
 
-CodeFormer is distributed under the S-Lab License 1.0. The license allows use and redistribution for non-commercial purposes only and asks anyone with a commercial purpose to contact the authors. Before the first installation, tell the user this condition in one line and ask whether to install. If the user declines or says the purpose is commercial, skip this add-on and continue with image-gen alone.
+CodeFormer is distributed under the S-Lab License 1.0. The license allows use and redistribution for non-commercial purposes only and asks anyone with a commercial purpose to contact the authors. Put this condition in one line into the pre-generation questions and get consent in the same answer (pre-generation questions section). image-gen finishes all questions before generation so automatic progress is not interrupted, so do not ask again at installation time. If the user declines or says the purpose is commercial, skip this add-on and continue with image-gen alone.
 
 - License text: https://github.com/sczhou/CodeFormer/blob/master/LICENSE
 - Package: codeformer-pip (https://github.com/kadirnar/codeformer-pip), which states the same license.
@@ -26,14 +26,16 @@ CodeFormer is distributed under the S-Lab License 1.0. The license allows use an
 Insert a face restoration strength item right after image-gen's face restoration scope item. The items after it move down by one number. Item numbers that later items cite in their conditions move the same way (for example, candidate pick's "Only if item 6 is not a" becomes "Only if item 7 is not a").
 
 - Ask when a person appears and face restoration can run. Do not ask when face restoration scope is off. Do not ask when the scope is "only on defects" and defect post-processing is "workarounds only", because restoration never runs in that combination.
-- If the user already stated the strength, do not ask.
-- In the recommended combination for delegated answers, the recommendation for this item is stepwise. Write the other numbers of the combination with the moved numbers as well. For example, image-gen's "1-b, 2-b, 3-a, 4-a, 5-a, 6-a, 9-a" becomes "1-b, 2-b, 3-a, 4-a, 5-b, 6-a, 7-a, 10-a".
+- Attach the one-line terms of use to this item's description. Choosing a or b counts as consent. c) Do not use is the choice for users who decline or have a commercial purpose.
+- If the user already stated the strength, do not ask for the strength. Still ask the one-line terms of use and the consent in the same questions.
+- In the recommended combination for delegated answers, the recommendation for this item is stepwise. Write the other numbers of the combination with the moved numbers as well. For example, image-gen's "1-b, 2-b, 3-a, 4-a, 5-a, 6-a, 9-a" becomes "1-b, 2-b, 3-a, 4-a, 5-b, 6-a, 7-a, 10-a". When showing the recommended combination, write the one-line terms of use with it and get consent in the same confirmation.
 
 Example (insert after item 4 of image-gen's example):
 
-> 5. [Face restoration strength] Only when item 4 is not c, and items 3-b and 4-a are not both chosen.
+> 5. [Face restoration strength] Only when item 4 is not c, and items 3-b and 4-a are not both chosen. CodeFormer, which fixes asymmetric faces, is distributed under a license that allows non-commercial use only (S-Lab License 1.0). Choosing a or b means you agree to this condition.
 >    a) Aggressive: fix in one pass with w=0.0 from the start. The look of the face may change from the original
 >    b) Stepwise: start at w=0.5 and lower to 0.25, then 0.0, while a defect remains
+>    c) Do not use: choose this for a commercial purpose or if you do not agree. Face restoration continues with the default tool
 
 After the user answers, run this add-on's record script right after image-gen's preflight.py. Run it again whenever image-gen's record is rewritten.
 
@@ -43,6 +45,7 @@ PY scripts/preflight_codeformer.py --out ./outputs --face-strength stepwise --us
 
 - `scripts/` is the scripts folder inside this add-on's folder. `PY` is the Python of image-gen's virtual environment.
 - If the combination needs no strength item, run it without `--face-strength` to record an empty value.
+- If the user chooses c) Do not use or says the purpose is commercial, do not run the record script. From then on, skip this add-on and continue with image-gen alone. image-gen's generation scripts work without this add-on's record.
 
 ### Choosing the face tool
 
@@ -70,7 +73,7 @@ PY scripts/face_fix_codeformer.py in.png out_face.png 0.5
 
 ### Installation
 
-If face restoration is chosen and the user has agreed to the terms of use, install right after image-gen's face restoration install.
+If face restoration is chosen and the user agreed to the terms of use in the pre-generation questions, install right after image-gen's face restoration install.
 
 ```
 PY -m pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu codeformer-pip

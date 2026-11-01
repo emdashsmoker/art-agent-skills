@@ -138,7 +138,7 @@ The table below gives examples by target. The table holds examples, so choose op
 
 | Target | Defect-prone parts | Optimize examples | Maximum examples |
 |---|---|---|---|
-| People | Small faces, exposed hands | A hat, sunglasses, gloves, hands in pockets, a shot that leaves the hands out of the frame | A back view, a backlit silhouette |
+| People | Small faces, exposed hands | Hands lowered at the sides, a shot that leaves the hands out of the frame, a hat, sunglasses, gloves, hands in pockets | A back view, a backlit silhouette |
 | Animals | Legs, face | An upper-body framing that leaves the legs out of the frame | A swap to things that suggest the animal is there (an empty doghouse, a food bowl, and the like) |
 | Precise objects and machines | Spokes, joints between parts | A futuristic e-bike without spokes | A swap to a futuristic vehicle without wheels |
 | Buildings | Joints of pillars and roofs, repeated windows | A smooth facade with few windows and ornaments | A distant silhouette |

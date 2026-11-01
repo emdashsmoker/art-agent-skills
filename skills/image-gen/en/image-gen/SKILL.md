@@ -181,7 +181,7 @@ Before the first image, ask every applicable item from the table below in one me
 - In the choices of spare candidate finishing, name only the batch processes the user can pick in this question. For objects only, name final upscaling alone.
 - Judge the 10-image condition of the model choice question by the target count. The multiplier comes in the same question, so whether to ask the model question cannot follow the multiplier answer.
 - If automatic resolves to 1x, the answers for candidate pick and spare candidate finishing go unused.
-- The upfront workaround avoids the parts where diffusion models often produce defects from the first image, before any defect is seen. It applies to people, animals, objects, buildings, and scene elements alike. The default, off, makes the image as requested first and works around only after a defect shows. Optimize keeps the subject and scene, and adds only staging that removes, hides, or frames out defect-prone parts. Maximum keeps only the message and goes as far as composition changes, element removal, and subject replacement.
+- The upfront workaround avoids the parts where diffusion models often produce defects from the first image, before any defect is seen. It applies to people, animals, objects, buildings, and scene elements alike. The default, off, makes the image as requested first. Once a defect shows, edge trimming and seed changes come first, and workarounds start at defect handling stage 2 only if the defect remains. Optimize keeps the subject and scene, and adds only staging that removes, hides, or frames out defect-prone parts. Maximum keeps only the message and where the image will be used, and goes as far as composition changes, element removal, and subject replacement.
 
 Question format:
 
@@ -200,8 +200,8 @@ Example for a request with a person:
 >    a) None: trimming and enlargement to the target size leave some blur
 >    b) general: works for most styles
 >    c) flat: for flat vector art only
-> 2. [Edge trim] When a defect such as a finger touches the frame edge, I cut a little off that edge before regenerating. The cut defect leaves the frame for good, so this is the surest fix in that case.
->    a) Off: fix only by regenerating and workarounds
+> 2. [Edge trim] When a defect such as a finger touches or comes close to the frame edge, I cut a little off that edge before regenerating. The cut defect leaves the frame for good, so this is the surest fix in that case.
+>    a) Off: edge defects go through the same handling stages as any other defect
 >    b) Same ratio only: cut as much as needed while keeping the aspect ratio, then restore the original size. Applied without asking and reported on delivery
 >    c) Free ratio too: when b cannot work, show preview candidates with other ratios (for example a wider frame) and apply the ratio you pick
 >    d) Free ratio, automatic: when b cannot work, I pick the candidate closest to the original framing, apply it, and tell you. The aspect ratio may change
@@ -213,7 +213,7 @@ Example for a request with a person:
 >    a) Only on defects: apply per item 3 when a face defect shows
 >    b) Always: apply face restoration to every image with a person, defect or not. Eyes and teeth get sharper (applies even if item 3 is b, about 1.2GB to install)
 >    c) Off: do not install or use face restoration. Face defects get seed changes and workarounds, and item 3's clothing and accessory redrawing stays as chosen
-> 5. [Finger redrawing] Only if item 3 is a or c. It seldom fixes fingers, so seed changes, edge trimming, and prompt workarounds always come first.
+> 5. [Finger redrawing] Only if item 3 is a or c. It seldom fixes fingers, so edge trimming, seed changes, and prompt workarounds always come first.
 >    a) Off (recommended): remaining finger defects get a composition that keeps hands out of the frame
 >    b) On: one attempt on remaining defects, with a before and after comparison. Used only on hands shown on their own. Hand size and pose may change
 > 6. [Candidate generation] I make more candidates than the target count at once and pick from them. You wait less for regeneration after a defect. Counts and times are for a target of 1 image and are estimates for this runtime environment.
@@ -230,9 +230,9 @@ Example for a request with a person:
 >    b) All candidates: spares come finished too. Post-processing time grows with the number of candidates
 >    c) Automatic: I choose a or b for the task and tell you before generating
 > 9. [Upfront workaround] Diffusion models often produce defects in complex parts such as people's faces and fingers, the joints of objects, and building structures. Decides whether the first image already avoids such parts. The more it works around, the fewer the defects and the more the image departs from what you asked for.
->    a) Off (default): I make the image as you asked first, and work around step by step once a defect shows
->    b) Optimize: the subject and scene stay as asked, and the first prompt adds staging that removes, hides, or frames out defect-prone parts. For this request that means staging such as sunglasses, gloves, hands in pockets, or a shot that leaves the hands out of the frame
->    c) Maximum: only the message you want to convey stays, and defect-prone elements are avoided as much as possible. I switch to framings such as a side view or a silhouette or remove elements such as a background crowd, and if needed switch to another object or scene with the same meaning. I ask before changing the subject
+>    a) Off (default): I make the image as you asked first. If a defect shows, I try trimming and a new seed first, and work around step by step only if it remains
+>    b) Optimize: the subject and scene stay as asked, and the first prompt adds staging that removes, hides, or frames out defect-prone parts. For this request that means staging such as hands lowered at the sides, a shot that leaves the hands out of the frame, sunglasses, or gloves
+>    c) Maximum: only the message you want to convey and where the image will be used stay, and defect-prone elements are avoided as much as possible. I switch to framings such as a side view or a silhouette or remove elements such as a background crowd, and if needed switch to another object or scene with the same meaning. I ask before replacing a subject you named, and tell you before generating when I change the framing or remove elements
 
 If a model choice condition applies, continue with the last number. Example:
 
@@ -285,7 +285,7 @@ PY scripts/preflight.py --out ./outputs --subject other --display available --en
 - Standard, Light, and Flat belong to the SD 1.5 family. They respond to short keyword-style English and lose track of long natural sentences. Their text window is 77 tokens, and anything beyond it is ignored without an error. The 75 tokens left after the start and end markers are about 50 English words. If generate.py prints a warning with the ignored text, shorten the prompt and run again.
 - Precise takes natural sentences as they are and has no 77-token limit. It uses no negative prompt.
 - Fix the seed to reproduce a result. Change it for variety.
-- With the upfront workaround off, leave workaround instructions (hats, sunglasses, gloves) out of the first prompt. Use them only after a defect shows. Accessories the user asked for from the start belong to the original intent, so include them.
+- With the upfront workaround off, leave workaround instructions (hats, sunglasses, gloves) out of the first prompt. Use them only once defect handling reaches stage 2. Accessories the user asked for from the start belong to the original intent, so include them.
 - With the upfront workaround at optimize or maximum, put workaround staging into the first prompt as the upfront workaround section of references/defects.md says.
 
 ## Generate
@@ -370,7 +370,7 @@ When the multiplier in force is 2 or more, adopt the target count as the candida
 
 If you find a defect, follow the order in references/defects.md. In short:
 
-1. Trim-first check: if the defect touches an edge and nothing else calls for a new image, trim the edge before regenerating whenever the trim answer is same ratio only, free ratio too, or free ratio automatic.
+1. Trim-first check: if the defect touches or comes close to an edge and nothing else calls for a new image, trim the edge before regenerating whenever the trim answer is same ratio only, free ratio too, or free ratio automatic.
 2. General defects: fix style, color, count, background, and framing problems with prompt edits and seed changes.
 3. Fragile subjects (people, animals, precise objects, background crowds): go through stage 1 seed change, stage 2 prompt workaround, stage 3 post-processing, stage 4 composition workaround.
 4. If the regeneration limit is reached, show the best result with the defect marked and ask how to proceed.

@@ -52,6 +52,15 @@ These are people, animals, precise objects, and background crowds. Diffusion mod
 
 Face defects include mushy faces and also unclear features, eyes, nose, or mouth out of place or out of proportion, left-right asymmetry, mismatched gaze or pupils, and broken mouths and teeth. If unsure, treat it as a defect and start the procedure. If it still looks off at the size it will be used, the defect is confirmed. Slight blur on a distant figure is not a defect.
 
+A body count defect is an anatomical defect in which the number of a body part differs from the standard count. The standard counts are 5 fingers on each hand, 5 toes on each foot, 2 arms, and 2 legs for a person, 4 legs for a four-legged animal, and the like. The list holds examples, so for animals not on it, use the real count of the species.
+
+- More than the standard count is a defect. A sixth finger, a third arm or leg, and two hands on one arm are examples.
+- If there are fewer, look for what hides the rest. A part hidden by an object, clothing, shoes, or another body part, or one that runs past the frame edge, counts as hidden. If nothing visible hides it, it is a defect. A limb that stops partway inside the frame and a finger that melts into the body are examples.
+- Fingers or toes fused or clumped so that you cannot count them one by one are a defect.
+- Do not count distant figures so small that their fingers are not drawn separately even when enlarged.
+
+For body counts too, if unsure, treat it as a defect and start the procedure.
+
 Respond in this order.
 
 1. Stage 1, try again: keep the prompt, change only the seed, and regenerate with the original intent.

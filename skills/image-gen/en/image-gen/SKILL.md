@@ -315,7 +315,8 @@ Once the machine check passes, open the file and look.
 - Can you still read the shape at the size it will be used?
 - Does a person nobody asked for take the center of the frame?
 - Is there a count defect (more objects than intended, the same subject twice, and the like)?
-- Do people and animals show an anatomical defect (distorted facial features, the number of limbs, the shape of hands and feet, and the like)?
+- Does the body count of people and animals match the standard count (5 fingers on each hand, 5 toes on each foot, 2 arms, and 2 legs for a person, 4 legs for a four-legged animal, and the like)?
+- Do people and animals show any other anatomical defect (distorted facial features, the shape of hands and feet, and the like)?
 - Do clothing, accessories, and precise objects show a connection defect (broken glasses frames, missing straps, tangled spokes, and the like)?
 - Is there unrequested exposure of genitals or female nipples?
 - Does each defect touch or come close to one of the four edges?
@@ -327,13 +328,15 @@ The items in parentheses are examples. Treat any other shape problem as a defect
 For fragile subjects, look at the full frame first, then enlarge the parts where defects tend to appear (faces, hands and feet, joints between parts, and the like) and look again. A part drawn small rarely shows its defects in the full frame.
 
 - Make the enlarged view with grid_measure.py and a region. A rough, generous region is fine. View nearby parts together in one region.
+- Count arms and legs in the full frame. Count fingers and toes one by one on the enlarged view, for each hand and foot. Judge hidden parts and parts you cannot count by the fragile subjects section of defects.md.
 - If you find a defect, use the enlarged grid for the trim and region-redrawing coordinates as well.
 - Skip enlarging an image you have already decided not to adopt.
 
-Record the check result in one line per image. Write the parts you looked at and what you saw, and for items without a defect, write what you based that on. In candidate mode, the adoption ranking and the defects reported in the user pick come from this record.
+Record the check result in one line per image. Write the parts you looked at and what you saw, and for items without a defect, write what you based that on. Write the body count as the number you counted for each part. In candidate mode, the adoption ranking and the defects reported in the user pick come from this record.
 
-- Example: `reader-02: no anatomical defect (face in profile, both hands holding a newspaper), no count defect, connection defect (left glasses frame broken, far from the edges)`
-- Leave out items that do not apply (such as anatomical defects in an image with objects only).
+- Example: `reader-01: body count wrong (right hand 6 fingers, touching the bottom edge), no anatomical defect (face from the front), no count defect, no connection defect (glasses frame intact)`
+- Example: `reader-02: body count right (2 arms, 2 legs, left hand 5 fingers, right hand 3 fingers plus 2 behind the newspaper, toes covered by shoes), no anatomical defect (face in profile), no count defect, connection defect (left glasses frame broken, far from the edges)`
+- Leave out items that do not apply (such as body count and anatomical defects in an image with objects only).
 
 When the multiplier in force is 2 or more, adopt the target count as the candidate adoption section of references/candidates.md says. Apply the answers to the existing items as the scope in candidate mode section of the same file says.
 

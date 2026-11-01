@@ -317,8 +317,8 @@ Once the machine check passes, open the file and look.
 - Is there a count defect (more objects than intended, the same subject twice, and the like)?
 - Does the body count of people and animals match the standard count (5 fingers on each hand, 5 toes on each foot, 2 arms, and 2 legs for a person, 4 legs for a four-legged animal, and the like)?
 - Does a person's face show a face defect (eyes of different sizes, features out of place or unevenly spaced, a face mushy as a whole, a missing eye, nose, or mouth, and the like)?
-- Do people and animals show any other anatomical defect (a distorted animal face, the shape of hands and feet, and the like)?
-- Do clothing, accessories, and precise objects show a connection defect (broken glasses frames, missing straps, tangled spokes, and the like)?
+- Do people and animals show any other anatomical defect (distorted animal facial features, the shape of hands and feet, body distortion, and the like)?
+- Do clothing, accessories, objects, and buildings show a connection or structure defect (broken glasses frames, missing straps, tangled spokes, a distorted complex machine, a building with a distorted form such as a roof floating without pillars, and the like)?
 - Is there unrequested exposure of genitals or female nipples?
 - Does each defect touch or come close to one of the four edges?
 - For a substituted diagram request, does the picture carry the original message?
@@ -331,6 +331,7 @@ For fragile subjects, look at the full frame first, then enlarge the parts where
 - Make the enlarged view with grid_measure.py and a region. A rough, generous region is fine. View nearby parts together in one region.
 - Count arms and legs in the full frame. Count fingers and toes one by one on the enlarged view, for each hand and foot.
 - On the enlarged view of a face, check that the eyes, nose, and mouth are all there. Compare their position, spacing, size, and left-right balance with the placement criteria in defects.md.
+- Follow the outline of large parts such as the belly, waist, thighs, and breasts in the full frame. A part whose outline breaks off, melts into clothing or the background, or twists in a way the pose does not explain is body distortion.
 - Judge hidden parts, parts you cannot count, and differences due to the angle of the face or the style by the fragile subjects section of defects.md.
 - If you find a defect, use the enlarged grid for the trim and region-redrawing coordinates as well.
 - Skip enlarging an image you have already decided not to adopt.

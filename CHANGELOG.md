@@ -44,6 +44,8 @@ Changelog rules
 - Changed the content policy to match the other non-diffusion image generation skills (#33)
 - Added pose rules to the workarounds that prefer simple static poses, avoid staging that is harder to draw, and place hands where a remaining defect is easy to trim (#34)
 - Fixed the pre-generation question texts that differed from the defect handling order, now with trimming and seed changes ahead of workarounds, lowered hands first in the optimize example, and the use of the image kept under maximum (#35)
+- Changed the Korean and English documents, including the pre-generation question texts shown to users, to a formal style without colloquial wording (#36)
+- Changed the English choice labels Candidate pick, Agent pick, User pick, and Free ratio too to Candidate selection, Agent selection, User selection, and Free ratio allowed (#36)
 
 * 생성 직후 점검 전의 defects.md 읽기와 후처리 사용 시 postprocess.md 읽기로 참조 문서 읽기 시점 변경 (#26)
 * 예시 목록을 붙인 결함 유형 항목, 취약 부위별 단독 확대 확인, 확대 파일을 적는 이미지별 한 줄 기록을 담은 눈 점검 방식 변경 (#26, #30)
@@ -59,6 +61,8 @@ Changelog rules
 * 다른 비확산 이미지 생성 스킬과 같은 기준으로 콘텐츠 정책 변경 (#33)
 * 단순한 정적 자세 우선, 그리기 어려운 연출 회피, 결함이 남아도 트림하기 쉬운 손 위치를 담은 우회 자세 기준 추가 (#34)
 * 우회보다 앞선 트림과 seed 변경, 최적화 예시의 내린 손 우선, 최대 우회의 쓰일 자리 유지를 담은 생성 전 질의 문구 수정 (#35)
+* 구어 표현 없는 격식체로 생성 전 질의 문안과 문서 문체(한국어판, 영어판) 변경 (#36)
+* Candidate selection, Agent selection, User selection, Free ratio allowed로 영어판 선택지 이름(Candidate pick, Agent pick, User pick, Free ratio too) 변경 (#36)
 
 ### image-gen-addon-codeformer
 - Changed the CodeFormer license consent to one line in the pre-generation questions instead of a question right before the first installation (#34)
@@ -67,6 +71,7 @@ Changelog rules
 - Fixed the stepwise strength lowering that could run with defect post-processing set to workarounds only (#34)
 - Fixed the always-on scope to choose w from the face in the generated original (#34)
 - Fixed the non-photographic style rule that left out image-gen's handling for environments that cannot show images (#34)
+- Changed the Korean and English documents, including the face restoration strength question text, to a formal style without colloquial wording (#36)
 
 * 생성 전 질의의 한 줄 안내로 CodeFormer 라이선스 동의 시점 변경 (#34)
 * 라이선스 미동의 사용자와 상업 목적 사용자를 위한 얼굴 복원 강도 항목의 사용 안 함 선택지 추가 (#34)
@@ -74,6 +79,7 @@ Changelog rules
 * 결함 후처리가 우회만 자동인 경우에도 진행될 수 있던 단계 강도 낮추기 수정 (#34)
 * 생성 원본 얼굴 기준의 상시 적용 w 결정 방식 수정 (#34)
 * 이미지 표시 수단이 없는 환경의 image-gen 처리를 누락한 비사진 화풍 규칙 수정 (#34)
+* 구어 표현 없는 격식체로 얼굴 복원 강도 질의 문안과 문서 문체(한국어판, 영어판) 변경 (#36)
 
 ## 2026-10-31
 

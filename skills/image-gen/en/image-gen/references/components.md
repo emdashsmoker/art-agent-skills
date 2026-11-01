@@ -18,10 +18,10 @@ The skill package contains no model weights, executables, or external packages. 
 | Face restoration | GFPGAN v1.3 | https://github.com/TencentARC/GFPGAN/releases/tag/v1.3.0 | Apache-2.0 |
 | Face detection and parsing | facexlib helper weights | https://github.com/xinntao/facexlib/releases | MIT |
 
-- OpenRAIL licenses restrict how the model and its outputs may be used (the list of use restrictions in their attachment). Users of the skill must follow those terms.
+- OpenRAIL licenses restrict how the model and its outputs may be used (the list of use restrictions in their attachment). Users of the skill must comply with those terms.
 - The GFPGAN repository is licensed under Apache-2.0 and states that some third-party components inside it carry other licenses. This skill runs inference only with the clean architecture (`arch="clean"`), which needs no custom CUDA operations.
 - tiny-sd distributes its weights as PyTorch pickle files. diffusers and transformers load them in weights-only mode.
-- Final upscaling weights, face restoration weights, and the precise preset executable are checked against the SHA-256 values in the scripts before use. The precise preset fetches its Hugging Face models at pinned revisions.
+- Final upscaling weights, face restoration weights, and the precise preset executable are checked against the SHA-256 values in the scripts before use. The precise preset downloads its Hugging Face models at pinned revisions.
 
 ## Executable
 
@@ -43,4 +43,4 @@ The skill package contains no model weights, executables, or external packages. 
 
 ## Safety checker
 
-The generation pipeline runs with the diffusers safety checker turned off. The checker needs a separate model (about 1.2GB) and replaces any flagged result with a black image. Content rules follow the protection of minors section of SKILL.md.
+The generation pipeline runs with the diffusers safety checker disabled. The checker needs a separate model (about 1.2GB) and replaces any flagged result with a black image. Content rules follow the protection of minors section of SKILL.md.

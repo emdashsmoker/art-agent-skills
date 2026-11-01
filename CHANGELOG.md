@@ -35,7 +35,7 @@ Changelog rules
 - Changed the candidate mode procedures into references/candidates.md, read only when the candidate generation answer is not 1x (#27)
 - Added a body count item to the visual check with standard counts such as 5 fingers per hand, 5 toes per foot, 2 arms, 2 legs, and 4 legs for a four-legged animal, recorded as numbers per part (#28)
 - Added a face defect item to the visual check with placement criteria for the eyes, nose, and mouth (#28)
-- Added body distortion of large parts, distorted machine structures, and distorted building forms to the visual check examples (#28)
+- Added body distortion of large parts (except twists the pose explains), distorted machine structures, and distorted building forms to the visual check examples (#28, #29)
 - Changed shape judgment to one rule that treats a difference no visible cause explains, and any unsure case, as a defect for every subject including objects and buildings (#28)
 
 * 생성 직후 점검 전의 defects.md 읽기와 후처리 사용 시 postprocess.md 읽기로 참조 문서 읽기 시점 변경 (#26)
@@ -43,7 +43,7 @@ Changelog rules
 * 1배 이외 후보 생성 답의 경우에만 읽는 references/candidates.md로 후보 모드 절차 분리 변경 (#27)
 * 부위별 숫자 기록을 포함한 신체 개수 기준(사람의 한 손 손가락 5개, 한 발 발가락 5개, 팔 2개, 다리 2개, 네발 동물의 다리 4개 등) 눈 점검 항목 추가 (#28)
 * 눈코입 배치 기준을 포함한 얼굴 결함 눈 점검 항목 추가 (#28)
-* 큰 부위의 신체 왜곡, 기계 구조의 왜곡, 건물 형태의 왜곡에 대한 눈 점검 예시 추가 (#28)
+* 큰 부위의 신체 왜곡(자세로 설명되는 비틀림 제외), 기계 구조의 왜곡, 건물 형태의 왜곡에 대한 눈 점검 예시 추가 (#28, #29)
 * 보이는 원인으로 설명되지 않는 차이와 애매한 경우를 사물과 건물까지 모든 피사체의 결함으로 보는 단일 형태 판정 원칙으로 변경 (#28)
 
 ## 2026-10-31

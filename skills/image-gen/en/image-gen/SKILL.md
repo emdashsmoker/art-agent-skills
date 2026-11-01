@@ -1,6 +1,6 @@
 ---
 name: image-gen
-description: "Generates images with local models on the CPU of the runtime environment, for hobby, daily, or work use. Two compositions: icons with one centered subject, and mood scenes of two or three elements. Turns abstract messages into drawable objects or scenes. For charts or diagrams that need text, draws a substitute once the user agrees. Fixes defects with edge trimming, face restoration, region redrawing, and final upscaling. Default model: DreamShaper 8 LCM. Use this skill whenever the user asks to make or draw an image, illustration, background, banner, cover, divider, slide background, landscape, portrait, or a picture for a report ('image generation', 'generate an illustration'), and to fix faces, hands, or edges in images it made. Details in references/: composition.md (requests, substitution, scenes), models.md (presets, time estimates, cache), candidates.md (candidate mode), defects.md (defects, trimming), postprocess.md (face restoration, region redrawing), components.md (external sources)."
+description: "Generates images with local models on the CPU of the runtime environment, for hobby, daily, or work use. Two compositions: icons with one centered subject, and mood scenes of 2-3 elements. Turns abstract messages into drawable objects or scenes. For charts or diagrams that need text, draws a substitute once the user agrees. Fixes defects with edge trimming, face restoration, region redrawing, and final upscaling. Default model: DreamShaper 8 LCM. Use this skill whenever the user asks to make or draw an image, illustration, background, banner, cover, divider, slide background, landscape, portrait, or a picture for a report ('image generation', 'generate an illustration'), and to fix faces, hands, or edges in images it made. Details in references/: composition.md (requests, substitution, scenes), models.md (presets, time estimates, cache), candidates.md (candidate mode), defects.md (defects, upfront workarounds, trimming), postprocess.md (face restoration, region redrawing), components.md (external sources)."
 license: GPL-3.0-or-later with an output exception. Terms in LICENSE and NOTICE.md
 ---
 
@@ -18,7 +18,7 @@ Diffusion models cannot draw text, exact connector lines, numbers, or exact coun
 2. Environment check: run probe.py to see what can run and how long it will take.
 3. Request type and composition: decide what to draw and how to frame it.
 4. Preset: choose the model.
-5. Pre-generation questions: ask about correction policies once and record the answers in preflight.json. If the candidate generation answer is not 1x (automatic included), read references/candidates.md before recording.
+5. Pre-generation questions: ask about generation and correction policies once and record the answers in preflight.json. If the candidate generation answer is not 1x (automatic included), read references/candidates.md before recording. If the upfront workaround answer is not off, read references/defects.md before recording.
 6. Prompt: write an English prompt.
 7. Generate: run generate.py or generate_klein.py.
 8. Check and fix: first read the reference files in the reading-before-the-check section. Open the output and fix defects.
@@ -90,6 +90,7 @@ Before generating, sort the request into one of three types. The test is whether
 | Diagram request | It needs text labels, connectors, exact counts, or numbers (flowchart, concept map, architecture diagram, chart, KPI graphic) | Explain the limits and a substitute, draw after the user agrees |
 
 - If the user named a symbolic object, they already made the choice. Keep it.
+- With the upfront workaround at maximum, a named subject may also become another object or scene that carries the same meaning. Show the changed setup and get a confirmation before changing it.
 - If the user gives both an object and a message, draw the object and carry the message through style and color.
 - Substitution rules, example tables, and the consent wording are in references/composition.md.
 
@@ -146,7 +147,7 @@ Add a model choice to the pre-generation questions when any condition below appl
 
 ## Pre-generation questions
 
-Before the first image, ask every applicable item from the table below in one message. Installation size, changes to a person's look, and texture loss are matters of taste, so the user chooses. Asking after a defect appears interrupts users who want the work to run on its own, so ask before generating.
+Before the first image, ask every applicable item from the table below in one message. Installation size, changes to a person's look, texture loss, and how much of the original intent the first prompt gives up are matters of taste, so the user chooses. Asking after a defect appears interrupts users who want the work to run on its own, so ask before generating.
 
 | Item | Ask when | Skip when |
 |---|---|---|
@@ -158,13 +159,14 @@ Before the first image, ask every applicable item from the table below in one me
 | Candidate generation | Every request | Never |
 | Candidate pick | A display path exists | Candidate generation is 1x |
 | Spare candidate finishing | Every request | Candidate generation is 1x, or final upscaling is none while face restoration scope is other than always |
+| Upfront workaround | Every request | Never |
 | Model choice | A model choice condition applies | The user named a model, or said speed or quality comes first |
 
 - If even one person appears in the frame, treat the request as one with a person, whatever the size, share of the frame, or style. Small, distant people have the worst face defects, so a small share is no reason to skip. If unsure, treat it as a request with a person.
 - A precise object is one recognized by how its parts connect: a bicycle, glasses, a chair, a ladder, a keyboard.
 - Skip only the items the user already answered. Ask items that have a recommended option too.
-- If the user delegates ("you decide", "use the defaults"), show the recommended combination in one line and get a confirmation. Example: "Shall I go with 1-b, 2-b, 3-a, 4-a, 5-a, 6-a?" For non-photographic styles the recommendation turns face restoration off. Example: "Shall I go with 1-b, 2-b, 3-a, 4-c, 5-a, 6-a?" The recommended candidate generation is 1x.
-- Ask about final upscaling, edge trimming, and candidate generation even when only objects appear.
+- If the user delegates ("you decide", "use the defaults"), show the recommended combination in one line and get a confirmation. Example: "Shall I go with 1-b, 2-b, 3-a, 4-a, 5-a, 6-a, 9-a?" For non-photographic styles the recommendation turns face restoration off. Example: "Shall I go with 1-b, 2-b, 3-a, 4-c, 5-a, 6-a, 9-a?" The recommended candidate generation is 1x. The upfront workaround stays at its default, off.
+- Ask about final upscaling, edge trimming, candidate generation, and the upfront workaround even when only objects appear.
 - Before asking, make the display path judgment from the delivery section. Without a display path, reduce the items and choices as that section's table says.
 - Candidate generation makes more candidates than the target count at once and picks from them. It runs defect handling step 1 (regenerate with the same prompt and a new seed) ahead of time, at generation. The default 1x makes only the target count.
 - For fixed multiplier choices, write the total count (target count times multiplier) and the estimated time from probe.py, and say it is an estimate. For the automatic choice, write the range of total counts and times from 1x up to 3x, the end of the recommended range.
@@ -172,6 +174,7 @@ Before the first image, ask every applicable item from the table below in one me
 - In the choices of spare candidate finishing, name only the batch processes the user can pick in this question. For objects only, name final upscaling alone.
 - Judge the 10-image condition of the model choice question by the target count. The multiplier comes in the same question, so whether to ask the model question cannot follow the multiplier answer.
 - If automatic resolves to 1x, the answers for candidate pick and spare candidate finishing go unused.
+- The upfront workaround avoids the parts where diffusion models often produce defects from the first image, before any defect is seen. It applies to people, animals, objects, buildings, and scene elements alike. The default, off, makes the image as requested first and works around only after a defect shows. Optimize keeps the subject and scene, and adds only staging that removes, hides, or frames out defect-prone parts. Maximum keeps only the message and goes as far as composition changes, element removal, and subject replacement.
 
 Question format:
 
@@ -179,12 +182,13 @@ Question format:
 - For a conditional item (finger redrawing, candidate pick, spare candidate finishing), state its condition in the first sentence with the actual item numbers.
 - Write a numbered list in plain conversation text. Do not use code blocks or tables.
 - Put the answer format and an example answer on the first line.
+- Fit the examples in the upfront workaround choices to the parts of the request where defects tend to appear. Example: for a bicycle request, name a futuristic e-bike without spokes for optimize and a swap to a futuristic vehicle without wheels for maximum.
 - For photographic or watercolor requests, add a one-line warning to the final upscaling item. Example: "Upscaling a photo or watercolor style wipes out skin texture and paper grain."
 - For non-photographic styles such as flat vector, line art, or cel shading, mark "off" as recommended for face restoration scope and add a one-line reason. Example: "In this style only the restored face turns photographic and clashes with the drawing." Face restoration tools were trained on real photographs of faces.
 
 Example for a request with a person:
 
-> Before I generate, please answer the items below with the item number and letter. (Example: 1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c)
+> Before I generate, please answer the items below with the item number and letter. (Example: 1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c, 9-a)
 > 1. [Final upscaling] Applied once at the end, after defect fixes and trimming.
 >    a) None: trimming and enlargement to the target size leave some blur
 >    b) general: works for most styles
@@ -218,10 +222,14 @@ Example for a request with a person:
 >    a) Adopted only: spares come as generated. You can have any spare finished later
 >    b) All candidates: spares come finished too. Post-processing time grows with the number of candidates
 >    c) Automatic: I choose a or b for the task and tell you before generating
+> 9. [Upfront workaround] Diffusion models often produce defects in complex parts such as people's faces and fingers, the joints of objects, and building structures. Decides whether the first image already avoids such parts. The more it works around, the fewer the defects and the more the image departs from what you asked for.
+>    a) Off (default): I make the image as you asked first, and work around step by step once a defect shows
+>    b) Optimize: the subject and scene stay as asked, and the first prompt adds staging that removes, hides, or frames out defect-prone parts. For this request that means staging such as sunglasses, gloves, hands in pockets, or a shot that leaves the hands out of the frame
+>    c) Maximum: only the message you want to convey stays, and defect-prone elements are avoided as much as possible. I switch to framings such as a side view or a silhouette or remove elements such as a background crowd, and if needed switch to another object or scene with the same meaning. I ask before changing the subject
 
 If a model choice condition applies, continue with the last number. Example:
 
-> 9. [Model choice] A person is the main subject, so the rate of shape defects depends on the model. Times are estimates for this runtime environment.
+> 10. [Model choice] A person is the main subject, so the rate of shape defects depends on the model. Times are estimates for this runtime environment.
 >    a) Standard (DreamShaper 8 LCM): about 40 seconds per image, 512px, frequent hand and clothing defects
 >    b) Precise (FLUX.2 klein 4B): about 15 minutes per image, 384x512, the most accurate shapes. Downloads about 5.2GB on first run
 
@@ -231,16 +239,18 @@ The times in the example only show the format. Use probe.py's estimates in real 
 
 If the candidate generation answer is not 1x (automatic included), read references/candidates.md right after the answers arrive and before recording them with preflight.py. It holds the automatic decisions on the candidate multiplier and spare candidate finishing, the candidate pool, candidate adoption, the scope in candidate mode, and spare deletion. With 1x, go on without it.
 
+If the upfront workaround answer is optimize or maximum, read references/defects.md right after the answers arrive and before recording them with preflight.py. Its upfront workaround section says what each answer keeps and which workarounds it uses. The confirmation for a subject replacement under maximum is in that section too. A subject replacement can change `--subject` and the automatic candidate multiplier, so finish the confirmation before recording. With off, read the file after generation, before the check.
+
 ### Recording answers
 
 After the user answers, write preflight.json to the output folder with preflight.py. The generation scripts stop with exit code 2 when this file is missing, and preflight.py stops with exit code 2 and lists missing items when a required answer is absent. Never record values you filled in without asking.
 
 ```
-# A person appears, answer "1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c", automatic judgment chose 3x and all candidates
-PY scripts/preflight.py --out ./outputs --subject person --display available --enhance general --trim free --postfix auto --face-scope always --finger-inpaint off --candidates auto --candidates-resolved 3 --candidates-reason "full body framing with hands visible" --candidate-pick user --spare-finish auto --spare-finish-resolved all --spare-finish-reason "user pick with always-on face restoration" --user-reply "1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c"
+# A person appears, answer "1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c, 9-b", automatic judgment chose 3x and all candidates
+PY scripts/preflight.py --out ./outputs --subject person --display available --enhance general --trim free --postfix auto --face-scope always --finger-inpaint off --candidates auto --candidates-resolved 3 --candidates-reason "full body framing with hands visible" --candidate-pick user --spare-finish auto --spare-finish-resolved all --spare-finish-reason "user pick with always-on face restoration" --upfront-workaround optimize --user-reply "1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c, 9-b"
 
-# Objects only, with a model choice, answer "1-b, 2-b, 3-a, 6-b"
-PY scripts/preflight.py --out ./outputs --subject other --display available --enhance general --trim same --candidates 1 --preset sdxs --user-reply "1-b, 2-b, 3-a, 6-b"
+# Objects only, with a model choice, answer "1-b, 2-b, 3-a, 6-a, 7-b"
+PY scripts/preflight.py --out ./outputs --subject other --display available --enhance general --trim same --candidates 1 --upfront-workaround off --preset sdxs --user-reply "1-b, 2-b, 3-a, 6-a, 7-b"
 ```
 
 - `--subject` is `person` when a person appears, `precise-object` when a precise object appears without a person, and `other` otherwise.
@@ -248,6 +258,7 @@ PY scripts/preflight.py --out ./outputs --subject other --display available --en
 - `--candidates` is a whole-number multiplier or `auto`. With `auto`, put the decided multiplier (a whole number of 1 or more) in `--candidates-resolved` and a one-line reason in `--candidates-reason`.
 - `--candidate-pick` is `auto` for agent pick and `user` for user pick.
 - `--spare-finish` is `adopted` for adopted only, `all` for all candidates, and `auto` for automatic. With `auto`, put the decided value in `--spare-finish-resolved` and a one-line reason in `--spare-finish-reason`.
+- `--upfront-workaround` is `off` for off, `optimize` for optimize, and `max` for maximum.
 - Candidate pick and spare candidate finishing are needed only when the multiplier in force is 2 or more. Unused items are recorded as null. Later steps use the values recorded in `candidates_resolved` and `spare_finish_resolved`.
 - `--user-reply` holds the user's answer word for word.
 - Later images in the same conversation reuse the record in the same output folder. If the user changes a choice or whether a person appears, rerun preflight.py.
@@ -259,12 +270,16 @@ PY scripts/preflight.py --out ./outputs --subject other --display available --en
 - Put the subject and the style keywords first. Do not pad the prompt with strings of modifiers.
 - Name the style by its technique. Keywords such as `watercolor illustration`, `flat vector illustration`, `digital painting`, and `photorealistic` register better than abstract phrases such as `minimal editorial style`.
 - Name the color family, for example `muted blue and beige palette`.
+- Proper nouns, technical terms, and words that are not widely used may not register with the model. Diffusion models tie a word to a shape only when it appeared often in the captions of their training images. Judge by whether the word would often appear in an everyday English photo caption.
+- Replace such a word with a similar common object, or spell out its look by its components. Replace it when the exact look is not the point of the request, and spell it out when its particular look is the point. Examples: a little-known car model name becomes `a small white electric car`, and the name of a piece of armor from a game becomes `golden plate armor`.
+- Name only the 2 or 3 shapes, materials, or colors needed to recognize it, and keep them simple. More decorative detail makes the shape fall apart more easily. A long description runs into the 77-token limit of the SD 1.5 family presets, and more elements go missing.
 - Never ask for text inside the image.
 - Leave out single quotes ('). They clash with command-line quoting.
 - Standard, Light, and Flat belong to the SD 1.5 family. They respond to short keyword-style English and lose track of long natural sentences. Their text window is 77 tokens, and anything beyond it is ignored without an error. The 75 tokens left after the start and end markers are about 50 English words. If generate.py prints a warning with the ignored text, shorten the prompt and run again.
 - Precise takes natural sentences as they are and has no 77-token limit. It uses no negative prompt.
 - Fix the seed to reproduce a result. Change it for variety.
-- Leave workaround instructions (hats, sunglasses, gloves) out of the first prompt. Use them only after a defect shows. Accessories the user asked for from the start belong to the original intent, so include them.
+- With the upfront workaround off, leave workaround instructions (hats, sunglasses, gloves) out of the first prompt. Use them only after a defect shows. Accessories the user asked for from the start belong to the original intent, so include them.
+- With the upfront workaround at optimize or maximum, put workaround staging into the first prompt as the upfront workaround section of references/defects.md says.
 
 ## Generate
 
@@ -321,7 +336,8 @@ Once the machine check passes, open the file and look.
 - Do clothing, accessories, objects, and buildings show a connection or structure defect (broken glasses frames, missing straps, tangled spokes, a distorted complex machine, a building with a distorted form such as a roof floating without pillars, and the like)?
 - Is there unrequested exposure of genitals or female nipples?
 - Does each defect touch or come close to one of the four edges?
-- For a substituted diagram request, does the picture carry the original message?
+- For a substituted diagram request, or a framing or subject changed under the maximum upfront workaround, does the picture carry the original message?
+- Even outside this list, is there any part that looks like a typical diffusion model defect, looks visually wrong, or fails to reflect the staging the user asked for?
 - If the subject looks squashed horizontally or vertically, regenerate as a square.
 
 The items in parentheses are examples. A shape problem is a part that differs from the real thing or from the requested style and that nothing visible in the frame explains. Visible causes are occlusion (something visibly covering the front of the part), the frame edge, the angle of the face and the pose, and omissions and exaggerations the style intends. Darkness, blur, out-of-focus areas, and the like that were not meant to hide that part do not count as occlusion. Treat any other shape problem as a defect by the same standard. If unsure, treat it as a defect. If final upscaling is chosen, run these checks on the working-size output.
@@ -351,6 +367,8 @@ If you find a defect, follow the order in references/defects.md. In short:
 2. General defects: fix style, color, count, background, and framing problems with prompt edits and seed changes.
 3. Fragile subjects (people, animals, precise objects, background crowds): go through stage 1 seed change, stage 2 prompt workaround, stage 3 post-processing, stage 4 composition workaround.
 4. If the regeneration limit is reached, show the best result with the defect marked and ask how to proceed.
+
+Stages 2 and 4 choose from workarounds the upfront workaround did not use. The detailed rules are in the upfront workaround section of references/defects.md.
 
 When the multiplier in force is 2 or more, swapping within the candidate pool replaces stage 1 for fragile subjects. Once the pool runs out, go to stage 2 without a stage 1 regeneration. For general defects, add the number of pool swaps to the count of seed changes. The detailed rules and the regeneration limits are in references/defects.md.
 
@@ -388,8 +406,10 @@ PY scripts/finalize.py ./outputs/banner_trim.png ./outputs/banner_final.png --si
 - Name files in lowercase English with underscores that describe the content, for example `lighthouse_flat_vector.png`.
 - If the environment has a way to present files, use it. Otherwise give the absolute path.
 - Keep the reproduction details: prompt, seed, preset, size, and the final upscaling choice.
+- If the upfront workaround was used, add the choice to the reproduction details, and report the workaround staging you added and the elements that differ from the original request.
 - In candidate mode, present the candidates folder path and the contact sheet along with the adopted images. Add each candidate's seed, the multiplier in force, and the spare candidate finishing choice to the reproduction details. For a multiplier or spare candidate finishing choice decided automatically, include the reason.
 - For trimmed results, report the trim, the body part the cut line crosses, and the cut ratio (for free ratio, the adopted ratio and the remaining area).
+- If the prompt replaced or spelled out a word the model may not know, report the original word with the expression used.
 - For JPEG, generate with `--format jpg` or convert the PNG.
 
 When the multiplier in force is 2 or more, spare deletion follows the spare deletion section of references/candidates.md.
@@ -449,5 +469,6 @@ PY scripts/cache.py delete all    # the whole cache except the virtual environme
 | Mushy shapes | Preset settings were changed | Keep the script's steps, guidance, and scheduler |
 | Text, counts, or states ignored | A limit of diffusion models | Drop those instructions and add them in an editing tool |
 | The object the user named is missing | A named subject was sorted as a message request | Sort it as a named subject and regenerate with that object |
+| The object the user named comes out as something else | The model does not know the name (proper noun, technical term, rare word) | Replace it with a similar common object or spell out its components, as the prompt section says |
 | `KeyError: '__version__'` while installing gfpgan | basicsr's setup.py fails on newer Python (seen on Python 3.13 with basicsr 1.4.2) | Follow the workaround in the install section of references/postprocess.md |
 | functional_tensor error when importing gfpgan | basicsr imports a module torchvision removed | Run `PY scripts/patch_basicsr.py` and try again |

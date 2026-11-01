@@ -61,7 +61,7 @@ Respond in this order.
 
 Enter a stage only when the same defect remains after the previous stage has used all its attempts. Never skip stage 1 to go straight to stage 2 or later. Workarounds give up part of the original intent, such as a bare face, a natural pose, or the original scene. Seed changes alone often fix the defect, so use the free option first.
 
-When the multiplier in force is 2 or more, swapping within the candidate pool replaces stage 1. The candidates are stage 1's seed changes made ahead of time, at generation. When too few candidates can be adopted or an adopted candidate has to be replaced, swap in a remaining candidate. Once the pool runs out, go to stage 2 without a stage 1 regeneration. A candidate adopted at rank 3 of the adoption order in SKILL.md goes straight to stage 3 post-processing without stage 2. The pool has already shown it holds no better candidate, and post-processing keeps the original intent.
+When the multiplier in force is 2 or more, swapping within the candidate pool replaces stage 1. The candidates are stage 1's seed changes made ahead of time, at generation. When too few candidates can be adopted or an adopted candidate has to be replaced, swap in a remaining candidate. Once the pool runs out, go to stage 2 without a stage 1 regeneration. A candidate adopted at rank 3 of the adoption order in candidates.md goes straight to stage 3 post-processing without stage 2. The pool has already shown it holds no better candidate, and post-processing keeps the original intent.
 
 Edge trimming needs no installation and loses almost nothing of the original intent, so run it first at any stage. It applies when the defect touches or comes close to an edge, and the trim-first check decides whether to run it.
 

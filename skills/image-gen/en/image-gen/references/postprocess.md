@@ -36,6 +36,8 @@ For requests with a person, the same questions offer three choices: only on defe
 
 For non-photographic styles (flat vector, line art, cel shading and so on), mark off as recommended in the questions. Face restoration tools were trained on real photographs of faces, so only the restored area becomes photographic and does not match painted hair. If the user nevertheless selected restoration in such a style, present before and after side by side and ask whether to adopt, even in automatic mode and in always-on scope. In candidate mode, compare adopted images only. Without a display path, select the version that suits the style yourself and give a one-line reason on delivery (display path judgment in the delivery section of SKILL.md).
 
+When face restoration is applied to a face whose angle the visual check judged as a three-quarter view or profile (a non-frontal face), compare the original and the restored image by the same visual check criteria and adopt the one with fewer defects. Face restoration tools were trained mostly on frontal face photographs and align faces to a frontal reference before restoring them, so a non-frontal face can come out with unnatural features or texture errors. If both show the same defects, adopt the restored image, whose pupils and teeth are sharper. If the original is adopted, use it in place of the restored image in all later steps. Under every answer, including automatic mode and always-on scope, make this comparison yourself without asking the user. Three-quarter views are a common face angle, so asking at each comparison would often interrupt automatic progress. In non-photographic styles, the before-and-after question above takes the place of this comparison. Record the comparison result and the reason for the choice in one line in the adoption record.
+
 Outputs where no face is detected (back views, distant figures) are saved with the same pixels as the input. Use them as normal outputs.
 
 ## Using face restoration
@@ -123,6 +125,7 @@ After upgrading a tool or package, produce defects intentionally with the prompt
 |---|---|---|
 | Face restoration (distortion) | a businessman pointing his finger toward the camera, arm extended forward, waist up shot, office at night, photorealistic | Less asymmetry with the look preserved |
 | Face restoration (blur) | a young woman smiling, waist up portrait, office daylight, photorealistic | Sharper pupils and teeth |
+| Face restoration (non-frontal) | a middle aged man in three quarter view, waist up portrait, city street daylight, photorealistic | Whether the features shift toward a frontal look, texture errors |
 | Small faces and hands | a construction worker in a safety vest holding a power drill, building site, full body, hands visible, photorealistic | Whether a small face gets restored, the hands and the tool |
 | Broken limb connections | a gymnast in a handstand pose, one leg extended, gymnasium floor, full body, hands and feet visible, photorealistic | Confirms a defect post-processing cannot fix |
 | Finger redrawing | a woman waving her open hand at the camera, waist up, bare hands visible, park daylight, photorealistic | Finger count, changes in hand size and pose |

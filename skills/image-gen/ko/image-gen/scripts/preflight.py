@@ -39,6 +39,7 @@ CHOICES = {
     "finger_inpaint": ["off", "on"],
     "candidate_pick": ["auto", "user"],
     "spare_finish": SPARE_FINISH_DECISIONS + [AUTO],
+    "upfront_workaround": ["off", "optimize", "max"],
 }
 
 QUERY_LABELS = {
@@ -50,6 +51,8 @@ QUERY_LABELS = {
     "candidates": "candidate multiplier (a whole number of 1 or more, or auto)",
     "candidate_pick": "candidate pick (auto = the agent picks, user = the user picks from the contact sheet)",
     "spare_finish": "spare candidate finishing (adopted = adopted images only, all = every candidate, auto)",
+    "upfront_workaround": "upfront workaround in the first prompt (off, optimize = covering accessories, poses, "
+                          "and props, max = composition changes and subject replacement too)",
 }
 
 # WHY: these answers show images to the user and wait for a choice, which needs a way to display images
@@ -113,7 +116,9 @@ def required_items(args, multiplier):
     # WHY: generation is 512px or smaller, so enlargement loss always happens, ask upscaling every time
     # WHY: cropping and ratio changes are a matter of taste, ask trimming every time
     # WHY: whether to spend time on extra candidates is a matter of taste, ask the multiplier every time
-    items = ["enhance", "trim", "candidates"]
+    # WHY: how much of the literal request to trade for fewer defects in the first prompt is a matter of taste,
+    #      and buildings and machines break too, so ask the upfront workaround every time
+    items = ["enhance", "trim", "candidates", "upfront_workaround"]
     face_scope = None
     if args.subject in (Subject.PERSON.value, Subject.PRECISE_OBJECT.value):
         items.append("postfix")

@@ -1,6 +1,6 @@
 # Defect checks and responses
 
-Details for the defect handling section of SKILL.md. Read this once generation ends, before the check, because the defect criteria are here. postprocess.md covers the post-processing tools.
+Details for the defect handling section of SKILL.md. Read this once generation ends, before the check, because the defect criteria are here. If the upfront workaround answer is optimize or maximum, read it before recording the pre-generation answers, because the first prompt uses the workarounds in this file. postprocess.md covers the post-processing tools.
 
 ## Trim-first check
 
@@ -121,6 +121,39 @@ The table holds examples. If another option fits the theme, time of day, or styl
 - Add one workaround at a time, so you can tell what caused the effect.
 - Check that the adopted workaround (accessory, clothing, framing) fits the scene's time of day, color, and original message before using it.
 - Record the stage, seed, and prompt of every attempt to track which stages are used up. Record the adopted result the same way.
+
+## Upfront workaround
+
+With `upfront_workaround` in preflight.json set to `optimize` or `max`, the first prompt already includes workaround staging. This choice is for users who want fewer defects in the first result instead of waiting for regeneration after a defect. Workarounds give up part of the original intent, so each answer fixes what it keeps. With `off`, this section does not apply.
+
+| Answer | Keeps | Uses |
+|---|---|---|
+| `optimize` (Optimize) | The subject, shot range, scene layout, and any look the user specified | Stage 2 workarounds from the workaround table that keep the subject's look (accessories, poses, props, a simple expression, background crowd silhouettes, and the like) |
+| `max` (Maximum) | The message and where the image will be used | All stage 2 workarounds, stage 4 composition workarounds, removing defect-prone elements, and subject replacement |
+
+- Add workaround staging only to the parts that the requested shot makes defect-prone. Examples are the small face and exposed hands of a full-body figure, the hands of an upper-body figure, the joints of a precise object, and the faces of a background crowd.
+- Choose only options that pass the fit check of the workarounds section and suit the scene's theme, time of day, and style. Leave a part without a workaround if nothing fits. Awkward staging such as sunglasses in a night scene stands out as much as a defect.
+- Optimize never uses an option that conflicts with a look the user specified. For example, a person asked to make eye contact gets no sunglasses.
+- The first prompt may hold one option per part. The rule of adding one workaround at a time applies to the attempts of the defect handling stages.
+- Put the subject and style first in the prompt, and add the workaround phrases briefly after them.
+
+### Maximum workaround
+
+Maximum combines the options above to remove defect-prone elements as far as possible. Examples are a full-body figure seen from behind or as a backlit silhouette, no background crowd, no water reflections or grid patterns, and fewer complex parts. A backlit silhouette of the main subject may go into the first prompt too, because the user has already chosen to keep only the message.
+
+Subject replacement carries the same message with an object or scene that has fewer defect-prone elements. Choose the stand-in from the message of the original request, following the substitution rules of composition.md. For example, "a person working by a window with a coffee" can become "a desk by a window with a steaming coffee cup".
+
+- Before replacing a named subject, show the changed setup in one line and get a confirmation before recording the pre-generation answers. The user already chose that subject, and replacing it discards that choice.
+- If the user disagrees, keep the subject and go no further than composition workarounds. If the user wants another stand-in, choose again from the message of the original request.
+- For message requests, choose a stand-in with fewer defect-prone elements and ask for no separate confirmation, because the agent chooses the stand-in anyway. For diagram requests, choose the substitute in the consent step by the same standard.
+- When the subject stays and only the framing changes or elements are removed, state the changed elements in one line before generation starts and go ahead without a confirmation. Include any change to a look the user specified in that notice.
+- If the subject changes, decide preflight.py's `--subject` and the automatic candidate multiplier from the changed setup.
+
+### Handling after the first image
+
+- Treat the workaround staging in the first prompt as part of the original intent from then on. Stage 1 keeps this prompt and changes only the seed.
+- Stages 2 and 4 choose from options the first prompt did not use. Skip a stage with no options left, without counting it as a regeneration.
+- The trim-first check, the stage order, and the regeneration limits stay the same as with `off`.
 
 ## Edge trimming
 

@@ -9,6 +9,7 @@ A noun in the request that has a physical form and a recognizable outline is a n
 - Keep a symbolic object the user named. Naming it means the user already chose.
 - If the user gives an object and a message, make the object the subject and carry the message through style and color.
 - People, animals, and places are named subjects too. Examples: "a woman standing on a beach", "a cat on a desk", "a harbor at dawn".
+- With the upfront workaround at maximum, a named subject may be replaced too. The replacement standard and the confirmation follow the upfront workaround section of defects.md.
 
 ## What a prompt can control
 
@@ -16,7 +17,7 @@ Diffusion models reflect the subject noun, style, color, background, and time of
 
 ## Substitution rules
 
-Use substitution for message requests and diagram requests only.
+Use substitution for message requests and diagram requests. With the upfront workaround at maximum, the same rules apply when replacing a named subject.
 
 - Start from the message of the original request and substitute once. Never chain substitutions by swapping a chosen stand-in for another. To change the stand-in, go back to the original message and pick another candidate.
 - If the stand-in is more abstract than the noun in the original request, drop the substitution and use the original noun. Substitution turns what cannot be drawn into something that can. Going more abstract makes the picture harder to read.

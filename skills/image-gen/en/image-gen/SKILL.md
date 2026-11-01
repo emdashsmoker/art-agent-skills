@@ -324,14 +324,14 @@ Once the machine check passes, open the file and look.
 - For a substituted diagram request, does the picture carry the original message?
 - If the subject looks squashed horizontally or vertically, regenerate as a square.
 
-The items in parentheses are examples. A shape problem is a part that differs from the real thing or from the requested style and that nothing visible in the frame explains. Visible causes include occlusion, the frame edge, the angle of the face and the pose, and omissions and exaggerations the style intends. Treat any other shape problem as a defect by the same standard. If unsure, treat it as a defect. If final upscaling is chosen, run these checks on the working-size output.
+The items in parentheses are examples. A shape problem is a part that differs from the real thing or from the requested style and that nothing visible in the frame explains. Visible causes are occlusion (something visibly covering the front of the part), the frame edge, the angle of the face and the pose, and omissions and exaggerations the style intends. Darkness, blur, out-of-focus areas, and the like that were not meant to hide that part do not count as occlusion. Treat any other shape problem as a defect by the same standard. If unsure, treat it as a defect. If final upscaling is chosen, run these checks on the working-size output.
 
 For fragile subjects, look at the full frame first, then enlarge the parts where defects tend to appear (faces, hands and feet, joints between parts, and the like) and look again. A part drawn small rarely shows its defects in the full frame.
 
 - Make the enlarged view with grid_measure.py and a region. Enlarge each part where defects tend to appear on its own, with a region that the part nearly fills. A rough region is fine. A region that holds several parts gets a low zoom, so small defects such as fingers look as small as in the full frame.
 - Count arms and legs in the full frame. Count fingers and toes one by one on the enlarged view, for each hand and foot.
 - On the enlarged view of a face, check that the eyes, nose, and mouth are all there. Compare their position, spacing, size, and left-right balance with the placement criteria in defects.md.
-- Follow the outline of large parts such as the belly, waist, thighs, and chest in the full frame. A part whose outline breaks off, melts into clothing or the background, or twists in a way the pose does not explain is body distortion.
+- Follow the outline of large parts such as the belly, waist, thighs, and chest in the full frame. A part whose outline breaks off, melts into clothing, the background, or another body part, or twists in a way the pose does not explain is body distortion.
 - If you find a defect, use the enlarged grid for the trim and region-redrawing coordinates as well.
 - Skip enlarging an image you have already decided not to adopt.
 

@@ -50,7 +50,7 @@ Defects outside the fragile subjects (next section) go down one of two paths. If
 
 These are people, animals, precise objects, and background crowds. Diffusion models cannot control facial features, the number of limbs, fingers, or how parts connect, so run the procedure on the assumption that defects will occur. A person nobody asked for follows the general defect table above. Judge by the definition of a shape problem in the visual check of SKILL.md.
 
-Face defects include a face mushy in part or as a whole and also unclear features, missing features, distorted feature placement, left-right asymmetry, mismatched gaze or pupils, broken mouths and teeth, and the like. If it still looks off at the size it will be used, the defect is confirmed. Slight blur on a distant figure is not a defect.
+Face defects include a face mushy in part or as a whole and also unclear features, missing features, distorted feature placement, left-right asymmetry, mismatched gaze or pupils, broken mouths and teeth, and the like. If it still looks off at the size it will be used, the defect is confirmed. Slight blur on a distant figure in the background is not a defect.
 
 Compare the position, spacing, size, and left-right balance of the eyes, nose, and mouth with the criteria below. The list holds examples.
 
@@ -61,9 +61,9 @@ Compare the position, spacing, size, and left-right balance of the eyes, nose, a
 
 A body count defect is an anatomical shape problem in which the number of a body part differs from the standard count. The standard counts are 5 fingers on each hand, 5 toes on each foot, 2 arms, and 2 legs for a person, 4 legs for a four-legged animal, and the like. The list holds examples, so for animals not on it, use the real count of the species.
 
-- Examples of too many are a sixth finger, a third arm or leg, and two hands on one arm. Examples of too few are a limb that stops partway inside the frame and a finger that melts into the body.
-- Fingers or toes fused or clumped so that you cannot count them one by one are a defect.
-- Do not count distant figures so small that their fingers are not drawn separately even when enlarged.
+- Examples of too many are a sixth finger, a third arm or leg, and two hands on one arm. Examples of too few are a hand showing only 3 fingers with nothing covering it, a limb that stops partway inside the frame, and a finger that melts into the body.
+- Fingers or toes fused or clumped so that you cannot count them one by one are a defect. Fingers fused into a wedge, fingers smeared like long brushstrokes, and the like are examples.
+- Do not count distant figures in the background so small that their fingers are not drawn separately even when enlarged.
 
 Respond in this order.
 

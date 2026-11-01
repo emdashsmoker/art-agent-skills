@@ -99,7 +99,7 @@ Before generating, sort the request into one of three types. The test is whether
 The skill does not generate unclothed figures or sexual depictions (sexual acts included) of minors.
 
 - A minor is a figure stated to be under 18 or stated to have minor status, or a figure that clearly has a body before secondary sexual characteristics (a child's head-to-body ratio and build).
-- A youthful face, large eyes, an idol-like look, cel-style art, short height, a slim build, or a trendy outfit alone does not make a figure a minor.
+- Ambiguous signals that are not explicit and cultural tastes, such as a youthful face, large eyes, an idol-like look, cel-style art, short height, a slim build, or a trendy outfit, are not grounds for judging a figure a minor.
 
 ## Composition
 

@@ -48,31 +48,22 @@ Defects outside the fragile subjects (next section) go down one of two paths. If
 
 ## Fragile subjects
 
-These are people, animals, precise objects, and background crowds. Diffusion models cannot control facial features, the number of limbs, fingers, or how parts connect, so run the procedure on the assumption that defects will occur. A person nobody asked for follows the general defect table above.
+These are people, animals, precise objects, and background crowds. Diffusion models cannot control facial features, the number of limbs, fingers, or how parts connect, so run the procedure on the assumption that defects will occur. A person nobody asked for follows the general defect table above. Judge by the definition of a shape problem in the visual check of SKILL.md.
 
-Face defects include a face mushy in part or as a whole and also unclear features, missing features, distorted feature placement, left-right asymmetry, mismatched gaze or pupils, broken mouths and teeth, and the like. If unsure, treat it as a defect and start the procedure. If it still looks off at the size it will be used, the defect is confirmed. Slight blur on a distant figure is not a defect.
+Face defects include a face mushy in part or as a whole and also unclear features, missing features, distorted feature placement, left-right asymmetry, mismatched gaze or pupils, broken mouths and teeth, and the like. If it still looks off at the size it will be used, the defect is confirmed. Slight blur on a distant figure is not a defect.
 
-Compare the position, spacing, size, and left-right balance of the eyes, nose, and mouth with the criteria below. The list holds examples, so treat any other placement problem as a defect by the same standard.
+Compare the position, spacing, size, and left-right balance of the eyes, nose, and mouth with the criteria below. The list holds examples.
 
 - The two eyes have the same height and size, and the gap between them is about one eye wide.
 - The nose and mouth sit on the center line between the eyes.
 - The eyes, nose, and mouth come in that order from the top, without overlapping or drifting too far apart.
 - The eyes, nose, and mouth are sized to fit the face.
 
-Judge missing features and placement with the angle of the face and the style in mind.
+A body count defect is an anatomical shape problem in which the number of a body part differs from the standard count. The standard counts are 5 fingers on each hand, 5 toes on each foot, 2 arms, and 2 legs for a person, 4 legs for a four-legged animal, and the like. The list holds examples, so for animals not on it, use the real count of the species.
 
-- As the face turns, tilts, or bows, the eye sizes, the line through both eyes, and the spacing of the features look different by that angle. A difference the angle does not explain is a defect.
-- Omissions and exaggerations the style intends (a nose left out in flat vector, large eyes in cel shading, and the like) count as normal for that style. Placement that is off within the same style is a defect.
-- Features hidden by the angle of the face, hair, a hand, or something worn count as hidden. A feature that is not there, with neither something hiding it nor the style to explain it, is missing.
-
-A body count defect is an anatomical defect in which the number of a body part differs from the standard count. The standard counts are 5 fingers on each hand, 5 toes on each foot, 2 arms, and 2 legs for a person, 4 legs for a four-legged animal, and the like. The list holds examples, so for animals not on it, use the real count of the species.
-
-- More than the standard count is a defect. A sixth finger, a third arm or leg, and two hands on one arm are examples.
-- If there are fewer, look for what hides the rest. A part hidden by an object, clothing, shoes, or another body part, or one that runs past the frame edge, counts as hidden. If nothing visible hides it, it is a defect. A limb that stops partway inside the frame and a finger that melts into the body are examples.
+- Examples of too many are a sixth finger, a third arm or leg, and two hands on one arm. Examples of too few are a limb that stops partway inside the frame and a finger that melts into the body.
 - Fingers or toes fused or clumped so that you cannot count them one by one are a defect.
 - Do not count distant figures so small that their fingers are not drawn separately even when enlarged.
-
-For body counts too, if unsure, treat it as a defect and start the procedure.
 
 Respond in this order.
 

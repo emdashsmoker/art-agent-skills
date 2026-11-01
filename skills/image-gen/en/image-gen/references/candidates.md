@@ -94,8 +94,8 @@ The answers to the existing items apply in candidate mode as below.
 | Face restoration scope | Always follows the spare candidate finishing value in force. Only on defects follows the defect post-processing rules. Off does not apply |
 | Finger redrawing | Applied only to adopted candidates |
 
-- Defect repairs (trimming, face restoration on defects, face restoration again at a lower strength, region redrawing, finger redrawing) go to adopted images only, whatever the answers. Each repair needs its own judgment and user confirmation per candidate, so repairing spares too would multiply questions and time by the number of candidates.
-- Always-on face restoration runs once per candidate. Running it again at a lower strength is a defect repair, so only adopted images get it.
+- Defect repairs (trimming, face restoration on defects, region redrawing, finger redrawing, and the like) go to adopted images only, whatever the answers. Each repair needs its own judgment and user confirmation per candidate, so repairing spares too would multiply questions and time by the number of candidates.
+- Always-on face restoration runs once per candidate.
 - If the user wants some spares, move each one's generated original to the output folder and run the same repairs and finishing as for adopted images. Final upscaling is applied only once, so start over from the generated original.
 
 ## Spare deletion

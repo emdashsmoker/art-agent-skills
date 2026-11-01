@@ -1,2 +1,2 @@
-2fbb4ecb0e62a1bbb5950fef93593e60a246020064718b3f32ad50769098b6fa  image-gen-addon-codeformer-en.skill
-b23f68d70534510918acbcb77baa81abd7923b972e0410c7df4dba9612e12905  image-gen-addon-codeformer-ko.skill
+3ff5db59491af1a469eb12240c18434cbde4095da738188e1864c281d4655383  image-gen-addon-codeformer-en.skill
+2884b2741ae3ed7efd4d7b91299e755f5a7f4740136465046ef7f6e208114a2c  image-gen-addon-codeformer-ko.skill

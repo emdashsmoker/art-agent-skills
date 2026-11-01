@@ -42,6 +42,7 @@ Changelog rules
 - Added a visual check item that treats a typical diffusion model defect, a visually wrong part, or staging the user asked for that did not appear as a defect, even outside the list (#32)
 - Added a prompt rule that replaces proper nouns, technical terms, and rare words the model may not know with a similar common object or spells out their look with 2 or 3 simple shapes, materials, or colors, and reports each rewrite on delivery (#32)
 - Changed the content policy to match the other non-diffusion image generation skills (#33)
+- Added pose rules to the workarounds that prefer static poses with standing over sitting, avoid hiding staging that is harder to draw such as hands behind the head or in the hair, and work around hand defects first with hands lowered at the sides where a remaining defect is easy to trim (#34)
 
 * 생성 직후 점검 전의 defects.md 읽기와 후처리 사용 시 postprocess.md 읽기로 참조 문서 읽기 시점 변경 (#26)
 * 예시 목록을 붙인 결함 유형 항목, 취약 부위별 단독 확대 확인, 확대 파일을 적는 이미지별 한 줄 기록을 담은 눈 점검 방식 변경 (#26, #30)
@@ -55,6 +56,22 @@ Changelog rules
 * 목록 밖의 확산모델 전형 결함, 시각적으로 어색한 부분, 요청한 연출의 미반영을 결함으로 보는 눈 점검 항목 추가 (#32)
 * 모델이 모를 수 있는 고유명사, 전문용어, 드문 단어에 대한 흔한 사물 대체, 단순한 구성요소(모양, 재질, 색 2-3개) 묘사, 전달 시 원래 단어 알림을 담은 프롬프트 규칙 추가 (#32)
 * 다른 비확산 이미지 생성 스킬과 같은 기준으로 콘텐츠 정책 변경 (#33)
+* 앉은 자세보다 선 자세를 앞세우는 정적 자세 우선, 머리 뒤로 넘긴 손과 머리카락 속에 넣은 손 등 그리기 어려운 가림 연출 회피, 트림하기 쉬운 아래로 내린 손 우선을 담은 우회 자세 기준 추가 (#34)
+
+### image-gen-addon-codeformer
+- Changed the CodeFormer license consent to one line in the pre-generation questions instead of a question right before the first installation (#34)
+- Added a "Do not use" choice to the face restoration strength item for users who decline the license or have a commercial purpose (#34)
+- Fixed the question numbering example and the recommended combination for delegated answers that left out image-gen's upfront workaround item (#34)
+- Fixed the stepwise strength lowering that could run with defect post-processing set to workarounds only (#34)
+- Fixed the always-on scope to choose w from the face in the generated original (#34)
+- Fixed the non-photographic style rule that left out image-gen's handling for environments that cannot show images (#34)
+
+* 생성 전 질의의 한 줄 안내로 CodeFormer 라이선스 동의 시점 변경 (#34)
+* 라이선스 미동의 사용자와 상업 목적 사용자를 위한 얼굴 복원 강도 항목의 사용 안 함 선택지 추가 (#34)
+* image-gen 첫 프롬프트 우회 항목이 누락된 질의 번호 예시와 위임 권장 조합 수정 (#34)
+* 결함 후처리가 우회만 자동인 경우에도 진행될 수 있던 단계 강도 낮추기 수정 (#34)
+* 생성 원본 얼굴 기준의 상시 적용 w 결정 방식 수정 (#34)
+* 이미지 표시 수단이 없는 환경의 image-gen 처리를 누락한 비사진 화풍 규칙 수정 (#34)
 
 ## 2026-10-31
 

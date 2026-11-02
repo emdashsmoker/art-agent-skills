@@ -407,8 +407,7 @@ PY scripts/finalize.py ./outputs/banner_trim.png ./outputs/banner_final.png --si
 - Without `--size` the result is 768x768. The mode follows the answer in preflight.json.
 - If trimming changed the ratio, pass the `target=WxH` printed by edge_trim.py to `--size` unchanged. Passing the original target crops back to the original ratio and cuts off the parts you preserved.
 - `--x4-out` saves the 4x result before the downscale for the post-upscaling recheck. The recheck covers adopted images, so pass it for adopted images only.
-- Right after the run and before delivery, inspect the 4x result as described in the post-upscaling recheck section of references/defects.md. If a final upscaling side effect is confirmed, present the result next to the adopted image enlarged to the same size, and let the user choose.
-- Compare side effects on adopted images only. Without a display path, select the version with fewer side effects yourself and give a one-line reason on delivery.
+- Right after the run and before delivery, inspect the 4x result as described in the post-upscaling recheck section of references/defects.md.
 
 ## Delivery
 
@@ -441,7 +440,6 @@ Without a display path, handle each point as below.
 | Free ratio allowed in edge trim | Remove the choice |
 | On in finger redrawing | Remove the choice, because it needs a before and after comparison |
 | Before and after comparison of face restoration in non-photographic styles | Select the version that suits the style yourself and give a one-line reason on delivery |
-| Side effect comparison of final upscaling | Select the version with fewer side effects yourself and give a one-line reason on delivery |
 | Regeneration limit reached | Describe the defect location in words and ask how to proceed |
 
 - After removing a choice, relabel the remaining choices from a) in order. Ask the finger redrawing item and record the answer even when only off remains.

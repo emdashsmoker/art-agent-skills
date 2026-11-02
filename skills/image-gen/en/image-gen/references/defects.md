@@ -236,15 +236,15 @@ PY scripts/edge_trim.py in.png out_wide.png --defect 140,340,205,430 --keep 215,
 
 ## Post-upscaling recheck
 
-The post-upscaling recheck inspects the adopted image again on its 4x result after final upscaling. Defects drawn small rarely show at working size. Final upscaling sharpens edges and bright points, and in doing so it can leave anomalies that were absent before upscaling. The recheck looks on the 4x view for defects that the working-size check missed and for side effects that final upscaling left. The recheck only identifies defects. Responses and adoption follow the pre-generation answers and the existing rules unchanged, because the pre-generation answers reflect the user's intent most accurately.
+The post-upscaling recheck inspects the adopted image again on its 4x result after final upscaling. Defects drawn small rarely show at working size. The recheck looks on the 4x view for defects that the working-size check missed. The recheck only identifies defects. Responses and adoption follow the pre-generation answers and the existing rules unchanged, because the pre-generation answers reflect the user's intent most accurately.
 
 - Apply it when `enhance` in preflight.json is `general` or `flat`. With `off`, this section does not apply.
 - Run it right after finalize.py and before delivery.
 - The target is the 4x result of the adopted image. Save the 4x result with `--x4-out` of finalize.py. Spares in candidate mode receive no defect repairs, so they are not rechecked.
 - Enlarge each defect-prone part separately with grid_measure.py on the 4x result as well, following the enlargement rules in the visual check section of SKILL.md.
-- When you find an anomaly on the 4x view, enlarge the same region of the adopted image before upscaling (the input of finalize.py) with grid_measure.py and compare. The region coordinates are the 4x coordinates divided by 4. If the same shape appears there, even blurred, the anomaly existed before upscaling. An enlarged view at working size shows small shapes blurred.
-- Judge an anomaly that existed before upscaling by the visual check items section below. Judge an anomaly that was absent from the adopted image before upscaling by the final upscaling side effects section below.
-- Record the recheck result in one line per image, in the record format of the visual check section, with a final upscaling side effect item added.
+- When you find an anomaly on the 4x view, enlarge the same region of the adopted image before upscaling (the input of finalize.py) with grid_measure.py and compare before moving to defect handling. The region coordinates are the 4x coordinates divided by 4. If the same shape appears there, even blurred, the anomaly existed before upscaling. An enlarged view at working size shows small shapes blurred.
+- Judge an anomaly that existed before upscaling by the visual check items section below. Treat an anomaly that was absent from the adopted image before upscaling as a result of the final upscaling mode chosen in the pre-generation questions, and apply no defect handling to it. Its cause is absent from the adopted image before upscaling, so regeneration and post-processing do not resolve it.
+- Record the recheck result in one line per image, in the record format of the visual check section.
 
 ### Visual check items
 
@@ -254,19 +254,10 @@ Apply every item of the visual check section of SKILL.md to the 4x result again,
 - Parts that generation drew blurred or dark gain no new edges on the 4x view. For such parts, apply the judgment rules of the visual check section unchanged (darkness and blur not meant to hide the part are not occlusion, and an uncertain judgment counts as a defect).
 - Inspect adopted images that went through face restoration by the same criteria. The restored result was also inspected only at working size.
 
-### Final upscaling side effects
-
-A final upscaling side effect is an anomaly that was absent from the adopted image before upscaling and appeared after final upscaling. Examples include a waxy look, exaggerated nostril and lip edges, clumped hair, lost texture, exaggerated highlights, exaggerated eyebrow edges, etc. Judge an anomaly outside this list by the same principle if it was absent from the adopted image before upscaling.
-
-- Classify an anomaly that arises when super-resolution inflates a bright point or an edge as a final upscaling side effect, even if it looks like a change of shape. A catchlight in the pupil enlarged into a white patch is one such example. Its cause is absent from the adopted image before upscaling, so the responses to shape defects do not resolve it.
-- Look for side effects on the 4x view. Confirm a side effect if it also shows on the target-size result, because the delivered file is the target-size result. This follows the same principle as the rule that confirms a face defect at the size it will be used (fragile subjects section).
-
 ### Responses after the recheck
 
 - Divide coordinates measured on the 4x result by 4 to convert them into coordinates of the adopted image before upscaling, because trimming, face restoration, and region redrawing run at the pre-upscaling size.
 - For defects under the visual check items, apply the order of the defect handling section of SKILL.md (trim-first check, response stages, defect post-processing policy, regeneration limit) to the adopted image before upscaling unchanged.
 - Within that order, face defects follow the existing face rules and the pre-generation answers (face restoration scope, defect post-processing policy, etc.) unchanged.
-- Final upscaling side effects follow the side effect comparison rule in the final upscaling section of SKILL.md.
 - If you fix the adopted image, run finalize.py again on the fixed adopted image. Do not apply final upscaling again to an upscaled result, because applying it twice to the same pixels accumulates the waxy look.
-- Limit fixes that come from the recheck to one round, because every fix repeats final upscaling and the recheck, and each repetition adds waiting time.
-- Recheck the result upscaled after the fix by the same criteria. If defects remain, follow the presentation procedure in the regeneration limit section.
+- Recheck the result upscaled after the fix by the same criteria. The rules of the regeneration limit section limit the number of repetitions.

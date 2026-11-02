@@ -1,6 +1,6 @@
 ---
 name: image-gen
-description: "Generates images with local models on the runtime environment's CPU, for hobby, daily, or work use. Two compositions: icons with one centered subject, and mood scenes of 2-3 elements. Renders abstract messages as drawable objects or scenes. For charts or diagrams that need text, draws a substitute after the user agrees. Corrects defects with edge trimming, face restoration, region redrawing, and final upscaling. Default model: DreamShaper 8 LCM. Use this skill whenever the user asks to create or draw an image, illustration, background, banner, cover, divider, slide background, landscape, portrait, or a picture for a report ('image generation', 'generate an illustration'), and to correct faces, hands, or edges in its images. Details in references/: composition.md (requests, substitution, scenes), models.md (presets, time estimates, cache), candidates.md (candidate mode), defects.md (defects, upfront workarounds, trimming), postprocess.md (face restoration, region redrawing), components.md (external sources)."
+description: "Generates images with local models on the runtime environment's CPU, for hobby, daily, or work use. Two compositions: icons with one centered subject, and mood scenes of 2-3 elements. Renders abstract messages as drawable objects or scenes. For charts or diagrams that need text, draws a substitute after the user agrees. Corrects defects with edge trimming, face restoration, region redrawing, and final upscaling. Default model: DreamShaper 8 LCM. Use this skill whenever the user asks to create or draw an image, illustration, background, banner, cover, divider, slide background, landscape, portrait, or a picture for a report ('image generation', 'generate an illustration'), and to correct faces, hands, or edges in its images. Details in references/: composition.md (requests, substitution, scenes), models.md (presets, time estimates, cache), candidates.md (candidate mode), defects.md (defects, upfront workarounds, trimming, post-upscaling recheck), postprocess.md (face restoration, region redrawing), components.md (external sources)."
 license: GPL-3.0-or-later with an output exception. Terms in LICENSE and NOTICE.md
 ---
 
@@ -22,7 +22,7 @@ Diffusion models cannot draw text, exact connector lines, numbers, or exact coun
 6. Prompt: write an English prompt.
 7. Generate: run generate.py or generate_klein.py.
 8. Check and correction: first read the reference files in the reading-before-the-check section. Open the output and correct defects.
-9. Final upscaling: if selected, apply it once to the adopted image.
+9. Final upscaling: if selected, apply it once to the adopted image. Run the post-upscaling recheck on the 4x result before delivery.
 10. Delivery: provide the file and the reproduction details.
 
 ## Command notation
@@ -348,7 +348,7 @@ Once the machine check passes, open the file and inspect it.
 - Even outside this list, is there any part that looks like a typical diffusion model defect, looks visually unnatural, or fails to reflect the staging the user asked for?
 - If the subject looks squashed horizontally or vertically, regenerate as a square.
 
-The items in parentheses are examples. A shape problem is a part that differs from the real thing or from the requested style and that nothing visible in the frame explains. Visible causes are occlusion (something visibly covering the front of the part), the frame edge, the angle of the face and the pose, and omissions and exaggerations the style intends. Darkness, blur, out-of-focus areas, and the like that were not meant to hide that part do not count as occlusion. Treat any other shape problem as a defect by the same standard. If uncertain, treat it as a defect. If final upscaling is chosen, run these checks on the working-size output.
+The items in parentheses are examples. A shape problem is a part that differs from the real thing or from the requested style and that nothing visible in the frame explains. Visible causes are occlusion (something visibly covering the front of the part), the frame edge, the angle of the face and the pose, and omissions and exaggerations the style intends. Darkness, blur, out-of-focus areas, and the like that were not meant to hide that part do not count as occlusion. Treat any other shape problem as a defect by the same standard. If uncertain, treat it as a defect. If final upscaling is chosen, run these checks on the working-size output. After final upscaling, apply these checks again to the 4x result as described in the post-upscaling recheck section of references/defects.md.
 
 For fragile subjects, inspect the full frame first, then enlarge the parts where defects tend to appear (faces, hands and feet, joints between parts, and the like) and inspect them again. A part drawn small rarely shows its defects in the full frame.
 
@@ -392,7 +392,7 @@ Final upscaling enlarges 4x with super-resolution and then scales down to the ta
 | general | Most styles, including people | Removes skin texture and paper grain in photographic and watercolor styles |
 | flat | Flat vector backgrounds | Waxy skin, exaggerated nostril edges, and clumped hair on people |
 
-- Apply it once, to the adopted image, after all defect fixes and trimming. Applying it right after generation means enlarging again after a trim or running it twice, and the waxy look accumulates. Face restoration and region redrawing are tuned for the pre-upscaling size too. Discarded attempts do not receive it, so the extra time covers one adopted image.
+- Apply it once, to the adopted image, after all defect fixes and trimming. Applying it right after generation means enlarging again after a trim or running it twice, and the waxy look accumulates. Face restoration and region redrawing are tuned for the pre-upscaling size too. Discarded attempts do not receive it, so the extra time covers one adopted image. If the post-upscaling recheck leads to a fix of the adopted image, run it once more with the fixed adopted image as the input.
 - In candidate mode, follow the spare candidate finishing value in force. With all candidates, each spare also receives it once, so the extra time increases with the number of candidates. Spares receive no defect repairs, so apply it in the output folder right after adoption.
 - Texture loss is inherent to the post-processing, so no prompt or seed can restore it.
 - Super-resolution does not repair facial features. Face defects go through defect handling.
@@ -401,12 +401,13 @@ Final upscaling enlarges 4x with super-resolution and then scales down to the ta
 - It runs as a separate command after generation has exited, so memory use does not overlap.
 
 ```
-PY scripts/finalize.py ./outputs/banner_trim.png ./outputs/banner_final.png --size 1024x576
+PY scripts/finalize.py ./outputs/banner_trim.png ./outputs/banner_final.png --size 1024x576 --x4-out ./outputs/banner_x4.png
 ```
 
 - Without `--size` the result is 768x768. The mode follows the answer in preflight.json.
 - If trimming changed the ratio, pass the `target=WxH` printed by edge_trim.py to `--size` unchanged. Passing the original target crops back to the original ratio and cuts off the parts you preserved.
-- Open the result and check for a waxy look, exaggerated nostril and lip edges, clumped hair, and lost texture. If side effects appear, present it next to the adopted image enlarged to the same size, and let the user choose.
+- `--x4-out` saves the 4x result before the downscale for the post-upscaling recheck. The recheck covers adopted images, so pass it for adopted images only.
+- Right after the run and before delivery, inspect the 4x result as described in the post-upscaling recheck section of references/defects.md. If a final upscaling side effect is confirmed, present the result next to the adopted image enlarged to the same size, and let the user choose.
 - Compare side effects on adopted images only. Without a display path, select the version with fewer side effects yourself and give a one-line reason on delivery.
 
 ## Delivery

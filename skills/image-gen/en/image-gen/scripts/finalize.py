@@ -3,7 +3,9 @@
 WHY: generation is 512px or smaller, so trimming and larger target sizes need enlargement.
      Plain enlargement only adds pixels. A 4x super-resolution pass followed by a
      downscale replaces every enlargement step. Run it once on the adopted image,
-     after defect handling and trimming, so it never runs twice or on discarded tries.
+     after defect handling and trimming, so it never runs on its own output or on discarded tries.
+     --x4-out also keeps the 4x result before the downscale. The post-upscaling recheck
+     inspects it for defects the working size hides and for side effects of this pass.
 HOW: Real-ESRGAN compact network defined here (no realesrgan package, it pins an old
      basicsr), weights downloaded once and checked by SHA-256, tiled to bound memory.
 """
@@ -37,6 +39,7 @@ DOWNLOAD_TIMEOUT_SECONDS = 120
 TILE_SIZE = 256
 TILE_PAD = 36
 DEFAULT_SIZE = (768, 768)
+JPEG_QUALITY = 92
 
 
 def ensure_weights(mode):
@@ -117,6 +120,14 @@ def fit(image, size, anchor_x, anchor_y):
     return resized.crop((left, top, left + width, top + height))
 
 
+def save_image(image, path):
+    """Save as JPEG or PNG by the extension and return the format name verify_image expects."""
+    image_format = "jpg" if path.lower().endswith((".jpg", ".jpeg")) else "png"
+    options = {"quality": JPEG_QUALITY} if image_format == "jpg" else {}
+    image.convert("RGB").save(path, "JPEG" if image_format == "jpg" else "PNG", **options)
+    return image_format
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="4x super-resolution then downscale to the target size")
     parser.add_argument("input")
@@ -126,6 +137,7 @@ def main(argv=None):
     parser.add_argument("--anchor-x", dest="anchor_x", type=float, default=0.5)
     parser.add_argument("--anchor-y", dest="anchor_y", type=float, default=0.5)
     parser.add_argument("--threads", type=int, default=0)
+    parser.add_argument("--x4-out", dest="x4_out", help="also save the 4x result here, for the post-upscaling recheck")
     args = parser.parse_args(argv)
     mode = args.mode or load_preflight(args.output).get("enhance")
     if mode not in MODES:
@@ -134,6 +146,9 @@ def main(argv=None):
         size = parse_size(args.size)
     except ValueError as error:
         fail(EXIT_QUERY_OR_ARGUMENT, str(error))
+    # WHY: the downscaled result would overwrite the 4x file and the recheck would inspect the wrong image
+    if args.x4_out and os.path.abspath(args.x4_out) == os.path.abspath(args.output):
+        fail(EXIT_QUERY_OR_ARGUMENT, "--x4-out must differ from the output path")
     try:
         import torch
         from PIL import Image
@@ -144,11 +159,12 @@ def main(argv=None):
     if size[0] > source.width * UPSCALE or size[1] > source.height * UPSCALE:
         log("WARNING: target exceeds 4x the input, the extra part is plain enlargement")
     started = time.time()
-    result = fit(super_resolve(source, build_network(mode, torch), torch), size, args.anchor_x, args.anchor_y)
-    image_format = "jpg" if args.output.lower().endswith((".jpg", ".jpeg")) else "png"
-    result.convert("RGB").save(args.output, "JPEG" if image_format == "jpg" else "PNG", **({"quality": 92} if image_format == "jpg" else {}))
-    verify_image(args.output, image_format, size)
-    print(json.dumps({"path": args.output, "mode": mode, "size": "%dx%d" % size,
+    upscaled = super_resolve(source, build_network(mode, torch), torch)
+    if args.x4_out:
+        verify_image(args.x4_out, save_image(upscaled, args.x4_out), (source.width * UPSCALE, source.height * UPSCALE))
+    result = fit(upscaled, size, args.anchor_x, args.anchor_y)
+    verify_image(args.output, save_image(result, args.output), size)
+    print(json.dumps({"path": args.output, "mode": mode, "size": "%dx%d" % size, "x4_path": args.x4_out,
                       "seconds": round(time.time() - started, 1)}))
     return 0
 

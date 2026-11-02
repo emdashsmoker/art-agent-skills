@@ -37,6 +37,7 @@ Changelog rules
 - Added a choice at the regeneration limit to continue with a higher multiplier or unlimited, counting on from the attempts already used (#41)
 - Added an unlimited option that follows the 3x path and then, without asking, keeps regenerating with the best result's prompt and a new seed until success, a user stop, or a runtime environment limit, with periodic one-line progress reports and an attempts.jsonl record in the output folder (#41)
 - Added one definition of the best result, the attempt with the fewest remaining defect parts after trimming and stage 3 post-processing and, on a tie, the one closest to the original request, used wherever the best result is presented (#41)
+- Changed the Korean documents, including the pre-generation question texts shown to users, to a formal style without colloquial wording or placeholder nouns (#42)
 
 * finalize.py --x4-out의 4배 결과물 저장, 전달 전 눈 점검 항목 전체의 재적용, 보정 전부터 있던 결함의 기존 결함 대응을 담은 화질 보정 후 재점검 추가 (#38)
 * 화질 보정 결과의 밀랍 질감, 콧구멍과 입술 경계 과장, 머리카락 뭉침, 질감 손실 확인과 단순 확대 안 비교 질의 삭제 (#38)
@@ -45,6 +46,7 @@ Changelog rules
 * 사용 횟수를 이어서 세는 배수 상향과 무제한 전환의 재생성 상한 도달 선택지 추가 (#41)
 * 3배 경로 이후 질의 없는 가장 나은 결과 프롬프트의 seed 반복, 성공, 사용자 중단, 실행 환경 한계 기준의 종료, 주기적 한 줄 진행 안내, 출력 폴더의 attempts.jsonl 기록을 담은 무제한 운영 규칙 추가 (#41)
 * 트림과 3단계 후처리 후 남은 결함 부위 수, 동수 시 원 요청과의 근접도를 기준으로 삼은 가장 나은 결과 단일 정의 추가 (#41)
+* 구어 표현과 빈자리 명사 없는 격식체로 한국어판 생성 전 질의 문안과 문서 문체 변경 (#42)
 
 ### image-gen-addon-codeformer
 - Added a rule that a retry with a lower w does not restore an image that was already restored, so that the recorded w reproduces the result (#39)

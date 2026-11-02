@@ -32,9 +32,16 @@ Changelog rules
 ### image-gen
 - Added a post-upscaling recheck that saves the 4x result with the new finalize.py --x4-out option and, before delivery, applies every visual check item again to that result, sending defects that existed before upscaling through the existing defect handling on the pre-upscaling image (#38)
 - Removed the check of the final upscaling result for a waxy look, exaggerated nostril and lip edges, clumped hair, and lost texture, along with the question that asked the user to choose between that result and a plain enlargement (#38)
+- Added a rule to the post-upscaling recheck that redoes the original-versus-restored comparison of a restored three-quarter view or profile face with the newly found defect counted, checks the side that was not adopted on a grid_measure.py enlargement, and reruns finalize.py and the recheck when the adopted image changes (#39)
 
 * finalize.py --x4-out의 4배 결과물 저장, 전달 전 눈 점검 항목 전체의 재적용, 보정 전부터 있던 결함의 기존 결함 대응을 담은 화질 보정 후 재점검 추가 (#38)
 * 화질 보정 결과의 밀랍 질감, 콧구멍과 입술 경계 과장, 머리카락 뭉침, 질감 손실 확인과 단순 확대 안 비교 질의 삭제 (#38)
+* 복원한 비정면 얼굴의 4배 재점검 결함을 포함한 원본과 복원본 비교 재진행, 채택하지 않은 쪽의 grid_measure.py 확대 확인, 채택본 변경 시 finalize.py와 재점검의 재실행을 담은 재비교 규칙 추가 (#39)
+
+### image-gen-addon-codeformer
+- Added a rule that a retry with a lower w does not restore an image that was already restored, so that the recorded w reproduces the result (#39)
+
+* 기록한 w의 결과 재현을 위해 w를 낮춘 재복원에서 이미 복원한 이미지를 입력으로 쓰지 않는 규칙 추가 (#39)
 
 ## 2026-11-01
 

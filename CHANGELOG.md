@@ -33,15 +33,25 @@ Changelog rules
 - Added a post-upscaling recheck that saves the 4x result with the new finalize.py --x4-out option and, before delivery, applies every visual check item again to that result, sending defects that existed before upscaling through the existing defect handling on the pre-upscaling image (#38)
 - Removed the check of the final upscaling result for a waxy look, exaggerated nostril and lip edges, clumped hair, and lost texture, along with the question that asked the user to choose between that result and a plain enlargement (#38)
 - Added a rule to the post-upscaling recheck that redoes the original-versus-restored comparison of a restored three-quarter view or profile face with the newly found defect counted, checks the side that was not adopted on a grid_measure.py enlargement, and reruns finalize.py and the recheck when the adopted image changes (#39)
+- Added a required regeneration limit multiplier item to the pre-generation questions, placed before model choice with 1x (default), 2x, 3x, custom, and unlimited, which multiplies each stage limit, subtracts candidate pool swaps from the stage 1 limit, and is recorded by preflight.py as a required --regen-scale answer (#41)
+- Added a choice at the regeneration limit to continue with a higher multiplier or unlimited, counting on from the attempts already used (#41)
+- Added an unlimited option that follows the 3x path and then, without asking, keeps regenerating with the best result's prompt and a new seed until success, a user stop, or a runtime environment limit, with periodic one-line progress reports and an attempts.jsonl record in the output folder (#41)
+- Added one definition of the best result, the attempt with the fewest remaining defect parts after trimming and stage 3 post-processing and, on a tie, the one closest to the original request, used wherever the best result is presented (#41)
 
 * finalize.py --x4-out의 4배 결과물 저장, 전달 전 눈 점검 항목 전체의 재적용, 보정 전부터 있던 결함의 기존 결함 대응을 담은 화질 보정 후 재점검 추가 (#38)
 * 화질 보정 결과의 밀랍 질감, 콧구멍과 입술 경계 과장, 머리카락 뭉침, 질감 손실 확인과 단순 확대 안 비교 질의 삭제 (#38)
 * 복원한 비정면 얼굴의 4배 재점검 결함을 포함한 원본과 복원본 비교 재진행, 채택하지 않은 쪽의 grid_measure.py 확대 확인, 채택본 변경 시 finalize.py와 재점검의 재실행을 담은 재비교 규칙 추가 (#39)
+* 모델 선택 앞 배치, 단계별 상한의 배수 적용, 1단계 상한의 후보 풀 교체 횟수 차감, preflight.py 필수 답(--regen-scale) 기록을 담은 재생성 상한 배수 질의 항목(1배 기본값, 2배, 3배, 직접 입력, 무제한) 추가 (#41)
+* 사용 횟수를 이어서 세는 배수 상향과 무제한 전환의 재생성 상한 도달 선택지 추가 (#41)
+* 3배 경로 이후 질의 없는 가장 나은 결과 프롬프트의 seed 반복, 성공, 사용자 중단, 실행 환경 한계 기준의 종료, 주기적 한 줄 진행 안내, 출력 폴더의 attempts.jsonl 기록을 담은 무제한 운영 규칙 추가 (#41)
+* 트림과 3단계 후처리 후 남은 결함 부위 수, 동수 시 원 요청과의 근접도를 기준으로 삼은 가장 나은 결과 단일 정의 추가 (#41)
 
 ### image-gen-addon-codeformer
 - Added a rule that a retry with a lower w does not restore an image that was already restored, so that the recorded w reproduces the result (#39)
+- Changed the recommended combination and the record script example to include the regeneration limit multiplier as item 11, with model choice moving to item 12 (#41)
 
 * 기록한 w의 결과 재현을 위해 w를 낮춘 재복원에서 이미 복원한 이미지를 입력으로 쓰지 않는 규칙 추가 (#39)
+* 재생성 상한 배수의 11번 배치와 모델 선택의 12번 이동을 반영한 권장 조합과 기록 스크립트 예시 변경 (#41)
 
 ## 2026-11-01
 

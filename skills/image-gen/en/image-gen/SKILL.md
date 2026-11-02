@@ -167,13 +167,14 @@ Before the first image, ask every applicable item from the table below in one me
 | Candidate selection | A display path exists | Candidate generation is 1x |
 | Spare candidate finishing | Every request | Candidate generation is 1x, or final upscaling is none while face restoration scope is other than always |
 | Upfront workaround | Every request | Never |
+| Regeneration limit multiplier | Every request | Never |
 | Model choice | A model choice condition applies | The user specified a model, or stated that speed or quality comes first |
 
 - If even one person appears in the frame, treat the request as one with a person, regardless of size, share of the frame, or style. Small, distant people show the most severe face defects, so a small share is not a reason to skip. If uncertain, treat it as a request with a person.
 - A precise object is one recognized by how its parts connect: a bicycle, glasses, a chair, a ladder, a keyboard.
 - Omit only the items the user has already answered. Also ask the items that have a recommended option.
-- If the user delegates ("you decide", "use the defaults"), present the recommended combination in one line and obtain confirmation. Example: "Shall I proceed with 1-b, 2-b, 3-a, 4-a, 5-a, 6-a, 9-a?" For non-photographic styles the recommended combination sets face restoration to off. Example: "Shall I proceed with 1-b, 2-b, 3-a, 4-c, 5-a, 6-a, 9-a?" The recommended candidate generation is 1x. The upfront workaround remains at its default, off.
-- Ask about final upscaling, edge trimming, candidate generation, and the upfront workaround even when only objects appear.
+- If the user delegates ("you decide", "use the defaults"), present the recommended combination in one line and obtain confirmation. Example: "Shall I proceed with 1-b, 2-b, 3-a, 4-a, 5-a, 6-a, 9-a, 10-a?" For non-photographic styles the recommended combination sets face restoration to off. Example: "Shall I proceed with 1-b, 2-b, 3-a, 4-c, 5-a, 6-a, 9-a, 10-a?" The recommended candidate generation is 1x. The upfront workaround remains at its default, off. The regeneration limit multiplier remains at its default, 1x.
+- Ask about final upscaling, edge trimming, candidate generation, the upfront workaround, and the regeneration limit multiplier even when only objects appear.
 - Before asking, make the display path judgment from the delivery section. Without a display path, reduce the items and choices as specified in that section's table.
 - Candidate generation generates more candidates than the target count at once and selects from them. It performs defect handling step 1 (regenerate with the same prompt and a new seed) in advance, at generation time. The default 1x generates only the target count.
 - For fixed multiplier choices, state the total count (target count times multiplier) and the estimated time from probe.py, and note that it is an estimate. For the automatic choice, state the range of total counts and times from 1x up to 3x, the upper end of the recommended range.
@@ -182,6 +183,7 @@ Before the first image, ask every applicable item from the table below in one me
 - Judge the 10-image condition of the model choice question by the target count. The multiplier is answered in the same question, so whether to ask the model question cannot depend on the multiplier answer.
 - If automatic resolves to 1x, the answers for candidate selection and spare candidate finishing are not used.
 - The upfront workaround avoids the parts where diffusion models often produce defects from the first image, before any defect is seen. It applies to people, animals, objects, buildings, and scene elements alike. The default, off, generates the image as requested first. Once a defect appears, edge trimming and seed changes are applied first, and workarounds start at defect handling stage 2 only if the defect remains. Optimize preserves the subject and scene, and adds only staging that removes, hides, or places defect-prone parts outside the frame. Maximum preserves only the message and where the image will be used, and extends to composition changes, element removal, and subject replacement.
+- The regeneration limit multiplier multiplies the regeneration limits of defect handling (references/defects.md). Always call it by this name to keep it apart from the candidate multiplier, and if it is unclear which multiplier the user means, confirm in one line. In the item description, state that the actual number of regenerations is the default limit of the model in use multiplied by the multiplier, and that generating more candidates reduces the number of stage 1 regenerations. The model and the candidate multiplier are answered in the same questions, so the choices state only the multiplier. After the answers arrive, state the resulting maximum number of regenerations and the estimated time (at 3x for unlimited) in one line before generating, and proceed without confirmation. If the request already specifies a multiplier or unlimited, omit the item and record that value.
 
 Question format:
 
@@ -196,7 +198,7 @@ Question format:
 
 Example for a request with a person:
 
-> Before generating, I would like to confirm the items below. Please answer with the item number and choice letter. (Example: 1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c, 9-a)
+> Before generating, I would like to confirm the items below. Please answer with the item number and choice letter. (Example: 1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c, 9-a, 10-a)
 > 1. [Final upscaling] Applied once at the end, after defect fixes and trimming.
 >    a) None: trimming and enlargement to the target size leave some blur
 >    b) general: suitable for most styles
@@ -234,10 +236,16 @@ Example for a request with a person:
 >    a) Off (default): I first generate the image as you requested. If a defect appears, I try trimming and a new seed first, and apply workarounds step by step only if the defect remains
 >    b) Optimize: the subject and scene remain as requested, and the first prompt adds staging that removes, hides, or places defect-prone parts outside the frame. For this request, this means staging such as hands lowered at the sides, a shot that places the hands outside the frame, sunglasses, or gloves
 >    c) Maximum: only the message you want to convey and where the image will be used are preserved, and defect-prone elements are avoided as much as possible. I may change the framing to a side view or a silhouette or remove elements such as a background crowd, and if needed replace the subject with another object or scene of the same meaning. I ask for confirmation before replacing a subject you specified, and inform you before generating when I change the framing or remove elements
+> 10. [Regeneration limit multiplier] Determines the maximum number of regenerations while a defect remains. The actual count is the default limit of the model in use multiplied by this multiplier, and generating more candidates reduces the regenerations with the same prompt and a new seed by as much. When the limit is reached, I present the best result and ask how to proceed.
+>    a) 1x (default)
+>    b) 2x
+>    c) 3x
+>    d) Custom: enter a whole-number multiplier (example: 10-d 5)
+>    e) Unlimited (not recommended): if a defect remains after 3x, I keep generating with the best result's prompt and a new seed without asking. I report progress in one line each time the attempts reach the default limit count. If you chose ask each time for defect post-processing, free ratio previews for edge trim, or user selection for candidates, I still wait for your answer at those questions
 
 If a model choice condition applies, continue with the last number. Example:
 
-> 10. [Model choice] A person is the main subject, so the rate of shape defects depends on the model. Times are estimates for this runtime environment.
+> 11. [Model choice] A person is the main subject, so the rate of shape defects depends on the model. Times are estimates for this runtime environment.
 >    a) Standard (DreamShaper 8 LCM): about 40 seconds per image, 512px, frequent hand and clothing defects
 >    b) Precise (FLUX.2 klein 4B): about 15 minutes per image, 384x512, the most accurate shapes. Downloads about 5.2GB on the first run
 
@@ -254,11 +262,11 @@ If the upfront workaround answer is optimize or maximum, read references/defects
 After the user answers, write preflight.json to the output folder with preflight.py. The generation scripts stop with exit code 2 when this file is missing, and preflight.py stops with exit code 2 and lists missing items when a required answer is absent. Do not record values filled in without asking.
 
 ```
-# A person appears, answer "1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c, 9-b", automatic judgment chose 3x and all candidates
-PY scripts/preflight.py --out ./outputs --subject person --display available --enhance general --trim free --postfix auto --face-scope always --finger-inpaint off --candidates auto --candidates-resolved 3 --candidates-reason "full body framing with hands visible" --candidate-pick user --spare-finish auto --spare-finish-resolved all --spare-finish-reason "user selection with always-on face restoration" --upfront-workaround optimize --user-reply "1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c, 9-b"
+# A person appears, answer "1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c, 9-b, 10-b", automatic judgment chose 3x and all candidates
+PY scripts/preflight.py --out ./outputs --subject person --display available --enhance general --trim free --postfix auto --face-scope always --finger-inpaint off --candidates auto --candidates-resolved 3 --candidates-reason "full body framing with hands visible" --candidate-pick user --spare-finish auto --spare-finish-resolved all --spare-finish-reason "user selection with always-on face restoration" --upfront-workaround optimize --regen-scale 2 --user-reply "1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c, 9-b, 10-b"
 
-# Objects only, with a model choice, answer "1-b, 2-b, 3-a, 6-a, 7-b"
-PY scripts/preflight.py --out ./outputs --subject other --display available --enhance general --trim same --candidates 1 --upfront-workaround off --preset sdxs --user-reply "1-b, 2-b, 3-a, 6-a, 7-b"
+# Objects only, with a model choice, answer "1-b, 2-b, 3-a, 6-a, 7-a, 8-b"
+PY scripts/preflight.py --out ./outputs --subject other --display available --enhance general --trim same --candidates 1 --upfront-workaround off --regen-scale 1 --preset sdxs --user-reply "1-b, 2-b, 3-a, 6-a, 7-a, 8-b"
 ```
 
 - `--subject` is `person` when a person appears, `precise-object` when a precise object appears without a person, and `other` otherwise.
@@ -267,6 +275,7 @@ PY scripts/preflight.py --out ./outputs --subject other --display available --en
 - `--candidate-pick` is `auto` for agent selection and `user` for user selection.
 - `--spare-finish` is `adopted` for adopted only, `all` for all candidates, and `auto` for automatic. With `auto`, enter the decided value in `--spare-finish-resolved` and a one-line reason in `--spare-finish-reason`.
 - `--upfront-workaround` is `off` for off, `optimize` for optimize, and `max` for maximum.
+- `--regen-scale` is the regeneration limit multiplier: `1` to `3` for 1x to 3x, the entered whole number for custom, and `unlimited` for unlimited.
 - Candidate selection and spare candidate finishing are needed only when the multiplier in force is 2 or more. Unused items are recorded as null. Later steps use the values recorded in `candidates_resolved` and `spare_finish_resolved`.
 - `--user-reply` contains the user's answer verbatim.
 - Later images in the same conversation reuse the record in the same output folder. If the user changes a choice or the presence of a person changes, rerun preflight.py.
@@ -374,11 +383,11 @@ If you find a defect, follow the order in references/defects.md. The overall ord
 1. Trim-first check: if the defect touches or is close to an edge and nothing else requires a new image, trim the edge before regenerating whenever the trim answer is same ratio only, free ratio allowed, or free ratio automatic.
 2. General defects: correct style, color, count, background, and framing problems with prompt edits and seed changes.
 3. Fragile subjects (people, animals, precise objects, background crowds): go through stage 1 seed change, stage 2 prompt workaround, stage 3 post-processing, stage 4 composition workaround.
-4. If the regeneration limit is reached, present the best result with the defect marked and ask how to proceed.
+4. If the limit scaled by the regeneration limit multiplier is reached, present the best result with the defect marked and ask how to proceed. With unlimited, switch to the repeat phase without asking. The definition of the best result, the multiplier calculation, and unlimited operation are in the regeneration limit section of references/defects.md.
 
 Stages 2 and 4 choose from workarounds the upfront workaround did not use. The detailed rules are in the upfront workaround section of references/defects.md.
 
-When the multiplier in force is 2 or more, swapping within the candidate pool replaces stage 1 for fragile subjects. Once the pool is exhausted, proceed to stage 2 without a stage 1 regeneration. For general defects, add the number of pool swaps to the count of seed changes. The detailed rules and the regeneration limits are in references/defects.md.
+When the multiplier in force is 2 or more, subtract the number of pool swaps from the stage 1 limit for fragile subjects. Once the pool is exhausted, regenerate only as many times as stage 1 has left, then proceed to stage 2. For general defects, subtract the number of pool swaps from the seed change limit. The detailed rules and the regeneration limits are in references/defects.md.
 
 Choosing, tuning, installing, and cleaning up the post-processing tools (face restoration, region redrawing, finger redrawing) is covered in references/postprocess.md.
 

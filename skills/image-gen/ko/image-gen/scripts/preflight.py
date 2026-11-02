@@ -15,8 +15,10 @@ import sys
 from common import EXIT_OK, EXIT_QUERY_OR_ARGUMENT, PREFLIGHT_FILENAME
 
 AUTO = "auto"
+UNLIMITED = "unlimited"
 WHOLE_NUMBER_HINT = "use a whole number of 1 or more"
 AUTO_OR_WHOLE_NUMBER_HINT = "use auto or a whole number of 1 or more"
+UNLIMITED_OR_WHOLE_NUMBER_HINT = "use unlimited or a whole number of 1 or more"
 SPARE_FINISH_DECISIONS = ["adopted", "all"]
 
 
@@ -54,6 +56,8 @@ QUERY_LABELS = {
     "upfront_workaround": "upfront workaround in the first prompt (off, optimize = staging that removes, hides, or "
                           "frames out defect-prone parts while the subject and scene stay, max = composition changes, element removal, "
                           "and subject replacement too)",
+    "regen_scale": "regeneration limit multiplier, separate from the candidate multiplier "
+                   "(a whole number of 1 or more, or unlimited)",
 }
 
 # WHY: these answers show images to the user and wait for a choice, which needs a way to display images
@@ -61,7 +65,7 @@ NEEDS_DISPLAY = {"trim": "free", "finger_inpaint": "on", "candidate_pick": "user
 
 
 def whole_multiplier(text, hint=WHOLE_NUMBER_HINT):
-    """A candidate multiplier, chosen by the user or decided for auto: a whole number of 1 or more."""
+    """A multiplier, chosen by the user or decided for auto: a whole number of 1 or more."""
     try:
         value = int(text)
     except ValueError:
@@ -77,6 +81,14 @@ def multiplier_answer(text):
         return AUTO
     # WHY: name auto in the hint, so a mistyped auto answer gets fixed as auto and not recorded as a number
     return whole_multiplier(text, AUTO_OR_WHOLE_NUMBER_HINT)
+
+
+def regen_scale_answer(text):
+    """The regeneration limit multiplier answer: unlimited or a whole number of 1 or more."""
+    if text == UNLIMITED:
+        return UNLIMITED
+    # WHY: name unlimited in the hint, so a mistyped unlimited answer gets fixed as unlimited
+    return whole_multiplier(text, UNLIMITED_OR_WHOLE_NUMBER_HINT)
 
 
 def flag(name):
@@ -119,7 +131,9 @@ def required_items(args, multiplier):
     # WHY: whether to spend time on extra candidates is a matter of taste, ask the multiplier every time
     # WHY: how much of the literal request to trade for fewer defects in the first prompt is a matter of taste,
     #      and buildings and machines break too, so ask the upfront workaround every time
-    items = ["enhance", "trim", "candidates", "upfront_workaround"]
+    # WHY: how much time to spend regenerating while a defect remains is a matter of taste,
+    #      so ask the regeneration limit multiplier every time, with no default
+    items = ["enhance", "trim", "candidates", "upfront_workaround", "regen_scale"]
     face_scope = None
     if args.subject in (Subject.PERSON.value, Subject.PRECISE_OBJECT.value):
         items.append("postfix")
@@ -153,6 +167,8 @@ def parse_arguments(argv):
                         help="with --candidates auto: the multiplier the agent decided")
     parser.add_argument("--candidates-reason", dest="candidates_reason",
                         help="with --candidates auto: one-line reason for the decided multiplier")
+    parser.add_argument("--regen-scale", dest="regen_scale", type=regen_scale_answer,
+                        help="regeneration limit multiplier: 1 or more, or unlimited")
     parser.add_argument("--spare-finish-resolved", dest="spare_finish_resolved", choices=SPARE_FINISH_DECISIONS,
                         help="with --spare-finish auto: the choice the agent decided")
     parser.add_argument("--spare-finish-reason", dest="spare_finish_reason",
@@ -197,6 +213,7 @@ def main(argv=None):
         "candidates_reason": args.candidates_reason,
         "spare_finish_resolved": resolved_value(args, "spare_finish") if spare_needed else None,
         "spare_finish_reason": args.spare_finish_reason if spare_needed else None,
+        "regen_scale": args.regen_scale,
     })
     os.makedirs(args.out, exist_ok=True)
     with open(os.path.join(args.out, PREFLIGHT_FILENAME), "w", encoding="utf-8") as handle:

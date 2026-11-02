@@ -16,7 +16,7 @@ Trimming comes first because regenerating discards a satisfactory framing and ex
 - Examples: anatomical errors such as the number or shape of fingers, toes, and limbs, more objects than intended, the same subject twice, small warped shapes, cut-off limbs, fake signatures, frames or borders caught at the edge.
 - Defects not on this list receive the same treatment if trimming the edge can remove them from the frame. Whether trimming works is decided by running edge_trim.py.
 - If edge_trim.py ends with `NOT_APPLICABLE`, consider the free-ratio track when `trim` is `free` or `free-auto`. With `same`, return to the normal response stages.
-- If you present the best result after reaching the regeneration limit, apply this check to that result once before presenting it.
+- If you present the best result (as defined in the regeneration limit section) after reaching the regeneration limit, apply this check to that result once before presenting it.
 
 ## General defects
 
@@ -37,12 +37,12 @@ Defects outside the fragile subjects (next section) are handled in one of two wa
 
 - A person that belongs to the request, or a small figure mixed into the background, is not an unrequested-person defect. Abstract style words in scene prompts can be interpreted as a photographic portrait, which causes this defect.
 - Change one thing in the prompt at a time, so that the effective change can be identified.
-- If the same defect remains after up to three prompt edits and up to three seed changes, keep the chosen model and respond by request type.
-- When the multiplier in force is 2 or more, add the number of moves to the next candidate in the pool to the count of seed changes, because every candidate has its own seed. For example, if all three candidates of a 3x pool show the same defect, count two seed changes as used and regenerate only once more.
+- If the same defect remains after up to 3N prompt edits and up to 3N seed changes (N is the regeneration limit multiplier, 3 for unlimited), keep the chosen model and respond by request type.
+- When the multiplier in force is 2 or more, subtract the number of pool swaps (the candidate count - 1) from the seed change limit of 3N, with a floor of 0, because every candidate has its own seed. For example, with a regeneration limit multiplier of 1x, if all three candidates of a 3x pool show the same defect, subtract 2 from the seed change limit of 3 and regenerate only once more.
 - For message requests and diagram requests, go back to the original message and select another stand-in. A seed change only rearranges the same metaphor, so repeating it has no effect when the metaphor does not fit.
-- For named-subject requests, keep the subject, present the best result with its defects, and ask how to proceed.
+- For named-subject requests, keep the subject, present the best result (as defined in the regeneration limit section) with its defects, and ask how to proceed.
 - For scene requests that went through no substitution, change the element combination.
-- If the same defect remains after changing the stand-in or the element combination, present the best result with its defects and ask how to proceed.
+- If the same defect remains after changing the stand-in or the element combination, present the best result (as defined in the regeneration limit section) with its defects and ask how to proceed.
 - Offer a model change only as an option, following the model lock section of SKILL.md.
 - Record the prompt and seed of the adopted result.
 
@@ -74,7 +74,7 @@ Respond in this order.
 
 Enter a stage only when the same defect remains after the previous stage has used all its attempts. Never skip stage 1 to go straight to stage 2 or later. Workarounds give up part of the original intent, such as a bare face, a natural pose, or the original scene. Seed changes alone often fix the defect, so apply the cost-free option first.
 
-When the multiplier in force is 2 or more, swapping within the candidate pool replaces stage 1. The candidates are stage 1's seed changes made ahead of time, at generation. When too few candidates can be adopted or an adopted candidate has to be replaced, swap in a remaining candidate. Once the pool is exhausted, proceed to stage 2 without a stage 1 regeneration. A candidate adopted at rank 3 of the adoption order in candidates.md goes straight to stage 3 post-processing without stage 2. The pool has already been judged to hold no better candidate, and post-processing preserves the original intent.
+When the multiplier in force is 2 or more, subtract the number of pool swaps from the stage 1 limit (the multiplier calculation in the regeneration limit section). The candidates are stage 1's seed changes made ahead of time, at generation. When too few candidates can be adopted or an adopted candidate has to be replaced, swap in a remaining candidate. Once the pool is exhausted, regenerate only as many times as stage 1 has left, then proceed to stage 2. A candidate adopted at rank 3 of the adoption order in candidates.md goes straight to stage 3 post-processing without stage 2. The pool has already been judged to hold no better candidate, and post-processing preserves the original intent.
 
 Edge trimming needs no installation and loses almost nothing of the original intent, so run it first at any stage. It applies when the defect touches or is close to an edge, and the trim-first check decides whether to run it.
 
@@ -88,7 +88,7 @@ The answers in preflight.json decide whether to enter stage 3.
 
 ### Regeneration limit
 
-By default each stage allows one regeneration. If the limit is reached, stop regenerating.
+By default each stage allows one regeneration. The table below shows the default limits at a regeneration limit multiplier of 1x. If the limit is reached, stop regenerating. If `regen_scale` in preflight.json is `unlimited`, follow the unlimited operation below.
 
 | Preset | Stage 1 | Stage 2 | Stage 4 | Total | Total with 2x or more candidates |
 |---|---|---|---|---|---|
@@ -96,11 +96,38 @@ By default each stage allows one regeneration. If the limit is reached, stop reg
 | Standard, Flat | 1 | 1 | 1 | 3 | 2 |
 | Precise | 1 | 0 | 0 | 1 | 0 |
 
-- When the multiplier in force is 2 or more, swapping within the candidate pool replaces stage 1, so stage 1 has no regeneration. The last column is the total in that case. A pool swap selects an image that already exists, so it does not count as a regeneration.
+- The last column is the total when the candidate multiplier in force is 2 or more. With a regeneration limit multiplier of 1x, stage 1 has no regeneration under the multiplier calculation below. A pool swap selects an image that already exists, so it does not count as a regeneration.
 - Light generates images quickly, so it allows one extra round of trial and error for choosing a workaround. The second stage-2 attempt must use a different workaround from the first. Changing only the seed with the same workaround counts as stage 1, not stage 2.
-- Precise takes the longest per image, so one regeneration reaches the limit.
+- Precise takes the longest per image, so at 1x one regeneration reaches the limit.
 - Stage 3 post-processing fixes part of an existing output and does not count as a regeneration. Apply each tool once and compare.
-- At the limit, present the best result with the defect marked and ask how to proceed. Without a display path, describe the defect location in words (display path judgment in the delivery section of SKILL.md). The choices are: adopt the best result, try again with a workaround the user selects, switch to a scene without people or an object icon, or change the model (with its download size and estimated time).
+- At the limit, present the best result (defined below) with the defect marked and ask how to proceed. Without a display path, describe the defect location in words (display path judgment in the delivery section of SKILL.md). The choices are: adopt the best result, try again with a workaround the user selects, continue with a regeneration limit multiplier or unlimited the user specifies, switch to a scene without people or an object icon, or change the model (with its download size and estimated time).
+
+Apply the regeneration limit multiplier N as follows.
+
+- A stage limit is the stage's default limit in the table multiplied by N. A cell whose default limit is 0 (stages 2 and 4 of Precise) stays 0 regardless of N.
+- In candidate mode, subtract the number of pool swaps from the stage 1 limit, because the candidates are stage 1's seed changes made ahead of time. The number of stage 1 regenerations is `max(0, N * stage 1 default limit - (candidate count - 1))`. The candidate count is the number of candidates for one target image (the candidate multiplier in force). With N at 1, the sum of the stage limits equals the two total columns of the table.
+- Prompt edits and seed changes for general defects also allow up to 3N attempts each (general defects section).
+- N applies only to the number of regenerations. Stage 3 post-processing applies each tool once, as above, regardless of N.
+- Each attempt in stages 2 and 4 uses a workaround no earlier attempt used. Skip a stage with no workarounds left, without using its remaining attempts.
+- The maximum number of regenerations is the sum of the stage limits when a fragile subject appears, and the sum of the prompt edit and seed change limits of general defects otherwise. The maximum at N of 1 is called the default limit total.
+- If the user raises the multiplier or specifies unlimited after reaching the limit, rerun preflight.py with only `--regen-scale` changed. Continue counting the attempts already used, and re-enter at the earliest stage with limit left. Re-entering stage 1 applies only a new seed to the first prompt. Re-entering stages 2 and 4 uses only workarounds not used yet.
+
+With `regen_scale` set to `unlimited`, operate as follows.
+
+- Go through the stages to the end in the same order as 3x. Use a means tied to the last attempt within the limit (such as the main subject silhouette in the workarounds section) at the last attempt of the 3x path.
+- When the 3x path reaches its limit, switch to the repeat phase without asking. The same applies where the general defects section presents the best result and asks. The repeat phase regenerates with the best result's prompt and changes only the seed.
+- In the repeat phase, start the check by enlarging the part of the previous defect, then move on to the full check. If the defect reappears there and trimming or stage 3 post-processing can resolve it under the pre-generation answers, apply that fix and then run the full check. If neither can, discard the attempt and skip the rest of the check.
+- The run ends on success, a user stop, or a runtime environment limit. Success means every target image passes the visual check and the post-upscaling recheck. A runtime environment limit is a resource shortage that cannot be recovered, or a session or conversation length limit.
+- On any end other than success, present the best result together with the path of the attempt record file.
+- Each time the regeneration attempts grow by the default limit total, report progress in one line without asking. If the default limit total is 0, report at every attempt.
+- Question items the user chose in the pre-generation questions (ask each time for defect post-processing, previews for free-ratio trimming, user selection for candidates) are still asked under unlimited.
+- Keep the attempt record (workarounds section) in the file `attempts.jsonl` in the output folder, including attempts made before unlimited was chosen. Write one attempt per line as a JSON object with the keys `file` (the generated image file name), `stage`, `seed`, and `prompt`. `stage` is `first` for the first image and candidates, `1`, `2`, or `4` for a response stage, `prompt` for a prompt edit and `seed` for a seed change on a general defect, and `repeat` for the repeat phase. Example: `{"file": "reader-07.png", "stage": "repeat", "seed": 48, "prompt": "an elderly man reading a newspaper on a park bench, photorealistic"}`
+
+The best result is decided by the criteria below. Every use of the best result in this file and in SKILL.md follows this definition.
+
+- Compare every attempt regardless of stage, from the original prompt of stage 1 (including the upfront workaround) to stage 4, and include the attempts of the unlimited repeat phase.
+- Prefer the result with the fewest remaining defect parts in the visual check record after trimming and stage 3 post-processing.
+- If the number of defect parts is equal, select the result closest to the subject, framing, and style of the original request. This is the same criterion candidates.md uses to choose within a rank in candidate adoption.
 
 ### Workarounds
 
@@ -117,7 +144,7 @@ The table holds examples. If another option fits the theme, time of day, or styl
 
 - Face defects get worse the fewer pixels the face occupies. The two directions are covering part of the face (helmet, visor, sunglasses, hat) and enlarging the face (close-up). Covering part of it keeps some features and hides only the weak spots, so it looks less out of place.
 - Closed eyes help when mismatched gaze or pupils are the main defect. Use them only where closed eyes look natural, such as rest, meditation, or listening to music.
-- Turning the main person into a backlit silhouette gives up the facial features, so use it only as the last attempt within the limit. Silhouettes look natural for distant figures and background crowds, so this restriction does not apply to them.
+- Turning the main person into a backlit silhouette gives up the facial features, so use it only as the last attempt within the limit (for unlimited, the last attempt of the 3x path). Silhouettes look natural for distant figures and background crowds, so this restriction does not apply to them.
 - When a workaround sets or changes a pose, choose a static pose over a dynamic one. Diffusion models produce more defects as the joints of a pose grow more complex, with limbs overlapping, bending, touching other parts, and the like. Among static poses, prefer standing upright with the arms lowered at the sides, and the like. Diffusion models draw standing poses far more stably than sitting ones, because sitting bends the knees and hips and brings the legs against a chair or the body.
 - Also choose hiding staging that keeps the drawing easy. Hands behind the head, hands in the hair, a hand on the face, crossed arms, and the like seem to hide the hands, but the fingers blend into the hair or other body parts and the arms bend, so defects grow more frequent. Avoid staging with large motion, such as running, jumping, a twisted body, and the like, for the same reason.
 - Work around hand defects first with poses such as hands resting at the sides or lowered toward the bottom, and the like. Lowered hands are easy to trim away if a defect remains, because in a framing that ends at the waist or thighs they touch the bottom edge or leave the frame.

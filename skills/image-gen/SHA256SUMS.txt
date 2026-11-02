@@ -1,2 +1,2 @@
-27bbec024834d48b86ccd787a400d4c72dde7f34da6bba856b04929a27ab1671  image-gen-en.skill
-375850eace1e84f805528e9a5fb41b13643fe5fca3f232c0e39232c5f74a2fb0  image-gen-ko.skill
+d7d1b3de177feec9f6f80f19821065595fcb906201ba7ebcbcec6e46243fbf5a  image-gen-en.skill
+9752ce14b94340312f49be1596f02b0f05faeff5dcf091d4a7161204d542e326  image-gen-ko.skill

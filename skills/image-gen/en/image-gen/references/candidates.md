@@ -80,7 +80,7 @@ The agent adoption order:
 
 - Within a rank, select the candidate closest to the subject, framing, and style of the original request.
 - Do not adopt candidates with defects that have no means of repair. General defects that need a new image (style, color, count, and so on) belong here too.
-- Fill slots the pool cannot fill with the defect handling procedure. Fragile subjects start at stage 2 without a stage 1 regeneration (defects.md).
+- Fill slots the pool cannot fill with the defect handling procedure. Fragile subjects regenerate only as many times as stage 1 has left, then proceed to stage 2 (the multiplier calculation in the regeneration limit section of defects.md).
 
 ## Scope in candidate mode
 

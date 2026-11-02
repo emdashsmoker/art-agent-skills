@@ -28,7 +28,7 @@ Insert a face restoration strength item right after image-gen's face restoration
 - Ask when a person appears and face restoration can run. Do not ask when face restoration scope is off. Do not ask when the scope is "only on defects" and defect post-processing is "workarounds only", because restoration does not run in that combination.
 - Add the one-line terms of use to this item's description. Selecting a or b counts as consent. c) Do not use is the choice for users who decline or have a commercial purpose.
 - If the user already stated the strength, do not ask for the strength. Still present the one-line terms of use and confirm consent in the same questions.
-- In the recommended combination for delegated answers, the recommendation for this item is stepwise. Write the other numbers of the combination with the adjusted numbers as well. For example, image-gen's "1-b, 2-b, 3-a, 4-a, 5-a, 6-a, 9-a" becomes "1-b, 2-b, 3-a, 4-a, 5-b, 6-a, 7-a, 10-a". When presenting the recommended combination, include the one-line terms of use and obtain consent in the same confirmation.
+- In the recommended combination for delegated answers, the recommendation for this item is stepwise. Write the other numbers of the combination with the adjusted numbers as well. For example, image-gen's "1-b, 2-b, 3-a, 4-a, 5-a, 6-a, 9-a, 10-a" becomes "1-b, 2-b, 3-a, 4-a, 5-b, 6-a, 7-a, 10-a, 11-a". When presenting the recommended combination, include the one-line terms of use and obtain consent in the same confirmation.
 
 Example (insert after item 4 of image-gen's example):
 
@@ -40,7 +40,7 @@ Example (insert after item 4 of image-gen's example):
 After the user answers, run this add-on's record script right after image-gen's preflight.py. Run it again whenever image-gen's record is rewritten.
 
 ```
-PY scripts/preflight_codeformer.py --out ./outputs --face-strength stepwise --user-reply "1-b, 2-c, 3-a, 4-b, 5-b, 6-a, 7-d, 8-b, 9-c, 10-a"
+PY scripts/preflight_codeformer.py --out ./outputs --face-strength stepwise --user-reply "1-b, 2-c, 3-a, 4-b, 5-b, 6-a, 7-d, 8-b, 9-c, 10-a, 11-a"
 ```
 
 - `scripts/` is the scripts folder inside this add-on's folder. `PY` is the Python of image-gen's virtual environment.

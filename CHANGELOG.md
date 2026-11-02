@@ -31,10 +31,10 @@ Changelog rules
 
 ### image-gen
 - Added a post-upscaling recheck that saves the 4x result with the new finalize.py --x4-out option and, before delivery, applies every visual check item again to that result, sending defects that existed before upscaling through the existing defect handling on the pre-upscaling image (#38)
-- Removed the comparison question between the upscaled result and a plain enlargement, so anomalies that appear only after final upscaling no longer stop the work (#38)
+- Removed the check of the final upscaling result for a waxy look, exaggerated nostril and lip edges, clumped hair, and lost texture, along with the question that asked the user to choose between that result and a plain enlargement (#38)
 
 * finalize.py --x4-out의 4배 결과물 저장, 전달 전 눈 점검 항목 전체의 재적용, 보정 전부터 있던 결함의 기존 결함 대응을 담은 화질 보정 후 재점검 추가 (#38)
-* 화질 보정 후에만 생긴 이상으로 작업을 멈추던 단순 확대 안과의 비교 질의 삭제 (#38)
+* 화질 보정 결과의 밀랍 질감, 콧구멍과 입술 경계 과장, 머리카락 뭉침, 질감 손실 확인과 단순 확대 안 비교 질의 삭제 (#38)
 
 ## 2026-11-01
 

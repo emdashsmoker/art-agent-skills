@@ -233,3 +233,31 @@ PY scripts/edge_trim.py in.png out_wide.png --defect 140,340,205,430 --keep 215,
 
 - Open the preview and check that the defect was removed from the frame and which body part the cut line crosses. Adjust the cut line only by measuring the defect box again.
 - For the same-ratio track, add the track, defect box, keep box, chosen edge, and cut ratio to the adoption record. For the free-ratio track, add the track, defect box, keep box, chosen edge, adopted ratio, remaining area, and restored size.
+
+## Post-upscaling recheck
+
+The post-upscaling recheck inspects the adopted image again on its 4x result after final upscaling. Defects drawn small rarely show at working size. The recheck looks on the 4x view for defects that the working-size check missed. The recheck only identifies defects. Responses and adoption follow the pre-generation answers and the existing rules unchanged, because the pre-generation answers reflect the user's intent most accurately.
+
+- Apply it when `enhance` in preflight.json is `general` or `flat`. With `off`, this section does not apply.
+- Run it right after finalize.py and before delivery.
+- The target is the 4x result of the adopted image. Save the 4x result with `--x4-out` of finalize.py. Spares in candidate mode receive no defect repairs, so they are not rechecked.
+- Enlarge each defect-prone part separately with grid_measure.py on the 4x result as well, following the enlargement rules in the visual check section of SKILL.md.
+- When you find an anomaly on the 4x view, enlarge the same region of the adopted image before upscaling (the input of finalize.py) with grid_measure.py and compare before moving to defect handling. The region coordinates are the 4x coordinates divided by 4. If the same shape appears there, even blurred, the anomaly existed before upscaling. An enlarged view at working size shows small shapes blurred.
+- Judge an anomaly that existed before upscaling by the visual check items section below. Treat an anomaly that was absent from the adopted image before upscaling as a result of the final upscaling mode chosen in the pre-generation questions, and apply no defect handling to it. Its cause is absent from the adopted image before upscaling, so regeneration and post-processing do not resolve it.
+- Record the recheck result in one line per image, in the record format of the visual check section.
+
+### Visual check items
+
+Apply every item of the visual check section of SKILL.md to the 4x result again, without omission. The "Even outside this list" item, the rule that items in parentheses are examples, and the definition of a shape problem also apply unchanged. Judge again the items that the working-size check recorded as free of defects, because defects drawn small may not show at working size.
+
+- Use the judgment on the 4x view as it is for shape defects, because these defects were in the adopted image before final upscaling. Examples include the position and gaze of the eyes, a difference between the left and right eyebrows, the shape of fingers, etc.
+- Parts that generation drew blurred or dark gain no new edges on the 4x view. For such parts, apply the judgment rules of the visual check section unchanged (darkness and blur not meant to hide the part are not occlusion, and an uncertain judgment counts as a defect).
+- Inspect adopted images that went through face restoration by the same criteria. The restored result was also inspected only at working size.
+
+### Responses after the recheck
+
+- Divide coordinates measured on the 4x result by 4 to convert them into coordinates of the adopted image before upscaling, because trimming, face restoration, and region redrawing run at the pre-upscaling size.
+- For defects under the visual check items, apply the order of the defect handling section of SKILL.md (trim-first check, response stages, defect post-processing policy, regeneration limit) to the adopted image before upscaling unchanged.
+- Within that order, face defects follow the existing face rules and the pre-generation answers (face restoration scope, defect post-processing policy, etc.) unchanged.
+- If you fix the adopted image, run finalize.py again on the fixed adopted image. Do not apply final upscaling again to an upscaled result, because applying it twice to the same pixels accumulates the waxy look.
+- Recheck the result upscaled after the fix by the same criteria. The rules of the regeneration limit section limit the number of repetitions.

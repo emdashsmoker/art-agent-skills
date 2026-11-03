@@ -1,6 +1,6 @@
 # Defect checks and responses
 
-Details for the defect handling section of SKILL.md. Read this once generation ends, before the check, because the defect criteria are here. If the upfront workaround answer is optimize or maximum, read it before recording the pre-generation answers, because the first prompt uses the workarounds in this file. If the regeneration limit multiplier answer is automatic, also read it before recording, because the automatic multiplier must be decided before recording. postprocess.md covers the post-processing tools.
+Details for the defect handling section of SKILL.md. Read this once generation ends, before the check, because the defect criteria are here. If the upfront workaround answer is optimize or maximum, read it before recording the pre-generation answers, because the first prompt uses the workarounds in this file. If the regeneration limit multiplier answer is automatic, also read it before recording, because the automatic multiplier must be decided before recording. Read the regeneration limit section before the pre-generation notice regardless of the multiplier answer, because the regeneration counts and the maximum added time in the notice follow its definitions. postprocess.md covers the post-processing tools.
 
 ## Trim-first check
 
@@ -42,7 +42,7 @@ Defects outside the fragile subjects (next section) are handled in one of two wa
 - For message requests and diagram requests, go back to the original message and select another stand-in. A seed change only rearranges the same metaphor, so repeating it has no effect when the metaphor does not fit.
 - For named-subject requests, keep the subject, present the best result (as defined in the regeneration limit section) with its defects, and ask how to proceed.
 - For scene requests that went through no substitution, change the element combination.
-- If the same defect remains after changing the stand-in or the element combination, present the best result (as defined in the regeneration limit section) with its defects and ask how to proceed.
+- If the same defect remains after one generation with the changed stand-in or element combination, present the best result (as defined in the regeneration limit section) with its defects and ask how to proceed.
 - Offer a model change only as an option, following the model lock section of SKILL.md.
 - Record the prompt and seed of the adopted result.
 
@@ -106,11 +106,25 @@ Apply the regeneration limit multiplier N as follows.
 
 - A stage limit is the stage's default limit in the table multiplied by N. A cell whose default limit is 0 (stages 2 and 4 of Precise) stays 0 regardless of N.
 - In candidate mode, subtract the number of pool swaps from the stage 1 limit, because the candidates are stage 1's seed changes made ahead of time. The number of stage 1 regenerations is `max(0, N * stage 1 default limit - (candidate count - 1))`. The candidate count is the number of candidates for one target image (the candidate multiplier in force). With N at 1, the sum of the stage limits equals the two total columns of the table.
-- Prompt edits and seed changes for general defects also allow up to 3N attempts each (general defects section).
+- Prompt edits and seed changes for general defects also allow up to 3N attempts each (general defects section). Even in a request where a fragile subject appears, count these attempts separately from the stage limits. The stage limits apply only to the response stages for shape defects.
 - N applies only to the number of regenerations. Stage 3 post-processing applies each tool once, as above, regardless of N.
 - Each attempt in stages 2 and 4 uses a workaround no earlier attempt used. Skip a stage with no workarounds left, without using its remaining attempts.
-- The maximum number of regenerations is the sum of the stage limits when a fragile subject appears, and the sum of the prompt edit and seed change limits of general defects otherwise. The maximum at N of 1 is called the default limit total.
 - If the user raises the multiplier or specifies unlimited after reaching the limit, rerun preflight.py with only `--regen-scale` changed. If the multiplier was decided automatically, leave out `--regen-scale-resolved` and `--regen-scale-reason`. Continue counting the attempts already used, and re-enter at the earliest stage with limit left. Re-entering stage 1 applies only a new seed to the first prompt. Re-entering stages 2 and 4 uses only workarounds not used yet.
+
+The maximum number of regenerations is decided as follows. The pre-generation notice, the automatic multiplier, and the progress reports of unlimited operation all follow this definition.
+
+- Split the maximum number of regenerations into the shape defect response and the general defect response, because the two responses handle different defects under different limits.
+- The count of the shape defect response is the sum of the stage limits. A request without a fragile subject has no shape defect response, so only the general defect response applies.
+- The count of the general defect response is the prompt edit limit plus the seed change limit. Message requests, diagram requests, and scene requests that went through no substitution add 1 to it, because they generate once more with a changed stand-in or element combination after both limits are used (general defects section).
+- Both counts apply the subtraction of candidate mode. The subtraction applies to the stage 1 limit and to the seed change limit of general defects respectively (the multiplier calculation above and the general defects section).
+- Count each attempt only toward the response that made it, because the attempt record holds only one `stage` value per attempt.
+- Judge reaching the limit for each response separately, because the two counts are kept separately. After a limit is reached, the shape defect response follows this section and the general defect response follows the general defects section.
+- The default limit total is the value at N of 1. It is the sum of the stage limits when a fragile subject appears, and the prompt edit limit plus the seed change limit otherwise.
+- The pre-generation notice states the counts of both responses and the maximum added time when both are fully used, in one line. For a request without a fragile subject, state only the count of the general defect response.
+- The counts are per target image. The maximum added time is the sum of the two counts times the target count times the estimated time per image.
+- For unlimited, state the values of the 3x path, because the repeat phase has no limit.
+- The notice also states that the maximum added time is an upper bound and is usually shorter in practice, because regeneration ends once the defect is fixed, and a stage with no workarounds left is skipped.
+- The notice also states that the maximum added time covers image generation only and excludes checks and post-processing, because the estimated time per image estimates only the generation of one image. Example: "I will regenerate up to 3 times for shape defects and up to 6 times for other defects. Using all of them adds up to about 6 minutes of image generation, and it is usually shorter in practice. This excludes the time for checks and post-processing."
 
 With `regen_scale_resolved` set to `unlimited`, operate as follows.
 
@@ -149,10 +163,10 @@ Choose 1x in the cases below.
 Decide the multiplier by the recommended criteria below.
 
 - With one defect likelihood ground, consider 2x. With several defect likelihood grounds, or with the task purpose ground as well, consider 3x.
-- Reflect the runtime environment through the estimated time per image from probe.py. The maximum added time of a multiplier is the maximum number of regenerations times the target count times the estimated time per image. If a long time per image makes one step up add a large amount of time, go one step down.
+- Reflect the runtime environment through the estimated time per image from probe.py. Calculate the maximum added time of a multiplier in the same way as the pre-generation notice of the regeneration limit section, adding the counts of both responses. Regenerations for general defects also add generation time, so the time limit the user stated holds only when they are included. If a long time per image makes one step up add a large amount of time, go one step down.
 - If the user mentioned a time limit for the work, choose the largest multiplier whose first generation time plus maximum added time fits within it. If even 1x exceeds it, choose 1x and mention that the limit may be exceeded.
 - The recommended range is 1x to 3x. Unlimited has neither the question at the limit nor a time bound, so it is never chosen automatically.
-- Before generation starts, report the multiplier and a one-line reason together with the maximum number of regenerations and the estimated time. Then proceed without waiting for confirmation.
+- Before generation starts, report the multiplier and a one-line reason together with the pre-generation notice of the regeneration limit section. Then proceed without waiting for confirmation.
 
 ### Workarounds
 

@@ -123,8 +123,8 @@ The maximum number of regenerations is decided as follows. The pre-generation no
 - The pre-generation notice states the counts of both responses and the maximum added time when both are fully used, in one line. For a request without a fragile subject, state only the count of the general defect response.
 - The counts are per target image. The maximum added time is the sum of the two counts times the target count times the estimated time per image.
 - For unlimited, state the values of the 3x path, because the repeat phase has no limit.
-- The notice also states that the maximum added time is an upper bound and is usually shorter in practice, because regeneration ends once the defect is fixed, and a stage with no workarounds left is skipped.
-- The notice also states that the maximum added time covers image generation only and excludes checks and post-processing, because the estimated time per image estimates only the generation of one image. Example: "I will regenerate up to 3 times for shape defects and up to 6 times for other defects. Using all of them adds up to about 6 minutes of image generation, and it is usually shorter in practice. This excludes the time for checks and post-processing."
+- The notice also states that the actual time may be shorter or longer than the maximum added time. It can be shorter because regeneration ends once the defect is fixed, and a stage with no workarounds left is skipped. It can be longer because the time per image is estimated before generation.
+- The notice also states that the maximum added time covers image generation only and excludes checks and post-processing, because the estimated time per image estimates only the generation of one image. Example: "I will regenerate up to 3 times for shape defects and up to 6 times for other defects. Using all of them adds about 6 minutes of image generation. The actual time may be shorter or longer. This excludes the time for checks and post-processing."
 
 With `regen_scale_resolved` set to `unlimited`, operate as follows.
 

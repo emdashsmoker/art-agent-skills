@@ -18,7 +18,7 @@ Diffusion models cannot draw text, exact connector lines, numbers, or exact coun
 2. Environment check: run probe.py to confirm what can run and the estimated time.
 3. Request type and composition: determine the subject and its framing.
 4. Preset: select the model.
-5. Pre-generation questions: ask about the generation and correction policies in a single message and record the answers in preflight.json. If the candidate generation answer is not 1x (automatic included), read references/candidates.md before recording. If the upfront workaround answer is not off, read references/defects.md before recording.
+5. Pre-generation questions: ask about the generation and correction policies in a single message and record the answers in preflight.json. If the candidate generation answer is not 1x (automatic included), read references/candidates.md before recording. If the upfront workaround answer is not off or the regeneration limit multiplier answer is automatic, read references/defects.md before recording.
 6. Prompt: write an English prompt.
 7. Generate: run generate.py or generate_klein.py.
 8. Check and correction: first read the reference files in the reading-before-the-check section. Open the output and correct defects.
@@ -183,7 +183,7 @@ Before the first image, ask every applicable item from the table below in one me
 - Judge the 10-image condition of the model choice question by the target count. The multiplier is answered in the same question, so whether to ask the model question cannot depend on the multiplier answer.
 - If automatic resolves to 1x, the answers for candidate selection and spare candidate finishing are not used.
 - The upfront workaround avoids the parts where diffusion models often produce defects from the first image, before any defect is seen. It applies to people, animals, objects, buildings, and scene elements alike. The default, off, generates the image as requested first. Once a defect appears, edge trimming and seed changes are applied first, and workarounds start at defect handling stage 2 only if the defect remains. Optimize preserves the subject and scene, and adds only staging that removes, hides, or places defect-prone parts outside the frame. Maximum preserves only the message and where the image will be used, and extends to composition changes, element removal, and subject replacement.
-- The regeneration limit multiplier multiplies the regeneration limits of defect handling (references/defects.md). Always call it by this name to keep it apart from the candidate multiplier, and if it is unclear which multiplier the user means, confirm in one line. In the item description, state that the actual number of regenerations is the default limit of the model in use multiplied by the multiplier, and that generating more candidates reduces the number of stage 1 regenerations. The model and the candidate multiplier are answered in the same questions, so the choices state only the multiplier. After the answers arrive, state the resulting maximum number of regenerations and the estimated time (at 3x for unlimited) in one line before generating, and proceed without confirmation. If the request already specifies a multiplier or unlimited, omit the item and record that value.
+- The regeneration limit multiplier multiplies the regeneration limits of defect handling (references/defects.md). Always call it by this name to keep it apart from the candidate multiplier, and if it is unclear which multiplier the user means, confirm in one line. In the item description, state that the actual number of regenerations is the default limit of the model in use multiplied by the multiplier, and that generating more candidates reduces the number of stage 1 regenerations. The model and the candidate multiplier are answered in the same questions, so the choices state only the multiplier. With automatic, decide the multiplier by the automatic regeneration limit multiplier section of references/defects.md. After the answers arrive, state the resulting maximum number of regenerations and the estimated time (at 3x for unlimited) in one line before generating, and proceed without confirmation. If the request already specifies a multiplier or unlimited, omit the item and record that value.
 
 Question format:
 
@@ -240,8 +240,9 @@ Example for a request with a person:
 >    a) 1x (default)
 >    b) 2x
 >    c) 3x
->    d) Custom: enter a whole-number multiplier (example: 10-d 5)
->    e) Unlimited (not recommended): if a defect remains after 3x, I keep generating with the best result's prompt and a new seed without asking. I report progress in one line each time the attempts reach the default limit count. If you chose ask each time for defect post-processing, free ratio previews for edge trim, or user selection for candidates, I still wait for your answer at those questions
+>    d) Automatic: I choose between 1x and 3x based on how often the subject breaks, where the image will be used, the generation speed of this runtime environment, and the working time, and tell you before generating
+>    e) Custom: enter a whole-number multiplier (example: 10-e 5)
+>    f) Unlimited (not recommended): if a defect remains after 3x, I keep generating with the best result's prompt and a new seed without asking. I report progress in one line each time the attempts reach the default limit count. If you chose ask each time for defect post-processing, free ratio previews for edge trim, or user selection for candidates, I still wait for your answer at those questions
 
 If a model choice condition applies, continue with the last number. Example:
 
@@ -255,15 +256,15 @@ The times in the example illustrate the format only. Use probe.py's estimates in
 
 If the candidate generation answer is not 1x (automatic included), read references/candidates.md right after the answers arrive and before recording them with preflight.py. It covers the automatic decisions on the candidate multiplier and spare candidate finishing, the candidate pool, candidate adoption, the scope in candidate mode, and spare deletion. With 1x, proceed without it.
 
-If the upfront workaround answer is optimize or maximum, read references/defects.md right after the answers arrive and before recording them with preflight.py. Its upfront workaround section specifies what each answer preserves and which workarounds it uses. The confirmation procedure for a subject replacement under maximum is also in that section. A subject replacement can change `--subject` and the automatic candidate multiplier, so complete the confirmation before recording. With off, read the file after generation, before the check.
+If the upfront workaround answer is optimize or maximum, or the regeneration limit multiplier answer is automatic, read references/defects.md right after the answers arrive and before recording them with preflight.py. Its upfront workaround section specifies what each answer preserves and which workarounds it uses. The confirmation procedure for a subject replacement under maximum is also in that section. A subject replacement can change `--subject` and the automatic decisions on both multipliers, so complete the confirmation before recording. The criteria for the automatic regeneration limit multiplier are in its own section. If neither condition applies, read the file after generation, before the check.
 
 ### Recording answers
 
 After the user answers, write preflight.json to the output folder with preflight.py. The generation scripts stop with exit code 2 when this file is missing, and preflight.py stops with exit code 2 and lists missing items when a required answer is absent. Do not record values filled in without asking.
 
 ```
-# A person appears, answer "1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c, 9-b, 10-b", automatic judgment chose 3x and all candidates
-PY scripts/preflight.py --out ./outputs --subject person --display available --enhance general --trim free --postfix auto --face-scope always --finger-inpaint off --candidates auto --candidates-resolved 3 --candidates-reason "full body framing with hands visible" --candidate-pick user --spare-finish auto --spare-finish-resolved all --spare-finish-reason "user selection with always-on face restoration" --upfront-workaround optimize --regen-scale 2 --user-reply "1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c, 9-b, 10-b"
+# A person appears, answer "1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c, 9-b, 10-d", automatic judgment chose 3x candidates, all candidates, and a 3x regeneration limit
+PY scripts/preflight.py --out ./outputs --subject person --display available --enhance general --trim free --postfix auto --face-scope always --finger-inpaint off --candidates auto --candidates-resolved 3 --candidates-reason "full body framing with hands visible" --candidate-pick user --spare-finish auto --spare-finish-resolved all --spare-finish-reason "user selection with always-on face restoration" --upfront-workaround optimize --regen-scale auto --regen-scale-resolved 3 --regen-scale-reason "full body framing with hands visible, about 40 seconds per image" --user-reply "1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c, 9-b, 10-d"
 
 # Objects only, with a model choice, answer "1-b, 2-b, 3-a, 6-a, 7-a, 8-b"
 PY scripts/preflight.py --out ./outputs --subject other --display available --enhance general --trim same --candidates 1 --upfront-workaround off --regen-scale 1 --preset sdxs --user-reply "1-b, 2-b, 3-a, 6-a, 7-a, 8-b"
@@ -275,8 +276,8 @@ PY scripts/preflight.py --out ./outputs --subject other --display available --en
 - `--candidate-pick` is `auto` for agent selection and `user` for user selection.
 - `--spare-finish` is `adopted` for adopted only, `all` for all candidates, and `auto` for automatic. With `auto`, enter the decided value in `--spare-finish-resolved` and a one-line reason in `--spare-finish-reason`.
 - `--upfront-workaround` is `off` for off, `optimize` for optimize, and `max` for maximum.
-- `--regen-scale` is the regeneration limit multiplier: `1` to `3` for 1x to 3x, the entered whole number for custom, and `unlimited` for unlimited.
-- Candidate selection and spare candidate finishing are needed only when the multiplier in force is 2 or more. Unused items are recorded as null. Later steps use the values recorded in `candidates_resolved` and `spare_finish_resolved`.
+- `--regen-scale` is the regeneration limit multiplier: `1` to `3` for 1x to 3x, the entered whole number for custom, `auto` for automatic, and `unlimited` for unlimited. With `auto`, enter the decided multiplier (a whole number of 1 or more) in `--regen-scale-resolved` and a one-line reason in `--regen-scale-reason`.
+- Candidate selection and spare candidate finishing are needed only when the multiplier in force is 2 or more. Unused items are recorded as null. Later steps use the values recorded in `candidates_resolved`, `spare_finish_resolved`, and `regen_scale_resolved`.
 - `--user-reply` contains the user's answer verbatim.
 - Later images in the same conversation reuse the record in the same output folder. If the user changes a choice or the presence of a person changes, rerun preflight.py.
 - If the style newly changes to photographic or watercolor, ask only the final upscaling item again. If the style switches between photographic and non-photographic, ask only the face restoration scope item again.

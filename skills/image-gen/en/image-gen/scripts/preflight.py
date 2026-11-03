@@ -18,7 +18,7 @@ AUTO = "auto"
 UNLIMITED = "unlimited"
 WHOLE_NUMBER_HINT = "use a whole number of 1 or more"
 AUTO_OR_WHOLE_NUMBER_HINT = "use auto or a whole number of 1 or more"
-UNLIMITED_OR_WHOLE_NUMBER_HINT = "use unlimited or a whole number of 1 or more"
+REGEN_SCALE_HINT = "use auto, unlimited, or a whole number of 1 or more"
 SPARE_FINISH_DECISIONS = ["adopted", "all"]
 
 
@@ -57,7 +57,7 @@ QUERY_LABELS = {
                           "frames out defect-prone parts while the subject and scene stay, max = composition changes, element removal, "
                           "and subject replacement too)",
     "regen_scale": "regeneration limit multiplier, separate from the candidate multiplier "
-                   "(a whole number of 1 or more, or unlimited)",
+                   "(a whole number of 1 or more, auto, or unlimited)",
 }
 
 # WHY: these answers show images to the user and wait for a choice, which needs a way to display images
@@ -84,11 +84,11 @@ def multiplier_answer(text):
 
 
 def regen_scale_answer(text):
-    """The regeneration limit multiplier answer: unlimited or a whole number of 1 or more."""
-    if text == UNLIMITED:
-        return UNLIMITED
-    # WHY: name unlimited in the hint, so a mistyped unlimited answer gets fixed as unlimited
-    return whole_multiplier(text, UNLIMITED_OR_WHOLE_NUMBER_HINT)
+    """The regeneration limit multiplier answer: auto, unlimited, or a whole number of 1 or more."""
+    if text in (AUTO, UNLIMITED):
+        return text
+    # WHY: name auto and unlimited in the hint, so a mistyped word answer gets fixed as that word
+    return whole_multiplier(text, REGEN_SCALE_HINT)
 
 
 def flag(name):
@@ -168,7 +168,13 @@ def parse_arguments(argv):
     parser.add_argument("--candidates-reason", dest="candidates_reason",
                         help="with --candidates auto: one-line reason for the decided multiplier")
     parser.add_argument("--regen-scale", dest="regen_scale", type=regen_scale_answer,
-                        help="regeneration limit multiplier: 1 or more, or unlimited")
+                        help="regeneration limit multiplier: 1 or more, auto, or unlimited")
+    # WHY: a whole number only, so auto never turns into unlimited, which drops the stop at the limit
+    #      and has no time bound, so only the user can choose it
+    parser.add_argument("--regen-scale-resolved", dest="regen_scale_resolved", type=whole_multiplier,
+                        help="with --regen-scale auto: the multiplier the agent decided")
+    parser.add_argument("--regen-scale-reason", dest="regen_scale_reason",
+                        help="with --regen-scale auto: one-line reason for the decided multiplier")
     parser.add_argument("--spare-finish-resolved", dest="spare_finish_resolved", choices=SPARE_FINISH_DECISIONS,
                         help="with --spare-finish auto: the choice the agent decided")
     parser.add_argument("--spare-finish-reason", dest="spare_finish_reason",
@@ -197,6 +203,9 @@ def main(argv=None):
     if missing:
         return refuse("Missing answers, ask the user and rerun:",
                       ["%s: %s" % (flag(name), QUERY_LABELS[name]) for name in missing])
+    problems = auto_problems(args, "regen_scale")
+    if problems:
+        return refuse("Incomplete regeneration limit multiplier record:", problems)
     spare_needed = "spare_finish" in needed
     problems = auto_problems(args, "spare_finish") if spare_needed else []
     if problems:
@@ -214,6 +223,8 @@ def main(argv=None):
         "spare_finish_resolved": resolved_value(args, "spare_finish") if spare_needed else None,
         "spare_finish_reason": args.spare_finish_reason if spare_needed else None,
         "regen_scale": args.regen_scale,
+        "regen_scale_resolved": resolved_value(args, "regen_scale"),
+        "regen_scale_reason": args.regen_scale_reason,
     })
     os.makedirs(args.out, exist_ok=True)
     with open(os.path.join(args.out, PREFLIGHT_FILENAME), "w", encoding="utf-8") as handle:

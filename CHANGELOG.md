@@ -27,6 +27,17 @@ Changelog rules
 - (Push) Commit on top of the latest main and push directly to main.
 -->
 
+## 2026-11-03
+
+### image-gen
+- Added an automatic choice to the regeneration limit multiplier item that picks 1x to 3x from defect-prone subjects, a large use or a quality-first request, the estimated time per image, and any stated time limit, never picks unlimited, and is reported with a one-line reason before generation (#43)
+- Changed the choice letters of the regeneration limit multiplier item to automatic d), custom e), and unlimited f), in the same order as candidate generation (#43)
+- Added the preflight.py --regen-scale auto answer, which requires the decided whole-number multiplier in --regen-scale-resolved and a one-line reason in --regen-scale-reason (#43)
+
+* 결함이 잦은 피사체, 큰 사용처나 품질 우선 요청, 장당 예상 시간, 작업 시간 한도 기준의 1-3배 결정, 무제한 제외, 생성 전 근거 안내를 담은 재생성 상한 배수 자동 선택지 추가 (#43)
+* 후보 생성과 같은 순서에 따른 재생성 상한 배수 선택지 기호(자동 d, 직접 입력 e, 무제한 f) 변경 (#43)
+* 결정 배수(--regen-scale-resolved)와 근거 한 줄(--regen-scale-reason)을 필수로 받는 preflight.py --regen-scale auto 답 추가 (#43)
+
 ## 2026-11-02
 
 ### image-gen

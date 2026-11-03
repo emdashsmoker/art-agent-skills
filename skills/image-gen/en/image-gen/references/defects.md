@@ -1,6 +1,6 @@
 # Defect checks and responses
 
-Details for the defect handling section of SKILL.md. Read this once generation ends, before the check, because the defect criteria are here. If the upfront workaround answer is optimize or maximum, read it before recording the pre-generation answers, because the first prompt uses the workarounds in this file. postprocess.md covers the post-processing tools.
+Details for the defect handling section of SKILL.md. Read this once generation ends, before the check, because the defect criteria are here. If the upfront workaround answer is optimize or maximum, read it before recording the pre-generation answers, because the first prompt uses the workarounds in this file. If the regeneration limit multiplier answer is automatic, also read it before recording, because the automatic multiplier must be decided before recording. postprocess.md covers the post-processing tools.
 
 ## Trim-first check
 
@@ -88,7 +88,7 @@ The answers in preflight.json decide whether to enter stage 3.
 
 ### Regeneration limit
 
-By default each stage allows one regeneration. The table below shows the default limits at a regeneration limit multiplier of 1x. If the limit is reached, stop regenerating. If `regen_scale` in preflight.json is `unlimited`, follow the unlimited operation below.
+By default each stage allows one regeneration. The table below shows the default limits at a regeneration limit multiplier of 1x. If the limit is reached, stop regenerating. If `regen_scale_resolved` in preflight.json is `unlimited`, follow the unlimited operation below.
 
 | Preset | Stage 1 | Stage 2 | Stage 4 | Total | Total with 2x or more candidates |
 |---|---|---|---|---|---|
@@ -110,9 +110,9 @@ Apply the regeneration limit multiplier N as follows.
 - N applies only to the number of regenerations. Stage 3 post-processing applies each tool once, as above, regardless of N.
 - Each attempt in stages 2 and 4 uses a workaround no earlier attempt used. Skip a stage with no workarounds left, without using its remaining attempts.
 - The maximum number of regenerations is the sum of the stage limits when a fragile subject appears, and the sum of the prompt edit and seed change limits of general defects otherwise. The maximum at N of 1 is called the default limit total.
-- If the user raises the multiplier or specifies unlimited after reaching the limit, rerun preflight.py with only `--regen-scale` changed. Continue counting the attempts already used, and re-enter at the earliest stage with limit left. Re-entering stage 1 applies only a new seed to the first prompt. Re-entering stages 2 and 4 uses only workarounds not used yet.
+- If the user raises the multiplier or specifies unlimited after reaching the limit, rerun preflight.py with only `--regen-scale` changed. If the multiplier was decided automatically, leave out `--regen-scale-resolved` and `--regen-scale-reason`. Continue counting the attempts already used, and re-enter at the earliest stage with limit left. Re-entering stage 1 applies only a new seed to the first prompt. Re-entering stages 2 and 4 uses only workarounds not used yet.
 
-With `regen_scale` set to `unlimited`, operate as follows.
+With `regen_scale_resolved` set to `unlimited`, operate as follows.
 
 - Go through the stages to the end in the same order as 3x. Use a means tied to the last attempt within the limit (such as the main subject silhouette in the workarounds section) at the last attempt of the 3x path.
 - When the 3x path reaches its limit, switch to the repeat phase without asking. The same applies where the general defects section presents the best result and asks. The repeat phase regenerates with the best result's prompt and changes only the seed.
@@ -128,6 +128,31 @@ The best result is decided by the criteria below. Every use of the best result i
 - Compare every attempt regardless of stage, from the original prompt of stage 1 (including the upfront workaround) to stage 4, and include the attempts of the unlimited repeat phase.
 - Prefer the result with the fewest remaining defect parts in the visual check record after trimming and stage 3 post-processing.
 - If the number of defect parts is equal, select the result closest to the subject, framing, and style of the original request. This is the same criterion candidates.md uses to choose within a rank in candidate adoption.
+
+### Automatic regeneration limit multiplier
+
+When the regeneration limit multiplier answer is automatic, decide the multiplier after the answers arrive and before recording them with preflight.py. If the candidate generation answer is also automatic, decide the candidate multiplier first, because the number of stage 1 regenerations depends on the candidate count. The baseline is 1x. Raising the multiplier after the limit continues the count already used, so a low multiplier is a reversible choice. Time spent on regeneration cannot be recovered.
+
+Increase it only on the grounds below. The first three are defect likelihood grounds and the last is the task purpose ground.
+
+- The main subject is prone to shape defects (a person, an animal, a precise object).
+- The framing shows a person's hands or full body.
+- The scene has several people or a background crowd.
+- The image is used large, as on a cover, a banner, or print, or the user mentioned that quality comes first. The more visible a defect is where the image is used, the more a regeneration is worth.
+
+Choose 1x in the cases below.
+
+- No defect likelihood ground applies. General defects already allow up to three prompt edits and three seed changes at 1x.
+- The user mentioned that speed comes first.
+- The precise preset is in use. It takes the longest per image and draws shapes most accurately.
+
+Decide the multiplier by the recommended criteria below.
+
+- With one defect likelihood ground, consider 2x. With several defect likelihood grounds, or with the task purpose ground as well, consider 3x.
+- Reflect the runtime environment through the estimated time per image from probe.py. The maximum added time of a multiplier is the maximum number of regenerations times the target count times the estimated time per image. If a long time per image makes one step up add a large amount of time, go one step down.
+- If the user mentioned a time limit for the work, choose the largest multiplier whose first generation time plus maximum added time fits within it. If even 1x exceeds it, choose 1x and mention that the limit may be exceeded.
+- The recommended range is 1x to 3x. Unlimited has neither the question at the limit nor a time bound, so it is never chosen automatically.
+- Before generation starts, report the multiplier and a one-line reason together with the maximum number of regenerations and the estimated time. Then proceed without waiting for confirmation.
 
 ### Workarounds
 

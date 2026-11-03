@@ -16,7 +16,7 @@ license: GPL-3.0-or-later with an output exception. Terms in LICENSE and NOTICE.
 2. 환경 점검: probe.py로 실행 가능 여부와 예상 소요 시간을 확인한다.
 3. 요청 분류와 구도: 그릴 대상과 구도를 정한다.
 4. 프리셋: 모델을 선택한다.
-5. 생성 전 질의: 생성과 보정 방침을 한 번에 질의하고 preflight.json에 기록한다. 후보 생성의 답이 1배가 아니면(자동 포함) 기록 전에 references/candidates.md를 읽는다. 첫 프롬프트 우회의 답이 미사용이 아니면 기록 전에 references/defects.md를 읽는다.
+5. 생성 전 질의: 생성과 보정 방침을 한 번에 질의하고 preflight.json에 기록한다. 후보 생성의 답이 1배가 아니면(자동 포함) 기록 전에 references/candidates.md를 읽는다. 첫 프롬프트 우회의 답이 미사용이 아니거나 재생성 상한 배수의 답이 자동이면 기록 전에 references/defects.md를 읽는다.
 6. 프롬프트: 영문 프롬프트를 작성한다.
 7. 생성: generate.py 또는 generate_klein.py를 실행한다.
 8. 점검과 결함 대응: 점검 전 읽기 절의 참조 문서를 먼저 읽는다. 산출물을 열어 확인하고 결함을 보정한다.
@@ -181,7 +181,7 @@ probe.py는 JSON 하나를 출력한다. 아래 값에 따라 다음 조치를 �
 - 모델 선택 질의의 10장 조건은 목표 장수로 판정한다. 배수는 같은 질의에서 답을 받으므로 모델 질의 여부를 배수 답변에 따라 정할 수 없다.
 - 자동이 1배로 정해지면 후보 선택과 여분 후보 보정의 답은 사용하지 않는다.
 - 첫 프롬프트 우회는 확산모델의 결함이 잦은 부위를 결함 확인 전인 첫 생성부터 피하는 방식이다. 인물, 동물, 사물, 건물, 장면 요소에 모두 적용된다. 기본값인 미사용은 원래 의도대로 먼저 생성한다. 결함이 보이면 가장자리 트림과 seed 변경을 먼저 적용하고, 그 뒤에도 결함이 남을 때만 결함 대응 2단계부터 우회한다. 최적화는 피사체와 장면을 유지하고 결함이 잦은 부위를 제거하거나 가리거나 화면 밖에 두는 연출만 추가한다. 최대 우회는 전달하려는 메시지와 사용처만 유지하고 구도 변경, 요소 제거, 피사체 교체까지 활용한다.
-- 재생성 상한 배수는 결함 대응의 재생성 상한(references/defects.md)에 곱하는 배수다. 후보 생성의 배수와 구분하도록 항상 이 이름으로 부르고, 사용자 말이 어느 배수를 가리키는지 모호하면 한 줄로 확인한다. 항목 설명에는 실제 재생성 횟수가 적용되는 모델의 기본 상한에 배수를 곱해 정해짐을 안내한다. 후보 생성을 늘리면 1단계 재생성 횟수가 줄어듦도 함께 안내한다. 모델과 후보 배수를 같은 질의에서 받으므로 선택지에는 배수만 기재한다. 답을 받으면 정해진 최대 재생성 횟수와 예상 시간(무제한은 3배 기준)을 생성 시작 전에 한 줄로 안내하고 확인 없이 진행한다. 요청에서 배수나 무제한을 직접 지정했으면 질의에서 제외하고 그 값을 기록한다.
+- 재생성 상한 배수는 결함 대응의 재생성 상한(references/defects.md)에 곱하는 배수다. 후보 생성의 배수와 구분하도록 항상 이 이름으로 부르고, 사용자 말이 어느 배수를 가리키는지 모호하면 한 줄로 확인한다. 항목 설명에는 실제 재생성 횟수가 적용되는 모델의 기본 상한에 배수를 곱해 정해짐을 안내한다. 후보 생성을 늘리면 1단계 재생성 횟수가 줄어듦도 함께 안내한다. 모델과 후보 배수를 같은 질의에서 받으므로 선택지에는 배수만 기재한다. 자동이면 references/defects.md의 재생성 상한 배수 자동 판단 절에 따라 배수를 정한다. 답을 받으면 정해진 최대 재생성 횟수와 예상 시간(무제한은 3배 기준)을 생성 시작 전에 한 줄로 안내하고 확인 없이 진행한다. 요청에서 배수나 무제한을 직접 지정했으면 질의에서 제외하고 그 값을 기록한다.
 
 질의 형식은 다음과 같다.
 
@@ -238,8 +238,9 @@ probe.py는 JSON 하나를 출력한다. 아래 값에 따라 다음 조치를 �
 >    a) 1배(기본값)
 >    b) 2배
 >    c) 3배
->    d) 직접 입력: 정수 배수로 입력해 주세요 (예: 10-d 5)
->    e) 무제한(비권장): 3배까지 진행해도 결함이 남으면 여쭙지 않고 가장 나은 결과의 프롬프트로 seed만 바꿔 계속 생성합니다. 기본 상한 횟수만큼 시도할 때마다 진행 상황을 한 줄로 안내해 드립니다. 결함 후처리의 결함마다 질의, 가장자리 트림의 자유 비율 미리보기, 후보 선택의 사용자 선택으로 답하셨다면 해당 질의에서는 답을 기다립니다
+>    d) 자동: 피사체의 결함 빈도, 이미지 사용처, 실행 환경의 생성 속도, 작업 시간을 고려해 1-3배 중에서 제가 정하고 생성 전에 안내해 드립니다
+>    e) 직접 입력: 정수 배수로 입력해 주세요 (예: 10-e 5)
+>    f) 무제한(비권장): 3배까지 진행해도 결함이 남으면 여쭙지 않고 가장 나은 결과의 프롬프트로 seed만 바꿔 계속 생성합니다. 기본 상한 횟수만큼 시도할 때마다 진행 상황을 한 줄로 안내해 드립니다. 결함 후처리의 결함마다 질의, 가장자리 트림의 자유 비율 미리보기, 후보 선택의 사용자 선택으로 답하셨다면 해당 질의에서는 답을 기다립니다
 
 모델 선택 조건에 해당하면 마지막 번호로 이어서 기재한다. 예:
 
@@ -253,15 +254,15 @@ probe.py는 JSON 하나를 출력한다. 아래 값에 따라 다음 조치를 �
 
 후보 생성의 답이 1배가 아니면(자동 포함) 답을 받은 직후, preflight.py로 기록하기 전에 references/candidates.md를 읽는다. 후보 배수와 여분 후보 보정의 자동 판단, 후보 풀, 후보 채택, 후보 모드의 처리 범위, 여분 삭제가 이 문서에 수록되어 있다. 1배면 이 문서를 읽지 않고 진행한다.
 
-첫 프롬프트 우회의 답이 최적화나 최대 우회면 답을 받은 직후, preflight.py로 기록하기 전에 references/defects.md를 읽는다. 첫 프롬프트 우회 절에 답변별 유지 요소와 사용 수단이 정리되어 있다. 최대 우회의 피사체 교체 확인 절차도 이 절에 있다. 피사체를 교체하면 `--subject`와 후보 배수 자동 판단이 달라질 수 있으므로 확인은 기록 전에 완료한다. 미사용이면 이 문서를 생성 후 점검 전에 읽는다.
+첫 프롬프트 우회의 답이 최적화나 최대 우회이거나 재생성 상한 배수의 답이 자동이면 답을 받은 직후, preflight.py로 기록하기 전에 references/defects.md를 읽는다. 첫 프롬프트 우회 절에 답변별 유지 요소와 사용 수단이 정리되어 있다. 최대 우회의 피사체 교체 확인 절차도 이 절에 있다. 피사체를 교체하면 `--subject`와 두 배수의 자동 판단이 달라질 수 있으므로 확인은 기록 전에 완료한다. 재생성 상한 배수의 자동 판단 기준은 재생성 상한 배수 자동 판단 절에 있다. 두 조건에 모두 해당하지 않으면 이 문서를 생성 후 점검 전에 읽는다.
 
 ### 답변 기록
 
 답을 받으면 preflight.py로 출력 폴더에 preflight.json을 기록한다. 생성 스크립트는 이 파일이 없으면 종료 코드 2로 중단되고, preflight.py는 필요한 답이 누락되면 누락 항목을 나열한 뒤 종료 코드 2로 중단된다. 질의 없이 임의로 채운 값은 기록하지 않는다.
 
 ```
-# 인물이 등장함, 답 "1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c, 9-b, 10-b", 자동 판단으로 3배와 전 후보를 결정함
-PY scripts/preflight.py --out ./outputs --subject person --display available --enhance general --trim free --postfix auto --face-scope always --finger-inpaint off --candidates auto --candidates-resolved 3 --candidates-reason "전신과 손이 드러나는 인물 구도" --candidate-pick user --spare-finish auto --spare-finish-resolved all --spare-finish-reason "사용자 선택과 얼굴 상시 복원" --upfront-workaround optimize --regen-scale 2 --user-reply "1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c, 9-b, 10-b"
+# 인물이 등장함, 답 "1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c, 9-b, 10-d", 자동 판단으로 후보 3배, 전 후보, 재생성 상한 3배를 결정함
+PY scripts/preflight.py --out ./outputs --subject person --display available --enhance general --trim free --postfix auto --face-scope always --finger-inpaint off --candidates auto --candidates-resolved 3 --candidates-reason "전신과 손이 드러나는 인물 구도" --candidate-pick user --spare-finish auto --spare-finish-resolved all --spare-finish-reason "사용자 선택과 얼굴 상시 복원" --upfront-workaround optimize --regen-scale auto --regen-scale-resolved 3 --regen-scale-reason "전신과 손이 드러나는 인물 구도, 장당 약 40초" --user-reply "1-b, 2-c, 3-a, 4-b, 5-a, 6-d, 7-b, 8-c, 9-b, 10-d"
 
 # 사물만 등장함, 모델 선택 포함, 답 "1-b, 2-b, 3-a, 6-a, 7-a, 8-b"
 PY scripts/preflight.py --out ./outputs --subject other --display available --enhance general --trim same --candidates 1 --upfront-workaround off --regen-scale 1 --preset sdxs --user-reply "1-b, 2-b, 3-a, 6-a, 7-a, 8-b"
@@ -273,8 +274,8 @@ PY scripts/preflight.py --out ./outputs --subject other --display available --en
 - `--candidate-pick`은 에이전트 선택이 `auto`, 사용자 선택이 `user`다.
 - `--spare-finish`는 채택본만이 `adopted`, 전 후보가 `all`, 자동이 `auto`다. `auto`면 결정한 값을 `--spare-finish-resolved`에, 근거 한 줄을 `--spare-finish-reason`에 기재한다.
 - `--upfront-workaround`는 미사용이 `off`, 최적화가 `optimize`, 최대 우회가 `max`다.
-- `--regen-scale`은 재생성 상한 배수다. 1배부터 3배는 `1`부터 `3`, 직접 입력은 입력한 정수, 무제한은 `unlimited`다.
-- 후보 선택과 여분 후보 보정은 정해진 배수가 2 이상일 때만 필요하다. 사용하지 않는 항목은 null로 기록된다. 이후 단계는 `candidates_resolved`와 `spare_finish_resolved`에 기록된 값을 사용한다.
+- `--regen-scale`은 재생성 상한 배수다. 1배부터 3배는 `1`부터 `3`, 직접 입력은 입력한 정수, 자동은 `auto`, 무제한은 `unlimited`다. `auto`면 결정한 배수(1 이상의 정수)를 `--regen-scale-resolved`에, 근거 한 줄을 `--regen-scale-reason`에 기재한다.
+- 후보 선택과 여분 후보 보정은 정해진 배수가 2 이상일 때만 필요하다. 사용하지 않는 항목은 null로 기록된다. 이후 단계는 `candidates_resolved`, `spare_finish_resolved`, `regen_scale_resolved`에 기록된 값을 사용한다.
 - `--user-reply`에는 사용자 답변을 그대로 기재한다.
 - 같은 대화의 다음 생성은 같은 출력 폴더의 기록을 그대로 사용한다. 사용자가 선택을 변경하거나 인물 등장 여부가 달라지면 preflight.py를 다시 실행한다.
 - 화풍이 사진풍이나 수채화로 새로 변경되면 화질 보정 항목만 다시 질의한다. 화풍이 사진풍과 비사진 화풍 사이에서 전환되면 얼굴 복원 범위 항목만 다시 질의한다.

@@ -36,6 +36,7 @@ Changelog rules
 - Fixed the regeneration count, which runs read in different ways, so that prompt edits and seed changes for general defects always count separately from the stage limits, with one more generation for message, diagram, and unsubstituted scene requests that change the stand-in or element combination (#44)
 - Fixed the pre-generation regeneration notice, which counted only the stage limits, to state the maximum regenerations for shape defects and for other defects separately with the maximum added time of using both, marked as an upper bound that is usually shorter and excluding checks and post-processing (#44)
 - Fixed the automatic regeneration limit multiplier, which left general defect regenerations out of its maximum added time, so that a work time limit the user states now holds (#44)
+- Fixed the pre-generation regeneration notice, which called the maximum added time an upper bound that is usually shorter, to say that the actual time may be shorter or longer because the time per image is estimated before generation (#45)
 
 * 결함이 잦은 피사체, 큰 사용처나 품질 우선 요청, 장당 예상 시간, 작업 시간 한도 기준의 1-3배 결정, 무제한 제외, 생성 전 근거 안내를 담은 재생성 상한 배수 자동 선택지 추가 (#43)
 * 후보 생성과 같은 순서에 따른 재생성 상한 배수 선택지 기호(자동 d, 직접 입력 e, 무제한 f) 변경 (#43)
@@ -43,6 +44,7 @@ Changelog rules
 * 단계 상한과 분리한 일반 결함의 프롬프트 수정과 seed 변경 횟수, 메시지 요청, 도해 요청, 치환 없는 장면형 요청의 1회 추가 생성을 담은 재생성 횟수 기준 수정 (#44)
 * 형태 결함과 그 밖의 결함의 최대 재생성 횟수, 두 횟수를 모두 쓸 때의 최대 추가 시간, 상한 표기, 점검과 후처리 시간 제외 안내를 담은 생성 전 재생성 안내 수정 (#44)
 * 일반 결함 재생성 시간을 포함한 재생성 상한 배수 자동 판단의 최대 추가 시간 계산 수정 (#44)
+* 최대 추가 시간보다 짧거나 길 수 있는 실제 시간을 반영한 생성 전 재생성 안내의 시간 표기 수정 (#45)
 
 ## 2026-11-02
 

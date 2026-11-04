@@ -31,8 +31,18 @@ Changelog rules
 
 ### image-gen-lite
 - Added the image-gen-lite skill in Korean and English editions, a lite edition of image-gen that generates with the same local CPU presets and delivers the model's output as is, without edge trimming, face restoration, region redrawing, or upscaling (#46)
+- Changed the composition so that it is no longer asked and is decided in order from a stated composition, a described setting or time of day (scene), and the intended use, falling back to an icon as image-gen does (#48)
+- Changed the style so that it is no longer asked when unspecified, and the questions instead report one recommended style in one line, chosen for the request and the model, with digital painting as the fallback and another style accepted in the answer (#48)
+- Added an automatic choice to the candidate multiplier item that picks 1x to 3x from defect-prone subjects, uses 1x with the precise preset, and is reported with a one-line reason before generation (#48)
+- Added an automatic choice to the regeneration limit item that picks 0 to 3 from defect-prone subjects and a large use or a quality-first request, uses 1 or less with the precise preset and 0 when speed comes first, never picks unlimited, and is reported with a one-line reason before generation (#48)
+- Changed the choice letters of the candidate multiplier item to automatic d) and custom e), and of the regeneration limit item to automatic d), custom e), and unlimited f), in the same order as image-gen (#48)
 
 * image-gen과 같은 로컬 CPU 프리셋의 생성 결과를 가장자리 정리, 얼굴 복원, 부분 다시 그리기, 업스케일 없이 그대로 전달하는 경량판 image-gen-lite 스킬의 한국어판 및 영어판 추가 (#46)
+* 질의 생략, 지정 구도, 직접 묘사한 배경이나 시간대(장면형), 사용처 순서의 판단, image-gen과 같은 도상형 기본값을 담은 구도 결정 방식 변경 (#48)
+* 화풍 미지정 시 질의 생략, 요청과 모델에 맞춘 추천 화풍의 한 줄 안내, 디지털 페인팅 기본값, 답변 내 다른 화풍 지정을 담은 화풍 결정 방식 변경 (#48)
+* 결함이 잦은 피사체 기준의 1-3배 결정, 정밀 프리셋의 1배 고정, 생성 전 근거 안내를 담은 후보 배수 자동 선택지 추가 (#48)
+* 결함이 잦은 피사체, 큰 사용처나 품질 우선 요청 기준의 0-3회 결정, 정밀 프리셋의 1회 이하 제한, 속도 우선 시 0회, 무제한 제외, 생성 전 근거 안내를 담은 재생성 상한 자동 선택지 추가 (#48)
+* image-gen과 같은 순서에 따른 후보 배수 선택지 기호(자동 d, 직접 입력 e)와 재생성 상한 선택지 기호(자동 d, 직접 입력 e, 무제한 f) 변경 (#48)
 
 ## 2026-11-03
 

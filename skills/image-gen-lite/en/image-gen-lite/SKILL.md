@@ -94,7 +94,7 @@ There are two compositions: icon and scene. Do not ask about the composition. De
 
 ## Style
 
-If the user specifies a style, follow it. Otherwise, do not ask. Choose one recommended style and report it. Many requests do not specify a style. A style question is hard to answer for a first-time user.
+If the user specifies a style, follow it. Otherwise, do not ask. Choose one recommended style and report it.
 
 - Choose the recommended style by its technique name, to fit the mood of the request and the intended use. Without grounds to choose, use digital painting.
 - Choose the recommended style to match each model's traits in the presets section. Example: shapes collapse with flat vector on the Standard model, so do not recommend flat vector for it. For the Flat model, recommend flat vector or watercolor with paint bleed.

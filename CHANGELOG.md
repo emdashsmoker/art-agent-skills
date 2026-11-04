@@ -27,6 +27,13 @@ Changelog rules
 - (Push) Commit on top of the latest main and push directly to main.
 -->
 
+## 2026-11-04
+
+### image-gen-lite
+- Added the image-gen-lite skill in Korean and English editions, a lite edition of image-gen that generates with the same local CPU presets and delivers the model's output as is, without edge trimming, face restoration, region redrawing, or upscaling (#46)
+
+* image-gen과 같은 로컬 CPU 프리셋의 생성 결과를 가장자리 정리, 얼굴 복원, 부분 다시 그리기, 업스케일 없이 그대로 전달하는 경량판 image-gen-lite 스킬의 한국어판 및 영어판 추가 (#46)
+
 ## 2026-11-03
 
 ### image-gen

@@ -33,7 +33,7 @@ Agent Skills that make creative pictures such as illustrations, paintings and ph
 ### Diffusion-based
 
 - [`image-gen`](skills/image-gen/): Generates images with local diffusion models on the CPU, then fixes defects with edge trimming, face restoration, region redrawing and upscaling. [Samples](skills/image-gen/demo/)
-- [`image-gen-addon-codeformer`](skills/image-gen-addon-codeformer/): Add-on that brings CodeFormer into the face restoration step of `image-gen`.
+- [`image-gen-addon-codeformer`](skills/image-gen-addon-codeformer/): Add-on that brings CodeFormer into the face restoration step of `image-gen`. It is not compatible with `image-gen-lite`.
 - [`image-gen-lite`](skills/image-gen-lite/): Lite edition of `image-gen`. Generates with the same local CPU presets and delivers the diffusion model's output as it is, without edge trimming, face restoration, region redrawing or upscaling.
 
 ### Non-diffusion
@@ -109,7 +109,7 @@ The models that `image-gen` and `image-gen-lite` download keep their own license
 ### 확산 모델 기반
 
 - [`image-gen`](skills/image-gen/): 로컬 확산 모델을 CPU로 실행해 이미지를 생성하고 가장자리 정리, 얼굴 복원, 부분 다시 그리기, 업스케일로 결함을 보정합니다. [예시](skills/image-gen/demo/)
-- [`image-gen-addon-codeformer`](skills/image-gen-addon-codeformer/): `image-gen`의 얼굴 복원 단계에 CodeFormer를 추가하는 애드온입니다.
+- [`image-gen-addon-codeformer`](skills/image-gen-addon-codeformer/): `image-gen`의 얼굴 복원 단계에 CodeFormer를 추가하는 애드온입니다. `image-gen-lite`와는 호환되지 않습니다.
 - [`image-gen-lite`](skills/image-gen-lite/): `image-gen`의 경량판입니다. 같은 로컬 CPU 프리셋으로 이미지를 생성하고 가장자리 정리, 얼굴 복원, 부분 다시 그리기, 업스케일 없이 확산 모델의 결과를 그대로 전달합니다.
 
 ### 비확산 모델 기반

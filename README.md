@@ -34,6 +34,7 @@ Agent Skills that make creative pictures such as illustrations, paintings and ph
 
 - [`image-gen`](skills/image-gen/): Generates images with local diffusion models on the CPU, then fixes defects with edge trimming, face restoration, region redrawing and upscaling. [Samples](skills/image-gen/demo/)
 - [`image-gen-addon-codeformer`](skills/image-gen-addon-codeformer/): Add-on that brings CodeFormer into the face restoration step of `image-gen`.
+- [`image-gen-lite`](skills/image-gen-lite/): Lite edition of `image-gen`. Generates with the same local CPU presets and delivers the diffusion model's output as it is, without edge trimming, face restoration, region redrawing or upscaling.
 
 ### Non-diffusion
 
@@ -84,7 +85,7 @@ Changes are recorded in [CHANGELOG.md](CHANGELOG.md).
 - For results that do not resemble them, add an instruction such as `Do not make it similar to the examples or demos in the skill.` to your request.
 - Every skill needs a code execution environment and network access.
 - The skills use many tokens because the model reads long reference files and the images it renders over several rounds of checking.
-- `image-gen` downloads several gigabytes of model files on first use and generates on the CPU, so each image takes time.
+- `image-gen` and `image-gen-lite` download several gigabytes of model files on first use and generate on the CPU, so each image takes time.
 
 ## Disclaimer
 
@@ -96,7 +97,7 @@ The skills come as they are, without any warranty. Correct operation in every en
 
 Each skill carries its own `LICENSE` and notice files. Under the output exception, the pictures you make with a skill are free of GPL terms. The sample pictures in the `demo/` folders are licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
 
-The models that `image-gen` downloads keep their own licenses, listed in `references/components.md`. CreativeML OpenRAIL-M and OpenRAIL++-M restrict how the models and their output may be used. CodeFormer, which `image-gen-addon-codeformer` loads, is under the S-Lab License 1.0 and allows non-commercial use only.
+The models that `image-gen` and `image-gen-lite` download keep their own licenses, listed in `references/components.md` of `image-gen` and in `NOTICE.md` of `image-gen-lite`. CreativeML OpenRAIL-M and OpenRAIL++-M restrict how the models and their output may be used. CodeFormer, which `image-gen-addon-codeformer` loads, is under the S-Lab License 1.0 and allows non-commercial use only.
 
 </details>
 
@@ -109,6 +110,7 @@ The models that `image-gen` downloads keep their own licenses, listed in `refere
 
 - [`image-gen`](skills/image-gen/): 로컬 확산 모델을 CPU로 실행해 이미지를 생성하고 가장자리 정리, 얼굴 복원, 부분 다시 그리기, 업스케일로 결함을 보정합니다. [예시](skills/image-gen/demo/)
 - [`image-gen-addon-codeformer`](skills/image-gen-addon-codeformer/): `image-gen`의 얼굴 복원 단계에 CodeFormer를 추가하는 애드온입니다.
+- [`image-gen-lite`](skills/image-gen-lite/): `image-gen`의 경량판입니다. 같은 로컬 CPU 프리셋으로 이미지를 생성하고 가장자리 정리, 얼굴 복원, 부분 다시 그리기, 업스케일 없이 확산 모델의 결과를 그대로 전달합니다.
 
 ### 비확산 모델 기반
 
@@ -159,7 +161,7 @@ skills/vinyl-cel/
 - 예제를 닮지 않은 결과물이 필요하면 요청할 때 `스킬에 들어 있는 예제나 데모와 비슷하게 만들지 마세요` 같은 제외 지시를 함께 기재하기를 권장합니다.
 - 모든 스킬은 코드 실행 환경과 네트워크 연결이 있어야 작동합니다.
 - 스킬을 실행하면 토큰이 많이 소모됩니다. 모델이 긴 참고 문서와 여러 차례 렌더링한 확인용 그림을 읽기 때문입니다.
-- `image-gen`은 처음 실행할 때 수 GB의 모델 파일을 내려받습니다. CPU로 생성하므로 이미지 한 장을 만드는 데 시간이 걸립니다.
+- `image-gen`과 `image-gen-lite`는 처음 실행할 때 수 GB의 모델 파일을 내려받습니다. CPU로 생성하므로 이미지 한 장을 만드는 데 시간이 걸립니다.
 
 ## 면책 고지
 
@@ -171,7 +173,7 @@ skills/vinyl-cel/
 
 스킬마다 `LICENSE`와 고지 파일이 들어 있습니다. 출력물 예외 조항에 따라 스킬로 그린 그림은 GPL 조건 없이 사용할 수 있습니다. `demo/` 폴더의 예시 그림은 [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.ko)을 따릅니다.
 
-`image-gen`이 내려받는 모델은 각자의 라이선스를 따릅니다. 모델별 라이선스는 `references/components.md`에 정리되어 있습니다. CreativeML OpenRAIL-M과 OpenRAIL++-M은 모델과 생성물의 사용 범위를 제한합니다. `image-gen-addon-codeformer`가 불러오는 CodeFormer는 비상업적 용도만 허용하는 S-Lab License 1.0을 따릅니다.
+`image-gen`과 `image-gen-lite`가 내려받는 모델은 각자의 라이선스를 따릅니다. 모델별 라이선스는 `image-gen`의 `references/components.md`와 `image-gen-lite`의 `NOTICE.md`에 정리되어 있습니다. CreativeML OpenRAIL-M과 OpenRAIL++-M은 모델과 생성물의 사용 범위를 제한합니다. `image-gen-addon-codeformer`가 불러오는 CodeFormer는 비상업적 용도만 허용하는 S-Lab License 1.0을 따릅니다.
 
 </details>
 

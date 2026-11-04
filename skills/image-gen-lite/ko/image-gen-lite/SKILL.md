@@ -210,7 +210,7 @@ PY -m pip install --no-cache-dir diffusers transformers accelerate safetensors p
 # 도상형, 표준 프리셋
 PY scripts/generate.py --prompt "a brass compass on a desk, watercolor illustration, plain background" --out ./outputs --name compass
 
-# 장면형 배너 1024x576, 가로로 긴 규격이므로 피사체를 작게 두고 수평선을 아래 3분의 1에 맞춤
+# 장면형 배너 1024x576, 가로로 긴 규격이므로 피사체를 작게 두고 기준점 0.4로 수평선이 중간보다 약간 아래에 오게 함
 PY scripts/generate.py --prompt "a small lighthouse on a rocky coast at sunrise, wide shot, muted blue palette, watercolor illustration" --out ./outputs --name banner --width 1024 --height 576 --anchor-y 0.4
 
 # 세로형 표지 600x800, 세로로 선 피사체의 윗부분을 유지함
@@ -244,14 +244,14 @@ setsid nohup PY scripts/generate.py --preset flux2-klein-4b --prompt "an adult w
 4. 요청하지 않은 인물이나 사물이 화면 가운데를 차지하지 않는다.
 
 - 판정이 모호한 항목은 미충족으로 간주한다.
-- 비교 결과는 이미지마다 한 줄로 기록한다. 예: `stairs-02: 1 충족, 2 충족, 3 미충족(계단 난간이 중간에서 끊김), 4 충족`
+- 비교 결과는 이미지마다 한 줄로 기록한다. 예: `stairs_02: 1 충족, 2 충족, 3 미충족(계단 난간이 중간에서 끊김), 4 충족`
 
 ## 후보 선별
 
 후보 배수가 2 이상이면 생성한 후보 전체를 채택 기준으로 비교해 목표 장수만큼 채택한다.
 
 - 채택본은 전달 절에 따라 전달한다. 여분은 생성한 폴더에 그대로 두고 경로와 seed를 함께 안내한다.
-- 채택 사유는 채택 기준 번호로 한 줄 기재한다. 예: "stairs-01을 채택했습니다. 후보 중 유일하게 기준 1-4를 모두 충족합니다. stairs-02는 난간이 끊겼고 stairs-03은 계단이 두 개로 겹쳤습니다."
+- 채택 사유는 채택 기준 번호로 한 줄 기재한다. 예: "stairs_01을 채택했습니다. 후보 중 유일하게 기준 1-4를 모두 충족합니다. stairs_02는 난간이 끊겼고 stairs_03은 계단이 두 개로 겹쳤습니다."
 - 모든 후보가 기준 1(피사체 식별)을 충족하지 못하고 재생성 상한이 0회면 그중 가장 나은 후보를 전달하고 미충족 내용을 함께 안내한다.
 
 ## 재생성
@@ -294,6 +294,7 @@ setsid nohup PY scripts/generate.py --preset flux2-klein-4b --prompt "an adult w
 | 종료 코드 2 | 인자 누락이나 범위 밖 값 | 메시지에 따라 인자를 수정한다 |
 | 종료 코드 3 | 모델이나 엔진 내려받기 실패 | 네트워크를 확인하고 다시 실행한다. 반복되면 이유를 안내하고 중단한다 |
 | 종료 코드 4 | 의존성 미설치 | 환경 준비 단계로 돌아간다 |
+| 종료 코드 5 | 결과 파일 저장 실패(쓰기 권한 없음, 디스크 공간 부족) | 저장 경로의 쓰기 권한과 디스크 여유 공간을 확인하고 다시 실행한다 |
 | 종료 코드 6 | 메모리나 디스크 부족 | 자원과 캐시 절에 따라 정리하거나 더 가벼운 프리셋을 제시한다 |
 | 종료 코드 7 | 산출물 점검 실패 | seed를 1 올려 다시 실행한다 |
 | 종료 코드 8 | 엔진 파일 해시 불일치, 손상 파일은 자동 삭제됨 | 다시 실행해 새로 내려받는다. 반복되면 정밀 프리셋을 선택지에서 제외한다 |

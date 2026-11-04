@@ -212,7 +212,7 @@ After the first image, report the estimated time for the remaining images from t
 # Icon, Standard preset
 PY scripts/generate.py --prompt "a brass compass on a desk, watercolor illustration, plain background" --out ./outputs --name compass
 
-# Scene banner 1024x576, a wide format, so the subject stays small and the horizon sits in the lower third
+# Scene banner 1024x576, a wide format, so the subject stays small and anchor 0.4 puts the horizon slightly below the middle
 PY scripts/generate.py --prompt "a small lighthouse on a rocky coast at sunrise, wide shot, muted blue palette, watercolor illustration" --out ./outputs --name banner --width 1024 --height 576 --anchor-y 0.4
 
 # Portrait cover 600x800, keeps the top of an upright subject
@@ -246,14 +246,14 @@ Candidate selection and regeneration compare images by the criteria below. Open 
 4. No unrequested person or object occupies the center of the frame.
 
 - Treat a criterion with an unclear judgment as not met.
-- Record the comparison in one line per image. Example: `stairs-02: 1 met, 2 met, 3 not met (the stair railing breaks off midway), 4 met`
+- Record the comparison in one line per image. Example: `stairs_02: 1 met, 2 met, 3 not met (the stair railing breaks off midway), 4 met`
 
 ## Candidate selection
 
 If the candidate multiplier is 2 or more, compare all generated candidates by the adoption criteria and adopt the target number of images.
 
 - Deliver the adopted images as the delivery section describes. Leave the spares in the folder where they were generated, and report their paths and seeds.
-- State the reason for adoption in one line with the criterion numbers. Example: "I adopted stairs-01. It is the only candidate that meets all of criteria 1-4. stairs-02 has a broken railing, and stairs-03 has two overlapping staircases."
+- State the reason for adoption in one line with the criterion numbers. Example: "I adopted stairs_01. It is the only candidate that meets all of criteria 1-4. stairs_02 has a broken railing, and stairs_03 has two overlapping staircases."
 - If no candidate meets criterion 1 (subject recognition) and the regeneration limit is 0, deliver the best of them and report what was not met.
 
 ## Regeneration
@@ -296,6 +296,7 @@ If the regeneration limit is 1 or more, check by the adoption criteria before de
 | Exit code 2 | Missing argument or value out of range | Correct the argument as the message indicates |
 | Exit code 3 | Model or engine download failed | Check the network and run again. If it fails repeatedly, explain the reason and stop |
 | Exit code 4 | Missing dependency | Return to setup |
+| Exit code 5 | Saving the result file failed (no write permission, insufficient disk space) | Check write permission and free disk space at the save path, then run again |
 | Exit code 6 | Insufficient memory or disk | Clean up as the resources and cache section describes, or offer a lighter preset |
 | Exit code 7 | Output check failed | Raise the seed by 1 and run again |
 | Exit code 8 | Engine file hash mismatch, the damaged file is deleted automatically | Run again to download a fresh copy. If it fails repeatedly, leave the precise preset out of the choices |

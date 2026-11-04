@@ -15,8 +15,8 @@ Diffusion models cannot draw text, exact connector lines, numbers, or exact coun
 ## Workflow
 
 1. Setup: create a dedicated virtual environment for the skill and install the dependencies.
-2. Request type and composition: determine the subject and its composition.
-3. Pre-generation questions: ask about the model choice and the optional features at once.
+2. Request type and composition: determine the subject and its composition. For a request with no style specified, choose a recommended style.
+3. Pre-generation questions: ask about the model choice and the optional features at once. For items answered with automatic, decide the values and report them.
 4. Prompt: write an English prompt.
 5. Generate: run generate.py.
 6. Selection and regeneration: perform only when the candidate multiplier is 2x or more or the regeneration limit is 1 or more.
@@ -77,7 +77,12 @@ The skill does not generate unclothed figures or sexual depictions (sexual acts 
 
 ## Composition
 
-There are two compositions: icon and scene. Follow the user's choice if they specify one. Otherwise decide based on where the image will be used. If that is also unknown, include the composition item in the pre-generation questions.
+There are two compositions: icon and scene. Do not ask about the composition. Decide it in the order below.
+
+1. If the user specifies a composition, follow it.
+2. If the user directly describes the setting around the subject (a street, a beach, a room, and so on) or a time of day, generate a scene. Use the described setting and time of day as the scene's elements and time of day.
+3. If the intended use is known, decide by the main use in the table below.
+4. If the intended use is also unknown, generate an icon, which shows the subject most clearly.
 
 | Composition | Look | Main use | Prompt order |
 |---|---|---|---|
@@ -86,6 +91,16 @@ There are two compositions: icon and scene. Follow the user's choice if they spe
 
 - For scene elements, choose common objects and places that the topic of the intended use brings to mind. Example: a background for educational material uses books on a desk and a plant by the window, morning sunlight, and a warm beige color family.
 - Write the scene's time of day as an expression for the state of the light, such as `morning light`, `golden hour`, or `night`. If the material where the image will be used already has colors, follow that color family.
+
+## Style
+
+If the user specifies a style, follow it. Otherwise, do not ask. Choose one recommended style and report it.
+
+- Choose the recommended style by its technique name, to fit the mood of the request and the intended use. Without grounds to choose, use digital painting.
+- Choose the recommended style to match each model's traits in the presets section. Example: shapes collapse with flat vector on the Standard model, so do not recommend flat vector for it. For the Flat model, recommend flat vector or watercolor with paint bleed.
+- If the model is chosen in the same pre-generation questions, report the style for the default Standard model. If the recommended style does not suit the model set by the answer, switch to a style that suits that model. Report the switched style in one line before generation.
+- When asking the pre-generation questions, report the recommended style in one line within them (see the question format). If the user writes a different style in the answer, follow that style.
+- When generating without questions, report the recommended style in one line before generation. Proceed without waiting for confirmation.
 
 ## Presets
 
@@ -113,37 +128,37 @@ A preset is a combination of a model and fixed settings. Change the style with t
 
 ## Pre-generation questions
 
-Before the first generation, ask all applicable items in the table below at once. The model sets the look of the result and the time it takes, and the candidate multiplier and regeneration add checking time, so the user chooses them.
+Before the first generation, ask all applicable items in the table below at once. The model sets the look of the result and the time it takes, and the candidate multiplier and regeneration add checking time, so the user chooses them. Do not ask about the composition or the style. Decide them as the composition and style sections describe.
 
 | Item | Ask when | Skip when |
 |---|---|---|
 | Model choice | Every request | The user named a model, or said that speed or quality comes first |
 | Candidate multiplier | Every request | The user stated a multiplier |
 | Regeneration limit | Every request | The user stated a count or unlimited |
-| Composition | The user specified neither the composition nor the intended use | Never |
 | Size | The intended use implies a non-square format, such as a banner, cover, or slide background, and no size is given | Never |
-| Style | No style is specified | Never |
 | Substitution check | Message request | Never |
 | Diagram consent | Diagram request | Never |
 
 - Omit only the items the user has already answered. Also ask the items that have a recommended option.
 - When the user delegates with phrases such as "up to you" or "use the defaults", present the default combination in one line and get confirmation. Example: "Shall I proceed with 1-a, 2-a, 3-a?" The defaults are the Standard model, a 1x candidate multiplier, and a regeneration limit of 0.
-- The candidate multiplier is multiplied by the target number of images to set how many images are generated at once. If the multiplier is 2 or more, pick the target number of images after generation as the candidate selection section describes. Take custom input as a whole-number multiplier.
-- The regeneration limit is the maximum number of regenerations per target image. If it is 1 or more, check after generation as the regeneration section describes and regenerate only when needed. Mark unlimited as not recommended, and follow it if the user chooses it.
+- The candidate multiplier is multiplied by the target number of images to set how many images are generated at once. If the multiplier is 2 or more, pick the target number of images after generation as the candidate selection section describes. With automatic, choose from 1x to 3x as the automatic decision section describes. Take custom input as a whole-number multiplier.
+- The regeneration limit is the maximum number of regenerations per target image. If it is 1 or more, check after generation as the regeneration section describes and regenerate only when needed. With automatic, choose from 0 to 3 as the automatic decision section describes. Mark unlimited as not recommended, and follow it if the user chooses it.
 - Word the model choices by carrying over the role, suitable styles, generation size, and first download from the preset table.
-- Later requests in the same conversation reuse the answers to the first questions. If the user changes a choice, or a conditional item (composition, size, style, substitution check, diagram consent) newly applies, ask only that item again.
+- Later requests in the same conversation reuse the answers to the first questions. If the user changes a choice, or a conditional item (size, substitution check, diagram consent) newly applies, ask only that item again. For items answered with automatic, decide again for each request and report the values.
 
 Question format:
 
 - Number only the applicable items from 1 in order, and write choices as a), b), c). If model choice is among the questions, make it item 1. Match the item number in each custom-input example answer to the actual item number.
 - Confirm the items left out because the user already specified them in one line after the first line. Example: "As you specified, I will use the Light model and a regeneration limit of 2."
+- For a request with no style specified, report the recommended style and how to change it in one line before the numbered items.
 - Write a numbered list in plain conversation text. Do not use code blocks or tables.
 - Put the answer format and an example answer on the first line.
 - Mark the default of each item with "(default)".
 
-Example for a named subject request with objects only:
+Example for a named subject request with objects only and no style specified:
 
 > Before generating, I would like to confirm the items below. Please answer with the item number and choice letter. (Example: 1-a, 2-a, 3-a)
+> I will use digital painting, the recommended style. If you want a different style, add it at the end of your answer. (Example: 1-a, 2-a, 3-a, watercolor)
 > 1. [Model choice] The model you will keep using in this conversation. Generation time depends on the runtime environment's CPU, and I will report the measured time after the first image.
 >    a) Standard (DreamShaper 8 LCM) (default): photographic, illustration, painting, and watercolor in general. 512x512, first download about 4.3GB
 >    b) Light (SDXS): fastest. Detail is simpler, and photographic styles also come out like illustrations. 512x512, about 2.1GB
@@ -153,36 +168,56 @@ Example for a named subject request with objects only:
 >    a) 1x (default): generate only the target number
 >    b) 2x
 >    c) 3x
->    d) Custom: enter a whole-number multiplier (example: 2-d 4)
+>    d) Automatic: raises the multiplier only for defect-prone requests, such as people, animals, visible hands, or crowds. I report the multiplier chosen from 1x to 3x before generation
+>    e) Custom: enter a whole-number multiplier (example: 2-e 4)
 > 3. [Regeneration limit] If the check before delivery finds a result that differs from the request or shows defects typical of diffusion models, I regenerate with the same prompt and only a new seed. This is the maximum count per image.
 >    a) 0 (default): deliver the generated result as it is
 >    b) 1
 >    c) 3
->    d) Custom: enter a whole-number count (example: 3-d 5)
->    e) Unlimited (not recommended): keep generating until the adoption criteria are met, with a one-line progress update every 3 rounds
+>    d) Automatic: I choose from 0 to 3 based on how defect-prone the subject is, the intended use, and the model speed. I report the chosen count before generation
+>    e) Custom: enter a whole-number count (example: 3-e 5)
+>    f) Unlimited (not recommended): keep generating until the adoption criteria are met, with a one-line progress update every 3 rounds
 
 List the conditional items after these. The numbers in the example below continue from the three items above. If earlier items are skipped, start numbering from 1 again. Example:
 
-> 4. [Composition] The intended use is not set, so I am asking about the composition. If you tell me the intended use, I will decide based on it.
->    a) Icon: one subject in the center on a plain background. Suits body illustrations and slide illustrations
->    b) Scene: a scene built from 2-3 elements. Suits background images, banners, and covers
-> 5. [Size] Slide covers usually use a 16:9 ratio. The generation size is 512x512, and a larger size can add blur from enlargement.
+> 4. [Size] Slide covers usually use a 16:9 ratio. The generation size is 512x512, and a larger size can add blur from enlargement.
 >    a) Generation size as is (default): delivered at 512x512
 >    b) 1920x1080 (16:9): cropped to the ratio, then enlarged
->    c) Custom: enter width x height (example: 5-c 1600x900)
-> 6. [Style] No style was specified, so I am asking.
->    a) Digital painting (default): works for most uses
->    b) Photographic
->    c) Watercolor
->    d) Flat vector: suits the Flat model. Shapes collapse with the Standard model
->    e) Custom: describe the style you want
-> 7. [Substitution check] Diffusion models cannot draw "growth" directly, so I will draw it as an object.
+>    c) Custom: enter width x height (example: 4-c 1600x900)
+> 5. [Substitution check] Diffusion models cannot draw "growth" directly, so I will draw it as an object.
 >    a) A pot with a sprouting seedling
 >    b) A person seen from behind, climbing stairs
 >    c) Custom: describe the object or scene to draw
 
 - In a runtime environment where the precise preset does not run, leave out the Precise choice and reletter the remaining choices from a) in order.
 - If the precise preset was left out, add "The Precise model cannot run on this operating system, so it is not among the choices" to the first line of the questions.
+
+### Automatic decision
+
+If the answer for the candidate multiplier or the regeneration limit is automatic, decide the value after receiving the answer and before the first generation. In later steps, the candidate multiplier and the regeneration limit refer to the decided values. If both items are automatic, decide the candidate multiplier first, because one regeneration is a new batch the size of the candidate multiplier.
+
+The grounds below are defect likelihood grounds. Both items raise their values on these grounds.
+
+- The main subject is fragile in shape: a person, an animal, or an object whose part connections are decisive for recognition, such as a bicycle or glasses.
+- The composition shows a person's hands or full body.
+- The scene has several people or a background crowd.
+
+The candidate multiplier starts from a baseline of 1x.
+
+- With one defect likelihood ground, consider 2x. With several, consider 3x.
+- With the precise preset, use 1x, because it takes the longest per image and renders shapes most accurately.
+
+The regeneration limit starts from a baseline of 0.
+
+- With one defect likelihood ground, consider 1. With several grounds, or with a large use such as a cover, banner, or print, or a request that puts quality first, consider up to 3.
+- If the candidate multiplier was raised, also weigh how much the maximum number of images per target image (`candidate multiplier * (1 + regeneration limit)`) grows.
+- With the precise preset, use 1 or less. If the user said that speed comes first, use 0.
+- Never choose unlimited automatically, because it has no set end point.
+
+Apply the rules below to both items.
+
+- If the user stated a work time limit, choose values that stay within it.
+- Report the decided values with a one-line reason before generation starts. Proceed without waiting for confirmation. Example: "I set the candidate multiplier to 2x and the regeneration limit to 1. A full-body figure with visible hands is defect-prone."
 
 ## Time estimates
 
@@ -276,6 +311,7 @@ If the regeneration limit is 1 or more, check by the adoption criteria before de
 - If a message request was drawn through substitution, report the substituted object.
 - If the image was cropped to a requested size, report the crop direction and the anchor.
 - If the candidate multiplier or regeneration was used, report the reason for adoption, the spare paths, and the regeneration count.
+- If the candidate multiplier or the regeneration limit was decided automatically, record the decided values and the reasons in the reproduction details.
 - For JPEG, generate with `--format jpg` or convert the PNG.
 - For a result delivered directly, add one line: "This is the model's output, delivered as is without review."
 

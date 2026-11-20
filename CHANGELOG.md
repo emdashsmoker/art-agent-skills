@@ -27,6 +27,38 @@ Changelog rules
 - (Push) Commit on top of the latest main and push directly to main.
 -->
 
+## 2026-11-20
+
+### image-gen
+- Added the high-quality preset z-image-turbo (Z-Image Turbo) for photographic people and scenes, a slower choice than the precise preset that runs on the same pinned engine and shares its text encoder file (#49)
+- Changed the engine script name from generate_klein.py to generate_sdcpp.py, which takes the required --preset argument (#49)
+- Changed the engine folder in the cache from klein to sdcpp, with cache.py delete all removing a klein folder left by an earlier version (#49)
+- Changed cache.py so that deleting the precise or high-quality preset keeps the shared text encoder and engine while the other preset still has its model files (#49)
+- Changed the probe.py key precise_tier_supported to engine_presets_supported, reported together with a time estimate for the high-quality preset (#49)
+- Changed the model choices for a person as the main subject to Standard, Precise, and High quality, and a quality-first request to use High quality, or Precise for an object recognized by how its parts connect (#49)
+- Changed the role wording of the precise preset to what a same-prompt, same-seed comparison of the two presets showed (#49)
+- Changed the automatic candidate multiplier, the automatic regeneration limit multiplier, and the regeneration limit table to treat the high-quality preset like the precise preset (#49)
+
+* 정밀 프리셋과 같은 고정 엔진과 텍스트 인코더 파일을 사용하는 사진풍 인물과 장면용 고품질 프리셋 z-image-turbo(Z-Image Turbo) 추가 (#49)
+* 필수 인자 --preset을 받는 generate_sdcpp.py로의 엔진 스크립트 이름(기존 generate_klein.py) 변경 (#49)
+* 이전 버전의 klein 폴더를 cache.py delete all로 삭제할 수 있는 캐시 엔진 폴더 이름의 sdcpp 변경 (#49)
+* 다른 엔진 프리셋의 모델 파일이 남아 있는 동안 공유 텍스트 인코더와 엔진을 유지하는 cache.py의 정밀과 고품질 프리셋 삭제 방식 변경 (#49)
+* 고품질 프리셋의 예상 시간을 함께 출력하는 probe.py 키(기존 precise_tier_supported)의 engine_presets_supported 변경 (#49)
+* 인물 주 피사체의 모델 선택지(표준, 정밀, 고품질)와 품질 우선 요청의 프리셋 기준(고품질, 부품의 연결로 식별하는 사물은 정밀) 변경 (#49)
+* 두 프리셋의 같은 프롬프트와 seed 비교 결과에 따른 정밀 프리셋 역할 문구 변경 (#49)
+* 고품질 프리셋을 정밀 프리셋과 같게 다루는 후보 배수 자동 판단, 재생성 상한 배수 자동 판단, 재생성 상한 표 변경 (#49)
+
+### image-gen-lite
+- Added the high-quality preset z-image-turbo (Z-Image Turbo) as choice e) of the model question, on the operating systems that run the precise preset (#49)
+- Changed the engine folder in the cache from klein to sdcpp, so a klein folder left by an earlier version is no longer used (#49)
+- Changed the role wording of the precise preset to what a same-prompt, same-seed comparison of the two presets showed, and a quality-first request to use High quality, or Precise for an object recognized by how its parts connect (#49)
+- Changed the automatic candidate multiplier and the automatic regeneration limit to use 1x and 1 or less with the high-quality preset, as with the precise preset (#49)
+
+* 정밀 프리셋을 실행하는 운영체제에서 모델 선택 질의의 선택지 e)로 제공하는 고품질 프리셋 z-image-turbo(Z-Image Turbo) 추가 (#49)
+* 이전 버전의 klein 폴더를 사용하지 않는 캐시 엔진 폴더 이름의 sdcpp 변경 (#49)
+* 두 프리셋의 같은 프롬프트와 seed 비교 결과에 따른 정밀 프리셋 역할 문구와 품질 우선 요청의 프리셋 기준(고품질, 부품의 연결로 식별하는 사물은 정밀) 변경 (#49)
+* 고품질 프리셋에 정밀 프리셋과 같은 1배와 1회 이하를 적용하는 후보 배수 자동 판단과 재생성 상한 자동 판단 변경 (#49)
+
 ## 2026-11-04
 
 ### image-gen-lite

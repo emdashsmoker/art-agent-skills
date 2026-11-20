@@ -119,7 +119,7 @@ A preset is a combination of a model and fixed settings. Change the style with t
 - Light mostly places scene elements as instructed. It tends to produce an illustration look even when asked for a photographic style, and the same person sometimes appears twice.
 - Flat renders solid fills with crisp edges, paint bleed, and blank paper better than the other presets. Its shape stability is low, so it often draws a picture frame border as well or cuts off a person's head at the top of the frame.
 - Precise accepts natural sentences as they are and renders anatomy most accurately. It runs on Linux x86_64, Apple Silicon macOS (arm64), and Windows x64, so leave it out of the choices in any other runtime environment. Check the operating system with `PY -c "import platform; print(platform.system(), platform.machine())"`.
-- High quality renders faces and skin in photographic people with finer detail than Precise. Finger defects occur about as often as with Precise. A watercolor request shows weak paint texture. It uses the same engine as Precise, so it runs on the same operating systems.
+- High quality renders faces and skin in photographic people with finer detail than Precise. Shape defects occur about as often as with Precise. A watercolor request shows weak paint texture. It uses the same engine as Precise, so it runs on the same operating systems.
 - Before generating with the precise or high-quality preset, check that free disk space is larger than the download size. During generation it reads the weights from disk with `--mmap`, so it runs even with little memory, but more slowly.
 
 ### Model lock

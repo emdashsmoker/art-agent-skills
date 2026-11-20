@@ -85,7 +85,7 @@ This runs a 6-billion-parameter model with the same executable as the precise pr
 - Shared with the precise preset: the executable, the text encoder, memory mapping, tiled VAE decoding, the size range, prompt handling, the single-color check, one image per run, and the background run follow the precise preset section.
 - Model files: the diffusion model is Z-Image Turbo as GGUF Q4_0. The VAE comes from the official Z-Image Turbo repository. Both are downloaded at pinned revisions. About 6.4GB in total, the text encoder included. If the precise preset was used before, the text encoder is not downloaded again.
 - Settings: 8 steps and cfg 1.0 are fixed. The model card specifies 8 transformer passes without guidance. The stable-diffusion.cpp example also uses 8 steps with cfg 1.0. A cfg of 1.0 means no guidance.
-- Tendencies: finger defects occur about as often as with the precise preset. A full-body request sometimes comes out framed only down to the thighs. A watercolor request shows weak paint texture and looks closer to a clean illustration.
+- Tendencies: shape defects occur about as often as with the precise preset. A full-body request sometimes comes out framed only down to the thighs. A watercolor request shows weak paint texture and looks closer to a clean illustration.
 - Run: pass `--preset z-image-turbo` to generate_sdcpp.py. It can be omitted when preflight.json records the high-quality preset.
 
 ```

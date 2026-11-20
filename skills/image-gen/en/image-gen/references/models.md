@@ -1,6 +1,6 @@
-# Presets, precision, time estimates, the precise preset, and the cache
+# Presets, precision, time estimates, the precise and high-quality presets, and the cache
 
-Details for the preset and environment check sections of SKILL.md. Read this when choosing a preset, working out time estimates, running the precise preset, or cleaning up the cache.
+Details for the preset and environment check sections of SKILL.md. Read this when choosing a preset, working out time estimates, running the precise or high-quality preset, or cleaning up the cache.
 
 ## Preset settings
 
@@ -62,7 +62,7 @@ Most of the work is matrix multiplication, so the proportion roughly holds, but 
 This runs a 4-billion-parameter model with a prebuilt stable-diffusion.cpp executable and 4-bit quantized files, with no compilation required. It follows instructions and draws bodies with fewer errors than the SD 1.5 family, and it is the slowest.
 
 - Executable: one pinned stable-diffusion.cpp release, checked by SHA-256. Only the Linux x86_64 build is pinned, so remove this preset from the choices on other operating systems.
-- Model files: the diffusion model (FLUX.2 klein 4B as GGUF Q4_0), the text encoder (Qwen3 4B as GGUF Q4_K_M), and the VAE (from the official FLUX.2 klein 4B repository), each downloaded from its official publisher at a pinned revision. About 5.2GB in total.
+- Model files: the diffusion model (FLUX.2 klein 4B as GGUF Q4_0), the text encoder (Qwen3 4B as GGUF Q4_K_M), and the VAE (from the official FLUX.2 klein 4B repository), each downloaded from its official publisher at a pinned revision. About 5.2GB in total. The text encoder is the same file the high-quality preset uses.
 - Settings: 4 steps, cfg 1.0 (the upstream example values), memory mapping (`--mmap`), and tiled VAE decoding are fixed. Without memory mapping the weights are copied into RAM and machines with little memory run out of it.
 - Size: 384x512 by default, 512x704 pixels at most. Step time grows with pixel count, so produce larger sizes with final upscaling.
 - Prompt: accepts natural sentences as they are. No 77-token limit, no negative prompt.
@@ -72,11 +72,26 @@ This runs a 4-billion-parameter model with a prebuilt stable-diffusion.cpp execu
 A run takes a long time, so start it in the background and monitor the log. If the agent environment can be reset between conversation turns, finish the run and the wait within the same turn.
 
 ```
-setsid nohup PY scripts/generate_klein.py "an adult woman in a black coat standing on a city street at night, photorealistic, framed from head to thighs" ./outputs/klein.png --seed 42 > ./outputs/klein.log 2>&1 < /dev/null &
+setsid nohup PY scripts/generate_sdcpp.py "an adult woman in a black coat standing on a city street at night, photorealistic, framed from head to thighs" ./outputs/klein.png --seed 42 > ./outputs/klein.log 2>&1 < /dev/null &
 ```
 
 - Check the progress marks in the log (`1/4` through `4/4`), the output file, and the JSON on the last line.
 - Do not run it alongside another generation process. Running both exhausts memory and causes termination.
+
+## High-quality preset (Z-Image Turbo)
+
+This runs a 6-billion-parameter model with the same executable as the precise preset.
+
+- Shared with the precise preset: the executable, the text encoder, memory mapping, tiled VAE decoding, the size range, prompt handling, the single-color check, one image per run, and the background run follow the precise preset section.
+- Model files: the diffusion model is Z-Image Turbo as GGUF Q4_0. The VAE comes from the official Z-Image Turbo repository. Both are downloaded at pinned revisions. About 6.4GB in total, the text encoder included. If the precise preset was used before, the text encoder is not downloaded again.
+- Settings: 8 steps and cfg 1.0 are fixed. The model card specifies 8 transformer passes without guidance. The stable-diffusion.cpp example also uses 8 steps with cfg 1.0. A cfg of 1.0 means no guidance.
+- Run: pass `--preset z-image-turbo` to generate_sdcpp.py. It can be omitted when preflight.json records the high-quality preset.
+
+```
+setsid nohup PY scripts/generate_sdcpp.py "an adult woman in a black coat standing on a city street at night, photorealistic, framed from head to thighs" ./outputs/zimage.png --preset z-image-turbo --seed 42 > ./outputs/zimage.log 2>&1 < /dev/null &
+```
+
+- The progress marks in the log run from `1/8` through `8/8`.
 
 ## Cache
 
@@ -85,13 +100,15 @@ Everything the skill downloads is stored under the cache folder (`~/.cache/image
 | cache.py target | Deleted |
 |---|---|
 | `dreamshaper-8-lcm`, `sdxs`, `tiny-sd` | That model repository |
-| `flux2-klein-4b` | The three model repositories of the precise preset and the executable folder (`klein`) |
+| `flux2-klein-4b` | The three model repositories of the precise preset and the executable folder (`sdcpp`) |
+| `z-image-turbo` | The three model repositories of the high-quality preset and the executable folder (`sdcpp`) |
 | `inpaint` | The region redrawing model and LCM-LoRA |
 | `face` | The face restoration weight folder (`face`) |
 | `sr` | The final upscaling weight folder (`sr`) |
 | `all` | The whole cache folder except the virtual environment (`venv`) |
 
 - The Hugging Face cache keeps real files in a shared store and only links in the model folders. Deleting a model folder does not free disk space, so delete through cache.py.
+- The precise and high-quality presets share the text encoder repository and the executable folder. When one preset is deleted while the other preset's models are still cached, the shared files stay. The kept files are listed in `kept_shared` in the output.
 - Keep the default preset's cache while the conversation continues. If disk space is insufficient for the next download, delete caches of the other presets first.
 - A deleted model is downloaded again when used. Delete after a series of images is finished.
 - To remove everything the skill installed, run `cache.py delete all` and then delete the virtual environment folder (`venv`). Delete the virtual environment only after the user confirms.

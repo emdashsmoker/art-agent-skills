@@ -10,8 +10,10 @@ The skill package contains no model weights, executables, or external packages. 
 | Light preset | SDXS-512-DreamShaper | https://huggingface.co/IDKiro/sdxs-512-dreamshaper | OpenRAIL++-M |
 | Flat preset | tiny-sd | https://huggingface.co/segmind/tiny-sd | CreativeML OpenRAIL-M |
 | Precise preset diffusion model | FLUX.2 [klein] 4B, GGUF Q4_0 conversion | https://huggingface.co/unsloth/FLUX.2-klein-4B-GGUF | Apache-2.0 |
-| Precise preset text encoder | Qwen3-4B, GGUF Q4_K_M conversion | https://huggingface.co/unsloth/Qwen3-4B-GGUF | Apache-2.0 |
+| Precise and high-quality preset text encoder | Qwen3-4B, GGUF Q4_K_M conversion | https://huggingface.co/unsloth/Qwen3-4B-GGUF | Apache-2.0 |
 | Precise preset VAE | FLUX.2 [klein] 4B VAE | https://huggingface.co/black-forest-labs/FLUX.2-klein-4B | Apache-2.0 |
+| High-quality preset diffusion model | Z-Image Turbo, GGUF Q4_0 conversion | https://huggingface.co/leejet/Z-Image-Turbo-GGUF | Apache-2.0 |
+| High-quality preset VAE | Z-Image Turbo VAE | https://huggingface.co/Tongyi-MAI/Z-Image-Turbo | Apache-2.0 |
 | Region redrawing | Stable Diffusion 1.5 Inpainting | https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-inpainting | CreativeML OpenRAIL-M |
 | Region redrawing speed-up | LCM-LoRA SD 1.5 | https://huggingface.co/latent-consistency/lcm-lora-sdv1-5 | OpenRAIL++-M |
 | Final upscaling | Real-ESRGAN realesr-general-x4v3, realesr-animevideov3 | https://github.com/xinntao/Real-ESRGAN/releases/tag/v0.2.5.0 | BSD-3-Clause |
@@ -21,13 +23,13 @@ The skill package contains no model weights, executables, or external packages. 
 - OpenRAIL licenses restrict how the model and its outputs may be used (the list of use restrictions in their attachment). Users of the skill must comply with those terms.
 - The GFPGAN repository is licensed under Apache-2.0 and states that some third-party components inside it carry other licenses. This skill runs inference only with the clean architecture (`arch="clean"`), which needs no custom CUDA operations.
 - tiny-sd distributes its weights as PyTorch pickle files. diffusers and transformers load them in weights-only mode.
-- Final upscaling weights, face restoration weights, and the precise preset executable are checked against the SHA-256 values in the scripts before use. The precise preset downloads its Hugging Face models at pinned revisions.
+- Final upscaling weights, face restoration weights, and the executable of the precise and high-quality presets are checked against the SHA-256 values in the scripts before use. The precise and high-quality presets download their Hugging Face models at pinned revisions.
 
 ## Executable
 
 | Use | Component | Publisher | License |
 |---|---|---|---|
-| Running the precise preset | stable-diffusion.cpp prebuilt CLI (release master-881-17860c0, Linux x86_64) | https://github.com/leejet/stable-diffusion.cpp/releases/tag/master-881-17860c0 | MIT |
+| Running the precise and high-quality presets | stable-diffusion.cpp prebuilt CLI (release master-881-17860c0, Linux x86_64) | https://github.com/leejet/stable-diffusion.cpp/releases/tag/master-881-17860c0 | MIT |
 
 ## Python packages
 
@@ -43,4 +45,4 @@ The skill package contains no model weights, executables, or external packages. 
 
 ## Safety checker
 
-The generation pipeline runs with the diffusers safety checker disabled. The checker needs a separate model (about 1.2GB) and replaces any flagged result with a black image. Content rules follow the protection of minors section of SKILL.md.
+The generation pipeline runs with the diffusers safety checker disabled. The checker needs a separate model (about 1.2GB) and replaces any flagged result with a black image. The precise and high-quality presets generate through the stable-diffusion.cpp executable. That executable and the model files it reads have no safety checker, prompt filter, or output classifier, so there is nothing to disable. Content rules follow the protection of minors section of SKILL.md.

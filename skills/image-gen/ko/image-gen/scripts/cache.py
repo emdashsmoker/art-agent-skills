@@ -19,8 +19,11 @@ TARGETS = {
     "dreamshaper-8-lcm": {"repos": ["Lykon/dreamshaper-8-lcm"], "folders": []},
     "sdxs": {"repos": ["IDKiro/sdxs-512-dreamshaper"], "folders": []},
     "tiny-sd": {"repos": ["segmind/tiny-sd"], "folders": []},
-    "flux2-klein-4b": {"repos": ["unsloth/FLUX.2-klein-4B-GGUF", "unsloth/Qwen3-4B-GGUF",
-                                 "black-forest-labs/FLUX.2-klein-4B"], "folders": ["klein"]},
+    # WHY: the precise and high-quality presets share the text encoder and the engine folder (sdcpp)
+    "flux2-klein-4b": {"repos": ["unsloth/FLUX.2-klein-4B-GGUF", "black-forest-labs/FLUX.2-klein-4B",
+                                 "unsloth/Qwen3-4B-GGUF"], "folders": ["sdcpp"]},
+    "z-image-turbo": {"repos": ["leejet/Z-Image-Turbo-GGUF", "Tongyi-MAI/Z-Image-Turbo",
+                                "unsloth/Qwen3-4B-GGUF"], "folders": ["sdcpp"]},
     "inpaint": {"repos": ["stable-diffusion-v1-5/stable-diffusion-inpainting",
                           "latent-consistency/lcm-lora-sdv1-5"], "folders": []},
     "face": {"repos": [], "folders": ["face"]},
@@ -69,7 +72,26 @@ def delete_repos(repo_ids):
     return sorted(repo.repo_id for repo in info.repos if repo.repo_id in repo_ids)
 
 
+def shared_in_use(target):
+    """Repos and folders of this target that another target still needs.
+
+    WHY: deleting one preset must not force another cached preset to download shared files again.
+         Another target counts as cached when one of its repos outside the shared set is cached.
+    """
+    info = scan()
+    cached = {repo.repo_id for repo in info.repos} if info else set()
+    spec, kept = TARGETS[target], set()
+    for name, other in TARGETS.items():
+        if name == target:
+            continue
+        shared = (set(spec["repos"]) & set(other["repos"])) | (set(spec["folders"]) & set(other["folders"]))
+        if shared and (set(other["repos"]) - set(spec["repos"])) & cached:
+            kept |= shared
+    return kept
+
+
 def delete(target):
+    """Return (removed, kept_shared)."""
     if target == "all":
         removed = []
         if CACHE_ROOT.exists():
@@ -77,15 +99,15 @@ def delete(target):
                 if child.name not in KEPT_FOLDERS:
                     shutil.rmtree(child, ignore_errors=True) if child.is_dir() else child.unlink()
                     removed.append(child.name)
-        return removed
-    spec = TARGETS[target]
-    removed = delete_repos(set(spec["repos"]))
+        return removed, []
+    spec, kept = TARGETS[target], shared_in_use(target)
+    removed = delete_repos(set(spec["repos"]) - kept)
     for name in spec["folders"]:
         path = CACHE_ROOT / name
-        if path.exists():
+        if name not in kept and path.exists():
             shutil.rmtree(path, ignore_errors=True)
             removed.append(str(path))
-    return removed
+    return removed, sorted(kept)
 
 
 def main(argv=None):
@@ -100,9 +122,9 @@ def main(argv=None):
         return 0
     if not CACHE_ROOT.exists():
         fail(EXIT_QUERY_OR_ARGUMENT, "no cache at %s" % CACHE_ROOT)
-    removed = delete(args.target)
+    removed, kept = delete(args.target)
     free = shutil.disk_usage(CACHE_ROOT).free / 1024 ** 3
-    print(json.dumps({"removed": removed, "free_disk_gb": round(free, 1)}, ensure_ascii=False))
+    print(json.dumps({"removed": removed, "kept_shared": kept, "free_disk_gb": round(free, 1)}, ensure_ascii=False))
     return 0
 
 

@@ -2,8 +2,9 @@
 
 WHY: the skill promises the model's own result with no repair pass, so the script does
      exactly one job per image: load the preset, render, fit the requested size, save, check.
-HOW: SD 1.5 family presets run through diffusers. The precise preset runs FLUX.2 [klein] 4B
-     through a pinned stable-diffusion.cpp binary (one prebuilt archive per supported platform).
+HOW: SD 1.5 family presets run through diffusers. The precise preset (FLUX.2 [klein] 4B) and the
+     high-quality preset (Z-Image Turbo) run through a pinned stable-diffusion.cpp binary (one
+     prebuilt archive per supported platform) and share its Qwen3-4B text encoder.
      Both backends yield plain PIL images, so size fitting, saving and checks are shared.
      Generation uses the preset's native size; a different --width/--height is met by cropping
      to that ratio and resizing, which adds no detail.
@@ -61,19 +62,36 @@ PRESETS = {
         "width": 384, "height": 384, "steps": 16, "guidance": 7.5, "scheduler": "dpm",
         "ram_gb": {"fp32": 4.0, "bf16": 3.0},
     },
+    # sdcpp presets: diffusion model and VAE as (repository, file, pinned revision) from the official
+    # publisher of each part; download_gb is the first download, the shared text encoder included.
+    # WHY: step time grows with pixel count, so the default size keeps one image within a practical wait
     "flux2-klein-4b": {
-        # WHY: distilled model, the upstream example uses 4 steps with cfg 1.0; step time grows
-        #      with pixel count, so the default size keeps one image within a practical wait
+        # WHY: distilled model, the upstream example uses 4 steps with cfg 1.0
         "backend": "sdcpp", "width": 384, "height": 512, "steps": 4, "guidance": 1.0,
         "download_gb": 5.2,
+        "diffusion": ("unsloth/FLUX.2-klein-4B-GGUF", "flux-2-klein-4b-Q4_0.gguf",
+                      "0084d1df98e2e2137fe776d55170bc4792ec1d66"),
+        "vae": ("black-forest-labs/FLUX.2-klein-4B", "vae/diffusion_pytorch_model.safetensors",
+                "e7b7dc27f91deacad38e78976d1f2b499d76a294"),
+    },
+    "z-image-turbo": {
+        # WHY: distilled model, the model card samples 8 transformer passes without guidance and the
+        #      upstream engine example uses 8 steps with cfg 1.0, which disables guidance
+        "backend": "sdcpp", "width": 384, "height": 512, "steps": 8, "guidance": 1.0,
+        "download_gb": 6.4,
+        "diffusion": ("leejet/Z-Image-Turbo-GGUF", "z_image_turbo-Q4_0.gguf",
+                      "c61c0e422dc8b541b7548cf33a4ef8302b0f8085"),
+        # WHY: the official repository ships the FLUX.1 VAE the model was trained with, under the same license
+        "vae": ("Tongyi-MAI/Z-Image-Turbo", "vae/diffusion_pytorch_model.safetensors",
+                "f332072aa78be7aecdf3ee76d5c247082da564a6"),
     },
 }
 
-# Pinned stable-diffusion.cpp release for the precise preset, one prebuilt CPU archive per
+# Pinned stable-diffusion.cpp release for the sdcpp presets, one prebuilt CPU archive per
 # platform, each checked by SHA-256 before use. Keys are (platform.system(), platform.machine()).
 ENGINE_TAG = "master-881-17860c0"
 ENGINE_RELEASE_URL = "https://github.com/leejet/stable-diffusion.cpp/releases/download/" + ENGINE_TAG + "/"
-ENGINE_DIR = CACHE_ROOT / "klein" / ("sdcpp-" + ENGINE_TAG)
+ENGINE_DIR = CACHE_ROOT / "sdcpp" / ENGINE_TAG
 ENGINE_ASSETS = {
     ("Linux", "x86_64"): {
         "asset": "sd-master-17860c0-bin-Linux-Ubuntu-24.04-x86_64.zip",
@@ -92,15 +110,9 @@ ENGINE_ASSETS = {
         "binary": "sd-cli.exe", "library_path_variable": "PATH",
     },
 }
-# (role, repository, file, pinned revision) from the official publisher of each part
-KLEIN_MODEL_FILES = [
-    ("diffusion", "unsloth/FLUX.2-klein-4B-GGUF", "flux-2-klein-4b-Q4_0.gguf",
-     "0084d1df98e2e2137fe776d55170bc4792ec1d66"),
-    ("llm", "unsloth/Qwen3-4B-GGUF", "Qwen3-4B-Q4_K_M.gguf",
-     "22c9fc8a8c7700b76a1789366280a6a5a1ad1120"),
-    ("vae", "black-forest-labs/FLUX.2-klein-4B", "vae/diffusion_pytorch_model.safetensors",
-     "e7b7dc27f91deacad38e78976d1f2b499d76a294"),
-]
+# (repository, file, pinned revision) of the text encoder.
+# WHY: both sdcpp presets were trained with Qwen3-4B as the text encoder, so they read the same file
+TEXT_ENCODER = ("unsloth/Qwen3-4B-GGUF", "Qwen3-4B-Q4_K_M.gguf", "22c9fc8a8c7700b76a1789366280a6a5a1ad1120")
 DISK_MARGIN_GB = 0.3
 
 # WHY: a saved file under 10KB or with wrong magic bytes means a failed write or an empty image
@@ -255,17 +267,18 @@ def ensure_engine(engine):
     return binary
 
 
-def ensure_klein_models(preset):
+def ensure_sdcpp_models(preset_name, preset):
     try:
         from huggingface_hub import hf_hub_download, try_to_load_from_cache
     except ImportError:
         fail(EXIT_DEPENDENCY, "huggingface_hub missing in the skill environment")
-    cached = all(isinstance(try_to_load_from_cache(repo, name, revision=rev), str)
-                 for _, repo, name, rev in KLEIN_MODEL_FILES)
+    files = {"diffusion": preset["diffusion"], "llm": TEXT_ENCODER, "vae": preset["vae"]}
+    cached = all(isinstance(try_to_load_from_cache(repo, name, revision=rev), str) for repo, name, rev in files.values())
     if not cached and free_disk_gb() < preset["download_gb"] + DISK_MARGIN_GB:
-        fail(EXIT_RESOURCE, "free disk %.1fGB, the precise preset needs about %.1fGB" % (free_disk_gb(), preset["download_gb"]))
+        fail(EXIT_RESOURCE, "free disk %.1fGB, the %s preset needs about %.1fGB"
+             % (free_disk_gb(), preset_name, preset["download_gb"]))
     try:
-        return {role: hf_hub_download(repo, name, revision=rev) for role, repo, name, rev in KLEIN_MODEL_FILES}
+        return {role: hf_hub_download(repo, name, revision=rev) for role, (repo, name, rev) in files.items()}
     except OSError as error:
         fail(EXIT_DOWNLOAD, "model download failed (%s)" % error)
 
@@ -284,11 +297,11 @@ def render_with_sdcpp(preset, args):
 
     engine = engine_for_this_platform()
     binary = ensure_engine(engine)
-    models = ensure_klein_models(preset)
+    models = ensure_sdcpp_models(args.preset, preset)
     variable = engine["library_path_variable"]
     environment = dict(os.environ)
     environment[variable] = str(ENGINE_DIR) + os.pathsep + os.environ.get(variable, "")
-    scratch = output_directory(args.out) / (".klein-%d.png" % os.getpid())
+    scratch = output_directory(args.out) / (".sdcpp-%d.png" % os.getpid())
     for index in range(args.count):
         seed = args.seed + index
         command = [str(binary), "--diffusion-model", models["diffusion"], "--llm", models["llm"], "--vae", models["vae"],

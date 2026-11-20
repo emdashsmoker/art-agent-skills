@@ -33,8 +33,9 @@ WORK_GFLOP_PER_IMAGE = {
     "dreamshaper-8-lcm": {"fp32": 10600, "bf16": 6400},
     "sdxs": {"fp32": 850, "bf16": 510},
     "tiny-sd": {"fp32": 14500, "bf16": 8760},
-    # WHY: runs quantized in its own engine, the float32 benchmark is the closest proxy
+    # WHY: these run quantized in their own engine, the float32 benchmark is the closest proxy
     "flux2-klein-4b": {"fp32": 152500},
+    "z-image-turbo": {"fp32": None},
 }
 DEPENDENCIES = ["torch", "diffusers", "transformers", "accelerate", "safetensors", "peft",
                 "huggingface_hub", "PIL", "numpy", "gfpgan", "facexlib", "basicsr", "cv2"]
@@ -185,8 +186,8 @@ def main(argv=None):
         "cache_root": str(CACHE_ROOT), "free_disk_gb": round(free_disk_gb(), 1),
         "hub_reachable": hub_reachable(),
         "dependencies": {name: installed(name) for name in DEPENDENCIES},
-        # WHY: the precise tier uses a prebuilt engine that exists for Linux x86_64 only
-        "precise_tier_supported": platform.system() == "Linux" and platform.machine() in ("x86_64", "AMD64"),
+        # WHY: the precise and high-quality presets use a prebuilt engine that exists for Linux x86_64 only
+        "sdcpp_presets_supported": platform.system() == "Linux" and platform.machine() in ("x86_64", "AMD64"),
     }
     if args.estimate:
         if not report["dependencies"]["torch"]:

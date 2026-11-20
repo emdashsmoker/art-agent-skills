@@ -94,17 +94,17 @@ By default each stage allows one regeneration. The table below shows the default
 |---|---|---|---|---|---|
 | Light | 1 | 2 | 1 | 4 | 3 |
 | Standard, Flat | 1 | 1 | 1 | 3 | 2 |
-| Precise | 1 | 0 | 0 | 1 | 0 |
+| Precise, High quality | 1 | 0 | 0 | 1 | 0 |
 
 - The last column is the total when the candidate multiplier in force is 2 or more. With a regeneration limit multiplier of 1x, stage 1 has no regeneration under the multiplier calculation below. A pool swap selects an image that already exists, so it does not count as a regeneration.
 - Light generates images quickly, so it allows one extra round of trial and error for choosing a workaround. The second stage-2 attempt must use a different workaround from the first. Changing only the seed with the same workaround counts as stage 1, not stage 2.
-- Precise takes the longest per image, so at 1x one regeneration reaches the limit.
+- Precise and High quality take a long time per image, so at 1x one regeneration reaches the limit.
 - Stage 3 post-processing fixes part of an existing output and does not count as a regeneration. Apply each tool once and compare.
 - At the limit, present the best result (defined below) with the defect marked and ask how to proceed. Without a display path, describe the defect location in words (display path judgment in the delivery section of SKILL.md). The choices are: adopt the best result, try again with a workaround the user selects, continue with a regeneration limit multiplier or unlimited the user specifies, switch to a scene without people or an object icon, or change the model (with its download size and estimated time).
 
 Apply the regeneration limit multiplier N as follows.
 
-- A stage limit is the stage's default limit in the table multiplied by N. A cell whose default limit is 0 (stages 2 and 4 of Precise) stays 0 regardless of N.
+- A stage limit is the stage's default limit in the table multiplied by N. A cell whose default limit is 0 (stages 2 and 4 of Precise and High quality) stays 0 regardless of N.
 - In candidate mode, subtract the number of pool swaps from the stage 1 limit, because the candidates are stage 1's seed changes made ahead of time. The number of stage 1 regenerations is `max(0, N * stage 1 default limit - (candidate count - 1))`. The candidate count is the number of candidates for one target image (the candidate multiplier in force). With N at 1, the sum of the stage limits equals the two total columns of the table.
 - Prompt edits and seed changes for general defects also allow up to 3N attempts each (general defects section). Even in a request where a fragile subject appears, count these attempts separately from the stage limits. The stage limits apply only to the response stages for shape defects.
 - N applies only to the number of regenerations. Stage 3 post-processing applies each tool once, as above, regardless of N.

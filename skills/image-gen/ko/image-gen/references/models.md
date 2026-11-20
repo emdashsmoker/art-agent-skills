@@ -1,6 +1,6 @@
-# 프리셋, 정밀도, 소요 시간, 정밀 프리셋, 캐시
+# 프리셋, 정밀도, 소요 시간, 정밀 프리셋, 고품질 프리셋, 캐시
 
-SKILL.md의 프리셋 절과 환경 점검 절을 상세히 기술한 문서다. 프리셋을 선택하거나, 소요 시간을 계산하거나, 정밀 프리셋을 실행하거나, 캐시를 정리할 때 읽는다.
+SKILL.md의 프리셋 절과 환경 점검 절을 상세히 기술한 문서다. 프리셋을 선택하거나, 소요 시간을 계산하거나, 정밀 프리셋이나 고품질 프리셋을 실행하거나, 캐시를 정리할 때 읽는다.
 
 ## 프리셋 설정
 
@@ -62,7 +62,7 @@ bfloat16 연산을 하드웨어로 처리하는 명령은 AVX512_BF16과 AMX에 
 40억 파라미터 모델을 stable-diffusion.cpp의 사전 빌드 실행 파일과 4비트 양자화 파일로 실행한다. 컴파일은 필요하지 않다. 지시 반영과 인체 형상이 SD 1.5 계열보다 정확하지만 가장 느리다.
 
 - 실행 파일: stable-diffusion.cpp 릴리스 하나를 고정해 사용하고 SHA-256으로 확인한다. 리눅스 x86_64용만 고정되어 있으므로 다른 운영체제에서는 선택지에서 제외한다.
-- 모델 파일: 확산 모델(FLUX.2 klein 4B의 GGUF Q4_0), 텍스트 인코더(Qwen3 4B의 GGUF Q4_K_M), VAE(FLUX.2 klein 4B 공식 저장소의 VAE) 세 개를 각 공식 배포처에서 고정 리비전으로 내려받는다. 합계 약 5.2GB다.
+- 모델 파일: 확산 모델(FLUX.2 klein 4B의 GGUF Q4_0), 텍스트 인코더(Qwen3 4B의 GGUF Q4_K_M), VAE(FLUX.2 klein 4B 공식 저장소의 VAE) 세 개를 각 공식 배포처에서 고정 리비전으로 내려받는다. 합계 약 5.2GB다. 텍스트 인코더는 고품질 프리셋과 같은 파일이다.
 - 설정: 4스텝, cfg 1.0(업스트림 문서의 예시값), 메모리 매핑(`--mmap`), VAE 타일 디코딩을 고정했다. 메모리 매핑을 비활성화하면 가중치가 메모리로 복사되어 메모리가 작은 환경에서 종료된다.
 - 크기: 기본 384x512, 최대 512x704 화소다. 스텝 시간이 화소 수에 비례해 늘어나므로 큰 규격은 화질 보정으로 맞춘다.
 - 프롬프트: 자연어 문장을 그대로 처리한다. 77토큰 제한이 없고 부정 프롬프트는 사용하지 않는다.
@@ -72,11 +72,26 @@ bfloat16 연산을 하드웨어로 처리하는 명령은 AVX512_BF16과 AMX에 
 실행 시간이 길어 백그라운드로 실행하고 로그로 진행 상황을 확인한다. 에이전트 실행 환경이 대화 턴 사이에 초기화될 수 있으면, 실행과 대기를 같은 턴 안에서 완료한다.
 
 ```
-setsid nohup PY scripts/generate_klein.py "an adult woman in a black coat standing on a city street at night, photorealistic, framed from head to thighs" ./outputs/klein.png --seed 42 > ./outputs/klein.log 2>&1 < /dev/null &
+setsid nohup PY scripts/generate_sdcpp.py "an adult woman in a black coat standing on a city street at night, photorealistic, framed from head to thighs" ./outputs/klein.png --seed 42 > ./outputs/klein.log 2>&1 < /dev/null &
 ```
 
 - 로그의 진행 표시(`1/4`부터 `4/4`)와 결과 파일 생성, 마지막 줄의 JSON을 확인한다.
 - 다른 생성 프로세스와 동시에 실행하지 않는다. 동시에 실행하면 메모리 부족으로 종료된다.
+
+## 고품질 프리셋 (Z-Image Turbo)
+
+60억 파라미터 모델을 정밀 프리셋과 같은 실행 파일로 실행한다.
+
+- 공통 사항: 실행 파일, 텍스트 인코더, 메모리 매핑, VAE 타일 디코딩, 크기 범위, 프롬프트 처리, 단색 결과 점검, 한 장씩 생성하는 방식, 백그라운드 실행은 정밀 프리셋 절과 같다.
+- 모델 파일: 확산 모델은 Z-Image Turbo의 GGUF Q4_0 변환본이다. VAE는 Z-Image Turbo 공식 저장소의 VAE다. 두 파일은 고정 리비전으로 내려받는다. 텍스트 인코더를 포함한 합계는 약 6.4GB다. 정밀 프리셋을 사용한 적이 있으면 텍스트 인코더는 다시 내려받지 않는다.
+- 설정: 8스텝과 cfg 1.0을 고정했다. 모델 카드는 guidance 없이 트랜스포머를 8회 계산하도록 지정한다. stable-diffusion.cpp 문서의 예시도 8스텝과 cfg 1.0을 사용한다. cfg 1.0은 guidance를 사용하지 않는 값이다.
+- 실행: generate_sdcpp.py에 `--preset z-image-turbo`를 지정한다. preflight.json에 고품질 프리셋이 기록되어 있으면 생략할 수 있다.
+
+```
+setsid nohup PY scripts/generate_sdcpp.py "an adult woman in a black coat standing on a city street at night, photorealistic, framed from head to thighs" ./outputs/zimage.png --preset z-image-turbo --seed 42 > ./outputs/zimage.log 2>&1 < /dev/null &
+```
+
+- 로그의 진행 표시는 `1/8`부터 `8/8`이다.
 
 ## 캐시
 
@@ -85,13 +100,15 @@ setsid nohup PY scripts/generate_klein.py "an adult woman in a black coat standi
 | cache.py 대상 | 삭제 범위 |
 |---|---|
 | `dreamshaper-8-lcm`, `sdxs`, `tiny-sd` | 해당 모델 저장소 |
-| `flux2-klein-4b` | 정밀 프리셋의 모델 세 저장소와 실행 파일 폴더(`klein`) |
+| `flux2-klein-4b` | 정밀 프리셋의 모델 세 저장소와 실행 파일 폴더(`sdcpp`) |
+| `z-image-turbo` | 고품질 프리셋의 모델 세 저장소와 실행 파일 폴더(`sdcpp`) |
 | `inpaint` | 부위 다시 그리기 모델과 LCM-LoRA |
 | `face` | 얼굴 복원 가중치 폴더(`face`) |
 | `sr` | 화질 보정 가중치 폴더(`sr`) |
 | `all` | 가상환경(`venv`)을 제외한 캐시 폴더 전체 |
 
 - Hugging Face 캐시는 실제 파일을 공용 저장 폴더에 보관하고 모델 폴더에는 링크만 생성한다. 모델 폴더만 삭제하면 디스크 공간이 회수되지 않으므로 cache.py로 삭제한다.
+- 정밀 프리셋과 고품질 프리셋은 텍스트 인코더 저장소와 실행 파일 폴더를 공유한다. 한 프리셋을 삭제할 때 다른 프리셋의 모델이 캐시에 남아 있으면 공유 파일은 삭제하지 않는다. 유지한 파일은 출력의 `kept_shared`에 기재된다.
 - 기본 프리셋의 캐시는 같은 대화에서 계속 사용하므로 유지한다. 디스크가 다음 내려받기에 부족하면 기본 프리셋 이외의 캐시부터 삭제한다.
 - 삭제한 모델을 다시 사용하면 다시 내려받는다. 연속 생성이 끝난 뒤에 삭제한다.
 - 스킬을 더 사용하지 않는 경우 `cache.py delete all` 실행 후 가상환경 폴더(`venv`)를 삭제하면 스킬이 설치한 파일이 모두 제거된다. 가상환경 폴더는 사용자 확인을 받은 뒤 삭제한다.

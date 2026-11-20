@@ -29,9 +29,9 @@ When the candidate multiplier is 1x and the regeneration limit is 0, deliver the
 - `PY` is the Python of the skill's virtual environment: `~/.cache/image-gen-lite/venv/bin/python` on Linux and macOS, `%USERPROFILE%\.cache\image-gen-lite\venv\Scripts\python.exe` on Windows.
 - Replace `scripts/` with the path of the scripts folder inside this skill's folder.
 - Run commands from the user's working folder. Save results to the path the user specifies. If none is given, use the output folder the environment defines. If that is also absent, save to the working folder and give the user the absolute path.
-- The script runs with the same commands on Linux, macOS, and Windows. The precise preset runs on Linux x86_64, Apple Silicon macOS, and Windows x64.
+- The script runs with the same commands on Linux, macOS, and Windows. The precise and high-quality presets run on Linux x86_64, Apple Silicon macOS, and Windows x64.
 - Every file the skill downloads is stored in the cache folder `~/.cache/image-gen-lite`. Set the environment variable `IMAGE_GEN_LITE_HOME` to change its location.
-- The precise preset engine is downloaded from GitHub (`leejet/stable-diffusion.cpp`). If the runtime environment has a tool that attaches a GitHub repository to the session, call it with that repository before the first run. Pass the owner and the repository name, the parts before and after `/`, as separate values.
+- The engine of the precise and high-quality presets is downloaded from GitHub (`leejet/stable-diffusion.cpp`). If the runtime environment has a tool that attaches a GitHub repository to the session, call it with that repository before the first run. Pass the owner and the repository name, the parts before and after `/`, as separate values.
 
 ## Setup
 
@@ -118,7 +118,7 @@ A preset is a combination of a model and fixed settings. Change the style with t
 - Light mostly places scene elements as instructed. It tends to produce an illustration look even when asked for a photographic style, and the same person sometimes appears twice.
 - Flat renders solid fills with crisp edges, paint bleed, and blank paper better than the other presets. Its shape stability is low, so it often draws a picture frame border as well or cuts off a person's head at the top of the frame.
 - Precise accepts natural sentences as they are and renders anatomy most accurately. It runs on Linux x86_64, Apple Silicon macOS (arm64), and Windows x64, so leave it out of the choices in any other runtime environment. Check the operating system with `PY -c "import platform; print(platform.system(), platform.machine())"`.
-- Before generating with the precise preset, check that free disk space is larger than the download size. During generation it reads the weights from disk with `--mmap`, so it runs even with little memory, but more slowly.
+- Before generating with the precise or high-quality preset, check that free disk space is larger than the download size. During generation it reads the weights from disk with `--mmap`, so it runs even with little memory, but more slowly.
 
 ### Model lock
 
@@ -189,8 +189,8 @@ List the conditional items after these. The numbers in the example below continu
 >    b) A person seen from behind, climbing stairs
 >    c) Custom: describe the object or scene to draw
 
-- In a runtime environment where the precise preset does not run, leave out the Precise choice and reletter the remaining choices from a) in order.
-- If the precise preset was left out, add "The Precise model cannot run on this operating system, so it is not among the choices" to the first line of the questions.
+- In a runtime environment where the precise and high-quality presets do not run, leave out both choices and reletter the remaining choices from a) in order.
+- If both presets were left out, add "The Precise and High quality models cannot run on this operating system, so they are not among the choices" to the first line of the questions.
 
 ### Automatic decision
 
@@ -211,7 +211,7 @@ The regeneration limit starts from a baseline of 0.
 
 - With one defect likelihood ground, consider 1. With several grounds, or with a large use such as a cover, banner, or print, or a request that puts quality first, consider up to 3.
 - If the candidate multiplier was raised, also weigh how much the maximum number of images per target image (`candidate multiplier * (1 + regeneration limit)`) grows.
-- With the precise preset, use 1 or less. If the user said that speed comes first, use 0.
+- With the precise or high-quality preset, use 1 or less. If the user said that speed comes first, use 0.
 - Never choose unlimited automatically, because it has no set end point.
 
 Apply the rules below to both items.
@@ -226,7 +226,7 @@ After the first image, report the estimated time for the remaining images from t
 - The first run adds model download and loading time. Download sizes are listed in the preset table.
 - Example: "The first image took 38 seconds. The remaining 2 images should take about 1 minute 20 seconds."
 - If one call generated all images, state the model loading time (the `loaded in` line in stderr) and the measured time per image (`seconds` in the stdout JSON) at delivery.
-- The precise preset can take from several minutes to tens of minutes per image, so run generation in the background and follow progress in the log. If the agent's runtime environment can be reset between conversation turns, finish running and waiting within the same turn.
+- The precise and high-quality presets can take from several minutes to tens of minutes per image, so run generation in the background and follow progress in the log. If the agent's runtime environment can be reset between conversation turns, finish running and waiting within the same turn.
 
 ## Prompt
 
@@ -238,7 +238,7 @@ After the first image, report the estimated time for the remaining images from t
 - Do not request text inside the image.
 - Do not use single quotes ('). They conflict with command-line quoting.
 - The Standard, Light, and Flat presets belong to the SD 1.5 family. They respond well to short keyword-style English and reflect long natural sentences poorly. Their text window is 77 tokens, and anything beyond it is ignored without an error. If generate.py prints a warning that starts with `WARNING: prompt has` together with the ignored text, shorten the prompt and run again.
-- Precise accepts natural sentences as they are and has no 77-token limit. It does not use a negative prompt.
+- Precise and High quality accept natural sentences as they are and have no 77-token limit. They do not use a negative prompt.
 - Fix the seed to reproduce a result. Change it for variety.
 
 ## Generate
@@ -269,7 +269,7 @@ setsid nohup PY scripts/generate.py --preset flux2-klein-4b --prompt "an adult w
 - If a file exists at the same path, the new file is saved with a number appended. Use `--overwrite` only when overwriting is intended.
 - stdout prints one JSON line per image with the path, prompt, seed, preset, size, and seconds taken. Progress messages and warnings go to stderr. The warning that needs action is the 77-token overflow warning that starts with `WARNING: prompt has`.
 - If the script exits with code 7 (automatic check failed), raise the seed by 1 and run again. No result image exists in this case, so count it separately from regenerations.
-- For a background run of the precise preset, confirm completion from the progress display in the log (`1/4` to `4/4`) and the JSON on the last line. Do not run it at the same time as another generation process. Running them together can end in termination for lack of memory.
+- For a background run of the precise or high-quality preset, confirm completion from the progress display in the log (`1/4` to `4/4` for Precise, `1/8` to `8/8` for High quality) and the JSON on the last line. Do not run it at the same time as another generation process. Running them together can end in termination for lack of memory.
 
 ## Adoption criteria
 
@@ -322,6 +322,7 @@ If the regeneration limit is 1 or more, check by the adoption criteria before de
 - If a process is terminated for lack of memory, clean up leftover processes and retry once. If memory is still insufficient, offer the lighter presets that can run.
 - The skill deletes only files inside its cache folder. It does not modify files outside it or the model caches of other programs.
 - Models are downloaded to a dedicated Hugging Face cache (`hf`) inside the cache folder. To delete the model of another preset, delete its `models--<owner>--<name>` folder under `hf/hub`. Get the user's confirmation before deleting.
+- The precise and high-quality presets share the text encoder folder (`models--unsloth--Qwen3-4B-GGUF`). Keep this folder while either preset stays in use.
 - When the skill is no longer used, deleting the whole cache folder removes every file the skill installed. Delete it only after the user confirms.
 - In environments that wipe files when the session ends, set up the virtual environment and models again in the next session.
 
@@ -335,8 +336,8 @@ If the regeneration limit is 1 or more, check by the adoption criteria before de
 | Exit code 5 | Saving the result file failed (no write permission, insufficient disk space) | Check write permission and free disk space at the save path, then run again |
 | Exit code 6 | Insufficient memory or disk | Clean up as the resources and cache section describes, or offer a lighter preset |
 | Exit code 7 | Output check failed | Raise the seed by 1 and run again |
-| Exit code 8 | Engine file hash mismatch, the damaged file is deleted automatically | Run again to download a fresh copy. If it fails repeatedly, leave the precise preset out of the choices |
-| Exit code 9 | The operating system cannot run the precise preset | Offer other presets |
+| Exit code 8 | Engine file hash mismatch, the damaged file is deleted automatically | Run again to download a fresh copy. If it fails repeatedly, leave the precise and high-quality presets out of the choices |
+| Exit code 9 | The operating system cannot run the precise and high-quality presets | Offer other presets |
 | Style ignored | Non-English prompt or abstract style words | Rewrite in English and place a technique name first |
 | Text, counts, or states ignored | A limit of diffusion models | Remove those instructions and suggest adding the content in an editing tool |
 | The object the user specified is missing | A named subject was classified as a message request | Reclassify it as a named subject and regenerate with that object |

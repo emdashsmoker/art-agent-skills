@@ -2,8 +2,9 @@
 
 WHY: the skill promises the model's own result with no repair pass, so the script does
      exactly one job per image: load the preset, render, fit the requested size, save, check.
-HOW: SD 1.5 family presets run through diffusers. The precise preset runs FLUX.2 [klein] 4B
-     through a pinned stable-diffusion.cpp binary (one prebuilt archive per supported platform).
+HOW: SD 1.5 family presets run through diffusers. The engine presets (FLUX.2 [klein] 4B and
+     Z-Image Turbo) run quantized files through a pinned stable-diffusion.cpp binary (one
+     prebuilt archive per supported platform) and share the engine, the text encoder and the run code.
      Both backends yield plain PIL images, so size fitting, saving and checks are shared.
      Generation uses the preset's native size; a different --width/--height is met by cropping
      to that ratio and resizing, which adds no detail.
@@ -42,6 +43,19 @@ DEFAULT_SEED = 42
 JPEG_QUALITY = 92
 SAFE_NAME_PATTERN = re.compile(r"[^a-z0-9]+")
 
+
+
+def model_file(repository, name, revision, size_gb):
+    """One file from its official publisher at a pinned revision, with its download size."""
+    return {"repository": repository, "name": name, "revision": revision, "size_gb": size_gb}
+
+
+# WHY: both engine presets were trained on the text features of Qwen3-4B, so one file serves both
+TEXT_ENCODER = model_file("unsloth/Qwen3-4B-GGUF", "Qwen3-4B-Q4_K_M.gguf",
+                          "22c9fc8a8c7700b76a1789366280a6a5a1ad1120", 2.5)
+# WHY: both engine presets are distilled to run without guidance, their upstream examples use cfg 1.0
+ENGINE_CFG_SCALE = 1.0
+
 # Values come from each model card or from tuning on the CPU, see the preset section of SKILL.md.
 PRESETS = {
     "dreamshaper-8-lcm": {
@@ -61,19 +75,31 @@ PRESETS = {
         "width": 384, "height": 384, "steps": 16, "guidance": 7.5, "scheduler": "dpm",
         "ram_gb": {"fp32": 4.0, "bf16": 3.0},
     },
+    # WHY: step time grows with pixel count, so the engine presets default to a size that keeps
+    #      one image within a practical wait
     "flux2-klein-4b": {
-        # WHY: distilled model, the upstream example uses 4 steps with cfg 1.0; step time grows
-        #      with pixel count, so the default size keeps one image within a practical wait
-        "backend": "sdcpp", "width": 384, "height": 512, "steps": 4, "guidance": 1.0,
-        "download_gb": 5.2,
+        # WHY: distilled model, the upstream example uses 4 steps
+        "backend": "sdcpp", "width": 384, "height": 512, "steps": 4,
+        "diffusion": model_file("unsloth/FLUX.2-klein-4B-GGUF", "flux-2-klein-4b-Q4_0.gguf",
+                                "0084d1df98e2e2137fe776d55170bc4792ec1d66", 2.5),
+        "vae": model_file("black-forest-labs/FLUX.2-klein-4B", "vae/diffusion_pytorch_model.safetensors",
+                          "e7b7dc27f91deacad38e78976d1f2b499d76a294", 0.2),
+    },
+    "z-image-turbo": {
+        # WHY: distilled model, the model card asks for 8 evaluations and the upstream example uses 8 steps
+        "backend": "sdcpp", "width": 384, "height": 512, "steps": 8,
+        "diffusion": model_file("leejet/Z-Image-Turbo-GGUF", "z_image_turbo-Q4_0.gguf",
+                                "c61c0e422dc8b541b7548cf33a4ef8302b0f8085", 3.7),
+        "vae": model_file("Tongyi-MAI/Z-Image-Turbo", "vae/diffusion_pytorch_model.safetensors",
+                          "f332072aa78be7aecdf3ee76d5c247082da564a6", 0.2),
     },
 }
 
-# Pinned stable-diffusion.cpp release for the precise preset, one prebuilt CPU archive per
+# Pinned stable-diffusion.cpp release for the engine presets, one prebuilt CPU archive per
 # platform, each checked by SHA-256 before use. Keys are (platform.system(), platform.machine()).
 ENGINE_TAG = "master-881-17860c0"
 ENGINE_RELEASE_URL = "https://github.com/leejet/stable-diffusion.cpp/releases/download/" + ENGINE_TAG + "/"
-ENGINE_DIR = CACHE_ROOT / "klein" / ("sdcpp-" + ENGINE_TAG)
+ENGINE_DIR = CACHE_ROOT / "sdcpp" / ENGINE_TAG
 ENGINE_ASSETS = {
     ("Linux", "x86_64"): {
         "asset": "sd-master-17860c0-bin-Linux-Ubuntu-24.04-x86_64.zip",
@@ -92,15 +118,6 @@ ENGINE_ASSETS = {
         "binary": "sd-cli.exe", "library_path_variable": "PATH",
     },
 }
-# (role, repository, file, pinned revision) from the official publisher of each part
-KLEIN_MODEL_FILES = [
-    ("diffusion", "unsloth/FLUX.2-klein-4B-GGUF", "flux-2-klein-4b-Q4_0.gguf",
-     "0084d1df98e2e2137fe776d55170bc4792ec1d66"),
-    ("llm", "unsloth/Qwen3-4B-GGUF", "Qwen3-4B-Q4_K_M.gguf",
-     "22c9fc8a8c7700b76a1789366280a6a5a1ad1120"),
-    ("vae", "black-forest-labs/FLUX.2-klein-4B", "vae/diffusion_pytorch_model.safetensors",
-     "e7b7dc27f91deacad38e78976d1f2b499d76a294"),
-]
 DISK_MARGIN_GB = 0.3
 
 # WHY: a saved file under 10KB or with wrong magic bytes means a failed write or an empty image
@@ -255,17 +272,22 @@ def ensure_engine(engine):
     return binary
 
 
-def ensure_klein_models(preset):
+def ensure_engine_models(preset):
+    """Paths of the three model files by engine role, downloaded when missing."""
     try:
         from huggingface_hub import hf_hub_download, try_to_load_from_cache
     except ImportError:
         fail(EXIT_DEPENDENCY, "huggingface_hub missing in the skill environment")
-    cached = all(isinstance(try_to_load_from_cache(repo, name, revision=rev), str)
-                 for _, repo, name, rev in KLEIN_MODEL_FILES)
-    if not cached and free_disk_gb() < preset["download_gb"] + DISK_MARGIN_GB:
-        fail(EXIT_RESOURCE, "free disk %.1fGB, the precise preset needs about %.1fGB" % (free_disk_gb(), preset["download_gb"]))
+    files = {"diffusion": preset["diffusion"], "llm": TEXT_ENCODER, "vae": preset["vae"]}
+    # WHY: a file shared with another preset may be cached already, only missing files need disk space
+    missing_gb = sum(item["size_gb"] for item in files.values()
+                     if not isinstance(try_to_load_from_cache(item["repository"], item["name"],
+                                                              revision=item["revision"]), str))
+    if missing_gb and free_disk_gb() < missing_gb + DISK_MARGIN_GB:
+        fail(EXIT_RESOURCE, "free disk %.1fGB, this preset still needs about %.1fGB" % (free_disk_gb(), missing_gb))
     try:
-        return {role: hf_hub_download(repo, name, revision=rev) for role, repo, name, rev in KLEIN_MODEL_FILES}
+        return {role: hf_hub_download(item["repository"], item["name"], revision=item["revision"])
+                for role, item in files.items()}
     except OSError as error:
         fail(EXIT_DOWNLOAD, "model download failed (%s)" % error)
 
@@ -284,15 +306,15 @@ def render_with_sdcpp(preset, args):
 
     engine = engine_for_this_platform()
     binary = ensure_engine(engine)
-    models = ensure_klein_models(preset)
+    models = ensure_engine_models(preset)
     variable = engine["library_path_variable"]
     environment = dict(os.environ)
     environment[variable] = str(ENGINE_DIR) + os.pathsep + os.environ.get(variable, "")
-    scratch = output_directory(args.out) / (".klein-%d.png" % os.getpid())
+    scratch = output_directory(args.out) / (".sdcpp-%d.png" % os.getpid())
     for index in range(args.count):
         seed = args.seed + index
         command = [str(binary), "--diffusion-model", models["diffusion"], "--llm", models["llm"], "--vae", models["vae"],
-                   "-p", args.prompt, "--cfg-scale", str(preset["guidance"]), "--steps", str(preset["steps"]),
+                   "-p", args.prompt, "--cfg-scale", str(ENGINE_CFG_SCALE), "--steps", str(preset["steps"]),
                    "-W", str(preset["width"]), "-H", str(preset["height"]), "--seed", str(seed),
                    # WHY: without --mmap the weights are copied into RAM and small machines run out of memory
                    "--mmap", "--diffusion-fa", "--vae-tiling",

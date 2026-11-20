@@ -188,6 +188,8 @@ Thanks to the developers and contributors of these projects.
 - [tiny-sd](https://huggingface.co/segmind/tiny-sd)
 - [FLUX.2 [klein] 4B](https://huggingface.co/black-forest-labs/FLUX.2-klein-4B)
 - [FLUX.2 [klein] 4B GGUF](https://huggingface.co/unsloth/FLUX.2-klein-4B-GGUF)
+- [Z-Image Turbo](https://huggingface.co/Tongyi-MAI/Z-Image-Turbo)
+- [Z-Image Turbo GGUF](https://huggingface.co/leejet/Z-Image-Turbo-GGUF)
 - [Qwen3-4B](https://huggingface.co/Qwen/Qwen3-4B)
 - [Qwen3-4B GGUF](https://huggingface.co/unsloth/Qwen3-4B-GGUF)
 - [Stable Diffusion 1.5 Inpainting](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-inpainting)

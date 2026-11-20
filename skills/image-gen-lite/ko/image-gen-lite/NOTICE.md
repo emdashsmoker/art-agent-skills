@@ -31,11 +31,13 @@ The skill package contains no model weights, executables or external packages. T
 | Light preset | SDXS-512-DreamShaper | https://huggingface.co/IDKiro/sdxs-512-dreamshaper | OpenRAIL++-M |
 | Flat preset | tiny-sd | https://huggingface.co/segmind/tiny-sd | CreativeML OpenRAIL-M |
 | Precise preset, diffusion model | FLUX.2 [klein] 4B, GGUF Q4_0 | https://huggingface.co/unsloth/FLUX.2-klein-4B-GGUF | Apache-2.0 |
-| Precise preset, text encoder | Qwen3-4B, GGUF Q4_K_M | https://huggingface.co/unsloth/Qwen3-4B-GGUF | Apache-2.0 |
+| Precise and high-quality presets, text encoder | Qwen3-4B, GGUF Q4_K_M | https://huggingface.co/unsloth/Qwen3-4B-GGUF | Apache-2.0 |
 | Precise preset, VAE | FLUX.2 [klein] 4B VAE | https://huggingface.co/black-forest-labs/FLUX.2-klein-4B | Apache-2.0 |
-| Precise preset, engine | stable-diffusion.cpp prebuilt CLI (master-881-17860c0; Linux x86_64, macOS arm64, Windows x64 CPU builds) | https://github.com/leejet/stable-diffusion.cpp | MIT |
+| High-quality preset, diffusion model | Z-Image Turbo, GGUF Q4_0 | https://huggingface.co/leejet/Z-Image-Turbo-GGUF | Apache-2.0 |
+| High-quality preset, VAE | Z-Image Turbo VAE | https://huggingface.co/Tongyi-MAI/Z-Image-Turbo | Apache-2.0 |
+| Precise and high-quality presets, engine | stable-diffusion.cpp prebuilt CLI (master-881-17860c0; Linux x86_64, macOS arm64, Windows x64 CPU builds) | https://github.com/leejet/stable-diffusion.cpp | MIT |
 | Python packages | torch, torchvision (BSD-3-Clause family), diffusers, transformers, accelerate, safetensors, peft, huggingface_hub (Apache-2.0), Pillow (MIT-CMU), numpy (BSD-3-Clause family) | PyTorch CPU index, PyPI | as listed |
 
 - OpenRAIL licenses restrict how the model and its output may be used (the use-based restrictions in their attachments). Users of this skill must follow them.
 - tiny-sd ships its weights as PyTorch pickle files. diffusers and transformers load them in weights-only mode.
-- The generation pipeline runs with the diffusers safety checker disabled. It needs an extra 1.2GB model and replaces any flagged image with a black one. Content rules are in the minor-protection section of SKILL.md.
+- The generation pipeline runs with the diffusers safety checker disabled. It needs an extra 1.2GB model and replaces any flagged image with a black one. The precise and high-quality presets run with the stable-diffusion.cpp CLI and weight files only, a path with no safety checker, prompt filter or output classifier. Content rules are in the minor-protection section of SKILL.md.

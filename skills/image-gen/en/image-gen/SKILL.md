@@ -20,7 +20,7 @@ Diffusion models cannot draw text, exact connector lines, numbers, or exact coun
 4. Preset: select the model.
 5. Pre-generation questions: ask about the generation and correction policies in a single message and record the answers in preflight.json. If the candidate generation answer is not 1x (automatic included), read references/candidates.md before recording. If the upfront workaround answer is not off or the regeneration limit multiplier answer is automatic, read references/defects.md before recording.
 6. Prompt: write an English prompt.
-7. Generate: run generate.py or generate_klein.py.
+7. Generate: run generate.py or generate_sdcpp.py.
 8. Check and correction: first read the reference files in the reading-before-the-check section. Open the output and correct defects.
 9. Final upscaling: if selected, apply it once to the adopted image. Run the post-upscaling recheck on the 4x result before delivery.
 10. Delivery: provide the file and the reproduction details.
@@ -30,9 +30,9 @@ Diffusion models cannot draw text, exact connector lines, numbers, or exact coun
 - `PY` is the Python of the skill's virtual environment: `~/.cache/image-gen/venv/bin/python` on Linux and macOS, `%USERPROFILE%\.cache\image-gen\venv\Scripts\python.exe` on Windows.
 - Replace `scripts/` with the path of the scripts folder inside this skill's folder.
 - Run commands from the user's working folder. Save results to the path the user specifies. If none is given, use the output folder the environment defines. If that is also absent, save to the working folder and give the user the absolute path.
-- The scripts run with the same commands on Linux, macOS, and Windows. Only the precise preset requires Linux x86_64.
+- The scripts run with the same commands on Linux, macOS, and Windows. Only the precise and high-quality presets require Linux x86_64.
 - Every file the skill downloads is stored in the cache folder `~/.cache/image-gen`. Set the environment variable `IMAGE_GEN_HOME` to change its location.
-- Features that download files from GitHub are the precise preset engine (`leejet/stable-diffusion.cpp`), final upscaling (`xinntao/Real-ESRGAN`) and face restoration (`TencentARC/GFPGAN`, `xinntao/facexlib`). If the runtime environment has a tool that attaches a GitHub repository to the session, call it with the matching repository before each feature's first run. Pass the parts before and after `/` as separate owner and repository name values. Follow any access route the tool's reply specifies. Skip this step when no such tool exists or the call is refused.
+- Features that download files from GitHub are the engine of the precise and high-quality presets (`leejet/stable-diffusion.cpp`), final upscaling (`xinntao/Real-ESRGAN`) and face restoration (`TencentARC/GFPGAN`, `xinntao/facexlib`). If the runtime environment has a tool that attaches a GitHub repository to the session, call it with the matching repository before each feature's first run. Pass the parts before and after `/` as separate owner and repository name values. Follow any access route the tool's reply specifies. Skip this step when no such tool exists or the call is refused.
 
 ## Setup
 
@@ -67,7 +67,7 @@ probe.py prints one JSON object. Determine the next step from the values below.
 | `free_disk_gb` | Free disk space at the cache folder | Compare with the download sizes in the preset table |
 | `memory.total_gb` | Total memory | If insufficient, generate.py stops with exit code 6 before running |
 | `cpu.native_bf16` | CPU support for bfloat16 instructions | Used to choose the precision (references/models.md) |
-| `precise_tier_supported` | Whether the precise preset can run | If false, remove the precise preset from the choices |
+| `engine_presets_supported` | Whether the precise and high-quality presets can run | If false, remove both presets from the choices |
 | `estimate.seconds_per_image` | Estimated seconds per image by preset | Used for the time estimate given to the user |
 
 ### Time estimates
@@ -123,21 +123,25 @@ A preset is a combination of a model and fixed settings. Change the style throug
 | `dreamshaper-8-lcm` | Standard, default | Photographic, illustration, painting, watercolor | 512x512 | about 4.3GB |
 | `sdxs` | Light, fastest | General styles, simpler detail | 512x512 | about 2.1GB |
 | `tiny-sd` | Flat | Flat vector with solid fills, watercolor with paint bleed | 384x384 | about 1.1GB |
-| `flux2-klein-4b` | Precise, slowest | Most accurate instruction following and anatomy | 384x512 | about 5.2GB |
+| `flux2-klein-4b` | Precise | Natural-language instructions, object structure and anatomy more accurate than the SD 1.5 family | 384x512 | about 5.2GB |
+| `z-image-turbo` | High quality, slowest | Photographic people and scenes, faithful fine detail and shot framing | 384x512 | about 6.4GB |
 
 - With no style or quality requirement, use Standard.
 - Standard produces broken shapes with flat vector keywords. Use Flat or Light for flat vector requests.
-- Flat often cuts off heads or adds picture frames when a person is the main subject. For a person as the main subject, use Standard or Precise.
+- Flat often cuts off heads or adds picture frames when a person is the main subject. For a person as the main subject, use Standard, Precise, or High quality.
 - Light tends to produce an illustration-like look even when a photographic style is requested.
+- High quality follows shot framing instructions such as a full body more faithfully than Precise and renders faces, hair, and feet in fine detail. Its compositions and the look of the person tend to stay similar when the seed changes.
+- Precise renders the structure and the requested viewpoint of objects recognized by how their parts connect more accurately than High quality. In full-body figures it often cuts off the feet at the frame edge.
+- Precise and High quality use the same text encoder file (about 2.5GB). After one preset is downloaded, the first download of the other is smaller by that amount.
 
 ### Model choice question
 
-Add a model choice to the pre-generation questions when any condition below applies. If none applies, proceed with Standard without asking. If the user already specified a model or stated that speed or quality comes first, follow that without asking.
+Add a model choice to the pre-generation questions when any condition below applies. If none applies, proceed with Standard without asking. If the user already specified a model or stated that speed or quality comes first, follow that without asking. For quality first, use High quality, or Precise when the main subject is an object recognized by how its parts connect. Where neither preset can run, use Standard.
 
 | Condition | Choices |
 |---|---|
 | 10 or more images in one request | Standard, Light |
-| A person is the main subject (including full body or visible hands) | Standard, Precise |
+| A person is the main subject (including full body or visible hands) | Standard, Precise, High quality |
 | Flat vector or paint-bleed texture requested | Flat, Light |
 | The environment check shows insufficient resources | Only the presets that can run |
 
@@ -248,7 +252,8 @@ If a model choice condition applies, continue with the last number. Example:
 
 > 11. [Model choice] A person is the main subject, so the rate of shape defects depends on the model. Times are estimates for this runtime environment.
 >    a) Standard (DreamShaper 8 LCM): about 40 seconds per image, 512px, frequent hand and clothing defects
->    b) Precise (FLUX.2 klein 4B): about 15 minutes per image, 384x512, the most accurate shapes. Downloads about 5.2GB on the first run
+>    b) Precise (FLUX.2 klein 4B): about 15 minutes per image, 384x512, shapes more accurate than Standard. Downloads about 5.2GB on the first run
+>    c) High quality (Z-Image Turbo): about 30 minutes per image, 384x512, faithful fine detail and shot framing. Downloads about 6.4GB on the first run
 
 The times in the example illustrate the format only. Use probe.py's estimates in actual questions.
 
@@ -294,7 +299,7 @@ PY scripts/preflight.py --out ./outputs --subject other --display available --en
 - Do not request text inside the image.
 - Do not use single quotes ('). They conflict with command-line quoting.
 - Standard, Light, and Flat belong to the SD 1.5 family. They respond well to short keyword-style English and reflect long natural sentences poorly. Their text window is 77 tokens, and anything beyond it is ignored without an error. The 75 tokens remaining after the start and end markers are about 50 English words. If generate.py prints a warning with the ignored text, shorten the prompt and run again.
-- Precise accepts natural sentences as they are and has no 77-token limit. It does not use a negative prompt.
+- Precise and High quality accept natural sentences as they are and have no 77-token limit. They do not use a negative prompt.
 - Fix the seed to reproduce a result. Change it for variety.
 - With the upfront workaround off, do not include workaround instructions (hats, sunglasses, gloves) in the first prompt. Use them only after defect handling reaches stage 2. Accessories the user requested from the start are part of the original intent, so include them.
 - With the upfront workaround at optimize or maximum, include workaround staging in the first prompt as specified in the upfront workaround section of references/defects.md.
@@ -323,7 +328,7 @@ PY scripts/generate.py --preset tiny-sd --prompt "flat vector illustration of a 
 - If a file exists at the same path, the new file is saved with a number appended. Use `--overwrite` only when overwriting is intended.
 - stdout prints one JSON line per image with the path, prompt, seed, preset, precision, size, and seconds.
 - Open any result cropped to another ratio and check that the subject is not cut off. If it is, run again with the same seed and only the anchor changed. If no anchor fits the whole subject, add a framing that suits the target ratio (distant placement, upper body) to the prompt and regenerate.
-- Run the precise preset with generate_klein.py following the precise preset section of references/models.md.
+- Run the precise and high-quality presets with generate_sdcpp.py following the engine preset section of references/models.md.
 
 When the multiplier in force is 2 or more, generate the candidates as described in the candidate pool section of references/candidates.md.
 
@@ -481,7 +486,7 @@ PY scripts/cache.py delete all    # the whole cache except the virtual environme
 | Exit code 6 | Not enough memory or disk | For disk, delete non-default preset caches with cache.py and retry. For memory, follow the steps in the model lock section |
 | Exit code 7 | Output check failed | Regenerate with another seed |
 | Exit code 8 | Weight hash mismatch, the damaged file was deleted | Run again to download a fresh copy. If it fails repeatedly, disable that feature and inform the user |
-| Exit code 9 | The operating system cannot run the precise preset | Offer other presets |
+| Exit code 9 | The operating system cannot run the precise and high-quality presets | Offer other presets |
 | Style ignored | Non-English prompt or abstract style words | Rewrite in English and place a technique name first |
 | Smeared shapes | Preset settings were changed | Restore the script's default steps, guidance, and scheduler |
 | Text, counts, or states ignored | A limit of diffusion models | Remove those instructions and add the content in an editing tool |

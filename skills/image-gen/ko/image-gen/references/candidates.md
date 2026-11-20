@@ -12,7 +12,7 @@
 
 아래 경우는 1배를 권장한다.
 
-- 정밀 프리셋을 사용한다. 장당 시간이 가장 길고 형태 정확도가 가장 높다.
+- 정밀이나 고품질 프리셋을 사용한다. 두 프리셋은 장당 시간이 길어 후보 한 장의 시간 비용이 크다. 고품질은 seed를 바꿔도 구도와 인물 인상이 비슷하게 생성되어 후보를 늘리는 효과도 작다.
 - 형태가 무너지기 쉬운 피사체가 없는 사물 도상이나 풍경 장면이다.
 
 배수는 아래 권장 기준에 맞춰 정한다.
@@ -42,12 +42,12 @@
 PY scripts/generate.py --prompt "a red bicycle leaning against a brick wall, side view, watercolor illustration" --out ./outputs --name bicycle --count 4
 
 # 정밀 프리셋, 후보 2배, seed와 파일 이름을 변경해 한 장씩
-PY scripts/generate_klein.py "an elderly man reading a newspaper on a park bench, photorealistic" ./outputs/reader-01.png --seed 42
-PY scripts/generate_klein.py "an elderly man reading a newspaper on a park bench, photorealistic" ./outputs/reader-02.png --seed 43
+PY scripts/generate_sdcpp.py "an elderly man reading a newspaper on a park bench, photorealistic" ./outputs/reader-01.png --preset flux2-klein-4b --seed 42
+PY scripts/generate_sdcpp.py "an elderly man reading a newspaper on a park bench, photorealistic" ./outputs/reader-02.png --preset flux2-klein-4b --seed 43
 ```
 
 - 프롬프트가 같은 목표 이미지는 `--count`에 목표 장수와 배수의 곱을 지정해 한 번에 실행한다. 목표 이미지마다 프롬프트가 다르면 프롬프트마다 `--count`에 배수를 지정한다.
-- 정밀 프리셋은 한 번에 한 장만 생성한다. 후보는 seed를 1씩 증가시키고 파일 이름을 변경해 장마다 별도로 실행한다. 앞 실행이 끝난 뒤 다음 실행을 시작한다.
+- 정밀과 고품질 프리셋은 한 번에 한 장만 생성한다. 후보는 seed를 1씩 증가시키고 파일 이름을 변경해 장마다 별도로 실행한다. 앞 실행이 끝난 뒤 다음 실행을 시작한다.
 - 후보는 출력 폴더에 생성한다. 생성 스크립트와 finalize.py는 출력 폴더의 preflight.json을 읽으므로, 하위 폴더에 저장하면 종료 코드 2로 중단된다. 여분은 채택 후 `candidates` 폴더로 이동한다(아래 후보 채택 절).
 
 ## 후보 채택

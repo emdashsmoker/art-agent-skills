@@ -1,6 +1,6 @@
-# Presets, precision, time estimates, the precise preset, and the cache
+# Presets, precision, time estimates, the engine presets, and the cache
 
-Details for the preset and environment check sections of SKILL.md. Read this when choosing a preset, working out time estimates, running the precise preset, or cleaning up the cache.
+Details for the preset and environment check sections of SKILL.md. Read this when choosing a preset, working out time estimates, running the precise or high-quality preset, or cleaning up the cache.
 
 ## Preset settings
 
@@ -57,13 +57,21 @@ Most of the work is matrix multiplication, so the proportion roughly holds, but 
 - The first run includes model loading and download time. Loading takes from a few seconds to tens of seconds.
 - To recalibrate a workload, multiply the GFLOPS from `probe.py --estimate` by the real `seconds` of one image in the same runtime environment and update that entry.
 
-## Precise preset (FLUX.2 klein 4B)
+## Engine presets (Precise, High quality)
 
-This runs a 4-billion-parameter model with a prebuilt stable-diffusion.cpp executable and 4-bit quantized files, with no compilation required. It follows instructions and draws bodies with fewer errors than the SD 1.5 family, and it is the slowest.
+The precise and high-quality presets run models with billions of parameters with a prebuilt stable-diffusion.cpp executable and 4-bit quantized files, with no compilation required. The two presets share the executable, the text encoder, and the run settings. The diffusion model, the VAE, and the step count differ by preset.
 
-- Executable: one pinned stable-diffusion.cpp release, checked by SHA-256. Only the Linux x86_64 build is pinned, so remove this preset from the choices on other operating systems.
-- Model files: the diffusion model (FLUX.2 klein 4B as GGUF Q4_0), the text encoder (Qwen3 4B as GGUF Q4_K_M), and the VAE (from the official FLUX.2 klein 4B repository), each downloaded from its official publisher at a pinned revision. About 5.2GB in total.
-- Settings: 4 steps, cfg 1.0 (the upstream example values), memory mapping (`--mmap`), and tiled VAE decoding are fixed. Without memory mapping the weights are copied into RAM and machines with little memory run out of it.
+| Preset | Diffusion model | VAE | Steps | cfg | Basis | First download |
+|---|---|---|---|---|---|---|
+| `flux2-klein-4b` Precise | FLUX.2 klein 4B as GGUF Q4_0 | From the official FLUX.2 klein 4B repository | 4 | 1.0 | The upstream example values | about 5.2GB |
+| `z-image-turbo` High quality | Z-Image Turbo as GGUF Q4_0 | From the official Z-Image Turbo repository | 8 | 1.0 | The evaluation count in the model card, the upstream example values | about 6.4GB |
+
+- Precise traits: for objects recognized by how their parts connect, such as a bicycle or a ladder, it renders the structure and the requested viewpoint more accurately than High quality. In full-body figures it often cuts off the feet at the frame edge.
+- High quality traits: in photographic people and scenes it renders faces, hair, feet, and materials in fine detail and follows shot framing instructions such as a full body faithfully. Its compositions and the look of the person tend to stay similar when the seed changes. For objects recognized by how their parts connect, the connections are sometimes wrong or the object appears from a viewpoint other than the requested one.
+- Shared traits: both presets render flat vector instructions with solid fills and crisp edges. Both sometimes draw the small hands of a full-body figure with fingers that cannot be counted one by one.
+- Executable: one pinned stable-diffusion.cpp release, checked by SHA-256. Only the Linux x86_64 build is pinned, so remove both presets from the choices on other operating systems.
+- Model files: the diffusion model, the text encoder (Qwen3 4B as GGUF Q4_K_M), and the VAE, each downloaded from its official publisher at a pinned revision. Both presets use the same text encoder file (about 2.5GB). After one preset is downloaded, the first download of the other is smaller by that amount.
+- Settings: the step count and cfg are fixed at the values in the table. Both models are distilled to generate in few steps without guidance. Memory mapping (`--mmap`) and tiled VAE decoding are fixed as well. Without memory mapping the weights are copied into RAM and machines with little memory run out of it.
 - Size: 384x512 by default, 512x704 pixels at most. Step time grows with pixel count, so produce larger sizes with final upscaling.
 - Prompt: accepts natural sentences as they are. No 77-token limit, no negative prompt.
 - If the result is filled with a single color, it stops with exit code 7. Files quantized in other layouts can produce white images without any error, so use only the pinned files.
@@ -72,10 +80,11 @@ This runs a 4-billion-parameter model with a prebuilt stable-diffusion.cpp execu
 A run takes a long time, so start it in the background and monitor the log. If the agent environment can be reset between conversation turns, finish the run and the wait within the same turn.
 
 ```
-setsid nohup PY scripts/generate_klein.py "an adult woman in a black coat standing on a city street at night, photorealistic, framed from head to thighs" ./outputs/klein.png --seed 42 > ./outputs/klein.log 2>&1 < /dev/null &
+setsid nohup PY scripts/generate_sdcpp.py "an adult woman in a black coat standing on a city street at night, photorealistic, framed from head to thighs" ./outputs/street.png --preset flux2-klein-4b --seed 42 > ./outputs/street.log 2>&1 < /dev/null &
 ```
 
-- Check the progress marks in the log (`1/4` through `4/4`), the output file, and the JSON on the last line.
+- Set `--preset` to `flux2-klein-4b` or `z-image-turbo`.
+- Check the step progress marks in the log (`1/4` through `4/4` for Precise, `1/8` through `8/8` for High quality), the output file, and the JSON on the last line.
 - Do not run it alongside another generation process. Running both exhausts memory and causes termination.
 
 ## Cache
@@ -85,12 +94,14 @@ Everything the skill downloads is stored under the cache folder (`~/.cache/image
 | cache.py target | Deleted |
 |---|---|
 | `dreamshaper-8-lcm`, `sdxs`, `tiny-sd` | That model repository |
-| `flux2-klein-4b` | The three model repositories of the precise preset and the executable folder (`klein`) |
+| `flux2-klein-4b` | The diffusion model repository and the VAE repository of the precise preset |
+| `z-image-turbo` | The diffusion model repository and the VAE repository of the high-quality preset |
 | `inpaint` | The region redrawing model and LCM-LoRA |
 | `face` | The face restoration weight folder (`face`) |
 | `sr` | The final upscaling weight folder (`sr`) |
 | `all` | The whole cache folder except the virtual environment (`venv`) |
 
+- The precise and high-quality presets share the text encoder repository and the executable folder (`sdcpp`). Deleting one of the two targets keeps the shared files while the other preset still has its model files, and deletes them too when it does not.
 - The Hugging Face cache keeps real files in a shared store and only links in the model folders. Deleting a model folder does not free disk space, so delete through cache.py.
 - Keep the default preset's cache while the conversation continues. If disk space is insufficient for the next download, delete caches of the other presets first.
 - A deleted model is downloaded again when used. Delete after a series of images is finished.

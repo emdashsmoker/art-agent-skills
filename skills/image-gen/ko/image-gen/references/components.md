@@ -10,8 +10,10 @@
 | 경량 프리셋 | SDXS-512-DreamShaper | https://huggingface.co/IDKiro/sdxs-512-dreamshaper | OpenRAIL++-M |
 | 플랫 프리셋 | tiny-sd | https://huggingface.co/segmind/tiny-sd | CreativeML OpenRAIL-M |
 | 정밀 프리셋 확산 모델 | FLUX.2 [klein] 4B, GGUF Q4_0 변환본 | https://huggingface.co/unsloth/FLUX.2-klein-4B-GGUF | Apache-2.0 |
-| 정밀 프리셋 텍스트 인코더 | Qwen3-4B, GGUF Q4_K_M 변환본 | https://huggingface.co/unsloth/Qwen3-4B-GGUF | Apache-2.0 |
+| 정밀과 고품질 프리셋 텍스트 인코더 | Qwen3-4B, GGUF Q4_K_M 변환본 | https://huggingface.co/unsloth/Qwen3-4B-GGUF | Apache-2.0 |
 | 정밀 프리셋 VAE | FLUX.2 [klein] 4B VAE | https://huggingface.co/black-forest-labs/FLUX.2-klein-4B | Apache-2.0 |
+| 고품질 프리셋 확산 모델 | Z-Image Turbo, GGUF Q4_0 변환본 | https://huggingface.co/leejet/Z-Image-Turbo-GGUF | Apache-2.0 |
+| 고품질 프리셋 VAE | Z-Image Turbo VAE | https://huggingface.co/Tongyi-MAI/Z-Image-Turbo | Apache-2.0 |
 | 부위 다시 그리기 | Stable Diffusion 1.5 Inpainting | https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-inpainting | CreativeML OpenRAIL-M |
 | 부위 다시 그리기 가속 | LCM-LoRA SD 1.5 | https://huggingface.co/latent-consistency/lcm-lora-sdv1-5 | OpenRAIL++-M |
 | 화질 보정 | Real-ESRGAN realesr-general-x4v3, realesr-animevideov3 | https://github.com/xinntao/Real-ESRGAN/releases/tag/v0.2.5.0 | BSD-3-Clause |
@@ -21,13 +23,13 @@
 - OpenRAIL 계열 라이선스는 모델과 산출물의 사용에 제한 조항(부속서의 사용 제한 목록)을 둔다. 스킬 사용자는 이 조항을 준수해야 한다.
 - GFPGAN 저장소의 라이선스는 Apache-2.0이며, 저장소 안의 일부 제3자 구성 요소에는 다른 라이선스가 적용된다고 명시한다. 이 스킬은 사용자 정의 CUDA 연산이 필요 없는 clean 구조(`arch="clean"`)로만 추론한다.
 - tiny-sd는 가중치를 PyTorch pickle 형식으로 배포한다. diffusers와 transformers는 이 파일을 텐서만 읽는 방식으로 적재한다.
-- 화질 보정과 얼굴 복원, 정밀 프리셋 실행 파일은 스크립트에 기재된 SHA-256과 대조한 뒤 사용한다. Hugging Face 모델은 정밀 프리셋에서 고정 리비전으로 내려받는다.
+- 화질 보정과 얼굴 복원, 정밀과 고품질 프리셋의 실행 파일은 스크립트에 기재된 SHA-256과 대조한 뒤 사용한다. Hugging Face 모델은 정밀과 고품질 프리셋에서 고정 리비전으로 내려받는다.
 
 ## 실행 파일
 
 | 용도 | 구성 요소 | 배포처 | 라이선스 |
 |---|---|---|---|
-| 정밀 프리셋 실행 | stable-diffusion.cpp 사전 빌드 CLI(릴리스 master-881-17860c0, 리눅스 x86_64) | https://github.com/leejet/stable-diffusion.cpp/releases/tag/master-881-17860c0 | MIT |
+| 정밀과 고품질 프리셋 실행 | stable-diffusion.cpp 사전 빌드 CLI(릴리스 master-881-17860c0, 리눅스 x86_64) | https://github.com/leejet/stable-diffusion.cpp/releases/tag/master-881-17860c0 | MIT |
 
 ## 파이썬 패키지
 
@@ -44,3 +46,5 @@
 ## 안전 검사기
 
 생성 파이프라인은 diffusers의 안전 검사기를 비활성화하고 실행한다. 안전 검사기는 별도 모델(약 1.2GB)을 추가로 내려받아야 하고, 검출된 결과 전체를 검은 이미지로 대체한다. 내용 기준은 SKILL.md의 미성년자 보호 절을 따른다.
+
+정밀과 고품질 프리셋은 stable-diffusion.cpp CLI와 가중치 파일만으로 실행한다. 이 실행 경로에는 안전 검사기, 프롬프트 필터, 출력 분류기가 포함되어 있지 않고 스크립트도 이러한 장치를 추가하지 않는다. 내용 기준은 다른 프리셋과 같이 SKILL.md의 미성년자 보호 절을 따른다.

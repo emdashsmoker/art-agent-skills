@@ -12,7 +12,7 @@ When the candidate generation answer is automatic, decide the multiplier after t
 
 1x is recommended in the cases below.
 
-- The precise preset is in use. It takes the longest per image and draws shapes most accurately.
+- The precise or high-quality preset is in use. Both take long per image, so one more candidate costs much time. High quality also gains little from more candidates, because its compositions and the look of the person stay similar when the seed changes.
 - An object icon or a landscape scene with no subject prone to shape defects.
 
 Decide the multiplier by the recommended criteria below.
@@ -42,12 +42,12 @@ When the multiplier in force is 2 or more, generate target count times multiplie
 PY scripts/generate.py --prompt "a red bicycle leaning against a brick wall, side view, watercolor illustration" --out ./outputs --name bicycle --count 4
 
 # Precise preset, 2x candidates, one image per run with a new seed and file name
-PY scripts/generate_klein.py "an elderly man reading a newspaper on a park bench, photorealistic" ./outputs/reader-01.png --seed 42
-PY scripts/generate_klein.py "an elderly man reading a newspaper on a park bench, photorealistic" ./outputs/reader-02.png --seed 43
+PY scripts/generate_sdcpp.py "an elderly man reading a newspaper on a park bench, photorealistic" ./outputs/reader-01.png --preset flux2-klein-4b --seed 42
+PY scripts/generate_sdcpp.py "an elderly man reading a newspaper on a park bench, photorealistic" ./outputs/reader-02.png --preset flux2-klein-4b --seed 43
 ```
 
 - For target images that share a prompt, run once with `--count` set to target count times multiplier. When each target image has its own prompt, set `--count` for each prompt to the multiplier.
-- The precise preset generates one image per run. Run each candidate separately with the seed increased by 1 and a new file name. Start the next run after the previous one finishes.
+- The precise and high-quality presets generate one image per run. Run each candidate separately with the seed increased by 1 and a new file name. Start the next run after the previous one finishes.
 - Generate candidates in the output folder. The generation scripts and finalize.py read preflight.json from the output folder, so saving into a subfolder stops them with exit code 2. Spares are moved to the `candidates` folder after adoption (the candidate adoption section below).
 
 ## Candidate adoption

@@ -19,13 +19,18 @@ TARGETS = {
     "dreamshaper-8-lcm": {"repos": ["Lykon/dreamshaper-8-lcm"], "folders": []},
     "sdxs": {"repos": ["IDKiro/sdxs-512-dreamshaper"], "folders": []},
     "tiny-sd": {"repos": ["segmind/tiny-sd"], "folders": []},
-    "flux2-klein-4b": {"repos": ["unsloth/FLUX.2-klein-4B-GGUF", "unsloth/Qwen3-4B-GGUF",
-                                 "black-forest-labs/FLUX.2-klein-4B"], "folders": ["klein"]},
+    "flux2-klein-4b": {"repos": ["unsloth/FLUX.2-klein-4B-GGUF", "black-forest-labs/FLUX.2-klein-4B"],
+                       "folders": []},
+    "z-image-turbo": {"repos": ["leejet/Z-Image-Turbo-GGUF", "Tongyi-MAI/Z-Image-Turbo"], "folders": []},
     "inpaint": {"repos": ["stable-diffusion-v1-5/stable-diffusion-inpainting",
                           "latent-consistency/lcm-lora-sdv1-5"], "folders": []},
     "face": {"repos": [], "folders": ["face"]},
     "sr": {"repos": [], "folders": ["sr"]},
 }
+ENGINE_PRESETS = ("flux2-klein-4b", "z-image-turbo")
+# WHY: the engine presets share the text encoder and the engine binary. Deleting one preset keeps
+#      them while the other preset still has its model files, so that preset never downloads them again.
+ENGINE_SHARED = {"repos": ["unsloth/Qwen3-4B-GGUF"], "folders": ["sdcpp"]}
 # WHY: the virtual environment is the skill's installation, not a cache, so "all" keeps it
 KEPT_FOLDERS = {"venv"}
 
@@ -69,6 +74,22 @@ def delete_repos(repo_ids):
     return sorted(repo.repo_id for repo in info.repos if repo.repo_id in repo_ids)
 
 
+def delete_spec(spec):
+    removed = delete_repos(set(spec["repos"]))
+    for name in spec["folders"]:
+        path = CACHE_ROOT / name
+        if path.exists():
+            shutil.rmtree(path, ignore_errors=True)
+            removed.append(str(path))
+    return removed
+
+
+def other_engine_preset_cached(target):
+    info = scan()
+    cached = {repo.repo_id for repo in info.repos} if info else set()
+    return any(cached & set(TARGETS[name]["repos"]) for name in ENGINE_PRESETS if name != target)
+
+
 def delete(target):
     if target == "all":
         removed = []
@@ -78,13 +99,9 @@ def delete(target):
                     shutil.rmtree(child, ignore_errors=True) if child.is_dir() else child.unlink()
                     removed.append(child.name)
         return removed
-    spec = TARGETS[target]
-    removed = delete_repos(set(spec["repos"]))
-    for name in spec["folders"]:
-        path = CACHE_ROOT / name
-        if path.exists():
-            shutil.rmtree(path, ignore_errors=True)
-            removed.append(str(path))
+    removed = delete_spec(TARGETS[target])
+    if target in ENGINE_PRESETS and not other_engine_preset_cached(target):
+        removed += delete_spec(ENGINE_SHARED)
     return removed
 
 

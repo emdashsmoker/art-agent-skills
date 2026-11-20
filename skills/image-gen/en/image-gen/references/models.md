@@ -59,7 +59,7 @@ Most of the work is matrix multiplication, so the proportion roughly holds, but 
 
 ## Precise preset (FLUX.2 klein 4B)
 
-This runs a 4-billion-parameter model with a prebuilt stable-diffusion.cpp executable and 4-bit quantized files, with no compilation required. It follows instructions and draws bodies with fewer errors than the SD 1.5 family, and it is the slowest.
+This runs a 4-billion-parameter model with a prebuilt stable-diffusion.cpp executable and 4-bit quantized files, with no compilation required. It follows instructions and draws bodies with fewer errors than the SD 1.5 family. It takes far longer per image than the SD 1.5 family and less time than the high-quality preset.
 
 - Executable: one pinned stable-diffusion.cpp release, checked by SHA-256. Only the Linux x86_64 build is pinned, so remove this preset from the choices on other operating systems.
 - Model files: the diffusion model (FLUX.2 klein 4B as GGUF Q4_0), the text encoder (Qwen3 4B as GGUF Q4_K_M), and the VAE (from the official FLUX.2 klein 4B repository), each downloaded from its official publisher at a pinned revision. About 5.2GB in total. The text encoder is the same file the high-quality preset uses.
@@ -72,7 +72,7 @@ This runs a 4-billion-parameter model with a prebuilt stable-diffusion.cpp execu
 A run takes a long time, so start it in the background and monitor the log. If the agent environment can be reset between conversation turns, finish the run and the wait within the same turn.
 
 ```
-setsid nohup PY scripts/generate_sdcpp.py "an adult woman in a black coat standing on a city street at night, photorealistic, framed from head to thighs" ./outputs/klein.png --seed 42 > ./outputs/klein.log 2>&1 < /dev/null &
+setsid nohup PY scripts/generate_sdcpp.py "an adult woman in a black coat standing on a city street at night, photorealistic, framed from head to thighs" ./outputs/klein.png --preset flux2-klein-4b --seed 42 > ./outputs/klein.log 2>&1 < /dev/null &
 ```
 
 - Check the progress marks in the log (`1/4` through `4/4`), the output file, and the JSON on the last line.
@@ -80,11 +80,12 @@ setsid nohup PY scripts/generate_sdcpp.py "an adult woman in a black coat standi
 
 ## High-quality preset (Z-Image Turbo)
 
-This runs a 6-billion-parameter model with the same executable as the precise preset.
+This runs a 6-billion-parameter model with the same executable as the precise preset. It renders faces and skin in photographic people with finer detail than the precise preset. It takes the longest per image of all presets.
 
 - Shared with the precise preset: the executable, the text encoder, memory mapping, tiled VAE decoding, the size range, prompt handling, the single-color check, one image per run, and the background run follow the precise preset section.
 - Model files: the diffusion model is Z-Image Turbo as GGUF Q4_0. The VAE comes from the official Z-Image Turbo repository. Both are downloaded at pinned revisions. About 6.4GB in total, the text encoder included. If the precise preset was used before, the text encoder is not downloaded again.
 - Settings: 8 steps and cfg 1.0 are fixed. The model card specifies 8 transformer passes without guidance. The stable-diffusion.cpp example also uses 8 steps with cfg 1.0. A cfg of 1.0 means no guidance.
+- Tendencies: finger defects occur about as often as with the precise preset. A full-body request sometimes comes out framed only down to the thighs. A watercolor request shows weak paint texture and looks closer to a clean illustration.
 - Run: pass `--preset z-image-turbo` to generate_sdcpp.py. It can be omitted when preflight.json records the high-quality preset.
 
 ```

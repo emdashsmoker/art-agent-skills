@@ -35,7 +35,7 @@ WORK_GFLOP_PER_IMAGE = {
     "tiny-sd": {"fp32": 14500, "bf16": 8760},
     # WHY: these run quantized in their own engine, the float32 benchmark is the closest proxy
     "flux2-klein-4b": {"fp32": 152500},
-    "z-image-turbo": {"fp32": None},
+    "z-image-turbo": {"fp32": 329200},
 }
 DEPENDENCIES = ["torch", "diffusers", "transformers", "accelerate", "safetensors", "peft",
                 "huggingface_hub", "PIL", "numpy", "gfpgan", "facexlib", "basicsr", "cv2"]

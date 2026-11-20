@@ -111,13 +111,15 @@ A preset is a combination of a model and fixed settings. Change the style with t
 | `dreamshaper-8-lcm` | Standard | Photographic, illustration, painting, watercolor | 512x512 | about 4.3GB |
 | `sdxs` | Light, fastest | General styles, simpler detail | 512x512 | about 2.1GB |
 | `tiny-sd` | Flat | Flat vector with solid fills, watercolor with paint bleed | 384x384 | about 1.1GB |
-| `flux2-klein-4b` | Precise, slowest | Most accurate instruction following and anatomy | 384x512 | about 5.2GB |
+| `flux2-klein-4b` | Precise | Most accurate instruction following and anatomy | 384x512 | about 5.2GB |
+| `z-image-turbo` | High quality, slowest | Photographic, fine detail in faces and skin | 384x512 | about 6.4GB |
 
 - Generation time depends on the runtime environment's CPU, so report the measured time after the first image.
 - Standard renders photographic texture, shallow depth of field, and watercolor bleed in fine detail. Shapes collapse with flat vector keywords. In full-body figures, hands often smear or the toes get cut off.
 - Light mostly places scene elements as instructed. It tends to produce an illustration look even when asked for a photographic style, and the same person sometimes appears twice.
 - Flat renders solid fills with crisp edges, paint bleed, and blank paper better than the other presets. Its shape stability is low, so it often draws a picture frame border as well or cuts off a person's head at the top of the frame.
 - Precise accepts natural sentences as they are and renders anatomy most accurately. It runs on Linux x86_64, Apple Silicon macOS (arm64), and Windows x64, so leave it out of the choices in any other runtime environment. Check the operating system with `PY -c "import platform; print(platform.system(), platform.machine())"`.
+- High quality renders faces and skin in photographic people with finer detail than Precise. Finger defects occur about as often as with Precise. A watercolor request shows weak paint texture. It uses the same engine as Precise, so it runs on the same operating systems.
 - Before generating with the precise or high-quality preset, check that free disk space is larger than the download size. During generation it reads the weights from disk with `--mmap`, so it runs even with little memory, but more slowly.
 
 ### Model lock
@@ -140,6 +142,7 @@ Before the first generation, ask all applicable items in the table below at once
 | Diagram consent | Diagram request | Never |
 
 - Omit only the items the user has already answered. Also ask the items that have a recommended option.
+- If the user says that quality comes first, use High quality as the model. If the user puts accurate instruction following or anatomy first, use Precise.
 - When the user delegates with phrases such as "up to you" or "use the defaults", present the default combination in one line and get confirmation. Example: "Shall I proceed with 1-a, 2-a, 3-a?" The defaults are the Standard model, a 1x candidate multiplier, and a regeneration limit of 0.
 - The candidate multiplier is multiplied by the target number of images to set how many images are generated at once. If the multiplier is 2 or more, pick the target number of images after generation as the candidate selection section describes. With automatic, choose from 1x to 3x as the automatic decision section describes. Take custom input as a whole-number multiplier.
 - The regeneration limit is the maximum number of regenerations per target image. If it is 1 or more, check after generation as the regeneration section describes and regenerate only when needed. With automatic, choose from 0 to 3 as the automatic decision section describes. Mark unlimited as not recommended, and follow it if the user chooses it.
@@ -163,7 +166,8 @@ Example for a named subject request with objects only and no style specified:
 >    a) Standard (DreamShaper 8 LCM) (default): photographic, illustration, painting, and watercolor in general. 512x512, first download about 4.3GB
 >    b) Light (SDXS): fastest. Detail is simpler, and photographic styles also come out like illustrations. 512x512, about 2.1GB
 >    c) Flat (tiny-sd): suits flat vector with solid fills and paint bleed. Shape stability is low. 384x384, about 1.1GB
->    d) Precise (FLUX.2 klein 4B): most accurate instruction following and anatomy, and slowest. 384x512, about 5.2GB
+>    d) Precise (FLUX.2 klein 4B): most accurate instruction following and anatomy. 384x512, about 5.2GB
+>    e) High quality (Z-Image Turbo): fine detail in photographic faces and skin, and slowest. 384x512, about 6.4GB
 > 2. [Candidate multiplier] I generate more candidates than the target number at once, then pick and deliver the images that meet the adoption criteria. With a 1x multiplier and a regeneration limit of 0, the generated results are delivered directly.
 >    a) 1x (default): generate only the target number
 >    b) 2x
@@ -205,7 +209,7 @@ The grounds below are defect likelihood grounds. Both items raise their values o
 The candidate multiplier starts from a baseline of 1x.
 
 - With one defect likelihood ground, consider 2x. With several, consider 3x.
-- With the precise preset, use 1x, because it takes the longest per image and renders shapes most accurately.
+- With the precise or high-quality preset, use 1x, because both take far longer per image than the SD 1.5 family.
 
 The regeneration limit starts from a baseline of 0.
 

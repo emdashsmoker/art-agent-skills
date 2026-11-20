@@ -158,7 +158,7 @@ Choose 1x in the cases below.
 
 - No defect likelihood ground applies. General defects already allow up to three prompt edits and three seed changes at 1x.
 - The user mentioned that speed comes first.
-- The precise preset is in use. It takes the longest per image and draws shapes most accurately.
+- The precise or high-quality preset is in use. Both take far longer per image than the SD 1.5 family. Precise also draws shapes most accurately.
 
 Decide the multiplier by the recommended criteria below.
 

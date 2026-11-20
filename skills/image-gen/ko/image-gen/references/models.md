@@ -59,7 +59,7 @@ bfloat16 연산을 하드웨어로 처리하는 명령은 AVX512_BF16과 AMX에 
 
 ## 정밀 프리셋 (FLUX.2 klein 4B)
 
-40억 파라미터 모델을 stable-diffusion.cpp의 사전 빌드 실행 파일과 4비트 양자화 파일로 실행한다. 컴파일은 필요하지 않다. 지시 반영과 인체 형상이 SD 1.5 계열보다 정확하지만 가장 느리다.
+40억 파라미터 모델을 stable-diffusion.cpp의 사전 빌드 실행 파일과 4비트 양자화 파일로 실행한다. 컴파일은 필요하지 않다. 지시 반영과 인체 형상이 SD 1.5 계열보다 정확하다. 장당 시간은 SD 1.5 계열보다 훨씬 길고 고품질 프리셋보다 짧다.
 
 - 실행 파일: stable-diffusion.cpp 릴리스 하나를 고정해 사용하고 SHA-256으로 확인한다. 리눅스 x86_64용만 고정되어 있으므로 다른 운영체제에서는 선택지에서 제외한다.
 - 모델 파일: 확산 모델(FLUX.2 klein 4B의 GGUF Q4_0), 텍스트 인코더(Qwen3 4B의 GGUF Q4_K_M), VAE(FLUX.2 klein 4B 공식 저장소의 VAE) 세 개를 각 공식 배포처에서 고정 리비전으로 내려받는다. 합계 약 5.2GB다. 텍스트 인코더는 고품질 프리셋과 같은 파일이다.
@@ -72,7 +72,7 @@ bfloat16 연산을 하드웨어로 처리하는 명령은 AVX512_BF16과 AMX에 
 실행 시간이 길어 백그라운드로 실행하고 로그로 진행 상황을 확인한다. 에이전트 실행 환경이 대화 턴 사이에 초기화될 수 있으면, 실행과 대기를 같은 턴 안에서 완료한다.
 
 ```
-setsid nohup PY scripts/generate_sdcpp.py "an adult woman in a black coat standing on a city street at night, photorealistic, framed from head to thighs" ./outputs/klein.png --seed 42 > ./outputs/klein.log 2>&1 < /dev/null &
+setsid nohup PY scripts/generate_sdcpp.py "an adult woman in a black coat standing on a city street at night, photorealistic, framed from head to thighs" ./outputs/klein.png --preset flux2-klein-4b --seed 42 > ./outputs/klein.log 2>&1 < /dev/null &
 ```
 
 - 로그의 진행 표시(`1/4`부터 `4/4`)와 결과 파일 생성, 마지막 줄의 JSON을 확인한다.
@@ -80,11 +80,12 @@ setsid nohup PY scripts/generate_sdcpp.py "an adult woman in a black coat standi
 
 ## 고품질 프리셋 (Z-Image Turbo)
 
-60억 파라미터 모델을 정밀 프리셋과 같은 실행 파일로 실행한다.
+60억 파라미터 모델을 정밀 프리셋과 같은 실행 파일로 실행한다. 사진풍 인물의 얼굴과 피부를 정밀 프리셋보다 세밀하게 묘사한다. 장당 시간은 모든 프리셋 중 가장 길다.
 
 - 공통 사항: 실행 파일, 텍스트 인코더, 메모리 매핑, VAE 타일 디코딩, 크기 범위, 프롬프트 처리, 단색 결과 점검, 한 장씩 생성하는 방식, 백그라운드 실행은 정밀 프리셋 절과 같다.
 - 모델 파일: 확산 모델은 Z-Image Turbo의 GGUF Q4_0 변환본이다. VAE는 Z-Image Turbo 공식 저장소의 VAE다. 두 파일은 고정 리비전으로 내려받는다. 텍스트 인코더를 포함한 합계는 약 6.4GB다. 정밀 프리셋을 사용한 적이 있으면 텍스트 인코더는 다시 내려받지 않는다.
 - 설정: 8스텝과 cfg 1.0을 고정했다. 모델 카드는 guidance 없이 트랜스포머를 8회 계산하도록 지정한다. stable-diffusion.cpp 문서의 예시도 8스텝과 cfg 1.0을 사용한다. cfg 1.0은 guidance를 사용하지 않는 값이다.
+- 성향: 손가락 결함은 정밀 프리셋과 비슷하게 발생한다. 전신 지시에서 허벅지까지만 담은 구도로 생성되는 경우가 있다. 수채화 지시에서는 물감 질감이 약하게 반영되어 깔끔한 일러스트에 가깝게 생성된다.
 - 실행: generate_sdcpp.py에 `--preset z-image-turbo`를 지정한다. preflight.json에 고품질 프리셋이 기록되어 있으면 생략할 수 있다.
 
 ```

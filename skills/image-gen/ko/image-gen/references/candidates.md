@@ -12,7 +12,7 @@
 
 아래 경우는 1배를 권장한다.
 
-- 정밀 프리셋을 사용한다. 장당 시간이 가장 길고 형태 정확도가 가장 높다.
+- 정밀 프리셋이나 고품질 프리셋을 사용한다. 두 프리셋은 장당 시간이 SD 1.5 계열보다 훨씬 길다. 정밀은 형태 정확도도 가장 높다.
 - 형태가 무너지기 쉬운 피사체가 없는 사물 도상이나 풍경 장면이다.
 
 배수는 아래 권장 기준에 맞춰 정한다.
@@ -42,8 +42,8 @@
 PY scripts/generate.py --prompt "a red bicycle leaning against a brick wall, side view, watercolor illustration" --out ./outputs --name bicycle --count 4
 
 # 정밀 프리셋, 후보 2배, seed와 파일 이름을 변경해 한 장씩
-PY scripts/generate_sdcpp.py "an elderly man reading a newspaper on a park bench, photorealistic" ./outputs/reader-01.png --seed 42
-PY scripts/generate_sdcpp.py "an elderly man reading a newspaper on a park bench, photorealistic" ./outputs/reader-02.png --seed 43
+PY scripts/generate_sdcpp.py "an elderly man reading a newspaper on a park bench, photorealistic" ./outputs/reader-01.png --preset flux2-klein-4b --seed 42
+PY scripts/generate_sdcpp.py "an elderly man reading a newspaper on a park bench, photorealistic" ./outputs/reader-02.png --preset flux2-klein-4b --seed 43
 ```
 
 - 프롬프트가 같은 목표 이미지는 `--count`에 목표 장수와 배수의 곱을 지정해 한 번에 실행한다. 목표 이미지마다 프롬프트가 다르면 프롬프트마다 `--count`에 배수를 지정한다.

@@ -27,6 +27,53 @@ Changelog rules
 - (Push) Commit on top of the latest main and push directly to main.
 -->
 
+## 2026-11-21
+
+### image-gen
+- Changed the high-quality preset description to the most realistic texture and fine detail of people and objects, with lower shape accuracy than the precise preset for faces, hands, and feet and for objects and props with complex, precise shapes (#51)
+- Changed the precise preset description to the most reliable rendering of anatomy and of objects and props with complex, precise shapes (#51)
+- Removed the preset claims that test generations did not reproduce: little change with the seed for the high-quality preset, feet cut off by the precise preset, more faithful shot framing by the high-quality preset, and hard-to-count small hands for both engine presets (#51)
+- Changed a quality-first request to use the precise preset for full-body framing of a person or for an object or prop with a complex, precise shape (#51)
+- Added the cel shading tendencies to the preset traits, with the standard preset tending toward semi-realistic digital painting and both engine presets rendering solid fills and crisp edges (#51)
+- Added 4x result face restoration, which restores the unrestored 4x result when a face defect remains after working-size restoration and keeps the working-size path when the results are equal (#51)
+- Added the finalize.py --x4-in option, which downscales a restored 4x result to the target size without a second super-resolution pass (#51)
+- Changed the face_fix.py output to one JSON line that lists every detected face box with its score and whether it was restored (#51)
+- Added the face_fix.py --keep option, which restores only confirmed faces and keeps the original pixels of a falsely detected area (#51)
+- Added a note to the post-upscaling recheck that the small generation size of the engine presets hides defects that appear on the 4x result, especially often with the high-quality preset (#51)
+
+* 인물과 사물의 사실적 질감, 정밀 프리셋보다 낮은 형태 정확도를 담은 고품질 프리셋 설명 변경 (#51)
+* 인체 형상, 형태가 복잡하고 정밀한 사물과 소품의 안정적 표현을 담은 정밀 프리셋 설명 변경 (#51)
+* 시험 생성에서 재현되지 않은 프리셋 서술(고품질의 seed 둔감성, 정밀의 발 잘림, 고품질의 샷 범위 충실성, 두 엔진 프리셋의 작은 손 특성) 삭제 (#51)
+* 인물 전신 구도, 형태가 복잡하고 정밀한 사물과 소품에 정밀 프리셋을 적용하는 품질 우선 요청 기준 변경 (#51)
+* 표준 프리셋의 반사실적 디지털 페인팅 경향과 두 엔진 프리셋의 단색 면 표현을 담은 셀화 지시 성향 추가 (#51)
+* 작업 크기 복원 뒤 남은 얼굴 결함을 대상으로 하는 4배 결과물 복원과 결과 비교 절차 추가 (#51)
+* 복원한 4배 결과물을 초해상도 재적용 없이 목표 크기로 축소하는 finalize.py --x4-in 옵션 추가 (#51)
+* 탐지한 얼굴 상자, 점수, 복원 여부를 한 줄의 JSON으로 출력하는 face_fix.py 출력 형식 변경 (#51)
+* 확인한 얼굴만 복원하고 오탐 영역의 원본 화소를 유지하는 face_fix.py --keep 옵션 추가 (#51)
+* 엔진 프리셋의 작은 생성 크기로 인한 4배 결과물 결함 식별, 고품질 프리셋의 높은 식별 빈도를 담은 화질 보정 후 재점검 안내 추가 (#51)
+
+### image-gen-addon-codeformer
+- Changed the face_fix_codeformer.py output to one JSON line that lists every detected face box in input pixels with its score and whether it was restored (#51)
+- Added the face_fix_codeformer.py --keep option, which follows the image-gen check for false face detections (#51)
+- Added the w rules for image-gen 4x result face restoration, with the unrestored 4x result as the input when w is lowered (#51)
+
+* 입력 이미지 화소 기준의 얼굴 상자, 점수, 복원 여부를 한 줄의 JSON으로 출력하는 face_fix_codeformer.py 출력 형식 변경 (#51)
+* image-gen의 얼굴 오탐 확인 절차를 따르는 face_fix_codeformer.py --keep 옵션 추가 (#51)
+* w를 낮출 때 복원하지 않은 4배 결과물을 입력으로 사용하는 image-gen 4배 결과물 복원용 w 규칙 추가 (#51)
+
+### image-gen-lite
+- Changed the high-quality preset description and its model choice to the most realistic texture and fine detail of people and objects, with lower shape accuracy than the precise preset (#51)
+- Changed the precise preset description and its model choice to the most reliable rendering of anatomy and of objects and props with complex, precise shapes (#51)
+- Removed the preset claims that test generations did not reproduce: little change with the seed for the high-quality preset, feet cut off by the precise preset, and more faithful shot framing by the high-quality preset (#51)
+- Changed a quality-first request to use the precise model for full-body framing of a person or for an object or prop with a complex, precise shape (#51)
+- Added the tendency of the standard preset to turn cel shading instructions into semi-realistic digital painting (#51)
+
+* 인물과 사물의 사실적 질감, 정밀 프리셋보다 낮은 형태 정확도를 담은 고품질 프리셋 설명과 모델 선택지 문구 변경 (#51)
+* 인체 형상, 형태가 복잡하고 정밀한 사물과 소품의 안정적 표현을 담은 정밀 프리셋 설명과 모델 선택지 문구 변경 (#51)
+* 시험 생성에서 재현되지 않은 프리셋 서술(고품질의 seed 둔감성, 정밀의 발 잘림, 고품질의 샷 범위 충실성) 삭제 (#51)
+* 인물 전신 구도, 형태가 복잡하고 정밀한 사물과 소품에 정밀 모델을 적용하는 품질 우선 요청 기준 변경 (#51)
+* 셀화 지시를 반사실적 디지털 페인팅으로 생성하는 표준 프리셋 경향 추가 (#51)
+
 ## 2026-11-20
 
 ### image-gen

@@ -27,7 +27,7 @@ When the spare candidate finishing answer is automatic, decide it after the mult
 
 Choose b) all candidates only in the cases below.
 
-- Candidate selection is user selection and face restoration scope is always. Faces differ significantly before and after restoration, so the contact sheet must show restored images for the user to select by the final look. With final upscaling selected, the contact sheet is built from the generated originals, so this reason does not apply.
+- Candidate selection is user selection and face restoration scope is always. Faces differ significantly before and after restoration, so the contact sheet must show restored images for the user to select by the final look. When faces are restored after final upscaling, the contact sheet is built from the generated originals, so this reason does not apply.
 - The request shows an intent to receive every alternative.
 
 - When only final upscaling applies, keep a. Final upscaling mostly changes sharpness and size, so it has little effect on comparing framing and expression.
@@ -54,10 +54,10 @@ PY scripts/generate_sdcpp.py "an elderly man reading a newspaper on a park bench
 
 When the multiplier in force is 2 or more, check the whole candidate pool, then adopt the target count.
 
-1. Check every candidate on its original file with the items of the visual check section in SKILL.md. With final upscaling selected, face restoration follows final upscaling, so check every candidate on its original (the restoration timing section of postprocess.md). With final upscaling declined and face restoration scope always, follow the spare candidate finishing value in force. With all candidates, restore every candidate once and check the restored images. With adopted only, check the originals, then restore only the adopted images and judge them on the restored versions. Compare three-quarter view and profile faces with the original at each restoration, following the non-frontal face rule in postprocess.md. For a candidate whose original was adopted, use the original in place of the restored image in later steps.
+1. Check every candidate on its original file with the items of the visual check section in SKILL.md. When faces are restored after final upscaling, check every candidate on its original (the restoration timing section of postprocess.md). Otherwise, when face restoration scope is always, follow the spare candidate finishing value in force. With all candidates, restore every candidate once and check the restored images. With adopted only, check the originals, then restore only the adopted images and judge them on the restored versions. Compare three-quarter view and profile faces with the original at each restoration, following the non-frontal face rule in postprocess.md. For a candidate whose original was adopted, use the original in place of the restored image in later steps.
 2. Build the contact sheet from all candidates. If every candidate received face restoration, use the restored images. Otherwise use the generated originals. Final upscaling comes after adoption, so the sheet does not reflect it.
 3. Adopt according to the candidate selection answer.
-4. If spare candidate finishing is all candidates and final upscaling was selected, apply final upscaling once to each spare. The input is the generated original. With face restoration scope always, apply face restoration once to the upscaled result. finalize.py reads preflight.json from the output folder, so apply it in the output folder before moving. Skip it if the user asked to delete the spares.
+4. If spare candidate finishing is all candidates and final upscaling was selected, apply final upscaling once to each spare. The input is the restored image if there is one, the generated original otherwise. When faces are restored after final upscaling and face restoration scope is always, apply face restoration once to the upscaled result. finalize.py reads preflight.json from the output folder, so apply it in the output folder before moving. Skip it if the user asked to delete the spares.
 5. Move the spares' generated originals and finished versions to the `candidates` folder inside the output folder. Adopted images remain in the output folder for defect handling, trimming, and final upscaling.
 
 ```

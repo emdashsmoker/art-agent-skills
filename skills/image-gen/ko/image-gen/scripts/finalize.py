@@ -6,6 +6,8 @@ WHY: generation is 512px or smaller, so trimming and larger target sizes need en
      after defect handling and trimming, so it never runs on its own output or on discarded tries.
      --x4-out also keeps the 4x result before the downscale. The post-upscaling recheck
      inspects it for defects the working size hides and for side effects of this pass.
+     --x4-in skips the pass and downscales a 4x result that was edited after the pass,
+     so face restoration can run on the larger face of the 4x result.
 HOW: Real-ESRGAN compact network defined here (no realesrgan package, it pins an old
      basicsr), weights downloaded once and checked by SHA-256, tiled to bound memory.
 """
@@ -138,6 +140,8 @@ def main(argv=None):
     parser.add_argument("--anchor-y", dest="anchor_y", type=float, default=0.5)
     parser.add_argument("--threads", type=int, default=0)
     parser.add_argument("--x4-out", dest="x4_out", help="also save the 4x result here, for the post-upscaling recheck")
+    parser.add_argument("--x4-in", dest="x4_in",
+                        help="skip super-resolution and downscale this 4x result of the input, after face restoration on it")
     args = parser.parse_args(argv)
     mode = args.mode or load_preflight(args.output).get("enhance")
     if mode not in MODES:
@@ -149,6 +153,8 @@ def main(argv=None):
     # WHY: the downscaled result would overwrite the 4x file and the recheck would inspect the wrong image
     if args.x4_out and os.path.abspath(args.x4_out) == os.path.abspath(args.output):
         fail(EXIT_QUERY_OR_ARGUMENT, "--x4-out must differ from the output path")
+    if args.x4_in and args.x4_out:
+        fail(EXIT_QUERY_OR_ARGUMENT, "--x4-in reuses an existing 4x result, use it without --x4-out")
     try:
         import torch
         from PIL import Image
@@ -159,12 +165,19 @@ def main(argv=None):
     if size[0] > source.width * UPSCALE or size[1] > source.height * UPSCALE:
         log("WARNING: target exceeds 4x the input, the extra part is plain enlargement")
     started = time.time()
-    upscaled = super_resolve(source, build_network(mode, torch), torch)
+    if args.x4_in:
+        upscaled = Image.open(args.x4_in).convert("RGB")
+        # WHY: only the 4x result of this very input keeps trim and box coordinates consistent
+        if upscaled.size != (source.width * UPSCALE, source.height * UPSCALE):
+            fail(EXIT_QUERY_OR_ARGUMENT, "--x4-in must be the 4x result of the input (%dx%d)"
+                 % (source.width * UPSCALE, source.height * UPSCALE))
+    else:
+        upscaled = super_resolve(source, build_network(mode, torch), torch)
     if args.x4_out:
         verify_image(args.x4_out, save_image(upscaled, args.x4_out), (source.width * UPSCALE, source.height * UPSCALE))
     result = fit(upscaled, size, args.anchor_x, args.anchor_y)
     verify_image(args.output, save_image(result, args.output), size)
-    print(json.dumps({"path": args.output, "mode": mode, "size": "%dx%d" % size, "x4_path": args.x4_out,
+    print(json.dumps({"path": args.output, "mode": mode, "size": "%dx%d" % size, "x4_path": args.x4_out or args.x4_in,
                       "seconds": round(time.time() - started, 1)}))
     return 0
 

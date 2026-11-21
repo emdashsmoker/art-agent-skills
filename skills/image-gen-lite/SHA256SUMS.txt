@@ -1,2 +1,2 @@
-76f96858f8989a09aa16db0ce829cf323b243f8c762c7989f180497040127a47  image-gen-lite-en.skill
-fff6d1a8a9b34763d3e5902b33520c3c36ae29bac8371976810ebe641b1c959b  image-gen-lite-ko.skill
+2fea4a3aebf4a4e2556d836735c4bf1dc3f993c8f85e96d93a6012eab2c4f926  image-gen-lite-en.skill
+3acb521199b4451646e19354c0ba68c00bebba39cffff25da3715a94100cea0d  image-gen-lite-ko.skill

@@ -30,7 +30,7 @@ For requests with a person or a precise object, ask about the policy once before
 For requests with a person, the same questions offer three choices: only on defects, always, or off. This item is independent of the defect post-processing policy. In 512px outputs, even faces judged defect-free have blurry pupils and teeth, so some users want restoration regardless of defects.
 
 - Only on defects (`defect`): apply at stage 3, following the defect post-processing policy, only when a face defect is found.
-- Always (`always`): apply face restoration once to every output with a person right after generation, and perform the visual check on the restored image. Apply it to regenerated results too. Install the face restoration dependencies even when the defect policy is workarounds only. Region redrawing is not installed in that case. The order is generation, face restoration, final upscaling.
+- Always (`always`): apply face restoration once to every output with a person right after generation, and perform the visual check on the restored image. Apply it to regenerated results too. Install the face restoration dependencies even when the defect policy is workarounds only. Region redrawing is not installed in that case. The order is generation, face restoration, final upscaling. A face for which 4x result restoration is adopted is restored after final upscaling (the 4x result restoration section under Using face restoration).
 - In candidate mode, always (`always`) follows the spare candidate finishing value in force (`spare_finish_resolved`). With `adopted`, apply it to adopted images only. With `all`, apply it once to every candidate.
 - Off (`off`): do not install the face restoration dependencies. Handle face defects with stages 1, 2, and 4. Off covers face restoration only, so region redrawing of clothing, accessories, and precise objects still follows the defect post-processing policy.
 
@@ -48,8 +48,45 @@ GFPGAN v1.3 restores sharp pupils and lashes. On faces with misplaced eyes it fo
 PY scripts/face_fix.py in.png out_face.png
 ```
 
-- If distortion remains after GFPGAN, redraw the face box with region redrawing. Apply it once in this case too and compare before and after.
+- If distortion remains after GFPGAN, check the condition of the 4x result restoration section below first. If it still remains, redraw the face box with region redrawing. Apply it once in this case too and compare before and after.
 - The weights download from a GitHub release on first use and are checked by SHA-256. facexlib downloads its helper models (face detection and face parsing) into the cache folder.
+- The `detections` field of the output JSON records, for each detected area, its box coordinates (`box`), detection score (`score`), and whether it was restored (`restored`).
+
+### Checking for false face detections
+
+The face detection model now and then detects an area that is not a face (another body part, a fold of clothing, a background pattern, and the like) as a face. A falsely detected area is redrawn into a face shape the original did not have. After every restoration run, compare the boxes in `detections` with the positions and the number of faces confirmed in the visual check.
+
+- If a box lies on an area that is not a face, discard that result. Run again with the same original as input and give `--keep` a box around each real face. Only detections whose box center lies inside a `--keep` box are restored, and every other area keeps the original pixels.
+- With several faces, give one `--keep` per face.
+- If it is hard to tell whether a box is a face, zoom into that area with grid_measure.py.
+- Add the excluded detection boxes and the `--keep` boxes to the adoption record.
+
+```
+PY scripts/face_fix.py in.png out_face.png --keep 212,40,286,130
+```
+
+### 4x result restoration
+
+The restoration tool redraws each detected face at a fixed size and pastes it back shrunk to the original size. When a face is small at the working size, the restored face is also shrunk small and then goes through final upscaling. Depending on the model, the restoration effect then does not survive or new defects such as blotches around the eyes appear. On the 4x result of final upscaling the same face is four times larger, so the restoration result is shrunk less. Some models get clearer facial features from working-size restoration. Therefore apply face restoration at the working size first. Try 4x result restoration only under the conditions below.
+
+- Apply 4x result restoration only to requests where final upscaling was chosen.
+- The target is a face defect in an image that received working-size restoration. Defects found in the working-size check and in the post-upscaling recheck both count. This covers defects left after restoration, defects created by restoration, and defects of faces not detected at the working size.
+- The same conditions apply to always-on restoration and to response stage 3. It redraws only the face of the existing image, so try it before regeneration and before region redrawing.
+
+1. Run finalize.py with `--x4-out` on the image before face restoration to produce an unrestored 4x result. Keep the trimming and region redrawing results as they are. If the working-size restoration result has no 4x result yet, produce one the same way.
+2. Run face restoration on the unrestored 4x result. Check for false face detections the same way. Coordinates are those of the 4x result.
+3. Enlarge the face regions of the unrestored 4x result, the 4x result of the working-size restoration, and the 4x result restoration with grid_measure.py and compare them. Adopt the result with the fewest defects under the visual check criteria. If the defects are equal, keep the working-size restoration path.
+4. If 4x result restoration is adopted, run finalize.py with `--x4-in` to produce the target-size result. Final upscaling is not applied again, so the texture does not accumulate.
+5. If a defect remains in the adopted result, proceed to the next step of defect handling.
+6. If the working-size image is changed after 4x result restoration is adopted, start again from step 1.
+
+```
+PY scripts/finalize.py adopted.png final.png --size 768x1024 --x4-out adopted_x4.png
+PY scripts/face_fix.py adopted_x4.png adopted_x4_face.png
+PY scripts/finalize.py adopted.png final.png --size 768x1024 --x4-in adopted_x4_face.png
+```
+
+- Add the restoration path (working size or 4x result) and the comparison result to the adoption record.
 
 ## Region redrawing
 

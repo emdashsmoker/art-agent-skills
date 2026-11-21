@@ -59,6 +59,7 @@ PY scripts/preflight_codeformer.py --out ./outputs --face-strength stepwise --us
 - Stepwise starts at w=0.5 and lowers to 0.25, then 0.0, while a defect remains. A lower w changes the original look more, but resolving the defect takes priority.
 - Restoring again with a lower w is a defect repair in image-gen's stage 3. In candidate mode, restore again with a lower w on adopted images only. Follow image-gen's stage 3 rules as they are, including the defect post-processing answer. With defect post-processing set to workarounds only, do not lower w, and proceed to image-gen's stages 2 and 4.
 - When restoring again with a lower w, do not apply it to an image that was already restored. A result restored again from a restored image cannot be reproduced from the recorded w.
+- 4x result restoration in image-gen also follows the tools and the w rules of the table above. When lowering w in 4x result restoration, use the unrestored 4x result as the input.
 - At w=0.0 the face can look like a different person. If the same person appears in several images, compare them.
 - CodeFormer has the same problem of restored faces becoming photographic in non-photographic styles. Follow image-gen's rules for non-photographic styles as they are, such as the before-and-after comparison, the direct choice without a display path, and comparing only the adopted image in candidate mode.
 - CodeFormer has the same problem of non-frontal faces coming out with unnatural features or texture errors after restoration. Follow image-gen's non-frontal face rule as it is, such as the comparison of the original and the restored image, adopting the one with fewer defects, and judging without asking the user.
@@ -72,6 +73,7 @@ PY scripts/face_fix_codeformer.py in.png out_face.png 0.5
 ```
 
 - The package saves inputs with a short side under 512px at an enlarged size, so the script resizes the result back to the input size. Trimmed working images keep their size and grid coordinates before and after restoration.
+- The `detections` field of the output JSON and `--keep` take the same form as in image-gen's face restoration script. Box coordinates are in pixels of the input image. The check for false face detections follows the image-gen procedure as it is. The CodeFormer path has a lower detection confidence floor, so it is more likely than the GFPGAN path to detect an area that is not a face. Give `--keep` after w (for example `in.png out_face.png 0.5 --keep 212,40,286,130`).
 - Add the face restoration strength policy and the w used to the adoption record.
 - Exit codes follow image-gen's failure table: 2 for an argument error or a missing input file, 4 when codeformer-pip is not installed.
 

@@ -29,8 +29,8 @@ For requests with a person or a precise object, ask about the policy once before
 
 For requests with a person, the same questions offer three choices: only on defects, always, or off. This item is independent of the defect post-processing policy. In 512px outputs, even faces judged defect-free have blurry pupils and teeth, so some users want restoration regardless of defects.
 
-- Only on defects (`defect`): apply at stage 3, following the defect post-processing policy, only when a face defect is found.
-- Always (`always`): apply face restoration once to every output with a person right after generation, and perform the visual check on the restored image. Apply it to regenerated results too. Install the face restoration dependencies even when the defect policy is workarounds only. Region redrawing is not installed in that case. The order is generation, face restoration, final upscaling.
+- Only on defects (`defect`): apply at stage 3, following the defect post-processing policy, only when a face defect is found. The timing follows the restoration timing section.
+- Always (`always`): apply face restoration once to every output with a person. The timing and the check order follow the restoration timing section. Apply it to regenerated results too. Install the face restoration dependencies even when the defect policy is workarounds only. Region redrawing is not installed in that case.
 - In candidate mode, always (`always`) follows the spare candidate finishing value in force (`spare_finish_resolved`). With `adopted`, apply it to adopted images only. With `all`, apply it once to every candidate.
 - Off (`off`): do not install the face restoration dependencies. Handle face defects with stages 1, 2, and 4. Off covers face restoration only, so region redrawing of clothing, accessories, and precise objects still follows the defect post-processing policy.
 
@@ -39,6 +39,30 @@ For non-photographic styles (flat vector, line art, cel shading and so on), mark
 When face restoration is applied to a face whose angle the visual check judged as a three-quarter view or profile (a non-frontal face), compare the original and the restored image by the same visual check criteria and adopt the one with fewer defects. Face restoration tools were trained mostly on frontal face photographs and align faces to a frontal reference before restoring them, so a non-frontal face can come out with unnatural features or texture errors. If both show the same defects, adopt the restored image, whose pupils and teeth are sharper. If the original is adopted, use it in place of the restored image in all later steps. Under every answer, including automatic mode and always-on scope, make this comparison yourself without asking the user. Three-quarter views are a common face angle, so asking at each comparison would often interrupt automatic progress. In non-photographic styles, the before-and-after question above takes the place of this comparison. Record the comparison result and the reason for the choice in one line in the adoption record.
 
 Outputs where no face is detected (back views, distant figures) are saved with the same pixels as the input. Use them as normal outputs.
+
+## Restoration timing
+
+A face restoration tool restores the face at a fixed size, then shrinks it back to the size of the face in the input image. When the face in the input has few pixels, the restored detail is lost in that step. Face restoration therefore runs on the result after enlargement.
+
+| Final upscaling answer | Restoration input | Check order |
+|---|---|---|
+| general, flat | The upscaled result (the output of finalize.py) | Run the working-size check on the generated original, and check the restored image after the post-upscaling recheck |
+| None | The result the generation script saved | Restore right after generation and run the visual check on the restored image |
+
+With final upscaling selected, proceed in this order.
+
+- Face defects that face restoration fixes are handled in the restoration step. Finish the other defect fixes (trimming, region redrawing, and so on) on the working-size adopted image, then run final upscaling.
+- After the post-upscaling recheck (defects.md), apply face restoration to the upscaled result. The restored image is the final output to deliver.
+- Enlarge the face of the restored image with grid_measure.py and judge it by the criteria of the visual check section in SKILL.md. Compare non-frontal faces and non-photographic styles between the upscaled result and the restored image.
+- If distortion remains after restoration, apply region redrawing to the working-size adopted image. Run final upscaling and face restoration again on the corrected adopted image.
+- In candidate mode, check every candidate as the generated original and build the contact sheet from the originals. If spare candidate finishing is all candidates, the spares also receive restoration after final upscaling, once each.
+
+```
+PY scripts/finalize.py ./outputs/street.png ./outputs/street_final.png --size 768x1024 --x4-out ./outputs/street_x4.png
+PY scripts/face_fix.py ./outputs/street_final.png ./outputs/street_final_face.png
+```
+
+With final upscaling declined, generate.py saves the result enlarged to the target size, so restore that result. Precise and High quality save at the generation size, so restoration has little effect on small faces.
 
 ## Using face restoration
 

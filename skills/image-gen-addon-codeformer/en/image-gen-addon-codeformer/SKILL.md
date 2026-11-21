@@ -55,7 +55,8 @@ PY scripts/preflight_codeformer.py --out ./outputs --face-strength stepwise --us
 | Distortion (asymmetry, misplaced features) | GFPGAN, then region redrawing if it remains | CodeFormer (strength per the face restoration strength answer), then region redrawing if it remains |
 | Always-on scope | GFPGAN | CodeFormer. w=0.5 when no defect is visible, the starting value of the strength answer when a defect is visible |
 
-- To choose w for the always-on scope, examine the angle of the face and any defect in the generated original before restoration. The face defect judgment after restoration follows image-gen's rules.
+- The timing and the input image of CodeFormer follow image-gen's restoration timing rule. With final upscaling selected, apply CodeFormer to the upscaled result.
+- To choose w for the always-on scope, examine the angle of the face and any defect in the input image of restoration. With final upscaling selected, base this on the records of the working-size check and the post-upscaling recheck. The face defect judgment after restoration follows image-gen's rules.
 - Stepwise starts at w=0.5 and lowers to 0.25, then 0.0, while a defect remains. A lower w changes the original look more, but resolving the defect takes priority.
 - Restoring again with a lower w is a defect repair in image-gen's stage 3. In candidate mode, restore again with a lower w on adopted images only. Follow image-gen's stage 3 rules as they are, including the defect post-processing answer. With defect post-processing set to workarounds only, do not lower w, and proceed to image-gen's stages 2 and 4.
 - When restoring again with a lower w, do not apply it to an image that was already restored. A result restored again from a restored image cannot be reproduced from the recorded w.

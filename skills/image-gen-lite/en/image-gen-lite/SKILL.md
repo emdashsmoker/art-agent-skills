@@ -111,15 +111,16 @@ A preset is a combination of a model and fixed settings. Change the style with t
 | `dreamshaper-8-lcm` | Standard | Photographic, illustration, painting, watercolor | 512x512 | about 4.3GB |
 | `sdxs` | Light, fastest | General styles, simpler detail | 512x512 | about 2.1GB |
 | `tiny-sd` | Flat | Flat vector with solid fills, watercolor with paint bleed | 384x384 | about 1.1GB |
-| `flux2-klein-4b` | Precise | Natural-language instructions, object structure and anatomy more accurate than the SD 1.5 family | 384x512 | about 5.2GB |
-| `z-image-turbo` | High quality, slowest | Photographic people and scenes, faithful fine detail and shot framing | 384x512 | about 6.4GB |
+| `flux2-klein-4b` | Precise | Natural-language instructions, the most accurate anatomy and object structure | 384x512 | about 5.2GB |
+| `z-image-turbo` | High quality, slowest | Photographic people and scenes, the most lifelike texture and fine detail | 384x512 | about 6.4GB |
 
 - Generation time depends on the runtime environment's CPU, so report the measured time after the first image.
 - Standard renders photographic texture, shallow depth of field, and watercolor bleed in fine detail. Shapes collapse with flat vector keywords. In full-body figures, hands often smear or the toes get cut off.
 - Light mostly places scene elements as instructed. It tends to produce an illustration look even when asked for a photographic style, and the same person sometimes appears twice.
 - Flat renders solid fills with crisp edges, paint bleed, and blank paper better than the other presets. Its shape stability is low, so it often draws a picture frame border as well or cuts off a person's head at the top of the frame.
-- Precise accepts natural sentences as they are and renders object structure and anatomy more accurately than the SD 1.5 family. For objects recognized by how their parts connect, such as a bicycle or a ladder, it renders the structure and the requested viewpoint more accurately than High quality. In full-body figures it often cuts off the feet at the frame edge.
-- High quality accepts natural sentences as they are and follows shot framing instructions such as a full body more faithfully than Precise. It renders faces, hair, and feet in fine detail. Its compositions and the look of the person tend to stay similar when the seed changes.
+- Precise and High quality accept natural sentences as they are. They render photographic texture and form more lifelike than the SD 1.5 family.
+- High quality renders the texture and fine detail of skin, hair, and materials more lifelike than Precise. Shape defects in faces, hands, and feet occur more often than with Precise. The gap shows most in full-body framing, where the person is small in the frame.
+- Precise follows prompt instructions more precisely than High quality. It also forms anatomy and object structure more accurately than High quality. It also tends to produce fewer defects than High quality on objects recognized by how their parts connect, such as a bicycle, and on small props held in the hand.
 - Precise and High quality use the same text encoder file (about 2.5GB). After one preset is downloaded, the first download of the other is smaller by that amount.
 - Precise and High quality run on Linux x86_64, Apple Silicon macOS (arm64), and Windows x64, so leave them out of the choices in any other runtime environment. Check the operating system with `PY -c "import platform; print(platform.system(), platform.machine())"`.
 - Before generating with the precise or high-quality preset, check that free disk space is larger than the download size. During generation they read the weights from disk with `--mmap`, so they run even with little memory, but more slowly.
@@ -144,7 +145,7 @@ Before the first generation, ask all applicable items in the table below at once
 | Diagram consent | Diagram request | Never |
 
 - Omit only the items the user has already answered. Also ask the items that have a recommended option.
-- For a request that puts quality first, use the High quality model, or the Precise model when the main subject is an object recognized by how its parts connect. Where neither model can run, use the Standard model.
+- For a request that puts quality first, use the High quality model. When the main subject is an object recognized by how its parts connect or a full-body person with hands and feet visible, use the Precise model, because shape accuracy decides the quality of these subjects. Where neither model can run, use the Standard model.
 - When the user delegates with phrases such as "up to you" or "use the defaults", present the default combination in one line and get confirmation. Example: "Shall I proceed with 1-a, 2-a, 3-a?" The defaults are the Standard model, a 1x candidate multiplier, and a regeneration limit of 0.
 - The candidate multiplier is multiplied by the target number of images to set how many images are generated at once. If the multiplier is 2 or more, pick the target number of images after generation as the candidate selection section describes. With automatic, choose from 1x to 3x as the automatic decision section describes. Take custom input as a whole-number multiplier.
 - The regeneration limit is the maximum number of regenerations per target image. If it is 1 or more, check after generation as the regeneration section describes and regenerate only when needed. With automatic, choose from 0 to 3 as the automatic decision section describes. Mark unlimited as not recommended, and follow it if the user chooses it.
@@ -168,8 +169,8 @@ Example for a named subject request with objects only and no style specified:
 >    a) Standard (DreamShaper 8 LCM) (default): photographic, illustration, painting, and watercolor in general. 512x512, first download about 4.3GB
 >    b) Light (SDXS): fastest. Detail is simpler, and photographic styles also come out like illustrations. 512x512, about 2.1GB
 >    c) Flat (tiny-sd): suits flat vector with solid fills and paint bleed. Shape stability is low. 384x384, about 1.1GB
->    d) Precise (FLUX.2 klein 4B): follows natural-language instructions and renders object structure and anatomy more accurately than the three models above. Second slowest. 384x512, about 5.2GB
->    e) High quality (Z-Image Turbo): faithful fine detail and shot framing for photographic people and scenes. Slowest. 384x512, about 6.4GB
+>    d) Precise (FLUX.2 klein 4B): follows natural-language instructions with the fewest shape defects. Second slowest. 384x512, about 5.2GB
+>    e) High quality (Z-Image Turbo): the most lifelike texture and fine detail. Face, hand, and foot defects occur more often than with Precise. Slowest. 384x512, about 6.4GB
 > 2. [Candidate multiplier] I generate more candidates than the target number at once, then pick and deliver the images that meet the adoption criteria. With a 1x multiplier and a regeneration limit of 0, the generated results are delivered directly.
 >    a) 1x (default): generate only the target number
 >    b) 2x
@@ -211,7 +212,7 @@ The grounds below are defect likelihood grounds. Both items raise their values o
 The candidate multiplier starts from a baseline of 1x.
 
 - With one defect likelihood ground, consider 2x. With several, consider 3x.
-- With the precise or high-quality preset, use 1x, because each image takes long and one more candidate costs much time. High quality also gains little from more candidates, because its compositions stay similar when the seed changes.
+- With the precise or high-quality preset, use 1x, because each image takes long and one more candidate costs much time.
 
 The regeneration limit starts from a baseline of 0.
 

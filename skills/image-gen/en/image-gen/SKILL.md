@@ -1,6 +1,6 @@
 ---
 name: image-gen
-description: "Generates images with local models on the runtime environment's CPU, for hobby, daily, or work use. Two compositions: icons with one centered subject, and mood scenes of 2-3 elements. Renders abstract messages as drawable objects or scenes. For charts or diagrams that need text, draws a substitute after the user agrees. Corrects defects with edge trimming, face restoration, region redrawing, and final upscaling. Default model: DreamShaper 8 LCM. Use this skill whenever the user asks to create or draw an image, illustration, background, banner, cover, divider, slide background, landscape, portrait, or a picture for a report ('image generation', 'generate an illustration'), and to correct faces, hands, or edges in its images. Details in references/: composition.md (requests, substitution, scenes), models.md (presets, time estimates, cache), candidates.md (candidate mode), defects.md (defects, upfront workarounds, trimming), postprocess.md (face restoration, region redrawing), components.md (external sources)."
+description: "Generates images with local models on the runtime environment's CPU, for hobby, daily, or work use. Two compositions: icons with one centered subject, and mood scenes of 2-3 elements. Renders abstract messages as drawable objects or scenes. For charts or diagrams that need text, draws a substitute after the user agrees. Corrects defects with edge trimming, face restoration, region redrawing, and final upscaling. Default model: DreamShaper 8 LCM. Use this skill whenever the user asks to create or draw an image, illustration, background, banner, cover, divider, slide background, landscape, portrait, or a picture for a report ('image generation', 'generate an illustration'), and to correct faces, hands, or edges in its images. Details in references/: composition.md (requests, substitution, scenes), models.md (presets, time estimates, cache), candidates.md (candidate mode), defects.md (defects, upfront workarounds, trimming), postprocess.md (face restoration, restoration timing, region redrawing), components.md (external sources)."
 license: GPL-3.0-or-later with an output exception. Terms in LICENSE and NOTICE.md
 ---
 
@@ -123,20 +123,21 @@ A preset is a combination of a model and fixed settings. Change the style throug
 | `dreamshaper-8-lcm` | Standard, default | Photographic, illustration, painting, watercolor | 512x512 | about 4.3GB |
 | `sdxs` | Light, fastest | General styles, simpler detail | 512x512 | about 2.1GB |
 | `tiny-sd` | Flat | Flat vector with solid fills, watercolor with paint bleed | 384x384 | about 1.1GB |
-| `flux2-klein-4b` | Precise | Natural-language instructions, object structure and anatomy more accurate than the SD 1.5 family | 384x512 | about 5.2GB |
-| `z-image-turbo` | High quality, slowest | Photographic people and scenes, faithful fine detail and shot framing | 384x512 | about 6.4GB |
+| `flux2-klein-4b` | Precise | Natural-language instructions, the most accurate anatomy and object structure | 384x512 | about 5.2GB |
+| `z-image-turbo` | High quality, slowest | Photographic people and scenes, the most lifelike texture and fine detail | 384x512 | about 6.4GB |
 
 - With no style or quality requirement, use Standard.
 - Standard produces broken shapes with flat vector keywords. Use Flat or Light for flat vector requests.
 - Flat often cuts off heads or adds picture frames when a person is the main subject. For a person as the main subject, use Standard, Precise, or High quality.
 - Light tends to produce an illustration-like look even when a photographic style is requested.
-- High quality follows shot framing instructions such as a full body more faithfully than Precise and renders faces, hair, and feet in fine detail. Its compositions and the look of the person tend to stay similar when the seed changes.
-- Precise renders the structure and the requested viewpoint of objects recognized by how their parts connect more accurately than High quality. In full-body figures it often cuts off the feet at the frame edge.
+- Precise and High quality render photographic texture and form more lifelike than the SD 1.5 family.
+- High quality renders the texture and fine detail of skin, hair, and materials more lifelike than Precise. Shape defects in faces, hands, and feet occur more often than with Precise. The gap shows most in full-body framing, where the person is small in the frame.
+- Precise follows prompt instructions more precisely than High quality. It also forms anatomy and object structure more accurately than High quality. It also tends to produce fewer defects than High quality on subjects whose shapes break easily, such as precise objects or small props held in the hand.
 - Precise and High quality use the same text encoder file (about 2.5GB). After one preset is downloaded, the first download of the other is smaller by that amount.
 
 ### Model choice question
 
-Add a model choice to the pre-generation questions when any condition below applies. If none applies, proceed with Standard without asking. If the user already specified a model or stated that speed or quality comes first, follow that without asking. For quality first, use High quality, or Precise when the main subject is an object recognized by how its parts connect. Where neither preset can run, use Standard.
+Add a model choice to the pre-generation questions when any condition below applies. If none applies, proceed with Standard without asking. If the user already specified a model or stated that speed or quality comes first, follow that without asking. For quality first, use High quality. When the main subject is a precise object or a full-body person with hands and feet visible, use Precise, because shape accuracy decides the quality of these subjects. Where neither preset can run, use Standard.
 
 | Condition | Choices |
 |---|---|
@@ -198,6 +199,7 @@ Question format:
 - Fit the examples in the upfront workaround choices to the parts of the request where defects tend to appear. Example: for a bicycle request, name a futuristic e-bike without spokes for optimize and a replacement with a futuristic vehicle without wheels for maximum.
 - For photographic or watercolor requests, add a one-line warning to the final upscaling item. Example: "Upscaling removes skin texture and paper grain from photographic and watercolor styles."
 - For non-photographic styles such as flat vector, line art, or cel shading, mark "off" as recommended for face restoration scope and add a one-line reason. Example: "In this style, only the restored face becomes photographic and does not match the drawing." Face restoration tools were trained on real photographs of faces.
+- When a person appears and Precise or High quality is among the choices or already specified, add one line to the "None" choice of final upscaling. Example: "With the Precise and High quality models, face restoration takes effect only after final upscaling." Without final upscaling, these two presets restore small faces at the generation size (the restoration timing section of references/postprocess.md).
 - In the description of the face restoration scope item, add one line on how non-frontal faces are handled. Example: "For a person whose face is turned at an angle or to the side, restoration can make the face look unnatural, so I compare it with the original and use the better one." Face restoration tools were trained mostly on frontal photographs and align faces to a frontal reference.
 
 Example for a request with a person:
@@ -252,8 +254,8 @@ If a model choice condition applies, continue with the last number. Example:
 
 > 11. [Model choice] A person is the main subject, so the rate of shape defects depends on the model. Times are estimates for this runtime environment.
 >    a) Standard (DreamShaper 8 LCM): about 40 seconds per image, 512px, frequent hand and clothing defects
->    b) Precise (FLUX.2 klein 4B): about 15 minutes per image, 384x512, shapes more accurate than Standard. Downloads about 5.2GB on the first run
->    c) High quality (Z-Image Turbo): about 30 minutes per image, 384x512, faithful fine detail and shot framing. Downloads about 6.4GB on the first run
+>    b) Precise (FLUX.2 klein 4B): about 15 minutes per image, 384x512, the fewest shape defects. Downloads about 5.2GB on the first run
+>    c) High quality (Z-Image Turbo): about 30 minutes per image, 384x512, the most lifelike texture and fine detail. Face, hand, and foot defects occur more often than with Precise. Downloads about 6.4GB on the first run
 
 The times in the example illustrate the format only. Use probe.py's estimates in actual questions.
 
@@ -407,7 +409,7 @@ Final upscaling enlarges 4x with super-resolution and then scales down to the ta
 | general | Most styles, including people | Removes skin texture and paper grain in photographic and watercolor styles |
 | flat | Flat vector backgrounds | Waxy skin, exaggerated nostril edges, and clumped hair on people |
 
-- Apply it once, to the adopted image, after all defect fixes and trimming. Applying it right after generation means enlarging again after a trim or running it twice, and the waxy look accumulates. Face restoration and region redrawing are tuned for the pre-upscaling size too. Discarded attempts do not receive it, so the extra time covers one adopted image. If the post-upscaling recheck leads to a fix of the adopted image, run it once more with the fixed adopted image as the input.
+- Apply it once, to the adopted image, after all defect fixes and trimming. Applying it right after generation means enlarging again after a trim or running it twice, and the waxy look accumulates. Region redrawing is tuned for the pre-upscaling size too. Face restoration runs on the upscaled result (the restoration timing section of references/postprocess.md). Discarded attempts do not receive it, so the extra time covers one adopted image. If the post-upscaling recheck leads to a fix of the adopted image, run it once more with the fixed adopted image as the input.
 - In candidate mode, follow the spare candidate finishing value in force. With all candidates, each spare also receives it once, so the extra time increases with the number of candidates. Spares receive no defect repairs, so apply it in the output folder right after adoption.
 - Texture loss is inherent to the post-processing, so no prompt or seed can restore it.
 - Super-resolution does not repair facial features. Face defects go through defect handling.

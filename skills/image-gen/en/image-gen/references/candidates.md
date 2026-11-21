@@ -12,7 +12,7 @@ When the candidate generation answer is automatic, decide the multiplier after t
 
 1x is recommended in the cases below.
 
-- The precise or high-quality preset is in use. Both take long per image, so one more candidate costs much time. High quality also gains little from more candidates, because its compositions and the look of the person stay similar when the seed changes.
+- The precise or high-quality preset is in use. Both take long per image, so one more candidate costs much time.
 - An object icon or a landscape scene with no subject prone to shape defects.
 
 Decide the multiplier by the recommended criteria below.

@@ -6,6 +6,8 @@ WHY: generation is 512px or smaller, so trimming and larger target sizes need en
      after defect handling and trimming, so it never runs on its own output or on discarded tries.
      --x4-out also keeps the 4x result before the downscale. The post-upscaling recheck
      inspects it for defects the working size hides and for side effects of this pass.
+     --from-x4 downscales a 4x result saved earlier from the same input, such as one with
+     faces restored on it, without a second super-resolution pass.
 HOW: Real-ESRGAN compact network defined here (no realesrgan package, it pins an old
      basicsr), weights downloaded once and checked by SHA-256, tiled to bound memory.
 """
@@ -108,6 +110,19 @@ def super_resolve(image, network, torch):
     return Image.fromarray(pixels.round().astype(numpy.uint8))
 
 
+def load_x4(path, source):
+    """A 4x result saved earlier from this input, for example after face restoration on it."""
+    from PIL import Image
+
+    expected = (source.width * UPSCALE, source.height * UPSCALE)
+    image = Image.open(path)
+    # WHY: another size means the file was not made from this input, so the result would not match it
+    if image.size != expected:
+        fail(EXIT_QUERY_OR_ARGUMENT, "--from-x4 must be the 4x result of the input, %dx%d expected, %dx%d given"
+             % (expected + image.size))
+    return image.convert("RGB")
+
+
 def fit(image, size, anchor_x, anchor_y):
     """Downscale to cover the target, cut the rounding remainder at the anchor."""
     from PIL import Image
@@ -137,7 +152,10 @@ def main(argv=None):
     parser.add_argument("--anchor-x", dest="anchor_x", type=float, default=0.5)
     parser.add_argument("--anchor-y", dest="anchor_y", type=float, default=0.5)
     parser.add_argument("--threads", type=int, default=0)
-    parser.add_argument("--x4-out", dest="x4_out", help="also save the 4x result here, for the post-upscaling recheck")
+    x4_files = parser.add_mutually_exclusive_group()
+    x4_files.add_argument("--x4-out", dest="x4_out", help="also save the 4x result here, for the post-upscaling recheck")
+    x4_files.add_argument("--from-x4", dest="from_x4",
+                          help="downscale this 4x result of the input instead of running super-resolution again")
     args = parser.parse_args(argv)
     mode = args.mode or load_preflight(args.output).get("enhance")
     if mode not in MODES:
@@ -159,12 +177,16 @@ def main(argv=None):
     if size[0] > source.width * UPSCALE or size[1] > source.height * UPSCALE:
         log("WARNING: target exceeds 4x the input, the extra part is plain enlargement")
     started = time.time()
-    upscaled = super_resolve(source, build_network(mode, torch), torch)
+    if args.from_x4:
+        upscaled = load_x4(args.from_x4, source)
+    else:
+        upscaled = super_resolve(source, build_network(mode, torch), torch)
     if args.x4_out:
         verify_image(args.x4_out, save_image(upscaled, args.x4_out), (source.width * UPSCALE, source.height * UPSCALE))
     result = fit(upscaled, size, args.anchor_x, args.anchor_y)
     verify_image(args.output, save_image(result, args.output), size)
-    print(json.dumps({"path": args.output, "mode": mode, "size": "%dx%d" % size, "x4_path": args.x4_out,
+    print(json.dumps({"path": args.output, "mode": mode, "size": "%dx%d" % size,
+                      "x4_path": args.x4_out or args.from_x4, "from_x4": bool(args.from_x4),
                       "seconds": round(time.time() - started, 1)}))
     return 0
 

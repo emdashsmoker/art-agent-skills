@@ -123,15 +123,15 @@ A preset is a combination of a model and fixed settings. Change the style throug
 | `dreamshaper-8-lcm` | Standard, default | Photographic, illustration, painting, watercolor | 512x512 | about 4.3GB |
 | `sdxs` | Light, fastest | General styles, simpler detail | 512x512 | about 2.1GB |
 | `tiny-sd` | Flat | Flat vector with solid fills, watercolor with paint bleed | 384x384 | about 1.1GB |
-| `flux2-klein-4b` | Precise | Natural-language instructions, object structure and anatomy more accurate than the SD 1.5 family | 384x512 | about 5.2GB |
-| `z-image-turbo` | High quality, slowest | Photographic people and scenes, faithful fine detail and shot framing | 384x512 | about 6.4GB |
+| `flux2-klein-4b` | Precise | Natural-language instructions, the most accurate shapes of bodies and objects | 384x512 | about 5.2GB |
+| `z-image-turbo` | High quality, slowest | Photographic people and scenes, the most realistic texture and fine detail | 384x512 | about 6.4GB |
 
 - With no style or quality requirement, use Standard.
 - Standard produces broken shapes with flat vector keywords. Use Flat or Light for flat vector requests.
 - Flat often cuts off heads or adds picture frames when a person is the main subject. For a person as the main subject, use Standard, Precise, or High quality.
 - Light tends to produce an illustration-like look even when a photographic style is requested.
-- High quality follows shot framing instructions such as a full body more faithfully than Precise and renders faces, hair, and feet in fine detail. Its compositions and the look of the person tend to stay similar when the seed changes.
-- Precise renders the structure and the requested viewpoint of objects recognized by how their parts connect more accurately than High quality. In full-body figures it often cuts off the feet at the frame edge.
+- High quality renders the texture and fine detail of photographic people and scenes more realistically than Precise. In full-body figures, shape defects of the face, hands, and feet are more frequent than with Precise.
+- Precise renders the shapes of bodies and objects more accurately than High quality. Objects recognized by how their parts connect and small props held in the hand also tend to show fewer shape defects than with High quality.
 - Precise and High quality use the same text encoder file (about 2.5GB). After one preset is downloaded, the first download of the other is smaller by that amount.
 
 ### Model choice question
@@ -252,8 +252,8 @@ If a model choice condition applies, continue with the last number. Example:
 
 > 11. [Model choice] A person is the main subject, so the rate of shape defects depends on the model. Times are estimates for this runtime environment.
 >    a) Standard (DreamShaper 8 LCM): about 40 seconds per image, 512px, frequent hand and clothing defects
->    b) Precise (FLUX.2 klein 4B): about 15 minutes per image, 384x512, shapes more accurate than Standard. Downloads about 5.2GB on the first run
->    c) High quality (Z-Image Turbo): about 30 minutes per image, 384x512, faithful fine detail and shot framing. Downloads about 6.4GB on the first run
+>    b) Precise (FLUX.2 klein 4B): about 15 minutes per image, 384x512, the most accurate shapes. Downloads about 5.2GB on the first run
+>    c) High quality (Z-Image Turbo): about 30 minutes per image, 384x512, the most realistic texture and fine detail. Shape defects in full-body figures are more frequent than with Precise. Downloads about 6.4GB on the first run
 
 The times in the example illustrate the format only. Use probe.py's estimates in actual questions.
 

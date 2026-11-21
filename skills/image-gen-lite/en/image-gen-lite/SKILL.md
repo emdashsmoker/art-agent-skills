@@ -115,7 +115,7 @@ A preset is a combination of a model and fixed settings. Change the style with t
 | `z-image-turbo` | High quality, slowest | Photographic people and scenes, the most realistic texture and fine detail | 384x512 | about 6.4GB |
 
 - Generation time depends on the runtime environment's CPU, so report the measured time after the first image.
-- Standard renders photographic texture, shallow depth of field, and watercolor bleed in fine detail. Shapes collapse with flat vector keywords. In full-body figures, hands often smear or the toes get cut off.
+- Standard renders photographic texture, shallow depth of field, and watercolor bleed in fine detail. Shapes collapse with flat vector keywords. Cel shading instructions tend to produce a semi-realistic digital painting. In full-body figures, hands often smear or the toes get cut off.
 - Light mostly places scene elements as instructed. It tends to produce an illustration look even when asked for a photographic style, and the same person sometimes appears twice.
 - Flat renders solid fills with crisp edges, paint bleed, and blank paper better than the other presets. Its shape stability is low, so it often draws a picture frame border as well or cuts off a person's head at the top of the frame.
 - Precise accepts natural sentences as they are. It follows instructions and renders shapes more accurately than High quality. It renders anatomy and objects and props with complex, precise shapes more reliably than High quality. Its texture is less realistic than that of High quality but more realistic than that of Standard.

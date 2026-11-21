@@ -124,14 +124,14 @@ A preset is a combination of a model and fixed settings. Change the style throug
 | `sdxs` | Light, fastest | General styles, simpler detail | 512x512 | about 2.1GB |
 | `tiny-sd` | Flat | Flat vector with solid fills, watercolor with paint bleed | 384x384 | about 1.1GB |
 | `flux2-klein-4b` | Precise | Natural-language instructions, the most accurate anatomy and object structure | 384x512 | about 5.2GB |
-| `z-image-turbo` | High quality, slowest | Photographic people and scenes, the most realistic texture and fine detail | 384x512 | about 6.4GB |
+| `z-image-turbo` | High quality, slowest | Photographic, the most realistic texture and fine detail of people and objects | 384x512 | about 6.4GB |
 
 - With no style or quality requirement, use Standard.
 - Standard produces broken shapes with flat vector keywords. Use Flat or Light for flat vector requests.
 - Flat often cuts off heads or adds picture frames when a person is the main subject. For a person as the main subject, use Standard, Precise, or High quality.
 - Light tends to produce an illustration-like look even when a photographic style is requested.
-- High quality renders the texture and fine detail of skin, hair, and materials more realistically than the other presets. Its shape accuracy is lower than that of Precise, so shape defects of faces, hands, and feet are more frequent than with Precise. The gap widens in full-body framing, where the person appears small.
-- Precise follows instructions and renders shapes more accurately than High quality. It also renders objects and props with complex, precise shapes more reliably than High quality. Its texture is less realistic than that of High quality but more realistic than that of Standard.
+- High quality renders the skin and hair of people and the materials and surfaces of objects more realistically than the other presets. Its shape accuracy is lower than that of Precise, so shape defects in the faces, hands, and feet of people and in objects and props with complex, precise shapes are more frequent than with Precise. Shape defects of people are more frequent still in full-body framing, where the person appears small.
+- Precise follows instructions and renders shapes more accurately than High quality. It renders the anatomy of people and objects and props with complex, precise shapes more reliably than High quality. Its texture is less realistic than that of High quality but more realistic than that of Standard.
 - Head-to-thigh framing of a person shows little difference between Precise and High quality.
 - Precise and High quality use the same text encoder file (about 2.5GB). After one preset is downloaded, the first download of the other is smaller by that amount.
 

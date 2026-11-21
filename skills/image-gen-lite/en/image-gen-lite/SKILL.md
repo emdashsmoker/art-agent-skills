@@ -112,14 +112,14 @@ A preset is a combination of a model and fixed settings. Change the style with t
 | `sdxs` | Light, fastest | General styles, simpler detail | 512x512 | about 2.1GB |
 | `tiny-sd` | Flat | Flat vector with solid fills, watercolor with paint bleed | 384x384 | about 1.1GB |
 | `flux2-klein-4b` | Precise | Natural-language instructions, the most accurate anatomy and object structure | 384x512 | about 5.2GB |
-| `z-image-turbo` | High quality, slowest | Photographic people and scenes, the most realistic texture and fine detail | 384x512 | about 6.4GB |
+| `z-image-turbo` | High quality, slowest | Photographic, the most realistic texture and fine detail of people and objects | 384x512 | about 6.4GB |
 
 - Generation time depends on the runtime environment's CPU, so report the measured time after the first image.
 - Standard renders photographic texture, shallow depth of field, and watercolor bleed in fine detail. Shapes collapse with flat vector keywords. Cel shading instructions tend to produce a semi-realistic digital painting. In full-body figures, hands often smear or the toes get cut off.
 - Light mostly places scene elements as instructed. It tends to produce an illustration look even when asked for a photographic style, and the same person sometimes appears twice.
 - Flat renders solid fills with crisp edges, paint bleed, and blank paper better than the other presets. Its shape stability is low, so it often draws a picture frame border as well or cuts off a person's head at the top of the frame.
-- Precise accepts natural sentences as they are. It follows instructions and renders shapes more accurately than High quality. It renders anatomy and objects and props with complex, precise shapes more reliably than High quality. Its texture is less realistic than that of High quality but more realistic than that of Standard.
-- High quality accepts natural sentences as they are. It renders the texture and fine detail of skin, hair, and materials more realistically than the other presets. Its shape accuracy is lower than that of Precise, so shape defects of faces, hands, and feet are more frequent than with Precise. The gap widens in full-body framing, where the person appears small.
+- Precise accepts natural sentences as they are. It follows instructions and renders shapes more accurately than High quality. It renders the anatomy of people and objects and props with complex, precise shapes more reliably than High quality. Its texture is less realistic than that of High quality but more realistic than that of Standard.
+- High quality accepts natural sentences as they are. It renders the skin and hair of people and the materials and surfaces of objects more realistically than the other presets. Its shape accuracy is lower than that of Precise, so shape defects in the faces, hands, and feet of people and in objects and props with complex, precise shapes are more frequent than with Precise. Shape defects of people are more frequent still in full-body framing, where the person appears small.
 - Head-to-thigh framing of a person shows little difference between Precise and High quality.
 - Precise and High quality use the same text encoder file (about 2.5GB). After one preset is downloaded, the first download of the other is smaller by that amount.
 - Precise and High quality run on Linux x86_64, Apple Silicon macOS (arm64), and Windows x64, so leave them out of the choices in any other runtime environment. Check the operating system with `PY -c "import platform; print(platform.system(), platform.machine())"`.
@@ -170,7 +170,7 @@ Example for a named subject request with objects only and no style specified:
 >    b) Light (SDXS): fastest. Detail is simpler, and photographic styles also come out like illustrations. 512x512, about 2.1GB
 >    c) Flat (tiny-sd): suits flat vector with solid fills and paint bleed. Shape stability is low. 384x384, about 1.1GB
 >    d) Precise (FLUX.2 klein 4B): follows natural-language instructions and renders anatomy and object structure most accurately. Second slowest. 384x512, about 5.2GB
->    e) High quality (Z-Image Turbo): the most realistic texture and fine detail for photographic people and scenes. In full-body framing, face, hand, and foot defects are more frequent than with Precise. Slowest. 384x512, about 6.4GB
+>    e) High quality (Z-Image Turbo): the most realistic texture and fine detail of people and objects. Shape accuracy is lower than that of Precise. Slowest. 384x512, about 6.4GB
 > 2. [Candidate multiplier] I generate more candidates than the target number at once, then pick and deliver the images that meet the adoption criteria. With a 1x multiplier and a regeneration limit of 0, the generated results are delivered directly.
 >    a) 1x (default): generate only the target number
 >    b) 2x

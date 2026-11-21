@@ -211,7 +211,7 @@ The grounds below are defect likelihood grounds. Both items raise their values o
 The candidate multiplier starts from a baseline of 1x.
 
 - With one defect likelihood ground, consider 2x. With several, consider 3x.
-- With the precise or high-quality preset, use 1x, because each image takes long and one more candidate costs much time. High quality also gains little from more candidates, because its compositions stay similar when the seed changes.
+- With the precise or high-quality preset, use 1x, because each image takes long and one more candidate costs much time.
 
 The regeneration limit starts from a baseline of 0.
 

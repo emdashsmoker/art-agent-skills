@@ -322,9 +322,10 @@ Apply every item of the visual check section of SKILL.md to the 4x result again,
 
 ### Responses after the recheck
 
-- Divide coordinates measured on the 4x result by 4 to convert them into coordinates of the adopted image before upscaling, because trimming, face restoration, and region redrawing run at the pre-upscaling size.
+- Divide coordinates measured on the 4x result by 4 to convert them into coordinates of the adopted image before upscaling, because trimming, face restoration, and region redrawing run at the pre-upscaling size. 4x result restoration is the exception.
 - For defects under the visual check items, apply the order of the defect handling section of SKILL.md (trim-first check, response stages, defect post-processing policy, regeneration limit) to the adopted image before upscaling unchanged.
 - Within that order, face defects follow the existing face rules and the pre-generation answers (face restoration scope, defect post-processing policy, etc.) unchanged.
+- For a face defect in an image that received face restoration at the working size, try 4x result restoration in postprocess.md before proceeding through the order above. 4x result restoration runs on the 4x result, so its coordinates are not converted.
 - If a defect is found on a non-frontal face that went through face restoration, redo the comparison under the non-frontal face rule in postprocess.md, counting the newly found defect. For the image that was not adopted, enlarge the same region with grid_measure.py. If the comparison changes the adopted image, run finalize.py again and recheck, as for a fixed adopted image.
 - If you fix the adopted image, run finalize.py again on the fixed adopted image. Do not apply final upscaling again to an upscaled result, because applying it twice to the same pixels accumulates the waxy look.
 - Recheck the result upscaled after the fix by the same criteria. The rules of the regeneration limit section limit the number of repetitions.

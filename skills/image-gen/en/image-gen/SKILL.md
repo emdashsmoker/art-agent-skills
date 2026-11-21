@@ -407,7 +407,7 @@ Final upscaling enlarges 4x with super-resolution and then scales down to the ta
 | general | Most styles, including people | Removes skin texture and paper grain in photographic and watercolor styles |
 | flat | Flat vector backgrounds | Waxy skin, exaggerated nostril edges, and clumped hair on people |
 
-- Apply it once, to the adopted image, after all defect fixes and trimming. Applying it right after generation means enlarging again after a trim or running it twice, and the waxy look accumulates. Face restoration and region redrawing are tuned for the pre-upscaling size too. Discarded attempts do not receive it, so the extra time covers one adopted image. If the post-upscaling recheck leads to a fix of the adopted image, run it once more with the fixed adopted image as the input.
+- Apply it once, to the adopted image, after all defect fixes and trimming. Applying it right after generation means enlarging again after a trim or running it twice, and the waxy look accumulates. Face restoration and region redrawing are tuned for the pre-upscaling size too. The exception is 4x result restoration in references/postprocess.md. Discarded attempts do not receive it, so the extra time covers one adopted image. If the post-upscaling recheck leads to a fix of the adopted image, run it once more with the fixed adopted image as the input.
 - In candidate mode, follow the spare candidate finishing value in force. With all candidates, each spare also receives it once, so the extra time increases with the number of candidates. Spares receive no defect repairs, so apply it in the output folder right after adoption.
 - Texture loss is inherent to the post-processing, so no prompt or seed can restore it.
 - Super-resolution does not repair facial features. Face defects go through defect handling.
@@ -422,6 +422,7 @@ PY scripts/finalize.py ./outputs/banner_trim.png ./outputs/banner_final.png --si
 - Without `--size` the result is 768x768. The mode follows the answer in preflight.json.
 - If trimming changed the ratio, pass the `target=WxH` printed by edge_trim.py to `--size` unchanged. Passing the original target crops back to the original ratio and cuts off the parts you preserved.
 - `--x4-out` saves the 4x result before the downscale for the post-upscaling recheck. The recheck covers adopted images, so pass it for adopted images only.
+- `--x4-in` skips super-resolution and downscales the given 4x result to the target size. Use it only when face restoration was applied to the 4x result of the input image. It cannot be combined with `--x4-out`.
 - Right after the run and before delivery, inspect the 4x result as described in the post-upscaling recheck section of references/defects.md.
 
 ## Delivery

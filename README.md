@@ -13,6 +13,8 @@ Agent Skills that make creative pictures such as illustrations, paintings and ph
 <br>
 <a href="skills/image-gen/demo/"><img src="skills/image-gen/demo/thumbs/fog_roadside.jpg" width="23.5%" alt="image-gen sample"></a>
 <a href="skills/image-gen/demo/"><img src="skills/image-gen/demo/thumbs/tunnel_smoke.jpg" width="23.5%" alt="image-gen sample"></a>
+<a href="skills/image-gen/demo/"><img src="skills/image-gen/demo/thumbs/snowy_windowsill.jpg" width="23.5%" alt="image-gen sample"></a>
+<a href="skills/image-gen/demo/"><img src="skills/image-gen/demo/thumbs/birch_courtyard.jpg" width="23.5%" alt="image-gen sample"></a>
 </p>
 
 <p align="center">
